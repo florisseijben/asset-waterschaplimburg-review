@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Route B test | asset.waterschaplimburg.nl</title>
+  <link rel="stylesheet" href="./assets/test.css">
+  <script type="application/ld+json" id="jsonld-inline">
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "Route B testdataset",
+    "description": "Kleine testset om lokaal JSON, GeoJSON en JSON-LD te valideren.",
+    "creator": {
+      "@type": "Organization",
+      "name": "Waterschap Limburg"
+    },
+    "keywords": [
+      "assetregister",
+      "geojson",
+      "json-ld",
+      "proof-of-concept"
+    ]
+  }
+  </script>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <p class="eyebrow">Buildless Test</p>
+      <h1>Route B proefopstelling</h1>
+      <p class="intro">
+        Deze pagina test of een statische opzet met losse JSON, GeoJSON en inline JSON-LD werkt
+        op jouw bedrijfslaptop zonder extra tooling.
+      </p>
+    </header>
+
+    <section class="panel">
+      <h2>Wat deze pagina test</h2>
+      <ul>
+        <li>Kan gewone JSON via <code>fetch()</code> geladen worden?</li>
+        <li>Kan GeoJSON via <code>fetch()</code> geladen worden?</li>
+        <li>Kan inline JSON-LD gelezen en getoond worden?</li>
+        <li>Blijft de pagina bruikbaar als lokale data-opvraag wordt geblokkeerd?</li>
+      </ul>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h2>Status</h2>
+        <div id="status-list" class="status-list">
+          <p class="status-item status-waiting">Test wordt uitgevoerd...</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <h2>Inline fallback</h2>
+        <p>
+          Ook als <code>fetch()</code> lokaal niet werkt, blijft deze pagina leesbaar via inline
+          fallbackdata.
+        </p>
+        <div id="fallback-preview" class="result-box"></div>
+      </article>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h2>JSON-resultaat</h2>
+        <div id="json-result" class="result-box"></div>
+      </article>
+
+      <article class="card">
+        <h2>GeoJSON-resultaat</h2>
+        <div id="geojson-result" class="result-box"></div>
+      </article>
+    </section>
+
+    <section class="card">
+      <h2>JSON-LD resultaat</h2>
+      <div id="jsonld-result" class="result-box"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Interpretatie</h2>
+      <p>
+        Als JSON en GeoJSON allebei succesvol laden, dan is route B lokaal goed bruikbaar met losse
+        databestanden.
+      </p>
+      <p>
+        Als alleen JSON-LD en fallback werken, dan is route B nog steeds mogelijk, maar dan moeten
+        we HTML-first bouwen en data alleen als optionele verrijking gebruiken.
+      </p>
+    </section>
+  </main>
+
+  <script type="application/json" id="fallback-json">
+  {
+    "title": "Fallback assetlijst",
+    "items": [
+      { "code": "STG-001", "naam": "Stuw Maaszijde" },
+      { "code": "GML-014", "naam": "Gemaal Noordkanaal" }
+    ]
+  }
+  </script>
+
+  <script type="application/json" id="inline-assets-json">
+  {
+    "title": "Inline testset assetregister",
+    "items": [
+      {
+        "code": "STG-001",
+        "naam": "Stuw Maaszijde",
+        "status": "actief"
+      },
+      {
+        "code": "GML-014",
+        "naam": "Gemaal Noordkanaal",
+        "status": "in onderzoek"
+      },
+      {
+        "code": "SLS-022",
+        "naam": "Sluis Zuid",
+        "status": "gepland onderhoud"
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/json" id="inline-assets-geojson">
+  {
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {
+          "code": "STG-001",
+          "naam": "Stuw Maaszijde"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            5.689,
+            51.194
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "code": "GML-014",
+          "naam": "Gemaal Noordkanaal"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            5.812,
+            51.281
+          ]
+        }
+      }
+    ]
+  }
+  </script>
+
+  <script src="./assets/test.js"></script>
+</body>
+</html>

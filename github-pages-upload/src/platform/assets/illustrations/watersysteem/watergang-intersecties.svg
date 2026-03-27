@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="420" viewBox="0 0 960 420" role="img" aria-labelledby="title desc">
+  <title id="title">Intersecties binnen een watergang</title>
+  <desc id="desc">Kruising tussen een watergang en een ander netwerk, zichtbaar tussen secties.</desc>
+  <rect width="960" height="420" fill="#f8fcfd"/>
+  <rect x="70" y="70" width="820" height="280" fill="#ffffff" stroke="#b8d7de"/>
+  <line x1="130" y1="220" x2="830" y2="220" stroke="#00a9c1" stroke-width="10" stroke-linecap="round"/>
+  <line x1="510" y1="120" x2="510" y2="320" stroke="#4d6a70" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="510" cy="220" r="26" fill="#ffffff" stroke="#00a9c1" stroke-width="8"/>
+  <text x="178" y="205" font-family="Avenir Next, Avenir, Segoe UI, sans-serif" font-size="20" fill="#0f3840">Watergangsectie</text>
+  <text x="610" y="205" font-family="Avenir Next, Avenir, Segoe UI, sans-serif" font-size="20" fill="#0f3840">Watergangsectie</text>
+  <text x="534" y="146" font-family="Avenir Next, Avenir, Segoe UI, sans-serif" font-size="18" fill="#4d6a70">Ander netwerk</text>
+  <text x="510" y="267" text-anchor="middle" font-family="Avenir Next, Avenir, Segoe UI, sans-serif" font-size="22" fill="#0f3840">Intersectie</text>
+</svg>

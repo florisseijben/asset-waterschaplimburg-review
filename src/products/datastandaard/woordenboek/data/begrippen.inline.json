@@ -1,0 +1,31 @@
+{
+  "begrippen": [
+    {
+      "id": "begrip-asset",
+      "slug": "asset",
+      "prefLabel": "Asset",
+      "shortDefinition": "Beheerd object of systeemonderdeel binnen de levenscyclus van het areaal.",
+      "status": "Vastgesteld",
+      "uri": "https://data.waterschaplimburg.nl/id/begrip/asset",
+      "conceptScheme": "Datastandaard Assetdomein"
+    },
+    {
+      "id": "begrip-objecttype",
+      "slug": "objecttype",
+      "prefLabel": "Objecttype",
+      "shortDefinition": "Klasse of soort object binnen het informatiemodel.",
+      "status": "In uitwerking",
+      "uri": "https://data.waterschaplimburg.nl/id/begrip/objecttype",
+      "conceptScheme": "Datastandaard Assetdomein"
+    },
+    {
+      "id": "begrip-referentiedataset",
+      "slug": "referentiedataset",
+      "prefLabel": "Referentiedataset",
+      "shortDefinition": "Afgesproken set voorbeeldgegevens voor afstemming, toetsing en demonstratie.",
+      "status": "Concept",
+      "uri": "https://data.waterschaplimburg.nl/id/begrip/referentiedataset",
+      "conceptScheme": "Datastandaard Assetdomein"
+    }
+  ]
+}

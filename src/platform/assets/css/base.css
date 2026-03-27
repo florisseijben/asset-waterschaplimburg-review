@@ -1,0 +1,55 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Avenir Next", Avenir, "Segoe UI", Tahoma, sans-serif;
+  color: var(--color-ink);
+  background: #fbfcfc;
+}
+
+a {
+  color: var(--color-brand-dark);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+h1,
+h2,
+h3 {
+  margin-top: 0;
+  color: var(--color-deep);
+  line-height: 1.2;
+}
+
+p,
+li {
+  line-height: 1.6;
+}
+
+h1 {
+  font-size: clamp(1.95rem, 3.6vw, 2.7rem);
+  font-weight: 700;
+}
+
+h2 {
+  font-size: clamp(1.3rem, 2.2vw, 1.8rem);
+  font-weight: 700;
+}
+
+ul {
+  padding-left: 1.25rem;
+}
+
+code {
+  font-family: Consolas, monospace;
+}

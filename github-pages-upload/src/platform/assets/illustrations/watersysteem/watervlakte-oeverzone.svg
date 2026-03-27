@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="420" viewBox="0 0 960 420" role="img" aria-labelledby="title desc">
+  <title id="title">Oeverzone van een watervlakte</title>
+  <desc id="desc">Schematische weergave van de overgang tussen water en oever.</desc>
+  <rect width="960" height="420" fill="#f8fcfd"/>
+  <rect x="70" y="70" width="820" height="280" fill="#ffffff" stroke="#b8d7de"/>
+  <path d="M140 250 C290 170 455 165 600 214 C678 240 740 246 820 220 L820 320 L140 320 Z" fill="#dff3f7"/>
+  <path d="M140 250 C290 170 455 165 600 214 C678 240 740 246 820 220" fill="none" stroke="#00a9c1" stroke-width="6"/>
+  <path d="M140 230 C280 145 450 136 614 185" fill="none" stroke="#8ac9d5" stroke-width="3" stroke-dasharray="10 8"/>
+  <text x="210" y="168" font-family="Avenir Next, Avenir, Segoe UI, sans-serif" font-size="22" fill="#0f3840">oeverzone</text>
+  <text x="538" y="288" font-family="Avenir Next, Avenir, Segoe UI, sans-serif" font-size="20" fill="#0f3840">watervlak</text>
+</svg>

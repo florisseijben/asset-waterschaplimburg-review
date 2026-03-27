@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="420" viewBox="0 0 960 420" role="img" aria-labelledby="title desc">
+  <title id="title">Bovenaanzicht van een watervlakte</title>
+  <desc id="desc">Planweergave van een watervlakte met contour en oever.</desc>
+  <rect width="960" height="420" fill="#f8fcfd"/>
+  <rect x="70" y="70" width="820" height="280" fill="#ffffff" stroke="#b8d7de"/>
+  <path d="M230 170 C284 114 392 98 522 114 C666 132 752 196 720 260 C688 320 552 338 414 324 C278 310 188 254 200 200 C204 186 212 178 230 170 Z" fill="#dff3f7" stroke="#00a9c1" stroke-width="6"/>
+  <path d="M260 188 C318 148 408 138 520 150 C624 160 694 208 676 248 C656 288 548 306 430 296 C316 288 244 252 244 220 C244 206 250 196 260 188 Z" fill="none" stroke="#8ac9d5" stroke-width="3" stroke-dasharray="10 8"/>
+  <text x="470" y="216" text-anchor="middle" font-family="Avenir Next, Avenir, Segoe UI, sans-serif" font-size="26" fill="#0f3840">watervlakte</text>
+  <text x="470" y="250" text-anchor="middle" font-family="Avenir Next, Avenir, Segoe UI, sans-serif" font-size="18" fill="#4d6a70">contour en oeverzone in plan</text>
+</svg>

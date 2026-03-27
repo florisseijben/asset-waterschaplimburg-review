@@ -1,0 +1,232 @@
+﻿<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Watergang | Objectenhandboek | Datastandaard</title>
+  <link rel="stylesheet" href="../../../../platform/assets/css/tokens.css">
+  <link rel="stylesheet" href="../../../../platform/assets/css/base.css">
+  <link rel="stylesheet" href="../../../../platform/assets/css/layout.css">
+  <link rel="stylesheet" href="../../../../platform/assets/css/components.css">
+  <link rel="stylesheet" href="../../../../platform/assets/css/utilities.css">
+</head>
+<body>
+  <main class="shell" data-object-detail>
+    <header class="site-header stack">
+      <div class="site-header-bar">
+        <strong>asset.waterschaplimburg.nl</strong>
+        <nav aria-label="Hoofdnavigatie">
+          <ul class="primary-nav">
+            <li><a href="../../../../pages/index.html">Home</a></li>
+            <li><a href="../../../assetregister/pages/index.html">Assetregister</a></li>
+            <li><a href="../../../assetmanagement/pages/index.html">Assetmanagement</a></li>
+            <li><a href="../../pages/index.html">Datastandaard</a></li>
+          </ul>
+        </nav>
+      </div>
+      <ol class="breadcrumb" aria-label="Breadcrumb">
+        <li><a href="../../../../pages/index.html">Home</a></li>
+        <li><a href="../../pages/index.html">Datastandaard</a></li>
+        <li><a href="../../pages/watersysteem.html">Watersysteem</a></li>
+        <li><a href="./watersysteem.html">Objectenhandboek</a></li>
+        <li><span>Watergang</span></li>
+      </ol>
+    </header>
+
+    <section class="hero stack">
+      <p class="eyebrow">Objectenhandboek</p>
+      <div class="detail-header">
+        <div>
+          <h1 id="object-title">Watergang</h1>
+          <p class="lead" id="object-summary"></p>
+        </div>
+        <span class="status-chip" id="object-status">Eerste template</span>
+      </div>
+      <ol class="hierarchy-path" aria-label="Hierarchie van object">
+        <li><span class="hierarchy-chip">Watersysteem</span></li>
+        <li><span class="hierarchy-chip">Stroomgebied</span></li>
+        <li><span class="hierarchy-chip">Watergang</span></li>
+      </ol>
+      <div class="detail-actions">
+        <a class="button button-secondary" href="./watersysteem-watergangsectie.html">Naar Watergangsectie</a>
+        <a class="button button-secondary" href="./watersysteem-intersectie.html">Naar Intersectie</a>
+      </div>
+    </section>
+
+    <section class="content-grid detail-layout">
+      <article>
+        <section class="panel detail-section stack">
+          <p class="eyebrow">Concept</p>
+          <h2>Definitie en begripskader</h2>
+          <div class="definition-block">
+            <p id="object-definition"></p>
+          </div>
+          <p class="definition-source" id="object-definition-source"></p>
+          <div class="stack">
+            <h3>Termen</h3>
+            <div id="object-terms"></div>
+          </div>
+          <div class="callout">
+            <strong>Context</strong>
+            <p id="object-context"></p>
+          </div>
+        </section>
+
+        <section class="panel detail-section stack">
+          <p class="eyebrow">Uitwerking</p>
+          <h2>Inhoudelijke opbouw van Watergang</h2>
+          <p>
+            Deze pagina vormt de referentielijn voor `Watergang` en later ook voor `Waterkering`.
+            Vanuit het concept volgt de inhoudelijke uitwerking van de granulariteitsniveaus waarmee
+            een watergang beschreven wordt.
+          </p>
+          <div id="object-content-sections"></div>
+        </section>
+      </article>
+
+      <aside class="stack">
+        <section class="panel detail-section stack">
+          <p class="eyebrow">Metadata</p>
+          <h2>Objectgegevens</h2>
+          <dl class="meta-list" id="object-meta"></dl>
+        </section>
+
+        <section class="panel detail-section stack">
+          <p class="eyebrow">Semantiek</p>
+          <h2>EDG-voorbereiding</h2>
+          <p id="object-edg-note"></p>
+        </section>
+
+        <section class="panel detail-section stack">
+          <p class="eyebrow">Doorklik</p>
+          <h2>Vervolg in deze lijn</h2>
+          <nav class="section-nav" aria-label="Vervolg objectlijn">
+            <a href="./watersysteem-watergangsectie.html">Watergangsectie</a>
+            <a href="./watersysteem-intersectie.html">Intersectie</a>
+          </nav>
+        </section>
+      </aside>
+    </section>
+  </main>
+
+  <script type="application/json" id="object-detail-data">
+  {
+    "object": {
+      "label": "Watergang",
+      "summary": "Watergang is het eerste uitgewerkte objecttype binnen het Objectenhandboek voor Watersysteem en volgt dezelfde opzet die later ook voor Waterkering gebruikt kan worden.",
+      "status": "Eerste template",
+      "dictionaryDefinition": "Een watergang is een lijnvormig waterobject binnen het watersysteem voor afvoer, aanvoer of transport van water.",
+      "definitionSource": "Definitiebron: TopBraid EDG conceptdefinitie voor Watergang.",
+      "contextNote": "De pagina begint met het concept uit TopBraid EDG en werkt daarna de inhoudelijke granulariteitsniveaus uit waarmee een watergang beschreven wordt.",
+      "terms": ["Watergang", "Waterloop", "Traject", "Waterganggebied"],
+      "system": "Watersysteem",
+      "subsystem": "Stroomgebied",
+      "objectType": "Watergang",
+      "sourceSystem": "TopBraid EDG",
+      "uri": "https://data.waterschaplimburg.nl/id/objecttype/watergang",
+      "edgNote": "De conceptdefinitie en uiteindelijke objectrelaties komen uit TopBraid EDG. In deze fase gebruiken we de pagina om de vaste inhoudsvolgorde en presentatielogica te bepalen.",
+      "contentSections": [
+        {
+          "title": "Granulariteitsniveaus",
+          "definition": "Voor het definieren van een watergang hanteren we verschillende granulariteitsniveaus waarmee het object van hoog naar laag beschreven wordt.",
+          "body": "Binnen deze lijn onderscheiden we onder andere watergangtraject, waterganggebied, dwarsprofiel, watergangsecties en intersecties. Samen vormen deze niveaus de opbouw van de watergang in het Objectenhandboek.",
+          "examples": [
+            {
+              "title": "Traject",
+              "description": "Lengteprofiel van een waterloop van aanvoerpunt naar afvoerpunt, weergegeven door middel van de aslijn van de waterloop."
+            },
+            {
+              "title": "Waterganggebied",
+              "description": "Gebied over de lengte van het watergangtraject dat is opgebouwd uit de achtereenvolgende watergangsecties en intersecties."
+            },
+            {
+              "title": "Dwarsprofiel",
+              "description": "Doorsnede van de watergang waarmee de opbouw van bodem, taluds en constructieve onderdelen zichtbaar wordt."
+            }
+          ]
+        },
+        {
+          "title": "Watergangtraject",
+          "definition": "Het watergangtraject beschrijft de watergang over de lengte, van aanvoerpunt naar afvoerpunt.",
+          "body": "Dit niveau legt de nadruk op de doorgaande lijn van de waterloop. Het traject is geschikt om de aslijn, de hoofdloop en de samenhang over de lengte van de watergang te tonen.",
+          "examples": [
+            {
+              "title": "Aslijn als drager",
+              "description": "Visualisatie waarbij de watergang primair wordt gelezen als lijnobject met begin- en eindpunt."
+            },
+            {
+              "title": "Traject in kaartbeeld",
+              "description": "Voorbeeld waarbij de watergang over zijn volledige lengte in samenhang met het stroomgebied wordt getoond."
+            }
+          ]
+        },
+        {
+          "title": "Waterganggebied",
+          "definition": "Het waterganggebied omvat het gebied dat de watergang over de lengte van het watergangtraject bestrijkt.",
+          "body": "Dit gebied is opgebouwd uit de achtereenvolgende watergangsecties en intersecties. Het niveau helpt om de watergang niet alleen als lijn, maar ook als ruimtelijke zone te begrijpen.",
+          "examples": [
+            {
+              "title": "Gebiedsopbouw",
+              "description": "Visualisatie waarin de opeenvolging van secties en intersecties binnen de watergangzone zichtbaar wordt."
+            },
+            {
+              "title": "Ruimtelijke begrenzing",
+              "description": "Voorbeeld van de ruimtelijke contour van de watergang over de lengte van het traject."
+            }
+          ]
+        },
+        {
+          "title": "Dwarsprofiel",
+          "definition": "Het dwarsprofiel toont de doorsnede van de watergang en maakt de opbouw van bodem, taluds en constructieve elementen inzichtelijk.",
+          "body": "Op dit niveau wordt de watergang gelezen in doorsnede. Het dwarsprofiel is relevant om de hierarchische compositie van onderliggende objecten visueel en inhoudelijk te verduidelijken.",
+          "examples": [
+            {
+              "title": "Basisdoorsnede",
+              "description": "Eenvoudig profiel met bodem en twee taluds als vaste opbouw van een watergangsectie."
+            },
+            {
+              "title": "Constructieve uitwerking",
+              "description": "Voorbeeld waarbij bekledingsconstructie en toplaag als onderdelen van talud of bodem zichtbaar worden."
+            }
+          ]
+        },
+        {
+          "title": "Watergangsecties",
+          "definition": "Watergangsecties zijn afgebakende delen van de watergang waarmee kenmerken, onderhoud en opbouw specifieker beschreven kunnen worden.",
+          "body": "Watergangsecties krijgen een eigen detailpagina. Binnen deze watergangpagina worden ze gepositioneerd als essentieel granulariteitsniveau tussen de watergang als geheel en de onderliggende objecten.",
+          "examples": [
+            {
+              "title": "Opeenvolgende secties",
+              "description": "Visualisatie van meerdere secties achter elkaar langs het watergangtraject."
+            },
+            {
+              "title": "Sectie als drager van compositie",
+              "description": "Voorbeeld waarin talud, bodem en constructieve onderdelen aan een specifieke sectie worden gekoppeld."
+            }
+          ]
+        },
+        {
+          "title": "Intersecties",
+          "definition": "Intersecties zijn kruisingen binnen de watergangstructuur en liggen op hetzelfde niveau als watergangsecties.",
+          "body": "Intersecties krijgen een eigen detailpagina. Binnen deze watergangpagina markeren zij de kruisingen die aanvullend beschreven moeten worden naast de reguliere secties.",
+          "examples": [
+            {
+              "title": "Kruising als eigen object",
+              "description": "Voorbeeld van een kruising die als zelfstandig onderdeel in de lijn van de watergang wordt opgenomen."
+            },
+            {
+              "title": "Ligging tussen secties",
+              "description": "Visualisatie waarin een intersectie zichtbaar wordt als apart element tussen twee watergangsecties."
+            }
+          ]
+        }
+      ]
+    }
+  }
+  </script>
+  <script src="../../../../platform/assets/js/app.js"></script>
+  <script src="../../../../platform/assets/js/data-inline.js"></script>
+  <script src="../../../../platform/assets/js/object-detail.js"></script>
+</body>
+</html>
+

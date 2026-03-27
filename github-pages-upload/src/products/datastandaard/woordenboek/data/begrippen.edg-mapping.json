@@ -1,0 +1,15 @@
+{
+  "source": "TopBraid EDG",
+  "graph": "https://topbraid.waterschaplimburg.nl/graphs/datastandaard/woordenboek",
+  "endpoint": "TopBraid EDG conceptservice voor woordenboekbegrippen",
+  "fields": {
+    "prefLabel": "skos:prefLabel",
+    "altLabels": "skos:altLabel",
+    "definition": "skos:definition",
+    "broader": "skos:broader",
+    "narrower": "skos:narrower",
+    "related": "skos:related",
+    "owlClass": "owl:Class",
+    "shaclShape": "sh:NodeShape"
+  }
+}

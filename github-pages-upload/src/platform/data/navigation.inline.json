@@ -1,0 +1,21 @@
+﻿{
+  "items": [
+    {
+      "label": "Home",
+      "href": "../../../pages/index.html"
+    },
+    {
+      "label": "Assetregister",
+      "href": "../../../products/assetregister/pages/index.html"
+    },
+    {
+      "label": "Assetmanagement",
+      "href": "../../../products/assetmanagement/pages/index.html"
+    },
+    {
+      "label": "Datastandaard",
+      "href": "../../../products/datastandaard/pages/index.html"
+    }
+  ]
+}
+

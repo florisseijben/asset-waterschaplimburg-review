@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Watervlakte | Objectenhandboek | Watersysteem</title>
+  <link rel="stylesheet" href="../../../../platform/assets/css/tokens.css">
+  <link rel="stylesheet" href="../../../../platform/assets/css/base.css">
+  <link rel="stylesheet" href="../../../../platform/assets/css/layout.css">
+  <link rel="stylesheet" href="../../../../platform/assets/css/components.css">
+  <link rel="stylesheet" href="../../../../platform/assets/css/utilities.css">
+</head>
+<body>
+  <main class="shell" data-object-detail>
+    <header class="site-header stack">
+      <div class="site-header-bar">
+        <strong>asset.waterschaplimburg.nl</strong>
+        <nav aria-label="Hoofdnavigatie">
+          <ul class="primary-nav">
+            <li><a href="../../../../pages/index.html">Home</a></li>
+            <li><a href="../../../assetregister/pages/index.html">Assetregister</a></li>
+            <li><a href="../../../assetmanagement/pages/index.html">Assetmanagement</a></li>
+            <li><a href="../../pages/index.html">Datastandaard</a></li>
+          </ul>
+        </nav>
+      </div>
+      <ol class="breadcrumb" aria-label="Breadcrumb">
+        <li><a href="../../../../pages/index.html">Home</a></li>
+        <li><a href="../../pages/index.html">Datastandaard</a></li>
+        <li><a href="../../pages/watersysteem.html">Watersysteem</a></li>
+        <li><a href="./watersysteem.html">Objectenhandboek</a></li>
+        <li><span>Watervlakten</span></li>
+      </ol>
+    </header>
+
+    <section class="hero stack">
+      <p class="eyebrow">Objectenhandboek</p>
+      <div class="detail-header">
+        <div>
+          <h1 id="object-title">Watervlakte</h1>
+          <p class="lead" id="object-summary"></p>
+        </div>
+        <span class="status-chip" id="object-status">Eerste template</span>
+      </div>
+      <ol class="hierarchy-path" aria-label="Hierarchie van object">
+        <li><span class="hierarchy-chip">Watersysteem</span></li>
+        <li><span class="hierarchy-chip">Stroomgebied</span></li>
+        <li><span class="hierarchy-chip">Watervlakte</span></li>
+      </ol>
+    </section>
+
+    <section class="content-grid detail-layout">
+      <article>
+        <section class="panel detail-section stack">
+          <p class="eyebrow">Concept</p>
+          <h2>Definitie en begripskader</h2>
+          <div class="definition-block">
+            <p id="object-definition"></p>
+          </div>
+          <p class="definition-source" id="object-definition-source"></p>
+          <div class="stack">
+            <h3>Termen</h3>
+            <div id="object-terms"></div>
+          </div>
+          <div class="callout">
+            <strong>Context</strong>
+            <p id="object-context"></p>
+          </div>
+        </section>
+
+        <section class="panel detail-section stack">
+          <p class="eyebrow">Subtypen</p>
+          <h2>Subtypen van Watervlakte</h2>
+          <p>
+            Onderstaande subtypen volgen AQUO-terminologie voor stilstaand of vlakvormig
+            oppervlaktewater. Waar AQUO een subtype of bredere waterterm ondersteunt, is die lijn
+            hier inhoudelijk gevolgd.
+          </p>
+          <div class="card-grid subtype-list">
+            <article class="card stack">
+              <h3>Meer</h3>
+              <p>Relatief grote watervlakte met overwegend stilstaand of langzaam bewegend water.</p>
+              <p class="u-muted">AQUO-conforme afleiding uit terminologie voor oppervlaktewater en watervlakken.</p>
+            </article>
+            <article class="card stack">
+              <h3>Plas</h3>
+              <p>Begrensde watervlakte met stilstaand water, doorgaans kleiner en lokaler dan een meer.</p>
+              <p class="u-muted">AQUO-conforme afleiding binnen de familie van vlakvormig oppervlaktewater.</p>
+            </article>
+            <article class="card stack">
+              <h3>Poel</h3>
+              <p>Kleine, ondiepe watervlakte met stilstaand water.</p>
+              <p class="u-muted">AQUO-conforme afleiding voor een klein stilstaand waterlichaam.</p>
+            </article>
+            <article class="card stack">
+              <h3>Ven</h3>
+              <p>Natuurlijke, vaak ondiepe watervlakte in een landschappelijke laagte.</p>
+              <p class="u-muted">AQUO-conforme afleiding binnen natuurlijke stilstaande wateren.</p>
+            </article>
+            <article class="card stack">
+              <h3>Vijver</h3>
+              <p>Aangelegde of ingerichte watervlakte met een duidelijke begrenzing.</p>
+              <p class="u-muted">AQUO-conforme afleiding voor een begrensde, vaak kunstmatige watervlakte.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel detail-section stack">
+          <p class="eyebrow">Uitwerking</p>
+          <h2>Inhoudelijke opbouw van Watervlakte</h2>
+          <p>
+            Deze pagina werkt `Watervlakte` uit als vlakobject binnen het watersysteem. Anders dan
+            bij `Watergang` ligt de nadruk hier niet op een traject met secties en intersecties,
+            maar op begrenzing, vlakvorm, oeverzone en profiel.
+          </p>
+          <div id="object-content-sections"></div>
+        </section>
+      </article>
+
+      <aside class="stack">
+        <section class="panel detail-section stack">
+          <p class="eyebrow">Metadata</p>
+          <h2>Objectgegevens</h2>
+          <dl class="meta-list" id="object-meta"></dl>
+        </section>
+
+        <section class="panel detail-section stack">
+          <p class="eyebrow">Semantiek</p>
+          <h2>EDG-voorbereiding</h2>
+          <p id="object-edg-note"></p>
+        </section>
+
+        <section class="panel detail-section stack">
+          <p class="eyebrow">Doorklik</p>
+          <h2>Andere objectfamilies</h2>
+          <nav class="section-nav" aria-label="Andere objectfamilies">
+            <a href="./watersysteem-watergangen.html">Watergangen</a>
+            <a href="./watersysteem-waterbuffers.html">Waterbuffers</a>
+          </nav>
+        </section>
+      </aside>
+    </section>
+  </main>
+
+  <script type="application/json" id="object-detail-data">
+  {
+    "object": {
+      "label": "Watervlakte",
+      "summary": "Watervlakte is een vlakvormig waterobject binnen het watersysteem en vraagt een andere opbouw dan een lijnvormige watergang.",
+      "status": "Eerste template",
+      "dictionaryDefinition": "Een watervlakte is een vlakvormig waterobject binnen het watersysteem.",
+      "definitionSource": "Definitiebron: uitwerking in lijn met AQUO-terminologie voor oppervlaktewater en stilstaande wateren.",
+      "contextNote": "De watervlakte wordt als vlakobject beschreven. Daardoor werken we niet met trajecten, secties en intersecties, maar met begrenzing, oeverzone, profiel en vlakvorm.",
+      "terms": ["Watervlakte", "Oppervlaktewater", "Vlakobject", "Oeverzone"],
+      "system": "Watersysteem",
+      "subsystem": "Stroomgebied",
+      "objectType": "Watervlakte",
+      "sourceSystem": "TopBraid EDG",
+      "uri": "https://data.waterschaplimburg.nl/id/objecttype/watervlakte",
+      "edgNote": "In TopBraid EDG moet Watervlakte als vlakobject worden voorbereid, met relaties naar oeverzone, profiel en andere relevante objecten of producten.",
+      "contentSections": [
+        {
+          "title": "Granulariteitsniveaus",
+          "definition": "Voor het definieren van een watervlakte hanteren we verschillende beschrijfniveaus die passen bij een vlakobject.",
+          "body": "Binnen deze lijn onderscheiden we onder andere het vlakobject zelf, de oeverzone, het dwarsprofiel, het bodemprofiel en het bovenaanzicht. Samen vormen deze niveaus de opbouw van de watervlakte in het Objectenhandboek.",
+          "visualization": {
+            "src": "../../../../platform/assets/illustrations/watersysteem/watervlakte-granulariteitsniveaus.svg",
+            "alt": "Schema van de granulariteitsniveaus van een watervlakte.",
+            "caption": "Een watervlakte wordt als vlakobject gelezen, met oever, profiel en bodem als belangrijkste beschrijfniveaus."
+          },
+          "examples": [
+            {
+              "title": "Vlakobject",
+              "description": "Het begrensde wateroppervlak vormt het primaire object."
+            },
+            {
+              "title": "Oeverzone",
+              "description": "De overgang tussen water en land is een belangrijk inhoudelijk niveau binnen de beschrijving."
+            },
+            {
+              "title": "Dwarsprofiel",
+              "description": "Doorsnede waarmee diepte, oeverhelling en bodemvorm leesbaar worden."
+            }
+          ]
+        },
+        {
+          "title": "Watervlakte als vlakobject",
+          "definition": "De watervlakte wordt primair gelezen als begrensd vlak met een ruimtelijke contour.",
+          "body": "Het object wordt niet opgebouwd langs een lijn of traject, maar als oppervlakte met een eigen vorm, omvang en ligging in het watersysteem.",
+          "visualization": {
+            "src": "../../../../platform/assets/illustrations/watersysteem/watervlakte-vlakobject.svg",
+            "alt": "Visualisatie van een watervlakte als vlakobject.",
+            "caption": "De watervlakte is een begrensd vlakobject zonder traject, secties of intersecties."
+          },
+          "examples": [
+            {
+              "title": "Ruimtelijke contour",
+              "description": "Visualisatie waarin de vorm en begrenzing van de watervlakte centraal staan."
+            },
+            {
+              "title": "Ligging in het watersysteem",
+              "description": "Voorbeeld waarin de watervlakte als eigen vlak binnen een groter systeembeeld wordt opgenomen."
+            }
+          ]
+        },
+        {
+          "title": "Oeverzone",
+          "definition": "De oeverzone vormt de overgang tussen het wateroppervlak en het omliggende land.",
+          "body": "Bij een watervlakte is deze overgang essentieel voor beheer, ecologie en ruimtelijke begrenzing. De oeverzone helpt om het vlakobject inhoudelijk verder te duiden.",
+          "visualization": {
+            "src": "../../../../platform/assets/illustrations/watersysteem/watervlakte-oeverzone.svg",
+            "alt": "Visualisatie van de oeverzone van een watervlakte.",
+            "caption": "De oeverzone markeert de overgang van water naar land en hoort inhoudelijk bij de beschrijving van de watervlakte."
+          },
+          "examples": [
+            {
+              "title": "Overgang water-land",
+              "description": "Visualisatie waarin de oeverzone als aparte randzone zichtbaar wordt."
+            },
+            {
+              "title": "Ruimtelijke begrenzing",
+              "description": "Voorbeeld waarin de oever helpt om de exacte grens van het wateroppervlak te begrijpen."
+            }
+          ]
+        },
+        {
+          "title": "Dwarsprofiel",
+          "definition": "Het dwarsprofiel laat zien hoe de watervlakte in doorsnede gelezen kan worden.",
+          "body": "Met een dwarsprofiel worden oeverhelling, diepte en bodemvorm inzichtelijk. Daarmee krijgt het vlakobject ook een verticale betekenis.",
+          "visualization": {
+            "src": "../../../../platform/assets/illustrations/watersysteem/watervlakte-dwarsprofiel.svg",
+            "alt": "Dwarsprofiel van een watervlakte met oever en bodem.",
+            "caption": "Het dwarsprofiel maakt diepte, oever en bodemvorm van de watervlakte leesbaar."
+          },
+          "examples": [
+            {
+              "title": "Oeverhelling",
+              "description": "Profielweergave van de overgang van maaiveld naar waterbodem."
+            },
+            {
+              "title": "Bodemprofiel",
+              "description": "Visualisatie van de diepte en vorm van de onderzijde van de watervlakte."
+            }
+          ]
+        },
+        {
+          "title": "Bovenaanzicht",
+          "definition": "Het bovenaanzicht toont de watervlakte in plan, met contour en vlakvorm als belangrijkste dragers.",
+          "body": "Op dit niveau wordt zichtbaar hoe de watervlakte als vlakobject in het watersysteem ligt, inclusief de verhouding tussen open water, oever en begrenzing.",
+          "visualization": {
+            "src": "../../../../platform/assets/illustrations/watersysteem/watervlakte-bovenaanzicht.svg",
+            "alt": "Bovenaanzicht van een watervlakte met contour en oeverzone.",
+            "caption": "In bovenaanzicht komt de vlakvorm van de watervlakte centraal te staan."
+          },
+          "examples": [
+            {
+              "title": "Contour in plan",
+              "description": "Visualisatie van de watervlakte als begrensd vlak in kaartbeeld."
+            },
+            {
+              "title": "Samenhang met de omgeving",
+              "description": "Voorbeeld waarin de watervlakte zich verhoudt tot oever, terrein en omliggend watersysteem."
+            }
+          ]
+        }
+      ]
+    }
+  }
+  </script>
+  <script src="../../../../platform/assets/js/app.js"></script>
+  <script src="../../../../platform/assets/js/data-inline.js"></script>
+  <script src="../../../../platform/assets/js/object-detail.js"></script>
+</body>
+</html>

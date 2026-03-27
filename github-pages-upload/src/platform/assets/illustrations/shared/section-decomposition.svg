@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="420" viewBox="0 0 960 420" role="img" aria-labelledby="title desc">
+  <title id="title">Decompositie van een sectie</title>
+  <desc id="desc">Schematische decompositie van een sectie in onderliggende onderdelen.</desc>
+  <rect width="960" height="420" fill="#f8fcfd"/>
+  <rect x="70" y="70" width="820" height="280" fill="#ffffff" stroke="#b8d7de"/>
+  <rect x="380" y="100" width="200" height="56" fill="#dff3f7" stroke="#00a9c1" stroke-width="3"/>
+  <rect x="180" y="240" width="180" height="56" fill="#ffffff" stroke="#8ac9d5" stroke-width="3"/>
+  <rect x="390" y="240" width="180" height="56" fill="#ffffff" stroke="#8ac9d5" stroke-width="3"/>
+  <rect x="600" y="240" width="180" height="56" fill="#ffffff" stroke="#8ac9d5" stroke-width="3"/>
+  <line x1="480" y1="156" x2="270" y2="240" stroke="#00a9c1" stroke-width="3"/>
+  <line x1="480" y1="156" x2="480" y2="240" stroke="#00a9c1" stroke-width="3"/>
+  <line x1="480" y1="156" x2="690" y2="240" stroke="#00a9c1" stroke-width="3"/>
+  <text x="480" y="135" text-anchor="middle" font-family="Avenir Next, Avenir, Segoe UI, sans-serif" font-size="22" fill="#0f3840">Sectie</text>
+  <text x="270" y="275" text-anchor="middle" font-family="Avenir Next, Avenir, Segoe UI, sans-serif" font-size="18" fill="#0f3840">Onderdeel 1</text>
+  <text x="480" y="275" text-anchor="middle" font-family="Avenir Next, Avenir, Segoe UI, sans-serif" font-size="18" fill="#0f3840">Onderdeel 2</text>
+  <text x="690" y="275" text-anchor="middle" font-family="Avenir Next, Avenir, Segoe UI, sans-serif" font-size="18" fill="#0f3840">Onderdeel 3</text>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="420" viewBox="0 0 960 420" role="img" aria-labelledby="title desc">
+  <title id="title">Watervlakte als vlakobject</title>
+  <desc id="desc">Weergave van een watervlakte als ruimtelijk begrensd vlak.</desc>
+  <rect width="960" height="420" fill="#f8fcfd"/>
+  <rect x="70" y="70" width="820" height="280" fill="#ffffff" stroke="#b8d7de"/>
+  <path d="M240 150 C300 95 435 95 548 118 C676 144 762 208 720 272 C684 326 548 340 424 324 C284 304 194 254 206 198 C212 178 220 165 240 150 Z" fill="#dff3f7" stroke="#00a9c1" stroke-width="6"/>
+  <text x="472" y="214" text-anchor="middle" font-family="Avenir Next, Avenir, Segoe UI, sans-serif" font-size="26" fill="#0f3840">Begrensd watervlak</text>
+  <text x="472" y="246" text-anchor="middle" font-family="Avenir Next, Avenir, Segoe UI, sans-serif" font-size="18" fill="#4d6a70">vlakobject zonder traject of secties</text>
+</svg>

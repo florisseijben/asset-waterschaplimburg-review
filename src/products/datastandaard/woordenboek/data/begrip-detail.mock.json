@@ -1,0 +1,18 @@
+{
+  "begrip": {
+    "id": "begrip-asset",
+    "slug": "asset",
+    "prefLabel": "Asset",
+    "altLabels": ["Bedrijfsmiddel", "Beheerd object"],
+    "definition": "Beheerd object of systeemonderdeel binnen de levenscyclus van het areaal waarop registratie, onderhoud, analyse en besluitvorming betrekking hebben.",
+    "scopeNote": "Binnen dit platform gebruiken we het begrip asset als kapstokterm voor fysieke en logische beheereenheden die in Assetregister, Assetmanagement en Datastandaard terugkomen.",
+    "status": "Vastgesteld",
+    "uri": "https://data.waterschaplimburg.nl/id/begrip/asset",
+    "conceptScheme": "Datastandaard Assetdomein",
+    "sourceSystem": "TopBraid EDG",
+    "lastUpdated": "2026-03-24",
+    "rdfType": "skos:Concept",
+    "owlClass": "wl:Asset",
+    "shaclShape": "wlshape:AssetShape"
+  }
+}

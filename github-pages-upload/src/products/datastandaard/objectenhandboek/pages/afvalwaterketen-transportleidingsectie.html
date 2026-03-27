@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Transportleidingsectie | Objectenhandboek | Afvalwaterketen</title>
+  <link rel="stylesheet" href="../../../../platform/assets/css/tokens.css">
+  <link rel="stylesheet" href="../../../../platform/assets/css/base.css">
+  <link rel="stylesheet" href="../../../../platform/assets/css/layout.css">
+  <link rel="stylesheet" href="../../../../platform/assets/css/components.css">
+  <link rel="stylesheet" href="../../../../platform/assets/css/utilities.css">
+</head>
+<body>
+  <main class="shell" data-object-detail>
+    <header class="site-header stack">
+      <div class="site-header-bar">
+        <strong>asset.waterschaplimburg.nl</strong>
+        <nav aria-label="Hoofdnavigatie">
+          <ul class="primary-nav">
+            <li><a href="../../../../pages/index.html">Home</a></li>
+            <li><a href="../../../assetregister/pages/index.html">Assetregister</a></li>
+            <li><a href="../../../assetmanagement/pages/index.html">Assetmanagement</a></li>
+            <li><a href="../../pages/index.html">Datastandaard</a></li>
+          </ul>
+        </nav>
+      </div>
+      <ol class="breadcrumb" aria-label="Breadcrumb">
+        <li><a href="../../../../pages/index.html">Home</a></li>
+        <li><a href="../../pages/index.html">Datastandaard</a></li>
+        <li><a href="../../pages/afvalwaterketen.html">Afvalwaterketen</a></li>
+        <li><a href="./afvalwaterketen.html">Objectenhandboek</a></li>
+        <li><a href="./afvalwaterketen-transportleidingen.html">Transportleidingen</a></li>
+        <li><span>Transportleidingsectie</span></li>
+      </ol>
+    </header>
+
+    <section class="hero stack">
+      <p class="eyebrow">Objectenhandboek</p>
+      <div class="detail-header">
+        <div>
+          <h1 id="object-title">Transportleidingsectie</h1>
+          <p class="lead" id="object-summary"></p>
+        </div>
+        <span class="status-chip" id="object-status">Eerste template</span>
+      </div>
+      <ol class="hierarchy-path" aria-label="Hierarchie van object">
+        <li><span class="hierarchy-chip">Afvalwaterketen</span></li>
+        <li><span class="hierarchy-chip">Afstroomgebied</span></li>
+        <li><span class="hierarchy-chip">Transportleiding</span></li>
+        <li><span class="hierarchy-chip">Transportleidingsectie</span></li>
+      </ol>
+      <div class="detail-actions">
+        <a class="button button-secondary" href="./afvalwaterketen-transportleidingen.html">Terug naar Transportleiding</a>
+        <a class="button button-secondary" href="./afvalwaterketen-knooppunt.html">Naar Knooppunt</a>
+      </div>
+    </section>
+
+    <section class="content-grid detail-layout">
+      <article>
+        <section class="panel detail-section stack">
+          <p class="eyebrow">Concept</p>
+          <h2>Definitie en begripskader</h2>
+          <div class="definition-block"><p id="object-definition"></p></div>
+          <p class="definition-source" id="object-definition-source"></p>
+          <div class="stack"><h3>Termen</h3><div id="object-terms"></div></div>
+          <div class="callout"><strong>Context</strong><p id="object-context"></p></div>
+        </section>
+
+        <section class="panel detail-section stack">
+          <p class="eyebrow">Uitwerking</p>
+          <h2>Inhoudelijke opbouw van Transportleidingsectie</h2>
+          <p>Deze pagina werkt `Transportleidingsectie` uit als eigen granulariteitsniveau onder de `Transportleiding`. Daarmee ontstaat de schakel tussen het leidingtracé en de lokale technische opbouw van de leiding.</p>
+          <div id="object-content-sections"></div>
+        </section>
+      </article>
+
+      <aside class="stack">
+        <section class="panel detail-section stack"><p class="eyebrow">Metadata</p><h2>Objectgegevens</h2><dl class="meta-list" id="object-meta"></dl></section>
+        <section class="panel detail-section stack"><p class="eyebrow">Semantiek</p><h2>EDG-voorbereiding</h2><p id="object-edg-note"></p></section>
+        <section class="panel detail-section stack"><p class="eyebrow">Doorklik</p><h2>Vervolg in deze lijn</h2><nav class="section-nav" aria-label="Vervolg objectlijn"><a href="./afvalwaterketen-transportleidingen.html">Transportleiding</a><a href="./afvalwaterketen-knooppunt.html">Knooppunt</a></nav></section>
+      </aside>
+    </section>
+  </main>
+
+  <script type="application/json" id="object-detail-data">
+  {
+    "object": {
+      "label": "Transportleidingsectie",
+      "summary": "Transportleidingsectie is een eigen objectpagina onder Transportleiding en vormt de drager voor de lokale opbouw van materiaal, ligging en technische kenmerken.",
+      "status": "Eerste template",
+      "dictionaryDefinition": "Een transportleidingsectie is een afgebakend deel van een transportleiding waarmee ligging, materiaal en onderhoud specifieker beschreven kunnen worden.",
+      "definitionSource": "Definitiebron: TopBraid EDG conceptdefinitie voor Transportleidingsectie.",
+      "contextNote": "De transportleidingsectie maakt het mogelijk om een leiding in opeenvolgende delen te beschrijven en vormt de directe ingang naar lokale technische kenmerken en beheergegevens.",
+      "terms": ["Transportleidingsectie", "Leidingsectie", "Tracédeel", "Deeltraject"],
+      "system": "Afvalwaterketen",
+      "subsystem": "Afstroomgebied",
+      "objectType": "Transportleidingsectie",
+      "sourceSystem": "TopBraid EDG",
+      "uri": "https://data.waterschaplimburg.nl/id/objecttype/transportleidingsectie",
+      "edgNote": "In TopBraid EDG moet Transportleidingsectie als zelfstandig objecttype onder Transportleiding gemodelleerd worden, met relaties naar materiaalopbouw, ligging en aansluitpunten.",
+      "contentSections": [
+        {
+          "title": "3D visualisatie",
+          "definition": "De 3D visualisatie toont de transportleidingsectie als afgebakend deel van het leidingtracé.",
+          "body": "Op dit niveau wordt zichtbaar hoe de sectie zich in de ruimte gedraagt, inclusief diepteligging, richting en de relatie met aansluitpunten of andere technische onderdelen.",
+          "visualization": {
+            "src": "../../../../platform/assets/illustrations/shared/section-3d.svg",
+            "alt": "3D visualisatie van een transportleidingsectie als afgebakend ruimtelijk deel.",
+            "caption": "De transportleidingsectie wordt als zelfstandig deel van het tracé in de ruimte weergegeven."
+          },
+          "examples": [
+            { "title": "Sectie in het tracé", "description": "Visualisatie van een transportleidingsectie als afgebakend deel van een groter leidingtracé." },
+            { "title": "Lokale technische context", "description": "Voorbeeld waarin materiaal, ligging en aansluitingen binnen de sectie zichtbaar worden." }
+          ]
+        },
+        {
+          "title": "Dwarsprofiel",
+          "definition": "Het dwarsprofiel beschrijft de opbouw van de transportleidingsectie in doorsnede.",
+          "body": "Hier worden leidingdiameter, wandopbouw, omhulling en de relatie met de omliggende grond zichtbaar gemaakt.",
+          "visualization": {
+            "src": "../../../../platform/assets/illustrations/shared/section-crosssection.svg",
+            "alt": "Dwarsprofiel van een transportleidingsectie.",
+            "caption": "In doorsnede worden wandopbouw, ligging en omliggende zone van de sectie zichtbaar."
+          },
+          "examples": [
+            { "title": "Leidingdoorsnede", "description": "Weergave van de doorsnede van de leiding met de belangrijkste constructieve lagen." },
+            { "title": "Ligging in de ondergrond", "description": "Voorbeeld waarin de ligging van de sectie ten opzichte van het omliggende profiel wordt getoond." }
+          ]
+        },
+        {
+          "title": "Bovenaanzicht",
+          "definition": "Het bovenaanzicht toont de transportleidingsectie in relatie tot het leidingtracé en de omliggende secties of knooppunten.",
+          "body": "Dit niveau helpt om de plaats van de sectie in het totale netwerk en binnen het afstroomgebied te begrijpen.",
+          "visualization": {
+            "src": "../../../../platform/assets/illustrations/shared/section-plan.svg",
+            "alt": "Bovenaanzicht van een transportleidingsectie in het tracé.",
+            "caption": "Het bovenaanzicht positioneert de sectie binnen het totale leidingnetwerk."
+          },
+          "examples": [
+            { "title": "Sectie in het tracé", "description": "Visualisatie van de positie van een sectie binnen een opeenvolgende reeks leidingdelen." },
+            { "title": "Planmatige begrenzing", "description": "Voorbeeld waarin de sectie in bovenaanzicht als afgebakend tracédeel zichtbaar wordt." }
+          ]
+        },
+        {
+          "title": "Decompositie",
+          "definition": "De decompositie laat zien hoe de transportleidingsectie uiteenvalt in technische onderdelen.",
+          "body": "Voor transportleidingsecties ligt de nadruk op leidinglichaam, wandopbouw, verbindingen en andere sectiegebonden technische elementen.",
+          "visualization": {
+            "src": "../../../../platform/assets/illustrations/shared/section-decomposition.svg",
+            "alt": "Decompositie van een transportleidingsectie in technische onderdelen.",
+            "caption": "De transportleidingsectie vormt de drager voor leidinglichaam, wandopbouw en verbindingen."
+          },
+          "examples": [
+            { "title": "Sectie naar technische opbouw", "description": "Basismodel waarin de sectie wordt ontleed in de belangrijkste technische onderdelen." },
+            { "title": "Aansluitingen en verbindingen", "description": "Voorbeeld waarin koppelingen en lokale constructieve elementen onderdeel van de sectie vormen." }
+          ]
+        },
+        {
+          "title": "Verwijzing",
+          "definition": "De transportleidingsectie verwijst naar andere producten binnen de Datastandaard.",
+          "body": "De pagina start bij het begrippenkader en kan daarna doorverwijzen naar modellering, toetsdata en instructies.",
+          "visualization": {
+            "src": "../../../../platform/assets/illustrations/shared/section-references.svg",
+            "alt": "Schema van productverwijzingen vanaf een transportleidingsectie.",
+            "caption": "Vanuit de transportleidingsectie loopt de lijn door naar begrippen, modellering, datasets en instructies."
+          },
+          "examples": [
+            { "title": "Woordenboek", "description": "Begrip en definitie van Transportleidingsectie als startpunt van de pagina." },
+            { "title": "OTL, Referentiedataset en Werkinstructies", "description": "Formele modellering, voorbeelddata en werkinstructies die op sectieniveau relevant zijn." }
+          ]
+        }
+      ]
+    }
+  }
+  </script>
+  <script src="../../../../platform/assets/js/app.js"></script>
+  <script src="../../../../platform/assets/js/data-inline.js"></script>
+  <script src="../../../../platform/assets/js/object-detail.js"></script>
+</body>
+</html>

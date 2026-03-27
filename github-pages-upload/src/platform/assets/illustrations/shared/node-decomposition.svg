@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="420" viewBox="0 0 960 420" role="img" aria-labelledby="title desc">
+  <title id="title">Decompositie van een knooppunt of intersectie</title>
+  <desc id="desc">Schematische decompositie van een kruising of aansluiting in beschrijfbare onderdelen.</desc>
+  <rect width="960" height="420" fill="#f8fcfd"/>
+  <rect x="70" y="70" width="820" height="280" fill="#ffffff" stroke="#b8d7de"/>
+  <rect x="400" y="96" width="160" height="56" fill="#dff3f7" stroke="#00a9c1" stroke-width="3"/>
+  <rect x="240" y="252" width="150" height="52" fill="#ffffff" stroke="#8ac9d5" stroke-width="3"/>
+  <rect x="405" y="252" width="150" height="52" fill="#ffffff" stroke="#8ac9d5" stroke-width="3"/>
+  <rect x="570" y="252" width="150" height="52" fill="#ffffff" stroke="#8ac9d5" stroke-width="3"/>
+  <line x1="480" y1="152" x2="315" y2="252" stroke="#00a9c1" stroke-width="3"/>
+  <line x1="480" y1="152" x2="480" y2="252" stroke="#00a9c1" stroke-width="3"/>
+  <line x1="480" y1="152" x2="645" y2="252" stroke="#00a9c1" stroke-width="3"/>
+  <text x="480" y="130" text-anchor="middle" font-family="Avenir Next, Avenir, Segoe UI, sans-serif" font-size="22" fill="#0f3840">Knooppunt</text>
+  <text x="315" y="285" text-anchor="middle" font-family="Avenir Next, Avenir, Segoe UI, sans-serif" font-size="18" fill="#0f3840">Aansluiting</text>
+  <text x="480" y="285" text-anchor="middle" font-family="Avenir Next, Avenir, Segoe UI, sans-serif" font-size="18" fill="#0f3840">Kern</text>
+  <text x="645" y="285" text-anchor="middle" font-family="Avenir Next, Avenir, Segoe UI, sans-serif" font-size="18" fill="#0f3840">Vertakking</text>
+</svg>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="420" viewBox="0 0 960 420" role="img" aria-labelledby="title desc">
+  <title id="title">Granulariteitsniveaus van een watervlakte</title>
+  <desc id="desc">Schematische weergave van een watervlakte als vlakobject met oever, profiel en bodem.</desc>
+  <rect width="960" height="420" fill="#f8fcfd"/>
+  <rect x="70" y="70" width="820" height="280" fill="#ffffff" stroke="#b8d7de"/>
+  <ellipse cx="470" cy="220" rx="250" ry="110" fill="#dff3f7" stroke="#00a9c1" stroke-width="6"/>
+  <ellipse cx="470" cy="220" rx="210" ry="82" fill="none" stroke="#8ac9d5" stroke-width="3" stroke-dasharray="10 8"/>
+  <line x1="470" y1="110" x2="470" y2="330" stroke="#8ac9d5" stroke-width="3" stroke-dasharray="10 8"/>
+  <text x="470" y="214" text-anchor="middle" font-family="Avenir Next, Avenir, Segoe UI, sans-serif" font-size="24" fill="#0f3840">Watervlakte</text>
+  <text x="470" y="144" text-anchor="middle" font-family="Avenir Next, Avenir, Segoe UI, sans-serif" font-size="18" fill="#4d6a70">Oeverzone</text>
+  <text x="470" y="312" text-anchor="middle" font-family="Avenir Next, Avenir, Segoe UI, sans-serif" font-size="18" fill="#4d6a70">Bodem en diepteprofiel</text>
+</svg>

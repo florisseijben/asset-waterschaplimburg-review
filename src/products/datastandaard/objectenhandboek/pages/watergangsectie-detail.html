@@ -1,0 +1,215 @@
+﻿<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Watergangsectie | Objectenhandboek | Datastandaard</title>
+  <link rel="stylesheet" href="../../../../platform/assets/css/tokens.css">
+  <link rel="stylesheet" href="../../../../platform/assets/css/base.css">
+  <link rel="stylesheet" href="../../../../platform/assets/css/layout.css">
+  <link rel="stylesheet" href="../../../../platform/assets/css/components.css">
+  <link rel="stylesheet" href="../../../../platform/assets/css/utilities.css">
+</head>
+<body>
+  <main class="shell" data-object-detail>
+    <header class="site-header stack">
+      <div class="site-header-bar">
+        <strong>asset.waterschaplimburg.nl</strong>
+        <nav aria-label="Hoofdnavigatie">
+          <ul class="primary-nav">
+            <li><a href="../../../../pages/index.html">Home</a></li>
+            <li><a href="../../../assetregister/pages/index.html">Assetregister</a></li>
+            <li><a href="../../../assetmanagement/pages/index.html">Assetmanagement</a></li>
+            <li><a href="../../pages/index.html">Datastandaard</a></li>
+          </ul>
+        </nav>
+      </div>
+      <ol class="breadcrumb" aria-label="Breadcrumb">
+        <li><a href="../../../../pages/index.html">Home</a></li>
+        <li><a href="../../pages/index.html">Datastandaard</a></li>
+        <li><a href="../../pages/watersysteem.html">Watersysteem</a></li>
+        <li><a href="./watersysteem.html">Objectenhandboek</a></li>
+        <li><a href="./watersysteem-watergangen.html">Watergangen</a></li>
+        <li><span>Watergangsectie</span></li>
+      </ol>
+    </header>
+
+    <section class="hero stack">
+      <p class="eyebrow">Objectenhandboek</p>
+      <div class="detail-header">
+        <div>
+          <h1 id="object-title">Watergangsectie</h1>
+          <p class="lead" id="object-summary"></p>
+        </div>
+        <span class="status-chip" id="object-status">Eerste template</span>
+      </div>
+      <ol class="hierarchy-path" aria-label="Hierarchie van object">
+        <li><span class="hierarchy-chip">Watersysteem</span></li>
+        <li><span class="hierarchy-chip">Stroomgebied</span></li>
+        <li><span class="hierarchy-chip">Watergang</span></li>
+        <li><span class="hierarchy-chip">Watergangsectie</span></li>
+      </ol>
+      <div class="detail-actions">
+        <a class="button button-secondary" href="./watersysteem-watergangen.html">Terug naar Watergangen</a>
+        <a class="button button-secondary" href="./watersysteem-intersectie.html">Naar Intersectie</a>
+      </div>
+    </section>
+
+    <section class="content-grid detail-layout">
+      <article>
+        <section class="panel detail-section stack">
+          <p class="eyebrow">Concept</p>
+          <h2>Definitie en begripskader</h2>
+          <div class="definition-block">
+            <p id="object-definition"></p>
+          </div>
+          <p class="definition-source" id="object-definition-source"></p>
+          <div class="stack">
+            <h3>Termen</h3>
+            <div id="object-terms"></div>
+          </div>
+          <div class="callout">
+            <strong>Context</strong>
+            <p id="object-context"></p>
+          </div>
+        </section>
+
+        <section class="panel detail-section stack">
+          <p class="eyebrow">Uitwerking</p>
+          <h2>Inhoudelijke opbouw van Watergangsectie</h2>
+          <p>
+            Deze pagina werkt `Watergangsectie` uit als eigen granulariteitsniveau onder de
+            `Watergang`. Hiermee ontstaat de schakel tussen het lengtebeeld van de watergang en
+            de onderliggende objecten zoals `Talud`, `Bodem`, `Bekledingsconstructie` en `Toplaag`.
+          </p>
+          <div id="object-content-sections"></div>
+        </section>
+      </article>
+
+      <aside class="stack">
+        <section class="panel detail-section stack">
+          <p class="eyebrow">Metadata</p>
+          <h2>Objectgegevens</h2>
+          <dl class="meta-list" id="object-meta"></dl>
+        </section>
+
+        <section class="panel detail-section stack">
+          <p class="eyebrow">Semantiek</p>
+          <h2>EDG-voorbereiding</h2>
+          <p id="object-edg-note"></p>
+        </section>
+
+        <section class="panel detail-section stack">
+          <p class="eyebrow">Doorklik</p>
+          <h2>Vervolg in deze lijn</h2>
+          <nav class="section-nav" aria-label="Vervolg objectlijn">
+            <a href="./watersysteem-watergangen.html">Watergangen</a>
+            <a href="./watersysteem-intersectie.html">Intersectie</a>
+          </nav>
+        </section>
+      </aside>
+    </section>
+  </main>
+
+  <script type="application/json" id="object-detail-data">
+  {
+    "object": {
+      "label": "Watergangsectie",
+      "summary": "Watergangsectie is een eigen objectpagina onder Watergang en vormt de drager voor de lokale opbouw van taluds, bodem en constructieve onderdelen.",
+      "status": "Eerste template",
+      "dictionaryDefinition": "Een watergangsectie is een afgebakend deel van een watergang waarmee kenmerken, onderhoud en opbouw specifieker beschreven kunnen worden.",
+      "definitionSource": "Definitiebron: TopBraid EDG conceptdefinitie voor Watergangsectie.",
+      "contextNote": "De watergangsectie maakt het mogelijk om een watergang in opeenvolgende delen te beschrijven en vormt de directe ingang naar de compositie van onderliggende objecten.",
+      "terms": ["Watergangsectie", "Sectie", "Profieldeel", "Deeltraject"],
+      "system": "Watersysteem",
+      "subsystem": "Stroomgebied",
+      "objectType": "Watergangsectie",
+      "sourceSystem": "TopBraid EDG",
+      "uri": "https://data.waterschaplimburg.nl/id/objecttype/watergangsectie",
+      "edgNote": "In TopBraid EDG moet Watergangsectie als zelfstandig objecttype onder Watergang gemodelleerd worden, met relaties naar Talud, Bodem en andere sectiegebonden onderdelen.",
+      "contentSections": [
+        {
+          "title": "3D visualisatie",
+          "definition": "De 3D visualisatie toont de watergangsectie als ruimtelijk afgebakend deel van de watergang.",
+          "body": "Op dit niveau wordt zichtbaar hoe de sectie zich als object in de ruimte gedraagt, inclusief de relatie tussen lengte, breedte, hoogte en de onderliggende onderdelen.",
+          "examples": [
+            {
+              "title": "Sectie als volume",
+              "description": "Visualisatie van de watergangsectie als ruimtelijk afgebakend deel binnen de watergang."
+            },
+            {
+              "title": "Relatie met onderliggende objecten",
+              "description": "3D voorbeeld waarin bodem, taluds en constructieve lagen binnen de sectie zichtbaar worden."
+            }
+          ]
+        },
+        {
+          "title": "Dwarsprofiel",
+          "definition": "Het dwarsprofiel beschrijft de opbouw van de watergangsectie in doorsnede.",
+          "body": "Hier worden profiellijnen en profielvlakken gebruikt om de sectie inhoudelijk te beschrijven en om bodem, taluds en constructieve onderdelen aan de sectie te koppelen.",
+          "examples": [
+            {
+              "title": "Profiellijnen",
+              "description": "Weergave van de lijnen die de begrenzing en vorm van het profiel bepalen."
+            },
+            {
+              "title": "Profielvlakken",
+              "description": "Weergave van de vlakken die samen de doorsnede van bodem en taluds vormen."
+            }
+          ]
+        },
+        {
+          "title": "Bovenaanzicht",
+          "definition": "Het bovenaanzicht toont de watergangsectie in relatie tot de lengte van de watergang en de omliggende secties of intersecties.",
+          "body": "Dit niveau helpt om de plaats van de sectie in het traject en in het waterganggebied te begrijpen.",
+          "examples": [
+            {
+              "title": "Sectie in traject",
+              "description": "Visualisatie van de positie van een sectie binnen een opeenvolgende reeks langs de watergang."
+            },
+            {
+              "title": "Begrenzing in plan",
+              "description": "Voorbeeld waarin de sectie in bovenaanzicht als afgebakend vlak of zone zichtbaar wordt."
+            }
+          ]
+        },
+        {
+          "title": "Decompositie",
+          "definition": "De decompositie laat zien hoe de watergangsectie uiteenvalt in onderliggende objecten.",
+          "body": "Voor watergangsecties zijn `Talud` en `Bodem` de eerstvolgende objecten. Daaronder kunnen `Bekledingsconstructie` en `Toplaag` verder worden uitgewerkt.",
+          "examples": [
+            {
+              "title": "Sectie naar talud en bodem",
+              "description": "Basismodel waarin de sectie wordt ontleed in de directe onderliggende objecten."
+            },
+            {
+              "title": "Constructieve verdieping",
+              "description": "Voorbeeld waarin bekledingsconstructie en toplaag onder talud of bodem worden geplaatst."
+            }
+          ]
+        },
+        {
+          "title": "Verwijzing",
+          "definition": "De watergangsectie verwijst naar andere producten binnen de Datastandaard.",
+          "body": "De pagina start bij het begrippenkader en kan daarna doorverwijzen naar modellering, toetsdata en instructies.",
+          "examples": [
+            {
+              "title": "Woordenboek",
+              "description": "Begrip en definitie van Watergangsectie als startpunt van de pagina."
+            },
+            {
+              "title": "OTL, Referentiedataset en Werkinstructies",
+              "description": "Formele modellering, voorbeelddata en werkinstructies die op sectieniveau relevant zijn."
+            }
+          ]
+        }
+      ]
+    }
+  }
+  </script>
+  <script src="../../../../platform/assets/js/app.js"></script>
+  <script src="../../../../platform/assets/js/data-inline.js"></script>
+  <script src="../../../../platform/assets/js/object-detail.js"></script>
+</body>
+</html>
+

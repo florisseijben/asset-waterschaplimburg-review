@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="420" viewBox="0 0 960 420" role="img" aria-labelledby="title desc">
+  <title id="title">Dwarsprofiel van een watergang</title>
+  <desc id="desc">Schematische doorsnede met taluds, bodem en bekledingsconstructie.</desc>
+  <rect width="960" height="420" fill="#f8fcfd"/>
+  <rect x="70" y="70" width="820" height="280" fill="#ffffff" stroke="#b8d7de"/>
+  <path d="M180 140 L340 300 L620 300 L780 140" fill="#dff3f7" stroke="#00a9c1" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M240 180 L360 300" stroke="#4d6a70" stroke-width="4" stroke-dasharray="8 6"/>
+  <path d="M720 180 L600 300" stroke="#4d6a70" stroke-width="4" stroke-dasharray="8 6"/>
+  <rect x="360" y="288" width="260" height="18" fill="#7fc0cf"/>
+  <rect x="288" y="214" width="64" height="12" transform="rotate(38 288 214)" fill="#7fc0cf"/>
+  <rect x="610" y="208" width="64" height="12" transform="rotate(-38 610 208)" fill="#7fc0cf"/>
+  <text x="164" y="128" font-family="Avenir Next, Avenir, Segoe UI, sans-serif" font-size="24" fill="#0f3840">Dwarsprofiel</text>
+  <text x="242" y="205" font-family="Avenir Next, Avenir, Segoe UI, sans-serif" font-size="18" fill="#0f3840">Talud</text>
+  <text x="655" y="205" font-family="Avenir Next, Avenir, Segoe UI, sans-serif" font-size="18" fill="#0f3840">Talud</text>
+  <text x="460" y="336" font-family="Avenir Next, Avenir, Segoe UI, sans-serif" font-size="18" text-anchor="middle" fill="#0f3840">Bodem met bekledingsconstructie</text>
+</svg>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Waterkeringsectie | Objectenhandboek | Waterkeringensysteem</title>
+  <link rel="stylesheet" href="../../../../platform/assets/css/tokens.css">
+  <link rel="stylesheet" href="../../../../platform/assets/css/base.css">
+  <link rel="stylesheet" href="../../../../platform/assets/css/layout.css">
+  <link rel="stylesheet" href="../../../../platform/assets/css/components.css">
+  <link rel="stylesheet" href="../../../../platform/assets/css/utilities.css">
+</head>
+<body>
+  <main class="shell" data-object-detail>
+    <header class="site-header stack">
+      <div class="site-header-bar">
+        <strong>asset.waterschaplimburg.nl</strong>
+        <nav aria-label="Hoofdnavigatie">
+          <ul class="primary-nav">
+            <li><a href="../../../../pages/index.html">Home</a></li>
+            <li><a href="../../../assetregister/pages/index.html">Assetregister</a></li>
+            <li><a href="../../../assetmanagement/pages/index.html">Assetmanagement</a></li>
+            <li><a href="../../pages/index.html">Datastandaard</a></li>
+          </ul>
+        </nav>
+      </div>
+      <ol class="breadcrumb" aria-label="Breadcrumb">
+        <li><a href="../../../../pages/index.html">Home</a></li>
+        <li><a href="../../pages/index.html">Datastandaard</a></li>
+        <li><a href="../../pages/waterkeringensysteem.html">Waterkeringensysteem</a></li>
+        <li><a href="./waterkeringensysteem.html">Objectenhandboek</a></li>
+        <li><a href="./waterkeringensysteem-waterkeringen.html">Waterkeringen</a></li>
+        <li><span>Waterkeringsectie</span></li>
+      </ol>
+    </header>
+
+    <section class="hero stack">
+      <p class="eyebrow">Objectenhandboek</p>
+      <div class="detail-header">
+        <div>
+          <h1 id="object-title">Waterkeringsectie</h1>
+          <p class="lead" id="object-summary"></p>
+        </div>
+        <span class="status-chip" id="object-status">Eerste template</span>
+      </div>
+      <ol class="hierarchy-path" aria-label="Hierarchie van object">
+        <li><span class="hierarchy-chip">Waterkeringensysteem</span></li>
+        <li><span class="hierarchy-chip">Waterkering</span></li>
+        <li><span class="hierarchy-chip">Waterkeringsectie</span></li>
+      </ol>
+      <div class="detail-actions">
+        <a class="button button-secondary" href="./waterkeringensysteem-waterkeringen.html">Terug naar Waterkering</a>
+        <a class="button button-secondary" href="./waterkeringensysteem-intersectie.html">Naar Intersectie</a>
+      </div>
+    </section>
+
+    <section class="content-grid detail-layout">
+      <article>
+        <section class="panel detail-section stack">
+          <p class="eyebrow">Concept</p>
+          <h2>Definitie en begripskader</h2>
+          <div class="definition-block"><p id="object-definition"></p></div>
+          <p class="definition-source" id="object-definition-source"></p>
+          <div class="stack"><h3>Termen</h3><div id="object-terms"></div></div>
+          <div class="callout"><strong>Context</strong><p id="object-context"></p></div>
+        </section>
+
+        <section class="panel detail-section stack">
+          <p class="eyebrow">Uitwerking</p>
+          <h2>Inhoudelijke opbouw van Waterkeringsectie</h2>
+          <p>Deze pagina werkt `Waterkeringsectie` uit als eigen granulariteitsniveau onder de `Waterkering`. Daarmee ontstaat de schakel tussen de lijn van de kering en de lokale opbouw van profiel, bekleding en constructieve onderdelen.</p>
+          <div id="object-content-sections"></div>
+        </section>
+      </article>
+
+      <aside class="stack">
+        <section class="panel detail-section stack"><p class="eyebrow">Metadata</p><h2>Objectgegevens</h2><dl class="meta-list" id="object-meta"></dl></section>
+        <section class="panel detail-section stack"><p class="eyebrow">Semantiek</p><h2>EDG-voorbereiding</h2><p id="object-edg-note"></p></section>
+        <section class="panel detail-section stack"><p class="eyebrow">Doorklik</p><h2>Vervolg in deze lijn</h2><nav class="section-nav" aria-label="Vervolg objectlijn"><a href="./waterkeringensysteem-waterkeringen.html">Waterkering</a><a href="./waterkeringensysteem-intersectie.html">Intersectie</a></nav></section>
+      </aside>
+    </section>
+  </main>
+
+  <script type="application/json" id="object-detail-data">
+  {
+    "object": {
+      "label": "Waterkeringsectie",
+      "summary": "Waterkeringsectie is een eigen objectpagina onder Waterkering en vormt de drager voor de lokale opbouw van profiel, bekleding en constructieve kenmerken.",
+      "status": "Eerste template",
+      "dictionaryDefinition": "Een waterkeringsectie is een afgebakend deel van een waterkering waarmee kenmerken, onderhoud en opbouw specifieker beschreven kunnen worden.",
+      "definitionSource": "Definitiebron: TopBraid EDG conceptdefinitie voor Waterkeringsectie.",
+      "contextNote": "De waterkeringsectie maakt het mogelijk om een waterkering in opeenvolgende delen te beschrijven en vormt de directe ingang naar de compositie van onderliggende objecten en constructieve lagen.",
+      "terms": ["Waterkeringsectie", "Sectie", "Profieldeel", "Dijkvak"],
+      "system": "Waterkeringensysteem",
+      "subsystem": "Niet van toepassing",
+      "objectType": "Waterkeringsectie",
+      "sourceSystem": "TopBraid EDG",
+      "uri": "https://data.waterschaplimburg.nl/id/objecttype/waterkeringsectie",
+      "edgNote": "In TopBraid EDG moet Waterkeringsectie als zelfstandig objecttype onder Waterkering gemodelleerd worden, met relaties naar profiel, bekleding en andere sectiegebonden onderdelen.",
+      "contentSections": [
+        {
+          "title": "3D visualisatie",
+          "definition": "De 3D visualisatie toont de waterkeringsectie als ruimtelijk afgebakend deel van de kering.",
+          "body": "Op dit niveau wordt zichtbaar hoe de sectie zich als object in de ruimte gedraagt, inclusief hoogte, breedte en de relatie met onderliggende constructieve onderdelen.",
+          "visualization": {
+            "src": "../../../../platform/assets/illustrations/shared/section-3d.svg",
+            "alt": "3D visualisatie van een waterkeringsectie als afgebakend ruimtelijk deel.",
+            "caption": "De waterkeringsectie wordt als zelfstandig deel van de kering in de ruimte weergegeven."
+          },
+          "examples": [
+            { "title": "Sectie als volume", "description": "Visualisatie van de waterkeringsectie als ruimtelijk afgebakend deel binnen de kering." },
+            { "title": "Relatie met onderliggende objecten", "description": "3D voorbeeld waarin profiel, bekleding en constructieve lagen binnen de sectie zichtbaar worden." }
+          ]
+        },
+        {
+          "title": "Dwarsprofiel",
+          "definition": "Het dwarsprofiel beschrijft de opbouw van de waterkeringsectie in doorsnede.",
+          "body": "Hier worden profiellijnen en profielvlakken gebruikt om de sectie inhoudelijk te beschrijven en om lagen, bekleding en profielonderdelen aan de sectie te koppelen.",
+          "visualization": {
+            "src": "../../../../platform/assets/illustrations/shared/section-crosssection.svg",
+            "alt": "Dwarsprofiel van een waterkeringsectie.",
+            "caption": "In doorsnede wordt de profielopbouw van de waterkeringsectie inzichtelijk."
+          },
+          "examples": [
+            { "title": "Profiellijnen", "description": "Weergave van de lijnen die de begrenzing en vorm van het profiel bepalen." },
+            { "title": "Profielvlakken", "description": "Weergave van de vlakken die samen de doorsnede van de kering vormen." }
+          ]
+        },
+        {
+          "title": "Bovenaanzicht",
+          "definition": "Het bovenaanzicht toont de waterkeringsectie in relatie tot de lengte van de kering en de omliggende secties of intersecties.",
+          "body": "Dit niveau helpt om de plaats van de sectie in het trace en in het areaal te begrijpen.",
+          "visualization": {
+            "src": "../../../../platform/assets/illustrations/shared/section-plan.svg",
+            "alt": "Bovenaanzicht van een waterkeringsectie in de keringlijn.",
+            "caption": "Het bovenaanzicht toont de positie van de sectie in de lijn van de waterkering."
+          },
+          "examples": [
+            { "title": "Sectie in trace", "description": "Visualisatie van de positie van een sectie binnen een opeenvolgende reeks langs de kering." },
+            { "title": "Begrenzing in plan", "description": "Voorbeeld waarin de sectie in bovenaanzicht als afgebakend vlak of zone zichtbaar wordt." }
+          ]
+        },
+        {
+          "title": "Decompositie",
+          "definition": "De decompositie laat zien hoe de waterkeringsectie uiteenvalt in onderliggende objecten.",
+          "body": "Voor waterkeringsecties ligt de nadruk op profiel, bekleding, constructies en andere sectiegebonden onderdelen.",
+          "visualization": {
+            "src": "../../../../platform/assets/illustrations/shared/section-decomposition.svg",
+            "alt": "Decompositie van een waterkeringsectie in profiel, bekleding en onderdelen.",
+            "caption": "De waterkeringsectie vormt de drager voor profiel, bekleding en andere constructieve delen."
+          },
+          "examples": [
+            { "title": "Sectie naar profiel en bekleding", "description": "Basismodel waarin de sectie wordt ontleed in de directe onderliggende objecten." },
+            { "title": "Constructieve verdieping", "description": "Voorbeeld waarin lagen en constructieve onderdelen verder onder de sectie worden uitgewerkt." }
+          ]
+        },
+        {
+          "title": "Verwijzing",
+          "definition": "De waterkeringsectie verwijst naar andere producten binnen de Datastandaard.",
+          "body": "De pagina start bij het begrippenkader en kan daarna doorverwijzen naar modellering, toetsdata en instructies.",
+          "visualization": {
+            "src": "../../../../platform/assets/illustrations/shared/section-references.svg",
+            "alt": "Schema van productverwijzingen vanaf een waterkeringsectie.",
+            "caption": "Ook voor een waterkeringsectie lopen de verwijzingen door naar begrippen, modellering en datasets."
+          },
+          "examples": [
+            { "title": "Woordenboek", "description": "Begrip en definitie van Waterkeringsectie als startpunt van de pagina." },
+            { "title": "OTL, Referentiedataset en Werkinstructies", "description": "Formele modellering, voorbeelddata en werkinstructies die op sectieniveau relevant zijn." }
+          ]
+        }
+      ]
+    }
+  }
+  </script>
+  <script src="../../../../platform/assets/js/app.js"></script>
+  <script src="../../../../platform/assets/js/data-inline.js"></script>
+  <script src="../../../../platform/assets/js/object-detail.js"></script>
+</body>
+</html>

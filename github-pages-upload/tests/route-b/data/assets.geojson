@@ -1,0 +1,33 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "code": "STG-001",
+        "naam": "Stuw Maaszijde"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.689,
+          51.194
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "code": "GML-014",
+        "naam": "Gemaal Noordkanaal"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.812,
+          51.281
+        ]
+      }
+    }
+  ]
+}

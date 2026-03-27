@@ -1,0 +1,20 @@
+{
+  "title": "Testset assetregister",
+  "items": [
+    {
+      "code": "STG-001",
+      "naam": "Stuw Maaszijde",
+      "status": "actief"
+    },
+    {
+      "code": "GML-014",
+      "naam": "Gemaal Noordkanaal",
+      "status": "in onderzoek"
+    },
+    {
+      "code": "SLS-022",
+      "naam": "Sluis Zuid",
+      "status": "gepland onderhoud"
+    }
+  ]
+}

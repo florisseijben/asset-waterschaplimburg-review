@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="420" viewBox="0 0 960 420" role="img" aria-labelledby="title desc">
+  <title id="title">Dwarsprofiel van een sectie</title>
+  <desc id="desc">Schematische doorsnede van een sectie met profielvlakken en profielranden.</desc>
+  <rect width="960" height="420" fill="#f8fcfd"/>
+  <rect x="70" y="70" width="820" height="280" fill="#ffffff" stroke="#b8d7de"/>
+  <path d="M210 140 L340 300 L620 300 L750 140" fill="#dff3f7" stroke="#00a9c1" stroke-width="6" stroke-linejoin="round"/>
+  <line x1="210" y1="140" x2="750" y2="140" stroke="#d8e8ec" stroke-width="3" stroke-dasharray="8 6"/>
+  <line x1="340" y1="300" x2="620" y2="300" stroke="#4d6a70" stroke-width="6"/>
+  <text x="138" y="120" font-family="Avenir Next, Avenir, Segoe UI, sans-serif" font-size="24" fill="#0f3840">Doorsnede met profielranden en profielvlakken</text>
+  <text x="276" y="196" font-family="Avenir Next, Avenir, Segoe UI, sans-serif" font-size="18" fill="#0f3840">Profiellijn</text>
+  <text x="470" y="338" text-anchor="middle" font-family="Avenir Next, Avenir, Segoe UI, sans-serif" font-size="18" fill="#0f3840">Profielvlak</text>
+</svg>

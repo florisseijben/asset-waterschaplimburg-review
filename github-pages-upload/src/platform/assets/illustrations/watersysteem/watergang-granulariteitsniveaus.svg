@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="420" viewBox="0 0 960 420" role="img" aria-labelledby="title desc">
+  <title id="title">Granulariteitsniveaus van een watergang</title>
+  <desc id="desc">Schematische weergave van watergang, traject, gebied, secties en intersecties.</desc>
+  <rect width="960" height="420" fill="#f8fcfd"/>
+  <rect x="70" y="70" width="820" height="280" fill="#ffffff" stroke="#b8d7de"/>
+  <path d="M140 215 C240 145 330 275 430 215 S620 145 730 215 S820 285 860 235" fill="none" stroke="#00a9c1" stroke-width="8" stroke-linecap="round"/>
+  <rect x="120" y="120" width="760" height="190" rx="10" fill="#eaf7fa" stroke="#8ac9d5" stroke-dasharray="10 8"/>
+  <line x1="280" y1="145" x2="280" y2="290" stroke="#7eb8c5" stroke-width="3" stroke-dasharray="8 6"/>
+  <line x1="470" y1="145" x2="470" y2="290" stroke="#7eb8c5" stroke-width="3" stroke-dasharray="8 6"/>
+  <line x1="660" y1="145" x2="660" y2="290" stroke="#7eb8c5" stroke-width="3" stroke-dasharray="8 6"/>
+  <circle cx="470" cy="215" r="16" fill="#ffffff" stroke="#00a9c1" stroke-width="6"/>
+  <text x="130" y="106" font-family="Avenir Next, Avenir, Segoe UI, sans-serif" font-size="24" fill="#0f3840">Waterganggebied</text>
+  <text x="148" y="198" font-family="Avenir Next, Avenir, Segoe UI, sans-serif" font-size="20" fill="#0f3840">Traject</text>
+  <text x="194" y="336" font-family="Avenir Next, Avenir, Segoe UI, sans-serif" font-size="18" fill="#4d6a70">Sectie</text>
+  <text x="387" y="336" font-family="Avenir Next, Avenir, Segoe UI, sans-serif" font-size="18" fill="#4d6a70">Intersectie</text>
+  <text x="572" y="336" font-family="Avenir Next, Avenir, Segoe UI, sans-serif" font-size="18" fill="#4d6a70">Sectie</text>
+  <text x="760" y="336" font-family="Avenir Next, Avenir, Segoe UI, sans-serif" font-size="18" fill="#4d6a70">Sectie</text>
+</svg>

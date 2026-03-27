@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="420" viewBox="0 0 960 420" role="img" aria-labelledby="title desc">
+  <title id="title">Dwarsprofiel van een knooppunt of intersectie</title>
+  <desc id="desc">Schematische doorsnede van een kruising of aansluiting.</desc>
+  <rect width="960" height="420" fill="#f8fcfd"/>
+  <rect x="70" y="70" width="820" height="280" fill="#ffffff" stroke="#b8d7de"/>
+  <circle cx="480" cy="220" r="72" fill="#dff3f7" stroke="#00a9c1" stroke-width="6"/>
+  <line x1="408" y1="220" x2="552" y2="220" stroke="#4d6a70" stroke-width="5"/>
+  <line x1="480" y1="148" x2="480" y2="292" stroke="#4d6a70" stroke-width="5"/>
+  <text x="158" y="122" font-family="Avenir Next, Avenir, Segoe UI, sans-serif" font-size="24" fill="#0f3840">Doorsnede van een kruising of aansluiting</text>
+</svg>

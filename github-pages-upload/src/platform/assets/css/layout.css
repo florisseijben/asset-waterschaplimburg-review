@@ -1,0 +1,120 @@
+.shell {
+  width: min(var(--container), calc(100% - 3rem));
+  margin: 0 auto;
+  padding: 0 0 var(--space-10);
+}
+
+.site-header,
+.hero,
+.panel,
+.card,
+.site-footer {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: 0;
+}
+
+.site-header,
+.hero,
+.panel,
+.card,
+.site-footer {
+  padding: var(--space-5);
+}
+
+.site-header,
+.hero,
+.panel,
+.grid {
+  margin-bottom: var(--space-5);
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-highlight);
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-6);
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+}
+
+.stack > * + * {
+  margin-top: var(--space-4);
+}
+
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.site-header-bar,
+.site-footer-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.site-header {
+  background: #fff;
+  margin-bottom: var(--space-8);
+}
+
+.site-footer {
+  background: #fff;
+}
+
+.feature-grid {
+  display: grid;
+  gap: var(--space-6);
+  grid-template-columns: minmax(0, 1.5fr) minmax(18rem, 1fr);
+  margin-bottom: var(--space-6);
+}
+
+.two-column {
+  display: grid;
+  gap: var(--space-6);
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+}
+
+.content-grid {
+  display: grid;
+  gap: var(--space-6);
+  grid-template-columns: minmax(0, 2fr) minmax(18rem, 1fr);
+  margin-bottom: var(--space-6);
+}
+
+.card-grid {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+}
+
+.detail-layout {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.detail-layout-with-nav {
+  grid-template-columns: minmax(14rem, 16rem) minmax(40rem, 1.8fr) minmax(16rem, 20rem);
+  align-items: start;
+}
+
+@media (max-width: 52rem) {
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-layout-with-nav {
+    grid-template-columns: 1fr;
+  }
+}

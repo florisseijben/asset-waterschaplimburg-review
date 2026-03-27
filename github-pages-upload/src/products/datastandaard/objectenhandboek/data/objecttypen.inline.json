@@ -1,0 +1,24 @@
+{
+  "items": [
+    {
+      "label": "Watergang",
+      "summary": "Lijnvormig waterobject binnen een stroomgebied met eigen secties en onderliggende objecten.",
+      "status": "Eerste template"
+    },
+    {
+      "label": "Watergangsectie",
+      "summary": "Eigen objectpagina als compositie-onderdeel van de watergang.",
+      "status": "Eigen pagina"
+    },
+    {
+      "label": "Intersectie",
+      "summary": "Eigen objectpagina voor kruisingen en snijpunten in het watersysteem.",
+      "status": "Eigen pagina"
+    },
+    {
+      "label": "Talud",
+      "summary": "Onderliggend object met constructieve opbouw richting bekledingsconstructie en toplaag.",
+      "status": "Compositie-object"
+    }
+  ]
+}

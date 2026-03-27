@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="420" viewBox="0 0 960 420" role="img" aria-labelledby="title desc">
+  <title id="title">Watergangtraject</title>
+  <desc id="desc">Lijnweergave van een watergangtraject van aanvoerpunt naar afvoerpunt.</desc>
+  <rect width="960" height="420" fill="#f8fcfd"/>
+  <rect x="70" y="70" width="820" height="280" fill="#ffffff" stroke="#b8d7de"/>
+  <path d="M140 250 C250 120 360 140 470 230 S700 320 820 165" fill="none" stroke="#00a9c1" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="140" cy="250" r="12" fill="#0f3840"/>
+  <circle cx="820" cy="165" r="12" fill="#0f3840"/>
+  <text x="120" y="290" font-family="Avenir Next, Avenir, Segoe UI, sans-serif" font-size="20" fill="#0f3840">Aanvoerpunt</text>
+  <text x="730" y="205" font-family="Avenir Next, Avenir, Segoe UI, sans-serif" font-size="20" fill="#0f3840">Afvoerpunt</text>
+  <text x="378" y="118" font-family="Avenir Next, Avenir, Segoe UI, sans-serif" font-size="24" fill="#0f3840">Aslijn van de watergang</text>
+  <path d="M265 185 l38 -28" stroke="#7eb8c5" stroke-width="3"/>
+  <path d="M620 268 l44 26" stroke="#7eb8c5" stroke-width="3"/>
+</svg>

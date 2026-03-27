@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="420" viewBox="0 0 960 420" role="img" aria-labelledby="title desc">
+  <title id="title">3D visualisatie van een sectie</title>
+  <desc id="desc">Schematische weergave van een afgebakende sectie als ruimtelijk volume.</desc>
+  <rect width="960" height="420" fill="#f8fcfd"/>
+  <rect x="70" y="70" width="820" height="280" fill="#ffffff" stroke="#b8d7de"/>
+  <polygon points="270,250 450,160 690,210 510,300" fill="#dff3f7" stroke="#00a9c1" stroke-width="4"/>
+  <polygon points="270,250 270,185 450,95 450,160" fill="#edf8fa" stroke="#8ac9d5" stroke-width="4"/>
+  <polygon points="450,160 450,95 690,145 690,210" fill="#f4fbfc" stroke="#8ac9d5" stroke-width="4"/>
+  <text x="140" y="120" font-family="Avenir Next, Avenir, Segoe UI, sans-serif" font-size="24" fill="#0f3840">Sectie als ruimtelijk afgebakend deel</text>
+  <text x="495" y="244" text-anchor="middle" font-family="Avenir Next, Avenir, Segoe UI, sans-serif" font-size="20" fill="#0f3840">Volume</text>
+</svg>

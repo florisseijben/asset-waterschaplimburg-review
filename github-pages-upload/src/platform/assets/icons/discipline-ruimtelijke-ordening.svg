@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96" role="img" aria-label="Ruimtelijke ordening">
+  <rect x="18" y="18" width="60" height="60" fill="#ffffff" stroke="#00a9c1" stroke-width="4"/>
+  <line x1="18" y1="38" x2="78" y2="38" stroke="#8ac9d5" stroke-width="4"/>
+  <line x1="38" y1="18" x2="38" y2="78" stroke="#8ac9d5" stroke-width="4"/>
+  <line x1="58" y1="18" x2="58" y2="78" stroke="#8ac9d5" stroke-width="4"/>
+  <rect x="38" y="38" width="20" height="20" fill="#dff3f7" stroke="#00a9c1" stroke-width="3"/>
+</svg>

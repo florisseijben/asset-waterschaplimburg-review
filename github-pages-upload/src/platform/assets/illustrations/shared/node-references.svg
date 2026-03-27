@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="420" viewBox="0 0 960 420" role="img" aria-labelledby="title desc">
+  <title id="title">Verwijzingen vanuit een knooppunt of intersectie</title>
+  <desc id="desc">Schematische weergave van productverwijzingen vanuit een kruising of aansluiting.</desc>
+  <rect width="960" height="420" fill="#f8fcfd"/>
+  <rect x="70" y="70" width="820" height="280" fill="#ffffff" stroke="#b8d7de"/>
+  <circle cx="480" cy="210" r="52" fill="#dff3f7" stroke="#00a9c1" stroke-width="4"/>
+  <rect x="150" y="130" width="150" height="50" fill="#ffffff" stroke="#8ac9d5" stroke-width="3"/>
+  <rect x="150" y="250" width="150" height="50" fill="#ffffff" stroke="#8ac9d5" stroke-width="3"/>
+  <rect x="660" y="130" width="150" height="50" fill="#ffffff" stroke="#8ac9d5" stroke-width="3"/>
+  <rect x="660" y="250" width="150" height="50" fill="#ffffff" stroke="#8ac9d5" stroke-width="3"/>
+  <line x1="433" y1="187" x2="300" y2="155" stroke="#00a9c1" stroke-width="3"/>
+  <line x1="433" y1="233" x2="300" y2="275" stroke="#00a9c1" stroke-width="3"/>
+  <line x1="527" y1="187" x2="660" y2="155" stroke="#00a9c1" stroke-width="3"/>
+  <line x1="527" y1="233" x2="660" y2="275" stroke="#00a9c1" stroke-width="3"/>
+  <text x="480" y="216" text-anchor="middle" font-family="Avenir Next, Avenir, Segoe UI, sans-serif" font-size="20" fill="#0f3840">Object</text>
+  <text x="225" y="162" text-anchor="middle" font-family="Avenir Next, Avenir, Segoe UI, sans-serif" font-size="17" fill="#0f3840">Woordenboek</text>
+  <text x="225" y="282" text-anchor="middle" font-family="Avenir Next, Avenir, Segoe UI, sans-serif" font-size="17" fill="#0f3840">OTL</text>
+  <text x="735" y="162" text-anchor="middle" font-family="Avenir Next, Avenir, Segoe UI, sans-serif" font-size="17" fill="#0f3840">Referentiedataset</text>
+  <text x="735" y="282" text-anchor="middle" font-family="Avenir Next, Avenir, Segoe UI, sans-serif" font-size="17" fill="#0f3840">Werkinstructies</text>
+</svg>

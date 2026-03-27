@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Watergangen | OTL | Watersysteem</title>
+  <link rel="stylesheet" href="../../../../platform/assets/css/tokens.css">
+  <link rel="stylesheet" href="../../../../platform/assets/css/base.css">
+  <link rel="stylesheet" href="../../../../platform/assets/css/layout.css">
+  <link rel="stylesheet" href="../../../../platform/assets/css/components.css">
+  <link rel="stylesheet" href="../../../../platform/assets/css/utilities.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="site-header stack">
+      <div class="site-header-bar">
+        <strong>asset.waterschaplimburg.nl</strong>
+        <nav aria-label="Hoofdnavigatie">
+          <ul class="primary-nav">
+            <li><a href="../../../../pages/index.html">Home</a></li>
+            <li><a href="../../../assetregister/pages/index.html">Assetregister</a></li>
+            <li><a href="../../../assetmanagement/pages/index.html">Assetmanagement</a></li>
+            <li><a href="../../pages/index.html">Datastandaard</a></li>
+          </ul>
+        </nav>
+      </div>
+      <ol class="breadcrumb" aria-label="Breadcrumb">
+        <li><a href="../../../../pages/index.html">Home</a></li>
+        <li><a href="../../pages/index.html">Datastandaard</a></li>
+        <li><a href="../../pages/watersysteem.html">Watersysteem</a></li>
+        <li><a href="./watersysteem.html">OTL</a></li>
+        <li><span>Watergangen</span></li>
+      </ol>
+    </header>
+    <section class="hero stack">
+      <p class="eyebrow">Objecttypenbibliotheek</p>
+      <h1>OTL voor watergangen</h1>
+      <p class="lead">
+        Deze viewer maakt de eerste OTL-opzet voor watergangen doorklikbaar. De boom links en de detailtabs rechts
+        volgen het voorbeeldbestand onder <code>src/products/datastandaard/otl/watergangen-otl.jsx</code>, maar dan
+        buildless en passend binnen de huidige datastandaardsite.
+      </p>
+      <div class="cluster">
+        <a class="button button-primary" href="../../objectenhandboek/pages/watersysteem-watergangen.html">Naar Watergang in Objectenhandboek</a>
+        <a class="button button-secondary" href="../watergangen-otl.jsx">Bekijk bronvoorbeeld</a>
+      </div>
+    </section>
+
+    <section class="feature-grid">
+      <article class="card stack">
+        <p class="eyebrow">Kaders</p>
+        <h2>Wat deze eerste viewer laat zien</h2>
+        <ul class="link-list">
+          <li>een doorklikbare boom met de kernklassen voor watergang, profiel en bekledingsopbouw</li>
+          <li>detailtabs voor algemeen, eigenschappen, relaties, documenten en mapping</li>
+          <li>een eerste scheiding tussen fysieke objecten, profielobjecten en geo-representatie</li>
+        </ul>
+      </article>
+      <aside class="stat-list">
+        <article class="stat-card">
+          <strong data-otl-stat="nodes">0</strong>
+          <span>Klassen in deze viewer</span>
+        </article>
+        <article class="stat-card">
+          <strong data-otl-stat="packages">0</strong>
+          <span>Pakketten</span>
+        </article>
+        <article class="stat-card">
+          <strong>Watergangen</strong>
+          <span>Eerste uitgewerkte domeinlijn voor OTL en Objectenhandboek</span>
+        </article>
+      </aside>
+    </section>
+
+    <section class="panel stack">
+      <div class="detail-header">
+        <div>
+          <p class="eyebrow">Viewer</p>
+          <h2>Klassenboom en detailweergave</h2>
+          <p class="lead">Selecteer links een klasse of codelijst. Rechts verschijnen de definitie, attributen, relaties en mappings.</p>
+        </div>
+        <div class="tag-row">
+          <span class="tag">Algemeen</span>
+          <span class="tag">Eigenschappen</span>
+          <span class="tag">Relaties</span>
+          <span class="tag">Documenten</span>
+          <span class="tag">Mapping</span>
+        </div>
+      </div>
+
+      <div class="otl-layout" data-otl-viewer>
+        <aside class="otl-sidebar">
+          <label class="otl-search-label" for="otl-search">Zoek klasse, package of standaard</label>
+          <input id="otl-search" class="otl-search" type="search" placeholder="Bijvoorbeeld Watergangsectie of Bekleding" data-otl-search>
+          <div class="otl-tree" data-otl-tree></div>
+        </aside>
+
+        <section class="otl-main">
+          <header class="content-section-card stack">
+            <ol class="hierarchy-path" data-otl-trail></ol>
+            <div class="detail-header">
+              <div>
+                <div class="tag-row">
+                  <span class="status-chip" data-otl-type></span>
+                  <span class="tag" data-otl-package></span>
+                </div>
+                <h3 data-otl-title>Klasse</h3>
+                <p class="lead" data-otl-description></p>
+              </div>
+              <dl class="meta-list">
+                <dt>Standaard</dt>
+                <dd data-otl-standard></dd>
+                <dt>Status</dt>
+                <dd data-otl-status></dd>
+                <dt>Bovenliggend</dt>
+                <dd data-otl-parent></dd>
+              </dl>
+            </div>
+          </header>
+
+          <section class="panel stack" data-tabset>
+            <div class="tab-strip" role="tablist" aria-label="OTL detailtabs">
+              <button class="tab-button" type="button" role="tab" aria-selected="true" aria-controls="otl-panel-algemeen">Algemeen</button>
+              <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="otl-panel-eigenschappen">Eigenschappen</button>
+              <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="otl-panel-relaties">Relaties</button>
+              <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="otl-panel-documenten">Documenten</button>
+              <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="otl-panel-mapping">Mapping</button>
+            </div>
+
+            <div class="tab-panel stack" id="otl-panel-algemeen" role="tabpanel">
+              <article class="definition-block">
+                <h3>Definitie</h3>
+                <p data-otl-definition></p>
+              </article>
+              <article class="content-section-card stack">
+                <div class="detail-header">
+                  <div>
+                    <h3>Knowledge graph</h3>
+                    <p class="lead">Visuele weergave van de geselecteerde klasse en haar directe relaties.</p>
+                  </div>
+                  <span class="tag">Reactodia</span>
+                </div>
+                <div class="tag-row">
+                  <span class="status-chip">Geselecteerd</span>
+                  <span class="tag" data-otl-graph-selected>Toplaag</span>
+                  <span class="tag" data-otl-graph-scope>Dataset wordt opgebouwd</span>
+                  <span class="tag">Hierarchie</span>
+                  <span class="tag">Relaties</span>
+                  <span class="tag">Attributen</span>
+                  <span class="tag">Documenten</span>
+                </div>
+                <div class="detail-actions">
+                  <button class="button button-secondary" type="button" data-otl-reactodia-open>Open beeldvullende graph</button>
+                </div>
+                <div class="otl-graph" data-otl-graph>
+                  <div class="otl-graph-status" data-otl-graph-status>Knowledge graph wordt geladen.</div>
+                </div>
+              </article>
+              <div class="two-column">
+                <article class="content-section-card">
+                  <h3>Kernmetadata</h3>
+                  <dl class="meta-list" data-otl-metadata></dl>
+                </article>
+                <article class="content-section-card">
+                  <h3>Ontwerplijn</h3>
+                  <p data-otl-design-note></p>
+                </article>
+              </div>
+            </div>
+
+            <div class="tab-panel" id="otl-panel-eigenschappen" role="tabpanel" hidden>
+              <div class="otl-table-wrap">
+                <table class="otl-table">
+                  <thead>
+                    <tr>
+                      <th>Naam</th>
+                      <th>Datatype</th>
+                      <th>Cardinaliteit</th>
+                      <th>Toelichting</th>
+                    </tr>
+                  </thead>
+                  <tbody data-otl-properties></tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="tab-panel" id="otl-panel-relaties" role="tabpanel" hidden>
+              <div class="stack" data-otl-relations></div>
+            </div>
+
+            <div class="tab-panel" id="otl-panel-documenten" role="tabpanel" hidden>
+              <div class="card-grid" data-otl-documents></div>
+            </div>
+
+            <div class="tab-panel" id="otl-panel-mapping" role="tabpanel" hidden>
+              <div class="card-grid" data-otl-mappings></div>
+            </div>
+          </section>
+        </section>
+      </div>
+    </section>
+  </main>
+  <div class="otl-overlay" data-otl-reactodia-overlay hidden>
+    <div class="otl-overlay-dialog">
+      <div class="detail-header">
+        <div>
+          <p class="eyebrow">Reactodia</p>
+          <h2>Beeldvullende knowledge graph</h2>
+          <p class="lead">De geselecteerde OTL-context wordt hier als interactieve workspace geladen. Entiteiten zijn daarin versleepbaar.</p>
+        </div>
+        <div class="detail-actions">
+          <span class="tag" data-otl-reactodia-selected>Geen selectie</span>
+          <button class="button button-secondary" type="button" data-otl-reactodia-close>Sluiten</button>
+        </div>
+      </div>
+      <div class="otl-reactodia-stage" data-otl-reactodia-stage>
+        <div class="otl-graph-status" data-otl-reactodia-status>Reactodia wordt geladen.</div>
+      </div>
+    </div>
+  </div>
+  <script src="../../../../platform/assets/js/app.js"></script>
+  <script src="../../../../platform/assets/js/tabs.js"></script>
+  <script src="../../../../platform/assets/js/otl-viewer.js"></script>
+  <script type="module" src="../../../../platform/assets/js/otl-reactodia.js"></script>
+</body>
+</html>

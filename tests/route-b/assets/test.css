@@ -1,0 +1,123 @@
+:root {
+  --color-ink: #153243;
+  --color-brand: #0d7c86;
+  --color-brand-soft: #d9f0f1;
+  --color-surface: #ffffff;
+  --color-bg: #f4f6f7;
+  --color-line: #c9d5db;
+  --color-good: #1c7c54;
+  --color-bad: #a63a50;
+  --color-wait: #8a6d1f;
+  --shadow: 0 8px 24px rgba(21, 50, 67, 0.08);
+  --radius: 14px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  color: var(--color-ink);
+  background:
+    radial-gradient(circle at top right, #e4f4f5 0, transparent 28rem),
+    linear-gradient(180deg, #f9fbfb 0%, var(--color-bg) 100%);
+}
+
+code {
+  font-family: Consolas, monospace;
+  font-size: 0.95em;
+}
+
+.page {
+  width: min(72rem, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 2rem 0 3rem;
+}
+
+.hero,
+.panel,
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.hero {
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.panel,
+.card {
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  gap: 1.5rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.5rem;
+  color: var(--color-brand);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.intro {
+  max-width: 56rem;
+  line-height: 1.6;
+}
+
+.status-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.status-item {
+  margin: 0;
+  padding: 0.75rem 0.9rem;
+  border-radius: 10px;
+  border: 1px solid var(--color-line);
+  background: #f8fafb;
+}
+
+.status-success {
+  color: var(--color-good);
+  border-color: #abd7c2;
+  background: #edf8f2;
+}
+
+.status-error {
+  color: var(--color-bad);
+  border-color: #e4bac4;
+  background: #fbf0f3;
+}
+
+.status-waiting {
+  color: var(--color-wait);
+  border-color: #e7d69a;
+  background: #fff8df;
+}
+
+.result-box {
+  min-height: 5rem;
+  padding: 1rem;
+  border: 1px dashed var(--color-line);
+  border-radius: 10px;
+  background: #fbfcfc;
+  white-space: pre-wrap;
+  line-height: 1.55;
+}
+
+ul {
+  padding-left: 1.25rem;
+  line-height: 1.7;
+}

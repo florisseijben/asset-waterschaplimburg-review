@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="420" viewBox="0 0 960 420" role="img" aria-labelledby="title desc">
+  <title id="title">Waterganggebied</title>
+  <desc id="desc">Ruimtelijke zone van de watergang over de lengte van het traject.</desc>
+  <rect width="960" height="420" fill="#f8fcfd"/>
+  <rect x="70" y="70" width="820" height="280" fill="#ffffff" stroke="#b8d7de"/>
+  <path d="M140 260 C245 150 320 180 438 235 S666 304 820 170 L820 256 C690 340 544 358 420 318 S220 278 140 330 Z" fill="#dff3f7" stroke="#8ac9d5" stroke-width="4"/>
+  <path d="M152 255 C252 165 333 184 442 232 S667 296 810 177" fill="none" stroke="#00a9c1" stroke-width="8" stroke-linecap="round"/>
+  <text x="132" y="118" font-family="Avenir Next, Avenir, Segoe UI, sans-serif" font-size="24" fill="#0f3840">Waterganggebied als ruimtelijke zone</text>
+  <text x="175" y="348" font-family="Avenir Next, Avenir, Segoe UI, sans-serif" font-size="18" fill="#4d6a70">Opeenvolgende secties en intersecties vormen samen het gebied</text>
+</svg>
