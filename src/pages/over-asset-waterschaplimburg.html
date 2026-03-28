@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Over asset.waterschaplimburg.nl</title>
+  <link rel="stylesheet" href="../platform/assets/css/tokens.css">
+  <link rel="stylesheet" href="../platform/assets/css/base.css">
+  <link rel="stylesheet" href="../platform/assets/css/layout.css">
+  <link rel="stylesheet" href="../platform/assets/css/components.css">
+  <link rel="stylesheet" href="../platform/assets/css/utilities.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="site-header stack">
+      <div class="site-header-bar">
+        <strong>asset.waterschaplimburg.nl</strong>
+        <nav aria-label="Hoofdnavigatie">
+          <ul class="primary-nav">
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="../products/assetregister/pages/index.html">Assetregister</a></li>
+            <li><a href="../products/assetmanagement/pages/index.html">Assetmanagement</a></li>
+            <li><a href="../products/datastandaard/pages/index.html">Datastandaard</a></li>
+            <li><a href="./over-asset-waterschaplimburg.html" aria-current="page">Over</a></li>
+          </ul>
+        </nav>
+      </div>
+      <ol class="breadcrumb" aria-label="Breadcrumb">
+        <li><a href="./index.html">Home</a></li>
+        <li><span>Over asset.waterschaplimburg.nl</span></li>
+      </ol>
+    </header>
+
+    <section class="hero stack hero-architecture">
+      <p class="eyebrow">Doelarchitectuur</p>
+      <h1>Over asset.waterschaplimburg.nl</h1>
+      <p class="lead">
+        Dit platform is de publicatielaag bovenop meerdere bronlagen. TopBraid EDG beheert de
+        semantische kern, een CMS beheert redactionele context en de statische site zorgt voor
+        een snelle, stabiele en herkenbare gebruikerservaring.
+      </p>
+      <div class="tag-row">
+        <span class="tag">EDG als semantische bron</span>
+        <span class="tag">CMS voor redactie</span>
+        <span class="tag">Statische site voor publicatie</span>
+      </div>
+    </section>
+
+    <section class="panel stack">
+      <p class="eyebrow">Kernprincipe</p>
+      <h2>Niet alles in een systeem, maar ieder type content op de juiste plek</h2>
+      <div class="architecture-grid">
+        <article class="architecture-card architecture-card-edg">
+          <p class="eyebrow">Bronlaag</p>
+          <h3>TopBraid EDG</h3>
+          <p>Beheert taxonomieen, ontologieen, knowledge graphs, data graphs, URI's, definities, relaties en classificaties.</p>
+          <ul class="link-list">
+            <li>Woordenboek en OTL komen hier primair vandaan.</li>
+            <li>Ook objectstructuren, semantische relaties en referentiedata horen hier thuis.</li>
+            <li>Publicatie bij voorkeur via export of cachelaag, niet als rauwe live bron per pagina.</li>
+          </ul>
+        </article>
+
+        <article class="architecture-card architecture-card-cms">
+          <p class="eyebrow">Redactie</p>
+          <h3>CMS</h3>
+          <p>Beheert uitleg, toelichtingen, governance, werkinstructies, procesuitleg en redactionele context.</p>
+          <ul class="link-list">
+            <li>Geschikt voor teksten die vaak door redacteuren worden aangepast.</li>
+            <li>Niet geschikt als bron voor formele semantiek of modelstructuur.</li>
+            <li>Wel geschikt voor context bovenop EDG-data.</li>
+          </ul>
+        </article>
+
+        <article class="architecture-card architecture-card-static">
+          <p class="eyebrow">Publicatie</p>
+          <h3>Statische site</h3>
+          <p>Verzorgt navigatie, templates, snelheid, vindbaarheid en een stabiele presentatie voor eindgebruikers.</p>
+          <ul class="link-list">
+            <li>Geschikt voor home, landingspagina's en vaste productstructuur.</li>
+            <li>Combineert export uit EDG met redactionele content uit een CMS.</li>
+            <li>Beperkt runtime-afhankelijkheden en maakt publiceren voorspelbaar.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel stack">
+      <p class="eyebrow">Architectuurflow</p>
+      <h2>Hoe content door het platform beweegt</h2>
+      <div class="architecture-flow">
+        <article class="architecture-step">
+          <strong>1. Bron</strong>
+          <p>EDG beheert semantische objecten en relaties. CMS beheert redactionele uitleg.</p>
+        </article>
+        <article class="architecture-step">
+          <strong>2. Publicatiemodel</strong>
+          <p>EDG levert exports of curated datasets. Alleen specifieke interactie gebruikt live runtime-data.</p>
+        </article>
+        <article class="architecture-step">
+          <strong>3. Viewmodel</strong>
+          <p>De site vertaalt brondata naar leesbare kaarten, detailpagina's, navigatie en grafische componenten.</p>
+        </article>
+        <article class="architecture-step">
+          <strong>4. Presentatie</strong>
+          <p>De statische site toont een rustige, consistente route over systemen, producten en details.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel stack">
+      <p class="eyebrow">Paginatypen</p>
+      <h2>Advies per type pagina</h2>
+      <div class="architecture-grid">
+        <article class="architecture-card">
+          <h3>Home en productlandingen</h3>
+          <p><strong>Opbouw:</strong> statisch.</p>
+          <p><strong>Waarom:</strong> stabiele navigatie, snelle laadtijd en altijd beschikbaar.</p>
+        </article>
+
+        <article class="architecture-card">
+          <h3>Systeemlandingen</h3>
+          <p><strong>Opbouw:</strong> statische template met taxonomie uit EDG-export.</p>
+          <p><strong>Waarom:</strong> systeemstructuur hoort in EDG, presentatie in de site.</p>
+        </article>
+
+        <article class="architecture-card">
+          <h3>Woordenboek</h3>
+          <p><strong>Opbouw:</strong> primair vanuit EDG.</p>
+          <p><strong>Waarom:</strong> definities, labels, URI's en semantische relaties zijn formele brondata.</p>
+        </article>
+
+        <article class="architecture-card">
+          <h3>Objectenhandboek</h3>
+          <p><strong>Opbouw:</strong> hybride: semantische kern uit EDG, uitleg en voorbeelden uit CMS of statische content.</p>
+          <p><strong>Waarom:</strong> formele objectkennis en redactionele toelichting vragen elk om een eigen bron.</p>
+        </article>
+
+        <article class="architecture-card">
+          <h3>OTL en knowledge graphs</h3>
+          <p><strong>Opbouw:</strong> volledig EDG-gedreven, bij voorkeur gepubliceerd via export of cachelaag.</p>
+          <p><strong>Waarom:</strong> dit is de semantische modelkern van het platform.</p>
+        </article>
+
+        <article class="architecture-card">
+          <h3>Referentiedataset</h3>
+          <p><strong>Opbouw:</strong> uit EDG of gekoppelde datalaag, niet handmatig in HTML.</p>
+          <p><strong>Waarom:</strong> voorbeelddata en datagraphs moeten reproduceerbaar uit de bron komen.</p>
+        </article>
+
+        <article class="architecture-card">
+          <h3>Werkinstructies, processen en rollen</h3>
+          <p><strong>Opbouw:</strong> CMS of statisch.</p>
+          <p><strong>Waarom:</strong> dit is redactionele en organisatorische content, geen semantisch model.</p>
+        </article>
+
+        <article class="architecture-card">
+          <h3>Assetregister</h3>
+          <p><strong>Opbouw:</strong> statische shell met inhoud uit registerbron, gekoppeld aan EDG-classificaties.</p>
+          <p><strong>Waarom:</strong> operationele assetdata hoort niet handmatig in vaste HTML te leven.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel stack">
+      <p class="eyebrow">Belangrijk</p>
+      <h2>Waar de architectuur op staat of valt</h2>
+      <div class="two-column">
+        <article class="callout stack">
+          <h3>Essentiele ontwerpkeuzes</h3>
+          <ul class="link-list">
+            <li>Eenduidig vastleggen wat de `source of truth` is per contenttype.</li>
+            <li>Semantische inhoud via een uniform publicatiemodel uit EDG publiceren.</li>
+            <li>Frontend laten werken met viewmodels in plaats van ruwe EDG-structuren.</li>
+            <li>Formele semantiek en redactionele toelichting bewust scheiden.</li>
+          </ul>
+        </article>
+
+        <article class="callout stack">
+          <h3>Praktisch advies voor dit platform</h3>
+          <ul class="link-list">
+            <li>Gebruik de statische site als vaste publiekslaag.</li>
+            <li>Gebruik EDG voor woordenboek, OTL, taxonomie, graph en referentiegegevens.</li>
+            <li>Gebruik een CMS voor werkinstructies, procescontext en beheeruitleg.</li>
+            <li>Gebruik live runtime alleen waar actuele of interactieve verdieping echt nodig is.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel stack">
+      <p class="eyebrow">Route</p>
+      <h2>Wat dit betekent voor de verdere uitbouw</h2>
+      <p>
+        Deze site groeit het best wanneer navigatie, vormgeving en publicatie hier stabiel blijven,
+        terwijl EDG en een eventueel CMS de inhoudelijke bronlagen leveren. Daarmee blijft het
+        platform robuust, uitlegbaar en schaalbaar naarmate er meer systemen, begrippen, objecten
+        en datasets bijkomen.
+      </p>
+      <div class="cluster">
+        <a class="button button-primary" href="./index.html">Terug naar home</a>
+        <a class="button button-secondary" href="../products/datastandaard/pages/index.html">Open Datastandaard</a>
+      </div>
+    </section>
+  </main>
+  <script src="../platform/assets/js/app.js"></script>
+</body>
+</html>

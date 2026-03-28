@@ -39,6 +39,18 @@
   background: #fff;
 }
 
+.hero-architecture {
+  background:
+    linear-gradient(135deg, rgba(0, 169, 193, 0.1), rgba(255, 255, 255, 0.9)),
+    linear-gradient(90deg, rgba(16, 35, 33, 0.03), rgba(16, 35, 33, 0));
+}
+
+.panel-architecture-highlight {
+  border-color: rgba(0, 169, 193, 0.35);
+  background:
+    linear-gradient(180deg, rgba(228, 247, 250, 0.9), rgba(255, 255, 255, 0.96));
+}
+
 .quick-search-panel {
   display: grid;
   gap: var(--space-3);
@@ -388,6 +400,76 @@
   border-radius: 0;
   background: var(--color-highlight);
   border: 1px solid var(--color-line);
+}
+
+.architecture-grid {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+}
+
+.architecture-card {
+  display: grid;
+  gap: var(--space-3);
+  min-height: 100%;
+  padding: var(--space-5);
+  border: 1px solid var(--color-line);
+  background: #fff;
+}
+
+.architecture-card h3,
+.architecture-step strong {
+  color: var(--color-deep);
+}
+
+.architecture-card p {
+  margin: 0;
+}
+
+.architecture-card-edg {
+  border-color: rgba(0, 169, 193, 0.38);
+  background: linear-gradient(180deg, rgba(228, 247, 250, 0.85), #fff);
+}
+
+.architecture-card-cms {
+  border-color: rgba(215, 182, 0, 0.4);
+  background: linear-gradient(180deg, rgba(250, 244, 204, 0.8), #fff);
+}
+
+.architecture-card-static {
+  border-color: rgba(16, 35, 33, 0.18);
+  background: linear-gradient(180deg, rgba(241, 246, 248, 0.9), #fff);
+}
+
+.architecture-flow {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+}
+
+.architecture-step {
+  position: relative;
+  padding: var(--space-5);
+  border: 1px solid var(--color-line);
+  background: #fff;
+}
+
+.architecture-step::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 0.35rem;
+  background: linear-gradient(180deg, var(--color-brand), rgba(0, 169, 193, 0.14));
+}
+
+.architecture-step strong {
+  display: block;
+  margin-bottom: var(--space-2);
+  font-size: 1.02rem;
+}
+
+.architecture-step p {
+  margin: 0;
 }
 
 .card-grid .card {
