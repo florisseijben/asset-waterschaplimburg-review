@@ -10,11 +10,11 @@ body {
   margin: 0;
   font-family: "Avenir Next", Avenir, "Segoe UI", Tahoma, sans-serif;
   color: var(--color-ink);
-  background: #fbfcfc;
+  background: #f8fbfb;
 }
 
 a {
-  color: var(--color-brand-dark);
+  color: var(--color-brand-deep);
   text-decoration: none;
 }
 
@@ -28,7 +28,7 @@ h2,
 h3 {
   margin-top: 0;
   color: var(--color-deep);
-  line-height: 1.2;
+  line-height: 1.15;
 }
 
 p,
@@ -37,13 +37,19 @@ li {
 }
 
 h1 {
-  font-size: clamp(1.95rem, 3.6vw, 2.7rem);
+  font-size: clamp(2.05rem, 3.7vw, 2.95rem);
   font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
 h2 {
-  font-size: clamp(1.3rem, 2.2vw, 1.8rem);
+  font-size: clamp(1.35rem, 2.2vw, 1.95rem);
   font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-size: clamp(1.05rem, 1.35vw, 1.3rem);
 }
 
 ul {

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 160" role="img" aria-labelledby="title desc">
+  <title id="title">Waterschap Limburg logo</title>
+  <desc id="desc">Wit woordmerk Waterschap Limburg met WL beeldmerk op aqua achtergrond.</desc>
+  <rect width="900" height="160" fill="#00a9c1"/>
+  <g fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="28">
+    <path d="M56 54 L118 130"/>
+    <path d="M124 54 L186 130"/>
+    <path d="M192 54 L254 130"/>
+    <path d="M320 54 L320 130 L398 130"/>
+  </g>
+  <g fill="#ffffff" font-family="Avenir Next, Avenir, Segoe UI, Tahoma, sans-serif" font-weight="700">
+    <text x="456" y="82" font-size="58">waterschap</text>
+    <text x="456" y="130" font-size="58">limburg</text>
+  </g>
+</svg>
