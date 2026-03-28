@@ -1,4 +1,4 @@
-(function () {
+﻿(function () {
   function toList(items, emptyText) {
     if (!items || !items.length) {
       return '<li>' + window.AssetPlatformData.escapeHtml(emptyText) + "</li>";
@@ -26,8 +26,8 @@
     var items = [
       { label: "URI", value: detail.uri },
       { label: "Conceptschema", value: detail.conceptScheme },
-      { label: "EDG graph", value: mapping.graph },
-      { label: "EDG endpoint", value: mapping.endpoint }
+      { label: "Semantische graph", value: mapping.graph },
+      { label: "Bronendpoint", value: mapping.endpoint }
     ];
 
     root.innerHTML = items.map(function (item) {
@@ -82,3 +82,4 @@
     render();
   }
 }());
+

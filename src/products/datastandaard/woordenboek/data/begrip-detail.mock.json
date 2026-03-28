@@ -1,4 +1,4 @@
-{
+﻿{
   "begrip": {
     "id": "begrip-asset",
     "slug": "asset",
@@ -9,10 +9,11 @@
     "status": "Vastgesteld",
     "uri": "https://data.waterschaplimburg.nl/id/begrip/asset",
     "conceptScheme": "Datastandaard Assetdomein",
-    "sourceSystem": "TopBraid EDG",
+    "sourceSystem": "semantische beheeromgeving",
     "lastUpdated": "2026-03-24",
     "rdfType": "skos:Concept",
     "owlClass": "wl:Asset",
     "shaclShape": "wlshape:AssetShape"
   }
 }
+

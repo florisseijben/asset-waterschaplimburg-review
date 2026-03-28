@@ -1,7 +1,7 @@
-{
-  "source": "TopBraid EDG",
+﻿{
+  "source": "semantische beheeromgeving",
   "graph": "https://topbraid.waterschaplimburg.nl/graphs/datastandaard/woordenboek",
-  "endpoint": "TopBraid EDG conceptservice voor woordenboekbegrippen",
+  "endpoint": "semantische beheeromgeving conceptservice voor woordenboekbegrippen",
   "fields": {
     "prefLabel": "skos:prefLabel",
     "altLabels": "skos:altLabel",
@@ -13,3 +13,4 @@
     "shaclShape": "sh:NodeShape"
   }
 }
+

@@ -1,4 +1,4 @@
-# Concreet bouwschema Datastandaard
+﻿# Concreet bouwschema Datastandaard
 
 ## Doel
 
@@ -8,15 +8,15 @@ Dit bouwschema werkt het gekozen advies concreet uit:
 - we ontwerpen `Woordenboek` als eerste semantische productlijn;
 - we laten `Objectenhandboek`, `OTL`, `Referentiedataset` en `Werkinstructies` daarop aansluiten;
 - we houden de oplossing buildless, HTML-first en Visual Studio-vriendelijk;
-- we bereiden `Woordenboek` expliciet voor op linked data uit TopBraid EDG met `RDF`, `OWL` en `SHACL`.
+- we bereiden `Woordenboek` expliciet voor op linked data uit de semantische beheeromgeving met `RDF`, `OWL` en `SHACL`.
 
 ## Uitgangspunt voor de bronaanpak
 
 Voor `Woordenboek` gebruiken we bewust een hybride model:
 
 - fase 1: pagina's werken volledig met inline of lokale mockdata;
-- fase 2: dezelfde pagina's kunnen semantische data uit TopBraid EDG inlezen;
-- fase 3: de EDG-bron vervangt of verrijkt de mockdata.
+- fase 2: dezelfde pagina's kunnen semantische data uit de semantische beheeromgeving inlezen;
+- fase 3: de bron uit de semantische beheeromgeving vervangt of verrijkt de mockdata.
 
 Dat betekent:
 
@@ -146,7 +146,7 @@ Doel:
 - semantische secties vullen;
 - tabs en states voor `RDF`, `OWL`, `SHACL`;
 - eerst mockdata ondersteunen;
-- later vervangbaar maken door EDG-responses.
+- later vervangbaar maken door bronresponses.
 
 `src/platform/assets/js/term-detail.js`
 
@@ -197,7 +197,7 @@ Doel:
 
 - eerste complete templatefamilie neerzetten;
 - eerste linked-data plaatsing zichtbaar maken;
-- detailtemplate definiëren waar andere producten op kunnen meeliften.
+- detailtemplate definiÃ«ren waar andere producten op kunnen meeliften.
 
 Bestanden aanmaken of uitbreiden:
 
@@ -237,8 +237,8 @@ Bestanden aanmaken of uitbreiden:
 
 Functioneel resultaat:
 
-- één generiek patroon voor metadata;
-- één generiek patroon voor bron- en herkomstinformatie;
+- Ã©Ã©n generiek patroon voor metadata;
+- Ã©Ã©n generiek patroon voor bron- en herkomstinformatie;
 - tabs voor semantische weergave;
 - voorbereid op hergebruik in andere datastandaardproducten.
 
@@ -270,7 +270,7 @@ Functioneel resultaat:
 
 Doel:
 
-- hiërarchie, relaties en klassen zichtbaar maken.
+- hiÃ«rarchie, relaties en klassen zichtbaar maken.
 
 Bestanden aanmaken of uitbreiden:
 
@@ -358,7 +358,7 @@ Doel:
 
 - hoofdtemplate voor een begrip;
 - scheiding tussen inhoud, relaties en linked data;
-- voorbeeldpagina voor TopBraid EDG-koppeling.
+- voorbeeldpagina voor koppeling met de semantische beheeromgeving.
 
 Belangrijkste secties:
 
@@ -426,7 +426,7 @@ Aanbevolen velden:
 
 Doel:
 
-- detailmock voor één of meer begrippen;
+- detailmock voor Ã©Ã©n of meer begrippen;
 - voedt de detailtemplate zonder externe bron.
 
 Aanbevolen velden:
@@ -452,12 +452,12 @@ Aanbevolen velden:
 
 Doel:
 
-- vertaallaag tussen lokale paginavelden en verwachte EDG-velden;
+- vertaallaag tussen lokale paginavelden en verwachte bronvelden;
 - documenteert de koppeling zonder dat runtime-integratie nu verplicht is.
 
 Aanbevolen inhoud:
 
-- mapping van `prefLabel` naar EDG-labelveld;
+- mapping van `prefLabel` naar bronlabelveld;
 - mapping van `definition` naar semantisch eigenschapspad;
 - mapping van `broader`, `narrower`, `related`;
 - mapping van `owlClass`;
@@ -494,9 +494,9 @@ Reden:
 - de generieke componenten gaan over presentatiepatronen;
 - de productspecifieke componenten gaan over domeininhoud en terminologie.
 
-## TopBraid EDG-voorbereiding binnen Woordenboek
+## semantische voorbereiding binnen Woordenboek
 
-Omdat `Woordenboek` linked data uit TopBraid EDG moet kunnen ophalen, ontwerpen we het detailtemplate nu al op drie niveaus.
+Omdat `Woordenboek` linked data uit de semantische beheeromgeving moet kunnen ophalen, ontwerpen we het detailtemplate nu al op drie niveaus.
 
 ### Niveau 1: leesbare businesslaag
 
@@ -526,7 +526,7 @@ Voor latere integratie reserveren we:
 - plek voor ruwe semantische payload;
 - foutstatus of laadstatus;
 - mappingweergave;
-- bronvermelding naar EDG-graph of endpoint.
+- bronvermelding naar semantische graph of endpoint.
 
 ## Volgorde van realisatie in het project
 
@@ -534,7 +534,7 @@ Als we dit schema strikt volgen, bouwen we in deze volgorde:
 
 1. `Woordenboek` overzichtspagina.
 2. `Woordenboek` begrip-detailtemplate.
-3. `Woordenboek` mockdata en EDG-mappingbestand.
+3. `Woordenboek` mockdata en bronmappingbestand.
 4. platformcomponenten `meta-list`, `linked-data-panel`, `source-list`, `related-items`.
 5. `Objectenhandboek` detailtemplate.
 6. `OTL` boom- en relatietemplate.
@@ -546,7 +546,7 @@ Als we dit schema strikt volgen, bouwen we in deze volgorde:
 Na deze route hebben we:
 
 - een stabiele templatefamilie voor Datastandaard;
-- een eerste semantische productlijn die op TopBraid EDG kan aansluiten;
+- een eerste semantische productlijn die op de semantische beheeromgeving kan aansluiten;
 - maximale herbruikbaarheid zonder build tooling;
 - een volgorde waarin complexiteit gecontroleerd oploopt;
 - een basis die later kan migreren naar server-side rendering of echte API-koppelingen.
@@ -567,3 +567,5 @@ Dat is de kleinste complete eenheid waarmee we tegelijk:
 - een nieuwe paginatypefamilie neerzetten;
 - linked-data voorbereiding zichtbaar maken;
 - componenten bouwen die de rest van Datastandaard direct kan hergebruiken.
+
+

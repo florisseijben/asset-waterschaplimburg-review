@@ -1,10 +1,11 @@
-{
+﻿{
   "object": {
     "label": "Watergang",
     "system": "Watersysteem",
     "subsystem": "Stroomgebied",
     "objectType": "Watergang",
-    "sourceSystem": "TopBraid EDG",
+    "sourceSystem": "semantische beheeromgeving",
     "uri": "https://data.waterschaplimburg.nl/id/objecttype/watergang"
   }
 }
+

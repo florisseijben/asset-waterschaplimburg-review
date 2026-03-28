@@ -1,4 +1,4 @@
-# Input Objectenhandboek
+﻿# Input Objectenhandboek
 
 ## 1. Systeemstructuur
 
@@ -24,7 +24,7 @@
   Hoort direct onder:
   Relatie met bovenliggend niveau:
 
-## 2. Hiërarchie / boomstructuur
+## 2. HiÃ«rarchie / boomstructuur
 
 Beschrijf hier de boom zoals die functioneel gelezen moet worden.
 
@@ -78,9 +78,9 @@ Welke andere producten of onderdelen moeten op objecttypepagina's gekoppeld kunn
 Toelichting:
 - 
 
-## 6. EDG / linked data voorbereiding
+## 6. semantische beheeromgeving / linked data voorbereiding
 
-Welke velden moeten we nu al voorbereiden voor TopBraid EDG?
+Welke velden moeten we nu al voorbereiden voor semantische beheeromgeving?
 
 Minimaal bekend:
 - URI:
@@ -183,7 +183,7 @@ Werk 1 volledig voorbeeld uit van hoog naar laag.
   Hoort direct onder: Stroomgebied
   Relatie met bovenliggend niveau: `ligt in`
 
-## 2. Hiërarchie / boomstructuur
+## 2. HiÃ«rarchie / boomstructuur
 
 Beschrijf hier de boom zoals die functioneel gelezen moet worden.
 
@@ -232,7 +232,7 @@ Welke blokken moeten op iedere objecttypepagina staan?
 
 Verplicht:
 - Definitie en functionele beschrijving
-- Plek in de hiërarchie
+- Plek in de hiÃ«rarchie
 - Bovenliggende en onderliggende relaties
 - Gekoppelde objecttypen
 - Gekoppelde producten
@@ -263,15 +263,15 @@ Toelichting:
 - `Assetmanagement` voor beheercontext, rollen of processen waar relevant.
 - `Assetregister` lijkt eerder het niveau van concrete assets dan objecttypen te raken en kan daarom voorlopig optioneel blijven.
 
-## 6. EDG / linked data voorbereiding
+## 6. semantische beheeromgeving / linked data voorbereiding
 
-Welke velden moeten we nu al voorbereiden voor TopBraid EDG?
+Welke velden moeten we nu al voorbereiden voor semantische beheeromgeving?
 
 Minimaal bekend:
 - URI: unieke identifier van systeem, deelsysteem, objecttype of onderdeel
-- voorkeurslabel: officiële naam van het objecttype
+- voorkeurslabel: officiÃ«le naam van het objecttype
 - definitie: inhoudelijke beschrijving
-- bovenliggend object: directe parent in de hiërarchie
+- bovenliggend object: directe parent in de hiÃ«rarchie
 - onderliggende objecten: child-objecttypen of onderdelen
 - gerelateerde objecten: functioneel of ruimtelijk verbonden typen
 - gekoppelde begrippen: verwijzingen naar Woordenboek
@@ -338,4 +338,5 @@ Werk 1 volledig voorbeeld uit van hoog naar laag.
 
 - Moet `Watergangsectie` een eigen objecttypepagina krijgen of alleen als onderliggend onderdeel zichtbaar zijn?
 - Moeten `Talud`, `Bodem` en `Bekledingsconstructie` als volwaardige objecttypen gemodelleerd worden of als componenten binnen een objecttype?
-- Welke objectrelaties zijn puur hiërarchisch en welke moeten ook als functionele of ruimtelijke relatie getoond worden?
+- Welke objectrelaties zijn puur hiÃ«rarchisch en welke moeten ook als functionele of ruimtelijke relatie getoond worden?
+
