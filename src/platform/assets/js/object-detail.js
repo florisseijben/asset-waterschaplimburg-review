@@ -377,7 +377,7 @@
     }
 
     svg = '' +
-      '<div class="concept-map-wrap">' +
+      '<div class="desktop-preferred concept-map-wrap">' +
         '<svg class="concept-map-graph" viewBox="0 0 ' + width + ' ' + height + '" role="img" aria-label="' + escapeSvg(map.ariaLabel || "Conceptmap") + '">' +
           '<defs><marker id="concept-map-arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#007f91"></path></marker></defs>';
 
@@ -389,7 +389,10 @@
       svg += renderNode(node);
     });
 
-    svg += '</svg></div>';
+    svg += '</svg></div>' +
+      '<div class="mobile-only mobile-support-note">' +
+        'Deze decompositie of knowledge graph is op telefoon niet de hoofdweergave. Gebruik tablet of desktop voor de volledige graph.' +
+      '</div>';
     return svg;
   }
 
@@ -399,7 +402,7 @@
     }
 
     return '<div class="detail-actions">' +
-      '<button class="button button-secondary" type="button" data-object-reactodia-open="' + platformData.escapeHtml(map.reactodia.id || "concept-map") + '">' +
+      '<button class="button button-secondary desktop-preferred" type="button" data-object-reactodia-open="' + platformData.escapeHtml(map.reactodia.id || "concept-map") + '">' +
         'Open beeldvullende knowledge graph' +
       "</button>" +
     "</div>";

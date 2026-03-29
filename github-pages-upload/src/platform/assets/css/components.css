@@ -673,6 +673,21 @@
   background: #fbfdfd;
 }
 
+.mobile-only {
+  display: none;
+}
+
+.desktop-preferred {
+  display: block;
+}
+
+.mobile-support-note {
+  padding: var(--space-4);
+  border: 1px solid var(--color-line);
+  background: #f8fcfc;
+  color: var(--color-muted);
+}
+
 .hierarchy-path {
   display: flex;
   flex-wrap: wrap;
@@ -1618,12 +1633,20 @@
     display: none;
   }
 
-  .detail-layout-with-nav > aside:last-child .detail-section:last-child {
+  .detail-layout-with-nav > aside:last-child {
     display: none;
   }
 
   .object-tree-panel,
   .object-tree-note {
+    display: none;
+  }
+
+  .mobile-only {
+    display: block;
+  }
+
+  .desktop-preferred {
     display: none;
   }
 
