@@ -1,4 +1,36 @@
 (function () {
+  function readJsonScript(id) {
+    var node = document.getElementById(id);
+
+    if (!node) {
+      return null;
+    }
+
+    try {
+      return JSON.parse(node.textContent);
+    } catch (error) {
+      return null;
+    }
+  }
+
+  function escapeHtml(value) {
+    return String(value || "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+  }
+
+  var platformData = window.AssetPlatformData || {
+    readJsonScript: readJsonScript,
+    escapeHtml: escapeHtml
+  };
+
+  if (!window.AssetPlatformData) {
+    window.AssetPlatformData = platformData;
+  }
+
   function slugify(value) {
     return (value || "")
       .toLowerCase()
@@ -157,7 +189,7 @@
     var treeConfig;
     var treeItemsMarkup;
 
-    if (!root || !window.AssetPlatformData) {
+    if (!root || !platformData) {
       return;
     }
 
@@ -206,9 +238,9 @@
 
     if (treeConfig && treeConfig.items && treeConfig.items.length) {
       treeItemsMarkup = treeConfig.items.map(function (item) {
-        return '<a class="object-tree-link" href="' + window.AssetPlatformData.escapeHtml(item.href || "#") + '"' +
+        return '<a class="object-tree-link" href="' + platformData.escapeHtml(item.href || "#") + '"' +
           (item.current ? ' aria-current="page"' : "") +
-          ">" + window.AssetPlatformData.escapeHtml(item.label || "") + "</a>";
+          ">" + platformData.escapeHtml(item.label || "") + "</a>";
       }).join("");
 
       nav = document.createElement("aside");
@@ -219,18 +251,18 @@
           '<p class="eyebrow">Structuur</p>' +
           "<h2>Objecttypen</h2>" +
           '<details class="object-tree-group" open>' +
-            "<summary>" + window.AssetPlatformData.escapeHtml(treeConfig.label || detail.label || "Object") + "</summary>" +
+            "<summary>" + platformData.escapeHtml(treeConfig.label || detail.label || "Object") + "</summary>" +
             '<div class="object-tree-links">' + treeItemsMarkup + "</div>" +
           "</details>" +
         "</section>" +
         '<section class="panel detail-section stack">' +
           '<p class="eyebrow">Navigatie</p>' +
           "<h2>Paginanavigatie</h2>" +
-          '<p class="object-tree-note">Ga direct naar de onderdelen van ' + window.AssetPlatformData.escapeHtml(detail.label || "dit object") + " op deze pagina.</p>" +
+          '<p class="object-tree-note">Ga direct naar de onderdelen van ' + platformData.escapeHtml(detail.label || "dit object") + " op deze pagina.</p>" +
           '<nav class="object-tree-links" aria-label="Paginanavigatie">' +
               links.map(function (link) {
-                return '<a class="object-tree-link" href="' + window.AssetPlatformData.escapeHtml(link.href) + '">' +
-                  window.AssetPlatformData.escapeHtml(link.label) +
+                return '<a class="object-tree-link" href="' + platformData.escapeHtml(link.href) + '">' +
+                  platformData.escapeHtml(link.label) +
                 "</a>";
               }).join("") +
           "</nav>" +
@@ -242,11 +274,11 @@
       nav.innerHTML =
         '<p class="eyebrow">Navigatie</p>' +
         "<h2>Paginanavigatie</h2>" +
-        '<p class="object-tree-note">Ga direct naar de onderdelen van ' + window.AssetPlatformData.escapeHtml(detail.label || "dit object") + " op deze pagina.</p>" +
+        '<p class="object-tree-note">Ga direct naar de onderdelen van ' + platformData.escapeHtml(detail.label || "dit object") + " op deze pagina.</p>" +
         '<nav class="object-tree-links" aria-label="Paginanavigatie">' +
             links.map(function (link) {
-              return '<a class="object-tree-link" href="' + window.AssetPlatformData.escapeHtml(link.href) + '">' +
-                window.AssetPlatformData.escapeHtml(link.label) +
+              return '<a class="object-tree-link" href="' + platformData.escapeHtml(link.href) + '">' +
+                platformData.escapeHtml(link.label) +
               "</a>";
             }).join("") +
         "</nav>";
@@ -261,8 +293,8 @@
     }
 
     return '<figure class="content-visual">' +
-      '<img class="content-visual-image" src="' + window.AssetPlatformData.escapeHtml(item.src) + '" alt="' + window.AssetPlatformData.escapeHtml(item.alt || "") + '">' +
-      (item.caption ? '<figcaption class="content-visual-caption">' + window.AssetPlatformData.escapeHtml(item.caption) + "</figcaption>" : "") +
+      '<img class="content-visual-image" src="' + platformData.escapeHtml(item.src) + '" alt="' + platformData.escapeHtml(item.alt || "") + '">' +
+      (item.caption ? '<figcaption class="content-visual-caption">' + platformData.escapeHtml(item.caption) + "</figcaption>" : "") +
       "</figure>";
   }
 
@@ -300,7 +332,7 @@
     });
 
     function escapeSvg(value) {
-      return window.AssetPlatformData.escapeHtml(value || "");
+      return platformData.escapeHtml(value || "");
     }
 
     function renderNode(node) {
@@ -367,7 +399,7 @@
     }
 
     return '<div class="detail-actions">' +
-      '<button class="button button-secondary" type="button" data-object-reactodia-open="' + window.AssetPlatformData.escapeHtml(map.reactodia.id || "concept-map") + '">' +
+      '<button class="button button-secondary" type="button" data-object-reactodia-open="' + platformData.escapeHtml(map.reactodia.id || "concept-map") + '">' +
         'Open beeldvullende knowledge graph' +
       "</button>" +
     "</div>";
@@ -381,12 +413,12 @@
     return '<div class="example-grid">' + items.map(function (item) {
       var cardInner = "<p class=\"eyebrow\">Voorbeeld</p>" +
         renderVisualization(item.visualization) +
-        "<h4>" + window.AssetPlatformData.escapeHtml(item.title || "") + "</h4>" +
-        "<p>" + window.AssetPlatformData.escapeHtml(item.description || "") + "</p>";
+        "<h4>" + platformData.escapeHtml(item.title || "") + "</h4>" +
+        "<p>" + platformData.escapeHtml(item.description || "") + "</p>";
 
       return '<article class="example-card">' +
         (item.href
-          ? '<a class="example-card-link" href="' + window.AssetPlatformData.escapeHtml(item.href) + '" target="_blank" rel="noreferrer">' + cardInner + "</a>"
+          ? '<a class="example-card-link" href="' + platformData.escapeHtml(item.href) + '" target="_blank" rel="noreferrer">' + cardInner + "</a>"
           : cardInner) +
         '</article>';
     }).join("") + "</div>";
@@ -402,8 +434,8 @@
       var href = typeof item === "string" ? "" : (item.href || "");
 
       return "<li>" + (href
-        ? '<a href="' + window.AssetPlatformData.escapeHtml(href) + '">' + window.AssetPlatformData.escapeHtml(label) + "</a>"
-        : window.AssetPlatformData.escapeHtml(label)) + "</li>";
+        ? '<a href="' + platformData.escapeHtml(href) + '">' + platformData.escapeHtml(label) + "</a>"
+        : platformData.escapeHtml(label)) + "</li>";
     }).join("") + "</ul>";
   }
 
@@ -429,19 +461,19 @@
     if (item.cleanLayout) {
       return parts.map(function (part, index) {
         return '<p class="' + (index === 0 ? "content-section-summary" : "content-section-note") + '">' +
-          window.AssetPlatformData.escapeHtml(part) +
+          platformData.escapeHtml(part) +
         "</p>";
       }).join("");
     }
 
     if (item.compactIntro) {
-      return '<div class="content-section-intro"><p>' + window.AssetPlatformData.escapeHtml(parts[0] || "") + '</p>' +
-        (parts[1] ? '<p>' + window.AssetPlatformData.escapeHtml(parts[1]) + '</p>' : '') +
+      return '<div class="content-section-intro"><p>' + platformData.escapeHtml(parts[0] || "") + '</p>' +
+        (parts[1] ? '<p>' + platformData.escapeHtml(parts[1]) + '</p>' : '') +
         '</div>';
     }
 
-    return '<div class="definition-block"><p>' + window.AssetPlatformData.escapeHtml(parts[0] || "") + "</p></div>" +
-      (parts[1] ? "<p>" + window.AssetPlatformData.escapeHtml(parts[1]) + "</p>" : "");
+    return '<div class="definition-block"><p>' + platformData.escapeHtml(parts[0] || "") + "</p></div>" +
+      (parts[1] ? "<p>" + platformData.escapeHtml(parts[1]) + "</p>" : "");
   }
 
   function renderContentSections(items) {
@@ -452,15 +484,15 @@
     return items.map(function (item) {
       var introBlock = renderSectionText(item);
 
-      return '<section class="content-section-card stack" id="section-' + window.AssetPlatformData.escapeHtml(slugify(item.title || "")) + '">' +
-        "<h3>" + window.AssetPlatformData.escapeHtml(item.title || "") + "</h3>" +
+      return '<section class="content-section-card stack" id="section-' + platformData.escapeHtml(slugify(item.title || "")) + '">' +
+        "<h3>" + platformData.escapeHtml(item.title || "") + "</h3>" +
         introBlock +
         ((item.links && item.links.length)
           ? '<div class="content-section-actions">' +
               '<nav class="section-nav" aria-label="Doorklik vanuit sectie">' +
               item.links.map(function (link) {
-                return '<a href="' + window.AssetPlatformData.escapeHtml(link.href || "#") + '">' +
-                  window.AssetPlatformData.escapeHtml(link.label || "Open detail") +
+                return '<a href="' + platformData.escapeHtml(link.href || "#") + '">' +
+                  platformData.escapeHtml(link.label || "Open detail") +
                 "</a>";
               }).join("") +
               "</nav>" +
@@ -492,11 +524,11 @@
     var data;
     var detail;
 
-    if (!root || !window.AssetPlatformData) {
+    if (!root || !platformData) {
       return;
     }
 
-    data = window.AssetPlatformData.readJsonScript("object-detail-data");
+    data = platformData.readJsonScript("object-detail-data");
     detail = data && data.object ? data.object : null;
 
     if (!detail) {
@@ -512,11 +544,11 @@
     document.getElementById("object-terms").innerHTML = renderTerms(detail.terms);
 
     document.getElementById("object-meta").innerHTML =
-      "<dt>Systeem</dt><dd>" + window.AssetPlatformData.escapeHtml(detail.system || "") + "</dd>" +
-      "<dt>Deelsysteem</dt><dd>" + window.AssetPlatformData.escapeHtml(detail.subsystem || "") + "</dd>" +
-      "<dt>Objecttype</dt><dd>" + window.AssetPlatformData.escapeHtml(detail.objectType || "") + "</dd>" +
-      "<dt>Bronsysteem</dt><dd>" + window.AssetPlatformData.escapeHtml(detail.sourceSystem || "") + "</dd>" +
-      "<dt>URI</dt><dd class=\"u-uri\">" + window.AssetPlatformData.escapeHtml(detail.uri || "") + "</dd>";
+      "<dt>Systeem</dt><dd>" + platformData.escapeHtml(detail.system || "") + "</dd>" +
+      "<dt>Deelsysteem</dt><dd>" + platformData.escapeHtml(detail.subsystem || "") + "</dd>" +
+      "<dt>Objecttype</dt><dd>" + platformData.escapeHtml(detail.objectType || "") + "</dd>" +
+      "<dt>Bronsysteem</dt><dd>" + platformData.escapeHtml(detail.sourceSystem || "") + "</dd>" +
+      "<dt>URI</dt><dd class=\"u-uri\">" + platformData.escapeHtml(detail.uri || "") + "</dd>";
 
     document.getElementById("object-content-sections").innerHTML = renderContentSections(detail.contentSections);
     document.getElementById("object-edg-note").textContent = detail.edgNote || "";
