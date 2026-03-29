@@ -60,13 +60,13 @@
       <article>
         <section class="panel detail-section stack">
           <p class="eyebrow">Concept</p>
-          <h2>Definitie en begripskader</h2>
+          <h2>Definitie</h2>
           <div class="definition-block">
             <p id="object-definition"></p>
           </div>
           <p class="definition-source" id="object-definition-source"></p>
           <div class="stack">
-            <h3>Termen</h3>
+            <h3>Vergelijkbare termen</h3>
             <div id="object-terms"></div>
           </div>
           <div class="callout">
@@ -80,8 +80,7 @@
           <h2>Inhoudelijke opbouw van Watergangsectie</h2>
           <p>
             Deze pagina werkt `Watergangsectie` uit als eigen granulariteitsniveau onder de
-            `Watergang`. Hiermee ontstaat de schakel tussen het lengtebeeld van de watergang en
-            de onderliggende objecten zoals `Talud`, `Bodem`, `Bekledingsconstructie` en `Toplaag`.
+            `Watergang`, met een focus op de onderdelen waaruit een sectie is opgebouwd.
           </p>
           <div id="object-content-sections"></div>
         </section>
@@ -121,7 +120,24 @@
       "dictionaryDefinition": "Een watergangsectie is een afgebakend deel van een watergang waarmee kenmerken, onderhoud en opbouw specifieker beschreven kunnen worden.",
       "definitionSource": "Definitiebron: semantische beheeromgeving conceptdefinitie voor Watergangsectie.",
       "contextNote": "De watergangsectie maakt het mogelijk om een watergang in opeenvolgende delen te beschrijven en vormt de directe ingang naar de compositie van onderliggende objecten. Binnen de kernregistratie wordt de watergangsectie geografisch vastgelegd door middel van de as van de watergang.",
-      "terms": ["Watergangsectie", "Hydro-object", "Sectie", "Profieldeel", "Deeltraject"],
+      "terms": [
+        { "label": "Watergangsectie", "href": "../../woordenboek/pages/watersysteem-watergangen.html#term-watergangsectie" },
+        { "label": "Hydro-object", "href": "../../woordenboek/pages/watersysteem-watergangen.html#term-hydro-object" },
+        { "label": "Sectie", "href": "../../woordenboek/pages/watersysteem-watergangen.html#term-sectie" },
+        { "label": "Profieldeel", "href": "../../woordenboek/pages/watersysteem-watergangen.html#term-profieldeel" },
+        { "label": "Deeltraject", "href": "../../woordenboek/pages/watersysteem-watergangen.html#term-deeltraject" }
+      ],
+      "objectTree": {
+        "label": "Objecttypen",
+        "items": [
+          { "label": "Watergang met taluds", "href": "./watersysteem-watergangsectie-met-taluds.html" },
+          { "label": "Watergang met onderhoudspad", "href": "./watersysteem-watergangsectie-met-onderhoudspad.html" },
+          { "label": "Watergang met beschoeiing", "href": "./watersysteem-watergangsectie-met-beschoeiing.html" },
+          { "label": "Watergang met wandconstructie", "href": "./watersysteem-watergangsectie-met-wandconstructie.html" },
+          { "label": "Watergang met accoladeprofiel", "href": "./watersysteem-watergangsectie-met-accoladeprofiel.html" },
+          { "label": "Vrij meanderende watergang", "href": "./watersysteem-watergangsectie-vrij-meanderend.html" }
+        ]
+      },
       "system": "Watersysteem",
       "subsystem": "Stroomgebied",
       "objectType": "Watergangsectie",
@@ -192,13 +208,11 @@
           "conceptMap": {
             "reactodia": {
               "id": "decompositie-watergangsectie",
-              "selectedId": "watergang"
+              "selectedId": "watergangsectie"
             },
-            "ariaLabel": "Conceptmap van de decompositie van watergang naar secties en onderliggende objecten",
+            "ariaLabel": "Decompositie van Watergangsectie in de onderliggende onderdelen",
             "nodes": [
-              { "id": "watergang", "label": "Watergang", "subtitle": "Hoofdobject", "column": 2, "row": 0, "fill": "#e4f7fa", "stroke": "#00a9c1" },
-              { "id": "watergangsectie", "label": "Watergangsectie", "subtitle": "Deelobject", "column": 1, "row": 1, "fill": "#eefafb", "stroke": "#00a9c1" },
-              { "id": "intersectie", "label": "Intersectie", "subtitle": "Deelobject", "column": 3, "row": 1, "fill": "#eefafb", "stroke": "#00a9c1" },
+              { "id": "watergangsectie", "label": "Watergangsectie", "subtitle": "Object", "column": 2, "row": 0, "fill": "#e4f7fa", "stroke": "#00a9c1" },
               { "id": "talud", "label": "Talud", "subtitle": "Onderdeel", "column": 0, "row": 2, "fill": "#f3fbfd", "stroke": "#6db8c4" },
               { "id": "bodem", "label": "Bodem", "subtitle": "Onderdeel", "column": 1, "row": 2, "fill": "#f3fbfd", "stroke": "#6db8c4" },
               { "id": "beschoeiing", "label": "Beschoeiing", "subtitle": "Onderdeel", "column": 2, "row": 2, "fill": "#f3fbfd", "stroke": "#6db8c4" },
@@ -210,23 +224,16 @@
               { "id": "uitvullaag", "label": "Uitvullaag", "subtitle": "Laag", "column": 3, "row": 4, "fill": "#fcf8ef", "stroke": "#c39d51" }
             ],
             "edges": [
-              { "from": "watergang", "to": "watergangsectie", "label": "bestaat uit" },
-              { "from": "watergang", "to": "intersectie", "label": "bestaat uit" },
               { "from": "watergangsectie", "to": "talud", "label": "bestaat uit" },
               { "from": "watergangsectie", "to": "bodem", "label": "bestaat uit" },
               { "from": "watergangsectie", "to": "beschoeiing", "label": "bestaat uit" },
               { "from": "watergangsectie", "to": "werkpad", "label": "bestaat uit" },
               { "from": "watergangsectie", "to": "maaiveld", "label": "bestaat uit" },
-              { "from": "intersectie", "to": "talud", "label": "bestaat uit" },
-              { "from": "intersectie", "to": "bodem", "label": "bestaat uit" },
-              { "from": "intersectie", "to": "beschoeiing", "label": "bestaat uit" },
-              { "from": "intersectie", "to": "werkpad", "label": "bestaat uit" },
-              { "from": "intersectie", "to": "maaiveld", "label": "bestaat uit" },
-              { "from": "talud", "to": "bekledingsconstructie", "label": "kan bestaan uit" },
-              { "from": "bodem", "to": "bekledingsconstructie", "label": "kan bestaan uit" },
-              { "from": "beschoeiing", "to": "bekledingsconstructie", "label": "kan bestaan uit" },
-              { "from": "werkpad", "to": "bekledingsconstructie", "label": "kan bestaan uit" },
-              { "from": "maaiveld", "to": "bekledingsconstructie", "label": "kan bestaan uit" },
+              { "from": "talud", "to": "bekledingsconstructie", "label": "bestaat uit" },
+              { "from": "bodem", "to": "bekledingsconstructie", "label": "bestaat uit" },
+              { "from": "beschoeiing", "to": "bekledingsconstructie", "label": "bestaat uit" },
+              { "from": "werkpad", "to": "bekledingsconstructie", "label": "bestaat uit" },
+              { "from": "maaiveld", "to": "bekledingsconstructie", "label": "bestaat uit" },
               { "from": "bekledingsconstructie", "to": "toplaag", "label": "bestaat uit" },
               { "from": "bekledingsconstructie", "to": "filterlaag", "label": "bestaat uit" },
               { "from": "bekledingsconstructie", "to": "uitvullaag", "label": "bestaat uit" }
@@ -285,8 +292,8 @@
       <div class="detail-header">
         <div>
           <p class="eyebrow">Reactodia</p>
-          <h2 data-object-reactodia-title>Beeldvullende knowledge graph</h2>
-          <p class="lead" data-object-reactodia-description>De objectrelaties uit deze sectie worden hier als interactieve workspace geladen.</p>
+          <h2 data-object-reactodia-title>Beeldvullende decompositie</h2>
+          <p class="lead" data-object-reactodia-description>De onderdelen uit deze sectie worden hier als interactieve workspace geladen.</p>
         </div>
         <div class="detail-actions">
           <span class="tag" data-object-reactodia-selected>Geen selectie</span>

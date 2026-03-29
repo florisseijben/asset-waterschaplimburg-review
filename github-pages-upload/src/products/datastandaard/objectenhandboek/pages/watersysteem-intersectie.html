@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="nl">
 <head>
   <meta charset="utf-8">
@@ -60,13 +60,13 @@
       <article>
         <section class="panel detail-section stack">
           <p class="eyebrow">Concept</p>
-          <h2>Definitie en begripskader</h2>
+          <h2>Definitie</h2>
           <div class="definition-block">
             <p id="object-definition"></p>
           </div>
           <p class="definition-source" id="object-definition-source"></p>
           <div class="stack">
-            <h3>Termen</h3>
+            <h3>Vergelijkbare termen</h3>
             <div id="object-terms"></div>
           </div>
           <div class="callout">
@@ -79,9 +79,8 @@
           <p class="eyebrow">Uitwerking</p>
           <h2>Inhoudelijke opbouw van Intersectie</h2>
           <p>
-            Deze pagina werkt `Intersectie` uit als eigen objectpagina naast `Watergangsectie`.
-            Daarmee kunnen kruisingen apart worden beschreven binnen dezelfde templatefamilie als
-            de andere objecten in de waterganglijn.
+            Deze pagina werkt `Intersectie` uit als eigen objectpagina naast `Watergangsectie`,
+            met een focus op de onderdelen waaruit een kruising is opgebouwd.
           </p>
           <div id="object-content-sections"></div>
         </section>
@@ -121,7 +120,20 @@
       "dictionaryDefinition": "Een intersectie is een kruising binnen de watergangstructuur en ligt als object op hetzelfde niveau als een watergangsectie.",
       "definitionSource": "Definitiebron: semantische beheeromgeving conceptdefinitie voor Intersectie.",
       "contextNote": "Binnen deze templatefamilie is de intersectie expliciet bedoeld voor kruisingen. Het object ligt op hetzelfde niveau als een watergangsectie, maar beschrijft een ander type onderdeel van de watergang.",
-      "terms": ["Intersectie", "Kruising", "Kruispunt", "Snijpunt"],
+      "terms": [
+        { "label": "Intersectie", "href": "../../woordenboek/pages/watersysteem-watergangen.html#term-intersectie" },
+        { "label": "Kruising", "href": "../../woordenboek/pages/watersysteem-watergangen.html#term-kruising" },
+        { "label": "Kruispunt", "href": "../../woordenboek/pages/watersysteem-watergangen.html#term-kruispunt" },
+        { "label": "Snijpunt", "href": "../../woordenboek/pages/watersysteem-watergangen.html#term-snijpunt" }
+      ],
+      "objectTree": {
+        "label": "Objecttypen",
+        "items": [
+          { "label": "Watergang - Watergang", "href": "./watersysteem-intersectie-watergang-watergang.html" },
+          { "label": "Watergang - Weg", "href": "./watersysteem-intersectie-watergang-weg.html" },
+          { "label": "Watergang - Waterkering", "href": "./watersysteem-intersectie-watergang-waterkering.html" }
+        ]
+      },
       "system": "Watersysteem",
       "subsystem": "Stroomgebied",
       "objectType": "Intersectie",
@@ -133,6 +145,7 @@
           "title": "3D visualisatie",
           "definition": "De 3D visualisatie toont de intersectie als ruimtelijk kruispunt binnen de watergangstructuur.",
           "body": "Hier wordt zichtbaar hoe de kruising zich in de ruimte gedraagt en hoe de intersectie zich verhoudt tot de aangrenzende delen van de watergang.",
+          "compactIntro": true,
           "visualization": {
             "src": "../../../../platform/assets/illustrations/shared/node-3d.svg",
             "alt": "3D visualisatie van een intersectie als ruimtelijke kruising binnen de watergang.",
@@ -153,6 +166,7 @@
           "title": "Dwarsprofiel",
           "definition": "Het dwarsprofiel laat zien hoe de intersectie in doorsnede gelezen kan worden.",
           "body": "Ook bij een kruising kunnen profiellijnen en profielvlakken nodig zijn om de vorm en de constructieve betekenis van het object te begrijpen.",
+          "compactIntro": true,
           "visualization": {
             "src": "../../../../platform/assets/illustrations/shared/node-crosssection.svg",
             "alt": "Dwarsprofiel van een intersectie.",
@@ -173,6 +187,7 @@
           "title": "Bovenaanzicht",
           "definition": "Het bovenaanzicht maakt de kruising in plan zichtbaar.",
           "body": "Op dit niveau is goed te tonen hoe een intersectie zich onderscheidt van een reguliere watergangsectie en waar het kruispunt precies ligt in de watergang.",
+          "compactIntro": true,
           "visualization": {
             "src": "../../../../platform/assets/illustrations/shared/node-plan.svg",
             "alt": "Bovenaanzicht van een intersectie tussen lijnvormige delen.",
@@ -191,12 +206,34 @@
         },
         {
           "title": "Decompositie",
-          "definition": "De decompositie laat zien uit welke onderdelen of beschrijfbare elementen een intersectie bestaat.",
-          "body": "Voor intersecties ligt de nadruk niet op een lange lijnopbouw zoals bij secties, maar op de ontleding van het kruispunt zelf en de betekenis ervan binnen de watergangstructuur.",
-          "visualization": {
-            "src": "../../../../platform/assets/illustrations/shared/node-decomposition.svg",
-            "alt": "Decompositie van een intersectie in beschrijfbare onderdelen.",
-            "caption": "De intersectie kan als zelfstandig object worden ontleed in een kern en aansluitende delen."
+          "definition": "De decompositie laat zien hoe de intersectie uiteenvalt in kruising, aansluitingen en omliggende delen.",
+          "body": "Voor intersecties ligt de nadruk niet op een lang profiel zoals bij secties, maar op de opbouw van de kruising zelf en de relatie met de aangrenzende objecten.",
+          "compactIntro": true,
+          "conceptMap": {
+            "reactodia": {
+              "id": "decompositie-intersectie",
+              "selectedId": "intersectie"
+            },
+            "ariaLabel": "Decompositie van Intersectie in de onderliggende onderdelen",
+            "nodes": [
+              { "id": "intersectie", "label": "Intersectie", "subtitle": "Object", "column": 2, "row": 0, "fill": "#e4f7fa", "stroke": "#00a9c1" },
+              { "id": "kruisingsvlak", "label": "Kruisingsvlak", "subtitle": "Onderdeel", "column": 2, "row": 2, "fill": "#f3fbfd", "stroke": "#6db8c4" },
+              { "id": "aansluiting-a", "label": "Aansluiting A", "subtitle": "Onderdeel", "column": 0, "row": 2, "fill": "#f3fbfd", "stroke": "#6db8c4" },
+              { "id": "aansluiting-b", "label": "Aansluiting B", "subtitle": "Onderdeel", "column": 1, "row": 2, "fill": "#f3fbfd", "stroke": "#6db8c4" },
+              { "id": "aansluiting-c", "label": "Aansluiting C", "subtitle": "Onderdeel", "column": 3, "row": 2, "fill": "#f3fbfd", "stroke": "#6db8c4" },
+              { "id": "omliggend-profiel", "label": "Omliggend profiel", "subtitle": "Onderdeel", "column": 4, "row": 2, "fill": "#f3fbfd", "stroke": "#6db8c4" },
+              { "id": "constructieve-laag", "label": "Constructieve laag", "subtitle": "Constructie", "column": 1, "row": 4, "fill": "#f6fbf7", "stroke": "#6ea083" },
+              { "id": "functionele-zone", "label": "Functionele zone", "subtitle": "Zone", "column": 3, "row": 4, "fill": "#fcf8ef", "stroke": "#c39d51" }
+            ],
+            "edges": [
+              { "from": "intersectie", "to": "kruisingsvlak", "label": "bestaat uit" },
+              { "from": "intersectie", "to": "aansluiting-a", "label": "bestaat uit" },
+              { "from": "intersectie", "to": "aansluiting-b", "label": "bestaat uit" },
+              { "from": "intersectie", "to": "aansluiting-c", "label": "bestaat uit" },
+              { "from": "intersectie", "to": "omliggend-profiel", "label": "bestaat uit" },
+              { "from": "kruisingsvlak", "to": "constructieve-laag", "label": "bestaat uit" },
+              { "from": "kruisingsvlak", "to": "functionele-zone", "label": "bestaat uit" }
+            ]
           },
           "examples": [
             {
@@ -213,6 +250,7 @@
           "title": "Verwijzing",
           "definition": "De intersectie verwijst net als andere objectpagina's naar aanpalende producten.",
           "body": "De begripsdefinitie uit het Woordenboek is het startpunt. Daarna kunnen OTL, referentiedata en werkinstructies de intersectie verder inhoudelijk ondersteunen.",
+          "compactIntro": true,
           "visualization": {
             "src": "../../../../platform/assets/illustrations/shared/node-references.svg",
             "alt": "Schema van productverwijzingen vanaf de pagina van een intersectie.",
@@ -233,13 +271,27 @@
     }
   }
   </script>
+  <div class="otl-overlay" data-object-reactodia-overlay hidden>
+    <div class="otl-overlay-dialog">
+      <div class="detail-header">
+        <div>
+          <p class="eyebrow">Reactodia</p>
+          <h2 data-object-reactodia-title>Beeldvullende decompositie</h2>
+          <p class="lead" data-object-reactodia-description>De onderdelen uit deze sectie worden hier als interactieve workspace geladen.</p>
+        </div>
+        <div class="detail-actions">
+          <span class="tag" data-object-reactodia-selected>Geen selectie</span>
+          <button class="button button-secondary" type="button" data-object-reactodia-close>Sluiten</button>
+        </div>
+      </div>
+      <div class="otl-reactodia-stage" data-object-reactodia-stage>
+        <div class="otl-graph-status" data-object-reactodia-status>Reactodia wordt geladen.</div>
+      </div>
+    </div>
+  </div>
   <script src="../../../../platform/assets/js/app.js"></script>
   <script src="../../../../platform/assets/js/data-inline.js"></script>
   <script src="../../../../platform/assets/js/object-detail.js"></script>
+  <script type="module" src="../../../../platform/assets/js/object-detail-reactodia.js"></script>
 </body>
 </html>
-
-
-
-
-

@@ -8,6 +8,144 @@
       .replace(/^-+|-+$/g, "");
   }
 
+  function getDefaultObjectTypeTree(detail) {
+    var pathname = (window.location && window.location.pathname || "").toLowerCase();
+    var system = (detail && detail.system || "").toLowerCase();
+    var objectType = (detail && detail.objectType || detail && detail.label || "").toLowerCase();
+    var items = [];
+
+    if (system === "watersysteem") {
+      if (pathname.indexOf("watersysteem-watergang") !== -1 || pathname.indexOf("watersysteem-intersectie") !== -1) {
+        items = [
+          { label: "Watergang", href: "./watersysteem-watergangen.html", current: objectType === "watergang" },
+          { label: "Watergangsectie", href: "./watersysteem-watergangsectie.html", current: objectType === "watergangsectie" },
+          { label: "Intersectie", href: "./watersysteem-intersectie.html", current: objectType === "intersectie" }
+        ];
+        return { label: "Objecttypen", items: items };
+      }
+
+      if (pathname.indexOf("watersysteem-watervlakt") !== -1) {
+        return { label: "Objecttypen", items: [
+          { label: "Watervlakte", href: "./watersysteem-watervlakten.html", current: true }
+        ] };
+      }
+
+      if (pathname.indexOf("watersysteem-waterbuffer") !== -1) {
+        return { label: "Objecttypen", items: [
+          { label: "Waterbuffer", href: "./watersysteem-waterbuffers.html", current: true }
+        ] };
+      }
+
+      if (pathname.indexOf("watersysteem-kunstwerk") !== -1) {
+        return { label: "Objecttypen", items: [
+          { label: "Kunstwerk", href: "./watersysteem-kunstwerken.html", current: true }
+        ] };
+      }
+
+      if (pathname.indexOf("watersysteem-terreininrichting") !== -1) {
+        return { label: "Objecttypen", items: [
+          { label: "Terreininrichting", href: "./watersysteem-terreininrichting.html", current: true }
+        ] };
+      }
+
+      if (pathname.indexOf("watersysteem-vegetatieobject") !== -1) {
+        return { label: "Objecttypen", items: [
+          { label: "Vegetatieobject", href: "./watersysteem-vegetatieobjecten.html", current: true }
+        ] };
+      }
+
+      if (pathname.indexOf("watersysteem-terrein") !== -1) {
+        return { label: "Objecttypen", items: [
+          { label: "Terrein", href: "./watersysteem-terreinen.html", current: true }
+        ] };
+      }
+    }
+
+    if (system === "afvalwaterketen") {
+      if (pathname.indexOf("afvalwaterketen-transportleiding") !== -1 || pathname.indexOf("afvalwaterketen-knooppunt") !== -1) {
+        items = [
+          { label: "Transportleiding", href: "./afvalwaterketen-transportleidingen.html", current: objectType === "transportleiding" },
+          { label: "Transportleidingsectie", href: "./afvalwaterketen-transportleidingsectie.html", current: objectType === "transportleidingsectie" },
+          { label: "Knooppunt", href: "./afvalwaterketen-knooppunt.html", current: objectType === "knooppunt" }
+        ];
+        return { label: "Objecttypen", items: items };
+      }
+
+      if (pathname.indexOf("afvalwaterketen-rioolgemaal") !== -1) {
+        return { label: "Objecttypen", items: [
+          { label: "Rioolgemaal", href: "./afvalwaterketen-rioolgemalen.html", current: true }
+        ] };
+      }
+
+      if (pathname.indexOf("afvalwaterketen-rwzi") !== -1) {
+        return { label: "Objecttypen", items: [
+          { label: "RWZI", href: "./afvalwaterketen-rwzis.html", current: true }
+        ] };
+      }
+
+      if (pathname.indexOf("afvalwaterketen-terreininrichting") !== -1) {
+        return { label: "Objecttypen", items: [
+          { label: "Terreininrichting", href: "./afvalwaterketen-terreininrichting.html", current: true }
+        ] };
+      }
+
+      if (pathname.indexOf("afvalwaterketen-vegetatieobject") !== -1) {
+        return { label: "Objecttypen", items: [
+          { label: "Vegetatieobject", href: "./afvalwaterketen-vegetatieobjecten.html", current: true }
+        ] };
+      }
+
+      if (pathname.indexOf("afvalwaterketen-terrein") !== -1) {
+        return { label: "Objecttypen", items: [
+          { label: "Terrein", href: "./afvalwaterketen-terreinen.html", current: true }
+        ] };
+      }
+    }
+
+    if (system === "waterkeringensysteem") {
+      if (pathname.indexOf("waterkeringensysteem-waterkering") !== -1 || pathname.indexOf("waterkeringensysteem-intersectie") !== -1) {
+        items = [
+          { label: "Waterkering", href: "./waterkeringensysteem-waterkeringen.html", current: objectType === "waterkering" },
+          { label: "Waterkeringsectie", href: "./waterkeringensysteem-waterkeringsectie.html", current: objectType === "waterkeringsectie" },
+          { label: "Intersectie", href: "./waterkeringensysteem-intersectie.html", current: objectType === "intersectie" }
+        ];
+        return { label: "Objecttypen", items: items };
+      }
+
+      if (pathname.indexOf("waterkeringensysteem-construct") !== -1) {
+        return { label: "Objecttypen", items: [
+          { label: "Constructie", href: "./waterkeringensysteem-constructies.html", current: true }
+        ] };
+      }
+
+      if (pathname.indexOf("waterkeringensysteem-groenobject") !== -1) {
+        return { label: "Objecttypen", items: [
+          { label: "Groenobject", href: "./waterkeringensysteem-groenobjecten.html", current: true }
+        ] };
+      }
+
+      if (pathname.indexOf("waterkeringensysteem-kunstwerk") !== -1) {
+        return { label: "Objecttypen", items: [
+          { label: "Kunstwerk", href: "./waterkeringensysteem-kunstwerken.html", current: true }
+        ] };
+      }
+
+      if (pathname.indexOf("waterkeringensysteem-terreininrichting") !== -1) {
+        return { label: "Objecttypen", items: [
+          { label: "Terreininrichting", href: "./waterkeringensysteem-terreininrichting.html", current: true }
+        ] };
+      }
+
+      if (pathname.indexOf("waterkeringensysteem-terrein") !== -1) {
+        return { label: "Objecttypen", items: [
+          { label: "Terrein", href: "./waterkeringensysteem-terreinen.html", current: true }
+        ] };
+      }
+    }
+
+    return null;
+  }
+
   function renderObjectTree(root, detail) {
     var layout;
     var article;
@@ -16,6 +154,8 @@
     var contentSections;
     var links;
     var nav;
+    var treeConfig;
+    var treeItemsMarkup;
 
     if (!root || !window.AssetPlatformData) {
       return;
@@ -60,25 +200,57 @@
     }
 
     links = links.concat(contentSections);
+    treeConfig = detail.objectTree || getDefaultObjectTypeTree(detail);
 
     layout.classList.add("detail-layout-with-nav");
-    nav = document.createElement("aside");
-    nav.className = "panel detail-section stack object-tree-panel";
-    nav.setAttribute("aria-label", "Objectenboom");
-    nav.innerHTML =
-      '<p class="eyebrow">Navigatie</p>' +
-      "<h2>Objectenboom</h2>" +
-      '<p class="object-tree-note">Ga direct naar de onderdelen van ' + window.AssetPlatformData.escapeHtml(detail.label || "dit object") + " op deze pagina.</p>" +
-      '<details class="object-tree-group" open>' +
-        "<summary>" + window.AssetPlatformData.escapeHtml(detail.label || "Object") + "</summary>" +
-        '<div class="object-tree-links">' +
-          links.map(function (link) {
-            return '<a class="object-tree-link" href="' + window.AssetPlatformData.escapeHtml(link.href) + '">' +
-              window.AssetPlatformData.escapeHtml(link.label) +
-            "</a>";
-          }).join("") +
-        "</div>" +
-      "</details>";
+
+    if (treeConfig && treeConfig.items && treeConfig.items.length) {
+      treeItemsMarkup = treeConfig.items.map(function (item) {
+        return '<a class="object-tree-link" href="' + window.AssetPlatformData.escapeHtml(item.href || "#") + '"' +
+          (item.current ? ' aria-current="page"' : "") +
+          ">" + window.AssetPlatformData.escapeHtml(item.label || "") + "</a>";
+      }).join("");
+
+      nav = document.createElement("aside");
+      nav.className = "stack object-tree-panel";
+      nav.setAttribute("aria-label", "Objectenboom en paginanavigatie");
+      nav.innerHTML =
+        '<section class="panel detail-section stack">' +
+          '<p class="eyebrow">Structuur</p>' +
+          "<h2>Objecttypen</h2>" +
+          '<details class="object-tree-group" open>' +
+            "<summary>" + window.AssetPlatformData.escapeHtml(treeConfig.label || detail.label || "Object") + "</summary>" +
+            '<div class="object-tree-links">' + treeItemsMarkup + "</div>" +
+          "</details>" +
+        "</section>" +
+        '<section class="panel detail-section stack">' +
+          '<p class="eyebrow">Navigatie</p>' +
+          "<h2>Paginanavigatie</h2>" +
+          '<p class="object-tree-note">Ga direct naar de onderdelen van ' + window.AssetPlatformData.escapeHtml(detail.label || "dit object") + " op deze pagina.</p>" +
+          '<nav class="object-tree-links" aria-label="Paginanavigatie">' +
+              links.map(function (link) {
+                return '<a class="object-tree-link" href="' + window.AssetPlatformData.escapeHtml(link.href) + '">' +
+                  window.AssetPlatformData.escapeHtml(link.label) +
+                "</a>";
+              }).join("") +
+          "</nav>" +
+        "</section>";
+    } else {
+      nav = document.createElement("aside");
+      nav.className = "panel detail-section stack object-tree-panel";
+      nav.setAttribute("aria-label", "Paginanavigatie");
+      nav.innerHTML =
+        '<p class="eyebrow">Navigatie</p>' +
+        "<h2>Paginanavigatie</h2>" +
+        '<p class="object-tree-note">Ga direct naar de onderdelen van ' + window.AssetPlatformData.escapeHtml(detail.label || "dit object") + " op deze pagina.</p>" +
+        '<nav class="object-tree-links" aria-label="Paginanavigatie">' +
+            links.map(function (link) {
+              return '<a class="object-tree-link" href="' + window.AssetPlatformData.escapeHtml(link.href) + '">' +
+                window.AssetPlatformData.escapeHtml(link.label) +
+              "</a>";
+            }).join("") +
+        "</nav>";
+    }
 
     article.insertAdjacentElement("beforebegin", nav);
   }
@@ -203,7 +375,7 @@
 
   function renderExamples(items) {
     if (!items || !items.length) {
-      return '<div class="empty-state">Nog geen visuele voorbeelden beschikbaar.</div>';
+      return "";
     }
 
     return '<div class="example-grid">' + items.map(function (item) {
@@ -226,8 +398,50 @@
     }
 
     return '<ul class="term-list">' + items.map(function (item) {
-      return "<li>" + window.AssetPlatformData.escapeHtml(item) + "</li>";
+      var label = typeof item === "string" ? item : (item.label || "");
+      var href = typeof item === "string" ? "" : (item.href || "");
+
+      return "<li>" + (href
+        ? '<a href="' + window.AssetPlatformData.escapeHtml(href) + '">' + window.AssetPlatformData.escapeHtml(label) + "</a>"
+        : window.AssetPlatformData.escapeHtml(label)) + "</li>";
     }).join("") + "</ul>";
+  }
+
+  function renderSectionText(item) {
+    var parts = [];
+
+    if (item.summary) {
+      parts.push(item.summary);
+    } else {
+      if (item.definition) {
+        parts.push(item.definition);
+      }
+
+      if (item.body) {
+        parts.push(item.body);
+      }
+    }
+
+    if (!parts.length) {
+      return "";
+    }
+
+    if (item.cleanLayout) {
+      return parts.map(function (part, index) {
+        return '<p class="' + (index === 0 ? "content-section-summary" : "content-section-note") + '">' +
+          window.AssetPlatformData.escapeHtml(part) +
+        "</p>";
+      }).join("");
+    }
+
+    if (item.compactIntro) {
+      return '<div class="content-section-intro"><p>' + window.AssetPlatformData.escapeHtml(parts[0] || "") + '</p>' +
+        (parts[1] ? '<p>' + window.AssetPlatformData.escapeHtml(parts[1]) + '</p>' : '') +
+        '</div>';
+    }
+
+    return '<div class="definition-block"><p>' + window.AssetPlatformData.escapeHtml(parts[0] || "") + "</p></div>" +
+      (parts[1] ? "<p>" + window.AssetPlatformData.escapeHtml(parts[1]) + "</p>" : "");
   }
 
   function renderContentSections(items) {
@@ -236,17 +450,10 @@
     }
 
     return items.map(function (item) {
-      var introBlock = item.compactIntro
-        ? '<div class="content-section-intro"><p>' + window.AssetPlatformData.escapeHtml(item.definition || "") + '</p>' +
-          (item.body ? '<p>' + window.AssetPlatformData.escapeHtml(item.body) + '</p>' : '') +
-          '</div>'
-        : '<div class="definition-block"><p>' + window.AssetPlatformData.escapeHtml(item.definition || "") + "</p></div>" +
-          (item.body ? "<p>" + window.AssetPlatformData.escapeHtml(item.body) + "</p>" : "");
+      var introBlock = renderSectionText(item);
 
       return '<section class="content-section-card stack" id="section-' + window.AssetPlatformData.escapeHtml(slugify(item.title || "")) + '">' +
-        "<div>" +
-          "<h3>" + window.AssetPlatformData.escapeHtml(item.title || "") + "</h3>" +
-        "</div>" +
+        "<h3>" + window.AssetPlatformData.escapeHtml(item.title || "") + "</h3>" +
         introBlock +
         ((item.links && item.links.length)
           ? '<div class="content-section-actions">' +

@@ -676,31 +676,44 @@
 .hierarchy-path {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-2);
+  gap: 0.25rem;
   padding: 0;
   margin: 0;
   list-style: none;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: rgba(16, 35, 33, 0.64);
 }
 
 .hierarchy-path li {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-2);
+  gap: 0.4rem;
+  min-width: 0;
 }
 
 .hierarchy-path li:not(:last-child)::after {
-  content: ">";
-  color: var(--color-muted);
+  content: "\203A";
+  color: rgba(16, 35, 33, 0.32);
+  font-size: 0.9rem;
 }
 
 .hierarchy-chip {
   display: inline-flex;
   align-items: center;
-  padding: 0.4rem 0.7rem;
-  border-radius: 0;
-  background: #fff;
-  border: 1px solid var(--color-line);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  line-height: 1.4;
   font-weight: 500;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.hierarchy-path li:last-child .hierarchy-chip {
+  color: var(--color-accent-strong);
+  font-weight: 600;
 }
 
 .tree-list {
@@ -1007,6 +1020,10 @@
   display: grid;
   gap: var(--space-2);
   margin-top: var(--space-2);
+}
+
+.object-tree-links,
+.object-tree-children {
   padding-left: var(--space-2);
 }
 
@@ -1055,6 +1072,23 @@
 
 .content-section-intro p + p {
   margin-top: var(--space-3);
+}
+
+.content-section-summary,
+.content-section-note {
+  margin: 0;
+  color: var(--color-text);
+}
+
+.content-section-summary {
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.content-section-note {
+  color: var(--color-muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
 }
 
 .content-section-actions {
@@ -1159,6 +1193,50 @@
   background: var(--color-panel);
   border: 1px solid var(--color-line);
   font-weight: 500;
+}
+
+.term-list a {
+  color: var(--color-brand-dark);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.term-list a:hover {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
+.subtype-clean-list {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.subtype-clean-item {
+  display: grid;
+  gap: 0.2rem;
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.subtype-clean-item:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.subtype-clean-link {
+  color: var(--color-brand-dark);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.subtype-clean-link:hover {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
+.subtype-clean-description {
+  margin: 0;
+  color: var(--color-text);
 }
 
 .otl-layout {
