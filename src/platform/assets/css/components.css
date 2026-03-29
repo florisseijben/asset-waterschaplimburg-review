@@ -1704,6 +1704,16 @@
     line-height: 1.5;
   }
 
+  [data-object-detail] #object-status,
+  [data-object-detail] .definition-source,
+  [data-object-detail] .example-grid {
+    display: none;
+  }
+
+  [data-object-detail] article > .detail-section:nth-of-type(2) > h2 + p {
+    display: none;
+  }
+
   [data-object-detail] .detail-header {
     align-items: flex-start;
   }
@@ -1716,7 +1726,20 @@
   }
 
   [data-object-detail] .term-list li {
-    padding: 0.45rem 0.6rem;
+    width: 100%;
+    padding: 0.2rem 0;
+    border: 0;
+    background: transparent;
+  }
+
+  [data-object-detail] .term-list a,
+  [data-object-detail] .subtype-clean-link {
+    font-weight: 600;
+  }
+
+  [data-object-detail] .subtype-clean-item {
+    gap: 0.35rem;
+    padding-bottom: var(--space-2);
   }
 
   [data-object-detail] .content-visual-caption {
