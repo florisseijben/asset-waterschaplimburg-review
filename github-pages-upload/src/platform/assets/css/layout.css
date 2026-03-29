@@ -117,6 +117,10 @@
 }
 
 @media (max-width: 52rem) {
+  .shell {
+    width: min(var(--container), calc(100% - 1.5rem));
+  }
+
   .feature-grid {
     grid-template-columns: 1fr;
   }
@@ -127,5 +131,17 @@
 
   .detail-layout-with-nav {
     grid-template-columns: 1fr;
+  }
+
+  .detail-layout-with-nav > article {
+    order: 1;
+  }
+
+  .detail-layout-with-nav > aside:first-child {
+    display: none;
+  }
+
+  .detail-layout-with-nav > aside:last-child {
+    order: 2;
   }
 }

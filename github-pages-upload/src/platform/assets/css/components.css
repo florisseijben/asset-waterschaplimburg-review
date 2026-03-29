@@ -1513,10 +1513,121 @@
 }
 
 @media (max-width: 42rem) {
+  .site-header,
+  .hero,
+  .panel,
+  .card,
+  .site-footer {
+    padding: var(--space-4);
+  }
+
+  .site-header-bar {
+    align-items: flex-start;
+  }
+
+  .site-header-bar strong {
+    width: min(100%, 14rem);
+    min-height: 3rem;
+  }
+
+  .site-header-bar strong::before {
+    height: 3rem;
+  }
+
+  .primary-nav {
+    width: 100%;
+    gap: var(--space-3);
+  }
+
+  .primary-nav a {
+    font-size: 0.95rem;
+  }
+
+  .breadcrumb {
+    display: none;
+  }
+
+  .hierarchy-path {
+    display: none;
+  }
+
+  .detail-actions {
+    gap: var(--space-2);
+  }
+
+  .detail-actions .button {
+    width: 100%;
+  }
+
+  .meta-list {
+    grid-template-columns: 1fr;
+    gap: var(--space-1);
+  }
+
+  .meta-list dd {
+    margin-bottom: var(--space-2);
+  }
+
+  .term-list {
+    gap: var(--space-1);
+  }
+
+  .term-list li {
+    width: 100%;
+  }
+
+  .section-nav a,
+  .object-tree-link {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .concept-map-graph {
+    min-width: 48rem;
+  }
+
+  .otl-overlay {
+    padding: 0.75rem;
+  }
+
+  .otl-overlay-dialog {
+    height: calc(100vh - 1.5rem);
+    padding: var(--space-4);
+    gap: var(--space-4);
+  }
+
+  .otl-graph,
+  .otl-graph-status,
+  .otl-reactodia-workspace,
+  .otl-graph > div,
+  .otl-fallback-graph {
+    height: 20rem;
+    min-height: 20rem;
+  }
+
   .system-grid,
   .category-grid,
   .system-choice-grid,
   .product-card-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 52rem) {
+  .detail-layout-with-nav > aside:first-child {
+    display: none;
+  }
+
+  .detail-layout-with-nav > aside:last-child .detail-section:last-child {
+    display: none;
+  }
+
+  .object-tree-panel,
+  .object-tree-note {
+    display: none;
+  }
+
+  .concept-map-graph {
+    min-width: 64rem;
   }
 }
