@@ -1540,6 +1540,10 @@
     align-items: flex-start;
   }
 
+  .site-header-bar nav {
+    width: 100%;
+  }
+
   .site-header-bar strong {
     width: min(100%, 14rem);
     min-height: 3rem;
@@ -1551,11 +1555,23 @@
 
   .primary-nav {
     width: 100%;
-    gap: var(--space-3);
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.2rem var(--space-3);
+    padding-top: var(--space-2);
+    border-top: 1px solid rgba(0, 169, 193, 0.12);
+  }
+
+  .primary-nav li {
+    min-width: 0;
   }
 
   .primary-nav a {
+    display: block;
+    width: 100%;
+    padding: 0.45rem 0;
     font-size: 0.95rem;
+    line-height: 1.35;
   }
 
   .breadcrumb {
@@ -1648,6 +1664,64 @@
 
   .desktop-preferred {
     display: none;
+  }
+
+  [data-object-detail] .hero,
+  [data-object-detail] .panel,
+  [data-object-detail] .content-section-card,
+  [data-object-detail] .definition-block,
+  [data-object-detail] .callout {
+    padding: var(--space-4);
+  }
+
+  [data-object-detail] .detail-layout,
+  [data-object-detail] .detail-layout > *,
+  [data-object-detail] .detail-layout .panel,
+  [data-object-detail] .content-section-card,
+  [data-object-detail] .definition-block,
+  [data-object-detail] .callout,
+  [data-object-detail] .content-visual,
+  [data-object-detail] .content-visual-image {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  [data-object-detail] .detail-section,
+  [data-object-detail] .content-section-card {
+    overflow: hidden;
+  }
+
+  [data-object-detail] .lead,
+  [data-object-detail] .content-section-summary {
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+
+  [data-object-detail] .content-section-note,
+  [data-object-detail] .definition-source,
+  [data-object-detail] .subtype-clean-description {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  [data-object-detail] .detail-header {
+    align-items: flex-start;
+  }
+
+  [data-object-detail] .button,
+  [data-object-detail] .subtype-clean-link,
+  [data-object-detail] .term-list a {
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  [data-object-detail] .term-list li {
+    padding: 0.45rem 0.6rem;
+  }
+
+  [data-object-detail] .content-visual-caption {
+    font-size: 0.88rem;
+    line-height: 1.45;
   }
 
   .concept-map-graph {

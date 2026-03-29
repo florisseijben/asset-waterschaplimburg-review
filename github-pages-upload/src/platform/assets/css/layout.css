@@ -121,6 +121,13 @@
     width: min(var(--container), calc(100% - 1.5rem));
   }
 
+  .content-grid > *,
+  .detail-layout > *,
+  .feature-grid > *,
+  .two-column > * {
+    min-width: 0;
+  }
+
   .feature-grid {
     grid-template-columns: 1fr;
   }
