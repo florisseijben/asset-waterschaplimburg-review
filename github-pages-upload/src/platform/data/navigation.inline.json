@@ -5,6 +5,10 @@
       "href": "../../../pages/index.html"
     },
     {
+      "label": "Datastandaard",
+      "href": "../../../products/datastandaard/pages/index.html"
+    },
+    {
       "label": "Assetregister",
       "href": "../../../products/assetregister/pages/index.html"
     },
@@ -13,8 +17,8 @@
       "href": "../../../products/assetmanagement/pages/index.html"
     },
     {
-      "label": "Datastandaard",
-      "href": "../../../products/datastandaard/pages/index.html"
+      "label": "Over deze website",
+      "href": "../../../pages/over-asset-waterschaplimburg.html"
     }
   ]
 }

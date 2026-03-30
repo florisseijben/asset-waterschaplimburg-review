@@ -47,6 +47,39 @@
       .trim();
   }
 
+  function getPageScope(path) {
+    var match = path.match(/\/pages\/([^/]+)\.html$/);
+    var slug = match && match[1];
+    var families = ["watersysteem", "waterkeringensysteem", "afvalwaterketen"];
+    var family;
+
+    if (!slug) {
+      return "";
+    }
+
+    family = families.find(function (item) {
+      return slug === item || slug.indexOf(item + "-") === 0;
+    });
+
+    return family ? family + "-" : "";
+  }
+
+  function buildPlaceholder(product, items) {
+    var labels = (items || []).slice(0, 3).map(function (item) {
+      return item.label;
+    });
+
+    if (!labels.length) {
+      return product === "woordenboek"
+        ? "Zoek direct naar een begrip"
+        : "Zoek direct naar een objecttype";
+    }
+
+    return product === "woordenboek"
+      ? "Zoek direct naar een begrip, bijvoorbeeld " + labels.join(", ")
+      : "Zoek direct naar een objecttype, bijvoorbeeld " + labels.join(", ");
+  }
+
   function buildQuickSearch() {
     var path = window.location.pathname.replace(/\\/g, "/");
     var shell = document.querySelector(".shell");
@@ -78,6 +111,23 @@
       return;
     }
 
+    (function () {
+      var scopePrefix = getPageScope(path);
+      var scopedItems;
+
+      if (!scopePrefix) {
+        return;
+      }
+
+      scopedItems = items.filter(function (item) {
+        return item.href.indexOf(scopePrefix) === 0;
+      });
+
+      if (scopedItems.length) {
+        items = scopedItems;
+      }
+    }());
+
     datalistId = "quick-search-options-" + product;
     panel = document.createElement("section");
     panel.className = "quick-search-panel";
@@ -97,7 +147,7 @@
     input.setAttribute("list", datalistId);
     input.setAttribute("autocomplete", "off");
     input.setAttribute("aria-label", product === "woordenboek" ? "Zoek direct naar een begrip" : "Zoek direct naar een objecttype");
-    input.placeholder = product === "woordenboek" ? "Zoek direct naar een begrip, bijvoorbeeld Watergang, Watervlakte of RWZI" : "Zoek direct naar een objecttype, bijvoorbeeld Watergang, Waterkering of Transportleiding";
+    input.placeholder = buildPlaceholder(product, items);
 
     button = document.createElement("button");
     button.className = "button button-primary";
