@@ -6,6 +6,7 @@
   var titleNode = document.querySelector("[data-object-reactodia-title]");
   var descriptionNode = document.querySelector("[data-object-reactodia-description]");
   var closeButton = document.querySelector("[data-object-reactodia-close]");
+  var dialog = overlay ? overlay.querySelector(".otl-overlay-dialog") : null;
   var root = null;
   var currentGraph = null;
   var reactReady = false;
@@ -14,9 +15,82 @@
   var reactodiaLib = null;
   var n3Lib = null;
   var layouts = null;
+  var lastTrigger = null;
+  var focusableSelector = [
+    "a[href]",
+    "button:not([disabled])",
+    "input:not([disabled])",
+    "select:not([disabled])",
+    "textarea:not([disabled])",
+    "[tabindex]:not([tabindex='-1'])"
+  ].join(", ");
 
   if (!overlay || !stage || !closeButton) {
     return;
+  }
+
+  function getFocusableElements() {
+    if (!dialog) {
+      return [];
+    }
+
+    return Array.prototype.filter.call(dialog.querySelectorAll(focusableSelector), function (element) {
+      return !element.hidden && element.offsetParent !== null;
+    });
+  }
+
+  function focusDialog() {
+    var focusableElements = getFocusableElements();
+
+    if (!dialog) {
+      return;
+    }
+
+    if (focusableElements.length) {
+      focusableElements[0].focus();
+      return;
+    }
+
+    dialog.focus();
+  }
+
+  function handleOverlayKeydown(event) {
+    var focusableElements;
+    var firstElement;
+    var lastElement;
+
+    if (overlay.hidden) {
+      return;
+    }
+
+    if (event.key === "Escape") {
+      event.preventDefault();
+      closeOverlay();
+      return;
+    }
+
+    if (event.key !== "Tab") {
+      return;
+    }
+
+    focusableElements = getFocusableElements();
+
+    if (!focusableElements.length) {
+      event.preventDefault();
+      dialog.focus();
+      return;
+    }
+
+    firstElement = focusableElements[0];
+    lastElement = focusableElements[focusableElements.length - 1];
+
+    if (event.shiftKey && document.activeElement === firstElement) {
+      event.preventDefault();
+      lastElement.focus();
+    } else if (!event.shiftKey && document.activeElement === lastElement) {
+      event.preventDefault();
+      firstElement.focus();
+    }
   }
 
   function escapeHtml(value) {
@@ -286,13 +360,14 @@
     }
   }
 
-  function openOverlay(graphId) {
+  function openOverlay(graphId, triggerElement) {
     currentGraph = findGraph(graphId);
 
     if (!currentGraph) {
       return;
     }
 
+    lastTrigger = triggerElement || document.activeElement;
     overlay.hidden = false;
 
     if (selectedNode) {
@@ -314,10 +389,15 @@
 
     renderFallbackGraph(currentGraph);
     renderReactodia(currentGraph);
+    window.requestAnimationFrame(focusDialog);
   }
 
   function closeOverlay() {
     overlay.hidden = true;
+
+    if (lastTrigger && typeof lastTrigger.focus === "function") {
+      lastTrigger.focus();
+    }
   }
 
   document.addEventListener("click", function (event) {
@@ -326,7 +406,7 @@
 
     if (openTrigger) {
       event.preventDefault();
-      openOverlay(openTrigger.getAttribute("data-object-reactodia-open"));
+      openOverlay(openTrigger.getAttribute("data-object-reactodia-open"), openTrigger);
     }
 
     if (closeTrigger) {
@@ -336,4 +416,14 @@
   });
 
   closeButton.addEventListener("click", closeOverlay);
+
+  if (dialog) {
+    overlay.addEventListener("click", function (event) {
+      if (event.target === overlay) {
+        closeOverlay();
+      }
+    });
+
+    overlay.addEventListener("keydown", handleOverlayKeydown);
+  }
 }());
