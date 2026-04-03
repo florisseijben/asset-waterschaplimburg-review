@@ -80,6 +80,27 @@
       : "Zoek direct naar een objecttype, bijvoorbeeld " + labels.join(", ");
   }
 
+  function ensureSkipLink() {
+    var body = document.body;
+    var main = document.querySelector("main");
+    var skipLink;
+
+    if (!body || !main || body.querySelector(".skip-link")) {
+      return;
+    }
+
+    if (!main.id) {
+      main.id = "main-content";
+    }
+
+    skipLink = document.createElement("a");
+    skipLink.className = "skip-link";
+    skipLink.href = "#" + main.id;
+    skipLink.textContent = "Spring naar inhoud";
+
+    body.insertBefore(skipLink, body.firstChild);
+  }
+
   function buildQuickSearch() {
     var path = window.location.pathname.replace(/\\/g, "/");
     var shell = document.querySelector(".shell");
@@ -213,5 +234,6 @@
   root.className += root.className ? " js" : "js";
 
   document.body.setAttribute("data-js", "ready");
+  ensureSkipLink();
   buildQuickSearch();
 }());

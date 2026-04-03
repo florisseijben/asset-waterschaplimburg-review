@@ -33,6 +33,10 @@
   box-shadow: var(--shadow-m);
 }
 
+.button:focus-visible {
+  text-decoration: none;
+}
+
 .button-primary {
   color: #fff;
   background: var(--color-brand);
@@ -92,6 +96,26 @@
   margin: 0;
   color: var(--color-muted);
   font-size: 0.92rem;
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--space-4);
+  top: 0;
+  z-index: 2000;
+  padding: 0.75rem 0.95rem;
+  background: #fff;
+  border: 2px solid var(--color-landscape-orange);
+  color: var(--color-deep);
+  font-weight: 700;
+  text-decoration: none;
+  transform: translateY(-140%);
+  transition: transform 160ms ease;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(var(--space-3));
 }
 
 .rabbit-hole-panel {
@@ -285,6 +309,12 @@
   text-decoration: none;
   background: var(--color-highlight);
   border-color: rgba(0, 169, 193, 0.35);
+}
+
+.section-nav a:focus-visible {
+  text-decoration: none;
+  background: var(--color-highlight);
+  border-color: rgba(209, 77, 24, 0.55);
 }
 
 .section-nav a[aria-current="page"] {
@@ -496,6 +526,12 @@ a.architecture-card:hover {
   box-shadow: var(--shadow-m);
 }
 
+a.architecture-card:focus-visible {
+  text-decoration: none;
+  border-color: rgba(209, 77, 24, 0.55);
+  background: var(--color-highlight);
+}
+
 .architecture-card-edg {
   border-color: rgba(0, 169, 193, 0.38);
   background: linear-gradient(180deg, rgba(228, 247, 250, 0.85), #fff);
@@ -551,6 +587,12 @@ a.architecture-step:hover {
   text-decoration: none;
   transform: translateY(-2px);
   box-shadow: var(--shadow-m);
+}
+
+a.architecture-step:focus-visible {
+  text-decoration: none;
+  border-color: rgba(209, 77, 24, 0.55);
+  background: var(--color-highlight);
 }
 
 .card-grid .card {
@@ -808,6 +850,12 @@ a.architecture-step:hover {
   box-shadow: var(--shadow-m);
 }
 
+.system-card:focus-visible {
+  text-decoration: none;
+  border-color: rgba(209, 77, 24, 0.55);
+  background: var(--color-highlight);
+}
+
 .system-card-header {
   display: flex;
   flex-direction: column;
@@ -860,6 +908,12 @@ a.architecture-step:hover {
   box-shadow: var(--shadow-m);
 }
 
+.system-choice-card:focus-visible {
+  text-decoration: none;
+  border-color: rgba(209, 77, 24, 0.55);
+  background: var(--color-highlight);
+}
+
 .system-choice-card h2 {
   margin-bottom: var(--space-2);
 }
@@ -902,6 +956,12 @@ a.architecture-step:hover {
   text-decoration: none;
   transform: translateY(-2px);
   box-shadow: var(--shadow-m);
+}
+
+.category-card:focus-visible {
+  text-decoration: none;
+  border-color: rgba(209, 77, 24, 0.55);
+  background: var(--color-highlight);
 }
 
 .category-card h3 {
@@ -954,6 +1014,12 @@ a.architecture-step:hover {
   text-decoration: none;
   transform: translateY(-2px);
   box-shadow: var(--shadow-m);
+}
+
+.product-card:focus-visible {
+  text-decoration: none;
+  border-color: rgba(209, 77, 24, 0.55);
+  background: var(--color-highlight);
 }
 
 .product-card-header {
