@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Platformarchitectuur | asset.waterschaplimburg.nl</title>
+  <link rel="stylesheet" href="../platform/assets/css/tokens.css?v=20260329-6">
+  <link rel="stylesheet" href="../platform/assets/css/base.css?v=20260329-6">
+  <link rel="stylesheet" href="../platform/assets/css/layout.css?v=20260329-6">
+  <link rel="stylesheet" href="../platform/assets/css/components.css?v=20260329-6">
+  <link rel="stylesheet" href="../platform/assets/css/utilities.css?v=20260329-6">
+</head>
+<body>
+  <main class="shell">
+    <header class="site-header stack">
+      <div class="site-header-bar">
+        <strong>asset.waterschaplimburg.nl</strong>
+        <nav aria-label="Hoofdnavigatie">
+          <ul class="primary-nav">
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="../products/datastandaard/pages/index.html">Datastandaard</a></li>
+            <li><a href="../products/assetregister/pages/index.html">Assetregister</a></li>
+            <li><a href="../products/assetmanagement/pages/index.html">Assetmanagement</a></li>
+            <li><a href="./over-asset-waterschaplimburg.html" aria-current="page">Over deze website</a></li>
+          </ul>
+        </nav>
+      </div>
+      <ol class="breadcrumb" aria-label="Breadcrumb">
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./over-asset-waterschaplimburg.html">Over deze website</a></li>
+        <li><a href="./architectuur.html">Architectuur</a></li>
+        <li><span>Platformarchitectuur</span></li>
+      </ol>
+    </header>
+
+    <section class="hero stack hero-architecture">
+      <p class="eyebrow">Platformarchitectuur</p>
+      <h1>De opbouw van het platform zelf</h1>
+      <p class="lead">
+        De platformarchitectuur beschrijft hoe bronlagen, publicatievormen en interactieve componenten samen een
+        stabiel en beheersbaar publicatieplatform vormen. De kern is steeds dat ieder type content op de juiste
+        plek wordt beheerd en vanuit daar gecontroleerd wordt gepubliceerd.
+      </p>
+      <nav class="section-nav" aria-label="Pagina's binnen over deze website">
+        <a href="./over-asset-waterschaplimburg.html">Landing</a>
+        <a href="./productvisie-en-positionering.html">Productvisie en positionering</a>
+        <a href="./architectuur.html">Architectuur</a>
+        <a href="./platform-architectuur.html" aria-current="page">Platformarchitectuur</a>
+        <a href="./product-architectuur.html">Productarchitectuur</a>
+        <a href="./roadmap.html">Roadmap</a>
+        <a href="./productorganisatie.html">Productorganisatie</a>
+        <a href="./content-en-datagovernance.html">Content en datagovernance</a>
+        <a href="./release-en-deployment-strategie.html">Release &amp; deployment strategie</a>
+      </nav>
+    </section>
+
+    <section class="panel stack">
+      <p class="eyebrow">Kernprincipe</p>
+      <h2>Niet alles in een systeem, maar ieder type content op de juiste plek</h2>
+      <div class="architecture-grid">
+        <article class="architecture-card architecture-card-edg">
+          <p class="eyebrow">Bronlaag</p>
+          <h3>Semantische beheeromgeving</h3>
+          <p>Beheert taxonomieen, ontologieen, knowledge graphs, data graphs, URI's, definities, relaties en classificaties.</p>
+          <ul class="link-list">
+            <li>Woordenboek en OTL komen hier primair vandaan.</li>
+            <li>Ook objectstructuren, semantische relaties en referentiedata horen hier thuis.</li>
+            <li>Publicatie bij voorkeur via export of cachelaag, niet als rauwe live bron per pagina.</li>
+          </ul>
+        </article>
+        <article class="architecture-card architecture-card-cms">
+          <p class="eyebrow">Redactie</p>
+          <h3>CMS</h3>
+          <p>Beheert uitleg, toelichtingen, governance, werkinstructies, procesuitleg en redactionele context.</p>
+          <ul class="link-list">
+            <li>Geschikt voor teksten die vaak door redacteuren worden aangepast.</li>
+            <li>Niet geschikt als bron voor formele semantiek of modelstructuur.</li>
+            <li>Wel geschikt voor context bovenop semantische data.</li>
+          </ul>
+        </article>
+        <article class="architecture-card architecture-card-static">
+          <p class="eyebrow">Specificatie</p>
+          <h3>ReSpec</h3>
+          <p>Publiceert formele specificaties van vocabularia, ontologieen, modelleringregels en datastandaarden op basis van semantische brondata.</p>
+          <ul class="link-list">
+            <li>Geschikt voor formele en citeerbare specificaties van begrippen, modellen en afspraken.</li>
+            <li>Niet bedoeld als vervanging van het hele platform of van rijk navigeerbare objectpagina's.</li>
+            <li>Werkt het best op basis van export uit de semantische beheeromgeving, niet als live bron per pagina.</li>
+          </ul>
+        </article>
+        <article class="architecture-card architecture-card-static">
+          <p class="eyebrow">Publicatie</p>
+          <h3>Statische site</h3>
+          <p>Verzorgt navigatie, templates, snelheid, vindbaarheid en een stabiele presentatie voor eindgebruikers.</p>
+          <ul class="link-list">
+            <li>Geschikt voor home, landingspagina's en vaste productstructuur.</li>
+            <li>Combineert export uit de semantische beheeromgeving met redactionele content uit een CMS.</li>
+            <li>Beperkt runtime-afhankelijkheden en maakt publiceren voorspelbaar.</li>
+          </ul>
+        </article>
+        <article class="architecture-card architecture-card-static">
+          <p class="eyebrow">Interactie</p>
+          <h3>React en Reactodia</h3>
+          <p>Ondersteunen de statische site met interactieve onderdelen zoals filters, dynamische detailweergaven en graphvisualisaties.</p>
+          <ul class="link-list">
+            <li>React is geschikt voor rijkere UI-componenten en samengestelde interactieve views.</li>
+            <li>Reactodia is geschikt voor knowledge graphs, decomposities en fullscreen modelverkenning.</li>
+            <li>Beiden horen in de presentatielaag en zijn geen bron of system of record.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel stack">
+      <p class="eyebrow">Architectuurflow</p>
+      <h2>Hoe content door het platform beweegt</h2>
+      <div class="architecture-flow">
+        <article class="architecture-step">
+          <strong>1. Bron</strong>
+          <p>De semantische beheeromgeving beheert semantische objecten en relaties. CMS beheert redactionele uitleg.</p>
+        </article>
+        <article class="architecture-step">
+          <strong>2. Publicatiemodel</strong>
+          <p>De semantische beheeromgeving levert exports of curated datasets. ReSpec kan daar formele specificaties van maken. Alleen specifieke interactie gebruikt live runtime-data.</p>
+        </article>
+        <article class="architecture-step">
+          <strong>3. Viewmodel</strong>
+          <p>De site vertaalt brondata naar leesbare kaarten, detailpagina's, navigatie en grafische componenten. React en Reactodia ondersteunen daarbij de interactieve delen. ReSpec vertaalt dezelfde bron naar formele specificatiedocumenten.</p>
+        </article>
+        <article class="architecture-step">
+          <strong>4. Presentatie</strong>
+          <p>De statische site toont een rustige, consistente route over systemen, producten en details. React en Reactodia verrijken specifieke onderdelen. ReSpec publiceert daarnaast de formele specificatielaag.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel stack">
+      <p class="eyebrow">Lagen</p>
+      <h2>Doelarchitectuur in zes lagen</h2>
+      <div class="architecture-grid">
+        <article class="architecture-card">
+          <h3>1. Bronlaag</h3>
+          <p>De semantische beheeromgeving beheert formele semantiek. Het CMS beheert redactionele context. Illustraties en media kunnen in een aparte mediabron leven.</p>
+        </article>
+        <article class="architecture-card">
+          <h3>2. Publicatielaag</h3>
+          <p>Exports, curated datasets en formele ReSpec-publicaties zetten broninhoud om naar stabiele publicatieartefacten.</p>
+        </article>
+        <article class="architecture-card">
+          <h3>3. Viewmodel-laag</h3>
+          <p>De site vertaalt brondata naar vaste weergaven zoals begrip, objecttype, decompositie, systeemstructuur en graph.</p>
+        </article>
+        <article class="architecture-card">
+          <h3>4. Platformlaag</h3>
+          <p>De statische site verzorgt navigatie, templates, routes, herkenbaarheid en de vaste gebruikerservaring over alle producten heen.</p>
+        </article>
+        <article class="architecture-card">
+          <h3>5. Interactielaag</h3>
+          <p>React en Reactodia voegen interactieve filters, samengestelde detailweergaven en graphverkenning toe waar dat echt meerwaarde heeft.</p>
+        </article>
+        <article class="architecture-card">
+          <h3>6. Governance-laag</h3>
+          <p>Per contenttype is vastgelegd wie eigenaar is, wat de bron is, hoe publicatie plaatsvindt en welke validatie nodig is.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel stack">
+      <p class="eyebrow">Koppelingen</p>
+      <h2>Hoe de onderdelen elkaar aanvullen</h2>
+      <div class="two-column">
+        <article class="callout stack">
+          <h3>Semantische en redactionele samenhang</h3>
+          <ul class="link-list">
+            <li>Begrippen, classificaties, ontologieen en relaties komen uit de semantische beheeromgeving.</li>
+            <li>Toelichtingen, werkinstructies en procesuitleg komen uit het CMS of uit statische content.</li>
+            <li>Objectpagina's combineren formele objectkennis met leesbare uitleg en illustraties.</li>
+          </ul>
+        </article>
+        <article class="callout stack">
+          <h3>Formele en gebruiksgerichte publicatie</h3>
+          <ul class="link-list">
+            <li>ReSpec publiceert de formele specificatielaag voor standaarden, vocabularia en modellen.</li>
+            <li>De platformsite ontsluit dezelfde inhoud als navigabel en visueel platform voor gebruikers.</li>
+            <li>Reactodia laat semantische samenhang en decompositie interactief verkennen zonder de bronlaag te vervangen.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel stack">
+      <p class="eyebrow">Specificatie</p>
+      <h2>Rol van ReSpec in deze architectuur</h2>
+      <div class="two-column">
+        <article class="callout stack">
+          <h3>Waar ReSpec wel voor bedoeld is</h3>
+          <ul class="link-list">
+            <li>Formele publicatie van datastandaarden, ontologieen, vocabularia en modelleringafspraken.</li>
+            <li>Versieerbare en citeerbare documentatie van de semantische kern.</li>
+            <li>Een vaste structuur voor definities, verwijzingen, termen en formele specificatietekst.</li>
+          </ul>
+        </article>
+        <article class="callout stack">
+          <h3>Waar ReSpec niet voor bedoeld is</h3>
+          <ul class="link-list">
+            <li>Niet als vervanging van home, productlandingen of het hele gebruiksplatform.</li>
+            <li>Niet als hoofdvorm voor rijk navigeerbare objectpagina's met illustraties en interactieve graphs.</li>
+            <li>Niet als bronbeheeromgeving; die rol blijft bij de semantische beheeromgeving en het CMS.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel stack">
+      <p class="eyebrow">Interactie</p>
+      <h2>Rol van React en Reactodia in deze architectuur</h2>
+      <div class="two-column">
+        <article class="callout stack">
+          <h3>Waar React en Reactodia wel voor bedoeld zijn</h3>
+          <ul class="link-list">
+            <li>Interactieve filters, dynamische detailweergaven en samengestelde gebruikersinteractie.</li>
+            <li>Graphweergaven, decomposities en fullscreen verkenning van semantische samenhang.</li>
+            <li>Herbruikbare UI-componenten bovenop viewmodels en gepubliceerde brondata.</li>
+          </ul>
+        </article>
+        <article class="callout stack">
+          <h3>Waar React en Reactodia niet voor bedoeld zijn</h3>
+          <ul class="link-list">
+            <li>Niet als bronlaag voor begrippen, ontologieen of classificaties.</li>
+            <li>Niet als vervanging van ReSpec voor formele specificaties.</li>
+            <li>Niet nodig voor elke pagina; juist selectief inzetten waar interactie echt waarde toevoegt.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel stack">
+      <div class="cluster">
+        <a class="button button-primary" href="./product-architectuur.html">Verder naar productarchitectuur</a>
+        <a class="button button-secondary" href="./architectuur.html">Terug naar architectuuroverzicht</a>
+      </div>
+    </section>
+  </main>
+  <script src="../platform/assets/js/app.js?v=20260329-4"></script>
+</body>
+</html>
