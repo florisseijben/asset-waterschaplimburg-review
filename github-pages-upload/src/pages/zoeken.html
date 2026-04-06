@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="../platform/assets/css/tokens.css?v=20260329-6">
   <link rel="stylesheet" href="../platform/assets/css/base.css?v=20260329-6">
   <link rel="stylesheet" href="../platform/assets/css/layout.css?v=20260329-6">
-  <link rel="stylesheet" href="../platform/assets/css/components.css?v=20260329-6">
+  <link rel="stylesheet" href="../platform/assets/css/components.css?v=20260406-3">
   <link rel="stylesheet" href="../platform/assets/css/utilities.css?v=20260329-6">
 </head>
 <body>
@@ -47,68 +47,79 @@
     <section class="panel stack">
       <p class="eyebrow">Zoekprototype</p>
       <h2>Zoek op term, perspectief of informatielaag</h2>
-      <form class="stack" role="search" data-search-form>
-        <label for="site-search-query">Zoekterm</label>
-        <input id="site-search-query" type="search" placeholder="Bijvoorbeeld watergangsectie, AMP, OTL of governance" data-search-query>
-
-        <div class="two-column">
-          <div class="stack">
-            <label for="site-search-persona">Persona</label>
-            <select id="site-search-persona" data-search-persona>
-              <option value="">Alle persona's</option>
-              <option value="Beslisser">Beslisser / opdrachtgever</option>
-              <option value="Assetmanager">Assetmanager / beheerstrateeg</option>
-              <option value="Domeinspecialist">Domeinspecialist</option>
-              <option value="Data professional">Data professional</option>
-              <option value="Beheerder">Beheerder / uitvoerder</option>
-            </select>
-          </div>
-          <div class="stack">
-            <label for="site-search-onderdeel">Onderdeel</label>
-            <select id="site-search-onderdeel" data-search-onderdeel>
-              <option value="">Alle onderdelen</option>
-              <option value="Over deze website">Over deze website</option>
-              <option value="Datastandaard">Datastandaard</option>
-              <option value="Assetregister">Assetregister</option>
-              <option value="Assetmanagement">Assetmanagement</option>
-            </select>
+      <form class="search-form stack" role="search" data-search-form>
+        <div class="search-query-panel">
+          <label for="site-search-query">Zoekterm</label>
+          <div class="search-query-row">
+            <input id="site-search-query" type="search" placeholder="Bijvoorbeeld watergangsectie, AMP, OTL of governance" data-search-query>
+            <button class="button button-primary" type="submit">Zoek</button>
           </div>
         </div>
 
-        <div class="two-column">
-          <div class="stack">
-            <label for="site-search-systeem">Systeem</label>
-            <select id="site-search-systeem" data-search-systeem>
-              <option value="">Alle systemen</option>
-            </select>
-          </div>
-          <div class="stack">
-            <label for="site-search-discipline">Discipline</label>
-            <select id="site-search-discipline" data-search-discipline>
-              <option value="">Alle disciplines</option>
-            </select>
-          </div>
-        </div>
+        <div class="search-filter-grid">
+          <section class="search-filter-card stack">
+            <p class="eyebrow">Perspectief</p>
+            <div class="stack">
+              <label for="site-search-persona">Persona</label>
+              <select id="site-search-persona" data-search-persona>
+                <option value="">Alle persona's</option>
+                <option value="Beslisser">Beslisser / opdrachtgever</option>
+                <option value="Assetmanager">Assetmanager / beheerstrateeg</option>
+                <option value="Domeinspecialist">Domeinspecialist</option>
+                <option value="Data professional">Data professional</option>
+                <option value="Beheerder">Beheerder / uitvoerder</option>
+              </select>
+            </div>
+            <div class="stack">
+              <label for="site-search-onderdeel">Onderdeel</label>
+              <select id="site-search-onderdeel" data-search-onderdeel>
+                <option value="">Alle onderdelen</option>
+                <option value="Over deze website">Over deze website</option>
+                <option value="Datastandaard">Datastandaard</option>
+                <option value="Assetregister">Assetregister</option>
+                <option value="Assetmanagement">Assetmanagement</option>
+              </select>
+            </div>
+          </section>
 
-        <div class="stack">
-          <label for="site-search-laag">Informatielaag</label>
-          <select id="site-search-laag" data-search-laag>
-            <option value="">Alle informatielagen</option>
-            <option value="Begrip">Begrip</option>
-            <option value="Objecttype">Objecttype</option>
-            <option value="Formeel model">Formeel model</option>
-            <option value="Voorbeelddata">Voorbeelddata</option>
-            <option value="Registratie">Registratie</option>
-            <option value="Sturing">Sturing</option>
-            <option value="Toepassing">Toepassing</option>
-          </select>
-        </div>
+          <section class="search-filter-card stack">
+            <p class="eyebrow">Context</p>
+            <div class="stack">
+              <label for="site-search-systeem">Systeem</label>
+              <select id="site-search-systeem" data-search-systeem>
+                <option value="">Alle systemen</option>
+              </select>
+            </div>
+            <div class="stack">
+              <label for="site-search-discipline">Discipline</label>
+              <select id="site-search-discipline" data-search-discipline>
+                <option value="">Alle disciplines</option>
+              </select>
+            </div>
+            <div class="stack">
+              <label for="site-search-opgave">Opgave</label>
+              <select id="site-search-opgave" data-search-opgave>
+                <option value="">Alle opgaven</option>
+              </select>
+            </div>
+          </section>
 
-        <div class="stack">
-          <label for="site-search-opgave">Opgave</label>
-          <select id="site-search-opgave" data-search-opgave>
-            <option value="">Alle opgaven</option>
-          </select>
+          <section class="search-filter-card stack">
+            <p class="eyebrow">Informatielaag</p>
+            <div class="stack">
+              <label for="site-search-laag">Positie in de keten</label>
+              <select id="site-search-laag" data-search-laag>
+                <option value="">Alle informatielagen</option>
+                <option value="Begrip">Begrip</option>
+                <option value="Objecttype">Objecttype</option>
+                <option value="Formeel model">Formeel model</option>
+                <option value="Voorbeelddata">Voorbeelddata</option>
+                <option value="Registratie">Registratie</option>
+                <option value="Sturing">Sturing</option>
+                <option value="Toepassing">Toepassing</option>
+              </select>
+            </div>
+          </section>
         </div>
       </form>
     </section>

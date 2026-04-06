@@ -98,6 +98,99 @@
   font-size: 0.92rem;
 }
 
+.search-form {
+  gap: var(--space-5);
+}
+
+.search-query-panel {
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background: #f7fbfc;
+  border: 1px solid rgba(0, 169, 193, 0.18);
+}
+
+.search-query-row {
+  display: grid;
+  gap: var(--space-3);
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+}
+
+.search-query-panel label,
+.search-filter-card label {
+  font-weight: 600;
+}
+
+.search-query-panel input,
+.search-filter-card select {
+  width: 100%;
+  min-height: 2.9rem;
+  padding: 0.72rem 0.85rem;
+  border: 1px solid var(--color-line);
+  background: #fff;
+  color: var(--color-deep);
+  font: inherit;
+}
+
+.search-filter-grid {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+}
+
+.search-filter-card {
+  padding: var(--space-4);
+  background: #fff;
+  border: 1px solid var(--color-line);
+  box-shadow: var(--shadow-s);
+}
+
+.search-results-section {
+  gap: var(--space-4);
+}
+
+.search-results-section + .search-results-section {
+  margin-top: var(--space-6);
+  padding-top: var(--space-5);
+  border-top: 1px solid rgba(0, 169, 193, 0.16);
+}
+
+.search-results-section-header {
+  gap: var(--space-2);
+}
+
+.search-results-group {
+  gap: var(--space-3);
+}
+
+.search-results-group + .search-results-group {
+  margin-top: var(--space-2);
+}
+
+.search-results-group-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+[data-search-results] {
+  display: grid;
+  gap: var(--space-5);
+  grid-template-columns: 1fr;
+}
+
+[data-search-results] .architecture-grid {
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+}
+
+[data-search-results] .architecture-card {
+  padding: var(--space-4);
+}
+
 .skip-link {
   position: absolute;
   left: var(--space-4);
@@ -158,6 +251,10 @@
 
 @media (max-width: 42rem) {
   .quick-search-form {
+    grid-template-columns: 1fr;
+  }
+
+  .search-query-row {
     grid-template-columns: 1fr;
   }
 }
@@ -494,6 +591,10 @@
   display: grid;
   gap: var(--space-4);
   grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+}
+
+.architecture-grid[data-search-results] {
+  grid-template-columns: 1fr;
 }
 
 .architecture-card {

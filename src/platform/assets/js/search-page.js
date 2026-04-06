@@ -176,6 +176,8 @@
   }
 
   function renderResults(filtered) {
+    var grouped;
+
     countNode.textContent = String(filtered.length);
 
     if (!filtered.length) {
@@ -183,28 +185,73 @@
       return;
     }
 
-    resultsNode.innerHTML = filtered.map(function (item) {
-      var tags = [
-        item.onderdeel,
-        item.product,
-        item.informatielaag
-      ].concat(item.systeem || [], item.discipline || [], item.opgave || []).slice(0, 7);
-      var pathLine = item.zoekpad
-        ? '<p class="quick-search-help">' + item.zoekpad + '</p>'
-        : '';
+    grouped = filtered.reduce(function (accumulator, item) {
+      var onderdeelGroup = accumulator[item.onderdeel];
+      var productGroup;
+
+      if (!onderdeelGroup) {
+        onderdeelGroup = {
+          count: 0,
+          products: {}
+        };
+        accumulator[item.onderdeel] = onderdeelGroup;
+      }
+
+      productGroup = onderdeelGroup.products[item.product];
+      if (!productGroup) {
+        productGroup = [];
+        onderdeelGroup.products[item.product] = productGroup;
+      }
+
+      onderdeelGroup.count += 1;
+      productGroup.push(item);
+      return accumulator;
+    }, {});
+
+    resultsNode.innerHTML = Object.keys(grouped).map(function (onderdeel) {
+      var onderdeelGroup = grouped[onderdeel];
+      var productNames = Object.keys(onderdeelGroup.products);
 
       return '' +
-        '<a class="architecture-card" href="' + item.href + '">' +
-          '<p class="eyebrow">' + item.onderdeel + ' / ' + item.product + '</p>' +
-          '<h3>' + item.title + '</h3>' +
-          pathLine +
-          '<p>' + item.summary + '</p>' +
-          '<div class="tag-row">' +
-            tags.map(function (tag) {
-              return '<span class="tag">' + tag + '</span>';
-            }).join("") +
-          '</div>' +
-        '</a>';
+        '<section class="search-results-section stack">' +
+          '<header class="search-results-section-header stack">' +
+            '<p class="eyebrow">Onderdeel</p>' +
+            '<h3>' + onderdeel + '</h3>' +
+            '<p class="quick-search-help">' + onderdeelGroup.count + ' resultaten</p>' +
+          '</header>' +
+          productNames.map(function (product) {
+            return '' +
+              '<section class="search-results-group stack">' +
+                '<div class="search-results-group-header">' +
+                  '<h4>' + product + '</h4>' +
+                  '<p class="quick-search-help">' + onderdeelGroup.products[product].length + ' resultaten</p>' +
+                '</div>' +
+                '<div class="architecture-grid">' +
+                  onderdeelGroup.products[product].map(function (item) {
+                    var tags = [
+                      item.informatielaag
+                    ].concat(item.systeem || [], item.discipline || [], item.opgave || []).slice(0, 6);
+                    var pathLine = item.zoekpad
+                      ? '<p class="quick-search-help">' + item.zoekpad + '</p>'
+                      : '';
+
+                    return '' +
+                      '<a class="architecture-card" href="' + item.href + '">' +
+                        '<p class="eyebrow">' + onderdeel + ' / ' + product + '</p>' +
+                        '<h5>' + item.title + '</h5>' +
+                        pathLine +
+                        '<p>' + item.summary + '</p>' +
+                        '<div class="tag-row">' +
+                          tags.map(function (tag) {
+                            return '<span class="tag">' + tag + '</span>';
+                          }).join("") +
+                        '</div>' +
+                      '</a>';
+                  }).join("") +
+                '</div>' +
+              '</section>';
+          }).join("") +
+        '</section>';
     }).join("");
   }
 
