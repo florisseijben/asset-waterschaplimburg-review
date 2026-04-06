@@ -1,42 +1,5 @@
 (function () {
   var root = document.documentElement;
-  var productSearchIndex = {
-    woordenboek: [
-      { label: "Watergang", href: "watersysteem-watergangen.html" },
-      { label: "Watervlakte", href: "watersysteem-watervlakten.html" },
-      { label: "Waterbuffer", href: "watersysteem-waterbuffers.html" },
-      { label: "Kunstwerk", href: "watersysteem-kunstwerken.html" },
-      { label: "Terrein", href: "watersysteem-terreinen.html" },
-      { label: "Terreininrichting", href: "watersysteem-terreininrichting.html" },
-      { label: "Vegetatieobject", href: "watersysteem-vegetatieobjecten.html" },
-      { label: "Waterkering", href: "waterkeringensysteem-waterkeringen.html" },
-      { label: "Constructie", href: "waterkeringensysteem-constructies.html" },
-      { label: "Groenobject", href: "waterkeringensysteem-groenobjecten.html" },
-      { label: "RWZI", href: "afvalwaterketen-rwzis.html" },
-      { label: "Rioolgemaal", href: "afvalwaterketen-rioolgemalen.html" },
-      { label: "Transportleiding", href: "afvalwaterketen-transportleidingen.html" }
-    ],
-    objectenhandboek: [
-      { label: "Watergang", href: "watersysteem-watergangen.html" },
-      { label: "Watergangsectie", href: "watersysteem-watergangsectie.html" },
-      { label: "Intersectie", href: "watersysteem-intersectie.html" },
-      { label: "Watervlakte", href: "watersysteem-watervlakten.html" },
-      { label: "Waterbuffer", href: "watersysteem-waterbuffers.html" },
-      { label: "Kunstwerk", href: "watersysteem-kunstwerken.html" },
-      { label: "Terrein", href: "watersysteem-terreinen.html" },
-      { label: "Terreininrichting", href: "watersysteem-terreininrichting.html" },
-      { label: "Vegetatieobject", href: "watersysteem-vegetatieobjecten.html" },
-      { label: "Waterkering", href: "waterkeringensysteem-waterkeringen.html" },
-      { label: "Waterkeringsectie", href: "waterkeringensysteem-waterkeringsectie.html" },
-      { label: "Constructie", href: "waterkeringensysteem-constructies.html" },
-      { label: "Groenobject", href: "waterkeringensysteem-groenobjecten.html" },
-      { label: "RWZI", href: "afvalwaterketen-rwzis.html" },
-      { label: "Rioolgemaal", href: "afvalwaterketen-rioolgemalen.html" },
-      { label: "Transportleiding", href: "afvalwaterketen-transportleidingen.html" },
-      { label: "Transportleidingsectie", href: "afvalwaterketen-transportleidingsectie.html" },
-      { label: "Knooppunt", href: "afvalwaterketen-knooppunt.html" }
-    ]
-  };
 
   function normalize(value) {
     return (value || "")
@@ -47,88 +10,153 @@
       .trim();
   }
 
-  function getPageScope(path) {
-    var match = path.match(/\/pages\/([^/]+)\.html$/);
-    var slug = match && match[1];
-    var families = ["watersysteem", "waterkeringensysteem", "afvalwaterketen"];
-    var family;
+  function getSearchPageHref(path) {
+    var marker = "/products/datastandaard/";
+    var markerIndex = path.indexOf(marker);
 
-    if (!slug) {
-      return "";
+    if (markerIndex === -1) {
+      return "/pages/zoeken.html";
     }
 
-    family = families.find(function (item) {
-      return slug === item || slug.indexOf(item + "-") === 0;
-    });
-
-    return family ? family + "-" : "";
+    return path.slice(0, markerIndex) + "/pages/zoeken.html";
   }
 
-  function buildPlaceholder(product, items) {
-    var labels = (items || []).slice(0, 3).map(function (item) {
-      return item.label;
+  function getBreadcrumbTrail() {
+    return Array.prototype.slice.call(document.querySelectorAll(".breadcrumb li")).map(function (item) {
+      return String(item.textContent || "").replace(/\s+/g, " ").trim();
+    }).filter(function (value) {
+      return value && value !== "Home";
     });
+  }
 
-    if (!labels.length) {
-      return product === "woordenboek"
-        ? "Zoek direct naar een begrip"
-        : "Zoek direct naar een objecttype";
+  function getQuickSearchConfig(path, trail) {
+    var current = trail[trail.length - 1] || "asset.waterschaplimburg.nl";
+    var contextItems = trail.slice(-3);
+    var fallbackContext = contextItems.join(", ");
+
+    if (path.indexOf("/pages/index.html") !== -1) {
+      return {
+        placeholder: "Zoek binnen asset.waterschaplimburg.nl, bijvoorbeeld watergang, AMP, OTL of governance",
+        scope: ""
+      };
     }
 
-    return product === "woordenboek"
-      ? "Zoek direct naar een begrip, bijvoorbeeld " + labels.join(", ")
-      : "Zoek direct naar een objecttype, bijvoorbeeld " + labels.join(", ");
+    if (path.indexOf("/pages/over-asset-waterschaplimburg.html") !== -1) {
+      return {
+        placeholder: "Zoek binnen Over deze website, bijvoorbeeld architectuur, roadmap of governance",
+        scope: "Over deze website"
+      };
+    }
+
+    if (path.indexOf("/products/datastandaard/pages/index.html") !== -1) {
+      return {
+        placeholder: "Zoek binnen Datastandaard, bijvoorbeeld watergang, objecttype, OTL of werkinstructie",
+        scope: "Datastandaard"
+      };
+    }
+
+    if (path.indexOf("/products/assetregister/pages/index.html") !== -1) {
+      return {
+        placeholder: "Zoek binnen Assetregister, bijvoorbeeld watergang, detail of locatie",
+        scope: "Assetregister"
+      };
+    }
+
+    if (path.indexOf("/products/assetmanagement/pages/index.html") !== -1) {
+      return {
+        placeholder: "Zoek binnen Assetmanagement, bijvoorbeeld AMP, proces, kader of rol",
+        scope: "Assetmanagement"
+      };
+    }
+
+    if (path.indexOf("/products/datastandaard/pages/over-de-datastandaard.html") !== -1) {
+      return {
+        placeholder: "Zoek binnen Over de datastandaard, bijvoorbeeld productvisie, OTL of governance",
+        scope: "Over deze website > Over de datastandaard"
+      };
+    }
+
+    if (path.indexOf("/products/datastandaard/woordenboek/pages/index.html") !== -1) {
+      return {
+        placeholder: "Zoek binnen Woordenboek, bijvoorbeeld watergang, watervlakte of rioolgemaal",
+        scope: "Datastandaard > Woordenboek"
+      };
+    }
+
+    if (path.indexOf("/products/datastandaard/objectenhandboek/pages/index.html") !== -1) {
+      return {
+        placeholder: "Zoek binnen Objectenhandboek, bijvoorbeeld watergangsectie, intersectie of kunstwerk",
+        scope: "Datastandaard > Objectenhandboek"
+      };
+    }
+
+    if (path.indexOf("/products/datastandaard/otl/pages/index.html") !== -1) {
+      return {
+        placeholder: "Zoek binnen OTL, bijvoorbeeld klasse, attribuut, package of watergang",
+        scope: "Datastandaard > OTL"
+      };
+    }
+
+    if (path.indexOf("/products/datastandaard/referentiedataset/pages/index.html") !== -1) {
+      return {
+        placeholder: "Zoek binnen Referentiedataset, bijvoorbeeld watergang, dataset of voorbeelddata",
+        scope: "Datastandaard > Referentiedataset"
+      };
+    }
+
+    if (path.indexOf("/products/datastandaard/werkinstructies/pages/index.html") !== -1) {
+      return {
+        placeholder: "Zoek binnen Werkinstructies, bijvoorbeeld meting, invulinstructie of codering",
+        scope: "Datastandaard > Werkinstructies"
+      };
+    }
+
+    return {
+      placeholder: fallbackContext
+        ? "Zoek binnen " + fallbackContext
+        : "Zoek binnen " + current,
+      scope: trail.join(" > ")
+    };
+  }
+
+  function ensureSkipLink() {
+    var body = document.body;
+    var main = document.querySelector("main");
+    var skipLink;
+
+    if (!body || !main || body.querySelector(".skip-link")) {
+      return;
+    }
+
+    if (!main.id) {
+      main.id = "main-content";
+    }
+
+    skipLink = document.createElement("a");
+    skipLink.className = "skip-link";
+    skipLink.href = "#" + main.id;
+    skipLink.textContent = "Spring naar inhoud";
+
+    body.insertBefore(skipLink, body.firstChild);
   }
 
   function buildQuickSearch() {
     var path = window.location.pathname.replace(/\\/g, "/");
     var shell = document.querySelector(".shell");
     var hero = shell && shell.querySelector(".hero");
-    var product;
-    var items;
-    var datalistId;
+    var trail = getBreadcrumbTrail();
+    var config;
     var panel;
     var form;
     var field;
     var input;
     var button;
-    var help;
 
-    if (!shell || !hero) {
+    if (!shell || !hero || path.indexOf("/pages/zoeken.html") !== -1 || shell.querySelector(".quick-search-panel")) {
       return;
     }
 
-    if (path.indexOf("/woordenboek/pages/") !== -1) {
-      product = "woordenboek";
-    } else if (path.indexOf("/objectenhandboek/pages/") !== -1) {
-      product = "objectenhandboek";
-    } else {
-      return;
-    }
-
-    items = productSearchIndex[product];
-    if (!items || !items.length) {
-      return;
-    }
-
-    (function () {
-      var scopePrefix = getPageScope(path);
-      var scopedItems;
-
-      if (!scopePrefix) {
-        return;
-      }
-
-      scopedItems = items.filter(function (item) {
-        return item.href.indexOf(scopePrefix) === 0;
-      });
-
-      if (scopedItems.length) {
-        items = scopedItems;
-      }
-    }());
-
-    datalistId = "quick-search-options-" + product;
+    config = getQuickSearchConfig(path, trail);
     panel = document.createElement("section");
     panel.className = "quick-search-panel";
     panel.innerHTML = '<p class="eyebrow">Zoeken</p>';
@@ -141,46 +169,27 @@
     field.className = "quick-search-field";
 
     input = document.createElement("input");
-    input.id = "quick-search-input-" + product;
+    input.id = "quick-search-input";
     input.type = "search";
     input.name = "q";
-    input.setAttribute("list", datalistId);
     input.setAttribute("autocomplete", "off");
-    input.setAttribute("aria-label", product === "woordenboek" ? "Zoek direct naar een begrip" : "Zoek direct naar een objecttype");
-    input.placeholder = buildPlaceholder(product, items);
+    input.setAttribute("aria-label", config.placeholder);
+    input.placeholder = config.placeholder;
 
     button = document.createElement("button");
     button.className = "button button-primary";
     button.type = "submit";
     button.textContent = "Zoek";
 
-    help = document.createElement("p");
-    help.className = "quick-search-help";
-    help.textContent = "";
-
     field.appendChild(input);
     form.appendChild(field);
     form.appendChild(button);
     panel.appendChild(form);
-    panel.appendChild(help);
-
-    (function () {
-      var datalist = document.createElement("datalist");
-      datalist.id = datalistId;
-
-      items.forEach(function (item) {
-        var option = document.createElement("option");
-        option.value = item.label;
-        datalist.appendChild(option);
-      });
-
-      panel.appendChild(datalist);
-    }());
 
     form.addEventListener("submit", function (event) {
       var query = normalize(input.value);
-      var exactMatch;
-      var partialMatch;
+      var searchHref;
+      var targetUrl;
 
       event.preventDefault();
 
@@ -189,22 +198,13 @@
         return;
       }
 
-      exactMatch = items.find(function (item) {
-        return normalize(item.label) === query;
-      });
-
-      partialMatch = exactMatch || items.find(function (item) {
-        return normalize(item.label).indexOf(query) !== -1 || query.indexOf(normalize(item.label)) !== -1;
-      });
-
-      if (partialMatch) {
-        window.location.href = partialMatch.href;
-        return;
+      searchHref = getSearchPageHref(path);
+      targetUrl = new URL(searchHref, window.location.origin);
+      targetUrl.searchParams.set("q", input.value);
+      if (config.scope) {
+        targetUrl.searchParams.set("scope", config.scope);
       }
-
-      help.textContent = "Geen directe match gevonden. Probeer een begrip, objecttype of systeemnaam.";
-      input.focus();
-      input.select();
+      window.location.href = targetUrl.pathname + targetUrl.search;
     });
 
     hero.insertAdjacentElement("afterend", panel);
@@ -213,5 +213,6 @@
   root.className += root.className ? " js" : "js";
 
   document.body.setAttribute("data-js", "ready");
+  ensureSkipLink();
   buildQuickSearch();
 }());

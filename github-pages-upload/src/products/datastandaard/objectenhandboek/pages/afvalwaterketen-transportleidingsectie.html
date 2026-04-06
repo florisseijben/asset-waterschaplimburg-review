@@ -1,14 +1,19 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="nl">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Transportleidingsectie | Objectenhandboek | Afvalwaterketen</title>
-  <link rel="stylesheet" href="../../../../platform/assets/css/tokens.css">
-  <link rel="stylesheet" href="../../../../platform/assets/css/base.css">
-  <link rel="stylesheet" href="../../../../platform/assets/css/layout.css">
-  <link rel="stylesheet" href="../../../../platform/assets/css/components.css">
-  <link rel="stylesheet" href="../../../../platform/assets/css/utilities.css">
+  <title>Transportleidingsectie | Objectenhandboek | Afvalwaterketen | asset.waterschaplimburg.nl</title>
+  <meta name="asset:onderdeel" content="Datastandaard">
+  <meta name="asset:product" content="Objectenhandboek">
+  <meta name="asset:informatielaag" content="Objecttype">
+  <meta name="asset:persona" content="Domeinspecialist,Data professional,Beheerder">
+  <meta name="asset:systeem" content="Afvalwaterketen">
+  <link rel="stylesheet" href="../../../../platform/assets/css/tokens.css?v=20260329-6">
+  <link rel="stylesheet" href="../../../../platform/assets/css/base.css?v=20260329-6">
+  <link rel="stylesheet" href="../../../../platform/assets/css/layout.css?v=20260329-6">
+  <link rel="stylesheet" href="../../../../platform/assets/css/components.css?v=20260329-6">
+  <link rel="stylesheet" href="../../../../platform/assets/css/utilities.css?v=20260329-6">
 </head>
 <body>
   <main class="shell" data-object-detail>
@@ -40,7 +45,7 @@
       <div class="detail-header">
         <div>
           <h1 id="object-title">Transportleidingsectie</h1>
-          <p class="lead" id="object-summary"></p>
+          <p class="lead" id="object-summary">Transportleidingsectie is een eigen objectpagina onder Transportleiding en vormt de drager voor de lokale opbouw van materiaal, ligging en technische kenmerken.</p>
         </div>
         <span class="status-chip" id="object-status">Eerste template</span>
       </div>
@@ -70,7 +75,7 @@
         <section class="panel detail-section stack">
           <p class="eyebrow">Uitwerking</p>
           <h2>Inhoudelijke opbouw van Transportleidingsectie</h2>
-          <p>Deze pagina werkt `Transportleidingsectie` uit als eigen granulariteitsniveau onder de `Transportleiding`. Daarmee ontstaat de schakel tussen het leidingtracé en de lokale technische opbouw van de leiding.</p>
+          <p>Deze pagina werkt `Transportleidingsectie` uit als eigen granulariteitsniveau onder de `Transportleiding`. Daarmee ontstaat de schakel tussen het leidingtracÃ© en de lokale technische opbouw van de leiding.</p>
           <div id="object-content-sections"></div>
         </section>
       </article>
@@ -92,7 +97,7 @@
       "dictionaryDefinition": "Een transportleidingsectie is een afgebakend deel van een transportleiding waarmee ligging, materiaal en onderhoud specifieker beschreven kunnen worden.",
       "definitionSource": "Definitiebron: semantische beheeromgeving conceptdefinitie voor Transportleidingsectie.",
       "contextNote": "De transportleidingsectie maakt het mogelijk om een leiding in opeenvolgende delen te beschrijven en vormt de directe ingang naar lokale technische kenmerken en beheergegevens.",
-      "terms": ["Transportleidingsectie", "Leidingsectie", "Tracédeel", "Deeltraject"],
+      "terms": ["Transportleidingsectie", "Leidingsectie", "TracÃ©deel", "Deeltraject"],
       "system": "Afvalwaterketen",
       "subsystem": "Afstroomgebied",
       "objectType": "Transportleidingsectie",
@@ -102,15 +107,15 @@
       "contentSections": [
         {
           "title": "3D visualisatie",
-          "definition": "De 3D visualisatie toont de transportleidingsectie als afgebakend deel van het leidingtracé.",
+          "definition": "De 3D visualisatie toont de transportleidingsectie als afgebakend deel van het leidingtracÃ©.",
           "body": "Op dit niveau wordt zichtbaar hoe de sectie zich in de ruimte gedraagt, inclusief diepteligging, richting en de relatie met aansluitpunten of andere technische onderdelen.",
           "visualization": {
             "src": "../../../../platform/assets/illustrations/shared/section-3d.svg",
             "alt": "3D visualisatie van een transportleidingsectie als afgebakend ruimtelijk deel.",
-            "caption": "De transportleidingsectie wordt als zelfstandig deel van het tracé in de ruimte weergegeven."
+            "caption": "De transportleidingsectie wordt als zelfstandig deel van het tracÃ© in de ruimte weergegeven."
           },
           "examples": [
-            { "title": "Sectie in het tracé", "description": "Visualisatie van een transportleidingsectie als afgebakend deel van een groter leidingtracé." },
+            { "title": "Sectie in het tracÃ©", "description": "Visualisatie van een transportleidingsectie als afgebakend deel van een groter leidingtracÃ©." },
             { "title": "Lokale technische context", "description": "Voorbeeld waarin materiaal, ligging en aansluitingen binnen de sectie zichtbaar worden." }
           ]
         },
@@ -130,16 +135,16 @@
         },
         {
           "title": "Bovenaanzicht",
-          "definition": "Het bovenaanzicht toont de transportleidingsectie in relatie tot het leidingtracé en de omliggende secties of knooppunten.",
+          "definition": "Het bovenaanzicht toont de transportleidingsectie in relatie tot het leidingtracÃ© en de omliggende secties of knooppunten.",
           "body": "Dit niveau helpt om de plaats van de sectie in het totale netwerk en binnen het afstroomgebied te begrijpen.",
           "visualization": {
             "src": "../../../../platform/assets/illustrations/shared/section-plan.svg",
-            "alt": "Bovenaanzicht van een transportleidingsectie in het tracé.",
+            "alt": "Bovenaanzicht van een transportleidingsectie in het tracÃ©.",
             "caption": "Het bovenaanzicht positioneert de sectie binnen het totale leidingnetwerk."
           },
           "examples": [
-            { "title": "Sectie in het tracé", "description": "Visualisatie van de positie van een sectie binnen een opeenvolgende reeks leidingdelen." },
-            { "title": "Planmatige begrenzing", "description": "Voorbeeld waarin de sectie in bovenaanzicht als afgebakend tracédeel zichtbaar wordt." }
+            { "title": "Sectie in het tracÃ©", "description": "Visualisatie van de positie van een sectie binnen een opeenvolgende reeks leidingdelen." },
+            { "title": "Planmatige begrenzing", "description": "Voorbeeld waarin de sectie in bovenaanzicht als afgebakend tracÃ©deel zichtbaar wordt." }
           ]
         },
         {
@@ -174,11 +179,19 @@
     }
   }
   </script>
-  <script src="../../../../platform/assets/js/app.js"></script>
+  <script src="../../../../platform/assets/js/app.js?v=20260329-4"></script>
   <script src="../../../../platform/assets/js/data-inline.js"></script>
   <script src="../../../../platform/assets/js/object-detail.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
 
 
 

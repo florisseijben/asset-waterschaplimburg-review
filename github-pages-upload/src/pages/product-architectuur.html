@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Productarchitectuur | asset.waterschaplimburg.nl</title>
+  <meta name="asset:onderdeel" content="Over deze website">
+  <meta name="asset:product" content="Productarchitectuur">
+  <meta name="asset:informatielaag" content="Sturing">
+  <meta name="asset:persona" content="Beslisser,Assetmanager,Data professional">
+  <meta name="asset:opgave" content="Ecologie,Duurzaamheid,Zorgplicht">
+  <link rel="stylesheet" href="../platform/assets/css/tokens.css?v=20260329-6">
+  <link rel="stylesheet" href="../platform/assets/css/base.css?v=20260329-6">
+  <link rel="stylesheet" href="../platform/assets/css/layout.css?v=20260329-6">
+  <link rel="stylesheet" href="../platform/assets/css/components.css?v=20260329-6">
+  <link rel="stylesheet" href="../platform/assets/css/utilities.css?v=20260329-6">
+</head>
+<body>
+  <main class="shell">
+    <header class="site-header stack">
+      <div class="site-header-bar">
+        <strong>asset.waterschaplimburg.nl</strong>
+        <nav aria-label="Hoofdnavigatie">
+          <ul class="primary-nav">
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="../products/datastandaard/pages/index.html">Datastandaard</a></li>
+            <li><a href="../products/assetregister/pages/index.html">Assetregister</a></li>
+            <li><a href="../products/assetmanagement/pages/index.html">Assetmanagement</a></li>
+            <li><a href="./over-asset-waterschaplimburg.html" aria-current="page">Over deze website</a></li>
+          </ul>
+        </nav>
+      </div>
+      <ol class="breadcrumb" aria-label="Breadcrumb">
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./over-asset-waterschaplimburg.html">Over deze website</a></li>
+        <li><a href="./architectuur.html">Architectuur</a></li>
+        <li><span>Productarchitectuur</span></li>
+      </ol>
+    </header>
+
+    <section class="hero stack">
+      <p class="eyebrow">Architectuur</p>
+      <h1>De opbouw en samenhang van producten en deelproducten</h1>
+      <p class="lead">
+        Binnen asset.waterschaplimburg.nl vormen Datastandaard, Assetregister en Assetmanagement samen een
+        productfamilie. Elk onderdeel heeft een eigen functie, maar wordt bewust via dezelfde ordeningen
+        ontsloten: systeem, discipline en opgave, zoals ecologie, duurzaamheid, zorgplicht en vergelijkbare inhoudelijke of wettelijke opgaven.
+      </p>
+    </section>
+
+    <section class="panel stack">
+      <p class="eyebrow">Structuur</p>
+      <h2>Drie onderdelen, een samenhangende productstructuur</h2>
+      <div class="architecture-grid">
+        <article class="architecture-card">
+          <p class="eyebrow">Onderdeel 1</p>
+          <h3>Datastandaard</h3>
+          <p>De normatieve en semantische basis: begrippen, objecten, modellen, referentiegegevens en instructies.</p>
+        </article>
+        <article class="architecture-card">
+          <p class="eyebrow">Onderdeel 2</p>
+          <h3>Assetregister</h3>
+          <p>De registratie- en publicatielaag waarin assets, kenmerken, documenten en brongegevens samen zichtbaar worden.</p>
+        </article>
+        <article class="architecture-card">
+          <p class="eyebrow">Onderdeel 3</p>
+          <h3>Assetmanagement</h3>
+          <p>De sturingslaag met beleid, plannen, concepten, uitvoering en verantwoording over de levenscyclus van assets.</p>
+        </article>
+      </div>
+      <div class="architecture-flow">
+        <article class="architecture-step">
+          <strong>Datastandaard maakt betekenis eenduidig</strong>
+          <p>Hier worden taal, objectstructuren, modellen en instructies vastgelegd als basis voor eenduidige registratie en toepassing.</p>
+        </article>
+        <article class="architecture-step">
+          <strong>Assetregister maakt informatie bruikbaar</strong>
+          <p>Hier komen brongegevens, classificaties en documenten bijeen in een samenhangend registerbeeld.</p>
+        </article>
+        <article class="architecture-step">
+          <strong>Assetmanagement maakt sturing mogelijk</strong>
+          <p>Hier worden doelen, prestaties, risico's, maatregelen en onderhoud vertaald naar beleid, plannen en uitvoering.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel stack">
+      <p class="eyebrow">Product Breakdown Structure</p>
+      <h2>Welke producten hoofdproduct, deelproduct of afgeleide laag zijn</h2>
+      <p>
+        De productstructuur is niet vlak. Sommige producten zijn hoofdproducten, andere zijn deelproducten
+        daarbinnen, en weer andere volgen logisch uit een bovenliggend product. In deze breakdown structure is
+        die lijn gekoppeld aan een eenvoudig metamodel voor informatiemodellering: van begrip naar objecttype,
+        van objecttype naar formeel model, van model naar voorbeelddata en van daaruit naar registratie en
+        toepassing.
+      </p>
+      <div class="two-column">
+        <article class="callout stack">
+          <h3>1. Begrippenlaag</h3>
+          <ul class="link-list">
+            <li><strong>Metamodelniveau:</strong> begrip en betekenis.</li>
+            <li><strong>Product:</strong> Woordenboek.</li>
+            <li><strong>Rol in de PBS:</strong> het Woordenboek is het semantische startpunt waarop de rest van de modellering voortbouwt.</li>
+            <li><strong>Wat hieruit volgt:</strong> een begrip zoals watergang, sectie, talud of kruising vormt de basis voor objecttypen en relaties in onderliggende producten.</li>
+          </ul>
+        </article>
+        <article class="callout stack">
+          <h3>2. Objectlaag</h3>
+          <ul class="link-list">
+            <li><strong>Metamodelniveau:</strong> objecttype, decompositie en samenhang.</li>
+            <li><strong>Product:</strong> Objectenhandboek.</li>
+            <li><strong>Rol in de PBS:</strong> het Objectenhandboek werkt begrippen uit tot herkenbare objectfamilies, objecttypen, varianten en deelobjecten.</li>
+            <li><strong>Wat hieruit volgt:</strong> vanuit een begrip uit het Woordenboek wordt zichtbaar welk object bedoeld wordt, hoe het is opgebouwd en hoe het zich verhoudt tot andere objecten.</li>
+          </ul>
+        </article>
+      </div>
+      <div class="two-column">
+        <article class="callout stack">
+          <h3>3. Modellaag</h3>
+          <ul class="link-list">
+            <li><strong>Metamodelniveau:</strong> formeel informatiemodel.</li>
+            <li><strong>Product:</strong> OTL.</li>
+            <li><strong>Rol in de PBS:</strong> de OTL formaliseert de objectstructuur in klassen, attributen en relaties zodat de modellering eenduidig en herbruikbaar wordt.</li>
+            <li><strong>Wat hieruit volgt:</strong> de objectstructuur uit het Objectenhandboek wordt hier doorvertaald naar een formele modellogica die geschikt is voor data-uitwisseling, validatie en semantische samenhang.</li>
+          </ul>
+        </article>
+        <article class="callout stack">
+          <h3>4. Voorbeeld- en registratielaag</h3>
+          <ul class="link-list">
+            <li><strong>Metamodelniveau:</strong> voorbeelddata, registratie en toepassing.</li>
+            <li><strong>Producten:</strong> Referentiedataset en Registratie binnen het Assetregister.</li>
+            <li><strong>Rol in de PBS:</strong> de Referentiedataset laat zien hoe het model eruitziet in data; registratie brengt die logica vervolgens in operationele bron- en registergegevens.</li>
+            <li><strong>Wat hieruit volgt:</strong> de registratie wordt niet los ontworpen, maar volgt uit begrippen, objectstructuur en OTL-modellering.</li>
+          </ul>
+        </article>
+      </div>
+      <div class="architecture-flow">
+        <article class="architecture-step">
+          <strong>Woordenboek: begrip en betekenis</strong>
+          <p>In het metamodel voor informatiemodellering begint de lijn bij begrippen. Het Woordenboek legt vast wat een term betekent en welke taal asset.waterschaplimburg.nl consequent gebruikt.</p>
+        </article>
+        <article class="architecture-step">
+          <strong>Objectenhandboek: objecttype en structuur</strong>
+          <p>Vanuit die begrippen volgt de objectlaag. Het Objectenhandboek laat zien welke objecttypen, deelobjecten, varianten en samenhangen bij dat begrip horen.</p>
+        </article>
+        <article class="architecture-step">
+          <strong>OTL: formeel model</strong>
+          <p>De OTL formaliseert deze objectstructuur naar een informatiemodel met klassen, attributen en relaties. Daarmee wordt de modellering geschikt voor semantische uitwisseling en eenduidige data-opbouw.</p>
+        </article>
+        <article class="architecture-step">
+          <strong>Referentiedataset en registratie: data in gebruik</strong>
+          <p>De Referentiedataset laat voorbeeldmatige toepassing van het model zien. Registratie in kernregistratie, datasets en het Assetregister volgt daaruit en maakt de informatie bestuurbaar en toepasbaar.</p>
+        </article>
+      </div>
+      <div class="architecture-flow">
+        <article class="architecture-step">
+          <strong>Registratie voedt sturing</strong>
+          <p>De beschikbare registratie- en contextinformatie maakt plannen, onderhoudsconcepten en uitvoeringskeuzes binnen Assetmanagement herleidbaar.</p>
+        </article>
+        <article class="architecture-step">
+          <strong>Nieuwe opgaven werken terug</strong>
+          <p>Nieuwe beleidsvragen of opgaven werken terug op begrippen, objectstructuur, modellering, referentiedata en registratieafspraken.</p>
+        </article>
+      </div>
+      <article class="callout stack">
+        <h3>Keten in termen van informatiemodellering</h3>
+        <ul class="link-list">
+          <li><strong>Begrip:</strong> Woordenboek.</li>
+          <li><strong>Objecttype:</strong> Objectenhandboek.</li>
+          <li><strong>Formeel model:</strong> OTL.</li>
+          <li><strong>Voorbeelddata:</strong> Referentiedataset.</li>
+          <li><strong>Operationele data:</strong> Registratie en Assetregister.</li>
+        </ul>
+      </article>
+      <article class="callout stack">
+        <h3>Relatie met eigenaarschap</h3>
+        <ul class="link-list">
+          <li><strong>Niveau van asset.waterschaplimburg.nl als geheel:</strong> een Product Owner voor asset.waterschaplimburg.nl stuurt op de totale productfamilie.</li>
+          <li><strong>Onderdeelniveau:</strong> daaronder kan per hoofdproduct een eigen Product Owner of productverantwoordelijke bestaan voor Datastandaard, Assetregister en Assetmanagement.</li>
+          <li><strong>Productniveau:</strong> binnen die hoofdproducten kunnen weer onderliggende producttrekkers of Product Owners actief zijn voor deelproducten zoals Woordenboek, Objectenhandboek, bronkoppelingen, SAMP of AMP.</li>
+          <li><strong>De PBS maakt dus niet alleen productrelaties zichtbaar, maar ook op welk niveau eigenaarschap logisch belegd wordt.</strong></li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="panel stack">
+      <p class="eyebrow">Datastandaard</p>
+      <h2>Opbouw van productgroep naar systeem, discipline en opgave</h2>
+      <p>
+        De Datastandaard is opgebouwd uit productgroepen die elk een eigen functie hebben binnen dezelfde
+        informatiestructuur. Productgroepen zoals Woordenboek, Objectenhandboek, OTL, Referentiedataset en
+        Werkinstructies worden vervolgens ontsloten per systeem, per discipline en waar nodig per opgave, zoals
+        ecologie, duurzaamheid en zorgplicht.
+      </p>
+      <div class="architecture-grid">
+        <article class="architecture-card">
+          <h3>Productgroep</h3>
+          <p>De eerste ordening is inhoudelijk: begrippen, objecttypen, modellen, referentiegegevens en instructies hebben ieder een eigen productvorm.</p>
+        </article>
+        <article class="architecture-card">
+          <h3>Systeem</h3>
+          <p>Binnen elke productgroep wordt dezelfde systeemindeling gevolgd, zoals Afvalwaterketen, Watersysteem en Waterkeringensysteem.</p>
+        </article>
+        <article class="architecture-card">
+          <h3>Discipline</h3>
+          <p>Daarbinnen wordt dezelfde inhoud ook ontsloten vanuit technische disciplines zoals civiele techniek, groen, bouwkunde of procesautomatisering.</p>
+        </article>
+        <article class="architecture-card">
+          <h3>Opgave</h3>
+          <p>Dezelfde basis moet uiteindelijk ook herbruikbaar zijn voor concrete opgaven, bijvoorbeeld ecologie, duurzaamheid, zorgplicht en andere gebieds- of veranderopgaven.</p>
+        </article>
+      </div>
+      <div class="two-column">
+        <article class="callout stack">
+          <h3>Waarom deze opbouw werkt</h3>
+          <ul class="link-list">
+            <li>De productgroep bepaalt het type informatie dat de gebruiker nodig heeft.</li>
+            <li>Het systeem bepaalt de functionele context waarin objecten en begrippen worden gebruikt.</li>
+            <li>De discipline bepaalt het technisch perspectief op diezelfde inhoud.</li>
+            <li>De opgave bepaalt de toepassing waarin de inhoud geselecteerd of gecombineerd wordt, bijvoorbeeld voor ecologische doelen, duurzaamheidskeuzes of de invulling van zorgplicht.</li>
+          </ul>
+        </article>
+        <article class="callout stack">
+          <h3>Wat dit voor asset.waterschaplimburg.nl betekent</h3>
+          <ul class="link-list">
+            <li>Een begrip of object staat niet los, maar keert terug in meerdere productgroepen en perspectieven.</li>
+            <li>De navigatie moet dus niet alleen producten tonen, maar ook de assen waarlangs hergebruik plaatsvindt.</li>
+            <li>De Datastandaard vormt daarmee de vaste semantische ruggengraat onder de rest van asset.waterschaplimburg.nl.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel stack">
+      <p class="eyebrow">Assetregister</p>
+      <h2>Opbouw vanuit verschillende gegevensbronnen en dezelfde ordeningsassen</h2>
+      <p>
+        Het Assetregister is geen enkelvoudig systeem, maar een samenhangende publicatielaag bovenop meerdere
+        gegevensbronnen. Denk daarbij aan kernregistratie, groendataset, financiele dataset,
+        documentmanagementsysteem en andere bronlagen die samen het registerbeeld vormen.
+      </p>
+      <div class="architecture-grid">
+        <article class="architecture-card">
+          <h3>Gegevensbronnen</h3>
+          <p>Kernregistraties, vakspecifieke datasets, financiele gegevens, documenten en andere bronnen leveren elk een deel van het totaalbeeld.</p>
+        </article>
+        <article class="architecture-card">
+          <h3>Assetregister</h3>
+          <p>Het register brengt die brongegevens samen in een bruikbare presentatie van assets, kenmerken, context en verwijzingen.</p>
+        </article>
+        <article class="architecture-card">
+          <h3>Systeem en discipline</h3>
+          <p>Net als bij de Datastandaard wordt dezelfde registratie ontsloten via systeemcontext en technisch disciplineperspectief.</p>
+        </article>
+        <article class="architecture-card">
+          <h3>Opgave</h3>
+          <p>Voor een opgave moet de registratie selecteerbaar zijn op het deel van het register dat relevant is voor het vraagstuk, bijvoorbeeld ecologie, duurzaamheid of zorgplicht.</p>
+        </article>
+      </div>
+      <div class="architecture-flow">
+        <article class="architecture-step">
+          <strong>Brondata blijft in de bron</strong>
+          <p>Het register vervangt de kernregistratie, groendataset of documentopslag niet, maar ontsluit de samenhang tussen die bronnen.</p>
+        </article>
+        <article class="architecture-step">
+          <strong>Classificatie komt uit dezelfde logica</strong>
+          <p>De semantische indeling uit de Datastandaard helpt om brondata eenduidig te ordenen en te verklaren.</p>
+        </article>
+        <article class="architecture-step">
+          <strong>Gebruik volgt context</strong>
+          <p>Gebruikers kunnen dezelfde assetinformatie benaderen vanuit systeem, discipline of opgave, afhankelijk van hun werkvraag, zoals een ecologische, duurzaamheids- of zorgplichtopgave.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel stack">
+      <p class="eyebrow">Assetmanagement</p>
+      <h2>Opbouw van sturingsproducten met samenhang naar systeem, discipline en opgave</h2>
+      <p>
+        Assetmanagement is opgebouwd uit verschillende producten die samen de sturingsketen vormen. Voorbeelden
+        zijn SAMP, AMP, onderhoudsconcept en onderhoudsplan. Die producten hebben ieder een andere positie in de
+        keten, maar moeten allemaal herleidbaar zijn naar dezelfde systemen, disciplines en opgaven, zoals
+        ecologie, duurzaamheid en zorgplicht.
+      </p>
+      <div class="architecture-grid">
+        <article class="architecture-card">
+          <h3>SAMP</h3>
+          <p>Geeft richting vanuit organisatiedoelen, beleidskeuzes en principes voor assetmanagement als geheel.</p>
+        </article>
+        <article class="architecture-card">
+          <h3>AMP</h3>
+          <p>Vertaalt die richting naar een beheer- en prestatiekader per systeem, objectlijn of domein.</p>
+        </article>
+        <article class="architecture-card">
+          <h3>Onderhoudsconcept</h3>
+          <p>Bepaalt de gekozen onderhoudsfilosofie en de redenering achter maatregelen en regimes.</p>
+        </article>
+        <article class="architecture-card">
+          <h3>Onderhoudsplan</h3>
+          <p>Werkt die keuzes praktisch uit in concrete activiteiten, planningen en uitvoeringsafspraken.</p>
+        </article>
+      </div>
+      <div class="two-column">
+        <article class="callout stack">
+          <h3>De samenhang binnen Assetmanagement</h3>
+          <ul class="link-list">
+            <li>De producten vormen geen losse documenten, maar een keten van strategie naar uitvoering.</li>
+            <li>Per systeem moet zichtbaar zijn welke sturingsproducten van toepassing zijn.</li>
+            <li>Per discipline moet duidelijk zijn waar specialistische eisen en afwegingen terugkomen.</li>
+            <li>Per opgave moet inzichtelijk zijn welke plannen, concepten en beleidskeuzes richting geven, bijvoorbeeld voor ecologie, duurzaamheid of zorgplicht.</li>
+          </ul>
+        </article>
+        <article class="callout stack">
+          <h3>De relatie met de andere onderdelen</h3>
+          <ul class="link-list">
+            <li>De Datastandaard levert taal, objectstructuur en definities voor eenduidige sturing.</li>
+            <li>Het Assetregister levert de feitelijke registratie en broninformatie waarop afwegingen steunen.</li>
+            <li>Assetmanagement gebruikt die basis om prestaties, risico's, kosten en maatregelen bestuurbaar te maken.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel stack">
+      <p class="eyebrow">Samenhang</p>
+      <h2>Wat deze productarchitectuur bestuurbaar maakt</h2>
+      <div class="architecture-flow">
+        <article class="architecture-step">
+          <strong>Een vaste productfamilie</strong>
+          <p>De drie onderdelen hebben elk een eigen rol, maar zijn bewust geen losse websites of losse informatiestromen.</p>
+        </article>
+        <article class="architecture-step">
+          <strong>Een gedeelde ordening</strong>
+          <p>Systeem, discipline en opgave vormen de terugkerende assen waarlangs gebruikers alle onderdelen kunnen benaderen, waarbij opgaven concreet kunnen gaan over ecologie, duurzaamheid, zorgplicht en vergelijkbare thema's.</p>
+        </article>
+        <article class="architecture-step">
+          <strong>Een heldere rolverdeling</strong>
+          <p>Datastandaard geeft betekenis, Assetregister geeft registratiecontext en Assetmanagement geeft sturing.</p>
+        </article>
+        <article class="architecture-step">
+          <strong>Een logische groeiroute</strong>
+          <p>Naarmate meer content wordt gevuld, kan dezelfde structuur dieper worden uitgewerkt zonder de basis opnieuw te ontwerpen.</p>
+        </article>
+      </div>
+      <div class="cluster">
+        <a class="button button-primary" href="./architectuur.html">Terug naar architectuur</a>
+        <a class="button button-secondary" href="./roadmap.html">Verder naar roadmap</a>
+      </div>
+    </section>
+  </main>
+  <script src="../platform/assets/js/app.js?v=20260329-4"></script>
+</body>
+</html>
+
+
+
+
+
+
+

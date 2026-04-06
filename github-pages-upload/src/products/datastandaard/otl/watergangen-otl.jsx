@@ -759,9 +759,10 @@ const ontology = {
 };
 
 const NAV = [
+  { label: 'Datastandaard', active: true },
   { label: 'Assetregister', active: false },
   { label: 'Assetmanagement', active: false },
-  { label: 'Datastandaard', active: true },
+  { label: 'Over deze website', active: false },
 ];
 
 const tabs = [

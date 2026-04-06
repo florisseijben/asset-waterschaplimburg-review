@@ -601,6 +601,7 @@
   var graphSelected = document.querySelector("[data-otl-graph-selected]");
   var graphScope = document.querySelector("[data-otl-graph-scope]");
   var reactodiaOverlay = document.querySelector("[data-otl-reactodia-overlay]");
+  var reactodiaDialog = reactodiaOverlay ? reactodiaOverlay.querySelector(".otl-overlay-dialog") : null;
   var reactodiaStage = document.querySelector("[data-otl-reactodia-stage]");
   var reactodiaStatus = document.querySelector("[data-otl-reactodia-status]");
   var reactodiaOpenButton = document.querySelector("[data-otl-reactodia-open]");
@@ -608,6 +609,15 @@
   var statNodes = document.querySelector("[data-otl-stat='nodes']");
   var statPackages = document.querySelector("[data-otl-stat='packages']");
   var selectedId = "Toplaag";
+  var lastReactodiaTrigger = null;
+  var focusableSelector = [
+    "a[href]",
+    "button:not([disabled])",
+    "input:not([disabled])",
+    "select:not([disabled])",
+    "textarea:not([disabled])",
+    "[tabindex]:not([tabindex='-1'])"
+  ].join(", ");
   var logicalTree = [
     {
       id: "block-watergang",
@@ -1439,11 +1449,90 @@
 
   searchInput.addEventListener("input", render);
 
-  function openReactodiaOverlay() {
+  function getReactodiaFocusableElements() {
+    if (!reactodiaDialog) {
+      return [];
+    }
+
+    return Array.prototype.filter.call(reactodiaDialog.querySelectorAll(focusableSelector), function (element) {
+      return !element.hidden && element.offsetParent !== null;
+    });
+  }
+
+  function focusReactodiaDialog() {
+    var focusableElements;
+
+    if (!reactodiaDialog) {
+      return;
+    }
+
+    focusableElements = getReactodiaFocusableElements();
+
+    if (focusableElements.length) {
+      focusableElements[0].focus();
+      return;
+    }
+
+    reactodiaDialog.focus();
+  }
+
+  function closeReactodiaOverlay() {
     if (!reactodiaOverlay) {
       return;
     }
 
+    reactodiaOverlay.hidden = true;
+
+    if (lastReactodiaTrigger && typeof lastReactodiaTrigger.focus === "function") {
+      lastReactodiaTrigger.focus();
+    }
+  }
+
+  function handleReactodiaOverlayKeydown(event) {
+    var focusableElements;
+    var firstElement;
+    var lastElement;
+
+    if (!reactodiaOverlay || reactodiaOverlay.hidden) {
+      return;
+    }
+
+    if (event.key === "Escape") {
+      event.preventDefault();
+      closeReactodiaOverlay();
+      return;
+    }
+
+    if (event.key !== "Tab") {
+      return;
+    }
+
+    focusableElements = getReactodiaFocusableElements();
+
+    if (!focusableElements.length) {
+      event.preventDefault();
+      reactodiaDialog.focus();
+      return;
+    }
+
+    firstElement = focusableElements[0];
+    lastElement = focusableElements[focusableElements.length - 1];
+
+    if (event.shiftKey && document.activeElement === firstElement) {
+      event.preventDefault();
+      lastElement.focus();
+    } else if (!event.shiftKey && document.activeElement === lastElement) {
+      event.preventDefault();
+      firstElement.focus();
+    }
+  }
+
+  function openReactodiaOverlay(triggerElement) {
+    if (!reactodiaOverlay) {
+      return;
+    }
+
+    lastReactodiaTrigger = triggerElement || document.activeElement;
     reactodiaOverlay.hidden = false;
 
     if (reactodiaStatus) {
@@ -1452,6 +1541,8 @@
         ? "Reactodia wordt geladen."
         : "Reactodia is nog niet beschikbaar in deze sessie. Controleer of de pagina via een server draait.";
     }
+
+    window.requestAnimationFrame(focusReactodiaDialog);
 
     window.dispatchEvent(new CustomEvent("otl:reactodia-open", {
       detail: {
@@ -1462,8 +1553,8 @@
   }
 
   if (reactodiaOpenButton && reactodiaOverlay) {
-    reactodiaOpenButton.addEventListener("click", function () {
-      openReactodiaOverlay();
+    reactodiaOpenButton.addEventListener("click", function (event) {
+      openReactodiaOverlay(event.currentTarget);
     });
   }
 
@@ -1473,19 +1564,29 @@
 
     if (openTrigger) {
       event.preventDefault();
-      openReactodiaOverlay();
+      openReactodiaOverlay(openTrigger);
     }
 
     if (closeTrigger && reactodiaOverlay) {
       event.preventDefault();
-      reactodiaOverlay.hidden = true;
+      closeReactodiaOverlay();
     }
   });
 
   if (reactodiaCloseButton && reactodiaOverlay) {
     reactodiaCloseButton.addEventListener("click", function () {
-      reactodiaOverlay.hidden = true;
+      closeReactodiaOverlay();
     });
+  }
+
+  if (reactodiaOverlay && reactodiaDialog) {
+    reactodiaOverlay.addEventListener("click", function (event) {
+      if (event.target === reactodiaOverlay) {
+        closeReactodiaOverlay();
+      }
+    });
+
+    reactodiaOverlay.addEventListener("keydown", handleReactodiaOverlayKeydown);
   }
 
   if (statNodes) {

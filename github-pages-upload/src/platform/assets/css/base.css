@@ -23,9 +23,21 @@ a:hover {
   text-underline-offset: 0.15em;
 }
 
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[role="button"]:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--color-landscape-orange);
+  outline-offset: 3px;
+}
+
 h1,
 h2,
-h3 {
+h3,
+h4 {
   margin-top: 0;
   color: var(--color-deep);
   line-height: 1.15;
@@ -50,6 +62,11 @@ h2 {
 
 h3 {
   font-size: clamp(1.05rem, 1.35vw, 1.3rem);
+}
+
+h4 {
+  font-size: 1rem;
+  font-weight: 700;
 }
 
 ul {
