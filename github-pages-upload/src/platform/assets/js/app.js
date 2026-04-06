@@ -11,14 +11,14 @@
   }
 
   function getSearchPageHref(path) {
-    var marker = "/products/datastandaard/";
-    var markerIndex = path.indexOf(marker);
+    var srcMarker = "/src/";
+    var srcIndex = path.indexOf(srcMarker);
 
-    if (markerIndex === -1) {
-      return "/pages/zoeken.html";
+    if (srcIndex !== -1) {
+      return path.slice(0, srcIndex + srcMarker.length) + "pages/zoeken.html";
     }
 
-    return path.slice(0, markerIndex) + "/pages/zoeken.html";
+    return "./zoeken.html";
   }
 
   function getBreadcrumbTrail() {
