@@ -4,6 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Assetregister | asset.waterschaplimburg.nl</title>
+  <meta name="asset:onderdeel" content="Assetregister">
+  <meta name="asset:product" content="Landing">
+  <meta name="asset:informatielaag" content="Registratie">
+  <meta name="asset:persona" content="Data professional,Beheerder,Domeinspecialist">
+  <meta name="asset:opgave" content="Ecologie">
   <link rel="stylesheet" href="../../../platform/assets/css/tokens.css?v=20260329-6">
   <link rel="stylesheet" href="../../../platform/assets/css/base.css?v=20260329-6">
   <link rel="stylesheet" href="../../../platform/assets/css/layout.css?v=20260329-6">
@@ -126,40 +131,39 @@
     <section class="panel stack">
       <p class="eyebrow">Onderdelen</p>
       <h2>Vaste onderdelen binnen elk systeem</h2>
-      <div class="grid">
-      <article class="card">
-        <h3>Overzicht</h3>
-        <p>Ingang voor een lijstweergave van assets, filters en snelle navigatie.</p>
-        <a href="./overzicht.html">Open overzicht</a>
-      </article>
-      <article class="card">
-        <h3>Detail</h3>
-        <p>Template voor een assetdetail met metadata, gerelateerde documenten en locatieblok.</p>
-        <a href="./asset-detail.html">Open detailtemplate</a>
-      </article>
-      <article class="card">
-        <h3>Locatie</h3>
-        <p>Voorbereid op later gebruik van GeoJSON in een servercontext of inline testvariant.</p>
-      </article>
+      <div class="product-card-grid">
+        <a class="product-card" href="./overzicht.html">
+          <div class="stack">
+            <h3>Overzicht</h3>
+            <p>Ingang voor een lijstweergave van assets, filters en snelle navigatie.</p>
+          </div>
+        </a>
+        <a class="product-card" href="./asset-detail.html">
+          <div class="stack">
+            <h3>Detail</h3>
+            <p>Template voor een assetdetail met metadata, gerelateerde documenten en locatieblok.</p>
+          </div>
+        </a>
+        <a class="product-card" href="./locatie.html">
+          <div class="stack">
+            <h3>Locatie</h3>
+            <p>Voorbereid op later gebruik van GeoJSON in een servercontext of inline testvariant.</p>
+          </div>
+        </a>
       </div>
     </section>
 
-    <section class="panel stack panel-architecture-highlight">
-      <p class="eyebrow">Architectuur</p>
-      <h2>Waarom Assetregister een shell rond brondata is</h2>
-      <p>
-        In de doelarchitectuur blijft deze productlaag vooral de publicatie- en gebruiksschil.
-        Operationele assetdata hoort in een registerbron, terwijl classificaties en semantische
-        betekenis via de semantische beheeromgeving worden gekoppeld.
-      </p>
-      <div class="cluster">
-        <a class="button button-secondary" href="../../../pages/over-asset-waterschaplimburg.html">Lees hoe dit past in het platform</a>
-      </div>
-    </section>
   </main>
-  <script src="../../../platform/assets/js/app.js"></script>
+  <script src="../../../platform/assets/js/app.js?v=20260329-4"></script>
 </body>
 </html>
+
+
+
+
+
+
+
 
 
 

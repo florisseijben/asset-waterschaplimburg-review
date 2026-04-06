@@ -4,6 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Architectuur | asset.waterschaplimburg.nl</title>
+  <meta name="asset:onderdeel" content="Over deze website">
+  <meta name="asset:product" content="Architectuur">
+  <meta name="asset:informatielaag" content="Sturing">
+  <meta name="asset:persona" content="Beslisser,Assetmanager,Data professional">
+  <meta name="asset:opgave" content="Ecologie,Duurzaamheid,Zorgplicht">
   <link rel="stylesheet" href="../platform/assets/css/tokens.css?v=20260329-6">
   <link rel="stylesheet" href="../platform/assets/css/base.css?v=20260329-6">
   <link rel="stylesheet" href="../platform/assets/css/layout.css?v=20260329-6">
@@ -32,39 +37,21 @@
       </ol>
     </header>
 
-    <section class="hero stack hero-architecture">
-      <p class="eyebrow">Doelarchitectuur</p>
+    <section class="hero stack">
+      <p class="eyebrow">Architectuur</p>
       <h1>Architectuur</h1>
       <p class="lead">
-        Dit platform is de publicatielaag bovenop meerdere bronlagen. De semantische beheeromgeving beheert de
+        asset.waterschaplimburg.nl is de publicatielaag bovenop meerdere bronlagen. De semantische beheeromgeving beheert de
         semantische kern, een CMS beheert redactionele context, ReSpec kan formele specificaties publiceren en de statische site zorgt voor
         een snelle, stabiele en herkenbare gebruikerservaring.
       </p>
-      <nav class="section-nav" aria-label="Pagina's binnen over deze website">
-        <a href="./over-asset-waterschaplimburg.html">Landing</a>
-        <a href="./productvisie-en-positionering.html">Productvisie en positionering</a>
-        <a href="./architectuur.html" aria-current="page">Architectuur</a>
-        <a href="./platform-architectuur.html">Platformarchitectuur</a>
-        <a href="./product-architectuur.html">Productarchitectuur</a>
-        <a href="./roadmap.html">Roadmap</a>
-        <a href="./productorganisatie.html">Productorganisatie</a>
-        <a href="./content-en-datagovernance.html">Content en datagovernance</a>
-        <a href="./release-en-deployment-strategie.html">Release &amp; deployment strategie</a>
-      </nav>
-      <div class="tag-row">
-        <span class="tag">Platformarchitectuur</span>
-        <span class="tag">Productarchitectuur</span>
-        <span class="tag">Paginatypen</span>
-        <span class="tag">Governance</span>
-        <span class="tag">Publicatieketen</span>
-      </div>
     </section>
 
     <section class="panel stack panel-architecture-highlight">
-      <p class="eyebrow">Platformarchitectuur</p>
+      <p class="eyebrow">Architectuur van asset.waterschaplimburg.nl</p>
       <h2>De website is de publicatielaag bovenop meerdere bron- en beheerlagen</h2>
       <p>
-        De platformarchitectuur beschrijft hoe semantische brondata, redactionele context, formele specificaties
+        De architectuur van asset.waterschaplimburg.nl beschrijft hoe semantische brondata, redactionele context, formele specificaties
         en interactieve componenten samenkomen in een stabiele publicatieomgeving. De kern blijft: niet alles in
         een systeem, maar ieder type content op de juiste plek, met een heldere rolverdeling tussen bron,
         publicatie en presentatie.
@@ -73,7 +60,7 @@
         <article class="architecture-card">
           <p class="eyebrow">Bron</p>
           <h3>Semantische en redactionele lagen</h3>
-          <p>Semantische beheeromgeving en CMS leveren elk hun eigen type waarheid voor het platform.</p>
+          <p>Semantische beheeromgeving en CMS leveren elk hun eigen type waarheid voor asset.waterschaplimburg.nl.</p>
         </article>
         <article class="architecture-card">
           <p class="eyebrow">Publicatie</p>
@@ -87,7 +74,42 @@
         </article>
       </div>
       <div class="cluster">
-        <a class="button button-primary" href="./platform-architectuur.html">Open platformarchitectuur</a>
+        <a class="button button-primary" href="./platform-architectuur.html">Open architectuur van asset.waterschaplimburg.nl</a>
+      </div>
+    </section>
+
+    <section class="panel stack panel-architecture-highlight">
+      <p class="eyebrow">Zoekarchitectuur</p>
+      <h2>Vindbaarheid is een expliciete laag in de publicatieketen</h2>
+      <p>
+        De website moet niet alleen pagina's tonen, maar ook betekenisvol doorzoekbaar zijn voor verschillende
+        persona's. Daarom horen metadata, ranking en filterassen zoals systeem, discipline en opgave bij de
+        architectuur van asset.waterschaplimburg.nl en niet alleen bij de interface van een zoekpagina.
+      </p>
+      <div class="architecture-grid">
+        <article class="architecture-card">
+          <p class="eyebrow">Bron</p>
+          <h3>Semantische beheeromgeving en pagina-metadata</h3>
+          <p>Begrippen, relaties, classificaties en herleidbare metadata komen waar mogelijk uit de semantische bron en worden aangevuld met redactionele metadata op pagina's.</p>
+        </article>
+        <article class="architecture-card">
+          <p class="eyebrow">Index</p>
+          <h3>Gegenereerde zoekbron</h3>
+          <p>Een zoekindex bundelt titels, samenvattingen en metadata per pagina, zodat filteren en rangschikken reproduceerbaar gebeurt.</p>
+        </article>
+        <article class="architecture-card">
+          <p class="eyebrow">Presentatie</p>
+          <h3>Zoeken per persona en context</h3>
+          <p>De interface laat gebruikers zoeken vanuit hun rol en daarnaast filteren op systeem, discipline, opgave en informatielaag.</p>
+        </article>
+      </div>
+      <p>
+        In een volwassen situatie wordt de semantische beheeromgeving dus niet alleen gebruikt voor inhoudelijke
+        modellering, maar ook voor zoekverrijking: synoniemen, relaties en classificaties maken resultaten beter
+        uitlegbaar en relevanter.
+      </p>
+      <div class="cluster">
+        <a class="button button-primary" href="./zoekstrategie-en-personas.html">Open zoekstrategie</a>
       </div>
     </section>
 
@@ -158,7 +180,7 @@
         <article class="architecture-card">
           <h3>OTL en knowledge graphs</h3>
           <p><strong>Opbouw:</strong> volledig semantisch gedreven, bij voorkeur gepubliceerd via export of cachelaag.</p>
-          <p><strong>Waarom:</strong> dit is de semantische modelkern van het platform.</p>
+          <p><strong>Waarom:</strong> dit is de semantische modelkern van asset.waterschaplimburg.nl.</p>
           <p><strong>Formele laag:</strong> zeer geschikt voor aanvullende ReSpec-publicatie van de modelspecificatie.</p>
           <p><strong>Interactie:</strong> Reactodia is hier passend voor interactieve graph- en modelverkenning.</p>
         </article>
@@ -179,14 +201,14 @@
         </article>
       </div>
       <div class="cluster">
-        <a class="button button-primary" href="./platform-architectuur.html">Verder naar platformarchitectuur</a>
+        <a class="button button-primary" href="./platform-architectuur.html">Verder naar architectuur van asset.waterschaplimburg.nl</a>
         <a class="button button-secondary" href="./product-architectuur.html">Verder naar productarchitectuur</a>
       </div>
     </section>
 
     <section class="panel stack">
       <p class="eyebrow">Maturity-scan</p>
-      <h2>Hoe het platform nu aansluit op de doelarchitectuur</h2>
+      <h2>Hoe asset.waterschaplimburg.nl nu aansluit op de doelarchitectuur</h2>
       <div class="architecture-grid">
         <article class="architecture-card">
           <h3>Platformlaag</h3>
@@ -206,7 +228,12 @@
         <article class="architecture-card">
           <h3>Publicatielaag</h3>
           <p><strong>Status:</strong> deels ingevuld.</p>
-          <p>De site gedraagt zich als publicatieplatform, maar exports, formele specificatiepublicatie en een expliciete publicatieketen zijn nog beperkt uitgewerkt.</p>
+          <p>De site gedraagt zich als publicatieomgeving, maar exports, formele specificatiepublicatie en een expliciete publicatieketen zijn nog beperkt uitgewerkt.</p>
+        </article>
+        <article class="architecture-card">
+          <h3>Zoek- en metadata-laag</h3>
+          <p><strong>Status:</strong> deels ingevuld.</p>
+          <p>De eerste metadata en zoekindex zijn aanwezig, maar ranking, semantische verrijking en structurele aansluiting op bronclassificaties vragen nog verdere uitwerking.</p>
         </article>
         <article class="architecture-card">
           <h3>Viewmodel-laag</h3>
@@ -223,7 +250,7 @@
         <article class="callout stack">
           <h3>Wat nu al sterk is</h3>
           <ul class="link-list">
-            <li>Het platform is duidelijk herkenbaar als publicatie- en navigatielaag.</li>
+            <li>asset.waterschaplimburg.nl is duidelijk herkenbaar als publicatie- en navigatielaag.</li>
             <li>De gebruikerservaring is al gestructureerd rond systemen, objecten en semantische samenhang.</li>
             <li>Interactieve graphweergaven worden selectief gebruikt in plaats van overal.</li>
           </ul>
@@ -234,15 +261,23 @@
             <li>Meer inhoud direct uit de semantische beheeromgeving en andere bronlagen publiceren.</li>
             <li>Een expliciete viewmodel- en publicatieketen definieren.</li>
             <li>Per contenttype bron, eigenaar, validatie en publicatiemethode vastleggen.</li>
+            <li>Zoekmetadata, indexering en semantische verrijking onderdeel maken van de standaard publicatieketen.</li>
           </ul>
         </article>
       </div>
       <div class="cluster">
         <a class="button button-primary" href="./roadmap.html">Verder naar roadmap</a>
-        <a class="button button-secondary" href="./over-asset-waterschaplimburg.html">Terug naar landing</a>
+        <a class="button button-secondary" href="./over-asset-waterschaplimburg.html">Terug naar Over deze website</a>
       </div>
     </section>
   </main>
   <script src="../platform/assets/js/app.js?v=20260329-4"></script>
 </body>
 </html>
+
+
+
+
+
+
+

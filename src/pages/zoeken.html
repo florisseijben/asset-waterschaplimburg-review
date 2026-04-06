@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Zoeken | asset.waterschaplimburg.nl</title>
+  <meta name="asset:onderdeel" content="Over deze website">
+  <meta name="asset:product" content="Zoeken">
+  <meta name="asset:informatielaag" content="Sturing">
+  <meta name="asset:persona" content="Beslisser,Domeinspecialist,Data professional,Beheerder">
+  <link rel="stylesheet" href="../platform/assets/css/tokens.css?v=20260329-6">
+  <link rel="stylesheet" href="../platform/assets/css/base.css?v=20260329-6">
+  <link rel="stylesheet" href="../platform/assets/css/layout.css?v=20260329-6">
+  <link rel="stylesheet" href="../platform/assets/css/components.css?v=20260329-6">
+  <link rel="stylesheet" href="../platform/assets/css/utilities.css?v=20260329-6">
+</head>
+<body>
+  <main class="shell">
+    <header class="site-header stack">
+      <div class="site-header-bar">
+        <strong>asset.waterschaplimburg.nl</strong>
+        <nav aria-label="Hoofdnavigatie">
+          <ul class="primary-nav">
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="../products/datastandaard/pages/index.html">Datastandaard</a></li>
+            <li><a href="../products/assetregister/pages/index.html">Assetregister</a></li>
+            <li><a href="../products/assetmanagement/pages/index.html">Assetmanagement</a></li>
+            <li><a href="./over-asset-waterschaplimburg.html">Over deze website</a></li>
+          </ul>
+        </nav>
+      </div>
+      <ol class="breadcrumb" aria-label="Breadcrumb">
+        <li><a href="./index.html">Home</a></li>
+        <li><span>Zoeken</span></li>
+      </ol>
+    </header>
+
+    <section class="hero stack">
+      <p class="eyebrow">Zoeken</p>
+      <h1>Zoeken binnen asset.waterschaplimburg.nl</h1>
+      <p class="lead">
+        Een eerste zoekprototype waarin je kunt zoeken op onderwerp, persona, onderdeel en positie in de
+        keten van informatiemodellering.
+      </p>
+    </section>
+
+    <section class="panel stack">
+      <p class="eyebrow">Zoekprototype</p>
+      <h2>Zoek op term, perspectief of informatielaag</h2>
+      <form class="stack" role="search" data-search-form>
+        <label for="site-search-query">Zoekterm</label>
+        <input id="site-search-query" type="search" placeholder="Bijvoorbeeld watergangsectie, AMP, OTL of governance" data-search-query>
+
+        <div class="two-column">
+          <div class="stack">
+            <label for="site-search-persona">Persona</label>
+            <select id="site-search-persona" data-search-persona>
+              <option value="">Alle persona's</option>
+              <option value="Beslisser">Beslisser / opdrachtgever</option>
+              <option value="Assetmanager">Assetmanager / beheerstrateeg</option>
+              <option value="Domeinspecialist">Domeinspecialist</option>
+              <option value="Data professional">Data professional</option>
+              <option value="Beheerder">Beheerder / uitvoerder</option>
+            </select>
+          </div>
+          <div class="stack">
+            <label for="site-search-onderdeel">Onderdeel</label>
+            <select id="site-search-onderdeel" data-search-onderdeel>
+              <option value="">Alle onderdelen</option>
+              <option value="Over deze website">Over deze website</option>
+              <option value="Datastandaard">Datastandaard</option>
+              <option value="Assetregister">Assetregister</option>
+              <option value="Assetmanagement">Assetmanagement</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="two-column">
+          <div class="stack">
+            <label for="site-search-systeem">Systeem</label>
+            <select id="site-search-systeem" data-search-systeem>
+              <option value="">Alle systemen</option>
+            </select>
+          </div>
+          <div class="stack">
+            <label for="site-search-discipline">Discipline</label>
+            <select id="site-search-discipline" data-search-discipline>
+              <option value="">Alle disciplines</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="stack">
+          <label for="site-search-laag">Informatielaag</label>
+          <select id="site-search-laag" data-search-laag>
+            <option value="">Alle informatielagen</option>
+            <option value="Begrip">Begrip</option>
+            <option value="Objecttype">Objecttype</option>
+            <option value="Formeel model">Formeel model</option>
+            <option value="Voorbeelddata">Voorbeelddata</option>
+            <option value="Registratie">Registratie</option>
+            <option value="Sturing">Sturing</option>
+            <option value="Toepassing">Toepassing</option>
+          </select>
+        </div>
+
+        <div class="stack">
+          <label for="site-search-opgave">Opgave</label>
+          <select id="site-search-opgave" data-search-opgave>
+            <option value="">Alle opgaven</option>
+          </select>
+        </div>
+      </form>
+    </section>
+
+    <section class="panel stack">
+      <p class="eyebrow">Resultaten</p>
+      <h2><span data-search-count>0</span> resultaten</h2>
+      <div class="architecture-grid" data-search-results></div>
+    </section>
+
+    <section class="panel stack">
+      <p class="eyebrow">Status</p>
+      <h2>Wat dit prototype wel en nog niet doet</h2>
+      <div class="two-column">
+        <article class="callout stack">
+          <h3>Wel</h3>
+          <ul class="link-list">
+            <li>Zoeken over de volledige geannoteerde site-index.</li>
+            <li>Filteren op persona, onderdeel, informatielaag, systeem, discipline en opgave.</li>
+            <li>Resultaten rangschikken op zoekterm en overeenstemming met de gekozen filters.</li>
+          </ul>
+        </article>
+        <article class="callout stack">
+          <h3>Nog niet</h3>
+          <ul class="link-list">
+            <li>Resultaatkwaliteit hangt nog af van de rijkdom en precisie van metadata per pagina.</li>
+            <li>Er is nog geen autocomplete, synoniemenlijst of fuzzy matching voor schrijfvarianten.</li>
+            <li>De zoekindex wordt nog lokaal gegenereerd en niet automatisch in de publicatieketen opgenomen.</li>
+          </ul>
+        </article>
+      </div>
+      <div class="cluster">
+        <a class="button button-primary" href="./zoekstrategie-en-personas.html">Bekijk het ontwerpvoorstel</a>
+        <a class="button button-secondary" href="./index.html">Terug naar home</a>
+      </div>
+    </section>
+  </main>
+  <script src="../platform/assets/js/app.js?v=20260329-4"></script>
+  <script src="../platform/assets/js/search-index.js"></script>
+  <script src="../platform/assets/js/search-page.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+

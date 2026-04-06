@@ -4,6 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Productarchitectuur | asset.waterschaplimburg.nl</title>
+  <meta name="asset:onderdeel" content="Over deze website">
+  <meta name="asset:product" content="Productarchitectuur">
+  <meta name="asset:informatielaag" content="Sturing">
+  <meta name="asset:persona" content="Beslisser,Assetmanager,Data professional">
+  <meta name="asset:opgave" content="Ecologie,Duurzaamheid,Zorgplicht">
   <link rel="stylesheet" href="../platform/assets/css/tokens.css?v=20260329-6">
   <link rel="stylesheet" href="../platform/assets/css/base.css?v=20260329-6">
   <link rel="stylesheet" href="../platform/assets/css/layout.css?v=20260329-6">
@@ -33,25 +38,14 @@
       </ol>
     </header>
 
-    <section class="hero stack hero-architecture">
-      <p class="eyebrow">Productarchitectuur</p>
+    <section class="hero stack">
+      <p class="eyebrow">Architectuur</p>
       <h1>De opbouw en samenhang van producten en deelproducten</h1>
       <p class="lead">
         Binnen asset.waterschaplimburg.nl vormen Datastandaard, Assetregister en Assetmanagement samen een
         productfamilie. Elk onderdeel heeft een eigen functie, maar wordt bewust via dezelfde ordeningen
         ontsloten: systeem, discipline en opgave, zoals ecologie, duurzaamheid, zorgplicht en vergelijkbare inhoudelijke of wettelijke opgaven.
       </p>
-      <nav class="section-nav" aria-label="Pagina's binnen over deze website">
-        <a href="./over-asset-waterschaplimburg.html">Landing</a>
-        <a href="./productvisie-en-positionering.html">Productvisie en positionering</a>
-        <a href="./architectuur.html">Architectuur</a>
-        <a href="./platform-architectuur.html">Platformarchitectuur</a>
-        <a href="./product-architectuur.html" aria-current="page">Productarchitectuur</a>
-        <a href="./roadmap.html">Roadmap</a>
-        <a href="./productorganisatie.html">Productorganisatie</a>
-        <a href="./content-en-datagovernance.html">Content en datagovernance</a>
-        <a href="./release-en-deployment-strategie.html">Release &amp; deployment strategie</a>
-      </nav>
     </section>
 
     <section class="panel stack">
@@ -88,6 +82,105 @@
           <p>Hier worden doelen, prestaties, risico's, maatregelen en onderhoud vertaald naar beleid, plannen en uitvoering.</p>
         </article>
       </div>
+    </section>
+
+    <section class="panel stack">
+      <p class="eyebrow">Product Breakdown Structure</p>
+      <h2>Welke producten hoofdproduct, deelproduct of afgeleide laag zijn</h2>
+      <p>
+        De productstructuur is niet vlak. Sommige producten zijn hoofdproducten, andere zijn deelproducten
+        daarbinnen, en weer andere volgen logisch uit een bovenliggend product. In deze breakdown structure is
+        die lijn gekoppeld aan een eenvoudig metamodel voor informatiemodellering: van begrip naar objecttype,
+        van objecttype naar formeel model, van model naar voorbeelddata en van daaruit naar registratie en
+        toepassing.
+      </p>
+      <div class="two-column">
+        <article class="callout stack">
+          <h3>1. Begrippenlaag</h3>
+          <ul class="link-list">
+            <li><strong>Metamodelniveau:</strong> begrip en betekenis.</li>
+            <li><strong>Product:</strong> Woordenboek.</li>
+            <li><strong>Rol in de PBS:</strong> het Woordenboek is het semantische startpunt waarop de rest van de modellering voortbouwt.</li>
+            <li><strong>Wat hieruit volgt:</strong> een begrip zoals watergang, sectie, talud of kruising vormt de basis voor objecttypen en relaties in onderliggende producten.</li>
+          </ul>
+        </article>
+        <article class="callout stack">
+          <h3>2. Objectlaag</h3>
+          <ul class="link-list">
+            <li><strong>Metamodelniveau:</strong> objecttype, decompositie en samenhang.</li>
+            <li><strong>Product:</strong> Objectenhandboek.</li>
+            <li><strong>Rol in de PBS:</strong> het Objectenhandboek werkt begrippen uit tot herkenbare objectfamilies, objecttypen, varianten en deelobjecten.</li>
+            <li><strong>Wat hieruit volgt:</strong> vanuit een begrip uit het Woordenboek wordt zichtbaar welk object bedoeld wordt, hoe het is opgebouwd en hoe het zich verhoudt tot andere objecten.</li>
+          </ul>
+        </article>
+      </div>
+      <div class="two-column">
+        <article class="callout stack">
+          <h3>3. Modellaag</h3>
+          <ul class="link-list">
+            <li><strong>Metamodelniveau:</strong> formeel informatiemodel.</li>
+            <li><strong>Product:</strong> OTL.</li>
+            <li><strong>Rol in de PBS:</strong> de OTL formaliseert de objectstructuur in klassen, attributen en relaties zodat de modellering eenduidig en herbruikbaar wordt.</li>
+            <li><strong>Wat hieruit volgt:</strong> de objectstructuur uit het Objectenhandboek wordt hier doorvertaald naar een formele modellogica die geschikt is voor data-uitwisseling, validatie en semantische samenhang.</li>
+          </ul>
+        </article>
+        <article class="callout stack">
+          <h3>4. Voorbeeld- en registratielaag</h3>
+          <ul class="link-list">
+            <li><strong>Metamodelniveau:</strong> voorbeelddata, registratie en toepassing.</li>
+            <li><strong>Producten:</strong> Referentiedataset en Registratie binnen het Assetregister.</li>
+            <li><strong>Rol in de PBS:</strong> de Referentiedataset laat zien hoe het model eruitziet in data; registratie brengt die logica vervolgens in operationele bron- en registergegevens.</li>
+            <li><strong>Wat hieruit volgt:</strong> de registratie wordt niet los ontworpen, maar volgt uit begrippen, objectstructuur en OTL-modellering.</li>
+          </ul>
+        </article>
+      </div>
+      <div class="architecture-flow">
+        <article class="architecture-step">
+          <strong>Woordenboek: begrip en betekenis</strong>
+          <p>In het metamodel voor informatiemodellering begint de lijn bij begrippen. Het Woordenboek legt vast wat een term betekent en welke taal asset.waterschaplimburg.nl consequent gebruikt.</p>
+        </article>
+        <article class="architecture-step">
+          <strong>Objectenhandboek: objecttype en structuur</strong>
+          <p>Vanuit die begrippen volgt de objectlaag. Het Objectenhandboek laat zien welke objecttypen, deelobjecten, varianten en samenhangen bij dat begrip horen.</p>
+        </article>
+        <article class="architecture-step">
+          <strong>OTL: formeel model</strong>
+          <p>De OTL formaliseert deze objectstructuur naar een informatiemodel met klassen, attributen en relaties. Daarmee wordt de modellering geschikt voor semantische uitwisseling en eenduidige data-opbouw.</p>
+        </article>
+        <article class="architecture-step">
+          <strong>Referentiedataset en registratie: data in gebruik</strong>
+          <p>De Referentiedataset laat voorbeeldmatige toepassing van het model zien. Registratie in kernregistratie, datasets en het Assetregister volgt daaruit en maakt de informatie bestuurbaar en toepasbaar.</p>
+        </article>
+      </div>
+      <div class="architecture-flow">
+        <article class="architecture-step">
+          <strong>Registratie voedt sturing</strong>
+          <p>De beschikbare registratie- en contextinformatie maakt plannen, onderhoudsconcepten en uitvoeringskeuzes binnen Assetmanagement herleidbaar.</p>
+        </article>
+        <article class="architecture-step">
+          <strong>Nieuwe opgaven werken terug</strong>
+          <p>Nieuwe beleidsvragen of opgaven werken terug op begrippen, objectstructuur, modellering, referentiedata en registratieafspraken.</p>
+        </article>
+      </div>
+      <article class="callout stack">
+        <h3>Keten in termen van informatiemodellering</h3>
+        <ul class="link-list">
+          <li><strong>Begrip:</strong> Woordenboek.</li>
+          <li><strong>Objecttype:</strong> Objectenhandboek.</li>
+          <li><strong>Formeel model:</strong> OTL.</li>
+          <li><strong>Voorbeelddata:</strong> Referentiedataset.</li>
+          <li><strong>Operationele data:</strong> Registratie en Assetregister.</li>
+        </ul>
+      </article>
+      <article class="callout stack">
+        <h3>Relatie met eigenaarschap</h3>
+        <ul class="link-list">
+          <li><strong>Niveau van asset.waterschaplimburg.nl als geheel:</strong> een Product Owner voor asset.waterschaplimburg.nl stuurt op de totale productfamilie.</li>
+          <li><strong>Onderdeelniveau:</strong> daaronder kan per hoofdproduct een eigen Product Owner of productverantwoordelijke bestaan voor Datastandaard, Assetregister en Assetmanagement.</li>
+          <li><strong>Productniveau:</strong> binnen die hoofdproducten kunnen weer onderliggende producttrekkers of Product Owners actief zijn voor deelproducten zoals Woordenboek, Objectenhandboek, bronkoppelingen, SAMP of AMP.</li>
+          <li><strong>De PBS maakt dus niet alleen productrelaties zichtbaar, maar ook op welk niveau eigenaarschap logisch belegd wordt.</strong></li>
+        </ul>
+      </article>
     </section>
 
     <section class="panel stack">
@@ -128,11 +221,11 @@
           </ul>
         </article>
         <article class="callout stack">
-          <h3>Wat dit voor het platform betekent</h3>
+          <h3>Wat dit voor asset.waterschaplimburg.nl betekent</h3>
           <ul class="link-list">
             <li>Een begrip of object staat niet los, maar keert terug in meerdere productgroepen en perspectieven.</li>
             <li>De navigatie moet dus niet alleen producten tonen, maar ook de assen waarlangs hergebruik plaatsvindt.</li>
-            <li>De Datastandaard vormt daarmee de vaste semantische ruggengraat onder de rest van het platform.</li>
+            <li>De Datastandaard vormt daarmee de vaste semantische ruggengraat onder de rest van asset.waterschaplimburg.nl.</li>
           </ul>
         </article>
       </div>
@@ -258,3 +351,10 @@
   <script src="../platform/assets/js/app.js?v=20260329-4"></script>
 </body>
 </html>
+
+
+
+
+
+
+

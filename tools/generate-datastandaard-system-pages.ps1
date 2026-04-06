@@ -8,7 +8,7 @@ $productConfig = @{
     intro = 'Binnen deze systeemlijn ordenen we begrippen per objectfamilie, zodat definities schaalbaar en herbruikbaar blijven.'
     sectionLabel = 'begrippen'
     detailLinks = @{
-      'watersysteem|watergangen' = './begrip-detail.html'
+      'watersysteem|watergangen' = './watersysteem-watergangen.html'
     }
   }
   objectenhandboek = @{
@@ -16,7 +16,7 @@ $productConfig = @{
     intro = 'Binnen deze systeemlijn ordenen we objecttypen per objectfamilie, zodat de structuur schaalbaar en herbruikbaar blijft.'
     sectionLabel = 'objecttypen'
     detailLinks = @{
-      'watersysteem|watergangen' = './object-detail.html'
+      'watersysteem|watergangen' = './watersysteem-watergangen.html'
     }
   }
   otl = @{
