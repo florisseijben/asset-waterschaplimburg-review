@@ -682,6 +682,19 @@ a.architecture-card:focus-visible {
   margin: 0;
 }
 
+.architecture-flow-vertical {
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+}
+
+.architecture-flow-bidirectional {
+  gap: var(--space-4);
+}
+
+.architecture-flow-bidirectional .architecture-step {
+  margin-left: 0;
+}
+
 a.architecture-step:hover {
   border-color: rgba(0, 169, 193, 0.35);
   background: var(--color-highlight);
@@ -1091,6 +1104,10 @@ a.architecture-step:focus-visible {
   display: grid;
   gap: var(--space-4);
   grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.product-card-grid-four {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .product-card {
@@ -1720,6 +1737,10 @@ a.architecture-step:focus-visible {
   .product-card-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .product-card-grid-four {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 42rem) {
@@ -1835,6 +1856,10 @@ a.architecture-step:focus-visible {
   .category-grid,
   .system-choice-grid,
   .product-card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .product-card-grid-four {
     grid-template-columns: 1fr;
   }
 }
