@@ -1,29 +1,120 @@
 ---
 import BaseLayout from "../../../../../layouts/BaseLayout.astro";
 import Hero from "../../../../../components/Hero.astro";
-import PlaceholderStatus from "../../../../../components/PlaceholderStatus.astro";
+import CardGrid from "../../../../../components/CardGrid.astro";
+import InfoCard from "../../../../../components/InfoCard.astro";
+import { getCollection } from "astro:content";
+
+const entries = await getCollection("datastandaard-objectenhandboek-objects");
+const entry =
+  entries.find((item) => item.data.slug === "/datastandaard/objectenhandboek/watersysteem/watergangsectie") ||
+  entries[0];
+
+if (!entry) {
+  throw new Error("Objectenhandboek Watergangsectie ontbreekt in de nieuwe omgeving.");
+}
 ---
 
 <BaseLayout
-  title="Watergangsectie"
+  title={entry.data.title}
   currentPath="/datastandaard"
   breadcrumbs={[
     { label: "Home", href: "/" },
     { label: "Datastandaard", href: "/datastandaard" },
     { label: "Objectenhandboek", href: "/datastandaard/objectenhandboek" },
     { label: "Watersysteem", href: "/datastandaard/objectenhandboek/watersysteem" },
+    { label: "Watergangen", href: "/datastandaard/objectenhandboek/watersysteem/watergangen" },
     { label: "Watergangsectie" }
   ]}
 >
-  <Hero
-    eyebrow="Objectenhandboek"
-    title="Watergangsectie"
-    summary="Deze vervolgrichting staat klaar voor de volgende inhoudelijke uitwerking binnen de waterganglijn."
-  />
+  <Hero eyebrow="Objectenhandboek" title={entry.data.heroTitle || entry.data.title} summary={entry.data.summary} />
 
-  <PlaceholderStatus
-    title="Watergangsectie volgt in een volgende slice"
-    summary="De route is al gekoppeld vanuit Watergangen en Watersysteem, zodat de objectlijn volledig navigeerbaar blijft tijdens de migratie."
-    scope="de decompositie van de watergang in secties"
-  />
+  <section class="section section-panel">
+    <p class="eyebrow">Hierarchie</p>
+    <div class="chip-row">
+      {(entry.data.hierarchy || []).map((item) => (
+        <span class="mini-link mini-link--muted">{item}</span>
+      ))}
+    </div>
+  </section>
+
+  <section class="detail-grid">
+    <article class="detail-stack">
+      <section class="section section-panel">
+        <p class="eyebrow">Concept</p>
+        <h2>Definitie</h2>
+        <div class="definition-block">
+          <p>{entry.data.definition}</p>
+        </div>
+        {entry.data.definitionSource && <p class="definition-source">{entry.data.definitionSource}</p>}
+
+        <h3>Vergelijkbare termen</h3>
+        <CardGrid>
+          {(entry.data.terms || []).map((item) => (
+            <InfoCard title={item.title} text={item.text} href={item.href} />
+          ))}
+        </CardGrid>
+
+        <div class="callout">
+          <strong>Context</strong>
+          <p>{entry.data.contextNote}</p>
+        </div>
+      </section>
+
+      <section class="section section-panel">
+        <p class="eyebrow">Verschijningsvormen</p>
+        <h2>Typische sectievormen</h2>
+        <CardGrid>
+          {(entry.data.subtypes || []).map((item) => (
+            <InfoCard title={item.title} text={item.text} />
+          ))}
+        </CardGrid>
+      </section>
+
+      <section class="section section-panel">
+        <p class="eyebrow">Uitwerking</p>
+        <h2>Inhoudelijke opbouw van Watergangsectie</h2>
+        <CardGrid>
+          {(entry.data.contentSections || []).map((item) => (
+            <InfoCard title={item.title} text={item.summary} />
+          ))}
+        </CardGrid>
+      </section>
+    </article>
+
+    <aside class="detail-stack">
+      <section class="section section-panel">
+        <p class="eyebrow">Metadata</p>
+        <h2>Objectgegevens</h2>
+        <dl class="meta-list">
+          {(entry.data.metadata || []).map((item) => (
+            <div class="meta-row">
+              <dt>{item.label}</dt>
+              <dd>{item.value}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+
+      <section class="section section-panel">
+        <p class="eyebrow">Productlijn</p>
+        <h2>Andere producten voor Watergangsectie</h2>
+        <CardGrid>
+          {(entry.data.productRelations || []).map((item) => (
+            <InfoCard title={item.title} text={item.text} href={item.href} />
+          ))}
+        </CardGrid>
+      </section>
+
+      <section class="section section-panel">
+        <p class="eyebrow">Doorklik</p>
+        <h2>Vervolg in deze lijn</h2>
+        <CardGrid>
+          {(entry.data.nextSteps || []).map((item) => (
+            <InfoCard title={item.title} text={item.text} href={item.href} />
+          ))}
+        </CardGrid>
+      </section>
+    </aside>
+  </section>
 </BaseLayout>
