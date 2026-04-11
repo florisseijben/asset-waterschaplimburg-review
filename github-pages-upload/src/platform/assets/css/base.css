@@ -10,7 +10,9 @@ body {
   margin: 0;
   font-family: "Avenir Next", Avenir, "Segoe UI", Tahoma, sans-serif;
   color: var(--color-ink);
-  background: #f8fbfb;
+  background:
+    radial-gradient(circle at top left, rgba(0, 169, 193, 0.08), transparent 28rem),
+    linear-gradient(180deg, #f7fbfc 0%, #f3f8f7 100%);
 }
 
 a {
@@ -46,6 +48,10 @@ h4 {
 p,
 li {
   line-height: 1.6;
+}
+
+p {
+  margin-top: 0;
 }
 
 h1 {

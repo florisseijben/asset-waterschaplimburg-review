@@ -1,14 +1,13 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="nl">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Woordenboek | Datastandaard | asset.waterschaplimburg.nl</title>
   <meta name="asset:onderdeel" content="Datastandaard">
-  <meta name="asset:product" content="Landing">
+  <meta name="asset:product" content="Woordenboek">
   <meta name="asset:informatielaag" content="Begrip">
   <meta name="asset:persona" content="Domeinspecialist,Data professional">
-  <meta name="asset:opgave" content="Ecologie">
   <link rel="stylesheet" href="../../../../platform/assets/css/tokens.css?v=20260329-6">
   <link rel="stylesheet" href="../../../../platform/assets/css/base.css?v=20260329-6">
   <link rel="stylesheet" href="../../../../platform/assets/css/layout.css?v=20260329-6">
@@ -16,7 +15,7 @@
   <link rel="stylesheet" href="../../../../platform/assets/css/utilities.css?v=20260329-6">
 </head>
 <body>
-  <main class="shell">
+  <main class="shell" data-term-index data-term-data-files="../data/watersysteem-watergangen-termen.json,../data/watersysteem-kunstwerken-termen.json,../data/watersysteem-meet-en-karteerbegrippen-termen.json">
     <header class="site-header stack">
       <div class="site-header-bar">
         <strong>asset.waterschaplimburg.nl</strong>
@@ -40,115 +39,99 @@
     <section class="hero stack">
       <p class="eyebrow">Product</p>
       <h1>Woordenboek</h1>
-      <p class="lead">
-        Kies eerst het systeem. Daarnaast kun je het woordenboek ook lezen vanuit
-        disciplines, zodat begrippen zowel inhoudelijk als vakmatig geordend kunnen worden.
-      </p>
-    </section>
-
-    <section class="rabbit-hole-panel">
-      <a class="rabbit-hole-link" href="./alle-begrippen.html">
-        <span class="rabbit-hole-title">Direct naar alle begrippen</span>
-        <span class="rabbit-hole-subtext">Open het volledige woordenboekoverzicht</span>
-      </a>
+      <p class="lead">De begrippenlijst staat direct op deze landingspagina. Begrippen zijn vindbaar via zoeken en metadata zoals systeem, discipline, familie en bronvermelding.</p>
     </section>
 
     <section class="panel stack">
-      <p class="eyebrow">Systemen</p>
-      <h2>Kies een systeem</h2>
-      <div class="system-grid">
-        <a class="system-card" href="./afvalwaterketen.html">
-          <div class="system-card-header">
-            <img class="system-card-icon" src="../../../../platform/assets/icons/system-afvalwaterketen.svg" alt="">
-            <h3>Afvalwaterketen</h3>
+      <p class="eyebrow">Zoeken en filteren</p>
+      <h2>Doorzoek het woordenboek op metadata</h2>
+      <form class="search-form stack" role="search">
+        <div class="search-query-panel">
+          <label for="woordenboek-query">Zoekterm</label>
+          <div class="search-query-row">
+            <input id="woordenboek-query" type="search" placeholder="Bijvoorbeeld duiker, hydro-object, RD New of validatieregel" data-term-query>
+            <button class="button button-secondary" type="button" disabled>Direct filteren</button>
           </div>
-          <p>Begrippen voor RWZI's, rioolgemalen, transportleidingen, terreinen en vegetatieobjecten.</p>
-        </a>
-        <a class="system-card" href="./watersysteem.html">
-          <div class="system-card-header">
-            <img class="system-card-icon" src="../../../../platform/assets/icons/system-watersysteem.svg" alt="">
-            <h3>Watersysteem</h3>
-          </div>
-          <p>Begrippen voor watergangen, watervlakten, waterbuffers, kunstwerken en terreininrichting.</p>
-        </a>
-        <a class="system-card" href="./waterkeringensysteem.html">
-          <div class="system-card-header">
-            <img class="system-card-icon" src="../../../../platform/assets/icons/system-waterkeringensysteem.svg" alt="">
-            <h3>Waterkeringensysteem</h3>
-          </div>
-          <p>Begrippen voor waterkeringen, constructies, kunstwerken, terreinen en groenobjecten.</p>
-        </a>
+        </div>
+
+        <div class="search-filter-grid">
+          <section class="search-filter-card stack">
+            <p class="eyebrow">Metadata</p>
+            <div class="stack">
+              <label for="woordenboek-systeem">Systeem</label>
+              <select id="woordenboek-systeem" data-term-system>
+                <option value="">Alle systemen</option>
+              </select>
+            </div>
+            <div class="stack">
+              <label for="woordenboek-discipline">Discipline</label>
+              <select id="woordenboek-discipline" data-term-discipline>
+                <option value="">Alle disciplines</option>
+              </select>
+            </div>
+            <div class="stack">
+              <label for="woordenboek-familie">Familie</label>
+              <select id="woordenboek-familie" data-term-family>
+                <option value="">Alle families</option>
+              </select>
+            </div>
+            <div class="stack">
+              <label for="woordenboek-bron">Bronvermelding</label>
+              <select id="woordenboek-bron" data-term-source>
+                <option value="">Alle bronvermeldingen</option>
+              </select>
+            </div>
+          </section>
+          <section class="search-filter-card stack">
+            <p class="eyebrow">Actieve filters</p>
+            <h3>Huidige selectie</h3>
+            <div class="filter-bar" data-term-active-filters>
+              <span class="quick-search-help">Geen filters actief</span>
+            </div>
+            <p class="quick-search-help">De lijst blijft plat; metadata helpt alleen bij het vinden en filteren van begrippen.</p>
+          </section>
+        </div>
+      </form>
+    </section>
+
+    <section class="panel stack">
+      <p class="eyebrow">Productrelaties</p>
+      <h2>Snel naar de productlijnen voor Watersysteem</h2>
+      <div class="card-grid">
+        <article class="card stack">
+          <h3>Watergangen</h3>
+          <nav class="section-nav" aria-label="Productrelaties Watergangen vanuit Woordenboek">
+            <a href="./index.html?systeem=Watersysteem&amp;familie=Watergangen">Woordenboek</a>
+            <a href="../../objectenhandboek/pages/watersysteem-watergangen.html">Objectenhandboek</a>
+            <a href="../../otl/pages/watersysteem-watergangen.html">OTL</a>
+            <a href="../../referentiedataset/pages/watersysteem-watergangen.html">Referentiedataset</a>
+            <a href="../../werkinstructies/pages/meetprotocol-watergangen.html">Werkinstructies</a>
+          </nav>
+        </article>
+        <article class="card stack">
+          <h3>Kunstwerken</h3>
+          <nav class="section-nav" aria-label="Productrelaties Kunstwerken vanuit Woordenboek">
+            <a href="./index.html?systeem=Watersysteem&amp;familie=Kunstwerken">Woordenboek</a>
+            <a href="../../objectenhandboek/pages/watersysteem-kunstwerken.html">Objectenhandboek</a>
+            <a href="../../otl/pages/watersysteem-kunstwerken.html">OTL</a>
+            <a href="../../referentiedataset/pages/watersysteem-kunstwerken.html">Referentiedataset</a>
+            <a href="../../werkinstructies/pages/meetprotocol-kunstwerken.html">Werkinstructies</a>
+          </nav>
+        </article>
       </div>
     </section>
 
     <section class="panel stack">
-      <p class="eyebrow">Disciplines</p>
-      <h2>Bekijk het woordenboek per discipline</h2>
-      <div class="system-grid">
-        <a class="system-card" href="../../pages/discipline-ruimtelijke-ordening.html">
-          <div class="system-card-header">
-            <img class="system-card-icon" src="../../../../platform/assets/icons/discipline-ruimtelijke-ordening.svg" alt="">
-            <h3>Ruimtelijke ordening</h3>
-          </div>
-          <p>Begrippen bekeken vanuit ligging, functie, gebiedsinpassing en ruimtelijke samenhang.</p>
-        </a>
-        <a class="system-card" href="../../pages/discipline-groen.html">
-          <div class="system-card-header">
-            <img class="system-card-icon" src="../../../../platform/assets/icons/discipline-groen.svg" alt="">
-            <h3>Groen</h3>
-          </div>
-          <p>Begrippen bekeken vanuit vegetatie, ecologie, beheer van groenstructuren en landschappelijke inrichting.</p>
-        </a>
-        <a class="system-card" href="../../pages/discipline-bouwkunde.html">
-          <div class="system-card-header">
-            <img class="system-card-icon" src="../../../../platform/assets/icons/discipline-bouwkunde.svg" alt="">
-            <h3>Bouwkunde</h3>
-          </div>
-          <p>Begrippen bekeken vanuit gebouwde onderdelen, constructieve opbouw en fysieke verschijningsvorm.</p>
-        </a>
-        <a class="system-card" href="../../pages/discipline-civiele-techniek.html">
-          <div class="system-card-header">
-            <img class="system-card-icon" src="../../../../platform/assets/icons/discipline-civiele-techniek.svg" alt="">
-            <h3>Civiele techniek</h3>
-          </div>
-          <p>Begrippen bekeken vanuit grond-, weg- en waterbouwkundige opbouw, profielen en constructies.</p>
-        </a>
-        <a class="system-card" href="../../pages/discipline-werktuigbouwkunde.html">
-          <div class="system-card-header">
-            <img class="system-card-icon" src="../../../../platform/assets/icons/discipline-werktuigbouwkunde.svg" alt="">
-            <h3>Werktuigbouwkunde</h3>
-          </div>
-          <p>Begrippen bekeken vanuit mechanische onderdelen, installaties en technische samenstellingen.</p>
-        </a>
-        <a class="system-card" href="../../pages/discipline-electrotechniek.html">
-          <div class="system-card-header">
-            <img class="system-card-icon" src="../../../../platform/assets/icons/discipline-electrotechniek.svg" alt="">
-            <h3>Electrotechniek</h3>
-          </div>
-          <p>Begrippen bekeken vanuit energievoorziening, bekabeling, besturing en elektrische componenten.</p>
-        </a>
-        <a class="system-card" href="../../pages/discipline-procesautomatisering.html">
-          <div class="system-card-header">
-            <img class="system-card-icon" src="../../../../platform/assets/icons/discipline-procesautomatisering.svg" alt="">
-            <h3>Procesautomatisering</h3>
-          </div>
-          <p>Begrippen bekeken vanuit meet- en regelsystemen, sensoren, sturing en digitale procesondersteuning.</p>
-        </a>
-      </div>
+      <p class="eyebrow">Resultaten</p>
+      <h2><span data-term-count>0</span> begrippen</h2>
+      <div class="card-grid" data-term-results></div>
     </section>
   </main>
+  <script type="application/json" id="term-index-data">
+  {"begrippen":[{"slug":"hydro-object","prefLabel":"Hydro-object","altLabels":[],"definition":"In het waterbeheer onderkende homogene geometrische eenheden van het oppervlaktewatersysteem, zoals watergangen, plassen en sloten.","sourceSystem":"Meetprotocol watergangen en kunstwerken","status":"Concept","system":"Watersysteem","family":"Watergangen","disciplines":["Civiele techniek","Ruimtelijke ordening","Geo-informatie"]},{"slug":"primaire-watergang","prefLabel":"Primaire watergang","altLabels":["A-water"],"definition":"Een waterloop, zoals een rivier of kanaal, die van regionaal belang is en als zodanig per bestuursbesluit is aangewezen door het waterschap.","sourceSystem":"Meetprotocol watergangen en kunstwerken","status":"Concept","system":"Watersysteem","family":"Watergangen","disciplines":["Civiele techniek","Ruimtelijke ordening","Geo-informatie"]},{"slug":"secundaire-watergang","prefLabel":"Secundaire watergang","altLabels":["B-water"],"definition":"Een waterloop, zoals een beek of sloot, die van bovenlokaal belang is en als zodanig per bestuursbesluit is aangewezen door het waterschap.","sourceSystem":"Meetprotocol watergangen en kunstwerken","status":"Concept","system":"Watersysteem","family":"Watergangen","disciplines":["Civiele techniek","Ruimtelijke ordening","Geo-informatie"]},{"slug":"aslijn-watergang","prefLabel":"Aslijn watergang","altLabels":["As-lijn watergang"],"definition":"De lijn die stroomafwaarts over het midden van een waterloop loopt om de ligging in X,Y-coordinaten en de bodemhoogte in Z-coordinaat weer te geven.","sourceSystem":"Meetprotocol watergangen en kunstwerken","status":"Concept","system":"Watersysteem","family":"Watergangen","disciplines":["Civiele techniek","Ruimtelijke ordening","Geo-informatie"]},{"slug":"insteeklijn-watergang","prefLabel":"Insteeklijn watergang","altLabels":[],"definition":"De snijlijn van het horizontaal gelegen maaiveld naar de schuine oeverhelling. De linker insteek ligt stroomafwaarts aan de linkerzijde van de watergang. De rechter insteek ligt stroomafwaarts aan de rechterzijde van de watergang.","sourceSystem":"Meetprotocol watergangen en kunstwerken","status":"Concept","system":"Watersysteem","family":"Watergangen","disciplines":["Civiele techniek","Ruimtelijke ordening","Geo-informatie"]},{"slug":"teenlijn-watergang","prefLabel":"Teenlijn watergang","altLabels":[],"definition":"De snijlijn van de horizontaal gelegen bodem van de watergang naar de schuine oeverhelling. De linker teen ligt stroomafwaarts aan de linkerzijde van de watergang. De rechter teen ligt stroomafwaarts aan de rechterzijde van de watergang.","sourceSystem":"Meetprotocol watergangen en kunstwerken","status":"Concept","system":"Watersysteem","family":"Watergangen","disciplines":["Civiele techniek","Ruimtelijke ordening","Geo-informatie"]},{"slug":"profiellijn-watergang","prefLabel":"Profiellijn watergang","altLabels":[],"definition":"Een lijn die, aanvullend op de lijnen van de as, tenen en insteken, de ligging in X,Y-coordinaten en hoogte in Z-coordinaten van een karakteristiek snijvlak in een watergang weergeeft.","sourceSystem":"Meetprotocol watergangen en kunstwerken","status":"Concept","system":"Watersysteem","family":"Watergangen","disciplines":["Civiele techniek","Ruimtelijke ordening","Geo-informatie"]},{"slug":"profieldoorsnede-watergang","prefLabel":"Profieldoorsnede watergang","altLabels":["Lengteprofiel watergang","Dwarsprofiel watergang"],"definition":"Een lengteprofiel is een doorsnede in de lengterichting van een watergang die het verloop van de hoogteligging weergeeft. Een dwarsprofiel is een doorsnede loodrecht op de stroomrichting die de vorm en afmetingen van de watergang weergeeft.","sourceSystem":"Meetprotocol watergangen en kunstwerken","status":"Concept","system":"Watersysteem","family":"Watergangen","disciplines":["Civiele techniek","Ruimtelijke ordening","Geo-informatie"]},{"slug":"kunstwerk-in-watergang","prefLabel":"Kunstwerk in een watergang","altLabels":["Kunstwerk"],"definition":"Civieltechnische constructie voor het beheren van de waterpeilen, de waterveiligheid en de ecologie, die van invloed is op de doorstroming van het water in de watergang.","sourceSystem":"Meetprotocol watergangen en kunstwerken; Aquo IMWA SIM Kunstwerk","status":"Concept","system":"Watersysteem","family":"Kunstwerken","disciplines":["Civiele techniek","Bouwkunde","Geo-informatie"]},{"slug":"beschoeiing","prefLabel":"Beschoeiing","altLabels":[],"definition":"Een kerende constructie die een oever of waterkant beschermt tegen afkalven, golfkrachten en andere invloeden die de stabiliteit van de waterkant in gevaar brengen.","sourceSystem":"Meetprotocol watergangen en kunstwerken","status":"Concept","system":"Watersysteem","family":"Kunstwerken","disciplines":["Civiele techniek","Bouwkunde","Geo-informatie"]},{"slug":"bodemval","prefLabel":"Bodemval","altLabels":[],"definition":"Kunstwerk waarmee een verschil in bodemhoogte wordt opgevangen door met een minder groot verhang de snelheid van het water te beperken zonder het water vast te houden.","sourceSystem":"Meetprotocol watergangen en kunstwerken","status":"Concept","system":"Watersysteem","family":"Kunstwerken","disciplines":["Civiele techniek","Bouwkunde","Geo-informatie"]},{"slug":"brug","prefLabel":"Brug","altLabels":[],"definition":"De verbinding tussen twee punten die van elkaar zijn gescheiden door een watergang zonder verharde kunstmatige bodem of waarbij de verharding geen deel uitmaakt van de constructie.","sourceSystem":"Meetprotocol watergangen en kunstwerken","status":"Concept","system":"Watersysteem","family":"Kunstwerken","disciplines":["Civiele techniek","Bouwkunde","Geo-informatie"]},{"slug":"duiker","prefLabel":"Duiker","altLabels":["Hevel","Sifon"],"definition":"Een kokervormige constructie met als doel de wederzijdse verbinding tussen oppervlaktewater te waarborgen, waarbij in principe de bodem van de waterloop, in tegenstelling tot die van de brug, wordt onderbroken.","sourceSystem":"Aquo IMWA SIM Duiker","status":"Concept","system":"Watersysteem","family":"Kunstwerken","disciplines":["Civiele techniek","Bouwkunde","Geo-informatie"]},{"slug":"overkluizing","prefLabel":"Overkluizing","altLabels":[],"definition":"De constructie die over een langere afstand de watergang als een dak overdekt met als doel bebouwbare ruimte te winnen.","sourceSystem":"Meetprotocol watergangen en kunstwerken","status":"Concept","system":"Watersysteem","family":"Kunstwerken","disciplines":["Civiele techniek","Bouwkunde","Geo-informatie"]},{"slug":"sluis","prefLabel":"Sluis","altLabels":[],"definition":"Een kunstmatige, beweegbare waterkering die de verbinding tussen twee wateren kan afsluiten of openstellen en daartoe van deuren of schuiven is voorzien.","sourceSystem":"Aquo IMWA SIM Sluis","status":"Concept","system":"Watersysteem","family":"Kunstwerken","disciplines":["Civiele techniek","Bouwkunde","Geo-informatie"]},{"slug":"stuw","prefLabel":"Stuw","altLabels":[],"definition":"Vaste of beweegbare constructie die dient om het peil bovenstrooms van de constructie te verhogen c.q. te regelen.","sourceSystem":"Aquo IMWA SIM Stuw","status":"Concept","system":"Watersysteem","family":"Kunstwerken","disciplines":["Civiele techniek","Bouwkunde","Geo-informatie"]},{"slug":"verdediging","prefLabel":"Verdediging","altLabels":["Profielverdediging","Oeververdediging"],"definition":"Een kunstmatige verdediging van talud en/of bodem van een water.","sourceSystem":"Aquo IMWA SIM Oeververdediging","status":"Concept","system":"Watersysteem","family":"Kunstwerken","disciplines":["Civiele techniek","Bouwkunde","Geo-informatie"]},{"slug":"vispassage","prefLabel":"Vispassage","altLabels":["Vistrap"],"definition":"Een kunstmatige passage ten behoeve van de vistrek bij kunstwerken in wateren.","sourceSystem":"Aquo begrippen Vispassage","status":"Concept","system":"Watersysteem","family":"Kunstwerken","disciplines":["Civiele techniek","Bouwkunde","Geo-informatie"]},{"slug":"voorde","prefLabel":"Voorde","altLabels":[],"definition":"Een doorwaadbare, doorgaans verharde, plaats in de waterloop, die dient voor de oversteek van die waterloop.","sourceSystem":"Aquo IMWA SIM Kunstwerk (afgeleide specialisatiedefinitie)","status":"Concept","system":"Watersysteem","family":"Kunstwerken","disciplines":["Civiele techniek","Bouwkunde","Geo-informatie"]},{"slug":"vuilvang","prefLabel":"Vuilvang","altLabels":[],"definition":"Voorziening in de watergang voor het tegen drijvend vuil beschermen van het benedenstrooms oppervlaktewater.","sourceSystem":"Meetprotocol watergangen en kunstwerken","status":"Concept","system":"Watersysteem","family":"Kunstwerken","disciplines":["Civiele techniek","Bouwkunde","Geo-informatie"]},{"slug":"zandvang","prefLabel":"Zandvang","altLabels":[],"definition":"Een verbredende of verdiepende inrichting in de watergang die de stroomsnelheid van het water vermindert met als doel het in het water aanwezige zand te laten bezinken.","sourceSystem":"Meetprotocol watergangen en kunstwerken","status":"Concept","system":"Watersysteem","family":"Kunstwerken","disciplines":["Civiele techniek","Bouwkunde","Geo-informatie"]},{"slug":"asset","prefLabel":"Asset","altLabels":[],"definition":"De vaste activa die een waarde vertegenwoordigen voor de wettelijke en bestuurlijke opgaven van het waterschap.","sourceSystem":"Meetprotocol watergangen en kunstwerken","status":"Concept","system":"Watersysteem","family":"Meet- en karteerbegrippen","disciplines":["Geo-informatie","Procesautomatisering","Civiele techniek"]},{"slug":"benedenstrooms","prefLabel":"Benedenstrooms","altLabels":["Stroomafwaarts"],"definition":"Wijst in de richting met de stroom van het water mee.","sourceSystem":"Meetprotocol watergangen en kunstwerken","status":"Concept","system":"Watersysteem","family":"Meet- en karteerbegrippen","disciplines":["Geo-informatie","Procesautomatisering","Civiele techniek"]},{"slug":"bestandsgeodatabase","prefLabel":"Bestandsgeodatabase","altLabels":["FileGeoDataBase","FGDB","GDB"],"definition":"Bestandsformaat dat wordt gebruikt om geografische informatie op te slaan, te beheren en te raadplegen en dat geschikt is voor zowel vector- als rasterdata.","sourceSystem":"Meetprotocol watergangen en kunstwerken","status":"Concept","system":"Watersysteem","family":"Meet- en karteerbegrippen","disciplines":["Geo-informatie","Procesautomatisering","Civiele techniek"]},{"slug":"bovenstrooms","prefLabel":"Bovenstrooms","altLabels":["Stroomopwaarts"],"definition":"Wijst in de richting tegen de stroom van het water in, naar de oorsprong van het water.","sourceSystem":"Meetprotocol watergangen en kunstwerken","status":"Concept","system":"Watersysteem","family":"Meet- en karteerbegrippen","disciplines":["Geo-informatie","Procesautomatisering","Civiele techniek"]},{"slug":"gegevensstructuur","prefLabel":"Gegevensstructuur","altLabels":[],"definition":"De gespecialiseerde manier van gegevensopslag die de relaties tussen gegevenselementen definieert met als doel de gegevens efficient en effectief te beheren en gebruiken.","sourceSystem":"Meetprotocol watergangen en kunstwerken","status":"Concept","system":"Watersysteem","family":"Meet- en karteerbegrippen","disciplines":["Geo-informatie","Procesautomatisering","Civiele techniek"]},{"slug":"geodetische-gegevensinwinning","prefLabel":"Geodetische gegevensinwinning","altLabels":[],"definition":"Het met geavanceerde technieken en instrumenten nauwkeurig meten van de precieze positie van vaste punten op het aardoppervlak.","sourceSystem":"Meetprotocol watergangen en kunstwerken","status":"Concept","system":"Watersysteem","family":"Meet- en karteerbegrippen","disciplines":["Geo-informatie","Procesautomatisering","Civiele techniek"]},{"slug":"geografisch-informatiesysteem","prefLabel":"Geografisch informatiesysteem","altLabels":["GIS"],"definition":"Een computergebaseerd systeem voor het vastleggen, opslaan, analyseren, beheren en visualiseren van data die gekoppeld is aan een locatie op aarde.","sourceSystem":"Meetprotocol watergangen en kunstwerken","status":"Concept","system":"Watersysteem","family":"Meet- en karteerbegrippen","disciplines":["Geo-informatie","Procesautomatisering","Civiele techniek"]},{"slug":"kernregistratie","prefLabel":"Kernregistratie","altLabels":[],"definition":"De centraal beheerde geo-database waarin de ligging, vorm, afmetingen en belangrijkste generieke kenmerken van de waterschapsassets zijn vastgelegd.","sourceSystem":"Meetprotocol watergangen en kunstwerken","status":"Concept","system":"Watersysteem","family":"Meet- en karteerbegrippen","disciplines":["Geo-informatie","Procesautomatisering","Civiele techniek"]},{"slug":"mnap","prefLabel":"mNAP","altLabels":["Normaal Amsterdams Peil","NAP"],"definition":"De referentiehoogte waaraan hoogtemetingen in Nederland worden gerelateerd.","sourceSystem":"Meetprotocol watergangen en kunstwerken","status":"Concept","system":"Watersysteem","family":"Meet- en karteerbegrippen","disciplines":["Geo-informatie","Procesautomatisering","Civiele techniek"]},{"slug":"polyline","prefLabel":"Polyline","altLabels":[],"definition":"Een GIS-vectorgeometrie met een begin- en eindpunt die een doorlopende lijn voorstelt waarmee lineaire objecten worden weergegeven.","sourceSystem":"Meetprotocol watergangen en kunstwerken","status":"Concept","system":"Watersysteem","family":"Meet- en karteerbegrippen","disciplines":["Geo-informatie","Procesautomatisering","Civiele techniek"]},{"slug":"quick-scan","prefLabel":"Quick scan","altLabels":[],"definition":"Een snelle, orienterende analyse van een proces of product om knelpunten te identificeren.","sourceSystem":"Meetprotocol watergangen en kunstwerken","status":"Concept","system":"Watersysteem","family":"Meet- en karteerbegrippen","disciplines":["Geo-informatie","Procesautomatisering","Civiele techniek"]},{"slug":"rd-new","prefLabel":"RD New","altLabels":["Rijksdriehoekscoordinaten","Rijksdriehoekstelsel"],"definition":"Het geodetisch coordinatensysteem dat voor Europees Nederland op nationaal niveau wordt gebruikt als grondslag voor geografische aanduidingen en bestanden.","sourceSystem":"Meetprotocol watergangen en kunstwerken","status":"Concept","system":"Watersysteem","family":"Meet- en karteerbegrippen","disciplines":["Geo-informatie","Procesautomatisering","Civiele techniek"]},{"slug":"terrestrisch-inmeten","prefLabel":"Terrestrisch inmeten","altLabels":[],"definition":"Het inmeten en vastleggen van hoogtegegevens van het aardoppervlak en de ligging en afmetingen van objecten op de grond met behulp van satellietnavigatiesystemen.","sourceSystem":"Meetprotocol watergangen en kunstwerken","status":"Concept","system":"Watersysteem","family":"Meet- en karteerbegrippen","disciplines":["Geo-informatie","Procesautomatisering","Civiele techniek"]},{"slug":"topografie","prefLabel":"Topografie","altLabels":["Harde topografie","Zachte topografie"],"definition":"De landmeetkundig in kaart gebrachte plaatsbeschrijving van objecten op het aardoppervlak.","sourceSystem":"Meetprotocol watergangen en kunstwerken","status":"Concept","system":"Watersysteem","family":"Meet- en karteerbegrippen","disciplines":["Geo-informatie","Procesautomatisering","Civiele techniek"]},{"slug":"uitvoerende-partij","prefLabel":"Uitvoerende partij","altLabels":["Opdrachtnemer"],"definition":"De opdrachtnemer die aan de hand van het meetprotocol de door Waterschap Limburg opgedragen gegevensinwinning uitvoert.","sourceSystem":"Meetprotocol watergangen en kunstwerken","status":"Concept","system":"Watersysteem","family":"Meet- en karteerbegrippen","disciplines":["Geo-informatie","Procesautomatisering","Civiele techniek"]},{"slug":"validatieregel","prefLabel":"Validatieregel","altLabels":[],"definition":"Een stelling aan de hand waarvan een waarde of een methode op geldigheid of juistheid wordt gecontroleerd.","sourceSystem":"Meetprotocol watergangen en kunstwerken","status":"Concept","system":"Watersysteem","family":"Meet- en karteerbegrippen","disciplines":["Geo-informatie","Procesautomatisering","Civiele techniek"]}]}
+  </script>
   <script src="../../../../platform/assets/js/app.js?v=20260406-2"></script>
+  <script src="../../../../platform/assets/js/data-inline.js"></script>
+  <script src="../../../../platform/assets/js/term-index.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-

@@ -5,10 +5,14 @@
     }
 
     return items.map(function (item) {
+      var label = window.AssetPlatformData.escapeHtml(item.label || item.prefLabel || item.id || "");
+      var uri = window.AssetPlatformData.escapeHtml(item.uri || item.type || "");
+      var link = item.uri ? '<a href="' + uri + '">' + label + "</a>" : label;
+
       return '<li><span class="related-link"><strong>' +
-        window.AssetPlatformData.escapeHtml(item.label || item.prefLabel || item.id || "") +
+        link +
         "</strong><small>" +
-        window.AssetPlatformData.escapeHtml(item.uri || item.type || "") +
+        uri +
         "</small></span></li>";
     }).join("");
   }
@@ -39,11 +43,57 @@
     }).join("");
   }
 
+  function fetchTerms(root, detailData) {
+    var files = (root.getAttribute("data-term-data-files") || "").split(",").map(function (item) {
+      return item.trim();
+    }).filter(Boolean);
+
+    if (detailData && (detailData.begrip || detailData.begrippen)) {
+      return Promise.resolve(detailData);
+    }
+
+    if (!files.length) {
+      return Promise.resolve(detailData);
+    }
+
+    return Promise.all(files.map(function (file) {
+      return fetch(file).then(function (response) {
+        return response.ok ? response.json() : { begrippen: [] };
+      }).catch(function () {
+        return { begrippen: [] };
+      });
+    })).then(function (items) {
+      return {
+        begrippen: items.reduce(function (all, item) {
+          return all.concat(item.begrippen || []);
+        }, [])
+      };
+    });
+  }
+
+  function inferFamily(detail) {
+    var page = detail.familyPage || "";
+
+    if (page.indexOf("watergangen") !== -1) {
+      return "Watergangen";
+    }
+    if (page.indexOf("kunstwerken") !== -1) {
+      return "Kunstwerken";
+    }
+    if (page.indexOf("meet-en-karteerbegrippen") !== -1) {
+      return "Meet- en karteerbegrippen";
+    }
+
+    return "";
+  }
+
   function render() {
     var root = document.querySelector("[data-term-detail]");
     var detailData;
     var mappingData;
     var detail;
+    var terms;
+    var selectedSlug;
     var mapping;
 
     if (!root || !window.AssetPlatformData || !window.AssetLinkedDataPanel) {
@@ -52,28 +102,54 @@
 
     detailData = window.AssetPlatformData.readJsonScript("term-detail-data");
     mappingData = window.AssetPlatformData.readJsonScript("term-mapping-data");
-    detail = detailData && detailData.begrip ? detailData.begrip : null;
     mapping = mappingData || {};
 
-    if (!detail) {
-      return;
-    }
+    fetchTerms(root, detailData).then(function (resolvedData) {
+      terms = resolvedData && resolvedData.begrippen ? resolvedData.begrippen : null;
+      selectedSlug = new URLSearchParams(window.location.search).get("term");
+      detail = resolvedData && resolvedData.begrip ? resolvedData.begrip : null;
 
-    document.getElementById("term-title").textContent = detail.prefLabel || "Begrip";
-    document.getElementById("term-summary").textContent = detail.definition || "";
-    document.getElementById("term-status").textContent = detail.status || "Concept";
-    document.getElementById("term-definition").textContent = detail.definition || "";
-    document.getElementById("term-scope-note").textContent = detail.scopeNote || "Geen extra toelichting beschikbaar.";
-    document.getElementById("term-edg-note").textContent = mapping.summary || "";
+      if (!detail && terms && terms.length) {
+        detail = terms.find(function (item) {
+          return item.slug === selectedSlug;
+        }) || terms[0];
+      }
 
-    renderMetaList(document.getElementById("term-meta"), detail);
+      if (!detail) {
+        return;
+      }
 
-    document.getElementById("term-broader").innerHTML = toList(detail.broader, "Geen bredere begrippen gekoppeld.");
-    document.getElementById("term-narrower").innerHTML = toList(detail.narrower, "Geen nauwere begrippen gekoppeld.");
-    document.getElementById("term-related").innerHTML = toList(detail.related, "Geen gerelateerde begrippen gekoppeld.");
+      document.getElementById("term-title").textContent = detail.prefLabel || "Begrip";
+      document.getElementById("term-summary").textContent = detail.definition || "";
+      document.getElementById("term-status").textContent = detail.status || "Concept";
+      document.getElementById("term-definition").textContent = detail.definition || "";
+      document.getElementById("term-scope-note").textContent = detail.scopeNote || "Geen extra toelichting beschikbaar.";
+      document.getElementById("term-edg-note").textContent = mapping.summary || "";
+      document.title = (detail.prefLabel || "Begrip") + " | Woordenboek | Datastandaard | asset.waterschaplimburg.nl";
 
-    renderSources(document.getElementById("term-sources"), detail, mapping);
-    window.AssetLinkedDataPanel.render(document.getElementById("term-linked-data"), detail);
+      if (detail.familyPage) {
+        var overviewHref = "./index.html";
+        var family = inferFamily(detail);
+
+        if ((detail.conceptScheme || "").indexOf("Watersysteem") !== -1 || family) {
+          overviewHref += "?systeem=Watersysteem";
+          if (family) {
+            overviewHref += "&familie=" + encodeURIComponent(family);
+          }
+        }
+
+        document.querySelector(".breadcrumb li:last-child span").textContent = detail.prefLabel || "Begripdetail";
+        document.querySelector(".detail-actions .button-primary").setAttribute("href", overviewHref);
+        document.querySelector(".detail-actions .button-primary").textContent = "Terug naar begrippenlijst";
+      }
+
+      renderMetaList(document.getElementById("term-meta"), detail);
+      document.getElementById("term-broader").innerHTML = toList(detail.broader, "Geen bredere begrippen gekoppeld.");
+      document.getElementById("term-narrower").innerHTML = toList(detail.narrower, "Geen nauwere begrippen gekoppeld.");
+      document.getElementById("term-related").innerHTML = toList(detail.related, "Geen gerelateerde begrippen gekoppeld.");
+      renderSources(document.getElementById("term-sources"), detail, mapping);
+      window.AssetLinkedDataPanel.render(document.getElementById("term-linked-data"), detail);
+    });
   }
 
   if (document.readyState === "loading") {

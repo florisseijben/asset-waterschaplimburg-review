@@ -12,11 +12,15 @@
   --color-landscape-yellow: #d7b600;
   --color-sand: #f3f8f7;
   --color-surface: #ffffff;
+  --color-surface-alt: #f7fbfc;
   --color-line: #d7e5e4;
+  --color-line-strong: #bdd4d2;
   --color-muted: #5f6f6d;
   --color-highlight: #f5fbfb;
   --color-panel: #fcfefe;
   --color-deep: #102321;
+  --color-hero-glow: rgba(0, 169, 193, 0.14);
+  --color-hero-glow-strong: rgba(0, 127, 145, 0.2);
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 0.75rem;
@@ -25,12 +29,13 @@
   --space-6: 1.5rem;
   --space-8: 2rem;
   --space-10: 2.5rem;
-  --radius-s: 0;
-  --radius-m: 0;
-  --radius-l: 0;
-  --radius-xl: 0;
-  --corner-radius: 0.2rem;
-  --shadow-s: 0 2px 6px rgba(16, 35, 33, 0.05);
-  --shadow-m: 0 10px 24px rgba(16, 35, 33, 0.08);
+  --radius-s: 0.35rem;
+  --radius-m: 0.7rem;
+  --radius-l: 1rem;
+  --radius-xl: 1.4rem;
+  --corner-radius: 0.7rem;
+  --shadow-s: 0 10px 24px rgba(16, 35, 33, 0.06);
+  --shadow-m: 0 20px 48px rgba(16, 35, 33, 0.12);
+  --shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.8);
   --container: 76rem;
 }

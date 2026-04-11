@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="nl">
 <head>
   <meta charset="utf-8">
@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="../../../../platform/assets/css/utilities.css?v=20260329-6">
 </head>
 <body>
-  <main class="shell">
+  <main class="shell" data-term-index data-term-data-files="../data/watersysteem-watergangen-termen.json,../data/watersysteem-kunstwerken-termen.json,../data/watersysteem-meet-en-karteerbegrippen-termen.json">
     <header class="site-header stack">
       <div class="site-header-bar">
         <strong>asset.waterschaplimburg.nl</strong>
@@ -40,62 +40,69 @@
     <section class="hero stack">
       <p class="eyebrow">Woordenboek</p>
       <h1>Alle begrippen</h1>
-      <p class="lead">
-        Een directe ingang naar de belangrijkste begrippen en objectfamilies binnen de drie systemen.
-      </p>
+      <p class="lead">Een centrale begrippenlijst zonder indeling per systeem. Begrippen zijn vindbaar via metadata zoals systeem, discipline, familie en bronvermelding.</p>
     </section>
 
     <section class="panel stack">
-      <p class="eyebrow">Watersysteem</p>
-      <h2>Begrippen binnen Watersysteem</h2>
-      <div class="card-grid">
-        <a class="card stack" href="./watersysteem-watergangen.html"><h3>Watergang</h3><p>Lijnvormige waterobjecten en hun begrippenkader.</p></a>
-        <a class="card stack" href="./watersysteem-watervlakten.html"><h3>Watervlakte</h3><p>Vlakvormige waterobjecten zoals meer, plas en vijver.</p></a>
-        <a class="card stack" href="./watersysteem-waterbuffers.html"><h3>Waterbuffer</h3><p>Begrippen rond buffering en tijdelijk vasthouden van water.</p></a>
-        <a class="card stack" href="./watersysteem-kunstwerken.html"><h3>Kunstwerk</h3><p>Technische objecten binnen het watersysteem.</p></a>
-        <a class="card stack" href="./watersysteem-terreinen.html"><h3>Terrein</h3><p>Begrippen voor terreinen en ruimtelijke context.</p></a>
-        <a class="card stack" href="./watersysteem-terreininrichting.html"><h3>Terreininrichting</h3><p>Inrichtingselementen binnen het watersysteem.</p></a>
-        <a class="card stack" href="./watersysteem-vegetatieobjecten.html"><h3>Vegetatieobject</h3><p>Groene objecten en hun begrippen.</p></a>
-      </div>
+      <p class="eyebrow">Zoeken en filteren</p>
+      <h2>Doorzoek het woordenboek op metadata</h2>
+      <form class="search-form stack" role="search">
+        <div class="search-query-panel">
+          <label for="woordenboek-query">Zoekterm</label>
+          <div class="search-query-row">
+            <input id="woordenboek-query" type="search" placeholder="Bijvoorbeeld duiker, hydro-object, RD New of validatieregel" data-term-query>
+            <button class="button button-secondary" type="button" disabled>Direct filteren</button>
+          </div>
+        </div>
+
+        <div class="search-filter-grid">
+          <section class="search-filter-card stack">
+            <p class="eyebrow">Metadata</p>
+            <div class="stack">
+              <label for="woordenboek-systeem">Systeem</label>
+              <select id="woordenboek-systeem" data-term-system>
+                <option value="">Alle systemen</option>
+              </select>
+            </div>
+            <div class="stack">
+              <label for="woordenboek-discipline">Discipline</label>
+              <select id="woordenboek-discipline" data-term-discipline>
+                <option value="">Alle disciplines</option>
+              </select>
+            </div>
+            <div class="stack">
+              <label for="woordenboek-familie">Familie</label>
+              <select id="woordenboek-familie" data-term-family>
+                <option value="">Alle families</option>
+              </select>
+            </div>
+            <div class="stack">
+              <label for="woordenboek-bron">Bronvermelding</label>
+              <select id="woordenboek-bron" data-term-source>
+                <option value="">Alle bronvermeldingen</option>
+              </select>
+            </div>
+          </section>
+          <section class="search-filter-card stack">
+            <p class="eyebrow">Actieve filters</p>
+            <h3>Huidige selectie</h3>
+            <div class="filter-bar" data-term-active-filters>
+              <span class="quick-search-help">Geen filters actief</span>
+            </div>
+            <p class="quick-search-help">De lijst blijft plat; de metadata helpt alleen bij het vinden en filteren van begrippen.</p>
+          </section>
+        </div>
+      </form>
     </section>
 
     <section class="panel stack">
-      <p class="eyebrow">Waterkeringensysteem</p>
-      <h2>Begrippen binnen Waterkeringensysteem</h2>
-      <div class="card-grid">
-        <a class="card stack" href="./waterkeringensysteem-waterkeringen.html"><h3>Waterkering</h3><p>Begrippen voor primaire en overige waterkeringen.</p></a>
-        <a class="card stack" href="./waterkeringensysteem-constructies.html"><h3>Constructie</h3><p>Constructieve objecten en hun samenhang.</p></a>
-        <a class="card stack" href="./waterkeringensysteem-kunstwerken.html"><h3>Kunstwerk</h3><p>Technische objecten in het waterkeringendomein.</p></a>
-        <a class="card stack" href="./waterkeringensysteem-terreinen.html"><h3>Terrein</h3><p>Terreinen en ruimtelijke context binnen waterveiligheid.</p></a>
-        <a class="card stack" href="./waterkeringensysteem-terreininrichting.html"><h3>Terreininrichting</h3><p>Inrichtingselementen rond waterkeringen.</p></a>
-        <a class="card stack" href="./waterkeringensysteem-groenobjecten.html"><h3>Groenobject</h3><p>Groene objecten op en rond waterkeringen.</p></a>
-      </div>
-    </section>
-
-    <section class="panel stack">
-      <p class="eyebrow">Afvalwaterketen</p>
-      <h2>Begrippen binnen Afvalwaterketen</h2>
-      <div class="card-grid">
-        <a class="card stack" href="./afvalwaterketen-rwzis.html"><h3>RWZI</h3><p>Begrippen voor rioolwaterzuiveringsinstallaties.</p></a>
-        <a class="card stack" href="./afvalwaterketen-rioolgemalen.html"><h3>Rioolgemaal</h3><p>Begrippen voor gemalen in de afvalwaterketen.</p></a>
-        <a class="card stack" href="./afvalwaterketen-transportleidingen.html"><h3>Transportleiding</h3><p>Begrippen rond leidingen en transport van afvalwater.</p></a>
-        <a class="card stack" href="./afvalwaterketen-terreinen.html"><h3>Terrein</h3><p>Terreinen in relatie tot installaties en leidingen.</p></a>
-        <a class="card stack" href="./afvalwaterketen-terreininrichting.html"><h3>Terreininrichting</h3><p>Inrichtingselementen op technische terreinen.</p></a>
-        <a class="card stack" href="./afvalwaterketen-vegetatieobjecten.html"><h3>Vegetatieobject</h3><p>Groene objecten binnen de afvalwaterketen.</p></a>
-      </div>
+      <p class="eyebrow">Resultaten</p>
+      <h2><span data-term-count>0</span> begrippen</h2>
+      <div class="card-grid" data-term-results></div>
     </section>
   </main>
   <script src="../../../../platform/assets/js/app.js?v=20260406-2"></script>
+  <script src="../../../../platform/assets/js/data-inline.js"></script>
+  <script src="../../../../platform/assets/js/term-index.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-

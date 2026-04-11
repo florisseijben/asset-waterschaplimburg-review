@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="../../../../platform/assets/css/utilities.css?v=20260329-6">
 </head>
 <body>
-  <main class="shell" data-term-detail>
+  <main class="shell" data-term-detail data-term-data-files="../data/watersysteem-watergangen-termen.json,../data/watersysteem-kunstwerken-termen.json,../data/watersysteem-meet-en-karteerbegrippen-termen.json">
     <header class="site-header stack">
       <div class="site-header-bar">
         <strong>asset.waterschaplimburg.nl</strong>
@@ -114,53 +114,7 @@
   </main>
 
   <script type="application/json" id="term-detail-data">
-  {
-    "begrip": {
-      "id": "begrip-asset",
-      "slug": "asset",
-      "prefLabel": "Asset",
-      "altLabels": ["Bedrijfsmiddel", "Beheerd object"],
-      "definition": "Beheerd object of systeemonderdeel binnen de levenscyclus van het areaal waarop registratie, onderhoud, analyse en besluitvorming betrekking hebben.",
-      "scopeNote": "Binnen dit platform gebruiken we het begrip asset als kapstokterm voor fysieke en logische beheereenheden die in Assetregister, Assetmanagement en Datastandaard terugkomen.",
-      "status": "Vastgesteld",
-      "uri": "https://data.waterschaplimburg.nl/id/begrip/asset",
-      "conceptScheme": "Datastandaard Assetdomein",
-      "sourceSystem": "semantische beheeromgeving",
-      "lastUpdated": "2026-03-24",
-      "rdfType": "skos:Concept",
-      "owlClass": "wl:Asset",
-      "shaclShape": "wlshape:AssetShape",
-      "broader": [
-        {
-          "label": "Beheerobject",
-          "uri": "https://data.waterschaplimburg.nl/id/begrip/beheerobject"
-        }
-      ],
-      "narrower": [
-        {
-          "label": "Kunstwerk",
-          "uri": "https://data.waterschaplimburg.nl/id/begrip/kunstwerk"
-        },
-        {
-          "label": "Installatieonderdeel",
-          "uri": "https://data.waterschaplimburg.nl/id/begrip/installatieonderdeel"
-        }
-      ],
-      "related": [
-        {
-          "label": "Objecttype",
-          "uri": "https://data.waterschaplimburg.nl/id/begrip/objecttype"
-        },
-        {
-          "label": "Referentiedataset",
-          "uri": "https://data.waterschaplimburg.nl/id/begrip/referentiedataset"
-        }
-      ],
-      "rdf": "@prefix skos: <http://www.w3.org/2004/02/skos/core#> .\n@prefix wl: <https://data.waterschaplimburg.nl/def/> .\n\n<https://data.waterschaplimburg.nl/id/begrip/asset>\n  a skos:Concept ;\n  skos:prefLabel \"Asset\"@nl ;\n  skos:definition \"Beheerd object of systeemonderdeel binnen de levenscyclus van het areaal waarop registratie, onderhoud, analyse en besluitvorming betrekking hebben.\"@nl .",
-      "owl": "@prefix owl: <http://www.w3.org/2002/07/owl#> .\n@prefix wl: <https://data.waterschaplimburg.nl/def/> .\n\nwl:Asset\n  a owl:Class ;\n  rdfs:label \"Asset\"@nl ;\n  rdfs:seeAlso <https://data.waterschaplimburg.nl/id/begrip/asset> .",
-      "shacl": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix wlshape: <https://data.waterschaplimburg.nl/shape/> .\n\nwlshape:AssetShape\n  a sh:NodeShape ;\n  sh:targetClass <https://data.waterschaplimburg.nl/def/Asset> ;\n  sh:property [\n    sh:path <https://data.waterschaplimburg.nl/def/heeftObjecttype> ;\n    sh:minCount 1\n  ] ."
-    }
-  }
+  {}
   </script>
 
   <script type="application/json" id="term-mapping-data">
