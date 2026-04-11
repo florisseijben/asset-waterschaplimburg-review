@@ -1,4 +1,6 @@
 ---
+import { withBase } from "../lib/paths";
+
 interface Props {
   title: string;
   text: string;
@@ -10,7 +12,7 @@ const { title, text, href, eyebrow } = Astro.props;
 const Tag = href ? "a" : "article";
 ---
 
-<Tag class="info-card" href={href}>
+<Tag class="info-card" href={withBase(href)}>
   {eyebrow && <p class="eyebrow">{eyebrow}</p>}
   <h2>{title}</h2>
   <p>{text}</p>

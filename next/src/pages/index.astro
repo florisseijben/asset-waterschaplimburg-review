@@ -4,6 +4,7 @@ import Hero from "../components/Hero.astro";
 import CardGrid from "../components/CardGrid.astro";
 import InfoCard from "../components/InfoCard.astro";
 import { getCollection } from "astro:content";
+import { withBase } from "../lib/paths";
 
 const entries = await getCollection("platform");
 const entry = entries[0];
@@ -17,7 +18,7 @@ if (!entry) {
   <Hero eyebrow="Home" title={entry.data.heroTitle || entry.data.title} summary={entry.data.summary}>
     <div class="actions">
       {(entry.data.heroActions || []).map((action) => (
-        <a class={`button ${action.variant === "primary" ? "button-primary" : "button-secondary"}`} href={action.href}>
+        <a class={`button ${action.variant === "primary" ? "button-primary" : "button-secondary"}`} href={withBase(action.href)}>
           {action.label}
         </a>
       ))}

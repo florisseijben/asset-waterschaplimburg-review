@@ -142,3 +142,12 @@ Dat betekent:
 - de PoC blijft lokaal controleerbaar;
 - `next/` wordt extern gebouwd;
 - en buildresultaten worden gecontroleerd zonder de PoC-publicatie over te nemen.
+
+## Preview-publicatiepad
+
+De gekozen route is:
+
+- huidige PoC op de repository-root;
+- nieuwe omgeving onder `/next/`.
+
+Daarmee kan de nieuwe omgeving gepubliceerd worden zonder de bevroren PoC als hoofdroute te vervangen.

@@ -1,4 +1,6 @@
 ---
+import { withBase } from "../lib/paths";
+
 interface NavItem {
   label: string;
   href: string;
@@ -14,12 +16,12 @@ const { currentPath, items } = Astro.props;
 
 <header class="site-header">
   <div class="site-header__bar">
-    <a class="site-brand" href="/">asset.waterschaplimburg.nl</a>
+    <a class="site-brand" href={withBase("/")}>asset.waterschaplimburg.nl</a>
     <nav aria-label="Hoofdnavigatie">
       <ul class="primary-nav">
         {items.map((item) => (
           <li>
-            <a href={item.href} aria-current={item.href === currentPath ? "page" : undefined}>
+            <a href={withBase(item.href)} aria-current={item.href === currentPath ? "page" : undefined}>
               {item.label}
             </a>
           </li>

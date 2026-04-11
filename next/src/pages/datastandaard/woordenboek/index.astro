@@ -4,6 +4,7 @@ import Hero from "../../../components/Hero.astro";
 import CardGrid from "../../../components/CardGrid.astro";
 import InfoCard from "../../../components/InfoCard.astro";
 import { getCollection } from "astro:content";
+import { withBase } from "../../../lib/paths";
 
 const entries = await getCollection("datastandaard-woordenboek");
 const entry = entries[0];
@@ -43,7 +44,7 @@ if (!entry) {
           <div class="link-row">
             {group.links.map((link) => (
               link.href ? (
-                <a class="mini-link" href={link.href}>{link.label}</a>
+                <a class="mini-link" href={withBase(link.href)}>{link.label}</a>
               ) : (
                 <span class="mini-link mini-link--muted">{link.label}</span>
               )

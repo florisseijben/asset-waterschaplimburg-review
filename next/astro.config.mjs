@@ -1,6 +1,7 @@
 import { defineConfig } from "astro/config";
 
 export default defineConfig({
-  site: "https://asset.waterschaplimburg.nl",
+  site: "https://florisseijben.github.io",
+  base: "/asset-waterschaplimburg-review/next",
   output: "static"
 });

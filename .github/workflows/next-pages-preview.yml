@@ -1,0 +1,78 @@
+name: Publiceer next-preview op GitHub Pages
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/next-pages-preview.yml"
+      - "next/**"
+      - "index.html"
+      - "src/**"
+      - "static/**"
+      - "tests/**"
+      - ".nojekyll"
+      - "logo-waterschap-limburg.jpg"
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build-pages-artifact:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install next dependencies
+        working-directory: next
+        run: npm install
+
+      - name: Build next preview
+        working-directory: next
+        run: npm run build
+
+      - name: Prepare combined Pages artifact
+        run: |
+          mkdir -p _site
+          rsync -a \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='.githooks' \
+            --exclude='docs' \
+            --exclude='github-pages-upload' \
+            --exclude='next' \
+            --exclude='tools' \
+            ./ _site/
+          mkdir -p _site/next
+          cp -a next/dist/. _site/next/
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy-pages:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build-pages-artifact
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

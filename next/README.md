@@ -45,9 +45,20 @@ De eerste scope van `next/` is:
 Deze omgeving kan buiten de lokale laptop gebouwd worden via:
 
 - `.github/workflows/next-build.yml`
+- `.github/workflows/next-pages-preview.yml`
 
 Doel van deze workflow:
 
 - Astro-build van `next/` draaien op GitHub;
 - buildproblemen vroeg zichtbaar maken;
 - het resultaat als artifact opslaan zonder de huidige PoC-publicatie te vervangen.
+
+## Previewroute
+
+Als GitHub Pages voor deze repository op **GitHub Actions** staat, blijft de huidige PoC op de root beschikbaar en komt de nieuwe omgeving beschikbaar onder:
+
+- `/next/`
+
+Voor deze repository betekent dat normaal gesproken:
+
+- `https://florisseijben.github.io/asset-waterschaplimburg-review/next/`
