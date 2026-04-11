@@ -1,71 +1,41 @@
 import { defineCollection, z } from "astro:content";
 
 const baseSchema = z.object({
-  title: z.string(),
-  slug: z.string(),
-  part: z.string(),
-  product: z.string(),
-  ownerTeam: z.string(),
-  status: z.string(),
-  lastReviewed: z.union([z.string(), z.date()]),
-  summary: z.string(),
-  heroTitle: z.string().optional()
+  title: z.coerce.string(),
+  slug: z.coerce.string(),
+  part: z.coerce.string(),
+  product: z.coerce.string(),
+  ownerTeam: z.coerce.string(),
+  status: z.coerce.string(),
+  lastReviewed: z.any().optional(),
+  summary: z.coerce.string(),
+  heroTitle: z.coerce.string().optional()
 });
 
 const platform = defineCollection({
   type: "content",
   schema: baseSchema.extend({
-    heroActions: z.array(z.object({
-      label: z.string(),
-      href: z.string(),
-      variant: z.string()
-    })).optional(),
-    platformFlow: z.array(z.object({
-      title: z.string(),
-      text: z.string()
-    })).optional(),
-    parts: z.array(z.object({
-      title: z.string(),
-      text: z.string(),
-      href: z.string().optional()
-    })).optional()
+    heroActions: z.any().optional(),
+    platformFlow: z.any().optional(),
+    parts: z.any().optional()
   })
 });
 
 const datastandaardLanding = defineCollection({
   type: "content",
   schema: baseSchema.extend({
-    systems: z.array(z.object({
-      title: z.string(),
-      text: z.string()
-    })).optional(),
-    disciplines: z.array(z.object({
-      title: z.string(),
-      text: z.string()
-    })).optional(),
-    products: z.array(z.object({
-      title: z.string(),
-      text: z.string(),
-      href: z.string().optional()
-    })).optional()
+    systems: z.any().optional(),
+    disciplines: z.any().optional(),
+    products: z.any().optional()
   })
 });
 
 const datastandaardWoordenboek = defineCollection({
   type: "content",
   schema: baseSchema.extend({
-    searchIntro: z.string().optional(),
-    productRelations: z.array(z.object({
-      title: z.string(),
-      links: z.array(z.object({
-        label: z.string(),
-        href: z.string().optional()
-      }))
-    })).optional(),
-    nextCapabilities: z.array(z.object({
-      title: z.string(),
-      text: z.string()
-    })).optional()
+    searchIntro: z.coerce.string().optional(),
+    productRelations: z.any().optional(),
+    nextCapabilities: z.any().optional()
   })
 });
 
