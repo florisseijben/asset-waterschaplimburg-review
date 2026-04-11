@@ -23,7 +23,7 @@ Gebruik deze rubriek voor:
 
 Open punten:
 
-- Nog in te vullen
+- Alle secties en blokken zijn nu volledig afgerond. Gewenste richting: blokken rechthoekig houden en alleen de rechterbovenhoek afronden.
 
 ### 2. Structuur
 
@@ -36,7 +36,7 @@ Gebruik deze rubriek voor:
 
 Open punten:
 
-- Nog in te vullen
+- Visuele vormentaal aanscherpen: afgeronde panelen en kaarten vervangen door een consistenter hoekmodel met alleen een afgeronde rechterbovenhoek.
 
 ### 3. Vormgeving
 
