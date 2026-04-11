@@ -56,10 +56,27 @@ const datastandaardObjectenhandboekSystems = defineCollection({
   })
 });
 
+const datastandaardObjectenhandboekObjects = defineCollection({
+  type: "content",
+  schema: baseSchema.extend({
+    hierarchy: z.any().optional(),
+    definition: z.coerce.string().optional(),
+    definitionSource: z.coerce.string().optional(),
+    terms: z.any().optional(),
+    contextNote: z.coerce.string().optional(),
+    subtypes: z.any().optional(),
+    metadata: z.any().optional(),
+    contentSections: z.any().optional(),
+    productRelations: z.any().optional(),
+    nextSteps: z.any().optional()
+  })
+});
+
 export const collections = {
   platform,
   "datastandaard-landing": datastandaardLanding,
   "datastandaard-woordenboek": datastandaardWoordenboek,
   "datastandaard-objectenhandboek": datastandaardObjectenhandboek,
-  "datastandaard-objectenhandboek-systems": datastandaardObjectenhandboekSystems
+  "datastandaard-objectenhandboek-systems": datastandaardObjectenhandboekSystems,
+  "datastandaard-objectenhandboek-objects": datastandaardObjectenhandboekObjects
 };

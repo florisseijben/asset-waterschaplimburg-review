@@ -32,7 +32,7 @@ if (!entry) {
     <h2>Objectfamilies binnen Watersysteem</h2>
     <CardGrid>
       {(entry.data.families || []).map((item) => (
-        <InfoCard title={item.title} text={item.text} />
+        <InfoCard title={item.title} text={item.text} href={item.href} />
       ))}
     </CardGrid>
   </section>
@@ -52,7 +52,7 @@ if (!entry) {
     <h2>Logische volgende objectlijnen</h2>
     <CardGrid>
       {(entry.data.nextSteps || []).map((item) => (
-        <InfoCard title={item.title} text={item.text} />
+        <InfoCard title={item.title} text={item.text} href={item.href} />
       ))}
     </CardGrid>
   </section>

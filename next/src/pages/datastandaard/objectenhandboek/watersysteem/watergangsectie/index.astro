@@ -1,0 +1,29 @@
+---
+import BaseLayout from "../../../../../layouts/BaseLayout.astro";
+import Hero from "../../../../../components/Hero.astro";
+import PlaceholderStatus from "../../../../../components/PlaceholderStatus.astro";
+---
+
+<BaseLayout
+  title="Watergangsectie"
+  currentPath="/datastandaard"
+  breadcrumbs={[
+    { label: "Home", href: "/" },
+    { label: "Datastandaard", href: "/datastandaard" },
+    { label: "Objectenhandboek", href: "/datastandaard/objectenhandboek" },
+    { label: "Watersysteem", href: "/datastandaard/objectenhandboek/watersysteem" },
+    { label: "Watergangsectie" }
+  ]}
+>
+  <Hero
+    eyebrow="Objectenhandboek"
+    title="Watergangsectie"
+    summary="Deze vervolgrichting staat klaar voor de volgende inhoudelijke uitwerking binnen de waterganglijn."
+  />
+
+  <PlaceholderStatus
+    title="Watergangsectie volgt in een volgende slice"
+    summary="De route is al gekoppeld vanuit Watergangen en Watersysteem, zodat de objectlijn volledig navigeerbaar blijft tijdens de migratie."
+    scope="de decompositie van de watergang in secties"
+  />
+</BaseLayout>

@@ -11,6 +11,7 @@ heroTitle: Objectenhandboek voor Watersysteem
 families:
   - title: Watergangen
     text: Objecten, begrippen, modellen en referenties rond watergangen.
+    href: /datastandaard/objectenhandboek/watersysteem/watergangen
   - title: Watervlakten
     text: Objecten, begrippen, modellen en referenties rond watervlakten.
   - title: Waterbuffers
@@ -42,10 +43,13 @@ relatedProducts:
 nextSteps:
   - title: Watergang
     text: Eerste uitgewerkte objectlijn in een vervolgstap, inclusief compositie en productrelaties.
+    href: /datastandaard/objectenhandboek/watersysteem/watergangen
   - title: Watergangsectie
     text: Onderliggende objectroute voor de opbouw van de watergang.
+    href: /datastandaard/objectenhandboek/watersysteem/watergangsectie
   - title: Intersectie
     text: Objectroute voor kruisingen en snijpunten in de watergangstructuur.
+    href: /datastandaard/objectenhandboek/watersysteem/intersectie
 ---
 
 Deze systeempagina is de eerste inhoudelijke vervolgstap binnen het Objectenhandboek.
