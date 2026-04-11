@@ -5,7 +5,7 @@ import CardGrid from "../components/CardGrid.astro";
 import InfoCard from "../components/InfoCard.astro";
 import { getEntry } from "astro:content";
 
-const entry = await getEntry("platform", "_home");
+const entry = await getEntry("platform", "home");
 
 if (!entry) {
   throw new Error("Home-content ontbreekt in de nieuwe omgeving.");
