@@ -50,12 +50,11 @@ a:hover {
 
 .site-header,
 .hero,
-.info-card,
 .site-footer,
 .breadcrumb-nav {
   background: #ffffff;
   border: 1px solid var(--color-line);
-  border-radius: 0 var(--corner-panel) 0 0;
+  border-radius: 0;
   box-shadow: var(--shadow-s);
 }
 
@@ -185,7 +184,7 @@ h1 {
   padding: var(--space-5);
   background: #ffffff;
   border: 1px solid var(--color-line);
-  border-radius: 0 var(--corner-panel) 0 0;
+  border-radius: 0;
   box-shadow: var(--shadow-s);
 }
 
@@ -281,6 +280,10 @@ h1 {
   gap: var(--space-3);
   min-height: 100%;
   padding: var(--space-5);
+  background: #ffffff;
+  border: 1px solid var(--color-line);
+  border-radius: 0 var(--corner-control) 0 0;
+  box-shadow: var(--shadow-s);
 }
 
 .info-card p {
