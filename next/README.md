@@ -39,3 +39,15 @@ De eerste scope van `next/` is:
 - gedeelde layout en navigatie worden centraal gemodelleerd;
 - interactieve features komen later als gerichte islands;
 - niets uit de huidige PoC wordt hier direct overschreven.
+
+## Externe build
+
+Deze omgeving kan buiten de lokale laptop gebouwd worden via:
+
+- `.github/workflows/next-build.yml`
+
+Doel van deze workflow:
+
+- Astro-build van `next/` draaien op GitHub;
+- buildproblemen vroeg zichtbaar maken;
+- het resultaat als artifact opslaan zonder de huidige PoC-publicatie te vervangen.

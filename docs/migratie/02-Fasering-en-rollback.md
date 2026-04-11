@@ -132,3 +132,13 @@ Voorlopig:
 - `github-pages-upload/` blijft PoC-publicatiemirror;
 - `docs/migratie/` bevat de migratiebasis;
 - `next/` of een vergelijkbare map wordt later de nieuwe technische omgeving.
+
+## Externe validatie tijdens de migratie
+
+Omdat de huidige laptop geen Node.js-installatie toelaat, wordt de nieuwe omgeving voorlopig gevalideerd via GitHub Actions.
+
+Dat betekent:
+
+- de PoC blijft lokaal controleerbaar;
+- `next/` wordt extern gebouwd;
+- en buildresultaten worden gecontroleerd zonder de PoC-publicatie over te nemen.

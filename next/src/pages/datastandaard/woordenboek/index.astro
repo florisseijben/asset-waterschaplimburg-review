@@ -21,23 +21,45 @@ if (!entry) {
     { label: "Woordenboek" }
   ]}
 >
-  <Hero eyebrow="Woordenboek" title={entry.data.title} summary={entry.data.summary} />
+  <Hero eyebrow="Product" title={entry.data.heroTitle || entry.data.title} summary={entry.data.summary} />
 
   <section class="section section-panel">
-    <p class="eyebrow">Doel</p>
-    <h2>Eerste productreferentie in de migratie</h2>
+    <p class="eyebrow">Zoeken en filteren</p>
+    <h2>Doorzoek het woordenboek op metadata</h2>
     <div class="content-copy">
-      <p>Deze route test hoe productmetadata, gedeelde layout en productnavigatie uit elkaar getrokken kunnen worden.</p>
-      <p>In een volgende stap kunnen hier begrippenlijsten, zoekingangen en termdetails op aansluiten.</p>
+      <p>{entry.data.searchIntro}</p>
+      <p>De echte zoek- en filterfunctionaliteit volgt in een latere stap als eerste interactieve island.</p>
     </div>
   </section>
 
   <section class="section section-panel">
-    <p class="eyebrow">Volgende uitbreidingen</p>
+    <p class="eyebrow">Productrelaties</p>
+    <h2>Snel naar productlijnen voor Watersysteem</h2>
     <CardGrid>
-      <InfoCard title="Begrippenlijst" text="Een eerste indexroute met termen en filtering." />
-      <InfoCard title="Termdetail" text="Een detailtemplate waarin definitie, bron en relaties samenkomen." />
-      <InfoCard title="Zoekingang" text="Een gerichte woordenboekzoekfunctie als eerste island." />
+      {(entry.data.productRelations || []).map((group) => (
+        <article class="info-card">
+          <h2>{group.title}</h2>
+          <div class="link-row">
+            {group.links.map((link) => (
+              link.href ? (
+                <a class="mini-link" href={link.href}>{link.label}</a>
+              ) : (
+                <span class="mini-link mini-link--muted">{link.label}</span>
+              )
+            ))}
+          </div>
+        </article>
+      ))}
+    </CardGrid>
+  </section>
+
+  <section class="section section-panel">
+    <p class="eyebrow">Volgende uitbreidingen</p>
+    <h2>Wat hierna volgt in deze productlijn</h2>
+    <CardGrid>
+      {(entry.data.nextCapabilities || []).map((item) => (
+        <InfoCard title={item.title} text={item.text} />
+      ))}
     </CardGrid>
   </section>
 </BaseLayout>

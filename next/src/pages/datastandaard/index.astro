@@ -17,23 +17,32 @@ if (!entry) {
   currentPath="/datastandaard"
   breadcrumbs={[{ label: "Home", href: "/" }, { label: "Datastandaard" }]}
 >
-  <Hero eyebrow="Datastandaard" title={entry.data.title} summary={entry.data.summary} />
+  <Hero eyebrow="Datastandaard" title={entry.data.heroTitle || entry.data.title} summary={entry.data.summary} />
 
   <section class="section section-panel">
     <p class="eyebrow">Benadering</p>
     <h2>Hoe wil je de datastandaard benaderen?</h2>
+    <h3 class="section-title">Systemen</h3>
     <CardGrid>
-      <InfoCard title="Systemen" text="Benader de datastandaard via watersysteem, afvalwaterketen en waterkeringensysteem." />
-      <InfoCard title="Disciplines" text="Benader dezelfde standaard via disciplines zoals civiele techniek, groen en procesautomatisering." />
-      <InfoCard title="Producten" text="Werk met vaste producten zoals woordenboek, objectenhandboek, OTL en referentiedataset." />
+      {(entry.data.systems || []).map((item) => (
+        <InfoCard title={item.title} text={item.text} />
+      ))}
+    </CardGrid>
+    <h3 class="section-title">Technische disciplines</h3>
+    <CardGrid>
+      {(entry.data.disciplines || []).map((item) => (
+        <InfoCard title={item.title} text={item.text} />
+      ))}
     </CardGrid>
   </section>
 
   <section class="section section-panel">
-    <p class="eyebrow">Eerste productlijn</p>
-    <h2>Start bij het Woordenboek</h2>
+    <p class="eyebrow">Producten</p>
+    <h2>Vaste onderdelen binnen elk systeem</h2>
     <CardGrid>
-      <InfoCard title="Woordenboek" text="Begrippen, definities en gemeenschappelijke taal voor de Datastandaard." href="/datastandaard/woordenboek" />
+      {(entry.data.products || []).map((item) => (
+        <InfoCard title={item.title} text={item.text} href={item.href} />
+      ))}
     </CardGrid>
   </section>
 </BaseLayout>

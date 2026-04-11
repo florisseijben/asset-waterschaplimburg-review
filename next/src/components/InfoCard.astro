@@ -3,13 +3,15 @@ interface Props {
   title: string;
   text: string;
   href?: string;
+  eyebrow?: string;
 }
 
-const { title, text, href } = Astro.props;
+const { title, text, href, eyebrow } = Astro.props;
 const Tag = href ? "a" : "article";
 ---
 
 <Tag class="info-card" href={href}>
+  {eyebrow && <p class="eyebrow">{eyebrow}</p>}
   <h2>{title}</h2>
   <p>{text}</p>
   {href && <span class="info-card__link">Open</span>}

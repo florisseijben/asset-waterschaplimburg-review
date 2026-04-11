@@ -13,10 +13,13 @@ if (!entry) {
 ---
 
 <BaseLayout title={entry.data.title} currentPath="/" breadcrumbs={[{ label: "Home" }]}>
-  <Hero eyebrow="Home" title="Een parallelle migratievariant van het platform" summary={entry.data.summary}>
+  <Hero eyebrow="Home" title={entry.data.heroTitle || entry.data.title} summary={entry.data.summary}>
     <div class="actions">
-      <a class="button button-primary" href="/datastandaard">Verken de Datastandaard</a>
-      <a class="button button-secondary" href="/datastandaard/woordenboek">Ga naar het Woordenboek</a>
+      {(entry.data.heroActions || []).map((action) => (
+        <a class={`button ${action.variant === "primary" ? "button-primary" : "button-secondary"}`} href={action.href}>
+          {action.label}
+        </a>
+      ))}
     </div>
   </Hero>
 
@@ -24,18 +27,19 @@ if (!entry) {
     <p class="eyebrow">Platformlogica</p>
     <h2>Van bronafspraak naar aantoonbaar beheer</h2>
     <div class="card-grid">
-      <InfoCard title="Datastandaard" text="Legt begrippen, objecttypen, modellen en publicatieregels vast." />
-      <InfoCard title="Assetregister" text="Gebruikt die taal om assets, kenmerken, locaties en samenhang beheersbaar vast te leggen." />
-      <InfoCard title="Assetmanagement" text="Gebruikt dezelfde informatiebasis voor programmering, uitvoering en verantwoording." />
+      {(entry.data.platformFlow || []).map((item) => (
+        <InfoCard title={item.title} text={item.text} />
+      ))}
     </div>
   </section>
 
   <section class="section section-panel">
-    <p class="eyebrow">Migratieslice</p>
-    <h2>Wat deze eerste variant nu al test</h2>
-    <div class="content-copy">
-      <p>Deze home test de centrale layout, hoofdnavigatie, componentstructuur en contentgedreven routing van de nieuwe omgeving.</p>
-      <p>De huidige PoC blijft intussen onaangetast en functioneel leidend.</p>
+    <p class="eyebrow">Onderdelen</p>
+    <h2>Kies een onderdeel</h2>
+    <div class="card-grid">
+      {(entry.data.parts || []).map((item) => (
+        <InfoCard eyebrow="Onderdeel" title={item.title} text={item.text} href={item.href} />
+      ))}
     </div>
   </section>
 </BaseLayout>

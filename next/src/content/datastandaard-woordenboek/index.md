@@ -7,6 +7,32 @@ ownerTeam: datastandaard
 status: concept
 lastReviewed: 2026-04-11
 summary: Eerste productlijn voor de migratieslice van de nieuwe omgeving.
+heroTitle: Woordenboek
+searchIntro: De begrippenlijst staat in de huidige PoC direct op de landingspagina. In de nieuwe omgeving gebruiken we deze eerste slice om metadata, productnavigatie en een latere zoekingang beter te structureren.
+productRelations:
+  - title: Watergangen
+    links:
+      - label: Woordenboek
+        href: /datastandaard/woordenboek
+      - label: Objectenhandboek
+      - label: OTL
+      - label: Referentiedataset
+      - label: Werkinstructies
+  - title: Kunstwerken
+    links:
+      - label: Woordenboek
+        href: /datastandaard/woordenboek
+      - label: Objectenhandboek
+      - label: OTL
+      - label: Referentiedataset
+      - label: Werkinstructies
+nextCapabilities:
+  - title: Begrippenlijst
+    text: Een eerste indexroute met termen en filtering.
+  - title: Termdetail
+    text: Een detailtemplate waarin definitie, bron en relaties samenkomen.
+  - title: Zoekingang
+    text: Een gerichte woordenboekzoekfunctie als eerste island.
 ---
 
 Deze pagina vormt de eerste productreferentie in de migratie.
