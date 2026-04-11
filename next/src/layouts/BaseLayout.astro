@@ -1,0 +1,37 @@
+---
+import "../styles/app.css";
+import SiteHeader from "../components/SiteHeader.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import navigation from "../data/platform-navigation.json";
+
+interface Crumb {
+  label: string;
+  href?: string;
+}
+
+interface Props {
+  title: string;
+  currentPath: string;
+  breadcrumbs?: Crumb[];
+}
+
+const { title, currentPath, breadcrumbs = [] } = Astro.props;
+---
+
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} | asset.waterschaplimburg.nl</title>
+  </head>
+  <body>
+    <main class="shell">
+      <SiteHeader currentPath={currentPath} items={navigation.items} />
+      {breadcrumbs.length > 0 && <Breadcrumbs items={breadcrumbs} />}
+      <slot />
+      <SiteFooter />
+    </main>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import CardGrid from "../components/CardGrid.astro";
+import InfoCard from "../components/InfoCard.astro";
+import { getEntry } from "astro:content";
+
+const entry = await getEntry("platform", "_home");
+
+if (!entry) {
+  throw new Error("Home-content ontbreekt in de nieuwe omgeving.");
+}
+---
+
+<BaseLayout title={entry.data.title} currentPath="/" breadcrumbs={[{ label: "Home" }]}>
+  <Hero eyebrow="Home" title="Een parallelle migratievariant van het platform" summary={entry.data.summary}>
+    <div class="actions">
+      <a class="button button-primary" href="/datastandaard">Verken de Datastandaard</a>
+      <a class="button button-secondary" href="/datastandaard/woordenboek">Ga naar het Woordenboek</a>
+    </div>
+  </Hero>
+
+  <section class="section section-panel">
+    <p class="eyebrow">Platformlogica</p>
+    <h2>Van bronafspraak naar aantoonbaar beheer</h2>
+    <div class="card-grid">
+      <InfoCard title="Datastandaard" text="Legt begrippen, objecttypen, modellen en publicatieregels vast." />
+      <InfoCard title="Assetregister" text="Gebruikt die taal om assets, kenmerken, locaties en samenhang beheersbaar vast te leggen." />
+      <InfoCard title="Assetmanagement" text="Gebruikt dezelfde informatiebasis voor programmering, uitvoering en verantwoording." />
+    </div>
+  </section>
+
+  <section class="section section-panel">
+    <p class="eyebrow">Migratieslice</p>
+    <h2>Wat deze eerste variant nu al test</h2>
+    <div class="content-copy">
+      <p>Deze home test de centrale layout, hoofdnavigatie, componentstructuur en contentgedreven routing van de nieuwe omgeving.</p>
+      <p>De huidige PoC blijft intussen onaangetast en functioneel leidend.</p>
+    </div>
+  </section>
+</BaseLayout>

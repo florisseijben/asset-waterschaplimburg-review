@@ -1,0 +1,39 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Hero from "../../components/Hero.astro";
+import CardGrid from "../../components/CardGrid.astro";
+import InfoCard from "../../components/InfoCard.astro";
+import { getEntry } from "astro:content";
+
+const entry = await getEntry("datastandaardLanding", "index");
+
+if (!entry) {
+  throw new Error("Datastandaard-landing ontbreekt in de nieuwe omgeving.");
+}
+---
+
+<BaseLayout
+  title={entry.data.title}
+  currentPath="/datastandaard"
+  breadcrumbs={[{ label: "Home", href: "/" }, { label: "Datastandaard" }]}
+>
+  <Hero eyebrow="Datastandaard" title={entry.data.title} summary={entry.data.summary} />
+
+  <section class="section section-panel">
+    <p class="eyebrow">Benadering</p>
+    <h2>Hoe wil je de datastandaard benaderen?</h2>
+    <CardGrid>
+      <InfoCard title="Systemen" text="Benader de datastandaard via watersysteem, afvalwaterketen en waterkeringensysteem." />
+      <InfoCard title="Disciplines" text="Benader dezelfde standaard via disciplines zoals civiele techniek, groen en procesautomatisering." />
+      <InfoCard title="Producten" text="Werk met vaste producten zoals woordenboek, objectenhandboek, OTL en referentiedataset." />
+    </CardGrid>
+  </section>
+
+  <section class="section section-panel">
+    <p class="eyebrow">Eerste productlijn</p>
+    <h2>Start bij het Woordenboek</h2>
+    <CardGrid>
+      <InfoCard title="Woordenboek" text="Begrippen, definities en gemeenschappelijke taal voor de Datastandaard." href="/datastandaard/woordenboek" />
+    </CardGrid>
+  </section>
+</BaseLayout>

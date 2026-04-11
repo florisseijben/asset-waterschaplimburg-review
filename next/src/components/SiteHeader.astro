@@ -1,0 +1,30 @@
+---
+interface NavItem {
+  label: string;
+  href: string;
+}
+
+interface Props {
+  currentPath: string;
+  items: NavItem[];
+}
+
+const { currentPath, items } = Astro.props;
+---
+
+<header class="site-header">
+  <div class="site-header__bar">
+    <a class="site-brand" href="/">asset.waterschaplimburg.nl</a>
+    <nav aria-label="Hoofdnavigatie">
+      <ul class="primary-nav">
+        {items.map((item) => (
+          <li>
+            <a href={item.href} aria-current={item.href === currentPath ? "page" : undefined}>
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</header>
