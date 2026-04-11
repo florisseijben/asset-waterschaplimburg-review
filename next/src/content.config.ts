@@ -7,7 +7,7 @@ const baseSchema = z.object({
   product: z.string(),
   ownerTeam: z.string(),
   status: z.string(),
-  lastReviewed: z.string(),
+  lastReviewed: z.union([z.string(), z.date()]),
   summary: z.string(),
   heroTitle: z.string().optional()
 });
