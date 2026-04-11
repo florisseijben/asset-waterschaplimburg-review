@@ -1,0 +1,24 @@
+{
+  "items": [
+    {
+      "label": "Home",
+      "href": "/"
+    },
+    {
+      "label": "Datastandaard",
+      "href": "/datastandaard"
+    },
+    {
+      "label": "Assetregister",
+      "href": "/assetregister"
+    },
+    {
+      "label": "Assetmanagement",
+      "href": "/assetmanagement"
+    },
+    {
+      "label": "Over deze website",
+      "href": "/over-asset-waterschaplimburg"
+    }
+  ]
+}
