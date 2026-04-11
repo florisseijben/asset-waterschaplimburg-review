@@ -71,6 +71,6 @@ const datastandaardWoordenboek = defineCollection({
 
 export const collections = {
   platform,
-  datastandaardLanding,
-  datastandaardWoordenboek
+  "datastandaard-landing": datastandaardLanding,
+  "datastandaard-woordenboek": datastandaardWoordenboek
 };

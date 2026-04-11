@@ -5,7 +5,7 @@ import CardGrid from "../../../components/CardGrid.astro";
 import InfoCard from "../../../components/InfoCard.astro";
 import { getEntry } from "astro:content";
 
-const entry = await getEntry("datastandaardWoordenboek", "index");
+const entry = await getEntry("datastandaard-woordenboek", "index");
 
 if (!entry) {
   throw new Error("Woordenboek-landing ontbreekt in de nieuwe omgeving.");
