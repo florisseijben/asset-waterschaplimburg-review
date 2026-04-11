@@ -13,7 +13,7 @@ hierarchy:
   - Stroomgebied
   - Watergang
 definition: Een watergang is een lijnvormig waterobject dat over zijn hele lengte is opgebouwd uit opeenvolgende watergangsecties en intersecties.
-definitionSource: Definitiebron: semantische beheeromgeving conceptdefinitie voor Watergang.
+definitionSource: "Definitiebron: semantische beheeromgeving conceptdefinitie voor Watergang."
 terms:
   - title: Watergang
     text: Hoofdbegrip binnen deze objectlijn.
