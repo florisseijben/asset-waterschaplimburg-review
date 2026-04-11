@@ -1,0 +1,28 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Hero from "../../../components/Hero.astro";
+import PlaceholderStatus from "../../../components/PlaceholderStatus.astro";
+
+---
+
+<BaseLayout
+  title="Werkinstructies"
+  currentPath="/datastandaard"
+  breadcrumbs={[
+    { label: "Home", href: "/" },
+    { label: "Datastandaard", href: "/datastandaard" },
+    { label: "Werkinstructies" }
+  ]}
+>
+  <Hero
+    eyebrow="Product"
+    title="Werkinstructies"
+    summary="Deze route reserveert de plek voor proces- en gebruiksinstructies voor beheer en registratie binnen de nieuwe omgeving."
+  />
+
+  <PlaceholderStatus
+    title="Werkinstructies volgen in een volgende slice"
+    summary="De route is alvast beschikbaar zodat productrelaties en navigatie niet doodlopen terwijl de inhoudelijke migratie nog loopt."
+    scope="de landingspagina en uitwerking van werkinstructies"
+  />
+</BaseLayout>

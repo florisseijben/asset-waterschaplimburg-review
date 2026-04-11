@@ -1,0 +1,18 @@
+---
+interface Props {
+  title: string;
+  summary: string;
+  scope: string;
+}
+
+const { title, summary, scope } = Astro.props;
+---
+
+<section class="section section-panel">
+  <p class="eyebrow">Migratiestatus</p>
+  <h2>{title}</h2>
+  <div class="content-copy">
+    <p>{summary}</p>
+    <p>Deze route is al opgenomen in de nieuwe omgeving, maar de inhoudelijke migratie van <strong>{scope}</strong> volgt in een volgende stap.</p>
+  </div>
+</section>

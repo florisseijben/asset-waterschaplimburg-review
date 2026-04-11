@@ -15,17 +15,25 @@ productRelations:
       - label: Woordenboek
         href: /datastandaard/woordenboek
       - label: Objectenhandboek
+        href: /datastandaard/objectenhandboek
       - label: OTL
+        href: /datastandaard/otl
       - label: Referentiedataset
+        href: /datastandaard/referentiedataset
       - label: Werkinstructies
+        href: /datastandaard/werkinstructies
   - title: Kunstwerken
     links:
       - label: Woordenboek
         href: /datastandaard/woordenboek
       - label: Objectenhandboek
+        href: /datastandaard/objectenhandboek
       - label: OTL
+        href: /datastandaard/otl
       - label: Referentiedataset
+        href: /datastandaard/referentiedataset
       - label: Werkinstructies
+        href: /datastandaard/werkinstructies
 nextCapabilities:
   - title: Begrippenlijst
     text: Een eerste indexroute met termen en filtering.

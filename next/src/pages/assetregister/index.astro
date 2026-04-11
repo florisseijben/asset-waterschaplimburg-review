@@ -1,0 +1,24 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Hero from "../../components/Hero.astro";
+import PlaceholderStatus from "../../components/PlaceholderStatus.astro";
+
+---
+
+<BaseLayout
+  title="Assetregister"
+  currentPath="/assetregister"
+  breadcrumbs={[{ label: "Home", href: "/" }, { label: "Assetregister" }]}
+>
+  <Hero
+    eyebrow="Assetregister"
+    title="Assetregister"
+    summary="Deze route reserveert de plek voor de migratie van het Assetregister binnen de nieuwe parallelle omgeving."
+  />
+
+  <PlaceholderStatus
+    title="Assetregister volgt in een volgende slice"
+    summary="De home van de nieuwe omgeving kan al doorlinken naar Assetregister, zodat de structuur van het platform zichtbaar en toetsbaar blijft."
+    scope="de landingspagina, detailroutes en systeemstructuur van het Assetregister"
+  />
+</BaseLayout>

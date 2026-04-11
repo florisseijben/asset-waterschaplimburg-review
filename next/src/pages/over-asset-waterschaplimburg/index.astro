@@ -1,0 +1,24 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Hero from "../../components/Hero.astro";
+import PlaceholderStatus from "../../components/PlaceholderStatus.astro";
+
+---
+
+<BaseLayout
+  title="Over deze website"
+  currentPath="/over-asset-waterschaplimburg"
+  breadcrumbs={[{ label: "Home", href: "/" }, { label: "Over deze website" }]}
+>
+  <Hero
+    eyebrow="Platform"
+    title="Over deze website"
+    summary="Deze route reserveert de plek voor architectuur, roadmap en context van de nieuwe omgeving."
+  />
+
+  <PlaceholderStatus
+    title="Platformcontext volgt in een volgende slice"
+    summary="De route bestaat al, zodat hoofdnavigatie en platformstructuur straks zonder routewijziging kunnen doorgroeien."
+    scope="architectuur, roadmap en platformuitleg"
+  />
+</BaseLayout>

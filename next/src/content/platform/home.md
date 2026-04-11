@@ -28,8 +28,10 @@ parts:
     href: /datastandaard
   - title: Assetregister
     text: Overzichten, detailpagina's en locaties van assets, geordend per systeem.
+    href: /assetregister
   - title: Assetmanagement
     text: Processen, rollen en beheercontext rond het areaal en de assetinformatie.
+    href: /assetmanagement
 ---
 
 Deze pagina wordt de migratievariant van de huidige home van de PoC.

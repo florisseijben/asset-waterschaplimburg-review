@@ -1,0 +1,28 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Hero from "../../../components/Hero.astro";
+import PlaceholderStatus from "../../../components/PlaceholderStatus.astro";
+
+---
+
+<BaseLayout
+  title="Referentiedataset"
+  currentPath="/datastandaard"
+  breadcrumbs={[
+    { label: "Home", href: "/" },
+    { label: "Datastandaard", href: "/datastandaard" },
+    { label: "Referentiedataset" }
+  ]}
+>
+  <Hero
+    eyebrow="Product"
+    title="Referentiedataset"
+    summary="Deze route reserveert de plek voor voorbeeldsets en toetsbare referentiegegevens binnen de nieuwe omgeving."
+  />
+
+  <PlaceholderStatus
+    title="Referentiedataset volgt in een volgende slice"
+    summary="De route blijft nu al zichtbaar zodat gebruikers de volledige productstructuur van de Datastandaard kunnen verkennen."
+    scope="de landingspagina en voorbeeldroutes van de Referentiedataset"
+  />
+</BaseLayout>

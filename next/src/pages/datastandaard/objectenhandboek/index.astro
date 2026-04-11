@@ -1,0 +1,28 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Hero from "../../../components/Hero.astro";
+import PlaceholderStatus from "../../../components/PlaceholderStatus.astro";
+
+---
+
+<BaseLayout
+  title="Objectenhandboek"
+  currentPath="/datastandaard"
+  breadcrumbs={[
+    { label: "Home", href: "/" },
+    { label: "Datastandaard", href: "/datastandaard" },
+    { label: "Objectenhandboek" }
+  ]}
+>
+  <Hero
+    eyebrow="Product"
+    title="Objectenhandboek"
+    summary="Deze route reserveert de plek voor objecttypen, eigenschappen en voorbeeldlocaties binnen de nieuwe omgeving."
+  />
+
+  <PlaceholderStatus
+    title="Objectenhandboek volgt in een volgende slice"
+    summary="De productroute is alvast klikbaar gemaakt zodat de Datastandaard-preview functioneel blijft tijdens de migratie."
+    scope="de landingspagina en detailstructuur van het Objectenhandboek"
+  />
+</BaseLayout>

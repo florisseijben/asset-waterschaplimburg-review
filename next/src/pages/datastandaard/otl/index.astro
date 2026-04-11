@@ -1,0 +1,28 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Hero from "../../../components/Hero.astro";
+import PlaceholderStatus from "../../../components/PlaceholderStatus.astro";
+
+---
+
+<BaseLayout
+  title="OTL"
+  currentPath="/datastandaard"
+  breadcrumbs={[
+    { label: "Home", href: "/" },
+    { label: "Datastandaard", href: "/datastandaard" },
+    { label: "OTL" }
+  ]}
+>
+  <Hero
+    eyebrow="Product"
+    title="OTL"
+    summary="Deze route reserveert de plek voor de OTL-landingspagina en latere model- en graphverkenning binnen de nieuwe omgeving."
+  />
+
+  <PlaceholderStatus
+    title="OTL volgt in een volgende slice"
+    summary="De route is nu al aanwezig zodat de productstructuur van de Datastandaard volledig doorklikbaar kan worden opgebouwd."
+    scope="OTL-landingen, modelroutes en Reactodia-gerelateerde verkenning"
+  />
+</BaseLayout>

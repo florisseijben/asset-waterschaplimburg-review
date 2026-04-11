@@ -1,0 +1,24 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Hero from "../../components/Hero.astro";
+import PlaceholderStatus from "../../components/PlaceholderStatus.astro";
+
+---
+
+<BaseLayout
+  title="Assetmanagement"
+  currentPath="/assetmanagement"
+  breadcrumbs={[{ label: "Home", href: "/" }, { label: "Assetmanagement" }]}
+>
+  <Hero
+    eyebrow="Assetmanagement"
+    title="Assetmanagement"
+    summary="Deze route reserveert de plek voor de migratie van Assetmanagement binnen de nieuwe parallelle omgeving."
+  />
+
+  <PlaceholderStatus
+    title="Assetmanagement volgt in een volgende slice"
+    summary="De hoofdstructuur van het platform is nu al zichtbaar, ook als deze productlijn inhoudelijk nog niet volledig is gemigreerd."
+    scope="de landingspagina en de sturings- en proceslijnen van Assetmanagement"
+  />
+</BaseLayout>

@@ -36,12 +36,16 @@ products:
     href: /datastandaard/woordenboek
   - title: Objectenhandboek
     text: Objecttypen, eigenschappen en voorbeeldlocaties.
+    href: /datastandaard/objectenhandboek
   - title: OTL
     text: Structuur voor klassen, relaties en objectboom.
+    href: /datastandaard/otl
   - title: Referentiedataset
     text: Voorbeeldsets en toetsbare referentiegegevens.
+    href: /datastandaard/referentiedataset
   - title: Werkinstructies
     text: Proces- en gebruiksinstructies voor beheer en registratie.
+    href: /datastandaard/werkinstructies
 ---
 
 Deze pagina wordt in de eerste slice gebruikt om:
