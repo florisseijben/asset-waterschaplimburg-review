@@ -7,7 +7,9 @@ export function withBase(href?: string) {
     return href;
   }
 
-  const base = import.meta.env.BASE_URL;
+  const base = import.meta.env.BASE_URL.endsWith("/")
+    ? import.meta.env.BASE_URL
+    : `${import.meta.env.BASE_URL}/`;
   const normalized = href.startsWith("/") ? href.slice(1) : href;
 
   return `${base}${normalized}`;
