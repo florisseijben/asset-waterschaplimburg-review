@@ -23,7 +23,7 @@ Gebruik deze rubriek voor:
 
 Open punten:
 
-- Alle secties en blokken zijn nu volledig afgerond. Gewenste richting: blokken rechthoekig houden en alleen de rechterbovenhoek afronden.
+- Nog in te vullen
 
 ### 2. Structuur
 
@@ -36,7 +36,7 @@ Gebruik deze rubriek voor:
 
 Open punten:
 
-- Visuele vormentaal aanscherpen: afgeronde panelen en kaarten vervangen door een consistenter hoekmodel met alleen een afgeronde rechterbovenhoek.
+- Nog in te vullen
 
 ### 3. Vormgeving
 
@@ -49,7 +49,8 @@ Gebruik deze rubriek voor:
 
 Open punten:
 
-- Nog in te vullen
+- Alle secties en blokken zijn nu volledig afgerond. Gewenste richting: blokken rechthoekig houden en alleen de rechterbovenhoek afronden.
+- Kleurverlopen in secties en blokken verwijderen. Gewenste richting: alleen effen kleurvlakken of wit toepassen.
 
 ### 4. Harmonisatie
 
@@ -62,7 +63,8 @@ Gebruik deze rubriek voor:
 
 Open punten:
 
-- Nog in te vullen
+- Visuele vormentaal aanscherpen: afgeronde panelen en kaarten vervangen door een consistenter hoekmodel met alleen een afgeronde rechterbovenhoek.
+- Gebruik van kleurverlopen terugbrengen naar een consistente regel: geen gradients in secties en blokken, alleen effen kleur of wit.
 
 ### 5. Beheerbaarheid
 

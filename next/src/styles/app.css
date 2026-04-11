@@ -30,9 +30,7 @@ body {
   margin: 0;
   font-family: "Avenir Next", Avenir, "Segoe UI", Tahoma, sans-serif;
   color: var(--color-ink);
-  background:
-    radial-gradient(circle at top left, rgba(0, 169, 193, 0.08), transparent 28rem),
-    linear-gradient(180deg, #f7fbfc 0%, var(--color-background) 100%);
+  background: var(--color-background);
 }
 
 a {
@@ -55,7 +53,7 @@ a:hover {
 .info-card,
 .site-footer,
 .breadcrumb-nav {
-  background: rgba(255, 255, 255, 0.96);
+  background: #ffffff;
   border: 1px solid var(--color-line);
   border-radius: 0 var(--corner-panel) 0 0;
   box-shadow: var(--shadow-s);
@@ -124,10 +122,7 @@ a:hover {
 }
 
 .hero {
-  background:
-    radial-gradient(circle at top right, rgba(0, 127, 145, 0.2), transparent 22rem),
-    radial-gradient(circle at bottom left, rgba(0, 169, 193, 0.14), transparent 24rem),
-    linear-gradient(180deg, #f7fdfe 0%, #edf8fa 100%);
+  background: var(--color-brand-soft);
 }
 
 .eyebrow {
@@ -179,7 +174,7 @@ h1 {
 }
 
 .button-secondary {
-  background: rgba(255, 255, 255, 0.96);
+  background: #ffffff;
 }
 
 .section {
@@ -188,7 +183,7 @@ h1 {
 
 .section-panel {
   padding: var(--space-5);
-  background: rgba(255, 255, 255, 0.94);
+  background: #ffffff;
   border: 1px solid var(--color-line);
   border-radius: 0 var(--corner-panel) 0 0;
   box-shadow: var(--shadow-s);
@@ -222,7 +217,7 @@ h1 {
   padding: var(--space-4);
   border: 1px solid var(--color-line);
   border-radius: 0 var(--corner-control) 0 0;
-  background: rgba(0, 169, 193, 0.06);
+  background: #f2fafb;
 }
 
 .definition-block p,
