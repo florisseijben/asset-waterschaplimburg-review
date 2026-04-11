@@ -1,12 +1,20 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import Hero from "../../../components/Hero.astro";
-import PlaceholderStatus from "../../../components/PlaceholderStatus.astro";
+import CardGrid from "../../../components/CardGrid.astro";
+import InfoCard from "../../../components/InfoCard.astro";
+import { getCollection } from "astro:content";
 
+const entries = await getCollection("datastandaard-objectenhandboek");
+const entry = entries[0];
+
+if (!entry) {
+  throw new Error("Objectenhandboek-landing ontbreekt in de nieuwe omgeving.");
+}
 ---
 
 <BaseLayout
-  title="Objectenhandboek"
+  title={entry.data.title}
   currentPath="/datastandaard"
   breadcrumbs={[
     { label: "Home", href: "/" },
@@ -14,15 +22,25 @@ import PlaceholderStatus from "../../../components/PlaceholderStatus.astro";
     { label: "Objectenhandboek" }
   ]}
 >
-  <Hero
-    eyebrow="Product"
-    title="Objectenhandboek"
-    summary="Deze route reserveert de plek voor objecttypen, eigenschappen en voorbeeldlocaties binnen de nieuwe omgeving."
-  />
+  <Hero eyebrow="Product" title={entry.data.heroTitle || entry.data.title} summary={entry.data.summary} />
 
-  <PlaceholderStatus
-    title="Objectenhandboek volgt in een volgende slice"
-    summary="De productroute is alvast klikbaar gemaakt zodat de Datastandaard-preview functioneel blijft tijdens de migratie."
-    scope="de landingspagina en detailstructuur van het Objectenhandboek"
-  />
+  <section class="section section-panel">
+    <p class="eyebrow">Systemen</p>
+    <h2>Kies een systeem</h2>
+    <CardGrid>
+      {(entry.data.systems || []).map((item) => (
+        <InfoCard title={item.title} text={item.text} href={item.href} />
+      ))}
+    </CardGrid>
+  </section>
+
+  <section class="section section-panel">
+    <p class="eyebrow">Disciplines</p>
+    <h2>Bekijk het objectenhandboek per discipline</h2>
+    <CardGrid>
+      {(entry.data.disciplines || []).map((item) => (
+        <InfoCard title={item.title} text={item.text} />
+      ))}
+    </CardGrid>
+  </section>
 </BaseLayout>

@@ -39,8 +39,27 @@ const datastandaardWoordenboek = defineCollection({
   })
 });
 
+const datastandaardObjectenhandboek = defineCollection({
+  type: "content",
+  schema: baseSchema.extend({
+    systems: z.any().optional(),
+    disciplines: z.any().optional()
+  })
+});
+
+const datastandaardObjectenhandboekSystems = defineCollection({
+  type: "content",
+  schema: baseSchema.extend({
+    families: z.any().optional(),
+    relatedProducts: z.any().optional(),
+    nextSteps: z.any().optional()
+  })
+});
+
 export const collections = {
   platform,
   "datastandaard-landing": datastandaardLanding,
-  "datastandaard-woordenboek": datastandaardWoordenboek
+  "datastandaard-woordenboek": datastandaardWoordenboek,
+  "datastandaard-objectenhandboek": datastandaardObjectenhandboek,
+  "datastandaard-objectenhandboek-systems": datastandaardObjectenhandboekSystems
 };

@@ -1,0 +1,57 @@
+---
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import Hero from "../../../../components/Hero.astro";
+import CardGrid from "../../../../components/CardGrid.astro";
+import InfoCard from "../../../../components/InfoCard.astro";
+import { getCollection } from "astro:content";
+
+const entries = await getCollection("datastandaard-objectenhandboek-systems");
+const entry = entries.find((item) => item.id === "watersysteem");
+
+if (!entry) {
+  throw new Error("Objectenhandboek Watersysteem ontbreekt in de nieuwe omgeving.");
+}
+---
+
+<BaseLayout
+  title={entry.data.title}
+  currentPath="/datastandaard"
+  breadcrumbs={[
+    { label: "Home", href: "/" },
+    { label: "Datastandaard", href: "/datastandaard" },
+    { label: "Objectenhandboek", href: "/datastandaard/objectenhandboek" },
+    { label: "Watersysteem" }
+  ]}
+>
+  <Hero eyebrow="Objectenhandboek" title={entry.data.heroTitle || entry.data.title} summary={entry.data.summary} />
+
+  <section class="section section-panel">
+    <p class="eyebrow">Indeling</p>
+    <h2>Objectfamilies binnen Watersysteem</h2>
+    <CardGrid>
+      {(entry.data.families || []).map((item) => (
+        <InfoCard title={item.title} text={item.text} />
+      ))}
+    </CardGrid>
+  </section>
+
+  <section class="section section-panel">
+    <p class="eyebrow">Productrelaties</p>
+    <h2>Producten binnen de datastandaard</h2>
+    <CardGrid>
+      {(entry.data.relatedProducts || []).map((item) => (
+        <InfoCard title={item.title} text={item.text} href={item.href} />
+      ))}
+    </CardGrid>
+  </section>
+
+  <section class="section section-panel">
+    <p class="eyebrow">Vervolg</p>
+    <h2>Logische volgende objectlijnen</h2>
+    <CardGrid>
+      {(entry.data.nextSteps || []).map((item) => (
+        <InfoCard title={item.title} text={item.text} />
+      ))}
+    </CardGrid>
+  </section>
+</BaseLayout>

@@ -1,0 +1,29 @@
+---
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import Hero from "../../../../components/Hero.astro";
+import PlaceholderStatus from "../../../../components/PlaceholderStatus.astro";
+
+---
+
+<BaseLayout
+  title="Objectenhandboek voor Afvalwaterketen"
+  currentPath="/datastandaard"
+  breadcrumbs={[
+    { label: "Home", href: "/" },
+    { label: "Datastandaard", href: "/datastandaard" },
+    { label: "Objectenhandboek", href: "/datastandaard/objectenhandboek" },
+    { label: "Afvalwaterketen" }
+  ]}
+>
+  <Hero
+    eyebrow="Objectenhandboek"
+    title="Objectenhandboek voor Afvalwaterketen"
+    summary="Deze systeempagina is gereserveerd voor de volgende inhoudelijke migratieslice binnen het Objectenhandboek."
+  />
+
+  <PlaceholderStatus
+    title="Afvalwaterketen volgt na Watersysteem"
+    summary="De systeemroute is alvast klikbaar gemaakt zodat het Objectenhandboek als productlijn volledig navigeerbaar blijft."
+    scope="de systeemuitwerking van de Afvalwaterketen binnen het Objectenhandboek"
+  />
+</BaseLayout>
