@@ -51,6 +51,7 @@ Open punten:
 
 - Alle secties en blokken zijn nu volledig afgerond. Gewenste richting: blokken rechthoekig houden en alleen de rechterbovenhoek afronden.
 - Kleurverlopen in secties en blokken verwijderen. Gewenste richting: alleen effen kleurvlakken of wit toepassen.
+- Ook semi-transparante kleurvlakken vermijden als die alsnog als verloop of zachte waas lezen. Gewenste richting: volledig effen kleurtoepassing.
 - Grote secties volledig rechthoekig maken. Alleen de kleinere blokken en kaarten mogen nog een afgeronde rechterbovenhoek houden.
 
 ### 4. Harmonisatie
@@ -66,6 +67,7 @@ Open punten:
 
 - Visuele vormentaal aanscherpen: afgeronde panelen en kaarten vervangen door een consistenter hoekmodel met alleen een afgeronde rechterbovenhoek.
 - Gebruik van kleurverlopen terugbrengen naar een consistente regel: geen gradients in secties en blokken, alleen effen kleur of wit.
+- Ook transparante overlays en kleurvlakken normaliseren naar vaste effen kleuren, zodat de vormentaal overal gelijk blijft.
 - Een duidelijk verschil aanbrengen tussen grote dragers en kleine elementen: grote secties rechthoekig, kleine kaarten en controls met een subtiele enkele afgeronde hoek.
 
 ### 5. Beheerbaarheid
