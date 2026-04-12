@@ -212,6 +212,71 @@ h1 {
   gap: var(--space-2);
 }
 
+.taxonomy-block {
+  display: grid;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+
+.taxonomy-block:first-of-type {
+  margin-top: 0;
+}
+
+.taxonomy-block__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.taxonomy-block h3 {
+  margin: 0;
+  color: var(--color-deep);
+}
+
+.term-stack {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.term-row {
+  display: grid;
+  gap: 0.2rem;
+  padding: var(--space-4);
+  border: 1px solid var(--color-line);
+  border-radius: 0 var(--corner-control) 0 0;
+  background: #ffffff;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+.term-row strong {
+  color: var(--color-deep);
+}
+
+.term-row span {
+  color: var(--color-muted);
+  line-height: 1.6;
+}
+
+.term-row:hover,
+.term-row:focus-visible {
+  background: #f2fafb;
+  border-color: #9fd3dc;
+  box-shadow: 0 14px 30px rgba(16, 35, 33, 0.1);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+.term-row:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+}
+
 .definition-block {
   padding: var(--space-4);
   border: 1px solid var(--color-line);
