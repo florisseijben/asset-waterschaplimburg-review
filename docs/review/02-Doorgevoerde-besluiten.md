@@ -49,6 +49,7 @@ Doorgevoerd:
 - landings- en objectpagina's krijgen een vaste begripsverwijzing naar het woordenboek
 - hiervoor is de standaardcomponent [`ConceptReference.astro`](</c:/Users/f.seijben/Develop/Asset.waterschaplimburg.nl/next/src/components/ConceptReference.astro:1>) toegevoegd
 - dit patroon is nu gekoppeld aan systeem-, discipline- en objectpagina's binnen de huidige slice
+- objectpagina's in de watersysteemlijn gebruiken nu een gezamenlijke begripsopbouw met `Objectdefinitie`, `Vergelijkbare termen` en `Typen` onder één sectie `Begrip`
 
 ## Architectuur
 

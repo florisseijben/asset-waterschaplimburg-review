@@ -3,8 +3,8 @@ import BaseLayout from "../../../../../layouts/BaseLayout.astro";
 import Hero from "../../../../../components/Hero.astro";
 import CardGrid from "../../../../../components/CardGrid.astro";
 import InfoCard from "../../../../../components/InfoCard.astro";
-import ConceptReference from "../../../../../components/ConceptReference.astro";
 import { getCollection } from "astro:content";
+import { withBase } from "../../../../../lib/paths";
 
 const entries = await getCollection("datastandaard-objectenhandboek-objects");
 const expectedSlug = "/datastandaard/objectenhandboek/watersysteem/intersectie";
@@ -34,50 +34,53 @@ if (!entry) {
 >
   <Hero eyebrow="Objectenhandboek" title={entry.data.heroTitle || entry.data.title} summary={entry.data.summary} />
 
-  <ConceptReference concept="Intersectie" kind="Object" />
-
   <section class="section section-panel">
-    <p class="eyebrow">Hierarchie</p>
-    <div class="chip-row">
-      {(entry.data.hierarchy || []).map((item) => (
-        <span class="mini-link mini-link--muted">{item}</span>
-      ))}
+    <p class="eyebrow">Begrip</p>
+    <h2>Wat verstaan we onder Intersectie?</h2>
+
+    <div class="taxonomy-block">
+      <div class="taxonomy-block__header">
+        <h3>Objectdefinitie</h3>
+        <a class="mini-link" href={withBase("/datastandaard/woordenboek")}>Open begrip in woordenboek</a>
+      </div>
+        <div class="definition-block">
+          <p>{entry.data.definition}</p>
+        </div>
+        {entry.data.definitionSource && <p class="definition-source">{entry.data.definitionSource}</p>}
+    </div>
+
+    <div class="taxonomy-block">
+      <h3>Vergelijkbare termen</h3>
+      <div class="term-stack">
+          {(entry.data.terms || []).map((item) => (
+          <a class="term-row" href={withBase(item.href || "/datastandaard/woordenboek")}>
+            <strong>{item.title}</strong>
+            <span>{item.text}</span>
+          </a>
+          ))}
+      </div>
+    </div>
+
+    <div class="taxonomy-block">
+      <h3>Typen</h3>
+      <div class="term-stack">
+          {(entry.data.subtypes || []).map((item) => (
+          <a class="term-row" href={withBase(item.href || "/datastandaard/woordenboek")}>
+            <strong>{item.title}</strong>
+            <span>{item.text}</span>
+          </a>
+          ))}
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>Context</strong>
+      <p>{entry.data.contextNote}</p>
     </div>
   </section>
 
   <section class="detail-grid">
     <article class="detail-stack">
-      <section class="section section-panel">
-        <p class="eyebrow">Concept</p>
-        <h2>Definitie</h2>
-        <div class="definition-block">
-          <p>{entry.data.definition}</p>
-        </div>
-        {entry.data.definitionSource && <p class="definition-source">{entry.data.definitionSource}</p>}
-
-        <h3>Vergelijkbare termen</h3>
-        <CardGrid>
-          {(entry.data.terms || []).map((item) => (
-            <InfoCard title={item.title} text={item.text} href={item.href} />
-          ))}
-        </CardGrid>
-
-        <div class="callout">
-          <strong>Context</strong>
-          <p>{entry.data.contextNote}</p>
-        </div>
-      </section>
-
-      <section class="section section-panel">
-        <p class="eyebrow">Typen kruisingen</p>
-        <h2>Veelvoorkomende intersecties</h2>
-        <CardGrid>
-          {(entry.data.subtypes || []).map((item) => (
-            <InfoCard title={item.title} text={item.text} href={item.href} />
-          ))}
-        </CardGrid>
-      </section>
-
       <section class="section section-panel">
         <p class="eyebrow">Uitwerking</p>
         <h2>Inhoudelijke opbouw van Intersectie</h2>
