@@ -29,7 +29,7 @@ terms:
   - title: Dwarsprofiel
     text: Begrip waarmee de positie van het talud binnen de watergangsectie leesbaar wordt.
     href: /datastandaard/woordenboek
-contextNote: Binnen deze objectlijn is het talud geen zelfstandig hoofdobject, maar een onderdeel van de watergangsectie. Het talud krijgt betekenis in samenhang met bodem, profielvorm, onderhoud en de geometrische begrenzing van de sectie.
+contextNote: Binnen deze objectlijn is het talud geen zelfstandig hoofdobject, maar een onderdeel van de watergangsectie. Het talud krijgt betekenis in samenhang met bodem, profielvorm, onderhoud, geometrische begrenzing en constructieve opbouw zoals een bekledingsconstructie.
 subtypes:
   - title: Linkertalud
     text: Talud aan de linkerzijde van het profiel in de gekozen kijkrichting van de watergang.
@@ -60,7 +60,11 @@ contentSections:
   - title: Afbakening
     summary: De afbakening van het talud volgt het schuine grensvlak tussen bodem en de bovenliggende rand of het maaiveld van de sectie.
   - title: Onderdelen
-    summary: Binnen de uitwerking van taluds zijn richting, helling, bekleding en de relatie met bodem of oever de belangrijkste onderdelen van dit object.
+    summary: Binnen de uitwerking van taluds zijn richting, helling, bekleding en de relatie met bodem of oever de belangrijkste onderdelen van dit object. Bekledingsconstructie vormt daarin de eerste uitgewerkte constructieve laag.
+    items:
+      - title: Bekledingsconstructie
+        text: Constructieve opbouw op of in het talud die het oppervlak beschermt en waarin minimaal een toplaag wordt onderscheiden.
+        href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/talud/bekledingsconstructie
   - title: Geometrie
     summary: De geometrie van het talud wordt bepaald door helling, lengte, hoogteverschil en positie in het dwarsprofiel van de watergangsectie.
 productRelations:
@@ -77,6 +81,9 @@ productRelations:
     text: Werkafspraken voor het vastleggen van profielonderdelen en geometrie.
     href: /datastandaard/werkinstructies
 nextSteps:
+  - title: Bekledingsconstructie
+    text: Door naar de constructieve opbouw van het talud en de eerste uitwerking van toplaag.
+    href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/talud/bekledingsconstructie
   - title: Watergangsectie
     text: Terug naar het bovenliggende object waarin talud als onderdeel wordt uitgewerkt.
     href: /datastandaard/objectenhandboek/watersysteem/watergangsectie

@@ -3,9 +3,6 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
-object:watergang a owl:Class ;
-  rdfs:label "Watergang" .
-
 object:watergangsectie a owl:Class ;
   rdfs:label "Watergangsectie" .
 
@@ -14,9 +11,6 @@ object:talud a owl:Class ;
 
 object:bekledingsconstructie a owl:Class ;
   rdfs:label "Bekledingsconstructie" .
-
-object:bodem a owl:Class ;
-  rdfs:label "Bodem" .
 
 object:toplaag a owl:Class ;
   rdfs:label "Toplaag" .
@@ -27,18 +21,9 @@ relatie:bestaatUit a owl:ObjectProperty ;
 relatie:isOnderdeelVan a owl:ObjectProperty ;
   rdfs:label "is onderdeel van" .
 
-relatie:grenstAan a owl:ObjectProperty ;
-  rdfs:label "grenst aan" .
-
-object:watergang relatie:bestaatUit object:watergangsectie .
-object:watergangsectie relatie:isOnderdeelVan object:watergang .
 object:watergangsectie relatie:bestaatUit object:talud .
-object:watergangsectie relatie:bestaatUit object:bodem .
 object:talud relatie:isOnderdeelVan object:watergangsectie .
-object:bodem relatie:isOnderdeelVan object:watergangsectie .
 object:talud relatie:bestaatUit object:bekledingsconstructie .
 object:bekledingsconstructie relatie:isOnderdeelVan object:talud .
 object:bekledingsconstructie relatie:bestaatUit object:toplaag .
 object:toplaag relatie:isOnderdeelVan object:bekledingsconstructie .
-object:talud relatie:grenstAan object:bodem .
-object:bodem relatie:grenstAan object:talud .

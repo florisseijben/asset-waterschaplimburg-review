@@ -66,6 +66,7 @@ Doorgevoerd:
 - `Watersysteem` volgt nu hetzelfde sectieritme als de objectpagina's: `Begrip`, `Samenhang`, `Uitwerking`, `Productlijn`, `Vervolg`
 - `Stroomgebied`, `Watergang`, `Watergangsectie` en `Intersectie` zijn nu op hetzelfde ritme gebracht, inclusief `Samenhang` en een afsluitende sectie `Vervolg`
 - binnen `Uitwerking` gebruiken de object- en subsysteempagina's nu minimaal dezelfde vier blokken: `Overzicht / Samenhang`, `Afbakening`, `Onderdelen` en `Geometrie`
+- `Talud` werkt nu ook met een onderliggende constructieve verdieping naar `Bekledingsconstructie`, met semantische samenhang en een eerste vervolgstap naar `Toplaag`
 
 ## Architectuur
 
