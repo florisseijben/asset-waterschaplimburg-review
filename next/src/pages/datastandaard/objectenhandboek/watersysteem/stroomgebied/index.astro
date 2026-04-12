@@ -150,7 +150,7 @@ const samenhangLayout = [
   <section class="section section-panel">
     <p class="eyebrow">Uitwerking</p>
     <h2>Wat werken we vanuit dit subsysteem uit?</h2>
-    <CardGrid>
+    <CardGrid stacked={true}>
       {(entry.data.contentSections || []).map((item) => (
         <InfoCard title={item.title} text={item.summary} href={item.href} />
       ))}

@@ -223,6 +223,10 @@ h1 {
   grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
 }
 
+.card-grid--stacked {
+  grid-template-columns: 1fr;
+}
+
 .detail-grid {
   display: grid;
   gap: var(--space-5);

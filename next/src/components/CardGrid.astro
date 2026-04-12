@@ -1,3 +1,11 @@
-<div class="card-grid">
+---
+interface Props {
+  stacked?: boolean;
+}
+
+const { stacked = false } = Astro.props;
+---
+
+<div class:list={["card-grid", stacked && "card-grid--stacked"]}>
   <slot />
 </div>

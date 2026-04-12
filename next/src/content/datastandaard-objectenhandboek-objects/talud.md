@@ -60,7 +60,7 @@ contentSections:
   - title: Afbakening
     summary: De afbakening van het talud volgt het schuine grensvlak tussen bodem en de bovenliggende rand of het maaiveld van de sectie.
   - title: Onderdelen
-    summary: Binnen de uitwerking van taluds zijn richting, helling, bekleding en relatie met bodem of oever de belangrijkste onderdelen.
+    summary: Binnen de uitwerking van taluds zijn richting, helling, bekleding en de relatie met bodem of oever de belangrijkste onderdelen van dit object.
   - title: Geometrie
     summary: De geometrie van het talud wordt bepaald door helling, lengte, hoogteverschil en positie in het dwarsprofiel van de watergangsectie.
 productRelations:

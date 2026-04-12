@@ -54,7 +54,7 @@ contentSections:
   - title: Afbakening
     summary: De afbakening van het stroomgebied volgt de hydrologische grens waarbinnen oppervlakkig afstromend water uiteindelijk via hetzelfde hoofdafvoersysteem wordt afgevoerd.
   - title: Onderdelen
-    summary: Binnen dit stroomgebied worden watergangen als eerste objectfamilie inhoudelijk uitgewerkt.
+    summary: Binnen dit stroomgebied worden watergangen als eerste objectfamilie inhoudelijk uitgewerkt, met daaronder watergangsecties, intersecties en verdere profielonderdelen.
     href: /datastandaard/objectenhandboek/watersysteem/watergangen
   - title: Geometrie
     summary: De geometrie van het stroomgebied is gebiedsgericht en sluit aan op de DAMO-methodiek voor afvoer- en aanvoergebieden.
