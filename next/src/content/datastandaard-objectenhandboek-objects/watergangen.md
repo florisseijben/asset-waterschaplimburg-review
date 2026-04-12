@@ -12,40 +12,37 @@ hierarchy:
   - Watersysteem
   - Stroomgebied
   - Watergang
-definition: Een watergang is een lijnvormig waterobject dat over zijn hele lengte is opgebouwd uit opeenvolgende watergangsecties en intersecties.
-definitionSource: "Definitiebron: semantische beheeromgeving conceptdefinitie voor Watergang."
+definition: Een watergang is een voor de waterbeheersing bestemde geul met een vlakke bodem die meestal permanent water bevat.
+definitionSource: "Definitiebron: IMBOR Begrippenkader, begrip Watergang. Aanvullende terminologische aansluiting op Aquo-begrippen voor waterbeheer."
 terms:
   - title: Watergang
-    text: Hoofdbegrip binnen deze objectlijn.
+    text: Voorkeursterm in IMBOR voor een voor de waterbeheersing bestemde geul met meestal permanent water.
     href: /datastandaard/woordenboek
   - title: Waterloop
-    text: Verwant begrip voor de lijnvormige waterstructuur.
+    text: Aquo-verwant begrip voor stromende of afvoerende waterstructuren binnen het watersysteem.
     href: /datastandaard/woordenboek
-  - title: Traject
-    text: Leeswijze van de watergang als doorgaande aslijn.
+  - title: Permanent water
+    text: Bovenliggend begrip in IMBOR waar Watergang onder valt.
     href: /datastandaard/woordenboek
-  - title: Waterganggebied
-    text: Ruimtelijke begrenzing van dezelfde objectopbouw.
+  - title: Type watergang
+    text: IMBOR-attribuut voor het type beheer en het belang van de watergang.
     href: /datastandaard/woordenboek
-contextNote: De watergang volgt een traject van aanvoerpunt naar afvoerpunt. Dat traject wordt via de aslijn weergegeven en is over de hele lengte opgebouwd uit secties en intersecties. Diezelfde opbouw geldt ook voor het gebied en het dwarsprofiel van de watergang.
+contextNote: In IMBOR ligt de nadruk op de watergang als beheerd fysiek object. In deze objectlijn combineren we dat met Aquo-terminologie voor waterbeheer en met de semantische decompositie naar watergangsecties en intersecties.
 subtypes:
   - title: Beek
-    text: Smalle natuurlijke waterloop met stromend water.
+    text: Onderliggend begrip van Watergang in IMBOR.
     href: /datastandaard/woordenboek
-  - title: Bronbeek
-    text: Beek die vooral wordt gevoed vanuit een brongebied.
+  - title: Gracht
+    text: Onderliggend begrip van Watergang in IMBOR.
     href: /datastandaard/woordenboek
   - title: Kanaal
-    text: Kunstmatig aangelegde waterloop voor aanvoer, afvoer of transport.
+    text: Onderliggend begrip van Watergang in IMBOR.
     href: /datastandaard/woordenboek
   - title: Rivier
-    text: Natuurlijke waterloop van grotere omvang met blijvend stromend water.
+    text: Onderliggend begrip van Watergang in IMBOR.
     href: /datastandaard/woordenboek
   - title: Sloot
-    text: Kleine waterloop met stilstaand of langzaam stromend water.
-    href: /datastandaard/woordenboek
-  - title: Kwelsloot
-    text: Sloot die in belangrijke mate wordt gevoed door kwelwater.
+    text: Onderliggend begrip van Watergang in IMBOR.
     href: /datastandaard/woordenboek
 metadata:
   - label: Systeem
