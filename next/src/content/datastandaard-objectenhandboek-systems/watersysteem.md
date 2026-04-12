@@ -8,18 +8,18 @@ status: concept
 lastReviewed: 2026-04-11
 summary: Binnen deze systeemlijn ordenen we objecttypen per objectfamilie, zodat de structuur schaalbaar en herbruikbaar blijft.
 heroTitle: Objectenhandboek voor Watersysteem
-definition: Het watersysteem is de samenhangende systeemlaag waarin subsystemen, waterobjecten en hun relaties als geheel worden geordend en gepubliceerd.
-definitionSource: "Definitiebron: semantische beheeromgeving conceptdefinitie voor Watersysteem."
+definition: Het regionale watersysteem is het samenhangende geheel van oppervlaktewaterlichamen, bergingsgebieden, waterkeringen en ondersteunende kunstwerken in beheer bij het waterschap binnen het regionale watersysteem van Limburg.
+definitionSource: "Bronbasis: Omgevingswet-begrip watersysteem, in combinatie met de regionale beheercontext uit de Waterschapsverordening Waterschap Limburg. Formulering is een toepassing op deze objectenhandboeklijn."
 terms:
   - title: Watersysteem
-    text: Hoofdbegrip voor de systeemlaag waarin objectfamilies en subsystemen samenkomen.
+    text: Overkoepelend begrip voor het samenhangende geheel van waterstaatswerken en bijbehorende onderdelen.
     href: /datastandaard/woordenboek
-  - title: Hydrologisch systeem
-    text: Verwante term voor de functionele samenhang van waterobjecten.
+  - title: Oppervlaktewaterlichaam
+    text: Begrip voor een samenhangend onderscheiden waterlichaam binnen het watersysteem.
     href: /datastandaard/woordenboek
-  - title: Stroomgebied
-    text: Subsysteemniveau waarop de watersysteemlijn verder wordt uitgewerkt.
-    href: /datastandaard/objectenhandboek/watersysteem/stroomgebied
+  - title: Regionale wateren
+    text: Wateren die niet tot de rijkswateren behoren en binnen de regionale beheercontext van het waterschap vallen.
+    href: /datastandaard/woordenboek
 contextNote: Het watersysteem vormt de kapstok voor subsystemen zoals stroomgebieden en voor objectfamilies zoals watergangen, watervlakten en kunstwerken. Vanuit deze systeemlaag wordt duidelijk hoe decompositie, begrippen en productrelaties samenhangen.
 subtypes:
   - title: Stroomgebied
