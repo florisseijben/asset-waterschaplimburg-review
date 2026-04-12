@@ -65,8 +65,7 @@ Doorgevoerd:
 - de eerste visualisatie gebruikt Reactodia waar mogelijk en valt terug op een vaste graphweergave als de workspace niet beschikbaar is
 - `Watersysteem` volgt nu hetzelfde sectieritme als de objectpagina's: `Begrip`, `Samenhang`, `Uitwerking`, `Productlijn`, `Vervolg`
 - `Stroomgebied`, `Watergang`, `Watergangsectie` en `Intersectie` zijn nu op hetzelfde ritme gebracht, inclusief `Samenhang` en een afsluitende sectie `Vervolg`
-- binnen `Uitwerking` gebruiken systeem- en objectpagina's nu minimaal dezelfde vier blokken: `Overzicht / Samenhang`, `Afbakening`, `Onderdelen` en `Geometrie`
-- deze minimale uitwerkingsblokken gelden nu ook expliciet voor `Stroomgebied` als subsysteempagina
+- binnen `Uitwerking` gebruiken de object- en subsysteempagina's nu minimaal dezelfde vier blokken: `Overzicht / Samenhang`, `Afbakening`, `Onderdelen` en `Geometrie`
 
 ## Architectuur
 

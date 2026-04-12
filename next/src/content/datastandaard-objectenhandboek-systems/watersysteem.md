@@ -29,15 +29,24 @@ subtypes:
     text: Eerste uitgewerkte objectfamilie binnen het watersysteem.
     href: /datastandaard/objectenhandboek/watersysteem/watergangen
 contentSections:
-  - title: Overzicht / Samenhang
-    text: Het watersysteem ordent subsystemen, objectfamilies en productrelaties tot één samenhangende systeemlaag.
-  - title: Afbakening
-    text: De systeemlaag wordt afgebakend via hydrologische samenhang en de overgang naar subsystemen zoals stroomgebieden.
-  - title: Onderdelen
-    text: Binnen deze lijn zijn stroomgebieden, watergangen, watervlakten, waterbuffers, terreinen en kunstwerken de belangrijkste onderdelen.
+  - title: Stroomgebied
+    text: Subsysteemlanding voor de hydrologische samenhang en de objectfamilies daarbinnen.
     href: /datastandaard/objectenhandboek/watersysteem/stroomgebied
-  - title: Geometrie
-    text: De geometrie van het watersysteem wordt niet als één object vastgelegd, maar afgeleid uit de ruimtelijke afbakening van subsystemen en onderliggende objecten.
+  - title: Watergangen
+    text: Objecten, begrippen, modellen en referenties rond watergangen.
+    href: /datastandaard/objectenhandboek/watersysteem/watergangen
+  - title: Watervlakten
+    text: Objecten, begrippen, modellen en referenties rond watervlakten.
+  - title: Waterbuffers
+    text: Objecten, begrippen, modellen en referenties rond waterbuffers.
+  - title: Terreinen
+    text: Objecten, begrippen, modellen en referenties rond terreinen.
+  - title: Kunstwerken
+    text: Objecten, begrippen, modellen en referenties rond kunstwerken.
+  - title: Terreininrichting
+    text: Objecten, begrippen, modellen en referenties rond terreininrichting.
+  - title: Vegetatieobjecten
+    text: Objecten, begrippen, modellen en referenties rond vegetatieobjecten.
 productRelations:
   - title: Woordenboek
     text: Begrippen en definities voor het watersysteem.
