@@ -49,6 +49,7 @@ Doorgevoerd:
 - landings- en objectpagina's krijgen een vaste begripsverwijzing naar het woordenboek
 - hiervoor is de standaardcomponent [`ConceptReference.astro`](</c:/Users/f.seijben/Develop/Asset.waterschaplimburg.nl/next/src/components/ConceptReference.astro:1>) toegevoegd
 - dit patroon is nu gekoppeld aan systeem-, discipline- en objectpagina's binnen de huidige slice
+- op objecttypepagina's is de overlap tussen `Begrip` en `Concept` opgeheven door de volledige conceptinhoud direct onder de begripssectie te plaatsen
 
 ## Architectuur
 

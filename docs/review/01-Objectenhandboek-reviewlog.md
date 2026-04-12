@@ -38,6 +38,7 @@ Gebruik deze rubriek voor:
 Open punten:
 
 - Nog in te vullen
+- Objecttypepagina's mogen geen overlap hebben tussen `Begrip` en `Concept`. Gewenste richting: volledige conceptinhoud direct onder de begripssectie plaatsen en geen dubbele introductielaag tonen.
 
 ### 3. Vormgeving
 
