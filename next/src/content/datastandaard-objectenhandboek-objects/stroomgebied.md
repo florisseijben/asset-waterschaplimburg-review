@@ -11,25 +11,37 @@ heroTitle: Stroomgebied
 hierarchy:
   - Watersysteem
   - Stroomgebied
-definition: Een stroomgebied is een afgebakend deel van het watersysteem waarin afvoer, aanvoer en ruimtelijke samenhang van waterobjecten als geheel worden beschouwd.
-definitionSource: "Definitiebron: semantische beheeromgeving conceptdefinitie voor Stroomgebied."
+definition: Een stroomgebied is een gebied vanwaar al het over het oppervlak lopende water via een reeks stromen, rivieren en eventueel meren door een riviermond, estuarium of delta in zee stroomt.
+definitionSource: "Definitiebron: DAMO Objectenhandboek 2.6, Bijlage Afvoeraanvoergebied methodiek, paragraaf 2.1 Definities."
 terms:
   - title: Stroomgebied
-    text: Subsysteem waarin watergangen, vlakken en gerelateerde objecten samenhangen.
+    text: Gebied waarvan al het oppervlakkig afstromende water uiteindelijk via eenzelfde hoofdsysteem in zee terechtkomt.
     href: /datastandaard/woordenboek
-  - title: Afwateringsgebied
-    text: Verwante term voor het gebied waar water naar eenzelfde afvoerstructuur toestroomt.
+  - title: Afvoergebied
+    text: Gebied begrensd door stroomscheidingen waaruit water via afstroming of bemaling naar een afvoerpunt wordt geleid.
+    href: /datastandaard/woordenboek
+  - title: Drainage basin
+    text: INSPIRE-term voor een gebied met een gemeenschappelijk afvoerpunt voor oppervlakkige afstroming.
+    href: /datastandaard/woordenboek
+  - title: River basin
+    text: INSPIRE-term voor het grootste afwateringsgebied en daarmee verwant aan het begrip stroomgebied.
     href: /datastandaard/woordenboek
   - title: Watersysteem
-    text: Bovenliggende systeemlaag waarin meerdere subsystemen kunnen bestaan.
+    text: Bovenliggende systeemlaag waarin meerdere stroomgebieden en afvoerstructuren samenkomen.
     href: /datastandaard/woordenboek
-contextNote: Het stroomgebied is de schaal waarop waterganglijnen, objectfamilies en productrelaties samen leesbaar worden. Vanuit dit niveau wordt duidelijk welke objecten tot dezelfde hydrologische samenhang behoren.
+contextNote: In de DAMO-methodiek is stroomgebied het grootste hydrologische gebiedsniveau. Binnen Nederland gaat het daarbij om de landgrensoverschrijdende stroomgebieden van Maas, Schelde, Eems en Rijn, waarbinnen verdere afvoergebieden en objectlijnen worden geordend.
 subtypes:
-  - title: Primair stroomgebied
-    text: Hoofdgebied binnen het watersysteem met een samenhangende afvoerlogica.
+  - title: Maas
+    text: Landgrensoverschrijdend stroomgebied waarbinnen Nederlandse afvoergebieden op de Maas zijn georiënteerd.
     href: /datastandaard/woordenboek
-  - title: Deelstroomgebied
-    text: Onderverdeling van een groter stroomgebied voor meer lokale samenhang.
+  - title: Schelde
+    text: Landgrensoverschrijdend stroomgebied voor afwatering richting het Schelde-estuarium.
+    href: /datastandaard/woordenboek
+  - title: Eems
+    text: Landgrensoverschrijdend stroomgebied voor afwatering richting Eems en Dollard.
+    href: /datastandaard/woordenboek
+  - title: Rijn
+    text: Landgrensoverschrijdend stroomgebied voor afwatering richting Rijnmond en verbonden delta's.
     href: /datastandaard/woordenboek
 metadata:
   - label: Systeem
