@@ -30,7 +30,7 @@ terms:
   - title: Toplaag
     text: Buitenste verdedigingslaag van de bekledingsconstructie en eerste onderliggende component.
     href: /datastandaard/woordenboek
-contextNote: Binnen DAMO en Aquo wordt bekledingsconstructie vooral gebruikt in de context van waterkeringen. In deze objectlijn passen we hetzelfde principe toe op taluds van watergangen: als constructieve opbouw die het talud beschermt en waarvan minimaal de toplaag expliciet benoemd wordt.
+contextNote: "Binnen DAMO en Aquo wordt bekledingsconstructie vooral gebruikt in de context van waterkeringen. In deze objectlijn passen we hetzelfde principe toe op taluds van watergangen: als constructieve opbouw die het talud beschermt en waarvan minimaal de toplaag expliciet benoemd wordt."
 subtypes:
   - title: Open bekleding
     text: Bekledingsconstructie met een open of doorlatende structuur, passend bij uitwisseling met de ondergrond.
