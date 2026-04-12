@@ -6,7 +6,7 @@ product: landing
 ownerTeam: datastandaard
 status: concept
 lastReviewed: 2026-04-11
-summary: Landingpagina voor de Datastandaard binnen de nieuwe parallelle omgeving.
+summary: Binnen de datastandaard vind je alles wat je nodig hebt om te bepalen hoe we onze begrippen definieren, onze objecten afbakenen, welke informatie we over onze objecten vastleggen, aan welke kwaliteitseisen deze informatie moet voldoen. Je kan de datastandaard benaderen via een van de systemen, technische disciplines of direct vanuit de producten.
 heroTitle: Datastandaard
 systems:
   - title: Afvalwaterketen
