@@ -6,9 +6,8 @@ import InfoCard from "../../../../components/InfoCard.astro";
 import { getCollection } from "astro:content";
 
 const entries = await getCollection("datastandaard-objectenhandboek-systems");
-const entry =
-  entries.find((item) => item.data.slug === "/datastandaard/objectenhandboek/watersysteem") ||
-  entries[0];
+const expectedSlug = "/datastandaard/objectenhandboek/watersysteem";
+const entry = entries.find((item) => item.id === "watersysteem" || item.data.slug === expectedSlug);
 
 if (!entry) {
   throw new Error("Objectenhandboek Watersysteem ontbreekt in de nieuwe omgeving.");
