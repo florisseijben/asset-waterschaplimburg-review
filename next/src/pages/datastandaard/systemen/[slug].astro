@@ -1,0 +1,93 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Hero from "../../../components/Hero.astro";
+import CardGrid from "../../../components/CardGrid.astro";
+import InfoCard from "../../../components/InfoCard.astro";
+
+const systemPages = [
+  {
+    slug: "afvalwaterketen",
+    title: "Afvalwaterketen",
+    summary:
+      "Deze systeemlanding bundelt de Datastandaard-producten voor de Afvalwaterketen, zodat je per product vanuit hetzelfde systeemkader kunt doorwerken.",
+    intro:
+      "Gebruik deze ingang als je de datastandaard wilt benaderen vanuit RWZI's, rioolgemalen, transportleidingen en aanverwante objecten.",
+    productCards: [
+      { title: "Woordenboek", text: "Begrippen en definities voor de Afvalwaterketen.", href: "/datastandaard/woordenboek" },
+      { title: "Objectenhandboek", text: "Objecttypen en systeemstructuur voor de Afvalwaterketen.", href: "/datastandaard/objectenhandboek/afvalwaterketen" },
+      { title: "OTL", text: "Klassen en relaties voor modellering binnen dit systeem.", href: "/datastandaard/otl" },
+      { title: "Referentiedataset", text: "Voorbeelddata en toetsbare referenties voor dit systeem.", href: "/datastandaard/referentiedataset" },
+      { title: "Werkinstructies", text: "Gebruiks- en beheerafspraken voor toepassing van de standaard.", href: "/datastandaard/werkinstructies" }
+    ]
+  },
+  {
+    slug: "watersysteem",
+    title: "Watersysteem",
+    summary:
+      "Deze systeemlanding bundelt de Datastandaard-producten voor het Watersysteem, zodat je per product vanuit hetzelfde systeemkader kunt doorwerken.",
+    intro:
+      "Gebruik deze ingang als je de datastandaard wilt benaderen vanuit stroomgebieden, watergangen, watervlakten, buffers, kunstwerken en terreininrichting.",
+    productCards: [
+      { title: "Woordenboek", text: "Begrippen en definities voor het Watersysteem.", href: "/datastandaard/woordenboek" },
+      { title: "Objectenhandboek", text: "Objecttypen en systeemstructuur voor het Watersysteem.", href: "/datastandaard/objectenhandboek/watersysteem" },
+      { title: "OTL", text: "Klassen en relaties voor modellering binnen dit systeem.", href: "/datastandaard/otl" },
+      { title: "Referentiedataset", text: "Voorbeelddata en toetsbare referenties voor dit systeem.", href: "/datastandaard/referentiedataset" },
+      { title: "Werkinstructies", text: "Gebruiks- en beheerafspraken voor toepassing van de standaard.", href: "/datastandaard/werkinstructies" }
+    ]
+  },
+  {
+    slug: "waterkeringensysteem",
+    title: "Waterkeringensysteem",
+    summary:
+      "Deze systeemlanding bundelt de Datastandaard-producten voor het Waterkeringensysteem, zodat je per product vanuit hetzelfde systeemkader kunt doorwerken.",
+    intro:
+      "Gebruik deze ingang als je de datastandaard wilt benaderen vanuit waterkeringen, langsconstructies, kunstwerken, terreinen en groenobjecten.",
+    productCards: [
+      { title: "Woordenboek", text: "Begrippen en definities voor het Waterkeringensysteem.", href: "/datastandaard/woordenboek" },
+      { title: "Objectenhandboek", text: "Objecttypen en systeemstructuur voor het Waterkeringensysteem.", href: "/datastandaard/objectenhandboek/waterkeringensysteem" },
+      { title: "OTL", text: "Klassen en relaties voor modellering binnen dit systeem.", href: "/datastandaard/otl" },
+      { title: "Referentiedataset", text: "Voorbeelddata en toetsbare referenties voor dit systeem.", href: "/datastandaard/referentiedataset" },
+      { title: "Werkinstructies", text: "Gebruiks- en beheerafspraken voor toepassing van de standaard.", href: "/datastandaard/werkinstructies" }
+    ]
+  }
+];
+
+export function getStaticPaths() {
+  return systemPages.map((page) => ({
+    params: { slug: page.slug },
+    props: page
+  }));
+}
+
+const { title, summary, intro, productCards } = Astro.props;
+---
+
+<BaseLayout
+  title={title}
+  currentPath="/datastandaard"
+  breadcrumbs={[
+    { label: "Home", href: "/" },
+    { label: "Datastandaard", href: "/datastandaard" },
+    { label: title }
+  ]}
+>
+  <Hero eyebrow="Systeem" title={title} summary={summary} />
+
+  <section class="section section-panel">
+    <p class="eyebrow">Benadering</p>
+    <h2>Werk verder vanuit dit systeem</h2>
+    <div class="content-copy">
+      <p>{intro}</p>
+    </div>
+  </section>
+
+  <section class="section section-panel">
+    <p class="eyebrow">Producten</p>
+    <h2>Kies een productlijn binnen {title}</h2>
+    <CardGrid>
+      {productCards.map((item) => (
+        <InfoCard title={item.title} text={item.text} href={item.href} />
+      ))}
+    </CardGrid>
+  </section>
+</BaseLayout>
