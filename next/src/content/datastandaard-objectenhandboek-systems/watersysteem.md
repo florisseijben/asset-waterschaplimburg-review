@@ -22,12 +22,12 @@ terms:
     href: /datastandaard/woordenboek
 contextNote: Het watersysteem vormt de kapstok voor subsystemen zoals stroomgebieden en voor objectfamilies zoals watergangen, watervlakten en kunstwerken. Vanuit deze systeemlaag wordt duidelijk hoe decompositie, begrippen en productrelaties samenhangen.
 subtypes:
-  - title: Stroomgebied
-    text: Eerste uitgewerkt subsysteem binnen deze watersysteemlijn.
-    href: /datastandaard/objectenhandboek/watersysteem/stroomgebied
-  - title: Objectfamilie Watergangen
-    text: Eerste uitgewerkte objectfamilie binnen het watersysteem.
-    href: /datastandaard/objectenhandboek/watersysteem/watergangen
+  - title: Regionale wateren
+    text: Wateren binnen het regionale watersysteem en de beheercontext van provincie en waterschap.
+    href: /datastandaard/woordenboek
+  - title: Rijkswateren
+    text: Wateren die onderdeel uitmaken van het hoofdwatersysteem onder beheer van het Rijk.
+    href: /datastandaard/woordenboek
 contentSections:
   - title: Stroomgebied
     text: Subsysteemlanding voor de hydrologische samenhang en de objectfamilies daarbinnen.
