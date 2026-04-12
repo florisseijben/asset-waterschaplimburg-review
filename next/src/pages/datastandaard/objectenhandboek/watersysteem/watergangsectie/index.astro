@@ -34,63 +34,51 @@ if (!entry) {
 >
   <Hero eyebrow="Objectenhandboek" title={entry.data.heroTitle || entry.data.title} summary={entry.data.summary} />
 
-  <section class="section section-panel">
-    <p class="eyebrow">Begrip</p>
-    <h2>Wat verstaan we onder Watergangsectie?</h2>
+  <section class="detail-grid">
+    <section class="section section-panel">
+      <p class="eyebrow">Begrip</p>
+      <h2>Wat verstaan we onder Watergangsectie?</h2>
 
-    <div class="taxonomy-block">
-      <div class="taxonomy-block__header">
-        <h3>Objectdefinitie</h3>
-        <a class="mini-link" href={withBase("/datastandaard/woordenboek")}>Open begrip in woordenboek</a>
-      </div>
+      <div class="taxonomy-block">
+        <div class="taxonomy-block__header">
+          <h3>Objectdefinitie</h3>
+          <a class="mini-link" href={withBase("/datastandaard/woordenboek")}>Open begrip in woordenboek</a>
+        </div>
         <div class="definition-block">
           <p>{entry.data.definition}</p>
         </div>
         {entry.data.definitionSource && <p class="definition-source">{entry.data.definitionSource}</p>}
-    </div>
+      </div>
 
-    <div class="taxonomy-block">
-      <h3>Vergelijkbare termen</h3>
-      <div class="term-stack">
+      <div class="taxonomy-block">
+        <h3>Vergelijkbare termen</h3>
+        <div class="term-stack">
           {(entry.data.terms || []).map((item) => (
-          <a class="term-row" href={withBase(item.href || "/datastandaard/woordenboek")}>
-            <strong>{item.title}</strong>
-            <span>{item.text}</span>
-          </a>
+            <a class="term-row" href={withBase(item.href || "/datastandaard/woordenboek")}>
+              <strong>{item.title}</strong>
+              <span>{item.text}</span>
+            </a>
           ))}
+        </div>
       </div>
-    </div>
 
-    <div class="taxonomy-block">
-      <h3>Typen</h3>
-      <div class="term-stack">
+      <div class="taxonomy-block">
+        <h3>Typen</h3>
+        <div class="term-stack">
           {(entry.data.subtypes || []).map((item) => (
-          <a class="term-row" href={withBase(item.href || "/datastandaard/woordenboek")}>
-            <strong>{item.title}</strong>
-            <span>{item.text}</span>
-          </a>
+            <a class="term-row" href={withBase(item.href || "/datastandaard/woordenboek")}>
+              <strong>{item.title}</strong>
+              <span>{item.text}</span>
+            </a>
           ))}
+        </div>
       </div>
-    </div>
 
-    <div class="callout">
-      <strong>Context</strong>
-      <p>{entry.data.contextNote}</p>
-    </div>
-  </section>
-
-  <section class="detail-grid">
-    <article class="detail-stack">
-      <section class="section section-panel">
-        <p class="eyebrow">Uitwerking</p>
-        <h2>Inhoudelijke opbouw van Watergangsectie</h2>
-        <CardGrid>
-          {(entry.data.contentSections || []).map((item) => (
-            <InfoCard title={item.title} text={item.summary} />
-          ))}
-        </CardGrid>
-      </section>
-    </article>
+      <div class="callout">
+        <strong>Context</strong>
+        <p>{entry.data.contextNote}</p>
+      </div>
+    </section>
 
     <aside class="detail-stack">
       <section class="section section-panel">
@@ -126,5 +114,15 @@ if (!entry) {
         </CardGrid>
       </section>
     </aside>
+  </section>
+
+  <section class="section section-panel">
+    <p class="eyebrow">Uitwerking</p>
+    <h2>Inhoudelijke opbouw van Watergangsectie</h2>
+    <CardGrid>
+      {(entry.data.contentSections || []).map((item) => (
+        <InfoCard title={item.title} text={item.summary} />
+      ))}
+    </CardGrid>
   </section>
 </BaseLayout>

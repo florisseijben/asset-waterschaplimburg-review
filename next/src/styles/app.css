@@ -201,6 +201,10 @@ h1 {
   align-items: start;
 }
 
+.detail-grid > .section {
+  margin-bottom: 0;
+}
+
 .detail-stack {
   display: grid;
   gap: var(--space-5);
