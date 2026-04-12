@@ -23,7 +23,8 @@ Gebruik deze rubriek voor:
 
 Open punten:
 
-- Nog in te vullen
+- Homepagina: `Platformlogica` en `Onderdelen` voelen dubbelop. De beschrijvingen in de kaarten onder `Platformlogica` kunnen waarschijnlijk worden samengevoegd met de kaarten in `Onderdelen`, zodat de home directer en minder herhalend wordt.
+- Kaarten die doorverwijzen naar een onderdeel, product of pagina moeten als hele kaart interactief aanvoelen. Nu is vaak alleen de tekstlink klikbaar; gewenste richting is dat de volledige kaart als klikbare target herkenbaar is en visueel oplicht bij hover/focus.
 
 ### 2. Structuur
 
@@ -69,6 +70,8 @@ Open punten:
 - Gebruik van kleurverlopen terugbrengen naar een consistente regel: geen gradients in secties en blokken, alleen effen kleur of wit.
 - Ook transparante overlays en kleurvlakken normaliseren naar vaste effen kleuren, zodat de vormentaal overal gelijk blijft.
 - Een duidelijk verschil aanbrengen tussen grote dragers en kleine elementen: grote secties rechthoekig, kleine kaarten en controls met een subtiele enkele afgeronde hoek.
+- Homepagina harmoniseren door overlappende secties samen te voegen waar ze dezelfde navigatielaag beschrijven, zoals `Platformlogica` en `Onderdelen`.
+- Klikbare kaarten overal hetzelfde laten werken: hele kaart klikbaar, duidelijke hover/focus-state en geen afhankelijkheid van alleen de tekstlink.
 
 ### 5. Beheerbaarheid
 
