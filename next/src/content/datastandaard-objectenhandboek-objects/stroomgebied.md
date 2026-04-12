@@ -31,17 +31,17 @@ terms:
     href: /datastandaard/woordenboek
 contextNote: In de DAMO-methodiek is stroomgebied het grootste hydrologische gebiedsniveau. Binnen Nederland gaat het daarbij om de landgrensoverschrijdende stroomgebieden van Maas, Schelde, Eems en Rijn, waarbinnen verdere afvoergebieden en objectlijnen worden geordend.
 subtypes:
-  - title: Maas
-    text: Landgrensoverschrijdend stroomgebied waarbinnen Nederlandse afvoergebieden op de Maas zijn georiënteerd.
+  - title: 1e gebiedsorde
+    text: Afvoergebied dat ontstaat door alle afvoergebieden van de 2e gebiedsorde die op hetzelfde RWS-hoofdwater lozen samen te voegen, bijvoorbeeld richting de Maas.
     href: /datastandaard/woordenboek
-  - title: Schelde
-    text: Landgrensoverschrijdend stroomgebied voor afwatering richting het Schelde-estuarium.
+  - title: 2e gebiedsorde
+    text: Afvoergebied dat in een normale afvoersituatie via een afvoerpunt direct op een RWS-hoofdwater loost, bijvoorbeeld via een waterloop die uitkomt in de Maas.
     href: /datastandaard/woordenboek
-  - title: Eems
-    text: Landgrensoverschrijdend stroomgebied voor afwatering richting Eems en Dollard.
+  - title: 3e gebiedsorde
+    text: Verdere detaillering van een afvoergebied van de 2e gebiedsorde in afzonderlijke afvoergebieden binnen hetzelfde hydrologische systeem.
     href: /datastandaard/woordenboek
-  - title: Rijn
-    text: Landgrensoverschrijdend stroomgebied voor afwatering richting Rijnmond en verbonden delta's.
+  - title: n-de gebiedsorde
+    text: Verdere vertakkingsniveaus volgens dezelfde systematiek, waarbij een lagere gebiedsorde wordt opgebouwd uit meerdere afvoergebieden van een hogere gebiedsorde.
     href: /datastandaard/woordenboek
 metadata:
   - label: Systeem
