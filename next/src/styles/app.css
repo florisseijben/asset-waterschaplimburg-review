@@ -125,19 +125,21 @@ a:hover {
 }
 
 .hero-meta-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
-  gap: var(--space-3);
-  margin: var(--space-5) 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.2rem;
+  margin: var(--space-4) 0 0;
 }
 
 .hero-meta-item {
-  display: grid;
-  gap: 0.2rem;
-  padding: var(--space-3);
-  border: 1px solid #b8dbe1;
-  border-radius: 0 var(--corner-control) 0 0;
-  background: #ffffff;
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font-size: 0.92rem;
 }
 
 .hero-meta-item dt {
