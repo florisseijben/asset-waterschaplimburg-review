@@ -7,7 +7,12 @@ import { getCollection } from "astro:content";
 
 const entries = await getCollection("datastandaard-objectenhandboek-objects");
 const expectedSlug = "/datastandaard/objectenhandboek/watersysteem/watergangsectie";
-const entry = entries.find((item) => item.id === "watergangsectie" || item.data.slug === expectedSlug);
+const entry = entries.find(
+  (item) =>
+    item.id === "watergangsectie" ||
+    item.data.slug === expectedSlug ||
+    item.data.title === "Watergangsectie"
+);
 
 if (!entry) {
   throw new Error("Objectenhandboek Watergangsectie ontbreekt in de nieuwe omgeving.");

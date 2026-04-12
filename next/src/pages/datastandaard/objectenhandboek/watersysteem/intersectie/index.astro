@@ -7,7 +7,12 @@ import { getCollection } from "astro:content";
 
 const entries = await getCollection("datastandaard-objectenhandboek-objects");
 const expectedSlug = "/datastandaard/objectenhandboek/watersysteem/intersectie";
-const entry = entries.find((item) => item.id === "intersectie" || item.data.slug === expectedSlug);
+const entry = entries.find(
+  (item) =>
+    item.id === "intersectie" ||
+    item.data.slug === expectedSlug ||
+    item.data.title === "Intersectie"
+);
 
 if (!entry) {
   throw new Error("Objectenhandboek Intersectie ontbreekt in de nieuwe omgeving.");
