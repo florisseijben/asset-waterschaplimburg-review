@@ -37,10 +37,13 @@ productRelations:
 nextCapabilities:
   - title: Begrippenlijst
     text: Een eerste indexroute met termen en filtering.
+    href: /in-migratie/woordenboek/begrippenlijst
   - title: Termdetail
     text: Een detailtemplate waarin definitie, bron en relaties samenkomen.
+    href: /in-migratie/woordenboek/termdetail
   - title: Zoekingang
     text: Een gerichte woordenboekzoekfunctie als eerste island.
+    href: /in-migratie/woordenboek/zoekingang
 ---
 
 Deze pagina vormt de eerste productreferentie in de migratie.

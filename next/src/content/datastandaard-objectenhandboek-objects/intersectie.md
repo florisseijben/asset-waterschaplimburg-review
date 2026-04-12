@@ -32,10 +32,13 @@ contextNote: Binnen deze templatefamilie is de intersectie expliciet bedoeld voo
 subtypes:
   - title: Watergang - Watergang
     text: Kruising of aansluiting tussen twee watergangen.
+    href: /in-migratie/objectenhandboek/watersysteem/intersectie/watergang-watergang
   - title: Watergang - Weg
     text: Kruising tussen de watergangstructuur en een wegverbinding.
+    href: /in-migratie/objectenhandboek/watersysteem/intersectie/watergang-weg
   - title: Watergang - Waterkering
     text: Kruising tussen watergang en waterkering als specifieke systeemovergang.
+    href: /in-migratie/objectenhandboek/watersysteem/intersectie/watergang-waterkering
 metadata:
   - label: Systeem
     value: Watersysteem

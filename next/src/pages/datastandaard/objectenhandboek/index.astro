@@ -39,7 +39,7 @@ if (!entry) {
     <h2>Bekijk het objectenhandboek per discipline</h2>
     <CardGrid>
       {(entry.data.disciplines || []).map((item) => (
-        <InfoCard title={item.title} text={item.text} />
+        <InfoCard title={item.title} text={item.text} href={item.href} />
       ))}
     </CardGrid>
   </section>

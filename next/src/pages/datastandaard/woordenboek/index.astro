@@ -60,7 +60,7 @@ if (!entry) {
     <h2>Wat hierna volgt in deze productlijn</h2>
     <CardGrid>
       {(entry.data.nextCapabilities || []).map((item) => (
-        <InfoCard title={item.title} text={item.text} />
+        <InfoCard title={item.title} text={item.text} href={item.href} />
       ))}
     </CardGrid>
   </section>

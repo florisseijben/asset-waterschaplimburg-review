@@ -35,16 +35,22 @@ contextNote: De watergangsectie maakt het mogelijk om een watergang in opeenvolg
 subtypes:
   - title: Watergang met taluds
     text: Sectie waarin taluds de primaire begrenzing vormen.
+    href: /in-migratie/objectenhandboek/watersysteem/watergangsectie/met-taluds
   - title: Watergang met onderhoudspad
     text: Sectie met een expliciet onderhoudspad als onderdeel van de opbouw.
+    href: /in-migratie/objectenhandboek/watersysteem/watergangsectie/met-onderhoudspad
   - title: Watergang met beschoeiing
     text: Sectie waarin een beschoeiing onderdeel is van de constructieve opbouw.
+    href: /in-migratie/objectenhandboek/watersysteem/watergangsectie/met-beschoeiing
   - title: Watergang met wandconstructie
     text: Sectie met een verticale of semi-verticale wandoplossing.
+    href: /in-migratie/objectenhandboek/watersysteem/watergangsectie/met-wandconstructie
   - title: Watergang met accoladeprofiel
     text: Sectie met een profielvorm die accent legt op doorstroom en onderhoud.
+    href: /in-migratie/objectenhandboek/watersysteem/watergangsectie/met-accoladeprofiel
   - title: Vrij meanderende watergang
     text: Sectie met een natuurlijker verloop en minder strak profiel.
+    href: /in-migratie/objectenhandboek/watersysteem/watergangsectie/vrij-meanderend
 metadata:
   - label: Systeem
     value: Watersysteem

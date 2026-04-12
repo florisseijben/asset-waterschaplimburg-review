@@ -66,7 +66,7 @@ if (!entry) {
         <h2>Veelvoorkomende intersecties</h2>
         <CardGrid>
           {(entry.data.subtypes || []).map((item) => (
-            <InfoCard title={item.title} text={item.text} />
+            <InfoCard title={item.title} text={item.text} href={item.href} />
           ))}
         </CardGrid>
       </section>

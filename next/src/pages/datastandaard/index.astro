@@ -26,13 +26,13 @@ if (!entry) {
     <h3 class="section-title">Systemen</h3>
     <CardGrid>
       {(entry.data.systems || []).map((item) => (
-        <InfoCard title={item.title} text={item.text} />
+        <InfoCard title={item.title} text={item.text} href={item.href} />
       ))}
     </CardGrid>
     <h3 class="section-title">Technische disciplines</h3>
     <CardGrid>
       {(entry.data.disciplines || []).map((item) => (
-        <InfoCard title={item.title} text={item.text} />
+        <InfoCard title={item.title} text={item.text} href={item.href} />
       ))}
     </CardGrid>
   </section>

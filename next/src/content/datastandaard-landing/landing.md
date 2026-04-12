@@ -11,25 +11,35 @@ heroTitle: Datastandaard
 systems:
   - title: Afvalwaterketen
     text: Voor objecten, begrippen en modellen rond afstroomgebieden, RWZI's, rioolwatertransportleidingen en rioolgemalen.
+    href: /datastandaard/objectenhandboek/afvalwaterketen
   - title: Watersysteem
     text: Voor stroomgebieden, watergangen, watervlakten, buffers, kunstwerken, groenobjecten en terreininrichting.
+    href: /datastandaard/objectenhandboek/watersysteem
   - title: Waterkeringensysteem
     text: Voor waterkeringen, langsconstructies, kunstwerken, terreinen, groenobjecten en terreininrichting.
+    href: /datastandaard/objectenhandboek/waterkeringensysteem
 disciplines:
   - title: Ruimtelijke ordening
     text: Begrippen, objecttypen en modellen bekeken vanuit ligging, functie, gebiedsinpassing en ruimtelijke samenhang.
+    href: /in-migratie/datastandaard/discipline/ruimtelijke-ordening
   - title: Groen
     text: Datastandaard bekeken vanuit vegetatie, ecologie, beheer van groenstructuren en landschappelijke inrichting.
+    href: /in-migratie/datastandaard/discipline/groen
   - title: Bouwkunde
     text: Begrippen, objecten en gegevens bekeken vanuit gebouwde onderdelen, constructieve opbouw en fysieke verschijningsvorm.
+    href: /in-migratie/datastandaard/discipline/bouwkunde
   - title: Civiele techniek
     text: Datastandaard bekeken vanuit grond-, weg- en waterbouwkundige opbouw, profielen, constructies en relaties.
+    href: /in-migratie/datastandaard/discipline/civiele-techniek
   - title: Werktuigbouwkunde
     text: Begrippen, objecttypen en OTL-klassen bekeken vanuit mechanische onderdelen, installaties en technische samenstellingen.
+    href: /in-migratie/datastandaard/discipline/werktuigbouwkunde
   - title: Electrotechniek
     text: Datastandaard bekeken vanuit energievoorziening, bekabeling, besturing en elektrische componenten.
+    href: /in-migratie/datastandaard/discipline/electrotechniek
   - title: Procesautomatisering
     text: Begrippen, modellen en referentiegegevens bekeken vanuit meet- en regelsystemen, sensoren, sturing en digitale procesondersteuning.
+    href: /in-migratie/datastandaard/discipline/procesautomatisering
 products:
   - title: Woordenboek
     text: Begrippen, definities en gemeenschappelijke taal.
