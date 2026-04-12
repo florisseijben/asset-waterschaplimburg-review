@@ -3,8 +3,10 @@ import BaseLayout from "../../../../layouts/BaseLayout.astro";
 import Hero from "../../../../components/Hero.astro";
 import CardGrid from "../../../../components/CardGrid.astro";
 import InfoCard from "../../../../components/InfoCard.astro";
-import ConceptReference from "../../../../components/ConceptReference.astro";
+import SemanticSamenhangSection from "../../../../components/SemanticSamenhangSection.astro";
 import { getCollection } from "astro:content";
+import { withBase } from "../../../../lib/paths";
+import watersysteemSamenhangTurtle from "../../../../data/semantic/watersysteem-samenhang.ttl?raw";
 
 const entries = await getCollection("datastandaard-objectenhandboek-systems");
 const expectedSlug = "/datastandaard/objectenhandboek/watersysteem";
@@ -18,6 +20,54 @@ const entry = entries.find(
 if (!entry) {
   throw new Error("Objectenhandboek Watersysteem ontbreekt in de nieuwe omgeving.");
 }
+
+const samenhangLayout = [
+  {
+    id: "watersysteem",
+    label: "Watersysteem",
+    subtitle: "Systeem",
+    column: 1,
+    row: 0,
+    fill: "#e4f7fa",
+    stroke: "#00a9c1"
+  },
+  {
+    id: "stroomgebied",
+    label: "Stroomgebied",
+    subtitle: "Subsysteem",
+    column: 1,
+    row: 1,
+    fill: "#eefafb",
+    stroke: "#00a9c1"
+  },
+  {
+    id: "watergang",
+    label: "Watergang",
+    subtitle: "Objectfamilie",
+    column: 0,
+    row: 2,
+    fill: "#eefafb",
+    stroke: "#00a9c1"
+  },
+  {
+    id: "watergangsectie",
+    label: "Watergangsectie",
+    subtitle: "Objecttype",
+    column: 1,
+    row: 3,
+    fill: "#ffffff",
+    stroke: "#00a9c1"
+  },
+  {
+    id: "intersectie",
+    label: "Intersectie",
+    subtitle: "Objecttype",
+    column: 2,
+    row: 3,
+    fill: "#ffffff",
+    stroke: "#00a9c1"
+  }
+];
 ---
 
 <BaseLayout
@@ -32,23 +82,76 @@ if (!entry) {
 >
   <Hero eyebrow="Objectenhandboek" title={entry.data.heroTitle || entry.data.title} summary={entry.data.summary} />
 
-  <ConceptReference concept="Watersysteem" kind="Systeem" />
+  <section class="section section-panel">
+    <p class="eyebrow">Begrip</p>
+    <h2>Wat verstaan we onder Watersysteem?</h2>
+
+    <div class="taxonomy-block">
+      <div class="taxonomy-block__header">
+        <h3>Objectdefinitie</h3>
+        <a class="mini-link" href={withBase("/datastandaard/woordenboek")}>Open begrip in woordenboek</a>
+      </div>
+      <div class="definition-block">
+        <p>{entry.data.definition}</p>
+      </div>
+      {entry.data.definitionSource && <p class="definition-source">{entry.data.definitionSource}</p>}
+    </div>
+
+    <div class="taxonomy-block">
+      <h3>Vergelijkbare termen</h3>
+      <div class="term-stack">
+        {(entry.data.terms || []).map((item) => (
+          <a class="term-row" href={withBase(item.href || "/datastandaard/woordenboek")}>
+            <strong>{item.title}</strong>
+            <span>{item.text}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <div class="taxonomy-block">
+      <h3>Typen</h3>
+      <div class="term-stack">
+        {(entry.data.subtypes || []).map((item) => (
+          <a class="term-row" href={withBase(item.href || "/datastandaard/woordenboek")}>
+            <strong>{item.title}</strong>
+            <span>{item.text}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>Context</strong>
+      <p>{entry.data.contextNote}</p>
+    </div>
+  </section>
+
+  <SemanticSamenhangSection
+    title="Decompositie en hoofdrelaties binnen Watersysteem"
+    summary="Deze eerste samenhangsweergave laat zien hoe het watersysteem overgaat in het subsysteem Stroomgebied en vandaar doorloopt naar de eerste uitgewerkte objectlijn rond Watergang, Watergangsectie en Intersectie."
+    sourceLabel="Dummy Turtle-export uit de semantische modelleertool voor de watersysteemlijn."
+    graphId="watersysteem-samenhang"
+    selectedId="watersysteem"
+    turtle={watersysteemSamenhangTurtle}
+    layoutNodes={samenhangLayout}
+  />
 
   <section class="section section-panel">
-    <p class="eyebrow">Indeling</p>
-    <h2>Objectfamilies binnen Watersysteem</h2>
+    <p class="eyebrow">Uitwerking</p>
+    <h2>Inhoudelijke opbouw van Watersysteem</h2>
     <CardGrid>
-      {(entry.data.families || []).map((item) => (
+      {(entry.data.contentSections || []).map((item) => (
         <InfoCard title={item.title} text={item.text} href={item.href} />
       ))}
     </CardGrid>
   </section>
 
   <section class="section section-panel">
-    <p class="eyebrow">Productrelaties</p>
+    <p class="eyebrow">Productlijn</p>
     <h2>Producten binnen de datastandaard</h2>
     <CardGrid>
-      {(entry.data.relatedProducts || []).map((item) => (
+      {(entry.data.productRelations || entry.data.relatedProducts || []).map((item) => (
         <InfoCard title={item.title} text={item.text} href={item.href} />
       ))}
     </CardGrid>

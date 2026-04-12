@@ -50,8 +50,15 @@ const datastandaardObjectenhandboek = defineCollection({
 const datastandaardObjectenhandboekSystems = defineCollection({
   type: "content",
   schema: baseSchema.extend({
+    definition: z.coerce.string().optional(),
+    definitionSource: z.coerce.string().optional(),
+    terms: z.any().optional(),
+    contextNote: z.coerce.string().optional(),
+    subtypes: z.any().optional(),
     families: z.any().optional(),
+    contentSections: z.any().optional(),
     relatedProducts: z.any().optional(),
+    productRelations: z.any().optional(),
     nextSteps: z.any().optional()
   })
 });

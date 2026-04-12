@@ -63,6 +63,7 @@ Doorgevoerd:
 - de eerste vulling komt uit een dummy Turtle-bron: [watergang-samenhang.ttl](</c:/Users/f.seijben/Develop/Asset.waterschaplimburg.nl/next/src/data/semantic/watergang-samenhang.ttl:1>)
 - in `Watergang` is de kaart `Decompositie` uit `Uitwerking` verwijderd en vervangen door een eigen sectie `Samenhang` direct onder `Begrip`
 - de eerste visualisatie gebruikt Reactodia waar mogelijk en valt terug op een vaste graphweergave als de workspace niet beschikbaar is
+- `Watersysteem` volgt nu hetzelfde sectieritme als de objectpagina's: `Begrip`, `Samenhang`, `Uitwerking`, `Productlijn`, `Vervolg`
 
 ## Architectuur
 

@@ -8,7 +8,27 @@ status: concept
 lastReviewed: 2026-04-11
 summary: Binnen deze systeemlijn ordenen we objecttypen per objectfamilie, zodat de structuur schaalbaar en herbruikbaar blijft.
 heroTitle: Objectenhandboek voor Watersysteem
-families:
+definition: Het watersysteem is de samenhangende systeemlaag waarin subsystemen, waterobjecten en hun relaties als geheel worden geordend en gepubliceerd.
+definitionSource: "Definitiebron: semantische beheeromgeving conceptdefinitie voor Watersysteem."
+terms:
+  - title: Watersysteem
+    text: Hoofdbegrip voor de systeemlaag waarin objectfamilies en subsystemen samenkomen.
+    href: /datastandaard/woordenboek
+  - title: Hydrologisch systeem
+    text: Verwante term voor de functionele samenhang van waterobjecten.
+    href: /datastandaard/woordenboek
+  - title: Stroomgebied
+    text: Subsysteemniveau waarop de watersysteemlijn verder wordt uitgewerkt.
+    href: /datastandaard/objectenhandboek/watersysteem/stroomgebied
+contextNote: Het watersysteem vormt de kapstok voor subsystemen zoals stroomgebieden en voor objectfamilies zoals watergangen, watervlakten en kunstwerken. Vanuit deze systeemlaag wordt duidelijk hoe decompositie, begrippen en productrelaties samenhangen.
+subtypes:
+  - title: Stroomgebied
+    text: Eerste uitgewerkt subsysteem binnen deze watersysteemlijn.
+    href: /datastandaard/objectenhandboek/watersysteem/stroomgebied
+  - title: Objectfamilie Watergangen
+    text: Eerste uitgewerkte objectfamilie binnen het watersysteem.
+    href: /datastandaard/objectenhandboek/watersysteem/watergangen
+contentSections:
   - title: Stroomgebied
     text: Subsysteemlanding voor de hydrologische samenhang en de objectfamilies daarbinnen.
     href: /datastandaard/objectenhandboek/watersysteem/stroomgebied
@@ -27,7 +47,7 @@ families:
     text: Objecten, begrippen, modellen en referenties rond terreininrichting.
   - title: Vegetatieobjecten
     text: Objecten, begrippen, modellen en referenties rond vegetatieobjecten.
-relatedProducts:
+productRelations:
   - title: Woordenboek
     text: Begrippen en definities voor het watersysteem.
     href: /datastandaard/woordenboek
@@ -44,6 +64,9 @@ relatedProducts:
     text: Documenten en werkafspraken voor gebruik en beheer.
     href: /datastandaard/werkinstructies
 nextSteps:
+  - title: Stroomgebied
+    text: Subsysteemlanding tussen watersysteem en de eerste objectfamilies.
+    href: /datastandaard/objectenhandboek/watersysteem/stroomgebied
   - title: Watergang
     text: Eerste uitgewerkte objectlijn in een vervolgstap, inclusief compositie en productrelaties.
     href: /datastandaard/objectenhandboek/watersysteem/watergangen
