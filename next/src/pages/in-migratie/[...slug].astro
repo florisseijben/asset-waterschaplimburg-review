@@ -3,36 +3,36 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import Hero from "../../components/Hero.astro";
 import PlaceholderStatus from "../../components/PlaceholderStatus.astro";
 
-const placeholderRoutes = [
-  { slug: "datastandaard/discipline/ruimtelijke-ordening", title: "Datastandaard discipline: Ruimtelijke ordening", scope: "de discipline-ingang voor ruimtelijke ordening binnen de datastandaard" },
-  { slug: "datastandaard/discipline/groen", title: "Datastandaard discipline: Groen", scope: "de discipline-ingang voor groen binnen de datastandaard" },
-  { slug: "datastandaard/discipline/bouwkunde", title: "Datastandaard discipline: Bouwkunde", scope: "de discipline-ingang voor bouwkunde binnen de datastandaard" },
-  { slug: "datastandaard/discipline/civiele-techniek", title: "Datastandaard discipline: Civiele techniek", scope: "de discipline-ingang voor civiele techniek binnen de datastandaard" },
-  { slug: "datastandaard/discipline/werktuigbouwkunde", title: "Datastandaard discipline: Werktuigbouwkunde", scope: "de discipline-ingang voor werktuigbouwkunde binnen de datastandaard" },
-  { slug: "datastandaard/discipline/electrotechniek", title: "Datastandaard discipline: Electrotechniek", scope: "de discipline-ingang voor elektrotechniek binnen de datastandaard" },
-  { slug: "datastandaard/discipline/procesautomatisering", title: "Datastandaard discipline: Procesautomatisering", scope: "de discipline-ingang voor procesautomatisering binnen de datastandaard" },
-  { slug: "objectenhandboek/discipline/ruimtelijke-ordening", title: "Objectenhandboek discipline: Ruimtelijke ordening", scope: "de discipline-ingang voor ruimtelijke ordening binnen het objectenhandboek" },
-  { slug: "objectenhandboek/discipline/groen", title: "Objectenhandboek discipline: Groen", scope: "de discipline-ingang voor groen binnen het objectenhandboek" },
-  { slug: "objectenhandboek/discipline/bouwkunde", title: "Objectenhandboek discipline: Bouwkunde", scope: "de discipline-ingang voor bouwkunde binnen het objectenhandboek" },
-  { slug: "objectenhandboek/discipline/civiele-techniek", title: "Objectenhandboek discipline: Civiele techniek", scope: "de discipline-ingang voor civiele techniek binnen het objectenhandboek" },
-  { slug: "objectenhandboek/discipline/werktuigbouwkunde", title: "Objectenhandboek discipline: Werktuigbouwkunde", scope: "de discipline-ingang voor werktuigbouwkunde binnen het objectenhandboek" },
-  { slug: "objectenhandboek/discipline/electrotechniek", title: "Objectenhandboek discipline: Electrotechniek", scope: "de discipline-ingang voor elektrotechniek binnen het objectenhandboek" },
-  { slug: "objectenhandboek/discipline/procesautomatisering", title: "Objectenhandboek discipline: Procesautomatisering", scope: "de discipline-ingang voor procesautomatisering binnen het objectenhandboek" },
-  { slug: "woordenboek/begrippenlijst", title: "Woordenboek: Begrippenlijst", scope: "de eerste begrippenlijst in de nieuwe woordenboeklijn" },
-  { slug: "woordenboek/termdetail", title: "Woordenboek: Termdetail", scope: "de termdetailpagina's binnen het woordenboek" },
-  { slug: "woordenboek/zoekingang", title: "Woordenboek: Zoekingang", scope: "de eerste zoekingang voor het woordenboek" },
-  { slug: "objectenhandboek/watersysteem/watergangsectie/met-taluds", title: "Watergangsectie met taluds", scope: "de uitwerking van sectievormen met taluds" },
-  { slug: "objectenhandboek/watersysteem/watergangsectie/met-onderhoudspad", title: "Watergangsectie met onderhoudspad", scope: "de uitwerking van sectievormen met onderhoudspad" },
-  { slug: "objectenhandboek/watersysteem/watergangsectie/met-beschoeiing", title: "Watergangsectie met beschoeiing", scope: "de uitwerking van sectievormen met beschoeiing" },
-  { slug: "objectenhandboek/watersysteem/watergangsectie/met-wandconstructie", title: "Watergangsectie met wandconstructie", scope: "de uitwerking van sectievormen met wandconstructie" },
-  { slug: "objectenhandboek/watersysteem/watergangsectie/met-accoladeprofiel", title: "Watergangsectie met accoladeprofiel", scope: "de uitwerking van sectievormen met accoladeprofiel" },
-  { slug: "objectenhandboek/watersysteem/watergangsectie/vrij-meanderend", title: "Vrij meanderende watergang", scope: "de uitwerking van vrij meanderende sectievormen" },
-  { slug: "objectenhandboek/watersysteem/intersectie/watergang-watergang", title: "Intersectie: Watergang - Watergang", scope: "de uitwerking van intersecties tussen watergangen" },
-  { slug: "objectenhandboek/watersysteem/intersectie/watergang-weg", title: "Intersectie: Watergang - Weg", scope: "de uitwerking van intersecties tussen watergang en weg" },
-  { slug: "objectenhandboek/watersysteem/intersectie/watergang-waterkering", title: "Intersectie: Watergang - Waterkering", scope: "de uitwerking van intersecties tussen watergang en waterkering" }
-];
-
 export function getStaticPaths() {
+  const placeholderRoutes = [
+    { slug: "datastandaard/discipline/ruimtelijke-ordening", title: "Datastandaard discipline: Ruimtelijke ordening", scope: "de discipline-ingang voor ruimtelijke ordening binnen de datastandaard" },
+    { slug: "datastandaard/discipline/groen", title: "Datastandaard discipline: Groen", scope: "de discipline-ingang voor groen binnen de datastandaard" },
+    { slug: "datastandaard/discipline/bouwkunde", title: "Datastandaard discipline: Bouwkunde", scope: "de discipline-ingang voor bouwkunde binnen de datastandaard" },
+    { slug: "datastandaard/discipline/civiele-techniek", title: "Datastandaard discipline: Civiele techniek", scope: "de discipline-ingang voor civiele techniek binnen de datastandaard" },
+    { slug: "datastandaard/discipline/werktuigbouwkunde", title: "Datastandaard discipline: Werktuigbouwkunde", scope: "de discipline-ingang voor werktuigbouwkunde binnen de datastandaard" },
+    { slug: "datastandaard/discipline/electrotechniek", title: "Datastandaard discipline: Electrotechniek", scope: "de discipline-ingang voor elektrotechniek binnen de datastandaard" },
+    { slug: "datastandaard/discipline/procesautomatisering", title: "Datastandaard discipline: Procesautomatisering", scope: "de discipline-ingang voor procesautomatisering binnen de datastandaard" },
+    { slug: "objectenhandboek/discipline/ruimtelijke-ordening", title: "Objectenhandboek discipline: Ruimtelijke ordening", scope: "de discipline-ingang voor ruimtelijke ordening binnen het objectenhandboek" },
+    { slug: "objectenhandboek/discipline/groen", title: "Objectenhandboek discipline: Groen", scope: "de discipline-ingang voor groen binnen het objectenhandboek" },
+    { slug: "objectenhandboek/discipline/bouwkunde", title: "Objectenhandboek discipline: Bouwkunde", scope: "de discipline-ingang voor bouwkunde binnen het objectenhandboek" },
+    { slug: "objectenhandboek/discipline/civiele-techniek", title: "Objectenhandboek discipline: Civiele techniek", scope: "de discipline-ingang voor civiele techniek binnen het objectenhandboek" },
+    { slug: "objectenhandboek/discipline/werktuigbouwkunde", title: "Objectenhandboek discipline: Werktuigbouwkunde", scope: "de discipline-ingang voor werktuigbouwkunde binnen het objectenhandboek" },
+    { slug: "objectenhandboek/discipline/electrotechniek", title: "Objectenhandboek discipline: Electrotechniek", scope: "de discipline-ingang voor elektrotechniek binnen het objectenhandboek" },
+    { slug: "objectenhandboek/discipline/procesautomatisering", title: "Objectenhandboek discipline: Procesautomatisering", scope: "de discipline-ingang voor procesautomatisering binnen het objectenhandboek" },
+    { slug: "woordenboek/begrippenlijst", title: "Woordenboek: Begrippenlijst", scope: "de eerste begrippenlijst in de nieuwe woordenboeklijn" },
+    { slug: "woordenboek/termdetail", title: "Woordenboek: Termdetail", scope: "de termdetailpagina's binnen het woordenboek" },
+    { slug: "woordenboek/zoekingang", title: "Woordenboek: Zoekingang", scope: "de eerste zoekingang voor het woordenboek" },
+    { slug: "objectenhandboek/watersysteem/watergangsectie/met-taluds", title: "Watergangsectie met taluds", scope: "de uitwerking van sectievormen met taluds" },
+    { slug: "objectenhandboek/watersysteem/watergangsectie/met-onderhoudspad", title: "Watergangsectie met onderhoudspad", scope: "de uitwerking van sectievormen met onderhoudspad" },
+    { slug: "objectenhandboek/watersysteem/watergangsectie/met-beschoeiing", title: "Watergangsectie met beschoeiing", scope: "de uitwerking van sectievormen met beschoeiing" },
+    { slug: "objectenhandboek/watersysteem/watergangsectie/met-wandconstructie", title: "Watergangsectie met wandconstructie", scope: "de uitwerking van sectievormen met wandconstructie" },
+    { slug: "objectenhandboek/watersysteem/watergangsectie/met-accoladeprofiel", title: "Watergangsectie met accoladeprofiel", scope: "de uitwerking van sectievormen met accoladeprofiel" },
+    { slug: "objectenhandboek/watersysteem/watergangsectie/vrij-meanderend", title: "Vrij meanderende watergang", scope: "de uitwerking van vrij meanderende sectievormen" },
+    { slug: "objectenhandboek/watersysteem/intersectie/watergang-watergang", title: "Intersectie: Watergang - Watergang", scope: "de uitwerking van intersecties tussen watergangen" },
+    { slug: "objectenhandboek/watersysteem/intersectie/watergang-weg", title: "Intersectie: Watergang - Weg", scope: "de uitwerking van intersecties tussen watergang en weg" },
+    { slug: "objectenhandboek/watersysteem/intersectie/watergang-waterkering", title: "Intersectie: Watergang - Waterkering", scope: "de uitwerking van intersecties tussen watergang en waterkering" }
+  ];
+
   return placeholderRoutes.map((item) => ({
     params: { slug: item.slug.split("/") },
     props: item
