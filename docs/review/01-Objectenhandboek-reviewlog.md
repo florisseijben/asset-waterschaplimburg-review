@@ -42,6 +42,7 @@ Open punten:
 - Objectpagina's hebben geen aparte `Doorklik`-sectie meer nodig. Metadata hoort logischer in de hero en `Productlijn` werkt beter als afsluitende sectie onderaan de pagina.
 - Onder `Talud` moet een extra constructief niveau zichtbaar worden, waarin `Bekledingsconstructie` als onderliggend object wordt uitgewerkt en doorloopt naar `Toplaag`.
 - Binnen de generieke sectie `Vervolg` moeten terugverwijzingen links staan met een subtiele linkerpijl, terwijl verdieping of doorklik naar een lager niveau rechts moet staan met een subtiele rechterpijl.
+- Begripssecties moeten rustiger worden: alleen `Definitie`, `Synoniemen`, `Gerelateerde termen` en `Typen`, sober als tekstregels met links naar het woordenboek en zonder kaartachtige presentatie.
 
 ### 3. Vormgeving
 

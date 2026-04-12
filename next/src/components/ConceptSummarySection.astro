@@ -1,0 +1,86 @@
+---
+import { withBase } from "../lib/paths";
+
+interface TermItem {
+  title: string;
+  text?: string;
+  href?: string;
+}
+
+interface Props {
+  subjectLabel: string;
+  definition?: string;
+  definitionSource?: string;
+  synonyms?: TermItem[];
+  relatedTerms?: TermItem[];
+  subtypes?: TermItem[];
+}
+
+const {
+  subjectLabel,
+  definition,
+  definitionSource,
+  synonyms = [],
+  relatedTerms = [],
+  subtypes = []
+} = Astro.props;
+
+const hasSynonyms = synonyms.length > 0;
+const hasRelatedTerms = relatedTerms.length > 0;
+const hasSubtypes = subtypes.length > 0;
+---
+
+<section class="section section-panel">
+  <p class="eyebrow">Begrip</p>
+  <h2>Wat verstaan we onder {subjectLabel}?</h2>
+
+  <div class="concept-summary">
+    <div class="concept-summary__row">
+      <strong>Definitie</strong>
+      <div>
+        <p>{definition}</p>
+        <a class="mini-link" href={withBase("/datastandaard/woordenboek")}>Open begrip in woordenboek</a>
+        {definitionSource && <p class="concept-summary__source">{definitionSource}</p>}
+      </div>
+    </div>
+
+    <div class="concept-summary__row">
+      <strong>Synoniemen</strong>
+      <div class="concept-summary__links">
+        {hasSynonyms ? (
+          synonyms.map((item) => (
+            <a href={withBase(item.href || "/datastandaard/woordenboek")}>{item.title}</a>
+          ))
+        ) : (
+          <span class="concept-summary__empty">Geen aparte synoniemen uitgewerkt.</span>
+        )}
+      </div>
+    </div>
+
+    <div class="concept-summary__row">
+      <strong>Gerelateerde termen</strong>
+      <div class="concept-summary__links">
+        {hasRelatedTerms ? (
+          relatedTerms.map((item) => (
+            <a href={withBase(item.href || "/datastandaard/woordenboek")}>{item.title}</a>
+          ))
+        ) : (
+          <span class="concept-summary__empty">Geen gerelateerde termen uitgewerkt.</span>
+        )}
+      </div>
+    </div>
+
+    <div class="concept-summary__row">
+      <strong>Typen</strong>
+      <div class="concept-summary__links">
+        {hasSubtypes ? (
+          subtypes.map((item) => (
+            <a href={withBase(item.href || "/datastandaard/woordenboek")}>{item.title}</a>
+          ))
+        ) : (
+          <span class="concept-summary__empty">Geen typen uitgewerkt.</span>
+        )}
+      </div>
+    </div>
+  </div>
+</section>

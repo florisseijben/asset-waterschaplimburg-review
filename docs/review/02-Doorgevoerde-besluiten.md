@@ -55,6 +55,7 @@ Doorgevoerd:
 - objectpagina's in de watersysteemlijn tonen hun metadata nu in de hero in plaats van in een apart zijblok
 - `Doorklik` is verwijderd van de objectpagina's in de watersysteemlijn
 - `Productlijn` staat nu als afsluitende sectie onderaan de objectpagina's
+- begripspresentatie is vereenvoudigd via [`ConceptSummarySection.astro`](</c:/Users/f.seijben/Develop/Asset.waterschaplimburg.nl/next/src/components/ConceptSummarySection.astro:1>) tot `Definitie`, `Synoniemen`, `Gerelateerde termen` en `Typen` als sobere tekstregels met links naar het woordenboek
 
 ## Semantische samenhang
 
