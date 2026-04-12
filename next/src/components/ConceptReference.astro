@@ -1,0 +1,22 @@
+---
+import InfoCard from "./InfoCard.astro";
+
+interface Props {
+  concept: string;
+  kind: string;
+  href?: string;
+}
+
+const { concept, kind, href = "/datastandaard/woordenboek" } = Astro.props;
+---
+
+<section class="section section-panel">
+  <p class="eyebrow">Begrip</p>
+  <h2>Wat verstaan we onder {concept}?</h2>
+  <InfoCard
+    eyebrow={kind}
+    title={concept}
+    text={`Bekijk in het woordenboek hoe ${concept} binnen deze context wordt gedefinieerd en gebruikt.`}
+    href={href}
+  />
+</section>

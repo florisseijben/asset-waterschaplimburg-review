@@ -3,6 +3,7 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
 import Hero from "../../../components/Hero.astro";
 import CardGrid from "../../../components/CardGrid.astro";
 import InfoCard from "../../../components/InfoCard.astro";
+import ConceptReference from "../../../components/ConceptReference.astro";
 
 export function getStaticPaths() {
   const systemPages = [
@@ -72,6 +73,8 @@ const { title, summary, intro, productCards } = Astro.props;
   ]}
 >
   <Hero eyebrow="Systeem" title={title} summary={summary} />
+
+  <ConceptReference concept={title} kind="Systeem" />
 
   <section class="section section-panel">
     <p class="eyebrow">Benadering</p>

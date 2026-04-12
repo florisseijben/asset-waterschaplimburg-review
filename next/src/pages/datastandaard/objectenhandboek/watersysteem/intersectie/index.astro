@@ -3,6 +3,7 @@ import BaseLayout from "../../../../../layouts/BaseLayout.astro";
 import Hero from "../../../../../components/Hero.astro";
 import CardGrid from "../../../../../components/CardGrid.astro";
 import InfoCard from "../../../../../components/InfoCard.astro";
+import ConceptReference from "../../../../../components/ConceptReference.astro";
 import { getCollection } from "astro:content";
 
 const entries = await getCollection("datastandaard-objectenhandboek-objects");
@@ -32,6 +33,8 @@ if (!entry) {
   ]}
 >
   <Hero eyebrow="Objectenhandboek" title={entry.data.heroTitle || entry.data.title} summary={entry.data.summary} />
+
+  <ConceptReference concept="Intersectie" kind="Object" />
 
   <section class="section section-panel">
     <p class="eyebrow">Hierarchie</p>
