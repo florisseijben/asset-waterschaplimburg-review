@@ -1,0 +1,50 @@
+---
+import InfoCard from "./InfoCard.astro";
+
+interface StepItem {
+  title: string;
+  text: string;
+  href?: string;
+  direction?: "back" | "forward";
+}
+
+interface Props {
+  items?: StepItem[];
+}
+
+const { items = [] } = Astro.props;
+
+const inferDirection = (item: StepItem) => {
+  if (item.direction === "back" || item.direction === "forward") {
+    return item.direction;
+  }
+
+  const candidate = `${item.title} ${item.text}`.toLowerCase();
+  if (
+    candidate.includes("terug naar") ||
+    candidate.includes("bovenliggend") ||
+    candidate.includes("terug ")
+  ) {
+    return "back";
+  }
+
+  return "forward";
+};
+
+const backItems = items.filter((item) => inferDirection(item) === "back");
+const forwardItems = items.filter((item) => inferDirection(item) === "forward");
+---
+
+<div class="next-steps-layout">
+  <div class="next-steps-column next-steps-column--back">
+    {backItems.map((item) => (
+      <InfoCard title={item.title} text={item.text} href={item.href} eyebrow="← Terug" />
+    ))}
+  </div>
+
+  <div class="next-steps-column next-steps-column--forward">
+    {forwardItems.map((item) => (
+      <InfoCard title={item.title} text={item.text} href={item.href} eyebrow="Verder →" />
+    ))}
+  </div>
+</div>

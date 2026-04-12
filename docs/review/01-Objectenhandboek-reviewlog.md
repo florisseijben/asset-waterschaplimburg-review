@@ -41,6 +41,7 @@ Open punten:
 - Objectpagina's, subsystemen en systeempagina's moeten een vaste sectie `Samenhang` krijgen waarin decompositie en semantische relaties zichtbaar zijn. Die sectie hoort niet als losse kaart in `Uitwerking`, maar als eigen inhoudslaag dicht bij `Begrip`, gevoed vanuit de semantische modelleertool.
 - Objectpagina's hebben geen aparte `Doorklik`-sectie meer nodig. Metadata hoort logischer in de hero en `Productlijn` werkt beter als afsluitende sectie onderaan de pagina.
 - Onder `Talud` moet een extra constructief niveau zichtbaar worden, waarin `Bekledingsconstructie` als onderliggend object wordt uitgewerkt en doorloopt naar `Toplaag`.
+- Binnen de generieke sectie `Vervolg` moeten terugverwijzingen links staan met een subtiele linkerpijl, terwijl verdieping of doorklik naar een lager niveau rechts moet staan met een subtiele rechterpijl.
 
 ### 3. Vormgeving
 

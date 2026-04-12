@@ -34,6 +34,8 @@ Doorgevoerd:
 - hover- en focusgedrag zijn zichtbaar gemaakt op kaartniveau
 - waar nog geen definitieve eindpagina beschikbaar is, wordt tijdelijk een expliciete migratieroute gebruikt
 
+- de generieke sectie `Vervolg` groepeert terugverwijzingen nu links met een subtiele linkerpijl en verdieping of vervolg rechts met een subtiele rechterpijl via [`NextStepsSection.astro`](</c:/Users/f.seijben/Develop/Asset.waterschaplimburg.nl/next/src/components/NextStepsSection.astro:1>)
+
 ## Datastandaard-benaderingen
 
 Doorgevoerd:

@@ -4,6 +4,7 @@ import Hero from "../../../../../components/Hero.astro";
 import CardGrid from "../../../../../components/CardGrid.astro";
 import InfoCard from "../../../../../components/InfoCard.astro";
 import ContentSectionCard from "../../../../../components/ContentSectionCard.astro";
+import NextStepsSection from "../../../../../components/NextStepsSection.astro";
 import SemanticSamenhangSection from "../../../../../components/SemanticSamenhangSection.astro";
 import { getCollection } from "astro:content";
 import { withBase } from "../../../../../lib/paths";
@@ -156,10 +157,6 @@ const samenhangLayout = [
   <section class="section section-panel">
     <p class="eyebrow">Vervolg</p>
     <h2>Logische volgende stappen binnen deze lijn</h2>
-    <CardGrid>
-      {(entry.data.nextSteps || []).map((item) => (
-        <InfoCard title={item.title} text={item.text} href={item.href} />
-      ))}
-    </CardGrid>
+    <NextStepsSection items={entry.data.nextSteps || []} />
   </section>
 </BaseLayout>

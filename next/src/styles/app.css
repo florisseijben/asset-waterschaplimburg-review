@@ -232,6 +232,34 @@ h1 {
   grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
 }
 
+.next-steps-layout {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+}
+
+.next-steps-column {
+  display: grid;
+  gap: var(--space-4);
+  align-content: start;
+}
+
+.next-steps-column--back {
+  justify-items: start;
+}
+
+.next-steps-column--forward {
+  justify-items: end;
+}
+
+.next-steps-column--forward .info-card {
+  width: 100%;
+}
+
+.next-steps-column--back .info-card {
+  width: 100%;
+}
+
 .detail-grid {
   display: grid;
   gap: var(--space-5);
@@ -537,5 +565,13 @@ h1 {
 @media (max-width: 900px) {
   .detail-grid {
     grid-template-columns: 1fr;
+  }
+
+  .next-steps-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .next-steps-column--forward {
+    justify-items: start;
   }
 }
