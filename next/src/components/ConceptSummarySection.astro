@@ -39,7 +39,9 @@ const hasSubtypes = subtypes.length > 0;
       <strong>Definitie</strong>
       <div>
         <p>{definition}</p>
-        <a class="mini-link" href={withBase("/datastandaard/woordenboek")}>Open begrip in woordenboek</a>
+        <p class="concept-summary__linkline">
+          <a href={withBase("/datastandaard/woordenboek")}>Bekijk dit begrip in het woordenboek</a>
+        </p>
         {definitionSource && <p class="concept-summary__source">{definitionSource}</p>}
       </div>
     </div>
