@@ -73,6 +73,15 @@ contentSections:
       - title: Talud
         text: Schuin grensvlak binnen het profiel van de watergangsectie en eerste uitgewerkte onderliggende component.
         href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/talud
+      - title: Bodem
+        text: Onderdeel dat de onderzijde van het profiel en de afvoer- en bergingsruimte van de watergangsectie vormt.
+        href: /in-migratie/objectenhandboek/watersysteem/watergangsectie/bodem
+      - title: Berm
+        text: Tussenliggend profielonderdeel dat kan bijdragen aan stabiliteit, onderhoud en overgang binnen de watergangsectie.
+        href: /in-migratie/objectenhandboek/watersysteem/watergangsectie/berm
+      - title: Werkpad
+        text: Onderhouds- en beheerzone langs de watergangsectie voor bereikbaarheid en uitvoering.
+        href: /in-migratie/objectenhandboek/watersysteem/watergangsectie/werkpad
   - title: Geometrie
     summary: De geometrie van de watergangsectie komt terug in bovenaanzicht, dwarsprofiel en ruimtelijke begrenzing langs de as van de watergang.
 productRelations:
