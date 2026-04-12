@@ -4,61 +4,61 @@ import Hero from "../../../components/Hero.astro";
 import CardGrid from "../../../components/CardGrid.astro";
 import InfoCard from "../../../components/InfoCard.astro";
 
-const disciplinePages = [
-  {
-    slug: "ruimtelijke-ordening",
-    title: "Ruimtelijke ordening",
-    summary: "Deze discipline-ingang bundelt de Datastandaard-producten voor de benadering vanuit ruimtelijke ordening.",
-    intro: "Gebruik deze ingang als je de datastandaard wilt lezen vanuit ligging, functie, gebiedsinpassing en ruimtelijke samenhang.",
-  },
-  {
-    slug: "groen",
-    title: "Groen",
-    summary: "Deze discipline-ingang bundelt de Datastandaard-producten voor de benadering vanuit groen en ecologie.",
-    intro: "Gebruik deze ingang als je de datastandaard wilt lezen vanuit vegetatie, ecologie, beheer van groenstructuren en landschappelijke inrichting.",
-  },
-  {
-    slug: "bouwkunde",
-    title: "Bouwkunde",
-    summary: "Deze discipline-ingang bundelt de Datastandaard-producten voor de benadering vanuit bouwkunde.",
-    intro: "Gebruik deze ingang als je de datastandaard wilt lezen vanuit gebouwde onderdelen, constructieve opbouw en fysieke verschijningsvorm.",
-  },
-  {
-    slug: "civiele-techniek",
-    title: "Civiele techniek",
-    summary: "Deze discipline-ingang bundelt de Datastandaard-producten voor de benadering vanuit civiele techniek.",
-    intro: "Gebruik deze ingang als je de datastandaard wilt lezen vanuit grond-, weg- en waterbouwkundige opbouw, profielen, constructies en relaties.",
-  },
-  {
-    slug: "werktuigbouwkunde",
-    title: "Werktuigbouwkunde",
-    summary: "Deze discipline-ingang bundelt de Datastandaard-producten voor de benadering vanuit werktuigbouwkunde.",
-    intro: "Gebruik deze ingang als je de datastandaard wilt lezen vanuit mechanische onderdelen, installaties en technische samenstellingen.",
-  },
-  {
-    slug: "electrotechniek",
-    title: "Electrotechniek",
-    summary: "Deze discipline-ingang bundelt de Datastandaard-producten voor de benadering vanuit elektrotechniek.",
-    intro: "Gebruik deze ingang als je de datastandaard wilt lezen vanuit energievoorziening, bekabeling, besturing en elektrische componenten.",
-  },
-  {
-    slug: "procesautomatisering",
-    title: "Procesautomatisering",
-    summary: "Deze discipline-ingang bundelt de Datastandaard-producten voor de benadering vanuit procesautomatisering.",
-    intro: "Gebruik deze ingang als je de datastandaard wilt lezen vanuit meet- en regelsystemen, sensoren, sturing en digitale procesondersteuning.",
-  }
-].map((page) => ({
-  ...page,
-  productCards: [
-    { title: "Woordenboek", text: `Begrippen en definities bekeken vanuit ${page.title}.`, href: "/datastandaard/woordenboek" },
-    { title: "Objectenhandboek", text: `Objecttypen en structuur bekeken vanuit ${page.title}.`, href: "/datastandaard/objectenhandboek" },
-    { title: "OTL", text: `Klassen en relaties bekeken vanuit ${page.title}.`, href: "/datastandaard/otl" },
-    { title: "Referentiedataset", text: `Voorbeelddata en referenties bekeken vanuit ${page.title}.`, href: "/datastandaard/referentiedataset" },
-    { title: "Werkinstructies", text: `Werkinstructies en gebruiksafspraken bekeken vanuit ${page.title}.`, href: "/datastandaard/werkinstructies" }
-  ]
-}));
-
 export function getStaticPaths() {
+  const disciplinePages = [
+    {
+      slug: "ruimtelijke-ordening",
+      title: "Ruimtelijke ordening",
+      summary: "Deze discipline-ingang bundelt de Datastandaard-producten voor de benadering vanuit ruimtelijke ordening.",
+      intro: "Gebruik deze ingang als je de datastandaard wilt lezen vanuit ligging, functie, gebiedsinpassing en ruimtelijke samenhang.",
+    },
+    {
+      slug: "groen",
+      title: "Groen",
+      summary: "Deze discipline-ingang bundelt de Datastandaard-producten voor de benadering vanuit groen en ecologie.",
+      intro: "Gebruik deze ingang als je de datastandaard wilt lezen vanuit vegetatie, ecologie, beheer van groenstructuren en landschappelijke inrichting.",
+    },
+    {
+      slug: "bouwkunde",
+      title: "Bouwkunde",
+      summary: "Deze discipline-ingang bundelt de Datastandaard-producten voor de benadering vanuit bouwkunde.",
+      intro: "Gebruik deze ingang als je de datastandaard wilt lezen vanuit gebouwde onderdelen, constructieve opbouw en fysieke verschijningsvorm.",
+    },
+    {
+      slug: "civiele-techniek",
+      title: "Civiele techniek",
+      summary: "Deze discipline-ingang bundelt de Datastandaard-producten voor de benadering vanuit civiele techniek.",
+      intro: "Gebruik deze ingang als je de datastandaard wilt lezen vanuit grond-, weg- en waterbouwkundige opbouw, profielen, constructies en relaties.",
+    },
+    {
+      slug: "werktuigbouwkunde",
+      title: "Werktuigbouwkunde",
+      summary: "Deze discipline-ingang bundelt de Datastandaard-producten voor de benadering vanuit werktuigbouwkunde.",
+      intro: "Gebruik deze ingang als je de datastandaard wilt lezen vanuit mechanische onderdelen, installaties en technische samenstellingen.",
+    },
+    {
+      slug: "electrotechniek",
+      title: "Electrotechniek",
+      summary: "Deze discipline-ingang bundelt de Datastandaard-producten voor de benadering vanuit elektrotechniek.",
+      intro: "Gebruik deze ingang als je de datastandaard wilt lezen vanuit energievoorziening, bekabeling, besturing en elektrische componenten.",
+    },
+    {
+      slug: "procesautomatisering",
+      title: "Procesautomatisering",
+      summary: "Deze discipline-ingang bundelt de Datastandaard-producten voor de benadering vanuit procesautomatisering.",
+      intro: "Gebruik deze ingang als je de datastandaard wilt lezen vanuit meet- en regelsystemen, sensoren, sturing en digitale procesondersteuning.",
+    }
+  ].map((page) => ({
+    ...page,
+    productCards: [
+      { title: "Woordenboek", text: `Begrippen en definities bekeken vanuit ${page.title}.`, href: "/datastandaard/woordenboek" },
+      { title: "Objectenhandboek", text: `Objecttypen en structuur bekeken vanuit ${page.title}.`, href: "/datastandaard/objectenhandboek" },
+      { title: "OTL", text: `Klassen en relaties bekeken vanuit ${page.title}.`, href: "/datastandaard/otl" },
+      { title: "Referentiedataset", text: `Voorbeelddata en referenties bekeken vanuit ${page.title}.`, href: "/datastandaard/referentiedataset" },
+      { title: "Werkinstructies", text: `Werkinstructies en gebruiksafspraken bekeken vanuit ${page.title}.`, href: "/datastandaard/werkinstructies" }
+    ]
+  }));
+
   return disciplinePages.map((page) => ({
     params: { slug: page.slug },
     props: page
