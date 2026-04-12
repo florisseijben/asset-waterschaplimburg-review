@@ -49,13 +49,15 @@ metadata:
   - label: URI
     value: https://data.waterschaplimburg.nl/id/objecttype/stroomgebied
 contentSections:
-  - title: Watergangen
+  - title: Overzicht / Samenhang
+    summary: Het stroomgebied verbindt het watersysteem met de onderliggende objectfamilies en ordent de hydrologische samenhang van afvoer- en aanvoergebieden.
+  - title: Afbakening
+    summary: De afbakening van het stroomgebied volgt de hydrologische grens waarbinnen oppervlakkig afstromend water uiteindelijk via hetzelfde hoofdafvoersysteem wordt afgevoerd.
+  - title: Onderdelen
     summary: Binnen dit stroomgebied worden watergangen als eerste objectfamilie inhoudelijk uitgewerkt.
     href: /datastandaard/objectenhandboek/watersysteem/watergangen
-  - title: Objectrelaties
-    summary: De samenhang tussen subsysteem, watergang en onderliggende objecten wordt op deze lijn stapsgewijs zichtbaar gemaakt.
-  - title: Afvoer- en aanvoergebieden
-    summary: Externe referentie naar de DAMO-uitwerking van afvoer- en aanvoergebiedmethodiek binnen het objectenhandboek.
+  - title: Geometrie
+    summary: De geometrie van het stroomgebied is gebiedsgericht en sluit aan op de DAMO-methodiek voor afvoer- en aanvoergebieden.
     href: https://damo.hetwaterschapshuis.nl/DAMO%202.6/Objectenhandboek%20DAMO%202.6/html/BijlageAfvoeraanvoergebiedmethod.html
 productRelations:
   - title: Woordenboek
