@@ -8,13 +8,6 @@ status: concept
 lastReviewed: 2026-04-11
 summary: Binnen asset.waterschaplimburg.nl vind je informatie over onze assets, assetmanagement en assetdata in samenhang.
 heroTitle: Kennis over onze assets centraal beschikbaar
-heroActions:
-  - label: Verken de Datastandaard
-    href: /datastandaard
-    variant: primary
-  - label: Bekijk het Woordenboek
-    href: /datastandaard/woordenboek
-    variant: secondary
 platformFlow:
   - title: "1. Datastandaard"
     text: Legt begrippen, objecttypen, modellen en publicatieregels vast als gedeelde taal voor het areaal.
