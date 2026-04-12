@@ -56,6 +56,7 @@ Doorgevoerd:
 - `Doorklik` is verwijderd van de objectpagina's in de watersysteemlijn
 - `Productlijn` staat nu als afsluitende sectie onderaan de objectpagina's
 - begripspresentatie is vereenvoudigd via [`ConceptSummarySection.astro`](</c:/Users/f.seijben/Develop/Asset.waterschaplimburg.nl/next/src/components/ConceptSummarySection.astro:1>) tot `Definitie`, `Synoniemen`, `Gerelateerde termen` en `Typen` als sobere tekstregels met links naar het woordenboek
+- `Synoniemen`, `Gerelateerde termen` en `Typen` tonen nu als standaard ingeklapte uitklapblokken, met begrippen onder elkaar en een korte toelichting per begrip
 
 ## Semantische samenhang
 
