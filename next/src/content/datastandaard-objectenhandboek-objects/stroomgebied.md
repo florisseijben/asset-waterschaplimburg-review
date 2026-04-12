@@ -48,8 +48,9 @@ contentSections:
     href: /datastandaard/objectenhandboek/watersysteem/watergangen
   - title: Objectrelaties
     summary: De samenhang tussen subsysteem, watergang en onderliggende objecten wordt op deze lijn stapsgewijs zichtbaar gemaakt.
-  - title: Modellering
-    summary: De semantische uitwerking van subsystemen en objectlijnen sluit later aan op OTL en Reactodia-weergaven.
+  - title: Afvoer- en aanvoergebieden
+    summary: Externe referentie naar de DAMO-uitwerking van afvoer- en aanvoergebiedmethodiek binnen het objectenhandboek.
+    href: https://damo.hetwaterschapshuis.nl/DAMO%202.6/Objectenhandboek%20DAMO%202.6/html/BijlageAfvoeraanvoergebiedmethod.html
 productRelations:
   - title: Woordenboek
     text: Begrippen en definities voor systeem- en subsysteemlagen.
