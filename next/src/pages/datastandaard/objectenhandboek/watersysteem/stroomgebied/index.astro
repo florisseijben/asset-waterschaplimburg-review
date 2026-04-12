@@ -3,6 +3,7 @@ import BaseLayout from "../../../../../layouts/BaseLayout.astro";
 import Hero from "../../../../../components/Hero.astro";
 import CardGrid from "../../../../../components/CardGrid.astro";
 import InfoCard from "../../../../../components/InfoCard.astro";
+import ContentSectionCard from "../../../../../components/ContentSectionCard.astro";
 import SemanticSamenhangSection from "../../../../../components/SemanticSamenhangSection.astro";
 import { getCollection } from "astro:content";
 import { withBase } from "../../../../../lib/paths";
@@ -152,7 +153,7 @@ const samenhangLayout = [
     <h2>Wat werken we vanuit dit subsysteem uit?</h2>
     <CardGrid stacked={true}>
       {(entry.data.contentSections || []).map((item) => (
-        <InfoCard title={item.title} text={item.summary} href={item.href} />
+        <ContentSectionCard title={item.title} text={item.summary} href={item.href} items={item.items} />
       ))}
     </CardGrid>
   </section>
