@@ -3,6 +3,7 @@ import BaseLayout from "../../../../../layouts/BaseLayout.astro";
 import Hero from "../../../../../components/Hero.astro";
 import CardGrid from "../../../../../components/CardGrid.astro";
 import InfoCard from "../../../../../components/InfoCard.astro";
+import ConceptReference from "../../../../../components/ConceptReference.astro";
 import { getCollection } from "astro:content";
 
 const entries = await getCollection("datastandaard-objectenhandboek-objects");
@@ -33,6 +34,8 @@ if (!entry) {
 >
   <Hero eyebrow="Objectenhandboek" title={entry.data.heroTitle || entry.data.title} summary={entry.data.summary} />
 
+  <ConceptReference concept="Intersectie" kind="Object" />
+
   <section class="section section-panel">
     <p class="eyebrow">Hierarchie</p>
     <div class="chip-row">
@@ -45,16 +48,8 @@ if (!entry) {
   <section class="detail-grid">
     <article class="detail-stack">
       <section class="section section-panel">
-        <p class="eyebrow">Begrip</p>
-        <h2>Wat verstaan we onder Intersectie?</h2>
-        <InfoCard
-          eyebrow="Object"
-          title="Intersectie in het woordenboek"
-          text="Bekijk in het woordenboek hoe Intersectie binnen deze context wordt gedefinieerd en gebruikt."
-          href="/datastandaard/woordenboek"
-        />
-
-        <h3>Definitie</h3>
+        <p class="eyebrow">Concept</p>
+        <h2>Definitie</h2>
         <div class="definition-block">
           <p>{entry.data.definition}</p>
         </div>
