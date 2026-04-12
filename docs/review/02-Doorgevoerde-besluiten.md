@@ -64,6 +64,7 @@ Doorgevoerd:
 - in `Watergang` is de kaart `Decompositie` uit `Uitwerking` verwijderd en vervangen door een eigen sectie `Samenhang` direct onder `Begrip`
 - de eerste visualisatie gebruikt Reactodia waar mogelijk en valt terug op een vaste graphweergave als de workspace niet beschikbaar is
 - `Watersysteem` volgt nu hetzelfde sectieritme als de objectpagina's: `Begrip`, `Samenhang`, `Uitwerking`, `Productlijn`, `Vervolg`
+- `Stroomgebied`, `Watergang`, `Watergangsectie` en `Intersectie` zijn nu op hetzelfde ritme gebracht, inclusief `Samenhang` en een afsluitende sectie `Vervolg`
 
 ## Architectuur
 

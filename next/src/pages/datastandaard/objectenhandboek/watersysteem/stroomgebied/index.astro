@@ -3,9 +3,10 @@ import BaseLayout from "../../../../../layouts/BaseLayout.astro";
 import Hero from "../../../../../components/Hero.astro";
 import CardGrid from "../../../../../components/CardGrid.astro";
 import InfoCard from "../../../../../components/InfoCard.astro";
-import ConceptReference from "../../../../../components/ConceptReference.astro";
+import SemanticSamenhangSection from "../../../../../components/SemanticSamenhangSection.astro";
 import { getCollection } from "astro:content";
 import { withBase } from "../../../../../lib/paths";
+import watersysteemSamenhangTurtle from "../../../../../data/semantic/watersysteem-samenhang.ttl?raw";
 
 const entries = await getCollection("datastandaard-objectenhandboek-objects");
 const expectedSlug = "/datastandaard/objectenhandboek/watersysteem/stroomgebied";
@@ -19,6 +20,54 @@ const entry = entries.find(
 if (!entry) {
   throw new Error("Objectenhandboek Stroomgebied ontbreekt in de nieuwe omgeving.");
 }
+
+const samenhangLayout = [
+  {
+    id: "watersysteem",
+    label: "Watersysteem",
+    subtitle: "Systeem",
+    column: 1,
+    row: 0,
+    fill: "#ffffff",
+    stroke: "#00a9c1"
+  },
+  {
+    id: "stroomgebied",
+    label: "Stroomgebied",
+    subtitle: "Subsysteem",
+    column: 1,
+    row: 1,
+    fill: "#e4f7fa",
+    stroke: "#00a9c1"
+  },
+  {
+    id: "watergang",
+    label: "Watergang",
+    subtitle: "Objectfamilie",
+    column: 1,
+    row: 2,
+    fill: "#eefafb",
+    stroke: "#00a9c1"
+  },
+  {
+    id: "watergangsectie",
+    label: "Watergangsectie",
+    subtitle: "Objecttype",
+    column: 0,
+    row: 3,
+    fill: "#ffffff",
+    stroke: "#00a9c1"
+  },
+  {
+    id: "intersectie",
+    label: "Intersectie",
+    subtitle: "Objecttype",
+    column: 2,
+    row: 3,
+    fill: "#ffffff",
+    stroke: "#00a9c1"
+  }
+];
 ---
 
 <BaseLayout
@@ -42,8 +91,6 @@ if (!entry) {
       ))}
     </dl>
   </Hero>
-
-  <ConceptReference concept="Stroomgebied" kind="Subsysteem" />
 
   <section class="section section-panel">
     <p class="eyebrow">Begrip</p>
@@ -90,6 +137,16 @@ if (!entry) {
     </div>
   </section>
 
+  <SemanticSamenhangSection
+    title="Decompositie en hoofdrelaties binnen Stroomgebied"
+    summary="Deze samenhangsweergave laat zien hoe Stroomgebied binnen het watersysteem doorloopt naar de eerste uitgewerkte objectfamilie rond Watergang en de onderliggende objecttypen."
+    sourceLabel="Dummy Turtle-export uit de semantische modelleertool voor de watersysteemlijn."
+    graphId="stroomgebied-samenhang"
+    selectedId="stroomgebied"
+    turtle={watersysteemSamenhangTurtle}
+    layoutNodes={samenhangLayout}
+  />
+
   <section class="section section-panel">
     <p class="eyebrow">Uitwerking</p>
     <h2>Wat werken we vanuit dit subsysteem uit?</h2>
@@ -112,7 +169,7 @@ if (!entry) {
 
   <section class="section section-panel">
     <p class="eyebrow">Vervolg</p>
-    <h2>Logische volgende stap binnen deze lijn</h2>
+    <h2>Logische volgende stappen binnen deze lijn</h2>
     <CardGrid>
       {(entry.data.nextSteps || []).map((item) => (
         <InfoCard title={item.title} text={item.text} href={item.href} />
