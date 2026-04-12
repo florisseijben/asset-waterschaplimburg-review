@@ -57,7 +57,10 @@ contentSections:
     summary: De afbakening van de intersectie volgt de zone waar waterlijnen, aansluitingen of systeemovergangen elkaar raken of kruisen.
   - title: Onderdelen
     summary: Binnen de intersectie worden kruising, aansluitingen en aangrenzende profielonderdelen gelezen; Talud is daarbij een relevant aangrenzend onderdeel in de huidige uitwerking van de lijn.
-    href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/talud
+    items:
+      - title: Talud
+        text: Aangrenzend profielonderdeel dat in de huidige uitwerking van de waterganglijn al als object is uitgewerkt.
+        href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/talud
   - title: Geometrie
     summary: De geometrie van de intersectie wordt zichtbaar in bovenaanzicht, doorsnede en ruimtelijke positie ten opzichte van de watergang.
 productRelations:

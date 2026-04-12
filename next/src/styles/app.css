@@ -227,6 +227,11 @@ h1 {
   grid-template-columns: 1fr;
 }
 
+.card-grid--nested {
+  margin-top: var(--space-4);
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+}
+
 .detail-grid {
   display: grid;
   gap: var(--space-5);
@@ -396,6 +401,21 @@ h1 {
 .info-card p {
   margin: 0;
   color: var(--color-muted);
+}
+
+.info-card--section {
+  align-items: start;
+}
+
+.info-card--nested {
+  padding: var(--space-4);
+  min-height: auto;
+  background: #f8fcfc;
+}
+
+.info-card--nested h3 {
+  margin: 0;
+  color: var(--color-deep);
 }
 
 .info-card[href] {

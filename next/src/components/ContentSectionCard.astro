@@ -1,0 +1,38 @@
+---
+import { withBase } from "../lib/paths";
+
+interface SectionItem {
+  title: string;
+  text: string;
+  href?: string;
+}
+
+interface Props {
+  title: string;
+  text: string;
+  href?: string;
+  items?: SectionItem[];
+}
+
+const { title, text, href, items = [] } = Astro.props;
+const hasItems = items.length > 0;
+const Tag = href && !hasItems ? "a" : "article";
+---
+
+<Tag class:list={["info-card", "info-card--section"]} href={href && !hasItems ? withBase(href) : undefined}>
+  <h2>{title}</h2>
+  <p>{text}</p>
+  {href && !hasItems && <span class="info-card__link">Open</span>}
+
+  {hasItems && (
+    <div class="card-grid card-grid--nested">
+      {items.map((item) => (
+        <a class="info-card info-card--nested" href={withBase(item.href)}>
+          <h3>{item.title}</h3>
+          <p>{item.text}</p>
+          <span class="info-card__link">Open</span>
+        </a>
+      ))}
+    </div>
+  )}
+</Tag>

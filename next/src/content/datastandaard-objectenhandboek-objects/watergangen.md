@@ -62,7 +62,13 @@ contentSections:
     summary: De afbakening van de watergang volgt het verloop van het traject en de ruimtelijke begrenzing van het bijbehorende waterganggebied.
   - title: Onderdelen
     summary: Watergangsecties en intersecties vormen samen de belangrijkste onderdelen binnen deze objectlijn en werken de decompositie van de watergang verder uit.
-    href: /datastandaard/objectenhandboek/watersysteem/watergangsectie
+    items:
+      - title: Watergangsectie
+        text: Afgebakend deelobject binnen de watergang met eigen profiel en onderhoudskenmerken.
+        href: /datastandaard/objectenhandboek/watersysteem/watergangsectie
+      - title: Intersectie
+        text: Kruising of overgang binnen de watergangstructuur op hetzelfde niveau als een watergangsectie.
+        href: /datastandaard/objectenhandboek/watersysteem/intersectie
   - title: Geometrie
     summary: De geometrie wordt zichtbaar via aslijn, gebiedscontour en dwarsprofiel van dezelfde watergangopbouw.
 productRelations:
