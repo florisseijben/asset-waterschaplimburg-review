@@ -37,12 +37,6 @@ subtypes:
   - title: 2e gebiedsorde
     text: Afvoergebied dat in een normale afvoersituatie via een afvoerpunt direct op een RWS-hoofdwater loost, bijvoorbeeld via een waterloop die uitkomt in de Maas.
     href: /datastandaard/woordenboek
-  - title: 3e gebiedsorde
-    text: Verdere detaillering van een afvoergebied van de 2e gebiedsorde in afzonderlijke afvoergebieden binnen hetzelfde hydrologische systeem.
-    href: /datastandaard/woordenboek
-  - title: n-de gebiedsorde
-    text: Verdere vertakkingsniveaus volgens dezelfde systematiek, waarbij een lagere gebiedsorde wordt opgebouwd uit meerdere afvoergebieden van een hogere gebiedsorde.
-    href: /datastandaard/woordenboek
 metadata:
   - label: Systeem
     value: Watersysteem
