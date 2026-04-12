@@ -56,22 +56,15 @@ metadata:
   - label: URI
     value: https://data.waterschaplimburg.nl/id/objecttype/watergang
 contentSections:
-  - title: Samenhang
-    summary: Het traject leest de watergang als aslijn; gebied en dwarsprofiel tonen dezelfde opbouw als ruimte en doorsnede.
-  - title: Watergangtraject
-    summary: Het traject volgt de watergang van aanvoerpunt naar afvoerpunt en is opgebouwd uit opeenvolgende secties en intersecties.
-  - title: Waterganggebied
-    summary: Het gebied vormt de ruimtelijke of 3D afbakening van dezelfde opbouw die langs het traject zichtbaar wordt.
-  - title: Dwarsprofiel
-    summary: Het dwarsprofiel laat per sectie of intersectie zien hoe de watergang in doorsnede is opgebouwd.
-  - title: Watergangsecties
-    summary: Afgebakende delen van de watergang tussen hoofdobject en onderliggende objecten.
+  - title: Overzicht / Samenhang
+    summary: De watergang wordt gelezen als hoofdobject waarin traject, gebied, secties en intersecties samen één lijn vormen.
+  - title: Afbakening
+    summary: De afbakening van de watergang volgt het verloop van het traject en de ruimtelijke begrenzing van het bijbehorende waterganggebied.
+  - title: Onderdelen
+    summary: Watergangsecties en intersecties vormen de belangrijkste onderdelen binnen deze objectlijn.
     href: /datastandaard/objectenhandboek/watersysteem/watergangsectie
-  - title: Intersecties
-    summary: Kruisingen binnen de watergangstructuur waar de lijn van secties wordt onderbroken of gekruist.
-    href: /datastandaard/objectenhandboek/watersysteem/intersectie
-  - title: Decompositie
-    summary: Secties en intersecties vormen samen de opbouw van de watergang over het hele traject en het bijbehorende gebied.
+  - title: Geometrie
+    summary: De geometrie wordt zichtbaar via aslijn, gebiedscontour en dwarsprofiel van dezelfde watergangopbouw.
 productRelations:
   - title: Woordenboek
     text: Begrippen en definities voor de waterganglijn.

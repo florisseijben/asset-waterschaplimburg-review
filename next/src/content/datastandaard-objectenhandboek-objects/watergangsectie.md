@@ -63,16 +63,14 @@ metadata:
   - label: URI
     value: https://data.waterschaplimburg.nl/id/objecttype/watergangsectie
 contentSections:
-  - title: 3D visualisatie
-    summary: De 3D visualisatie toont de watergangsectie als ruimtelijk afgebakend deel van de watergang.
-  - title: Dwarsprofiel
-    summary: Het dwarsprofiel beschrijft de opbouw van de watergangsectie in doorsnede.
-  - title: Bovenaanzicht
-    summary: Het bovenaanzicht toont de watergangsectie in relatie tot de lengte van de watergang en de omliggende secties of intersecties.
-  - title: Decompositie
-    summary: De decompositie laat zien hoe de watergangsectie uiteenvalt in onderliggende objecten zoals talud en bodem.
-  - title: Verwijzing
-    summary: Vanuit de watergangsectie loopt de lijn door naar begrippen, modellering, toetsdata en instructies.
+  - title: Overzicht / Samenhang
+    summary: De watergangsectie is het afgebakende deelobject binnen de watergang en vormt samen met intersecties de opbouw van het hoofdobject.
+  - title: Afbakening
+    summary: De afbakening van de watergangsectie volgt een deeltraject binnen de watergang met eigen kenmerken, onderhoud en profiel.
+  - title: Onderdelen
+    summary: Binnen de watergangsectie worden onderdelen zoals talud, bodem, onderhoudspad of constructieve opbouw onderscheiden.
+  - title: Geometrie
+    summary: De geometrie van de watergangsectie komt terug in bovenaanzicht, dwarsprofiel en ruimtelijke begrenzing langs de as van de watergang.
 productRelations:
   - title: Woordenboek
     text: Begrippen en definities voor Watergangsectie.

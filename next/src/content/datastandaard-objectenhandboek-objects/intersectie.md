@@ -51,16 +51,14 @@ metadata:
   - label: URI
     value: https://data.waterschaplimburg.nl/id/objecttype/intersectie
 contentSections:
-  - title: 3D visualisatie
-    summary: De 3D visualisatie toont de intersectie als ruimtelijk kruispunt binnen de watergangstructuur.
-  - title: Dwarsprofiel
-    summary: Het dwarsprofiel laat zien hoe de intersectie in doorsnede gelezen kan worden.
-  - title: Bovenaanzicht
-    summary: Het bovenaanzicht maakt de kruising in plan zichtbaar.
-  - title: Decompositie
-    summary: De decompositie laat zien hoe de intersectie uiteenvalt in kruising, aansluitingen en omliggende delen.
-  - title: Verwijzing
-    summary: Ook voor intersecties loopt de lijn door naar begrippen, modellering, datasets en instructies.
+  - title: Overzicht / Samenhang
+    summary: De intersectie markeert het kruispunt binnen de watergangstructuur en ligt op hetzelfde niveau als een watergangsectie.
+  - title: Afbakening
+    summary: De afbakening van de intersectie volgt de zone waar waterlijnen, aansluitingen of systeemovergangen elkaar raken of kruisen.
+  - title: Onderdelen
+    summary: Binnen de intersectie worden kruising, aansluitingen en omliggende delen als samenhangende onderdelen gelezen.
+  - title: Geometrie
+    summary: De geometrie van de intersectie wordt zichtbaar in bovenaanzicht, doorsnede en ruimtelijke positie ten opzichte van de watergang.
 productRelations:
   - title: Woordenboek
     text: Begripsdefinitie van Intersectie als startpunt van de objectpagina.
