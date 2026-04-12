@@ -6,8 +6,8 @@ product: home
 ownerTeam: platform
 status: concept
 lastReviewed: 2026-04-11
-summary: Startpunt van de nieuwe parallelle omgeving voor asset.waterschaplimburg.nl.
-heroTitle: Een professioneel startpunt voor data, registratie en beheer
+summary: Binnen asset.waterschaplimburg.nl vind je informatie over onze assets, assetmanagement en assetdata in samenhang.
+heroTitle: Kennis over onze assets centraal beschikbaar
 heroActions:
   - label: Verken de Datastandaard
     href: /datastandaard
