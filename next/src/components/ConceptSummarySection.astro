@@ -10,7 +10,6 @@ interface TermItem {
 interface Props {
   subjectLabel: string;
   definition?: string;
-  definitionSource?: string;
   synonyms?: TermItem[];
   relatedTerms?: TermItem[];
   subtypes?: TermItem[];
@@ -19,7 +18,6 @@ interface Props {
 const {
   subjectLabel,
   definition,
-  definitionSource,
   synonyms = [],
   relatedTerms = [],
   subtypes = []
@@ -42,7 +40,6 @@ const hasSubtypes = subtypes.length > 0;
         <p class="concept-summary__linkline">
           <a href={withBase("/datastandaard/woordenboek")}>Bekijk dit begrip in het woordenboek</a>
         </p>
-        {definitionSource && <p class="concept-summary__source">{definitionSource}</p>}
       </div>
     </div>
 
