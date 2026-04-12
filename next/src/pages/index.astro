@@ -26,21 +26,11 @@ if (!entry) {
   </Hero>
 
   <section class="section section-panel">
-    <p class="eyebrow">Platformlogica</p>
-    <h2>Van bronafspraak naar aantoonbaar beheer</h2>
-    <div class="card-grid">
-      {(entry.data.platformFlow || []).map((item) => (
-        <InfoCard title={item.title} text={item.text} />
-      ))}
-    </div>
-  </section>
-
-  <section class="section section-panel">
     <p class="eyebrow">Onderdelen</p>
     <h2>Kies een onderdeel</h2>
     <div class="card-grid">
-      {(entry.data.parts || []).map((item) => (
-        <InfoCard eyebrow="Onderdeel" title={item.title} text={item.text} href={item.href} />
+      {(entry.data.parts || []).map((item, index) => (
+        <InfoCard eyebrow={`Onderdeel ${index + 1}`} title={item.title} text={item.text} href={item.href} />
       ))}
     </div>
   </section>

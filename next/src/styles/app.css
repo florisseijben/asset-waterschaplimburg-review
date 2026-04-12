@@ -284,11 +284,34 @@ h1 {
   border: 1px solid var(--color-line);
   border-radius: 0 var(--corner-control) 0 0;
   box-shadow: var(--shadow-s);
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
 }
 
 .info-card p {
   margin: 0;
   color: var(--color-muted);
+}
+
+.info-card[href] {
+  cursor: pointer;
+}
+
+.info-card[href]:hover,
+.info-card[href]:focus-visible {
+  background: #f2fafb;
+  border-color: #9fd3dc;
+  box-shadow: 0 14px 30px rgba(16, 35, 33, 0.1);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+.info-card[href]:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
 }
 
 .info-card__link {

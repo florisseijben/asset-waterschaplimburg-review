@@ -24,13 +24,13 @@ platformFlow:
     text: Gebruikt dezelfde informatiebasis voor programmering, uitvoering, verantwoording en verbetering.
 parts:
   - title: Datastandaard
-    text: Woordenboek, objectenhandboek, OTL, referentiedataset en werkinstructies.
+    text: Legt begrippen, objecttypen, modellen en publicatieregels vast als gedeelde taal voor het areaal, met woordenboek, objectenhandboek, OTL, referentiedataset en werkinstructies.
     href: /datastandaard
   - title: Assetregister
-    text: Overzichten, detailpagina's en locaties van assets, geordend per systeem.
+    text: Gebruikt die taal om assets, kenmerken, locaties en samenhang beheersbaar en navolgbaar vast te leggen in overzichten en detailpagina's.
     href: /assetregister
   - title: Assetmanagement
-    text: Processen, rollen en beheercontext rond het areaal en de assetinformatie.
+    text: Gebruikt dezelfde informatiebasis voor programmering, uitvoering, verantwoording en verbetering binnen processen, rollen en beheercontext.
     href: /assetmanagement
 ---
 
