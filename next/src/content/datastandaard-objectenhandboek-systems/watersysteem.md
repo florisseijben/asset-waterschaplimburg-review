@@ -9,6 +9,9 @@ lastReviewed: 2026-04-11
 summary: Binnen deze systeemlijn ordenen we objecttypen per objectfamilie, zodat de structuur schaalbaar en herbruikbaar blijft.
 heroTitle: Objectenhandboek voor Watersysteem
 families:
+  - title: Stroomgebied
+    text: Subsysteemlanding voor de hydrologische samenhang en de objectfamilies daarbinnen.
+    href: /datastandaard/objectenhandboek/watersysteem/stroomgebied
   - title: Watergangen
     text: Objecten, begrippen, modellen en referenties rond watergangen.
     href: /datastandaard/objectenhandboek/watersysteem/watergangen
