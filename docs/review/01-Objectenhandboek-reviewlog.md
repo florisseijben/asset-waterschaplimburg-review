@@ -38,6 +38,7 @@ Gebruik deze rubriek voor:
 Open punten:
 
 - Nog in te vullen
+- Objectpagina's, subsystemen en systeempagina's moeten een vaste sectie `Samenhang` krijgen waarin decompositie en semantische relaties zichtbaar zijn. Die sectie hoort niet als losse kaart in `Uitwerking`, maar als eigen inhoudslaag dicht bij `Begrip`, gevoed vanuit de semantische modelleertool.
 
 ### 3. Vormgeving
 
@@ -85,6 +86,7 @@ Gebruik deze rubriek voor:
 Open punten:
 
 - Nog in te vullen
+- Decompositie hoort niet als gewone inhoudskaart in `Uitwerking` te blijven staan zodra een semantische samenhangsweergave beschikbaar is. Gewenste richting: een herbruikbare `Samenhang`-sectie die later vanuit API, Turtle of vergelijkbare bronbestanden kan worden gevoed.
 
 ## Voorstel voor de eerste verbeterslag
 

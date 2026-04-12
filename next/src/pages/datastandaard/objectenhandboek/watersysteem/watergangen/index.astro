@@ -3,8 +3,10 @@ import BaseLayout from "../../../../../layouts/BaseLayout.astro";
 import Hero from "../../../../../components/Hero.astro";
 import CardGrid from "../../../../../components/CardGrid.astro";
 import InfoCard from "../../../../../components/InfoCard.astro";
+import SemanticSamenhangSection from "../../../../../components/SemanticSamenhangSection.astro";
 import { getCollection } from "astro:content";
 import { withBase } from "../../../../../lib/paths";
+import watergangSamenhangTurtle from "../../../../../data/semantic/watergang-samenhang.ttl?raw";
 
 const entries = await getCollection("datastandaard-objectenhandboek-objects");
 const expectedSlug = "/datastandaard/objectenhandboek/watersysteem/watergangen";
@@ -18,6 +20,37 @@ const entry = entries.find(
 if (!entry) {
   throw new Error("Objectenhandboek Watergangen ontbreekt in de nieuwe omgeving.");
 }
+
+const visibleContentSections = (entry.data.contentSections || []).filter((item) => item.title !== "Decompositie");
+const samenhangLayout = [
+  {
+    id: "watergang",
+    label: "Watergang",
+    subtitle: "Hoofdobject",
+    column: 1,
+    row: 0,
+    fill: "#e4f7fa",
+    stroke: "#00a9c1"
+  },
+  {
+    id: "watergangsectie",
+    label: "Watergangsectie",
+    subtitle: "Onderdeel",
+    column: 0,
+    row: 1,
+    fill: "#eefafb",
+    stroke: "#00a9c1"
+  },
+  {
+    id: "intersectie",
+    label: "Intersectie",
+    subtitle: "Onderdeel",
+    column: 2,
+    row: 1,
+    fill: "#eefafb",
+    stroke: "#00a9c1"
+  }
+];
 ---
 
 <BaseLayout
@@ -34,50 +67,62 @@ if (!entry) {
   <Hero eyebrow="Objectenhandboek" title={entry.data.heroTitle || entry.data.title} summary={entry.data.summary} />
 
   <section class="detail-grid">
-    <section class="section section-panel">
-      <p class="eyebrow">Begrip</p>
-      <h2>Wat verstaan we onder Watergang?</h2>
+    <div class="detail-stack">
+      <section class="section section-panel">
+        <p class="eyebrow">Begrip</p>
+        <h2>Wat verstaan we onder Watergang?</h2>
 
-      <div class="taxonomy-block">
-        <div class="taxonomy-block__header">
-          <h3>Objectdefinitie</h3>
-          <a class="mini-link" href={withBase("/datastandaard/woordenboek")}>Open begrip in woordenboek</a>
+        <div class="taxonomy-block">
+          <div class="taxonomy-block__header">
+            <h3>Objectdefinitie</h3>
+            <a class="mini-link" href={withBase("/datastandaard/woordenboek")}>Open begrip in woordenboek</a>
+          </div>
+          <div class="definition-block">
+            <p>{entry.data.definition}</p>
+          </div>
+          {entry.data.definitionSource && <p class="definition-source">{entry.data.definitionSource}</p>}
         </div>
-        <div class="definition-block">
-          <p>{entry.data.definition}</p>
-        </div>
-        {entry.data.definitionSource && <p class="definition-source">{entry.data.definitionSource}</p>}
-      </div>
 
-      <div class="taxonomy-block">
-        <h3>Vergelijkbare termen</h3>
-        <div class="term-stack">
-          {(entry.data.terms || []).map((item) => (
-            <a class="term-row" href={withBase(item.href || "/datastandaard/woordenboek")}>
-              <strong>{item.title}</strong>
-              <span>{item.text}</span>
-            </a>
-          ))}
+        <div class="taxonomy-block">
+          <h3>Vergelijkbare termen</h3>
+          <div class="term-stack">
+            {(entry.data.terms || []).map((item) => (
+              <a class="term-row" href={withBase(item.href || "/datastandaard/woordenboek")}>
+                <strong>{item.title}</strong>
+                <span>{item.text}</span>
+              </a>
+            ))}
+          </div>
         </div>
-      </div>
 
-      <div class="taxonomy-block">
-        <h3>Typen</h3>
-        <div class="term-stack">
-          {(entry.data.subtypes || []).map((item) => (
-            <a class="term-row" href={withBase(item.href || "/datastandaard/woordenboek")}>
-              <strong>{item.title}</strong>
-              <span>{item.text}</span>
-            </a>
-          ))}
+        <div class="taxonomy-block">
+          <h3>Typen</h3>
+          <div class="term-stack">
+            {(entry.data.subtypes || []).map((item) => (
+              <a class="term-row" href={withBase(item.href || "/datastandaard/woordenboek")}>
+                <strong>{item.title}</strong>
+                <span>{item.text}</span>
+              </a>
+            ))}
+          </div>
         </div>
-      </div>
 
-      <div class="callout">
-        <strong>Context</strong>
-        <p>{entry.data.contextNote}</p>
-      </div>
-    </section>
+        <div class="callout">
+          <strong>Context</strong>
+          <p>{entry.data.contextNote}</p>
+        </div>
+      </section>
+
+      <SemanticSamenhangSection
+        title="Decompositie binnen de objectlijn"
+        summary="Deze eerste samenhangsweergave laat zien hoe Watergang, Watergangsectie en Intersectie zich semantisch tot elkaar verhouden. De bedoeling is dat systeem-, subsysteem- en objectpagina's dit patroon later uit de semantische beheeromgeving gaan voeden."
+        sourceLabel="Dummy Turtle-export uit de semantische modelleertool voor de watersysteemlijn."
+        graphId="watergang-samenhang"
+        selectedId="watergang"
+        turtle={watergangSamenhangTurtle}
+        layoutNodes={samenhangLayout}
+      />
+    </div>
 
     <aside class="detail-stack">
       <section class="section section-panel">
@@ -119,7 +164,7 @@ if (!entry) {
     <p class="eyebrow">Uitwerking</p>
     <h2>Inhoudelijke opbouw van Watergang</h2>
     <CardGrid>
-      {(entry.data.contentSections || []).map((item) => (
+      {visibleContentSections.map((item) => (
         <InfoCard title={item.title} text={item.summary} href={item.href} />
       ))}
     </CardGrid>

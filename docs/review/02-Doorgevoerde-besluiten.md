@@ -51,6 +51,16 @@ Doorgevoerd:
 - dit patroon is nu gekoppeld aan systeem-, discipline- en objectpagina's binnen de huidige slice
 - objectpagina's in de watersysteemlijn gebruiken nu een gezamenlijke begripsopbouw met `Objectdefinitie`, `Vergelijkbare termen` en `Typen` onder één sectie `Begrip`
 
+## Semantische samenhang
+
+Doorgevoerd:
+
+- voor `Watergang` is een eerste herbruikbare sectie [`SemanticSamenhangSection.astro`](</c:/Users/f.seijben/Develop/Asset.waterschaplimburg.nl/next/src/components/SemanticSamenhangSection.astro:1>) toegevoegd
+- deze sectie is bedoeld als basispatroon voor systeem-, subsysteem- en objectpagina's
+- de eerste vulling komt uit een dummy Turtle-bron: [watergang-samenhang.ttl](</c:/Users/f.seijben/Develop/Asset.waterschaplimburg.nl/next/src/data/semantic/watergang-samenhang.ttl:1>)
+- in `Watergang` is de kaart `Decompositie` uit `Uitwerking` verwijderd en vervangen door een eigen sectie `Samenhang` direct onder `Begrip`
+- de eerste visualisatie gebruikt Reactodia waar mogelijk en valt terug op een vaste graphweergave als de workspace niet beschikbaar is
+
 ## Architectuur
 
 Doorgevoerd en vastgelegd:

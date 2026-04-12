@@ -1,0 +1,29 @@
+@prefix object: <https://data.waterschaplimburg.nl/id/objecttype/> .
+@prefix relatie: <https://data.waterschaplimburg.nl/def/relatie/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+object:watergang a owl:Class ;
+  rdfs:label "Watergang" .
+
+object:watergangsectie a owl:Class ;
+  rdfs:label "Watergangsectie" .
+
+object:intersectie a owl:Class ;
+  rdfs:label "Intersectie" .
+
+relatie:bestaatUit a owl:ObjectProperty ;
+  rdfs:label "bestaat uit" .
+
+relatie:isOnderdeelVan a owl:ObjectProperty ;
+  rdfs:label "is onderdeel van" .
+
+relatie:grenstAan a owl:ObjectProperty ;
+  rdfs:label "grenst aan" .
+
+object:watergang relatie:bestaatUit object:watergangsectie .
+object:watergang relatie:bestaatUit object:intersectie .
+object:watergangsectie relatie:isOnderdeelVan object:watergang .
+object:intersectie relatie:isOnderdeelVan object:watergang .
+object:watergangsectie relatie:grenstAan object:intersectie .
+object:intersectie relatie:grenstAan object:watergangsectie .

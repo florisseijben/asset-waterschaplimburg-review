@@ -1,0 +1,397 @@
+---
+interface LayoutNode {
+  id: string;
+  label: string;
+  subtitle?: string;
+  column: number;
+  row: number;
+  fill?: string;
+  stroke?: string;
+}
+
+interface Props {
+  title?: string;
+  summary?: string;
+  sourceLabel?: string;
+  graphId: string;
+  selectedId?: string;
+  turtle: string;
+  layoutNodes: LayoutNode[];
+}
+
+const {
+  title = "Samenhang",
+  summary = "",
+  sourceLabel = "Dummy Turtle-export uit de semantische modelleertool.",
+  graphId,
+  selectedId = "",
+  turtle,
+  layoutNodes = []
+} = Astro.props;
+
+const configId = `semantic-samenhang-config-${graphId}`;
+const turtleId = `semantic-samenhang-turtle-${graphId}`;
+const selectedNode = layoutNodes.find((item) => item.id === selectedId);
+---
+
+<section
+  class="section section-panel semantic-samenhang"
+  data-semantic-samenhang
+  data-graph-id={graphId}
+  data-selected-id={selectedId}
+  data-config-id={configId}
+  data-turtle-id={turtleId}
+>
+  <p class="eyebrow">Samenhang</p>
+  <h2>{title}</h2>
+  {summary && <p class="content-copy">{summary}</p>}
+
+  <div class="semantic-samenhang__meta">
+    <div class="semantic-samenhang__source">
+      <strong>Bron</strong>
+      <span>{sourceLabel}</span>
+    </div>
+    <div class="semantic-samenhang__source">
+      <strong>Focus</strong>
+      <span>{selectedNode?.label || selectedId || "Geen selectie"}</span>
+    </div>
+  </div>
+
+  <div class="semantic-graph-stage" data-semantic-graph-stage>
+    <div class="semantic-graph-status" data-semantic-graph-status>
+      Samenhang wordt geladen. De dummy Turtle-bron vormt hier de basis voor de eerste Reactodia-weergave.
+    </div>
+  </div>
+</section>
+
+<script id={configId} type="application/json">{JSON.stringify({ layoutNodes })}</script>
+<script id={turtleId} type="text/plain">{turtle}</script>
+
+<script is:inline type="module">
+  if (!window.__ASSET_SEMANTIC_SAMENHANG__) {
+    window.__ASSET_SEMANTIC_SAMENHANG__ = true;
+
+    const roots = new WeakMap();
+    const loader = {
+      react: null,
+      reactDomClient: null,
+      reactodia: null,
+      n3: null,
+      layoutWorker: null
+    };
+
+    const RDF_TYPE = "http://www.w3.org/1999/02/22-rdf-syntax-ns#type";
+    const RDFS_LABEL = "http://www.w3.org/2000/01/rdf-schema#label";
+    const OWL_CLASS = "http://www.w3.org/2002/07/owl#Class";
+    const OWL_OBJECT_PROPERTY = "http://www.w3.org/2002/07/owl#ObjectProperty";
+
+    function localId(value) {
+      return String(value || "").replace(/[#/]$/, "").split(/[#/]/).pop() || "";
+    }
+
+    function escapeHtml(value) {
+      return String(value || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+    }
+
+    function getConfig(root) {
+      const configNode = document.getElementById(root.dataset.configId || "");
+      const turtleNode = document.getElementById(root.dataset.turtleId || "");
+
+      return {
+        layoutNodes: configNode ? JSON.parse(configNode.textContent || "{}").layoutNodes || [] : [],
+        turtle: turtleNode ? turtleNode.textContent || "" : ""
+      };
+    }
+
+    function extractGraph(quads, layoutNodes) {
+      const labels = new Map();
+      const predicateLabels = new Map();
+      const nodeIds = new Set(layoutNodes.map((item) => item.id));
+      const edges = [];
+
+      quads.forEach((quad) => {
+        if (quad.predicate.value === RDFS_LABEL) {
+          labels.set(localId(quad.subject.value), quad.object.value);
+        }
+      });
+
+      quads.forEach((quad) => {
+        const subjectId = localId(quad.subject.value);
+        if (quad.predicate.value === RDF_TYPE && quad.object.value === OWL_OBJECT_PROPERTY) {
+          predicateLabels.set(subjectId, labels.get(subjectId) || subjectId);
+        }
+      });
+
+      quads.forEach((quad) => {
+        const subjectId = localId(quad.subject.value);
+        const objectId = localId(quad.object.value);
+        const predicateId = localId(quad.predicate.value);
+
+        if (quad.predicate.value === RDFS_LABEL || quad.predicate.value === RDF_TYPE) {
+          return;
+        }
+
+        if (nodeIds.has(subjectId) && nodeIds.has(objectId)) {
+          edges.push({
+            from: subjectId,
+            to: objectId,
+            label: predicateLabels.get(predicateId) || labels.get(predicateId) || predicateId
+          });
+        }
+      });
+
+      return {
+        nodes: layoutNodes.map((item) => ({
+          ...item,
+          label: labels.get(item.id) || item.label
+        })),
+        edges
+      };
+    }
+
+    function extractGraphFromTurtle(turtle, layoutNodes) {
+      const nodeIds = new Set(layoutNodes.map((item) => item.id));
+      const labels = new Map();
+      const predicateLabels = new Map();
+      const edges = [];
+      const triples = turtle
+        .split("\n")
+        .map((line) => line.trim())
+        .filter((line) => line && !line.startsWith("@prefix"));
+
+      triples.forEach((line) => {
+        const labelMatch = line.match(/^([A-Za-z]+:[^\s]+)\s+rdfs:label\s+"([^"]+)"/);
+
+        if (labelMatch) {
+          labels.set(localId(labelMatch[1]), labelMatch[2]);
+        }
+      });
+
+      triples.forEach((line) => {
+        const predicateMatch = line.match(/^([A-Za-z]+:[^\s]+)\s+a\s+owl:ObjectProperty/);
+
+        if (predicateMatch) {
+          const predicateId = localId(predicateMatch[1]);
+          predicateLabels.set(predicateId, labels.get(predicateId) || predicateId);
+        }
+      });
+
+      triples.forEach((line) => {
+        const edgeMatch = line.match(/^([A-Za-z]+:[^\s]+)\s+([A-Za-z]+:[^\s]+)\s+([A-Za-z]+:[^\s]+)\s+\./);
+
+        if (!edgeMatch) {
+          return;
+        }
+
+        const subjectId = localId(edgeMatch[1]);
+        const predicateId = localId(edgeMatch[2]);
+        const objectId = localId(edgeMatch[3]);
+
+        if (nodeIds.has(subjectId) && nodeIds.has(objectId)) {
+          edges.push({
+            from: subjectId,
+            to: objectId,
+            label: predicateLabels.get(predicateId) || labels.get(predicateId) || predicateId
+          });
+        }
+      });
+
+      return {
+        nodes: layoutNodes.map((item) => ({
+          ...item,
+          label: labels.get(item.id) || item.label
+        })),
+        edges
+      };
+    }
+
+    function renderFallback(stage, graph) {
+      const nodeWidth = 220;
+      const nodeHeight = 68;
+      const colGap = 42;
+      const rowGap = 72;
+      const padding = 24;
+      const columns = graph.nodes.reduce((max, node) => Math.max(max, Number(node.column) || 0), 0) + 1;
+      const rows = graph.nodes.reduce((max, node) => Math.max(max, Number(node.row) || 0), 0) + 1;
+      const width = padding * 2 + (columns * nodeWidth) + ((columns - 1) * colGap);
+      const height = padding * 2 + (rows * nodeHeight) + ((rows - 1) * rowGap);
+      const positions = {};
+
+      graph.nodes.forEach((node) => {
+        positions[node.id] = {
+          x: padding + ((Number(node.column) || 0) * (nodeWidth + colGap)),
+          y: padding + ((Number(node.row) || 0) * (nodeHeight + rowGap))
+        };
+      });
+
+      function renderEdge(edge) {
+        const from = positions[edge.from];
+        const to = positions[edge.to];
+
+        if (!from || !to) {
+          return "";
+        }
+
+        const startX = from.x + Math.round(nodeWidth / 2);
+        const startY = from.y + nodeHeight;
+        const endX = to.x + Math.round(nodeWidth / 2);
+        const endY = to.y;
+        const midY = Math.round((startY + endY) / 2);
+
+        return '' +
+          '<path d="M ' + startX + " " + startY + " C " + startX + " " + midY + ", " + endX + " " + midY + ", " + endX + " " + endY + '" fill="none" stroke="#007f91" stroke-width="2" marker-end="url(#semantic-samenhang-arrow)"></path>' +
+          '<text x="' + Math.round((startX + endX) / 2) + '" y="' + (midY - 8) + '" fill="#007f91" font-size="11" text-anchor="middle">' + escapeHtml(edge.label) + "</text>";
+      }
+
+      function renderNode(node) {
+        const position = positions[node.id];
+        const fill = node.fill || "#eefafb";
+        const stroke = node.stroke || "#00a9c1";
+
+        return '' +
+          '<g class="semantic-graph-node">' +
+            '<rect x="' + position.x + '" y="' + position.y + '" width="' + nodeWidth + '" height="' + nodeHeight + '" fill="' + fill + '" stroke="' + stroke + '" stroke-width="2"></rect>' +
+            '<text x="' + (position.x + 12) + '" y="' + (position.y + 27) + '" fill="#102321" font-size="14" font-weight="700">' + escapeHtml(node.label) + "</text>" +
+            (node.subtitle ? '<text x="' + (position.x + 12) + '" y="' + (position.y + 48) + '" fill="#66746d" font-size="11">' + escapeHtml(node.subtitle) + "</text>" : "") +
+          "</g>";
+      }
+
+      let svg = '' +
+        '<div class="semantic-graph-wrap">' +
+          '<svg class="semantic-graph" viewBox="0 0 ' + width + " " + height + '" role="img" aria-label="Samenhang in het semantische model">' +
+            '<defs><marker id="semantic-samenhang-arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#007f91"></path></marker></defs>';
+
+      graph.edges.forEach((edge) => {
+        svg += renderEdge(edge);
+      });
+
+      graph.nodes.forEach((node) => {
+        svg += renderNode(node);
+      });
+
+      svg += "</svg></div>";
+      stage.innerHTML = svg;
+    }
+
+    async function ensureLibraries() {
+      if (loader.react) {
+        return loader;
+      }
+
+      loader.react = await import("https://esm.sh/react@18.3.1");
+      loader.reactDomClient = await import("https://esm.sh/react-dom@18.3.1/client");
+      loader.reactodia = await import("https://esm.sh/@reactodia/workspace@0.30.1?deps=react@18.3.1,react-dom@18.3.1");
+      loader.n3 = await import("https://esm.sh/n3@1.17.4");
+      loader.layoutWorker = loader.reactodia.defineLayoutWorker(function () {
+        return new Worker("https://esm.sh/@reactodia/workspace@0.30.1/layout.worker", { type: "module" });
+      });
+
+      return loader;
+    }
+
+    function createWorkspaceApp(graphQuads) {
+      const React = loader.react;
+      const Reactodia = loader.reactodia;
+
+      return function WorkspaceApp() {
+        const defaultLayout = Reactodia.useWorker(loader.layoutWorker).defaultLayout;
+        const onMount = Reactodia.useLoadedWorkspace(async function (args) {
+          const context = args.context;
+          const signal = args.signal;
+          const model = context.model;
+          const performLayout = context.performLayout;
+          const dataProvider = new Reactodia.RdfDataProvider({ acceptBlankNodes: false });
+          const lookups = [OWL_CLASS, OWL_OBJECT_PROPERTY];
+
+          dataProvider.addGraph(graphQuads);
+          await model.createNewDiagram({ dataProvider, signal });
+
+          for (const lookup of lookups) {
+            const entries = await dataProvider.lookup({ elementTypeId: lookup });
+            entries.forEach((entry) => {
+              model.createElement(entry.element);
+            });
+          }
+
+          await model.requestLinks();
+          await performLayout({ signal });
+        }, [graphQuads]).onMount;
+
+        return React.createElement(
+          Reactodia.Workspace,
+          { ref: onMount, defaultLayout, className: "semantic-reactodia-workspace" },
+          React.createElement(Reactodia.DefaultWorkspace, null)
+        );
+      };
+    }
+
+    async function renderReactodia(stage, statusNode, turtle) {
+      try {
+        const libs = await ensureLibraries();
+        const quads = new libs.n3.Parser().parse(turtle);
+        const WorkspaceApp = createWorkspaceApp(quads);
+        let reactRoot = roots.get(stage);
+
+        if (!reactRoot) {
+          reactRoot = libs.reactDomClient.createRoot(stage);
+          roots.set(stage, reactRoot);
+        }
+
+        reactRoot.render(libs.react.createElement(WorkspaceApp));
+
+        if (statusNode) {
+          statusNode.hidden = true;
+        }
+      } catch (error) {
+        if (statusNode) {
+          statusNode.hidden = false;
+          statusNode.textContent = "Reactodia kon niet geladen worden. De vaste samenhangsweergave blijft daarom zichtbaar.";
+        }
+      }
+    }
+
+    async function initRoot(root) {
+      const stage = root.querySelector("[data-semantic-graph-stage]");
+      const statusNode = root.querySelector("[data-semantic-graph-status]");
+      const config = getConfig(root);
+
+      if (!stage || !config.turtle) {
+        return;
+      }
+
+      const fallbackGraph = extractGraphFromTurtle(config.turtle, config.layoutNodes);
+      renderFallback(stage, fallbackGraph);
+
+      if (statusNode) {
+        statusNode.hidden = false;
+        statusNode.textContent = "Reactodia wordt geladen. Intussen is de lokale samenhang al zichtbaar.";
+      }
+
+      try {
+        const { n3 } = await ensureLibraries();
+        const quads = new n3.Parser().parse(config.turtle);
+        const graph = extractGraph(quads, config.layoutNodes);
+
+        renderFallback(stage, graph);
+
+        await renderReactodia(stage, statusNode, config.turtle);
+      } catch (error) {
+        if (statusNode) {
+          statusNode.hidden = false;
+          statusNode.textContent = "De Turtle-bron kon niet worden verwerkt. Controleer de semantische bronconfiguratie.";
+        }
+      }
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll("[data-semantic-samenhang]").forEach((root) => {
+        initRoot(root);
+      });
+    });
+  }
+</script>
