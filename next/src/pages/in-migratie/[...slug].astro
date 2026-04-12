@@ -34,7 +34,7 @@ export function getStaticPaths() {
   ];
 
   return placeholderRoutes.map((item) => ({
-    params: { slug: item.slug.split("/") },
+    params: { slug: item.slug },
     props: item
   }));
 }
