@@ -39,6 +39,7 @@ Open punten:
 
 - Nog in te vullen
 - Objectpagina's, subsystemen en systeempagina's moeten een vaste sectie `Samenhang` krijgen waarin decompositie en semantische relaties zichtbaar zijn. Die sectie hoort niet als losse kaart in `Uitwerking`, maar als eigen inhoudslaag dicht bij `Begrip`, gevoed vanuit de semantische modelleertool.
+- Objectpagina's hebben geen aparte `Doorklik`-sectie meer nodig. Metadata hoort logischer in de hero en `Productlijn` werkt beter als afsluitende sectie onderaan de pagina.
 
 ### 3. Vormgeving
 

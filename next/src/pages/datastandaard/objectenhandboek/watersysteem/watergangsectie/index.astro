@@ -32,10 +32,18 @@ if (!entry) {
     { label: "Watergangsectie" }
   ]}
 >
-  <Hero eyebrow="Objectenhandboek" title={entry.data.heroTitle || entry.data.title} summary={entry.data.summary} />
+  <Hero eyebrow="Objectenhandboek" title={entry.data.heroTitle || entry.data.title} summary={entry.data.summary}>
+    <dl class="hero-meta-list">
+      {(entry.data.metadata || []).map((item) => (
+        <div class="hero-meta-item">
+          <dt>{item.label}</dt>
+          <dd>{item.value}</dd>
+        </div>
+      ))}
+    </dl>
+  </Hero>
 
-  <section class="detail-grid">
-    <section class="section section-panel">
+  <section class="section section-panel">
       <p class="eyebrow">Begrip</p>
       <h2>Wat verstaan we onder Watergangsectie?</h2>
 
@@ -78,42 +86,6 @@ if (!entry) {
         <strong>Context</strong>
         <p>{entry.data.contextNote}</p>
       </div>
-    </section>
-
-    <aside class="detail-stack">
-      <section class="section section-panel">
-        <p class="eyebrow">Metadata</p>
-        <h2>Objectgegevens</h2>
-        <dl class="meta-list">
-          {(entry.data.metadata || []).map((item) => (
-            <div class="meta-row">
-              <dt>{item.label}</dt>
-              <dd>{item.value}</dd>
-            </div>
-          ))}
-        </dl>
-      </section>
-
-      <section class="section section-panel">
-        <p class="eyebrow">Productlijn</p>
-        <h2>Andere producten voor Watergangsectie</h2>
-        <CardGrid>
-          {(entry.data.productRelations || []).map((item) => (
-            <InfoCard title={item.title} text={item.text} href={item.href} />
-          ))}
-        </CardGrid>
-      </section>
-
-      <section class="section section-panel">
-        <p class="eyebrow">Doorklik</p>
-        <h2>Vervolg in deze lijn</h2>
-        <CardGrid>
-          {(entry.data.nextSteps || []).map((item) => (
-            <InfoCard title={item.title} text={item.text} href={item.href} />
-          ))}
-        </CardGrid>
-      </section>
-    </aside>
   </section>
 
   <section class="section section-panel">
@@ -122,6 +94,16 @@ if (!entry) {
     <CardGrid>
       {(entry.data.contentSections || []).map((item) => (
         <InfoCard title={item.title} text={item.summary} />
+      ))}
+    </CardGrid>
+  </section>
+
+  <section class="section section-panel">
+    <p class="eyebrow">Productlijn</p>
+    <h2>Andere producten voor Watergangsectie</h2>
+    <CardGrid>
+      {(entry.data.productRelations || []).map((item) => (
+        <InfoCard title={item.title} text={item.text} href={item.href} />
       ))}
     </CardGrid>
   </section>

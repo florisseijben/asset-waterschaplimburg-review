@@ -50,6 +50,9 @@ Doorgevoerd:
 - hiervoor is de standaardcomponent [`ConceptReference.astro`](</c:/Users/f.seijben/Develop/Asset.waterschaplimburg.nl/next/src/components/ConceptReference.astro:1>) toegevoegd
 - dit patroon is nu gekoppeld aan systeem-, discipline- en objectpagina's binnen de huidige slice
 - objectpagina's in de watersysteemlijn gebruiken nu een gezamenlijke begripsopbouw met `Objectdefinitie`, `Vergelijkbare termen` en `Typen` onder één sectie `Begrip`
+- objectpagina's in de watersysteemlijn tonen hun metadata nu in de hero in plaats van in een apart zijblok
+- `Doorklik` is verwijderd van de objectpagina's in de watersysteemlijn
+- `Productlijn` staat nu als afsluitende sectie onderaan de objectpagina's
 
 ## Semantische samenhang
 
