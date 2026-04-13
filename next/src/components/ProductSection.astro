@@ -1,0 +1,32 @@
+---
+import CardGrid from "./CardGrid.astro";
+import InfoCard from "./InfoCard.astro";
+
+interface ProductCard {
+  title: string;
+  text: string;
+  href?: string;
+}
+
+interface Props {
+  items?: ProductCard[];
+  eyebrow?: string;
+  title?: string;
+}
+
+const {
+  items = [],
+  eyebrow = "Producten",
+  title = "Vaste producten binnen de datastandaard"
+} = Astro.props;
+---
+
+<section class="section section-panel">
+  <p class="eyebrow">{eyebrow}</p>
+  <h2>{title}</h2>
+  <CardGrid>
+    {items.map((item) => (
+      <InfoCard title={item.title} text={item.text} href={item.href} />
+    ))}
+  </CardGrid>
+</section>

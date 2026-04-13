@@ -45,6 +45,7 @@ Open punten:
 - Begripssecties moeten rustiger worden: alleen `Definitie`, `Synoniemen`, `Gerelateerde termen` en `Typen`, sober als tekstregels met links naar het woordenboek en zonder kaartachtige presentatie.
 - Binnen `Begrip` moeten `Synoniemen`, `Gerelateerde termen` en `Typen` standaard ingeklapt zijn en pas extra context tonen wanneer je ze uitklapt.
 - De sectie met productrelaties moet als vaste standaardsectie herkenbaar zijn en niet per pagina een andere titel gebruiken.
+- De productsectie op de Datastandaard-landing en systeemlandingen moet niet per pagina los worden opgebouwd, maar via één herbruikbare standaardcomponent werken.
 
 ### 3. Vormgeving
 

@@ -1,8 +1,7 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import Hero from "../../../components/Hero.astro";
-import CardGrid from "../../../components/CardGrid.astro";
-import InfoCard from "../../../components/InfoCard.astro";
+import ProductSection from "../../../components/ProductSection.astro";
 
 export function getStaticPaths() {
   const systemPages = [
@@ -73,13 +72,5 @@ const { title, summary, productCards } = Astro.props;
 >
   <Hero eyebrow="Systeem" title={title} summary={summary} />
 
-  <section class="section section-panel">
-    <p class="eyebrow">Producten</p>
-    <h2>Kies een productlijn binnen {title}</h2>
-    <CardGrid>
-      {productCards.map((item) => (
-        <InfoCard title={item.title} text={item.text} href={item.href} />
-      ))}
-    </CardGrid>
-  </section>
+  <ProductSection items={productCards} />
 </BaseLayout>

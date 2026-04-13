@@ -3,6 +3,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import Hero from "../../components/Hero.astro";
 import CardGrid from "../../components/CardGrid.astro";
 import InfoCard from "../../components/InfoCard.astro";
+import ProductSection from "../../components/ProductSection.astro";
 import { getCollection } from "astro:content";
 
 const entries = await getCollection("datastandaard-landing");
@@ -37,13 +38,5 @@ if (!entry) {
     </CardGrid>
   </section>
 
-  <section class="section section-panel">
-    <p class="eyebrow">Producten</p>
-    <h2>Vaste producten binnen de datastandaard</h2>
-    <CardGrid>
-      {(entry.data.products || []).map((item) => (
-        <InfoCard title={item.title} text={item.text} href={item.href} />
-      ))}
-    </CardGrid>
-  </section>
+  <ProductSection items={entry.data.products || []} />
 </BaseLayout>

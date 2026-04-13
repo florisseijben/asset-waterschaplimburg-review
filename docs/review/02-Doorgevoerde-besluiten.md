@@ -58,6 +58,7 @@ Doorgevoerd:
 - begripspresentatie is vereenvoudigd via [`ConceptSummarySection.astro`](</c:/Users/f.seijben/Develop/Asset.waterschaplimburg.nl/next/src/components/ConceptSummarySection.astro:1>) tot `Definitie`, `Synoniemen`, `Gerelateerde termen` en `Typen` als sobere tekstregels met links naar het woordenboek
 - `Synoniemen`, `Gerelateerde termen` en `Typen` tonen nu als standaard ingeklapte uitklapblokken, met begrippen onder elkaar en een korte toelichting per begrip
 - productsecties gebruiken nu dezelfde vaste titel: `Vaste producten binnen de datastandaard`
+- de productsectie voor Datastandaard en systeemlandingen gebruikt nu één herbruikbare standaardcomponent: [`ProductSection.astro`](</c:/Users/f.seijben/Develop/Asset.waterschaplimburg.nl/next/src/components/ProductSection.astro:1>)
 
 ## Semantische samenhang
 
