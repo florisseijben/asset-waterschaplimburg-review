@@ -19,27 +19,30 @@ systems:
     text: Voor waterkeringen, langsconstructies, kunstwerken, terreinen, groenobjecten en terreininrichting.
     href: /datastandaard/systemen/waterkeringensysteem
 disciplines:
-  - title: Ruimtelijke ordening
-    text: Begrippen, objecttypen en modellen bekeken vanuit ligging, functie, gebiedsinpassing en ruimtelijke samenhang.
-    href: /datastandaard/disciplines/ruimtelijke-ordening
-  - title: Groen
-    text: Datastandaard bekeken vanuit vegetatie, ecologie, beheer van groenstructuren en landschappelijke inrichting.
-    href: /datastandaard/disciplines/groen
-  - title: Bouwkunde
-    text: Begrippen, objecten en gegevens bekeken vanuit gebouwde onderdelen, constructieve opbouw en fysieke verschijningsvorm.
-    href: /datastandaard/disciplines/bouwkunde
+  - title: Terreinbeheer en openbare ruimte
+    text: Voor terreinen, gebruiksruimte, paden, verhardingen, inrichting, bereikbaarheid en beheer van de buitenruimte.
+    href: /datastandaard/disciplines/terreinbeheer-openbare-ruimte
+  - title: Ecologie en groen
+    text: Voor vegetatie, ecologische functies, natuurvriendelijke inrichting en groenbeheer.
+    href: /datastandaard/disciplines/ecologie-en-groen
   - title: Civiele techniek
-    text: Datastandaard bekeken vanuit grond-, weg- en waterbouwkundige opbouw, profielen, constructies en relaties.
+    text: Voor profielen, constructies, kunstwerken, watergangen, buffers en waterkeringen.
     href: /datastandaard/disciplines/civiele-techniek
+  - title: Bouwkunde
+    text: Voor gebouwen, bassins, bouwdelen, fundaties en gebouwgebonden objecten.
+    href: /datastandaard/disciplines/bouwkunde
   - title: Werktuigbouwkunde
-    text: Begrippen, objecttypen en OTL-klassen bekeken vanuit mechanische onderdelen, installaties en technische samenstellingen.
+    text: Voor pompen, afsluiters, roerwerken, transportsystemen en mechanische installaties.
     href: /datastandaard/disciplines/werktuigbouwkunde
   - title: Electrotechniek
-    text: Datastandaard bekeken vanuit energievoorziening, bekabeling, besturing en elektrische componenten.
+    text: Voor voedingen, verdeelinrichtingen, bekabeling, aandrijvingen en elektrische componenten.
     href: /datastandaard/disciplines/electrotechniek
   - title: Procesautomatisering
-    text: Begrippen, modellen en referentiegegevens bekeken vanuit meet- en regelsystemen, sensoren, sturing en digitale procesondersteuning.
+    text: Voor sensoren, metingen, PLC/SCADA, sturing, regeling en alarmering.
     href: /datastandaard/disciplines/procesautomatisering
+  - title: Informatie en data
+    text: Voor begrippen, objectafbakening, datamodellen, geometrie, metadata, kwaliteitseisen en gegevensuitwisseling.
+    href: /datastandaard/disciplines/informatie-en-data
 products:
   - title: Woordenboek
     text: Begrippen, definities en gemeenschappelijke taal.

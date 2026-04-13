@@ -8,46 +8,52 @@ import ConceptReference from "../../../components/ConceptReference.astro";
 export function getStaticPaths() {
   const disciplinePages = [
     {
-      slug: "ruimtelijke-ordening",
-      title: "Ruimtelijke ordening",
-      summary: "Deze discipline-ingang bundelt de Datastandaard-producten voor de benadering vanuit ruimtelijke ordening.",
-      intro: "Gebruik deze ingang als je de datastandaard wilt lezen vanuit ligging, functie, gebiedsinpassing en ruimtelijke samenhang.",
+      slug: "terreinbeheer-openbare-ruimte",
+      title: "Terreinbeheer en openbare ruimte",
+      summary: "Deze discipline-ingang bundelt de Datastandaard-producten voor de benadering vanuit terreinbeheer en openbare ruimte.",
+      intro: "Gebruik deze ingang als je de datastandaard wilt lezen vanuit terreinen, gebruiksruimte, paden, verhardingen, inrichting, bereikbaarheid en beheer van de buitenruimte.",
     },
     {
-      slug: "groen",
-      title: "Groen",
-      summary: "Deze discipline-ingang bundelt de Datastandaard-producten voor de benadering vanuit groen en ecologie.",
-      intro: "Gebruik deze ingang als je de datastandaard wilt lezen vanuit vegetatie, ecologie, beheer van groenstructuren en landschappelijke inrichting.",
-    },
-    {
-      slug: "bouwkunde",
-      title: "Bouwkunde",
-      summary: "Deze discipline-ingang bundelt de Datastandaard-producten voor de benadering vanuit bouwkunde.",
-      intro: "Gebruik deze ingang als je de datastandaard wilt lezen vanuit gebouwde onderdelen, constructieve opbouw en fysieke verschijningsvorm.",
+      slug: "ecologie-en-groen",
+      title: "Ecologie en groen",
+      summary: "Deze discipline-ingang bundelt de Datastandaard-producten voor de benadering vanuit ecologie en groen.",
+      intro: "Gebruik deze ingang als je de datastandaard wilt lezen vanuit vegetatie, ecologische functies, natuurvriendelijke inrichting en groenbeheer.",
     },
     {
       slug: "civiele-techniek",
       title: "Civiele techniek",
       summary: "Deze discipline-ingang bundelt de Datastandaard-producten voor de benadering vanuit civiele techniek.",
-      intro: "Gebruik deze ingang als je de datastandaard wilt lezen vanuit grond-, weg- en waterbouwkundige opbouw, profielen, constructies en relaties.",
+      intro: "Gebruik deze ingang als je de datastandaard wilt lezen vanuit profielen, constructies, kunstwerken, watergangen, buffers en waterkeringen.",
+    },
+    {
+      slug: "bouwkunde",
+      title: "Bouwkunde",
+      summary: "Deze discipline-ingang bundelt de Datastandaard-producten voor de benadering vanuit bouwkunde.",
+      intro: "Gebruik deze ingang als je de datastandaard wilt lezen vanuit gebouwen, bassins, bouwdelen, fundaties en gebouwgebonden objecten.",
     },
     {
       slug: "werktuigbouwkunde",
       title: "Werktuigbouwkunde",
       summary: "Deze discipline-ingang bundelt de Datastandaard-producten voor de benadering vanuit werktuigbouwkunde.",
-      intro: "Gebruik deze ingang als je de datastandaard wilt lezen vanuit mechanische onderdelen, installaties en technische samenstellingen.",
+      intro: "Gebruik deze ingang als je de datastandaard wilt lezen vanuit pompen, afsluiters, roerwerken, transportsystemen en mechanische installaties.",
     },
     {
       slug: "electrotechniek",
       title: "Electrotechniek",
       summary: "Deze discipline-ingang bundelt de Datastandaard-producten voor de benadering vanuit elektrotechniek.",
-      intro: "Gebruik deze ingang als je de datastandaard wilt lezen vanuit energievoorziening, bekabeling, besturing en elektrische componenten.",
+      intro: "Gebruik deze ingang als je de datastandaard wilt lezen vanuit voedingen, verdeelinrichtingen, bekabeling, aandrijvingen en elektrische componenten.",
     },
     {
       slug: "procesautomatisering",
       title: "Procesautomatisering",
       summary: "Deze discipline-ingang bundelt de Datastandaard-producten voor de benadering vanuit procesautomatisering.",
-      intro: "Gebruik deze ingang als je de datastandaard wilt lezen vanuit meet- en regelsystemen, sensoren, sturing en digitale procesondersteuning.",
+      intro: "Gebruik deze ingang als je de datastandaard wilt lezen vanuit sensoren, metingen, PLC/SCADA, sturing, regeling en alarmering.",
+    },
+    {
+      slug: "informatie-en-data",
+      title: "Informatie en data",
+      summary: "Deze discipline-ingang bundelt de Datastandaard-producten voor de benadering vanuit informatie en data.",
+      intro: "Gebruik deze ingang als je de datastandaard wilt lezen vanuit begrippen, objectafbakening, datamodellen, geometrie, metadata, kwaliteitseisen en gegevensuitwisseling.",
     }
   ].map((page) => ({
     ...page,
