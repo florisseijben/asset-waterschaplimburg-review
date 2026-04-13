@@ -13,6 +13,8 @@ interface Props {
   synonyms?: TermItem[];
   relatedTerms?: TermItem[];
   subtypes?: TermItem[];
+  runtimeSourceUrl?: string;
+  runtimeSourceLabel?: string;
 }
 
 const {
@@ -20,23 +22,28 @@ const {
   definition,
   synonyms = [],
   relatedTerms = [],
-  subtypes = []
+  subtypes = [],
+  runtimeSourceUrl,
+  runtimeSourceLabel = "IMBOR"
 } = Astro.props;
 
 const hasSynonyms = synonyms.length > 0;
 const hasRelatedTerms = relatedTerms.length > 0;
 const hasSubtypes = subtypes.length > 0;
+const runtimeId = `concept-runtime-${subjectLabel.toLowerCase().replace(/\s+/g, "-")}`;
 ---
 
 <section class="section section-panel">
   <p class="eyebrow">Begrip</p>
   <h2>Wat verstaan we onder {subjectLabel}?</h2>
 
+  <div class="concept-runtime-note" id={runtimeId} hidden></div>
+
   <div class="concept-summary">
     <div class="concept-summary__row">
       <strong>Definitie</strong>
       <div>
-        <p>{definition}</p>
+        <p data-concept-definition>{definition}</p>
         <p class="concept-summary__linkline">
           <a href={withBase("/datastandaard/woordenboek")}>Bekijk dit begrip in het woordenboek</a>
         </p>
@@ -45,7 +52,7 @@ const hasSubtypes = subtypes.length > 0;
 
     <details class="concept-disclosure">
       <summary>Synoniemen</summary>
-      <div class="concept-disclosure__body">
+      <div class="concept-disclosure__body" data-concept-synonyms>
         {hasSynonyms ? (
           <div class="concept-summary__list">
             {synonyms.map((item) => (
@@ -63,7 +70,7 @@ const hasSubtypes = subtypes.length > 0;
 
     <details class="concept-disclosure">
       <summary>Gerelateerde termen</summary>
-      <div class="concept-disclosure__body">
+      <div class="concept-disclosure__body" data-concept-related>
         {hasRelatedTerms ? (
           <div class="concept-summary__list">
             {relatedTerms.map((item) => (
@@ -81,7 +88,7 @@ const hasSubtypes = subtypes.length > 0;
 
     <details class="concept-disclosure">
       <summary>Typen</summary>
-      <div class="concept-disclosure__body">
+      <div class="concept-disclosure__body" data-concept-types>
         {hasSubtypes ? (
           <div class="concept-summary__list">
             {subtypes.map((item) => (
@@ -98,3 +105,107 @@ const hasSubtypes = subtypes.length > 0;
     </details>
   </div>
 </section>
+
+{runtimeSourceUrl && (
+  <script
+    is:inline
+    define:vars={{
+      runtimeId,
+      runtimeSourceUrl,
+      runtimeSourceLabel
+    }}
+  >
+    const note = document.getElementById(runtimeId);
+    const root = note?.closest(".section-panel");
+    const definitionNode = root?.querySelector("[data-concept-definition]");
+    const synonymsBody = root?.querySelector("[data-concept-synonyms]");
+    const relatedBody = root?.querySelector("[data-concept-related]");
+    const typesBody = root?.querySelector("[data-concept-types]");
+
+    const fallbackMessage = `Live ophalen uit ${runtimeSourceLabel} lukte niet. Hieronder zie je de build-time versie.`;
+    const successMessage = `Begripsinformatie is live bijgewerkt vanuit ${runtimeSourceLabel}.`;
+
+    const createListMarkup = (items) => {
+      if (!items?.length) {
+        return '<span class="concept-summary__empty">Geen informatie beschikbaar.</span>';
+      }
+
+      const rows = items
+        .map(
+          (item) => `
+            <a class="concept-summary__item" href="/datastandaard/woordenboek">
+              <strong>${item.title}</strong>
+              <span>${item.text || "Bekijk dit begrip in het woordenboek."}</span>
+            </a>
+          `
+        )
+        .join("");
+
+      return `<div class="concept-summary__list">${rows}</div>`;
+    };
+
+    const collectListItems = (html, headingLabel) => {
+      const regex = new RegExp(
+        `<h3[^>]*>\\s*${headingLabel}\\s*<\\/h3>[\\s\\S]*?<ul[^>]*>([\\s\\S]*?)<\\/ul>`,
+        "i"
+      );
+      const match = html.match(regex);
+      if (!match?.[1]) {
+        return [];
+      }
+
+      return [...match[1].matchAll(/<li[^>]*>\s*([\s\S]*?)\s*<\/li>/gi)]
+        .map((item) => item[1].replace(/<[^>]+>/g, "").trim())
+        .filter(Boolean)
+        .map((title) => ({ title, text: "Live opgehaald uit IMBOR." }));
+    };
+
+    const parseDefinition = (html) => {
+      const match = html.match(/<h3[^>]*>\s*definitie\s*<\/h3>[\s\S]*?<li[^>]*>\s*([\s\S]*?)\s*<\/li>/i);
+      if (!match?.[1]) {
+        return "";
+      }
+
+      return match[1].replace(/<[^>]+>/g, "").trim();
+    };
+
+    fetch(runtimeSourceUrl, { mode: "cors" })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`);
+        }
+
+        return response.text();
+      })
+      .then((html) => {
+        const parsedDefinition = parseDefinition(html);
+        const parsedRelated = collectListItems(html, "heeft bovenliggend begrip");
+        const parsedTypes = collectListItems(html, "heeft onderliggend begrip");
+
+        if (parsedDefinition && definitionNode) {
+          definitionNode.textContent = parsedDefinition;
+        }
+
+        if (parsedRelated.length && relatedBody) {
+          relatedBody.innerHTML = createListMarkup(parsedRelated);
+        }
+
+        if (parsedTypes.length && typesBody) {
+          typesBody.innerHTML = createListMarkup(parsedTypes);
+        }
+
+        if (note) {
+          note.hidden = false;
+          note.textContent = successMessage;
+          note.dataset.state = "success";
+        }
+      })
+      .catch(() => {
+        if (note) {
+          note.hidden = false;
+          note.textContent = fallbackMessage;
+          note.dataset.state = "fallback";
+        }
+      });
+  </script>
+)}
