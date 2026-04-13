@@ -114,7 +114,7 @@ const samenhangLayout = [
 
   <section class="section section-panel">
     <p class="eyebrow">Productlijn</p>
-    <h2>Producten binnen de datastandaard</h2>
+    <h2>Vaste producten binnen de datastandaard</h2>
     <CardGrid>
       {(entry.data.productRelations || entry.data.relatedProducts || []).map((item) => (
         <InfoCard title={item.title} text={item.text} href={item.href} />
