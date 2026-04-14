@@ -45,7 +45,7 @@ disciplines:
     href: /datastandaard/disciplines/informatie-en-data
 products:
   - title: Woordenboek
-    text: Begrippen, definities en gemeenschappelijke taal.
+    text: Dit product is het naslagwerk dat informatie biedt over begrippen, zoals betekenis, synoniemen en relaties tussen begrippen.
     href: /datastandaard/woordenboek
   - title: Objectenhandboek
     text: Objecttypen, eigenschappen en voorbeeldlocaties.
