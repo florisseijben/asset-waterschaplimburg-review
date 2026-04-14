@@ -1,11 +1,10 @@
 ---
 import BaseLayout from "../../../../../layouts/BaseLayout.astro";
 import Hero from "../../../../../components/Hero.astro";
-import CardGrid from "../../../../../components/CardGrid.astro";
 import ConceptSummarySection from "../../../../../components/ConceptSummarySection.astro";
-import InfoCard from "../../../../../components/InfoCard.astro";
 import NextStepsSection from "../../../../../components/NextStepsSection.astro";
 import SemanticSamenhangSection from "../../../../../components/SemanticSamenhangSection.astro";
+import ProductSection from "../../../../../components/ProductSection.astro";
 import UitwerkingSection from "../../../../../components/UitwerkingSection.astro";
 import { getCollection } from "astro:content";
 import watergangSamenhangTurtle from "../../../../../data/semantic/watergang-samenhang.ttl?raw";
@@ -98,15 +97,7 @@ const samenhangLayout = [
 
   <UitwerkingSection title="Inhoudelijke opbouw van Watergangsectie" items={visibleContentSections} />
 
-  <section class="section section-panel">
-    <p class="eyebrow">Productlijn</p>
-    <h2>Vaste producten binnen de datastandaard</h2>
-    <CardGrid>
-      {(entry.data.productRelations || []).map((item) => (
-        <InfoCard title={item.title} text={item.text} href={item.href} />
-      ))}
-    </CardGrid>
-  </section>
+  <ProductSection eyebrow="Productlijn" items={entry.data.productRelations || []} />
 
   <section class="section section-panel">
     <p class="eyebrow">Vervolg</p>
