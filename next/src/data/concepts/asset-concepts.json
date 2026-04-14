@@ -1,0 +1,789 @@
+{
+  "vars": [
+    "ID",
+    "label",
+    "taxID",
+    "prop",
+    "targetID",
+    "propLabel",
+    "verschijningsvormenLabel",
+    "taxDef"
+  ],
+  "bindings": [
+    {
+      "ID": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Talud",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Talud"
+      },
+      "label": {
+        "lex": "Talud",
+        "lang": "nl"
+      },
+      "taxID": {
+        "uri": "https://begrippen.waterschaplimburg.nl/assetmanagement/id/begrip/Talud",
+        "label": "https://begrippen.waterschaplimburg.nl/assetmanagement/id/begrip/Talud"
+      },
+      "prop": null,
+      "targetID": null,
+      "propLabel": null,
+      "verschijningsvormenLabel": null,
+      "taxDef": {
+        "lex": "Onder helling gelegen vlak",
+        "lang": "nl"
+      }
+    },
+    {
+      "ID": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Bodem",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Bodem"
+      },
+      "label": {
+        "lex": "Bodem",
+        "lang": "nl"
+      },
+      "taxID": {
+        "uri": "https://begrippen.waterschaplimburg.nl/assetmanagement/id/begrip/Bodem",
+        "label": "https://begrippen.waterschaplimburg.nl/assetmanagement/id/begrip/Bodem"
+      },
+      "prop": null,
+      "targetID": null,
+      "propLabel": null,
+      "verschijningsvormenLabel": null,
+      "taxDef": {
+        "lex": "Het laagst gelegen vlak in een terrein, waterloop, watervlakte of regenwaterbuffer",
+        "lang": "nl"
+      }
+    },
+    {
+      "ID": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Berm",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Berm"
+      },
+      "label": {
+        "lex": "Berm",
+        "lang": "nl"
+      },
+      "taxID": {
+        "uri": "https://begrippen.waterschaplimburg.nl/assetmanagement/id/begrip/Berm",
+        "label": "https://begrippen.waterschaplimburg.nl/assetmanagement/id/begrip/Berm"
+      },
+      "prop": null,
+      "targetID": null,
+      "propLabel": null,
+      "verschijningsvormenLabel": null,
+      "taxDef": {
+        "lex": "horizontale of licht hellende strook grond langs een weg, spoorweg, sloot of dijk",
+        "lang": "nl"
+      }
+    },
+    {
+      "ID": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Toplaag",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Toplaag"
+      },
+      "label": {
+        "lex": "Toplaag",
+        "lang": "nl"
+      },
+      "taxID": {
+        "uri": "https://begrippen.waterschaplimburg.nl/assetmanagement/id/begrip/Toplaag",
+        "label": "https://begrippen.waterschaplimburg.nl/assetmanagement/id/begrip/Toplaag"
+      },
+      "prop": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Toplaag-verschijningsvorm",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Toplaag-verschijningsvorm"
+      },
+      "targetID": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Verschijningsvorm",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Verschijningsvorm"
+      },
+      "propLabel": {
+        "lex": "Verschijningsvorm",
+        "lang": "nl"
+      },
+      "verschijningsvormenLabel": {
+        "lex": "Losse haag",
+        "lang": "nl"
+      },
+      "taxDef": {
+        "lex": "buitenste verdedigingslaag van een bekledingsconstructie",
+        "lang": "nl"
+      }
+    },
+    {
+      "ID": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Toplaag",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Toplaag"
+      },
+      "label": {
+        "lex": "Toplaag",
+        "lang": "nl"
+      },
+      "taxID": {
+        "uri": "https://begrippen.waterschaplimburg.nl/assetmanagement/id/begrip/Toplaag",
+        "label": "https://begrippen.waterschaplimburg.nl/assetmanagement/id/begrip/Toplaag"
+      },
+      "prop": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Toplaag-verschijningsvorm",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Toplaag-verschijningsvorm"
+      },
+      "targetID": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Verschijningsvorm",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Verschijningsvorm"
+      },
+      "propLabel": {
+        "lex": "Verschijningsvorm",
+        "lang": "nl"
+      },
+      "verschijningsvormenLabel": {
+        "lex": "Gras en kruidachtigen",
+        "lang": "nl"
+      },
+      "taxDef": {
+        "lex": "buitenste verdedigingslaag van een bekledingsconstructie",
+        "lang": "nl"
+      }
+    },
+    {
+      "ID": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Toplaag",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Toplaag"
+      },
+      "label": {
+        "lex": "Toplaag",
+        "lang": "nl"
+      },
+      "taxID": {
+        "uri": "https://begrippen.waterschaplimburg.nl/assetmanagement/id/begrip/Toplaag",
+        "label": "https://begrippen.waterschaplimburg.nl/assetmanagement/id/begrip/Toplaag"
+      },
+      "prop": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Toplaag-verschijningsvorm",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Toplaag-verschijningsvorm"
+      },
+      "targetID": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Verschijningsvorm",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Verschijningsvorm"
+      },
+      "propLabel": {
+        "lex": "Verschijningsvorm",
+        "lang": "nl"
+      },
+      "verschijningsvormenLabel": {
+        "lex": "Heischraal grasland",
+        "lang": "nl"
+      },
+      "taxDef": {
+        "lex": "buitenste verdedigingslaag van een bekledingsconstructie",
+        "lang": "nl"
+      }
+    },
+    {
+      "ID": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Toplaag",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Toplaag"
+      },
+      "label": {
+        "lex": "Toplaag",
+        "lang": "nl"
+      },
+      "taxID": {
+        "uri": "https://begrippen.waterschaplimburg.nl/assetmanagement/id/begrip/Toplaag",
+        "label": "https://begrippen.waterschaplimburg.nl/assetmanagement/id/begrip/Toplaag"
+      },
+      "prop": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Toplaag-verschijningsvorm",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Toplaag-verschijningsvorm"
+      },
+      "targetID": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Verschijningsvorm",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Verschijningsvorm"
+      },
+      "propLabel": {
+        "lex": "Verschijningsvorm",
+        "lang": "nl"
+      },
+      "verschijningsvormenLabel": {
+        "lex": "Bosplantsoen",
+        "lang": "nl"
+      },
+      "taxDef": {
+        "lex": "buitenste verdedigingslaag van een bekledingsconstructie",
+        "lang": "nl"
+      }
+    },
+    {
+      "ID": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Toplaag",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Toplaag"
+      },
+      "label": {
+        "lex": "Toplaag",
+        "lang": "nl"
+      },
+      "taxID": {
+        "uri": "https://begrippen.waterschaplimburg.nl/assetmanagement/id/begrip/Toplaag",
+        "label": "https://begrippen.waterschaplimburg.nl/assetmanagement/id/begrip/Toplaag"
+      },
+      "prop": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Toplaag-verschijningsvorm",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Toplaag-verschijningsvorm"
+      },
+      "targetID": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Verschijningsvorm",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Verschijningsvorm"
+      },
+      "propLabel": {
+        "lex": "Verschijningsvorm",
+        "lang": "nl"
+      },
+      "verschijningsvormenLabel": {
+        "lex": "Glanshaverhooilanden",
+        "lang": "nl"
+      },
+      "taxDef": {
+        "lex": "buitenste verdedigingslaag van een bekledingsconstructie",
+        "lang": "nl"
+      }
+    },
+    {
+      "ID": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Toplaag",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Toplaag"
+      },
+      "label": {
+        "lex": "Toplaag",
+        "lang": "nl"
+      },
+      "taxID": {
+        "uri": "https://begrippen.waterschaplimburg.nl/assetmanagement/id/begrip/Toplaag",
+        "label": "https://begrippen.waterschaplimburg.nl/assetmanagement/id/begrip/Toplaag"
+      },
+      "prop": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Toplaag-verschijningsvorm",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Toplaag-verschijningsvorm"
+      },
+      "targetID": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Verschijningsvorm",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Verschijningsvorm"
+      },
+      "propLabel": {
+        "lex": "Verschijningsvorm",
+        "lang": "nl"
+      },
+      "verschijningsvormenLabel": {
+        "lex": "Bos",
+        "lang": "nl"
+      },
+      "taxDef": {
+        "lex": "buitenste verdedigingslaag van een bekledingsconstructie",
+        "lang": "nl"
+      }
+    },
+    {
+      "ID": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Toplaag",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Toplaag"
+      },
+      "label": {
+        "lex": "Toplaag",
+        "lang": "nl"
+      },
+      "taxID": {
+        "uri": "https://begrippen.waterschaplimburg.nl/assetmanagement/id/begrip/Toplaag",
+        "label": "https://begrippen.waterschaplimburg.nl/assetmanagement/id/begrip/Toplaag"
+      },
+      "prop": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Toplaag-verschijningsvorm",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Toplaag-verschijningsvorm"
+      },
+      "targetID": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Verschijningsvorm",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Verschijningsvorm"
+      },
+      "propLabel": {
+        "lex": "Verschijningsvorm",
+        "lang": "nl"
+      },
+      "verschijningsvormenLabel": {
+        "lex": "Dotterbloemhooiland droog",
+        "lang": "nl"
+      },
+      "taxDef": {
+        "lex": "buitenste verdedigingslaag van een bekledingsconstructie",
+        "lang": "nl"
+      }
+    },
+    {
+      "ID": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Toplaag",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Toplaag"
+      },
+      "label": {
+        "lex": "Toplaag",
+        "lang": "nl"
+      },
+      "taxID": {
+        "uri": "https://begrippen.waterschaplimburg.nl/assetmanagement/id/begrip/Toplaag",
+        "label": "https://begrippen.waterschaplimburg.nl/assetmanagement/id/begrip/Toplaag"
+      },
+      "prop": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Toplaag-verschijningsvorm",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Toplaag-verschijningsvorm"
+      },
+      "targetID": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Verschijningsvorm",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Verschijningsvorm"
+      },
+      "propLabel": {
+        "lex": "Verschijningsvorm",
+        "lang": "nl"
+      },
+      "verschijningsvormenLabel": {
+        "lex": "Moeras",
+        "lang": "nl"
+      },
+      "taxDef": {
+        "lex": "buitenste verdedigingslaag van een bekledingsconstructie",
+        "lang": "nl"
+      }
+    },
+    {
+      "ID": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Toplaag",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Toplaag"
+      },
+      "label": {
+        "lex": "Toplaag",
+        "lang": "nl"
+      },
+      "taxID": {
+        "uri": "https://begrippen.waterschaplimburg.nl/assetmanagement/id/begrip/Toplaag",
+        "label": "https://begrippen.waterschaplimburg.nl/assetmanagement/id/begrip/Toplaag"
+      },
+      "prop": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Toplaag-verschijningsvorm",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Toplaag-verschijningsvorm"
+      },
+      "targetID": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Verschijningsvorm",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Verschijningsvorm"
+      },
+      "propLabel": {
+        "lex": "Verschijningsvorm",
+        "lang": "nl"
+      },
+      "verschijningsvormenLabel": {
+        "lex": "Doorstroommoeras",
+        "lang": "nl"
+      },
+      "taxDef": {
+        "lex": "buitenste verdedigingslaag van een bekledingsconstructie",
+        "lang": "nl"
+      }
+    },
+    {
+      "ID": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Toplaag",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Toplaag"
+      },
+      "label": {
+        "lex": "Toplaag",
+        "lang": "nl"
+      },
+      "taxID": {
+        "uri": "https://begrippen.waterschaplimburg.nl/assetmanagement/id/begrip/Toplaag",
+        "label": "https://begrippen.waterschaplimburg.nl/assetmanagement/id/begrip/Toplaag"
+      },
+      "prop": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Toplaag-verschijningsvorm",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Toplaag-verschijningsvorm"
+      },
+      "targetID": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Verschijningsvorm",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Verschijningsvorm"
+      },
+      "propLabel": {
+        "lex": "Verschijningsvorm",
+        "lang": "nl"
+      },
+      "verschijningsvormenLabel": {
+        "lex": "Houtsingel",
+        "lang": "nl"
+      },
+      "taxDef": {
+        "lex": "buitenste verdedigingslaag van een bekledingsconstructie",
+        "lang": "nl"
+      }
+    },
+    {
+      "ID": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Toplaag",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Toplaag"
+      },
+      "label": {
+        "lex": "Toplaag",
+        "lang": "nl"
+      },
+      "taxID": {
+        "uri": "https://begrippen.waterschaplimburg.nl/assetmanagement/id/begrip/Toplaag",
+        "label": "https://begrippen.waterschaplimburg.nl/assetmanagement/id/begrip/Toplaag"
+      },
+      "prop": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Toplaag-verschijningsvorm",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Toplaag-verschijningsvorm"
+      },
+      "targetID": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Verschijningsvorm",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Verschijningsvorm"
+      },
+      "propLabel": {
+        "lex": "Verschijningsvorm",
+        "lang": "nl"
+      },
+      "verschijningsvormenLabel": {
+        "lex": "Bloemrijk natte ruigte",
+        "lang": "nl"
+      },
+      "taxDef": {
+        "lex": "buitenste verdedigingslaag van een bekledingsconstructie",
+        "lang": "nl"
+      }
+    },
+    {
+      "ID": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Toplaag",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Toplaag"
+      },
+      "label": {
+        "lex": "Toplaag",
+        "lang": "nl"
+      },
+      "taxID": {
+        "uri": "https://begrippen.waterschaplimburg.nl/assetmanagement/id/begrip/Toplaag",
+        "label": "https://begrippen.waterschaplimburg.nl/assetmanagement/id/begrip/Toplaag"
+      },
+      "prop": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Toplaag-verschijningsvorm",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Toplaag-verschijningsvorm"
+      },
+      "targetID": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Verschijningsvorm",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Verschijningsvorm"
+      },
+      "propLabel": {
+        "lex": "Verschijningsvorm",
+        "lang": "nl"
+      },
+      "verschijningsvormenLabel": {
+        "lex": "Gazon extensief",
+        "lang": "nl"
+      },
+      "taxDef": {
+        "lex": "buitenste verdedigingslaag van een bekledingsconstructie",
+        "lang": "nl"
+      }
+    },
+    {
+      "ID": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Toplaag",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Toplaag"
+      },
+      "label": {
+        "lex": "Toplaag",
+        "lang": "nl"
+      },
+      "taxID": {
+        "uri": "https://begrippen.waterschaplimburg.nl/assetmanagement/id/begrip/Toplaag",
+        "label": "https://begrippen.waterschaplimburg.nl/assetmanagement/id/begrip/Toplaag"
+      },
+      "prop": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Toplaag-verschijningsvorm",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Toplaag-verschijningsvorm"
+      },
+      "targetID": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Verschijningsvorm",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Verschijningsvorm"
+      },
+      "propLabel": {
+        "lex": "Verschijningsvorm",
+        "lang": "nl"
+      },
+      "verschijningsvormenLabel": {
+        "lex": "Dotterbloemhooiland nat",
+        "lang": "nl"
+      },
+      "taxDef": {
+        "lex": "buitenste verdedigingslaag van een bekledingsconstructie",
+        "lang": "nl"
+      }
+    },
+    {
+      "ID": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Terreindeel",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Terreindeel"
+      },
+      "label": {
+        "lex": "Terreindeel",
+        "lang": "nl"
+      },
+      "taxID": {
+        "uri": "https://begrippen.waterschaplimburg.nl/assetmanagement/id/begrip/Terreindeel",
+        "label": "https://begrippen.waterschaplimburg.nl/assetmanagement/id/begrip/Terreindeel"
+      },
+      "prop": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Terreindeel-representeertToplaag",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Terreindeel-representeertToplaag"
+      },
+      "targetID": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Toplaag",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Toplaag"
+      },
+      "propLabel": {
+        "lex": "representeertToplaag",
+        "lang": "nl"
+      },
+      "verschijningsvormenLabel": null,
+      "taxDef": {
+        "lex": "Kleinste functioneel onafhankelijk stukje van een terrein dat er binnen het objecttype Terrein van NEN 3610 wordt onderscheiden",
+        "lang": "nl"
+      }
+    },
+    {
+      "ID": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Bekledingsconstructie",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Bekledingsconstructie"
+      },
+      "label": {
+        "lex": "Bekledingsconstructie",
+        "lang": "nl"
+      },
+      "taxID": {
+        "uri": "https://begrippen.waterschaplimburg.nl/assetmanagement/id/begrip/Bekledingsconstructie",
+        "label": "https://begrippen.waterschaplimburg.nl/assetmanagement/id/begrip/Bekledingsconstructie"
+      },
+      "prop": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Bekledingsconstructie-heeftLaag",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Bekledingsconstructie-heeftLaag"
+      },
+      "targetID": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Bekledingslaag",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Bekledingslaag"
+      },
+      "propLabel": {
+        "lex": "Heeft laag",
+        "lang": "nl"
+      },
+      "verschijningsvormenLabel": null,
+      "taxDef": {
+        "lex": "constructie die tot doel heeft de dijkkern te beschermen tegen erosie door de waterbeweging, bestaande uit één of meerdere toplagen met daaronder (eventueel) uitvul-, filter- en kleilagen.",
+        "lang": "nl"
+      }
+    },
+    {
+      "ID": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Bekledingsconstructie",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Bekledingsconstructie"
+      },
+      "label": {
+        "lex": "Bekledingsconstructie",
+        "lang": "nl"
+      },
+      "taxID": {
+        "uri": "https://begrippen.waterschaplimburg.nl/assetmanagement/id/begrip/Bekledingsconstructie",
+        "label": "https://begrippen.waterschaplimburg.nl/assetmanagement/id/begrip/Bekledingsconstructie"
+      },
+      "prop": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Bekledingsconstructie-heeftBekledingsconstructie-inverse",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Bekledingsconstructie-heeftBekledingsconstructie-inverse"
+      },
+      "targetID": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Watergangonderdeel",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Watergangonderdeel"
+      },
+      "propLabel": {
+        "lex": "Bekledingsconstructie van"
+      },
+      "verschijningsvormenLabel": null,
+      "taxDef": {
+        "lex": "constructie die tot doel heeft de dijkkern te beschermen tegen erosie door de waterbeweging, bestaande uit één of meerdere toplagen met daaronder (eventueel) uitvul-, filter- en kleilagen.",
+        "lang": "nl"
+      }
+    },
+    {
+      "ID": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Watergang",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Watergang"
+      },
+      "label": {
+        "lex": "Watergang",
+        "lang": "nl"
+      },
+      "taxID": {
+        "uri": "https://begrippen.waterschaplimburg.nl/assetmanagement/id/begrip/Waterloop",
+        "label": "https://begrippen.waterschaplimburg.nl/assetmanagement/id/begrip/Waterloop"
+      },
+      "prop": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Watergang-heeftIntersectie",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Watergang-heeftIntersectie"
+      },
+      "targetID": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Intersectie",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Intersectie"
+      },
+      "propLabel": {
+        "lex": "Heeft intersectie",
+        "lang": "nl"
+      },
+      "verschijningsvormenLabel": null,
+      "taxDef": {
+        "lex": "Een langgerekte verlaging in het terrein van natuurlijke of kunstmatige oorsprong die permanent of periodiek stromend water bevat.",
+        "lang": "nl"
+      }
+    },
+    {
+      "ID": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Watergang",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Watergang"
+      },
+      "label": {
+        "lex": "Watergang",
+        "lang": "nl"
+      },
+      "taxID": {
+        "uri": "https://begrippen.waterschaplimburg.nl/assetmanagement/id/begrip/Waterloop",
+        "label": "https://begrippen.waterschaplimburg.nl/assetmanagement/id/begrip/Waterloop"
+      },
+      "prop": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Watergang-heeftSectie",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Watergang-heeftSectie"
+      },
+      "targetID": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Watergangsectie",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Watergangsectie"
+      },
+      "propLabel": {
+        "lex": "Heeft sectie",
+        "lang": "nl"
+      },
+      "verschijningsvormenLabel": null,
+      "taxDef": {
+        "lex": "Een langgerekte verlaging in het terrein van natuurlijke of kunstmatige oorsprong die permanent of periodiek stromend water bevat.",
+        "lang": "nl"
+      }
+    },
+    {
+      "ID": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Watergang",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Watergang"
+      },
+      "label": {
+        "lex": "Watergang",
+        "lang": "nl"
+      },
+      "taxID": {
+        "uri": "https://begrippen.waterschaplimburg.nl/assetmanagement/id/begrip/Waterloop",
+        "label": "https://begrippen.waterschaplimburg.nl/assetmanagement/id/begrip/Waterloop"
+      },
+      "prop": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Watergang-beschrijftWatergang-inverse",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Watergang-beschrijftWatergang-inverse"
+      },
+      "targetID": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Profiel",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Profiel"
+      },
+      "propLabel": {
+        "lex": "Wordt beschreven door profiel"
+      },
+      "verschijningsvormenLabel": null,
+      "taxDef": {
+        "lex": "Een langgerekte verlaging in het terrein van natuurlijke of kunstmatige oorsprong die permanent of periodiek stromend water bevat.",
+        "lang": "nl"
+      }
+    },
+    {
+      "ID": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Bekledingslaag",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Bekledingslaag"
+      },
+      "label": {
+        "lex": "Bekledingslaag",
+        "lang": "nl"
+      },
+      "taxID": {
+        "uri": "https://begrippen.waterschaplimburg.nl/assetmanagement/id/begrip/Bekledingslaag",
+        "label": "https://begrippen.waterschaplimburg.nl/assetmanagement/id/begrip/Bekledingslaag"
+      },
+      "prop": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Bekledingslaag-Materiaal",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Bekledingslaag-Materiaal"
+      },
+      "targetID": {
+        "uri": "https://ontologie.waterschaplimburg.nl/def#SoortMateriaal",
+        "label": "https://ontologie.waterschaplimburg.nl/def#SoortMateriaal"
+      },
+      "propLabel": {
+        "lex": "Materiaal",
+        "lang": "nl"
+      },
+      "verschijningsvormenLabel": null,
+      "taxDef": {
+        "lex": "laag waaruit de bekledingsconstructie van een waterkering is opgebouwd",
+        "lang": "nl"
+      }
+    },
+    {
+      "ID": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Bekledingslaag",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Bekledingslaag"
+      },
+      "label": {
+        "lex": "Bekledingslaag",
+        "lang": "nl"
+      },
+      "taxID": {
+        "uri": "https://begrippen.waterschaplimburg.nl/assetmanagement/id/begrip/Bekledingslaag",
+        "label": "https://begrippen.waterschaplimburg.nl/assetmanagement/id/begrip/Bekledingslaag"
+      },
+      "prop": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Bekledingslaag-heeftLaag-inverse",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Bekledingslaag-heeftLaag-inverse"
+      },
+      "targetID": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Bekledingsconstructie",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Bekledingsconstructie"
+      },
+      "propLabel": {
+        "lex": "Laag van"
+      },
+      "verschijningsvormenLabel": null,
+      "taxDef": {
+        "lex": "laag waaruit de bekledingsconstructie van een waterkering is opgebouwd",
+        "lang": "nl"
+      }
+    },
+    {
+      "ID": {
+        "uri": "http://example.org/ontologies/010.04_Assetmanagement#Werkpad",
+        "label": "http://example.org/ontologies/010.04_Assetmanagement#Werkpad"
+      },
+      "label": {
+        "lex": "Werkpad",
+        "lang": "nl"
+      },
+      "taxID": {
+        "uri": "https://begrippen.waterschaplimburg.nl/assetmanagement/id/begrip/Werkpad",
+        "label": "https://begrippen.waterschaplimburg.nl/assetmanagement/id/begrip/Werkpad"
+      },
+      "prop": null,
+      "targetID": null,
+      "propLabel": null,
+      "verschijningsvormenLabel": null,
+      "taxDef": {
+        "lex": "Het object wordt gebruikt als (voet)pad waarlangs werk zoals onderhoud verricht wordt.",
+        "lang": "nl"
+      }
+    }
+  ]
+}
