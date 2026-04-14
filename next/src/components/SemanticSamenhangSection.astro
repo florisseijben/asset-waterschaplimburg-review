@@ -61,6 +61,8 @@ const selectedNode = layoutNodes.find((item) => item.id === selectedId);
     <div class="semantic-graph-status" data-semantic-graph-status>
       Samenhang wordt geladen. De dummy Turtle-bron vormt hier de basis voor de eerste Reactodia-weergave.
     </div>
+    <div class="semantic-graph-fallback" data-semantic-graph-fallback></div>
+    <div class="semantic-reactodia-host" data-semantic-reactodia-host hidden></div>
   </div>
 </section>
 
@@ -210,7 +212,7 @@ const selectedNode = layoutNodes.find((item) => item.id === selectedId);
       };
     }
 
-    function renderFallback(stage, graph) {
+    function renderFallback(container, graph) {
       const nodeWidth = 220;
       const nodeHeight = 68;
       const colGap = 42;
@@ -275,7 +277,7 @@ const selectedNode = layoutNodes.find((item) => item.id === selectedId);
       });
 
       svg += "</svg></div>";
-      stage.innerHTML = svg;
+      container.innerHTML = svg;
     }
 
     async function ensureLibraries() {
@@ -330,42 +332,37 @@ const selectedNode = layoutNodes.find((item) => item.id === selectedId);
       };
     }
 
-    async function renderReactodia(stage, statusNode, turtle) {
+    async function renderReactodia(host, turtle) {
       try {
         const libs = await ensureLibraries();
         const quads = new libs.n3.Parser().parse(turtle);
         const WorkspaceApp = createWorkspaceApp(quads);
-        let reactRoot = roots.get(stage);
+        let reactRoot = roots.get(host);
 
         if (!reactRoot) {
-          reactRoot = libs.reactDomClient.createRoot(stage);
-          roots.set(stage, reactRoot);
+          reactRoot = libs.reactDomClient.createRoot(host);
+          roots.set(host, reactRoot);
         }
 
         reactRoot.render(libs.react.createElement(WorkspaceApp));
-
-        if (statusNode) {
-          statusNode.hidden = true;
-        }
       } catch (error) {
-        if (statusNode) {
-          statusNode.hidden = false;
-          statusNode.textContent = "Reactodia kon niet geladen worden. De vaste samenhangsweergave blijft daarom zichtbaar.";
-        }
+        throw error;
       }
     }
 
     async function initRoot(root) {
       const stage = root.querySelector("[data-semantic-graph-stage]");
       const statusNode = root.querySelector("[data-semantic-graph-status]");
+      const fallbackNode = root.querySelector("[data-semantic-graph-fallback]");
+      const reactodiaHost = root.querySelector("[data-semantic-reactodia-host]");
       const config = getConfig(root);
 
-      if (!stage || !config.turtle) {
+      if (!stage || !fallbackNode || !reactodiaHost || !config.turtle) {
         return;
       }
 
       const fallbackGraph = extractGraphFromTurtle(config.turtle, config.layoutNodes);
-      renderFallback(stage, fallbackGraph);
+      renderFallback(fallbackNode, fallbackGraph);
 
       if (statusNode) {
         statusNode.hidden = false;
@@ -377,13 +374,34 @@ const selectedNode = layoutNodes.find((item) => item.id === selectedId);
         const quads = new n3.Parser().parse(config.turtle);
         const graph = extractGraph(quads, config.layoutNodes);
 
-        renderFallback(stage, graph);
+        renderFallback(fallbackNode, graph);
+        reactodiaHost.hidden = false;
 
-        await renderReactodia(stage, statusNode, config.turtle);
+        await renderReactodia(reactodiaHost, config.turtle);
+
+        window.setTimeout(() => {
+          const renderedSomething = reactodiaHost.childElementCount > 0;
+
+          if (renderedSomething) {
+            fallbackNode.hidden = true;
+            if (statusNode) {
+              statusNode.hidden = true;
+            }
+          } else {
+            reactodiaHost.hidden = true;
+            if (statusNode) {
+              statusNode.hidden = false;
+              statusNode.textContent =
+                "Reactodia leverde geen zichtbare visualisatie op. De vaste samenhangsweergave blijft daarom zichtbaar.";
+            }
+          }
+        }, 1200);
       } catch (error) {
+        reactodiaHost.hidden = true;
         if (statusNode) {
           statusNode.hidden = false;
-          statusNode.textContent = "De Turtle-bron kon niet worden verwerkt. Controleer de semantische bronconfiguratie.";
+          statusNode.textContent =
+            "Reactodia kon niet geladen worden. De vaste samenhangsweergave blijft daarom zichtbaar.";
         }
       }
     }

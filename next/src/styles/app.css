@@ -620,6 +620,8 @@ h1 {
   padding: var(--space-3);
   border: 1px solid var(--color-line);
   background: #f8fcfc;
+  align-content: start;
+  gap: var(--space-3);
 }
 
 .semantic-graph-status {
@@ -635,15 +637,27 @@ h1 {
   background: #ffffff;
 }
 
+.semantic-graph-fallback[hidden],
+.semantic-reactodia-host[hidden] {
+  display: none;
+}
+
 .semantic-graph {
   display: block;
   width: 100%;
   height: auto;
 }
 
-.semantic-reactodia-workspace,
-.semantic-graph-stage > div {
-  min-height: 22rem;
+.semantic-reactodia-host {
+  min-height: 24rem;
+  border: 1px solid var(--color-line);
+  background: #ffffff;
+}
+
+.semantic-reactodia-workspace {
+  min-height: 24rem;
+  height: 24rem;
+  width: 100%;
 }
 
 .semantic-graph-node rect {
