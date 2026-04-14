@@ -8,7 +8,11 @@ import ContentSectionCard from "../../../../../components/ContentSectionCard.ast
 import NextStepsSection from "../../../../../components/NextStepsSection.astro";
 import SemanticSamenhangSection from "../../../../../components/SemanticSamenhangSection.astro";
 import { getCollection } from "astro:content";
-import { createWatergangSamenhangFromAssetJson, getConceptFromAssetJson } from "../../../../../lib/assetConcepts";
+import {
+  createWatergangSamenhangFromAssetJson,
+  getConceptFromAssetJson,
+  getDecompositionFromAssetJson
+} from "../../../../../lib/assetConcepts";
 
 const entries = await getCollection("datastandaard-objectenhandboek-objects");
 const expectedSlug = "/datastandaard/objectenhandboek/watersysteem/watergangen";
@@ -23,9 +27,20 @@ if (!entry) {
   throw new Error("Objectenhandboek Watergangen ontbreekt in de nieuwe omgeving.");
 }
 
-const visibleContentSections = (entry.data.contentSections || []).filter((item) => item.title !== "Decompositie");
 const conceptData = getConceptFromAssetJson("Watergang");
+const decompositionData = getDecompositionFromAssetJson("Watergang");
 const samenhangData = createWatergangSamenhangFromAssetJson();
+const visibleContentSections = (entry.data.contentSections || [])
+  .filter((item) => item.title !== "Decompositie")
+  .map((item) =>
+    item.title === "Onderdelen" && decompositionData
+      ? {
+          ...item,
+          summary: decompositionData.summary,
+          items: decompositionData.items
+        }
+      : item
+  );
 const fallbackSamenhang = {
   sourceLabel: "Dummy relatiebron uit de Watergang-pagina.",
   turtle: `@prefix object: <https://data.waterschaplimburg.nl/id/objecttype/> .
@@ -116,7 +131,7 @@ object:watergang relatie:heeftIntersectie object:intersectie .
 
     <SemanticSamenhangSection
       title="Decompositie binnen de objectlijn"
-      summary="Deze samenhangsweergave laat zien hoe Watergang, Watergangsectie en Intersectie zich tot elkaar verhouden op basis van de dummy begrippen- en objectbron."
+      summary="Deze samenhangsweergave laat zien hoe Watergang, Watergangsectie en Intersectie zich tot elkaar verhouden op basis van de ontologische relaties in de dummy begrippen- en objectbron."
       sourceLabel={(samenhangData || fallbackSamenhang).sourceLabel}
       graphId="watergang-samenhang"
       selectedId="watergang"

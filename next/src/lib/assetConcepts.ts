@@ -24,6 +24,12 @@ type TermItem = {
   href?: string;
 };
 
+type SectionItem = {
+  title: string;
+  text: string;
+  href?: string;
+};
+
 type LayoutNode = {
   id: string;
   label: string;
@@ -72,6 +78,25 @@ function uniqueByTitle(items: TermItem[]) {
     seen.add(key);
     return true;
   });
+}
+
+function getObjectRoute(label: string) {
+  const routes: Record<string, string> = {
+    stroomgebied: "/datastandaard/objectenhandboek/watersysteem/stroomgebied",
+    watergang: "/datastandaard/objectenhandboek/watersysteem/watergangen",
+    watergangsectie: "/datastandaard/objectenhandboek/watersysteem/watergangsectie",
+    intersectie: "/datastandaard/objectenhandboek/watersysteem/intersectie",
+    talud: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/talud",
+    bekledingsconstructie:
+      "/datastandaard/objectenhandboek/watersysteem/watergangsectie/talud/bekledingsconstructie",
+    toplaag:
+      "/in-migratie/datastandaard/objectenhandboek/watersysteem/watergangsectie/talud/toplaag",
+    bodem: "/in-migratie/datastandaard/objectenhandboek/watersysteem/watergangsectie/bodem",
+    berm: "/in-migratie/datastandaard/objectenhandboek/watersysteem/watergangsectie/berm",
+    werkpad: "/in-migratie/datastandaard/objectenhandboek/watersysteem/watergangsectie/werkpad"
+  };
+
+  return routes[normalizeId(label)] || "/datastandaard/woordenboek";
 }
 
 export function getConceptFromAssetJson(label: string) {
@@ -133,6 +158,31 @@ export function getConceptFromAssetJson(label: string) {
     relatedTerms,
     types,
     relationRows
+  };
+}
+
+export function getDecompositionFromAssetJson(label: string) {
+  const concept = getConceptFromAssetJson(label);
+  if (!concept) {
+    return null;
+  }
+
+  const decompositionRelations = concept.relationRows.filter((item) => item.relation.toLowerCase().startsWith("heeft "));
+  const items: SectionItem[] = uniqueByTitle(
+    decompositionRelations.map((item) => ({
+      title: item.target,
+      text: `${item.relation} binnen de ontologische decompositie van ${label}.`,
+      href: getObjectRoute(item.target)
+    }))
+  );
+
+  if (!items.length) {
+    return null;
+  }
+
+  return {
+    summary: `De onderdelen hieronder worden direct afgeleid uit de ontologische relaties van ${label}.`,
+    items
   };
 }
 
