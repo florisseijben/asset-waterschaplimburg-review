@@ -40,6 +40,12 @@ type LayoutNode = {
   stroke?: string;
 };
 
+type GraphEdge = {
+  from: string;
+  to: string;
+  label: string;
+};
+
 const bindings = ((assetConcepts as { bindings?: Binding[] }).bindings || []) as Binding[];
 
 function asLex(value?: JsonValue | null) {
@@ -217,6 +223,11 @@ export function createWatergangSamenhangFromAssetJson() {
   }
 
   const childNodes = uniqueByKey(relevantRelations, (item) => item.targetId);
+  const edges: GraphEdge[] = relevantRelations.map((item) => ({
+    from: item.sourceId,
+    to: item.targetId,
+    label: item.predicateLabel
+  }));
   const layoutNodes: LayoutNode[] = [
     {
       id: concept.relationRows[0]?.sourceId || "watergang",
@@ -267,6 +278,7 @@ export function createWatergangSamenhangFromAssetJson() {
 
   return {
     layoutNodes,
+    edges,
     turtle: turtleLines.join("\n"),
     sourceLabel: "Dummy JSON-export uit de begrippen- en objectbron in next/src/data/concepts/asset-concepts.json."
   };

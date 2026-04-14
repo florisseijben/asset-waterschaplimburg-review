@@ -9,6 +9,12 @@ interface LayoutNode {
   stroke?: string;
 }
 
+interface GraphEdge {
+  from: string;
+  to: string;
+  label: string;
+}
+
 interface Props {
   title?: string;
   summary?: string;
@@ -17,6 +23,7 @@ interface Props {
   selectedId?: string;
   turtle: string;
   layoutNodes: LayoutNode[];
+  edges?: GraphEdge[];
 }
 
 const {
@@ -26,7 +33,8 @@ const {
   graphId,
   selectedId = "",
   turtle,
-  layoutNodes = []
+  layoutNodes = [],
+  edges = []
 } = Astro.props;
 
 const configId = `semantic-samenhang-config-${graphId}`;
@@ -102,7 +110,7 @@ function extractGraphFromTurtleMarkup(turtleValue: string, nodes: LayoutNode[]) 
   };
 }
 
-function renderFallbackMarkup(graph: { nodes: LayoutNode[]; edges: { from: string; to: string; label: string }[] }) {
+function renderFallbackMarkup(graph: { nodes: LayoutNode[]; edges: GraphEdge[] }) {
   const nodeWidth = 220;
   const nodeHeight = 68;
   const colGap = 42;
@@ -221,7 +229,13 @@ function renderFallbackMarkup(graph: { nodes: LayoutNode[]; edges: { from: strin
   );
 }
 
-const initialFallbackMarkup = renderFallbackMarkup(extractGraphFromTurtleMarkup(turtle, layoutNodes));
+const initialFallbackGraph = edges.length
+  ? {
+      nodes: layoutNodes,
+      edges
+    }
+  : extractGraphFromTurtleMarkup(turtle, layoutNodes);
+const initialFallbackMarkup = renderFallbackMarkup(initialFallbackGraph);
 ---
 
 <section
@@ -256,7 +270,7 @@ const initialFallbackMarkup = renderFallbackMarkup(extractGraphFromTurtleMarkup(
   </div>
 </section>
 
-<script id={configId} type="application/json">{JSON.stringify({ layoutNodes })}</script>
+<script id={configId} type="application/json">{JSON.stringify({ layoutNodes, edges })}</script>
 <script id={turtleId} type="text/plain">{turtle}</script>
 
 <script is:inline type="module">
@@ -296,6 +310,7 @@ const initialFallbackMarkup = renderFallbackMarkup(extractGraphFromTurtleMarkup(
 
       return {
         layoutNodes: configNode ? JSON.parse(configNode.textContent || "{}").layoutNodes || [] : [],
+        edges: configNode ? JSON.parse(configNode.textContent || "{}").edges || [] : [],
         turtle: turtleNode ? turtleNode.textContent || "" : ""
       };
     }
@@ -551,7 +566,9 @@ const initialFallbackMarkup = renderFallbackMarkup(extractGraphFromTurtleMarkup(
         return;
       }
 
-      const fallbackGraph = extractGraphFromTurtle(config.turtle, config.layoutNodes);
+      const fallbackGraph = config.edges?.length
+        ? { nodes: config.layoutNodes, edges: config.edges }
+        : extractGraphFromTurtle(config.turtle, config.layoutNodes);
       renderFallback(fallbackNode, fallbackGraph);
 
       if (statusNode) {

@@ -94,6 +94,18 @@ object:watergang relatie:heeftIntersectie object:intersectie .
       fill: "#eefafb",
       stroke: "#00a9c1"
     }
+  ],
+  edges: [
+    {
+      from: "watergang",
+      to: "watergangsectie",
+      label: "Heeft sectie"
+    },
+    {
+      from: "watergang",
+      to: "intersectie",
+      label: "Heeft intersectie"
+    }
   ]
 };
 ---
@@ -137,6 +149,7 @@ object:watergang relatie:heeftIntersectie object:intersectie .
       selectedId="watergang"
       turtle={(samenhangData || fallbackSamenhang).turtle}
       layoutNodes={(samenhangData || fallbackSamenhang).layoutNodes}
+      edges={(samenhangData || fallbackSamenhang).edges}
     />
   </div>
 
