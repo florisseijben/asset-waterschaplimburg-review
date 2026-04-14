@@ -54,8 +54,8 @@ productRelations:
   - title: Objectenhandboek
     text: Objecttypen en opbouw van het watersysteem.
     href: /datastandaard/objectenhandboek/watersysteem
-  - title: OTL
-    text: Klassen, relaties en modellering van het watersysteem.
+  - title: Object Type Library
+    text: Dit product definieert de eigenschappen, relaties en het gedrag van een bepaald type object in een gestandaardiseerde vorm.
     href: /datastandaard/otl
   - title: Referentiedataset
     text: Voorbeelddata en toetsbare referentiegegevens.

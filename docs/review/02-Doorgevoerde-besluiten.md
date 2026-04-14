@@ -59,6 +59,7 @@ Doorgevoerd:
 - `Synoniemen`, `Gerelateerde termen` en `Typen` tonen nu als standaard ingeklapte uitklapblokken, met begrippen onder elkaar en een korte toelichting per begrip
 - productsecties gebruiken nu dezelfde vaste titel: `Vaste producten binnen de datastandaard`
 - de productsectie voor Datastandaard en systeemlandingen gebruikt nu één herbruikbare standaardcomponent: [`ProductSection.astro`](</c:/Users/f.seijben/Develop/Asset.waterschaplimburg.nl/next/src/components/ProductSection.astro:1>)
+- het product `OTL` wordt nu zichtbaar aangeduid als `Object Type Library`, met een uniforme toelichting op de productkaarten en een inhoudelijk gedefinieerde productpagina
 
 ## Semantische samenhang
 

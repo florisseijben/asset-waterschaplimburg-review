@@ -66,8 +66,8 @@ productRelations:
   - title: Woordenboek
     text: Begrippen en definities voor bekleding, constructie en toplaag.
     href: /datastandaard/woordenboek
-  - title: OTL
-    text: Modellering van constructieve opbouw en relaties binnen profielonderdelen.
+  - title: Object Type Library
+    text: Dit product definieert de eigenschappen, relaties en het gedrag van een bepaald type object in een gestandaardiseerde vorm.
     href: /datastandaard/otl
   - title: Referentiedataset
     text: Voorbeelddata voor constructieve opbouw, materiaallagen en taludbescherming.

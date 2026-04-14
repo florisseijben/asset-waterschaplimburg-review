@@ -76,8 +76,8 @@ productRelations:
   - title: Woordenboek
     text: Begripsdefinitie van Intersectie als startpunt van de objectpagina.
     href: /datastandaard/woordenboek
-  - title: OTL
-    text: Semantische modellering van kruisingen en relaties binnen de watergangstructuur.
+  - title: Object Type Library
+    text: Dit product definieert de eigenschappen, relaties en het gedrag van een bepaald type object in een gestandaardiseerde vorm.
     href: /datastandaard/otl
   - title: Referentiedataset
     text: Voorbeelddata en referentiesets voor kruisingen en aansluitingen.

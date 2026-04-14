@@ -46,6 +46,7 @@ Open punten:
 - Binnen `Begrip` moeten `Synoniemen`, `Gerelateerde termen` en `Typen` standaard ingeklapt zijn en pas extra context tonen wanneer je ze uitklapt.
 - De sectie met productrelaties moet als vaste standaardsectie herkenbaar zijn en niet per pagina een andere titel gebruiken.
 - De productsectie op de Datastandaard-landing en systeemlandingen moet niet per pagina los worden opgebouwd, maar via één herbruikbare standaardcomponent werken.
+- Productnamen moeten voluit en begrijpelijk zijn waar dat helpt. Voor `OTL` is de voorkeur om zichtbaar `Object Type Library` te tonen en de betekenis expliciet toe te lichten.
 
 ### 3. Vormgeving
 

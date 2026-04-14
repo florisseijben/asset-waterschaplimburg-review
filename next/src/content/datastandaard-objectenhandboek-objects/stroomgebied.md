@@ -75,8 +75,8 @@ productRelations:
   - title: Objectenhandboek
     text: Uitwerking van objectfamilies binnen het stroomgebied.
     href: /datastandaard/objectenhandboek/watersysteem
-  - title: OTL
-    text: Klassen, relaties en modellering van subsystemen en objectlijnen.
+  - title: Object Type Library
+    text: Dit product definieert de eigenschappen, relaties en het gedrag van een bepaald type object in een gestandaardiseerde vorm.
     href: /datastandaard/otl
 nextSteps:
   - title: Watergangen

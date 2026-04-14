@@ -75,8 +75,8 @@ productRelations:
   - title: Woordenboek
     text: Begrippen en definities voor de waterganglijn.
     href: /datastandaard/woordenboek
-  - title: OTL
-    text: Klassen, relaties en modellering van watergangen.
+  - title: Object Type Library
+    text: Dit product definieert de eigenschappen, relaties en het gedrag van een bepaald type object in een gestandaardiseerde vorm.
     href: /datastandaard/otl
   - title: Referentiedataset
     text: Voorbeelddata en toetsbare referentiegegevens.

@@ -16,7 +16,7 @@ productRelations:
         href: /datastandaard/woordenboek
       - label: Objectenhandboek
         href: /datastandaard/objectenhandboek
-      - label: OTL
+      - label: Object Type Library
         href: /datastandaard/otl
       - label: Referentiedataset
         href: /datastandaard/referentiedataset
@@ -28,7 +28,7 @@ productRelations:
         href: /datastandaard/woordenboek
       - label: Objectenhandboek
         href: /datastandaard/objectenhandboek
-      - label: OTL
+      - label: Object Type Library
         href: /datastandaard/otl
       - label: Referentiedataset
         href: /datastandaard/referentiedataset

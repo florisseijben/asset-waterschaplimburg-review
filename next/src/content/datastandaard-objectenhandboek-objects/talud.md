@@ -71,8 +71,8 @@ productRelations:
   - title: Woordenboek
     text: Begrippen en definities voor talud en aangrenzende profielonderdelen.
     href: /datastandaard/woordenboek
-  - title: OTL
-    text: Modellering van talud als onderdeel van de watergangsectie.
+  - title: Object Type Library
+    text: Dit product definieert de eigenschappen, relaties en het gedrag van een bepaald type object in een gestandaardiseerde vorm.
     href: /datastandaard/otl
   - title: Referentiedataset
     text: Voorbeelddata en referentieprofielen voor secties en profielonderdelen.

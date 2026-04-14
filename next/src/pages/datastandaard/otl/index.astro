@@ -1,28 +1,39 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import Hero from "../../../components/Hero.astro";
+import ConceptSummarySection from "../../../components/ConceptSummarySection.astro";
 import PlaceholderStatus from "../../../components/PlaceholderStatus.astro";
 
 ---
 
 <BaseLayout
-  title="OTL"
+  title="Object Type Library"
   currentPath="/datastandaard"
   breadcrumbs={[
     { label: "Home", href: "/" },
     { label: "Datastandaard", href: "/datastandaard" },
-    { label: "OTL" }
+    { label: "Object Type Library" }
   ]}
 >
   <Hero
     eyebrow="Product"
-    title="OTL"
-    summary="Deze route reserveert de plek voor de OTL-landingspagina en latere model- en graphverkenning binnen de nieuwe omgeving."
+    title="Object Type Library"
+    summary="Dit product definieert de eigenschappen, relaties en het gedrag van een bepaald type object in een gestandaardiseerde vorm."
+  />
+
+  <ConceptSummarySection
+    subjectLabel="Object Type Library (OTL)"
+    definition="Een ObjectType Library (OTL) is een gestructureerde verzameling van objecttypen die binnen een bepaald systeem of discipline worden gebruikt. Elk objecttype binnen de bibliotheek definieert de eigenschappen, relaties en het gedrag van een bepaald type object in een gestandaardiseerde vorm. Ook biedt dit de basis om eisen en verificaties aan elk object te koppelen. Deze bibliotheken worden vaak gebruikt om consistentie te creëren en samenwerking te bevorderen."
+    relatedTerms={[
+      { title: "Objecttype", text: "Basiseenheid binnen de bibliotheek waarvoor eigenschappen, relaties en gedrag worden vastgelegd.", href: "/datastandaard/woordenboek" },
+      { title: "Relaties", text: "Samenhangen tussen objecttypen binnen een systeem, discipline of model.", href: "/datastandaard/woordenboek" },
+      { title: "Eisen en verificaties", text: "Koppelingen waarmee objecttypen ook gebruikt kunnen worden voor toetsing en borging.", href: "/datastandaard/woordenboek" }
+    ]}
   />
 
   <PlaceholderStatus
-    title="OTL volgt in een volgende slice"
-    summary="De route is nu al aanwezig zodat de productstructuur van de Datastandaard volledig doorklikbaar kan worden opgebouwd."
+    title="Object Type Library volgt inhoudelijk in een volgende slice"
+    summary="De productroute is nu inhoudelijk gepositioneerd en kan in een volgende stap verder worden uitgewerkt met modelroutes, relatieverkenning en graphfunctionaliteit."
     scope="OTL-landingen, modelroutes en Reactodia-gerelateerde verkenning"
   />
 </BaseLayout>

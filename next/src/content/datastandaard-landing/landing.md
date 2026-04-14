@@ -50,8 +50,8 @@ products:
   - title: Objectenhandboek
     text: Objecttypen, eigenschappen en voorbeeldlocaties.
     href: /datastandaard/objectenhandboek
-  - title: OTL
-    text: Structuur voor klassen, relaties en objectboom.
+  - title: Object Type Library
+    text: Dit product definieert de eigenschappen, relaties en het gedrag van een bepaald type object in een gestandaardiseerde vorm.
     href: /datastandaard/otl
   - title: Referentiedataset
     text: Voorbeeldsets en toetsbare referentiegegevens.
