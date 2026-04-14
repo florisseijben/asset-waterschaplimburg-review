@@ -32,6 +32,196 @@ const {
 const configId = `semantic-samenhang-config-${graphId}`;
 const turtleId = `semantic-samenhang-turtle-${graphId}`;
 const selectedNode = layoutNodes.find((item) => item.id === selectedId);
+
+function localId(value: string) {
+  return String(value || "").replace(/[#/]$/, "").split(/[#/]/).pop() || "";
+}
+
+function escapeHtml(value: string) {
+  return String(value || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+function extractGraphFromTurtleMarkup(turtleValue: string, nodes: LayoutNode[]) {
+  const nodeIds = new Set(nodes.map((item) => item.id));
+  const labels = new Map<string, string>();
+  const predicateLabels = new Map<string, string>();
+  const edges: { from: string; to: string; label: string }[] = [];
+  const triples = turtleValue
+    .split("\n")
+    .map((line) => line.trim())
+    .filter((line) => line && !line.startsWith("@prefix"));
+
+  triples.forEach((line) => {
+    const labelMatch = line.match(/^([A-Za-z]+:[^\s]+)\s+rdfs:label\s+"([^"]+)"/);
+
+    if (labelMatch) {
+      labels.set(localId(labelMatch[1]), labelMatch[2]);
+    }
+  });
+
+  triples.forEach((line) => {
+    const predicateMatch = line.match(/^([A-Za-z]+:[^\s]+)\s+a\s+owl:ObjectProperty/);
+
+    if (predicateMatch) {
+      const predicateId = localId(predicateMatch[1]);
+      predicateLabels.set(predicateId, labels.get(predicateId) || predicateId);
+    }
+  });
+
+  triples.forEach((line) => {
+    const edgeMatch = line.match(/^([A-Za-z]+:[^\s]+)\s+([A-Za-z]+:[^\s]+)\s+([A-Za-z]+:[^\s]+)\s+\./);
+
+    if (!edgeMatch) {
+      return;
+    }
+
+    const subjectId = localId(edgeMatch[1]);
+    const predicateId = localId(edgeMatch[2]);
+    const objectId = localId(edgeMatch[3]);
+
+    if (nodeIds.has(subjectId) && nodeIds.has(objectId)) {
+      edges.push({
+        from: subjectId,
+        to: objectId,
+        label: predicateLabels.get(predicateId) || labels.get(predicateId) || predicateId
+      });
+    }
+  });
+
+  return {
+    nodes: nodes.map((item) => ({
+      ...item,
+      label: labels.get(item.id) || item.label
+    })),
+    edges
+  };
+}
+
+function renderFallbackMarkup(graph: { nodes: LayoutNode[]; edges: { from: string; to: string; label: string }[] }) {
+  const nodeWidth = 220;
+  const nodeHeight = 68;
+  const colGap = 42;
+  const rowGap = 72;
+  const padding = 24;
+  const columns = graph.nodes.reduce((max, node) => Math.max(max, Number(node.column) || 0), 0) + 1;
+  const rows = graph.nodes.reduce((max, node) => Math.max(max, Number(node.row) || 0), 0) + 1;
+  const width = padding * 2 + columns * nodeWidth + (columns - 1) * colGap;
+  const height = padding * 2 + rows * nodeHeight + (rows - 1) * rowGap;
+  const positions: Record<string, { x: number; y: number }> = {};
+
+  graph.nodes.forEach((node) => {
+    positions[node.id] = {
+      x: padding + (Number(node.column) || 0) * (nodeWidth + colGap),
+      y: padding + (Number(node.row) || 0) * (nodeHeight + rowGap)
+    };
+  });
+
+  const edgesMarkup = graph.edges
+    .map((edge) => {
+      const from = positions[edge.from];
+      const to = positions[edge.to];
+
+      if (!from || !to) {
+        return "";
+      }
+
+      const startX = from.x + Math.round(nodeWidth / 2);
+      const startY = from.y + nodeHeight;
+      const endX = to.x + Math.round(nodeWidth / 2);
+      const endY = to.y;
+      const midY = Math.round((startY + endY) / 2);
+
+      return (
+        '<path d="M ' +
+        startX +
+        " " +
+        startY +
+        " C " +
+        startX +
+        " " +
+        midY +
+        ", " +
+        endX +
+        " " +
+        midY +
+        ", " +
+        endX +
+        " " +
+        endY +
+        '" fill="none" stroke="#007f91" stroke-width="2" marker-end="url(#semantic-samenhang-arrow)"></path>' +
+        '<text x="' +
+        Math.round((startX + endX) / 2) +
+        '" y="' +
+        (midY - 8) +
+        '" fill="#007f91" font-size="11" text-anchor="middle">' +
+        escapeHtml(edge.label) +
+        "</text>"
+      );
+    })
+    .join("");
+
+  const nodesMarkup = graph.nodes
+    .map((node) => {
+      const position = positions[node.id];
+      const fill = node.fill || "#eefafb";
+      const stroke = node.stroke || "#00a9c1";
+
+      return (
+        '<g class="semantic-graph-node">' +
+        '<rect x="' +
+        position.x +
+        '" y="' +
+        position.y +
+        '" width="' +
+        nodeWidth +
+        '" height="' +
+        nodeHeight +
+        '" fill="' +
+        fill +
+        '" stroke="' +
+        stroke +
+        '" stroke-width="2"></rect>' +
+        '<text x="' +
+        (position.x + 12) +
+        '" y="' +
+        (position.y + 27) +
+        '" fill="#102321" font-size="14" font-weight="700">' +
+        escapeHtml(node.label) +
+        "</text>" +
+        (node.subtitle
+          ? '<text x="' +
+            (position.x + 12) +
+            '" y="' +
+            (position.y + 48) +
+            '" fill="#66746d" font-size="11">' +
+            escapeHtml(node.subtitle) +
+            "</text>"
+          : "") +
+        "</g>"
+      );
+    })
+    .join("");
+
+  return (
+    '<div class="semantic-graph-wrap">' +
+    '<svg class="semantic-graph" viewBox="0 0 ' +
+    width +
+    " " +
+    height +
+    '" role="img" aria-label="Samenhang in het semantische model">' +
+    '<defs><marker id="semantic-samenhang-arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#007f91"></path></marker></defs>' +
+    edgesMarkup +
+    nodesMarkup +
+    "</svg></div>"
+  );
+}
+
+const initialFallbackMarkup = renderFallbackMarkup(extractGraphFromTurtleMarkup(turtle, layoutNodes));
 ---
 
 <section
@@ -61,7 +251,7 @@ const selectedNode = layoutNodes.find((item) => item.id === selectedId);
     <div class="semantic-graph-status" data-semantic-graph-status>
       Samenhang wordt geladen. De dummy Turtle-bron vormt hier de basis voor de eerste Reactodia-weergave.
     </div>
-    <div class="semantic-graph-fallback" data-semantic-graph-fallback></div>
+    <div class="semantic-graph-fallback" data-semantic-graph-fallback set:html={initialFallbackMarkup}></div>
     <div class="semantic-reactodia-host" data-semantic-reactodia-host hidden></div>
   </div>
 </section>
