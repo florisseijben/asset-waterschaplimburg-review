@@ -1,14 +1,12 @@
 ---
 import BaseLayout from "../../../../../../../layouts/BaseLayout.astro";
 import Hero from "../../../../../../../components/Hero.astro";
-import CardGrid from "../../../../../../../components/CardGrid.astro";
 import ConceptSummarySection from "../../../../../../../components/ConceptSummarySection.astro";
 import InfoCard from "../../../../../../../components/InfoCard.astro";
-import ContentSectionCard from "../../../../../../../components/ContentSectionCard.astro";
 import NextStepsSection from "../../../../../../../components/NextStepsSection.astro";
 import SemanticSamenhangSection from "../../../../../../../components/SemanticSamenhangSection.astro";
+import UitwerkingSection from "../../../../../../../components/UitwerkingSection.astro";
 import { getCollection } from "astro:content";
-import { withBase } from "../../../../../../../lib/paths";
 import bekledingsconstructieSamenhangTurtle from "../../../../../../../data/semantic/talud-bekledingsconstructie-samenhang.ttl?raw";
 
 const entries = await getCollection("datastandaard-objectenhandboek-objects");
@@ -107,15 +105,7 @@ const samenhangLayout = [
     layoutNodes={samenhangLayout}
   />
 
-  <section class="section section-panel">
-    <p class="eyebrow">Uitwerking</p>
-    <h2>Inhoudelijke opbouw van Bekledingsconstructie</h2>
-    <CardGrid stacked={true}>
-      {(entry.data.contentSections || []).map((item) => (
-        <ContentSectionCard title={item.title} text={item.summary} href={item.href} items={item.items} />
-      ))}
-    </CardGrid>
-  </section>
+  <UitwerkingSection title="Inhoudelijke opbouw van Bekledingsconstructie" items={entry.data.contentSections || []} />
 
   <section class="section section-panel">
     <p class="eyebrow">Productlijn</p>

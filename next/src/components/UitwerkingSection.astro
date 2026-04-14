@@ -1,0 +1,28 @@
+---
+import CardGrid from "./CardGrid.astro";
+import ContentSectionCard from "./ContentSectionCard.astro";
+
+interface SectionItem {
+  title: string;
+  summary: string;
+  href?: string;
+  items?: { title: string; text: string; href?: string }[];
+}
+
+interface Props {
+  title?: string;
+  items?: SectionItem[];
+}
+
+const { title = "Inhoudelijke opbouw", items = [] } = Astro.props;
+---
+
+<section class="section section-panel">
+  <p class="eyebrow">Uitwerking</p>
+  <h2>{title}</h2>
+  <CardGrid stacked={true}>
+    {items.map((item) => (
+      <ContentSectionCard title={item.title} text={item.summary} href={item.href} items={item.items} />
+    ))}
+  </CardGrid>
+</section>

@@ -29,24 +29,27 @@ subtypes:
     text: Wateren die onderdeel uitmaken van het hoofdwatersysteem onder beheer van het Rijk.
     href: /datastandaard/woordenboek
 contentSections:
-  - title: Stroomgebied
-    text: Subsysteemlanding voor de hydrologische samenhang en de objectfamilies daarbinnen.
-    href: /datastandaard/objectenhandboek/watersysteem/stroomgebied
-  - title: Watergangen
-    text: Objecten, begrippen, modellen en referenties rond watergangen.
-    href: /datastandaard/objectenhandboek/watersysteem/watergangen
-  - title: Watervlakten
-    text: Objecten, begrippen, modellen en referenties rond watervlakten.
-  - title: Waterbuffers
-    text: Objecten, begrippen, modellen en referenties rond waterbuffers.
-  - title: Terreinen
-    text: Objecten, begrippen, modellen en referenties rond terreinen.
-  - title: Kunstwerken
-    text: Objecten, begrippen, modellen en referenties rond kunstwerken.
-  - title: Terreininrichting
-    text: Objecten, begrippen, modellen en referenties rond terreininrichting.
-  - title: Vegetatieobjecten
-    text: Objecten, begrippen, modellen en referenties rond vegetatieobjecten.
+  - title: Overzicht / Samenhang
+    summary: Het watersysteem vormt de kapstok voor subsystemen, objectfamilies en objecttypen die samen de regionale waterstructuur beschrijven.
+  - title: Afbakening
+    summary: De afbakening van het watersysteem volgt de regionale beheercontext van oppervlaktewateren, ondersteunende waterstaatswerken en hun samenhangende objectlijnen.
+  - title: Onderdelen
+    summary: Binnen deze systeemlijn werken we eerst het subsysteem Stroomgebied uit en vandaar de objectfamilie Watergang met onderliggende objecttypen zoals Watergangsectie en Intersectie.
+    items:
+      - title: Stroomgebied
+        text: Subsysteemlanding voor de hydrologische samenhang en de objectfamilies daarbinnen.
+        href: /datastandaard/objectenhandboek/watersysteem/stroomgebied
+      - title: Watergang
+        text: Eerste uitgewerkte objectfamilie binnen het watersysteem.
+        href: /datastandaard/objectenhandboek/watersysteem/watergangen
+      - title: Watergangsectie
+        text: Onderliggend objecttype binnen de waterganglijn.
+        href: /datastandaard/objectenhandboek/watersysteem/watergangsectie
+      - title: Intersectie
+        text: Parallel objecttype voor kruisingen en snijpunten in de watergangstructuur.
+        href: /datastandaard/objectenhandboek/watersysteem/intersectie
+  - title: Geometrie
+    summary: De geometrie van het watersysteem wordt op systeemniveau gelezen via waterstructuren, gebieden en de ruimtelijke samenhang tussen objectfamilies en subsystemen.
 productRelations:
   - title: Woordenboek
     text: Begrippen en definities voor het watersysteem.
