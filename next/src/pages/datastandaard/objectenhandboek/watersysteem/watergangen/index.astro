@@ -8,8 +8,7 @@ import ContentSectionCard from "../../../../../components/ContentSectionCard.ast
 import NextStepsSection from "../../../../../components/NextStepsSection.astro";
 import SemanticSamenhangSection from "../../../../../components/SemanticSamenhangSection.astro";
 import { getCollection } from "astro:content";
-import { withBase } from "../../../../../lib/paths";
-import watergangSamenhangTurtle from "../../../../../data/semantic/watergang-samenhang.ttl?raw";
+import { createWatergangSamenhangFromAssetJson, getConceptFromAssetJson } from "../../../../../lib/assetConcepts";
 
 const entries = await getCollection("datastandaard-objectenhandboek-objects");
 const expectedSlug = "/datastandaard/objectenhandboek/watersysteem/watergangen";
@@ -25,35 +24,63 @@ if (!entry) {
 }
 
 const visibleContentSections = (entry.data.contentSections || []).filter((item) => item.title !== "Decompositie");
-const samenhangLayout = [
-  {
-    id: "watergang",
-    label: "Watergang",
-    subtitle: "Hoofdobject",
-    column: 1,
-    row: 0,
-    fill: "#e4f7fa",
-    stroke: "#00a9c1"
-  },
-  {
-    id: "watergangsectie",
-    label: "Watergangsectie",
-    subtitle: "Onderdeel",
-    column: 0,
-    row: 1,
-    fill: "#eefafb",
-    stroke: "#00a9c1"
-  },
-  {
-    id: "intersectie",
-    label: "Intersectie",
-    subtitle: "Onderdeel",
-    column: 2,
-    row: 1,
-    fill: "#eefafb",
-    stroke: "#00a9c1"
-  }
-];
+const conceptData = getConceptFromAssetJson("Watergang");
+const samenhangData = createWatergangSamenhangFromAssetJson();
+const fallbackSamenhang = {
+  sourceLabel: "Dummy relatiebron uit de Watergang-pagina.",
+  turtle: `@prefix object: <https://data.waterschaplimburg.nl/id/objecttype/> .
+@prefix relatie: <https://data.waterschaplimburg.nl/def/relatie/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+object:watergang a owl:Class ;
+  rdfs:label "Watergang" .
+
+object:watergangsectie a owl:Class ;
+  rdfs:label "Watergangsectie" .
+
+object:intersectie a owl:Class ;
+  rdfs:label "Intersectie" .
+
+relatie:heeftSectie a owl:ObjectProperty ;
+  rdfs:label "Heeft sectie" .
+
+relatie:heeftIntersectie a owl:ObjectProperty ;
+  rdfs:label "Heeft intersectie" .
+
+object:watergang relatie:heeftSectie object:watergangsectie .
+object:watergang relatie:heeftIntersectie object:intersectie .
+`,
+  layoutNodes: [
+    {
+      id: "watergang",
+      label: "Watergang",
+      subtitle: "Hoofdobject",
+      column: 1,
+      row: 0,
+      fill: "#e4f7fa",
+      stroke: "#00a9c1"
+    },
+    {
+      id: "watergangsectie",
+      label: "Watergangsectie",
+      subtitle: "Onderdeel",
+      column: 0,
+      row: 1,
+      fill: "#eefafb",
+      stroke: "#00a9c1"
+    },
+    {
+      id: "intersectie",
+      label: "Intersectie",
+      subtitle: "Onderdeel",
+      column: 2,
+      row: 1,
+      fill: "#eefafb",
+      stroke: "#00a9c1"
+    }
+  ]
+};
 ---
 
 <BaseLayout
@@ -81,20 +108,20 @@ const samenhangLayout = [
   <div class="detail-stack">
     <ConceptSummarySection
       subjectLabel="Watergang"
-      definition={entry.data.definition}
-      definitionSource={entry.data.definitionSource}
-      relatedTerms={entry.data.terms || []}
-      subtypes={entry.data.subtypes || []}
+      definition={conceptData?.definition || entry.data.definition}
+      synonyms={conceptData?.synonyms || []}
+      relatedTerms={conceptData?.relatedTerms || entry.data.terms || []}
+      subtypes={conceptData?.types || entry.data.subtypes || []}
     />
 
     <SemanticSamenhangSection
       title="Decompositie binnen de objectlijn"
-      summary="Deze eerste samenhangsweergave laat zien hoe Watergang, Watergangsectie en Intersectie zich semantisch tot elkaar verhouden. De bedoeling is dat systeem-, subsysteem- en objectpagina's dit patroon later uit de semantische beheeromgeving gaan voeden."
-      sourceLabel="Dummy Turtle-export uit de semantische modelleertool voor de watersysteemlijn."
+      summary="Deze samenhangsweergave laat zien hoe Watergang, Watergangsectie en Intersectie zich tot elkaar verhouden op basis van de dummy begrippen- en objectbron."
+      sourceLabel={(samenhangData || fallbackSamenhang).sourceLabel}
       graphId="watergang-samenhang"
       selectedId="watergang"
-      turtle={watergangSamenhangTurtle}
-      layoutNodes={samenhangLayout}
+      turtle={(samenhangData || fallbackSamenhang).turtle}
+      layoutNodes={(samenhangData || fallbackSamenhang).layoutNodes}
     />
   </div>
 

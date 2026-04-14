@@ -1,0 +1,212 @@
+import assetConcepts from "../data/concepts/asset-concepts.json";
+
+type JsonValue = {
+  lex?: string;
+  lang?: string;
+  uri?: string;
+  label?: string;
+};
+
+type Binding = {
+  ID?: JsonValue | null;
+  label?: JsonValue | null;
+  taxID?: JsonValue | null;
+  prop?: JsonValue | null;
+  targetID?: JsonValue | null;
+  propLabel?: JsonValue | null;
+  verschijningsvormenLabel?: JsonValue | null;
+  taxDef?: JsonValue | null;
+};
+
+type TermItem = {
+  title: string;
+  text: string;
+  href?: string;
+};
+
+type LayoutNode = {
+  id: string;
+  label: string;
+  subtitle?: string;
+  column: number;
+  row: number;
+  fill?: string;
+  stroke?: string;
+};
+
+const bindings = ((assetConcepts as { bindings?: Binding[] }).bindings || []) as Binding[];
+
+function asLex(value?: JsonValue | null) {
+  return value?.lex || "";
+}
+
+function asUri(value?: JsonValue | null) {
+  return value?.uri || "";
+}
+
+function fromUriLabel(value?: JsonValue | null) {
+  const uri = asUri(value);
+  if (!uri) {
+    return "";
+  }
+
+  const raw = uri.split(/[#/]/).pop() || "";
+  try {
+    return decodeURIComponent(raw).replace(/[-_]+/g, " ");
+  } catch {
+    return raw.replace(/[-_]+/g, " ");
+  }
+}
+
+function normalizeId(label: string) {
+  return label.toLowerCase().replace(/\s+/g, "");
+}
+
+function uniqueByTitle(items: TermItem[]) {
+  const seen = new Set<string>();
+  return items.filter((item) => {
+    const key = item.title.toLowerCase();
+    if (seen.has(key)) {
+      return false;
+    }
+    seen.add(key);
+    return true;
+  });
+}
+
+export function getConceptFromAssetJson(label: string) {
+  const conceptRows = bindings.filter((item) => asLex(item.label) === label);
+  if (!conceptRows.length) {
+    return null;
+  }
+
+  const definition = conceptRows.map((item) => asLex(item.taxDef)).find(Boolean) || "";
+  const taxLabel = fromUriLabel(conceptRows[0].taxID);
+  const synonyms = uniqueByTitle(
+    taxLabel && taxLabel.toLowerCase() !== label.toLowerCase()
+      ? [
+          {
+            title: taxLabel,
+            text: `Voorkeursbegrip uit de gekoppelde taxonomiebron voor ${label}.`,
+            href: "/datastandaard/woordenboek"
+          }
+        ]
+      : []
+  );
+
+  const relatedTerms = uniqueByTitle(
+    conceptRows
+      .filter((item) => asLex(item.targetID?.label) || fromUriLabel(item.targetID))
+      .map((item) => ({
+        title: fromUriLabel(item.targetID),
+        text: asLex(item.propLabel) || "Gerelateerd begrip uit de dummy conceptbron.",
+        href: "/datastandaard/woordenboek"
+      }))
+      .filter((item) => item.title)
+  );
+
+  const types = uniqueByTitle(
+    conceptRows
+      .filter((item) => asLex(item.verschijningsvormenLabel))
+      .map((item) => ({
+        title: asLex(item.verschijningsvormenLabel),
+        text: "Verschijningsvorm uit de dummy conceptbron.",
+        href: "/datastandaard/woordenboek"
+      }))
+  );
+
+  const relationRows = conceptRows
+    .filter((item) => asLex(item.targetID?.label) || fromUriLabel(item.targetID))
+    .map((item) => ({
+      source: label,
+      sourceId: normalizeId(label),
+      target: fromUriLabel(item.targetID),
+      targetId: normalizeId(fromUriLabel(item.targetID)),
+      relation: asLex(item.propLabel) || "heeft relatie met"
+    }))
+    .filter((item) => item.target);
+
+  return {
+    label,
+    definition,
+    synonyms,
+    relatedTerms,
+    types,
+    relationRows
+  };
+}
+
+export function createWatergangSamenhangFromAssetJson() {
+  const concept = getConceptFromAssetJson("Watergang");
+  if (!concept) {
+    return null;
+  }
+
+  const layoutNodes: LayoutNode[] = [
+    {
+      id: "watergang",
+      label: "Watergang",
+      subtitle: "Hoofdobject",
+      column: 1,
+      row: 0,
+      fill: "#e4f7fa",
+      stroke: "#00a9c1"
+    },
+    {
+      id: "watergangsectie",
+      label: "Watergangsectie",
+      subtitle: "Onderdeel",
+      column: 0,
+      row: 1,
+      fill: "#eefafb",
+      stroke: "#00a9c1"
+    },
+    {
+      id: "intersectie",
+      label: "Intersectie",
+      subtitle: "Onderdeel",
+      column: 2,
+      row: 1,
+      fill: "#eefafb",
+      stroke: "#00a9c1"
+    }
+  ];
+
+  const relevantRelations = concept.relationRows.filter((item) =>
+    ["watergangsectie", "intersectie"].includes(item.targetId)
+  );
+
+  const turtleLines = [
+    '@prefix object: <https://data.waterschaplimburg.nl/id/objecttype/> .',
+    '@prefix relatie: <https://data.waterschaplimburg.nl/def/relatie/> .',
+    '@prefix owl: <http://www.w3.org/2002/07/owl#> .',
+    '@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .',
+    "",
+    'object:watergang a owl:Class ;',
+    '  rdfs:label "Watergang" .',
+    "",
+    'object:watergangsectie a owl:Class ;',
+    '  rdfs:label "Watergangsectie" .',
+    "",
+    'object:intersectie a owl:Class ;',
+    '  rdfs:label "Intersectie" .',
+    "",
+    'relatie:heeftSectie a owl:ObjectProperty ;',
+    '  rdfs:label "Heeft sectie" .',
+    "",
+    'relatie:heeftIntersectie a owl:ObjectProperty ;',
+    '  rdfs:label "Heeft intersectie" .',
+    ""
+  ];
+
+  relevantRelations.forEach((item) => {
+    const predicate = item.relation.toLowerCase().includes("intersectie") ? "heeftIntersectie" : "heeftSectie";
+    turtleLines.push(`object:watergang relatie:${predicate} object:${item.targetId} .`);
+  });
+
+  return {
+    layoutNodes,
+    turtle: turtleLines.join("\n"),
+    sourceLabel: "Dummy JSON-export uit de begrippen- en objectbron in next/src/data/concepts/asset-concepts.json."
+  };
+}
