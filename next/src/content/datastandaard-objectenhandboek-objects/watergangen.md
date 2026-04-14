@@ -85,6 +85,10 @@ productRelations:
     text: Documenten en werkafspraken voor gebruik en beheer.
     href: /datastandaard/werkinstructies
 nextSteps:
+  - title: Watersysteem
+    text: Terug naar de systeempagina van Watersysteem als kapstok voor deze objectlijn.
+    href: /datastandaard/objectenhandboek/watersysteem
+    direction: back
   - title: Watergangsectie
     text: Onderliggende objectroute voor de opbouw van de watergang.
     href: /datastandaard/objectenhandboek/watersysteem/watergangsectie

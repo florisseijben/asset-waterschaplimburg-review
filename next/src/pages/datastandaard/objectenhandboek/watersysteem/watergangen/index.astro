@@ -2,10 +2,10 @@
 import BaseLayout from "../../../../../layouts/BaseLayout.astro";
 import Hero from "../../../../../components/Hero.astro";
 import ConceptSummarySection from "../../../../../components/ConceptSummarySection.astro";
-import NextStepsSection from "../../../../../components/NextStepsSection.astro";
 import SemanticSamenhangSection from "../../../../../components/SemanticSamenhangSection.astro";
 import ProductSection from "../../../../../components/ProductSection.astro";
 import UitwerkingSection from "../../../../../components/UitwerkingSection.astro";
+import VervolgSection from "../../../../../components/VervolgSection.astro";
 import { getCollection } from "astro:content";
 import {
   createWatergangSamenhangFromAssetJson,
@@ -156,9 +156,5 @@ object:watergang relatie:heeftIntersectie object:intersectie .
 
   <ProductSection eyebrow="Productlijn" items={entry.data.productRelations || []} />
 
-  <section class="section section-panel">
-    <p class="eyebrow">Vervolg</p>
-    <h2>Logische volgende stappen binnen deze lijn</h2>
-    <NextStepsSection items={entry.data.nextSteps || []} />
-  </section>
+  <VervolgSection title="Logische volgende stappen binnen deze lijn" items={entry.data.nextSteps || []} />
 </BaseLayout>

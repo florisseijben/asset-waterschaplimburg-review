@@ -1,0 +1,23 @@
+---
+import NextStepsSection from "./NextStepsSection.astro";
+
+interface StepItem {
+  title: string;
+  text: string;
+  href?: string;
+  direction?: "back" | "forward";
+}
+
+interface Props {
+  title?: string;
+  items?: StepItem[];
+}
+
+const { title = "Logische volgende stappen binnen deze lijn", items = [] } = Astro.props;
+---
+
+<section class="section section-panel">
+  <p class="eyebrow">Vervolg</p>
+  <h2>{title}</h2>
+  <NextStepsSection items={items} />
+</section>

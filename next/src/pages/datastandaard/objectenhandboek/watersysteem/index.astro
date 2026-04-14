@@ -2,10 +2,10 @@
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
 import Hero from "../../../../components/Hero.astro";
 import ConceptSummarySection from "../../../../components/ConceptSummarySection.astro";
-import NextStepsSection from "../../../../components/NextStepsSection.astro";
 import SemanticSamenhangSection from "../../../../components/SemanticSamenhangSection.astro";
 import ProductSection from "../../../../components/ProductSection.astro";
 import UitwerkingSection from "../../../../components/UitwerkingSection.astro";
+import VervolgSection from "../../../../components/VervolgSection.astro";
 import { getCollection } from "astro:content";
 import watersysteemSamenhangTurtle from "../../../../data/semantic/watersysteem-samenhang.ttl?raw";
 
@@ -106,9 +106,5 @@ const samenhangLayout = [
 
   <ProductSection eyebrow="Productlijn" items={entry.data.productRelations || entry.data.relatedProducts || []} />
 
-  <section class="section section-panel">
-    <p class="eyebrow">Vervolg</p>
-    <h2>Logische volgende objectlijnen</h2>
-    <NextStepsSection items={entry.data.nextSteps || []} />
-  </section>
+  <VervolgSection title="Logische volgende objectlijnen" items={entry.data.nextSteps || []} />
 </BaseLayout>

@@ -79,6 +79,10 @@ productRelations:
     text: Dit product definieert de eigenschappen, relaties en het gedrag van een bepaald type object in een gestandaardiseerde vorm.
     href: /datastandaard/otl
 nextSteps:
+  - title: Watersysteem
+    text: Terug naar de systeempagina van Watersysteem.
+    href: /datastandaard/objectenhandboek/watersysteem
+    direction: back
   - title: Watergangen
     text: Eerste uitgewerkte objectfamilie binnen dit subsysteem.
     href: /datastandaard/objectenhandboek/watersysteem/watergangen

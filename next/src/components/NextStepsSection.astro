@@ -38,13 +38,13 @@ const forwardItems = items.filter((item) => inferDirection(item) === "forward");
 <div class="next-steps-layout">
   <div class="next-steps-column next-steps-column--back">
     {backItems.map((item) => (
-      <InfoCard title={item.title} text={item.text} href={item.href} eyebrow="← Terug" />
+      <InfoCard title={item.title} text={item.text} href={item.href} eyebrow="<- Terug" />
     ))}
   </div>
 
   <div class="next-steps-column next-steps-column--forward">
     {forwardItems.map((item) => (
-      <InfoCard title={item.title} text={item.text} href={item.href} eyebrow="Verder →" />
+      <InfoCard title={item.title} text={item.text} href={item.href} eyebrow="Verder ->" />
     ))}
   </div>
 </div>
