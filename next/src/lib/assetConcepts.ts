@@ -80,6 +80,18 @@ function uniqueByTitle(items: TermItem[]) {
   });
 }
 
+function uniqueByKey<T>(items: T[], getKey: (item: T) => string) {
+  const seen = new Set<string>();
+  return items.filter((item) => {
+    const key = getKey(item);
+    if (seen.has(key)) {
+      return false;
+    }
+    seen.add(key);
+    return true;
+  });
+}
+
 function getObjectRoute(label: string) {
   const routes: Record<string, string> = {
     stroomgebied: "/datastandaard/objectenhandboek/watersysteem/stroomgebied",
@@ -145,9 +157,13 @@ export function getConceptFromAssetJson(label: string) {
     .map((item) => ({
       source: label,
       sourceId: normalizeId(label),
+      sourceUri: asUri(item.ID),
       target: fromUriLabel(item.targetID),
       targetId: normalizeId(fromUriLabel(item.targetID)),
-      relation: asLex(item.propLabel) || "heeft relatie met"
+      targetUri: asUri(item.targetID),
+      relation: asLex(item.propLabel) || "heeft relatie met",
+      predicateId: normalizeId(asLex(item.propLabel) || fromUriLabel(item.prop) || "heeft-relatie"),
+      predicateLabel: asLex(item.propLabel) || fromUriLabel(item.prop) || "heeft relatie met"
     }))
     .filter((item) => item.target);
 
@@ -192,39 +208,35 @@ export function createWatergangSamenhangFromAssetJson() {
     return null;
   }
 
+  const relevantRelations = concept.relationRows.filter((item) =>
+    item.relation.toLowerCase().startsWith("heeft ")
+  );
+
+  if (!relevantRelations.length) {
+    return null;
+  }
+
+  const childNodes = uniqueByKey(relevantRelations, (item) => item.targetId);
   const layoutNodes: LayoutNode[] = [
     {
-      id: "watergang",
-      label: "Watergang",
+      id: concept.relationRows[0]?.sourceId || "watergang",
+      label: concept.label,
       subtitle: "Hoofdobject",
-      column: 1,
+      column: childNodes.length > 1 ? Math.floor(childNodes.length / 2) : 0,
       row: 0,
       fill: "#e4f7fa",
       stroke: "#00a9c1"
     },
-    {
-      id: "watergangsectie",
-      label: "Watergangsectie",
-      subtitle: "Onderdeel",
-      column: 0,
+    ...childNodes.map((item, index) => ({
+      id: item.targetId,
+      label: item.target,
+      subtitle: item.predicateLabel,
+      column: index,
       row: 1,
       fill: "#eefafb",
       stroke: "#00a9c1"
-    },
-    {
-      id: "intersectie",
-      label: "Intersectie",
-      subtitle: "Onderdeel",
-      column: 2,
-      row: 1,
-      fill: "#eefafb",
-      stroke: "#00a9c1"
-    }
+    }))
   ];
-
-  const relevantRelations = concept.relationRows.filter((item) =>
-    ["watergangsectie", "intersectie"].includes(item.targetId)
-  );
 
   const turtleLines = [
     '@prefix object: <https://data.waterschaplimburg.nl/id/objecttype/> .',
@@ -232,26 +244,25 @@ export function createWatergangSamenhangFromAssetJson() {
     '@prefix owl: <http://www.w3.org/2002/07/owl#> .',
     '@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .',
     "",
-    'object:watergang a owl:Class ;',
-    '  rdfs:label "Watergang" .',
-    "",
-    'object:watergangsectie a owl:Class ;',
-    '  rdfs:label "Watergangsectie" .',
-    "",
-    'object:intersectie a owl:Class ;',
-    '  rdfs:label "Intersectie" .',
-    "",
-    'relatie:heeftSectie a owl:ObjectProperty ;',
-    '  rdfs:label "Heeft sectie" .',
-    "",
-    'relatie:heeftIntersectie a owl:ObjectProperty ;',
-    '  rdfs:label "Heeft intersectie" .',
+    `object:${concept.relationRows[0]?.sourceId || "watergang"} a owl:Class ;`,
+    `  rdfs:label "${concept.label}" .`,
     ""
   ];
 
+  childNodes.forEach((item) => {
+    turtleLines.push(`object:${item.targetId} a owl:Class ;`);
+    turtleLines.push(`  rdfs:label "${item.target}" .`);
+    turtleLines.push("");
+  });
+
+  uniqueByKey(relevantRelations, (item) => item.predicateId).forEach((item) => {
+    turtleLines.push(`relatie:${item.predicateId} a owl:ObjectProperty ;`);
+    turtleLines.push(`  rdfs:label "${item.predicateLabel}" .`);
+    turtleLines.push("");
+  });
+
   relevantRelations.forEach((item) => {
-    const predicate = item.relation.toLowerCase().includes("intersectie") ? "heeftIntersectie" : "heeftSectie";
-    turtleLines.push(`object:watergang relatie:${predicate} object:${item.targetId} .`);
+    turtleLines.push(`object:${item.sourceId} relatie:${item.predicateId} object:${item.targetId} .`);
   });
 
   return {
