@@ -60,12 +60,12 @@ contentSections:
       src: /images/objectenhandboek/watersysteem/regenwaterbuffer/regenwaterbuffer-geometrie.png
       alt: Geometrische representatie van een regenwaterbuffer als puntobject binnen het watersysteem.
     items:
-      - title: Kleinschalig
-        text: Op kleinschalig niveau wordt de regenwaterbuffer gelezen via de lokale voorziening, inlaat, uitlaat en de directe begrenzing van het bassin.
+      - title: Grootschalig
+        text: Op grootschalig niveau wordt de regenwaterbuffer gelezen via de lokale voorziening, inlaat, uitlaat en de directe begrenzing van het bassin.
       - title: Midschalig
         text: Op midschalig niveau toont de regenwaterbuffer de opbouw van compartimenten en de samenhang met omliggende objecten in het watersysteem.
-      - title: Grootschalig
-        text: Op grootschalig niveau functioneert de regenwaterbuffer als bergingsvoorziening binnen stroomgebied en watersysteem.
+      - title: Kleinschalig
+        text: Op kleinschalig niveau functioneert de regenwaterbuffer als bergingsvoorziening binnen stroomgebied en watersysteem.
 productRelations:
   - title: Woordenboek
     text: Begrippen en definities voor de bufferlijn binnen het watersysteem.

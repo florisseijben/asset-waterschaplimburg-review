@@ -71,12 +71,12 @@ contentSections:
   - title: Geometrie
     summary: De geometrie van het stroomgebied is gebiedsgericht en sluit aan op de DAMO-methodiek voor afvoer- en aanvoergebieden.
     items:
-      - title: Kleinschalig
-        text: Op kleinschalig niveau wordt het stroomgebied gelezen via lokale afwateringsgrenzen, deelgebieden en aansluitingen op objectfamilies.
+      - title: Grootschalig
+        text: Op grootschalig niveau wordt het stroomgebied gelezen via lokale afwateringsgrenzen, deelgebieden en aansluitingen op objectfamilies.
       - title: Midschalig
         text: Op midschalig niveau toont het stroomgebied de samenhang tussen afvoergebieden, objectfamilies en hydrologische deelstructuren.
-      - title: Grootschalig
-        text: Op grootschalig niveau vormt het stroomgebied de gebiedsgerichte context van het watersysteem volgens de DAMO-methodiek voor afvoer- en aanvoergebieden.
+      - title: Kleinschalig
+        text: Op kleinschalig niveau vormt het stroomgebied de gebiedsgerichte context van het watersysteem volgens de DAMO-methodiek voor afvoer- en aanvoergebieden.
         href: https://damo.hetwaterschapshuis.nl/DAMO%202.6/Objectenhandboek%20DAMO%202.6/html/BijlageAfvoeraanvoergebiedmethod.html
 productRelations:
   - title: Woordenboek

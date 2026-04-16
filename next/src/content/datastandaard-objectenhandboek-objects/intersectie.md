@@ -73,12 +73,12 @@ contentSections:
   - title: Geometrie
     summary: De geometrie van de intersectie wordt zichtbaar in bovenaanzicht, doorsnede en ruimtelijke positie ten opzichte van de watergang.
     items:
-      - title: Kleinschalig
-        text: Op kleinschalig niveau wordt de intersectie gelezen via het directe kruispunt, de aansluitende randen en de lokale doorsnede.
+      - title: Grootschalig
+        text: Op grootschalig niveau wordt de intersectie gelezen via het directe kruispunt, de aansluitende randen en de lokale doorsnede.
       - title: Midschalig
         text: Op midschalig niveau toont de intersectie hoe trajecten, secties of overgangen elkaar raken binnen de watergangstructuur.
-      - title: Grootschalig
-        text: Op grootschalig niveau positioneert de intersectie zich als knooppunt binnen het bredere netwerk van waterlopen en systeemovergangen.
+      - title: Kleinschalig
+        text: Op kleinschalig niveau positioneert de intersectie zich als knooppunt binnen het bredere netwerk van waterlopen en systeemovergangen.
 productRelations:
   - title: Woordenboek
     text: Begripsdefinitie van Intersectie als startpunt van de objectpagina.

@@ -69,12 +69,12 @@ contentSections:
   - title: Geometrie
     summary: DAMO beschrijft het compartiment als vlakrepresentatie op basis van de feitelijke contouren van het deelobject.
     items:
-      - title: Kleinschalig
-        text: Op kleinschalig niveau wordt het compartiment gelezen via de feitelijke contouren, scheidingen en lokale inrichting van het deelobject.
+      - title: Grootschalig
+        text: Op grootschalig niveau wordt het compartiment gelezen via de feitelijke contouren, scheidingen en lokale inrichting van het deelobject.
       - title: Midschalig
         text: Op midschalig niveau maakt het compartiment zichtbaar hoe de regenwaterbuffer intern is opgedeeld in functionele delen.
-      - title: Grootschalig
-        text: Op grootschalig niveau positioneert het compartiment zich als onderdeel van de totale bergings- en sturingsstructuur van de regenwaterbuffer.
+      - title: Kleinschalig
+        text: Op kleinschalig niveau positioneert het compartiment zich als onderdeel van de totale bergings- en sturingsstructuur van de regenwaterbuffer.
 productRelations:
   - title: Woordenboek
     text: Begrippen en definities voor compartimentering binnen de bufferlijn.
