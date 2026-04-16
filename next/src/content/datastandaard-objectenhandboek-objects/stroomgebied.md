@@ -54,7 +54,7 @@ contentSections:
   - title: Afbakening
     summary: De afbakening van het stroomgebied volgt de hydrologische grens waarbinnen oppervlakkig afstromend water uiteindelijk via hetzelfde hoofdafvoersysteem wordt afgevoerd.
   - title: Onderdelen
-    summary: Binnen dit stroomgebied worden objectfamilies zoals Watergang en Regenwaterbuffer inhoudelijk uitgewerkt, met daaronder hun eigen objecttypen en profiel- of compartimentonderdelen.
+    summary: Binnen dit stroomgebied worden objectfamilies zoals Watergang en Regenwaterbuffer inhoudelijk uitgewerkt.
     items:
       - title: Watergang
         text: Eerste uitgewerkte objectfamilie binnen het stroomgebied.
@@ -68,9 +68,6 @@ contentSections:
       - title: Intersectie
         text: Kruising of overgang binnen de watergangstructuur op hetzelfde taxonomische niveau als Watergangsectie.
         href: /datastandaard/objectenhandboek/watersysteem/intersectie
-      - title: Regenwaterbuffercompartiment
-        text: Onderliggend compartimentobject binnen de regenwaterbufferlijn.
-        href: /datastandaard/objectenhandboek/watersysteem/regenwaterbuffer/regenwaterbuffercompartiment
   - title: Geometrie
     summary: De geometrie van het stroomgebied is gebiedsgericht en sluit aan op de DAMO-methodiek voor afvoer- en aanvoergebieden.
     href: https://damo.hetwaterschapshuis.nl/DAMO%202.6/Objectenhandboek%20DAMO%202.6/html/BijlageAfvoeraanvoergebiedmethod.html

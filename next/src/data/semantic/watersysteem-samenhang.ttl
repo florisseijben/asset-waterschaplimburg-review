@@ -21,9 +21,6 @@ object:watergangsectie a owl:Class ;
 object:intersectie a owl:Class ;
   rdfs:label "Intersectie" .
 
-object:regenwaterbuffercompartiment a owl:Class ;
-  rdfs:label "Regenwaterbuffercompartiment" .
-
 relatie:omvat a owl:ObjectProperty ;
   rdfs:label "omvat" .
 
@@ -41,7 +38,5 @@ object:watergang relatie:isOnderdeelVan object:stroomgebied .
 object:regenwaterbuffer relatie:isOnderdeelVan object:stroomgebied .
 object:watergang relatie:bestaatUit object:watergangsectie .
 object:watergang relatie:bestaatUit object:intersectie .
-object:regenwaterbuffer relatie:bestaatUit object:regenwaterbuffercompartiment .
 object:watergangsectie relatie:isOnderdeelVan object:watergang .
 object:intersectie relatie:isOnderdeelVan object:watergang .
-object:regenwaterbuffercompartiment relatie:isOnderdeelVan object:regenwaterbuffer .
