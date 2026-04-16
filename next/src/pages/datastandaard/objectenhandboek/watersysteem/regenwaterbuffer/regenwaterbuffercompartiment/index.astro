@@ -8,6 +8,7 @@ import UitwerkingSection from "../../../../../../components/UitwerkingSection.as
 import VervolgSection from "../../../../../../components/VervolgSection.astro";
 import { getCollection } from "astro:content";
 import regenwaterbufferSamenhangTurtle from "../../../../../../data/semantic/regenwaterbuffer-samenhang.ttl?raw";
+import { normalizeUitwerkingSections } from "../../../../../../lib/uitwerkingSections";
 
 const entries = await getCollection("datastandaard-objectenhandboek-objects");
 const expectedSlug =
@@ -23,7 +24,9 @@ if (!entry) {
   throw new Error("Objectenhandboek Regenwaterbuffercompartiment ontbreekt in de nieuwe omgeving.");
 }
 
-const visibleContentSections = (entry.data.contentSections || []).filter((item) => item.title !== "Decompositie");
+const visibleContentSections = normalizeUitwerkingSections(
+  (entry.data.contentSections || []).filter((item) => item.title !== "Decompositie")
+);
 const samenhangLayout = [
   {
     id: "regenwaterbuffer",

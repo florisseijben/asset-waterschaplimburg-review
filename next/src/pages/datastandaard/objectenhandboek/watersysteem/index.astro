@@ -8,6 +8,7 @@ import UitwerkingSection from "../../../../components/UitwerkingSection.astro";
 import VervolgSection from "../../../../components/VervolgSection.astro";
 import { getCollection } from "astro:content";
 import watersysteemSamenhangTurtle from "../../../../data/semantic/watersysteem-samenhang.ttl?raw";
+import { normalizeUitwerkingSections } from "../../../../lib/uitwerkingSections";
 
 const entries = await getCollection("datastandaard-objectenhandboek-systems");
 const expectedSlug = "/datastandaard/objectenhandboek/watersysteem";
@@ -111,7 +112,7 @@ const samenhangLayout = [
     layoutNodes={samenhangLayout}
   />
 
-  <UitwerkingSection title="Inhoudelijke opbouw van Watersysteem" items={entry.data.contentSections || []} />
+  <UitwerkingSection title="Inhoudelijke opbouw van Watersysteem" items={normalizeUitwerkingSections(entry.data.contentSections || [])} />
 
   <ProductSection eyebrow="Productlijn" items={entry.data.productRelations || entry.data.relatedProducts || []} />
 

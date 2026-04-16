@@ -8,6 +8,7 @@ import UitwerkingSection from "../../../../../../components/UitwerkingSection.as
 import VervolgSection from "../../../../../../components/VervolgSection.astro";
 import { getCollection } from "astro:content";
 import taludSamenhangTurtle from "../../../../../../data/semantic/watergangsectie-talud-samenhang.ttl?raw";
+import { normalizeUitwerkingSections } from "../../../../../../lib/uitwerkingSections";
 
 const entries = await getCollection("datastandaard-objectenhandboek-objects");
 const expectedSlug = "/datastandaard/objectenhandboek/watersysteem/watergangsectie/talud";
@@ -113,7 +114,7 @@ const samenhangLayout = [
     layoutNodes={samenhangLayout}
   />
 
-  <UitwerkingSection title="Inhoudelijke opbouw van Talud" items={entry.data.contentSections || []} />
+  <UitwerkingSection title="Inhoudelijke opbouw van Talud" items={normalizeUitwerkingSections(entry.data.contentSections || [])} />
 
   <ProductSection eyebrow="Productlijn" items={entry.data.productRelations || []} />
 

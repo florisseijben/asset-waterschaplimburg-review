@@ -8,6 +8,7 @@ import UitwerkingSection from "../../../../../../../components/UitwerkingSection
 import VervolgSection from "../../../../../../../components/VervolgSection.astro";
 import { getCollection } from "astro:content";
 import bekledingsconstructieSamenhangTurtle from "../../../../../../../data/semantic/talud-bekledingsconstructie-samenhang.ttl?raw";
+import { normalizeUitwerkingSections } from "../../../../../../../lib/uitwerkingSections";
 
 const entries = await getCollection("datastandaard-objectenhandboek-objects");
 const expectedSlug = "/datastandaard/objectenhandboek/watersysteem/watergangsectie/talud/bekledingsconstructie";
@@ -105,7 +106,7 @@ const samenhangLayout = [
     layoutNodes={samenhangLayout}
   />
 
-  <UitwerkingSection title="Inhoudelijke opbouw van Bekledingsconstructie" items={entry.data.contentSections || []} />
+  <UitwerkingSection title="Inhoudelijke opbouw van Bekledingsconstructie" items={normalizeUitwerkingSections(entry.data.contentSections || [])} />
 
   <ProductSection eyebrow="Productlijn" items={entry.data.productRelations || []} />
 

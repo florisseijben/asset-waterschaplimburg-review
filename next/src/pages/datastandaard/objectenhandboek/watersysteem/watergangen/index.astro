@@ -12,6 +12,7 @@ import {
   getConceptFromAssetJson,
   getDecompositionFromAssetJson
 } from "../../../../../lib/assetConcepts";
+import { normalizeUitwerkingSections } from "../../../../../lib/uitwerkingSections";
 
 const entries = await getCollection("datastandaard-objectenhandboek-objects");
 const expectedSlug = "/datastandaard/objectenhandboek/watersysteem/watergangen";
@@ -40,6 +41,7 @@ const visibleContentSections = (entry.data.contentSections || [])
         }
       : item
   );
+const normalizedContentSections = normalizeUitwerkingSections(visibleContentSections);
 const fallbackSamenhang = {
   sourceLabel: "Dummy relatiebron uit de Watergang-pagina.",
   turtle: `@prefix object: <https://data.waterschaplimburg.nl/id/objecttype/> .
@@ -152,7 +154,7 @@ object:watergang relatie:heeftIntersectie object:intersectie .
     />
   </div>
 
-  <UitwerkingSection title="Inhoudelijke opbouw van Watergang" items={visibleContentSections} />
+  <UitwerkingSection title="Inhoudelijke opbouw van Watergang" items={normalizedContentSections} />
 
   <ProductSection eyebrow="Productlijn" items={entry.data.productRelations || []} />
 

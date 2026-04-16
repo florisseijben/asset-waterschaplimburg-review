@@ -53,6 +53,13 @@ contentSections:
         href: /datastandaard/objectenhandboek/watersysteem/intersectie
   - title: Geometrie
     summary: De geometrie van het watersysteem wordt op systeemniveau gelezen via waterstructuren, gebieden en de ruimtelijke samenhang tussen objectfamilies en subsystemen.
+    items:
+      - title: Grootschalig
+        text: Op grootschalig niveau wordt het watersysteem gelezen via gedetailleerde objecten, lokale inrichting en concrete ruimtelijke begrenzingen.
+      - title: Midschalig
+        text: Op midschalig niveau toont het watersysteem de samenhang tussen objectfamilies, subsystemen en regionale waterstructuren.
+      - title: Kleinschalig
+        text: Op kleinschalig niveau wordt het watersysteem gelezen als overzicht van het volledige regionale netwerk van wateren en waterstaatswerken.
 productRelations:
   - title: Woordenboek
     text: Begrippen en definities voor het watersysteem.

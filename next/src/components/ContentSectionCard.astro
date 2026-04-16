@@ -37,13 +37,15 @@ const Tag = href && !hasItems ? "a" : "article";
 
   {hasItems && (
     <div class="card-grid card-grid--nested">
-      {items.map((item) => (
-        <a class="info-card info-card--nested" href={withBase(item.href)}>
+      {items.map((item) => {
+        const ItemTag = item.href ? "a" : "article";
+        return (
+        <ItemTag class="info-card info-card--nested" href={item.href ? withBase(item.href) : undefined}>
           <h3>{item.title}</h3>
           <p>{item.text}</p>
-          <span class="info-card__link">Open</span>
-        </a>
-      ))}
+          {item.href && <span class="info-card__link">Open</span>}
+        </ItemTag>
+      )})}
     </div>
   )}
 </Tag>

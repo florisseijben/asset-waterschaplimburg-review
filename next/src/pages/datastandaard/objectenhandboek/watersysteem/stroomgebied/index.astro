@@ -8,6 +8,7 @@ import UitwerkingSection from "../../../../../components/UitwerkingSection.astro
 import VervolgSection from "../../../../../components/VervolgSection.astro";
 import { getCollection } from "astro:content";
 import watersysteemSamenhangTurtle from "../../../../../data/semantic/watersysteem-samenhang.ttl?raw";
+import { normalizeUitwerkingSections } from "../../../../../lib/uitwerkingSections";
 
 const entries = await getCollection("datastandaard-objectenhandboek-objects");
 const expectedSlug = "/datastandaard/objectenhandboek/watersysteem/stroomgebied";
@@ -120,7 +121,7 @@ const samenhangLayout = [
     layoutNodes={samenhangLayout}
   />
 
-  <UitwerkingSection title="Wat werken we vanuit dit subsysteem uit?" items={entry.data.contentSections || []} />
+  <UitwerkingSection title="Wat werken we vanuit dit subsysteem uit?" items={normalizeUitwerkingSections(entry.data.contentSections || [])} />
 
   <ProductSection eyebrow="Productlijn" items={entry.data.productRelations || []} />
 
