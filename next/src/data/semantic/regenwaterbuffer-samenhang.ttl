@@ -1,0 +1,19 @@
+@prefix object: <https://data.waterschaplimburg.nl/id/objecttype/> .
+@prefix relatie: <https://data.waterschaplimburg.nl/def/relatie/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+object:regenwaterbuffer a owl:Class ;
+  rdfs:label "Regenwaterbuffer" .
+
+object:regenwaterbuffercompartiment a owl:Class ;
+  rdfs:label "Regenwaterbuffercompartiment" .
+
+relatie:bestaatUit a owl:ObjectProperty ;
+  rdfs:label "bestaat uit" .
+
+relatie:isOnderdeelVan a owl:ObjectProperty ;
+  rdfs:label "is onderdeel van" .
+
+object:regenwaterbuffer relatie:bestaatUit object:regenwaterbuffercompartiment .
+object:regenwaterbuffercompartiment relatie:isOnderdeelVan object:regenwaterbuffer .

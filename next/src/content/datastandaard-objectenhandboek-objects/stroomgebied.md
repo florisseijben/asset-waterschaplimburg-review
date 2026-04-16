@@ -5,8 +5,8 @@ part: datastandaard
 product: objectenhandboek
 ownerTeam: datastandaard
 status: eerste-template
-lastReviewed: 2026-04-12
-summary: Stroomgebied vormt binnen het watersysteem de subsysteemlaag waarin watergangen en hun onderliggende objecten logisch geordend worden.
+lastReviewed: 2026-04-16
+summary: Stroomgebied vormt binnen het watersysteem de subsysteemlaag waarin watergangen, regenwaterbuffers en hun onderliggende objecten logisch geordend worden.
 heroTitle: Stroomgebied
 hierarchy:
   - Watersysteem
@@ -54,17 +54,23 @@ contentSections:
   - title: Afbakening
     summary: De afbakening van het stroomgebied volgt de hydrologische grens waarbinnen oppervlakkig afstromend water uiteindelijk via hetzelfde hoofdafvoersysteem wordt afgevoerd.
   - title: Onderdelen
-    summary: Binnen dit stroomgebied worden watergangen als eerste objectfamilie inhoudelijk uitgewerkt, met daaronder watergangsecties, intersecties en verdere profielonderdelen.
+    summary: Binnen dit stroomgebied worden objectfamilies zoals Watergang en Regenwaterbuffer inhoudelijk uitgewerkt, met daaronder hun eigen objecttypen en profiel- of compartimentonderdelen.
     items:
       - title: Watergang
         text: Eerste uitgewerkte objectfamilie binnen het stroomgebied.
         href: /datastandaard/objectenhandboek/watersysteem/watergangen
+      - title: Regenwaterbuffer
+        text: Objectfamilie voor tijdelijke opvang en gereguleerde afvoer van neerslagpieken binnen het stroomgebied.
+        href: /datastandaard/objectenhandboek/watersysteem/regenwaterbuffer
       - title: Watergangsectie
         text: Afgebakend deelobject binnen de waterganglijn met profiel- en onderhoudskenmerken.
         href: /datastandaard/objectenhandboek/watersysteem/watergangsectie
       - title: Intersectie
         text: Kruising of overgang binnen de watergangstructuur op hetzelfde taxonomische niveau als Watergangsectie.
         href: /datastandaard/objectenhandboek/watersysteem/intersectie
+      - title: Regenwaterbuffercompartiment
+        text: Onderliggend compartimentobject binnen de regenwaterbufferlijn.
+        href: /datastandaard/objectenhandboek/watersysteem/regenwaterbuffer/regenwaterbuffercompartiment
   - title: Geometrie
     summary: De geometrie van het stroomgebied is gebiedsgericht en sluit aan op de DAMO-methodiek voor afvoer- en aanvoergebieden.
     href: https://damo.hetwaterschapshuis.nl/DAMO%202.6/Objectenhandboek%20DAMO%202.6/html/BijlageAfvoeraanvoergebiedmethod.html
@@ -86,6 +92,9 @@ nextSteps:
   - title: Watergangen
     text: Eerste uitgewerkte objectfamilie binnen dit subsysteem.
     href: /datastandaard/objectenhandboek/watersysteem/watergangen
+  - title: Regenwaterbuffer
+    text: Objectfamilie voor regenwaterberging met onderliggende compartimenten.
+    href: /datastandaard/objectenhandboek/watersysteem/regenwaterbuffer
 ---
 
 Deze pagina vormt de eerste landing voor het subsysteem `Stroomgebied` binnen het Objectenhandboek.

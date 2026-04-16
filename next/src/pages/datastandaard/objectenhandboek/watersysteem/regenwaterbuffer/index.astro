@@ -7,83 +7,39 @@ import ProductSection from "../../../../../components/ProductSection.astro";
 import UitwerkingSection from "../../../../../components/UitwerkingSection.astro";
 import VervolgSection from "../../../../../components/VervolgSection.astro";
 import { getCollection } from "astro:content";
-import watersysteemSamenhangTurtle from "../../../../../data/semantic/watersysteem-samenhang.ttl?raw";
+import regenwaterbufferSamenhangTurtle from "../../../../../data/semantic/regenwaterbuffer-samenhang.ttl?raw";
 
 const entries = await getCollection("datastandaard-objectenhandboek-objects");
-const expectedSlug = "/datastandaard/objectenhandboek/watersysteem/stroomgebied";
+const expectedSlug = "/datastandaard/objectenhandboek/watersysteem/regenwaterbuffer";
 const entry = entries.find(
   (item) =>
-    item.id === "stroomgebied" ||
+    item.id === "regenwaterbuffer" ||
     item.data.slug === expectedSlug ||
-    item.data.title === "Stroomgebied"
+    item.data.title === "Regenwaterbuffer"
 );
 
 if (!entry) {
-  throw new Error("Objectenhandboek Stroomgebied ontbreekt in de nieuwe omgeving.");
+  throw new Error("Objectenhandboek Regenwaterbuffer ontbreekt in de nieuwe omgeving.");
 }
 
+const visibleContentSections = (entry.data.contentSections || []).filter((item) => item.title !== "Decompositie");
 const samenhangLayout = [
-  {
-    id: "watersysteem",
-    label: "Watersysteem",
-    subtitle: "Systeem",
-    column: 1,
-    row: 0,
-    fill: "#ffffff",
-    stroke: "#00a9c1"
-  },
-  {
-    id: "stroomgebied",
-    label: "Stroomgebied",
-    subtitle: "Subsysteem",
-    column: 1,
-    row: 1,
-    fill: "#e4f7fa",
-    stroke: "#00a9c1"
-  },
-  {
-    id: "watergang",
-    label: "Watergang",
-    subtitle: "Objectfamilie",
-    column: 0,
-    row: 2,
-    fill: "#eefafb",
-    stroke: "#00a9c1"
-  },
   {
     id: "regenwaterbuffer",
     label: "Regenwaterbuffer",
-    subtitle: "Objectfamilie",
-    column: 2,
-    row: 2,
-    fill: "#eefafb",
-    stroke: "#00a9c1"
-  },
-  {
-    id: "watergangsectie",
-    label: "Watergangsectie",
-    subtitle: "Objecttype",
+    subtitle: "Hoofdobject",
     column: 0,
-    row: 3,
-    fill: "#ffffff",
-    stroke: "#00a9c1"
-  },
-  {
-    id: "intersectie",
-    label: "Intersectie",
-    subtitle: "Objecttype",
-    column: 1,
-    row: 3,
-    fill: "#ffffff",
+    row: 0,
+    fill: "#e4f7fa",
     stroke: "#00a9c1"
   },
   {
     id: "regenwaterbuffercompartiment",
     label: "Regenwaterbuffercompartiment",
-    subtitle: "Objecttype",
-    column: 2,
-    row: 3,
-    fill: "#ffffff",
+    subtitle: "Onderdeel",
+    column: 0,
+    row: 1,
+    fill: "#eefafb",
     stroke: "#00a9c1"
   }
 ];
@@ -97,7 +53,7 @@ const samenhangLayout = [
     { label: "Datastandaard", href: "/datastandaard" },
     { label: "Objectenhandboek", href: "/datastandaard/objectenhandboek" },
     { label: "Watersysteem", href: "/datastandaard/objectenhandboek/watersysteem" },
-    { label: "Stroomgebied" }
+    { label: "Regenwaterbuffer" }
   ]}
 >
   <Hero eyebrow="Objectenhandboek" title={entry.data.heroTitle || entry.data.title} summary={entry.data.summary}>
@@ -112,7 +68,7 @@ const samenhangLayout = [
   </Hero>
 
   <ConceptSummarySection
-    subjectLabel="Stroomgebied"
+    subjectLabel="Regenwaterbuffer"
     definition={entry.data.definition}
     definitionSource={entry.data.definitionSource}
     relatedTerms={entry.data.terms || []}
@@ -120,16 +76,16 @@ const samenhangLayout = [
   />
 
   <SemanticSamenhangSection
-    title="Decompositie en hoofdrelaties binnen Stroomgebied"
-    summary="Deze samenhangsweergave laat zien hoe Stroomgebied binnen het watersysteem doorloopt naar de uitgewerkte objectfamilies rond Watergang en Regenwaterbuffer met hun onderliggende objecttypen."
-    sourceLabel="Dummy Turtle-export uit de semantische modelleertool voor de watersysteemlijn."
-    graphId="stroomgebied-samenhang"
-    selectedId="stroomgebied"
-    turtle={watersysteemSamenhangTurtle}
+    title="Decompositie en hoofdrelaties binnen Regenwaterbuffer"
+    summary="Deze samenhangsweergave laat zien hoe Regenwaterbuffer als hoofdobject is opgebouwd uit Regenwaterbuffercompartimenten."
+    sourceLabel="Dummy Turtle-export uit de semantische modelleertool voor de regenwaterbufferlijn."
+    graphId="regenwaterbuffer-samenhang"
+    selectedId="regenwaterbuffer"
+    turtle={regenwaterbufferSamenhangTurtle}
     layoutNodes={samenhangLayout}
   />
 
-  <UitwerkingSection title="Wat werken we vanuit dit subsysteem uit?" items={entry.data.contentSections || []} />
+  <UitwerkingSection title="Inhoudelijke opbouw van Regenwaterbuffer" items={visibleContentSections} />
 
   <ProductSection eyebrow="Productlijn" items={entry.data.productRelations || []} />
 

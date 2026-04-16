@@ -51,10 +51,19 @@ const samenhangLayout = [
     stroke: "#00a9c1"
   },
   {
+    id: "regenwaterbuffer",
+    label: "Regenwaterbuffer",
+    subtitle: "Objectfamilie",
+    column: 2,
+    row: 2,
+    fill: "#eefafb",
+    stroke: "#00a9c1"
+  },
+  {
     id: "watergangsectie",
     label: "Watergangsectie",
     subtitle: "Objecttype",
-    column: 1,
+    column: 0,
     row: 3,
     fill: "#ffffff",
     stroke: "#00a9c1"
@@ -62,6 +71,15 @@ const samenhangLayout = [
   {
     id: "intersectie",
     label: "Intersectie",
+    subtitle: "Objecttype",
+    column: 1,
+    row: 3,
+    fill: "#ffffff",
+    stroke: "#00a9c1"
+  },
+  {
+    id: "regenwaterbuffercompartiment",
+    label: "Regenwaterbuffercompartiment",
     subtitle: "Objecttype",
     column: 2,
     row: 3,
@@ -94,7 +112,7 @@ const samenhangLayout = [
 
   <SemanticSamenhangSection
     title="Decompositie en hoofdrelaties binnen Watersysteem"
-    summary="Deze eerste samenhangsweergave laat zien hoe het watersysteem overgaat in het subsysteem Stroomgebied en vandaar doorloopt naar de eerste uitgewerkte objectlijn rond Watergang, Watergangsectie en Intersectie."
+    summary="Deze eerste samenhangsweergave laat zien hoe het watersysteem overgaat in het subsysteem Stroomgebied en vandaar doorloopt naar de uitgewerkte objectlijnen rond Watergang en Regenwaterbuffer met hun onderliggende objecttypen."
     sourceLabel="Dummy Turtle-export uit de semantische modelleertool voor de watersysteemlijn."
     graphId="watersysteem-samenhang"
     selectedId="watersysteem"
