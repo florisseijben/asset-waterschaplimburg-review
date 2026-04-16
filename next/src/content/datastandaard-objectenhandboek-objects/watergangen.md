@@ -89,6 +89,9 @@ nextSteps:
     text: Terug naar de systeempagina van Watersysteem als kapstok voor deze objectlijn.
     href: /datastandaard/objectenhandboek/watersysteem
     direction: back
+  - title: Regenwaterbuffer
+    text: Parallelle objectlijn op hetzelfde hiërarchische niveau binnen het watersysteem.
+    href: /datastandaard/objectenhandboek/watersysteem/regenwaterbuffer
   - title: Watergangsectie
     text: Onderliggende objectroute voor de opbouw van de watergang.
     href: /datastandaard/objectenhandboek/watersysteem/watergangsectie
@@ -103,4 +106,4 @@ Doel:
 
 - definities en metadata van de watergang samenbrengen;
 - de opbouw van traject, gebied en secties leesbaar maken;
-- en een basis leggen voor vervolgroutes zoals Watergangsectie en Intersectie.
+- en een basis leggen voor vervolgroutes zoals Watergangsectie, Intersectie en parallelle objectlijnen zoals Regenwaterbuffer.
