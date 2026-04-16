@@ -62,6 +62,13 @@ contentSections:
         href: /in-migratie/objectenhandboek/watersysteem/watergangsectie/talud/bekledingsconstructie/toplaag
   - title: Geometrie
     summary: De geometrie van de bekledingsconstructie volgt de ligging, helling en reikwijdte van de constructieve opbouw op het talud.
+    items:
+      - title: Kleinschalig
+        text: Op kleinschalig niveau wordt de bekledingsconstructie gelezen via lagen, aansluitingen, materialen en lokale bevestiging op het talud.
+      - title: Midschalig
+        text: Op midschalig niveau volgt de bekledingsconstructie het verloop van het talud en de delen van de sectie waar bescherming nodig is.
+      - title: Grootschalig
+        text: Op grootschalig niveau draagt de bekledingsconstructie bij aan de constructieve robuustheid en herkenbaarheid van de waterganglijn.
 productRelations:
   - title: Woordenboek
     text: Begrippen en definities voor bekleding, constructie en toplaag.

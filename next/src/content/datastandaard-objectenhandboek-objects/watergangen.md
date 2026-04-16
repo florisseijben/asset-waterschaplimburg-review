@@ -71,6 +71,13 @@ contentSections:
         href: /datastandaard/objectenhandboek/watersysteem/intersectie
   - title: Geometrie
     summary: De geometrie wordt zichtbaar via aslijn, gebiedscontour en dwarsprofiel van dezelfde watergangopbouw.
+    items:
+      - title: Kleinschalig
+        text: Op kleinschalig niveau wordt de watergang gelezen via lokale doorsneden, profielonderdelen en directe ruimtelijke kenmerken van het object.
+      - title: Midschalig
+        text: Op midschalig niveau wordt de watergang zichtbaar als samenhangend traject of deeltraject met secties, kruisingen en ruimtelijke begrenzing.
+      - title: Grootschalig
+        text: Op grootschalig niveau maakt de watergang onderdeel uit van het bredere waternetwerk binnen stroomgebied en watersysteem.
 productRelations:
   - title: Woordenboek
     text: Begrippen en definities voor de waterganglijn.

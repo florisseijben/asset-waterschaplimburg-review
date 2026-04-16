@@ -7,14 +7,20 @@ interface SectionItem {
   href?: string;
 }
 
+interface SectionImage {
+  src: string;
+  alt?: string;
+}
+
 interface Props {
   title: string;
   text: string;
   href?: string;
   items?: SectionItem[];
+  image?: SectionImage;
 }
 
-const { title, text, href, items = [] } = Astro.props;
+const { title, text, href, items = [], image } = Astro.props;
 const hasItems = items.length > 0;
 const Tag = href && !hasItems ? "a" : "article";
 ---
@@ -22,6 +28,11 @@ const Tag = href && !hasItems ? "a" : "article";
 <Tag class:list={["info-card", "info-card--section"]} href={href && !hasItems ? withBase(href) : undefined}>
   <h2>{title}</h2>
   <p>{text}</p>
+  {image?.src && (
+    <figure class="info-card__figure">
+      <img class="info-card__image" src={withBase(image.src)} alt={image.alt || ""} loading="lazy" />
+    </figure>
+  )}
   {href && !hasItems && <span class="info-card__link">Open</span>}
 
   {hasItems && (

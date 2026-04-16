@@ -84,6 +84,13 @@ contentSections:
         href: /in-migratie/objectenhandboek/watersysteem/watergangsectie/werkpad
   - title: Geometrie
     summary: De geometrie van de watergangsectie komt terug in bovenaanzicht, dwarsprofiel en ruimtelijke begrenzing langs de as van de watergang.
+    items:
+      - title: Kleinschalig
+        text: Op kleinschalig niveau wordt de sectie gelezen via doorsneden, taluds, bodem en andere directe profielonderdelen.
+      - title: Midschalig
+        text: Op midschalig niveau is de watergangsectie een afgebakend deeltraject met eigen kenmerken, onderhoud en ruimtelijke positie in de watergang.
+      - title: Grootschalig
+        text: Op grootschalig niveau maakt de watergangsectie deel uit van de volledige waterganglijn binnen stroomgebied en watersysteem.
 productRelations:
   - title: Woordenboek
     text: Begrippen en definities voor Watergangsectie.

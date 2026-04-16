@@ -555,6 +555,19 @@ h1 {
   align-items: start;
 }
 
+.info-card__figure {
+  margin: 0;
+}
+
+.info-card__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--color-line);
+  border-radius: 0 var(--corner-control) 0 0;
+  background: #f8fcfc;
+}
+
 .info-card--nested {
   padding: var(--space-4);
   min-height: auto;

@@ -7,6 +7,7 @@ interface SectionItem {
   summary: string;
   href?: string;
   items?: { title: string; text: string; href?: string }[];
+  image?: { src: string; alt?: string };
 }
 
 interface Props {
@@ -22,7 +23,7 @@ const { title = "Inhoudelijke opbouw", items = [] } = Astro.props;
   <h2>{title}</h2>
   <CardGrid stacked={true}>
     {items.map((item) => (
-      <ContentSectionCard title={item.title} text={item.summary} href={item.href} items={item.items} />
+      <ContentSectionCard title={item.title} text={item.summary} href={item.href} items={item.items} image={item.image} />
     ))}
   </CardGrid>
 </section>
