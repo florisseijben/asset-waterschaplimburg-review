@@ -32,7 +32,7 @@ contentSections:
   - title: Overzicht / Samenhang
     summary: Het watersysteem vormt de kapstok voor subsystemen, objectfamilies en objecttypen die samen de regionale waterstructuur beschrijven.
   - title: Afbakening
-    summary: De afbakening van het watersysteem volgt de regionale beheercontext van oppervlaktewateren, ondersteunende waterstaatswerken en hun samenhangende objectlijnen.
+    summary: De afbakening van het watersysteem volgt de oppervlaktewateren binnen de provinciegrenzen van Limburg. Daarbij heeft het watersysteem raakvlakken met het stelsel van primaire waterkeringen langs de Maas en met de afvalwaterketen.
   - title: Onderdelen
     summary: Binnen deze systeemlijn werken we eerst het subsysteem Stroomgebied uit en daarnaast de objectfamilies Watergang en Regenwaterbuffer op het eerstvolgende hiërarchische niveau.
     items:
