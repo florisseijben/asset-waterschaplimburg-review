@@ -55,17 +55,17 @@ contentSections:
       - title: Overzicht
         text: Visualisatie van Nederland ingedeeld in de vier landgrensoverschrijdende stroomgebieden Maas, Schelde, Eems en Rijn.
         image:
-          src: https://damo.hetwaterschapshuis.nl/DAMO%202.6/Objectenhandboek%20DAMO%202.6/html/lib/NewItem33.png
-          alt: Kaart van Nederland ingedeeld in stroomgebieden.
-        caption: Afbeelding 2.1 Nederland ingedeeld in stroomgebieden (Rijkswaterstaat: Nationaal Waterplan 2016-2021)
-        href: https://damo.hetwaterschapshuis.nl/DAMO%202.6/Objectenhandboek%20DAMO%202.6/html/BijlageAfvoeraanvoergebiedmethod.html#_Toc82702205
+          src: "https://damo.hetwaterschapshuis.nl/DAMO%202.6/Objectenhandboek%20DAMO%202.6/html/lib/NewItem33.png"
+          alt: "Kaart van Nederland ingedeeld in stroomgebieden."
+        caption: "Afbeelding 2.1 Nederland ingedeeld in stroomgebieden (Rijkswaterstaat: Nationaal Waterplan 2016-2021)"
+        href: "https://damo.hetwaterschapshuis.nl/DAMO%202.6/Objectenhandboek%20DAMO%202.6/html/BijlageAfvoeraanvoergebiedmethod.html#_Toc82702205"
       - title: Samenhang
         text: Schematische weergave van afvoergebieden van de 2e gebiedsorde in een vrij verval situatie, als eerste verdere detaillering binnen een stroomgebied.
         image:
-          src: https://damo.hetwaterschapshuis.nl/DAMO%202.6/Objectenhandboek%20DAMO%202.6/html/lib/NewItem32.png
-          alt: Schematische weergave van afvoergebieden van de 2e gebiedsorde.
-        caption: Afbeelding 3.1 Afvoergebieden van de 2e gebiedsorde
-        href: https://damo.hetwaterschapshuis.nl/DAMO%202.6/Objectenhandboek%20DAMO%202.6/html/BijlageAfvoeraanvoergebiedmethod.html#_Toc82702214
+          src: "https://damo.hetwaterschapshuis.nl/DAMO%202.6/Objectenhandboek%20DAMO%202.6/html/lib/NewItem32.png"
+          alt: "Schematische weergave van afvoergebieden van de 2e gebiedsorde."
+        caption: "Afbeelding 3.1 Afvoergebieden van de 2e gebiedsorde"
+        href: "https://damo.hetwaterschapshuis.nl/DAMO%202.6/Objectenhandboek%20DAMO%202.6/html/BijlageAfvoeraanvoergebiedmethod.html#_Toc82702214"
   - title: Afbakening
     summary: De afbakening van het stroomgebied volgt de hydrologische grens waarbinnen oppervlakkig afstromend water uiteindelijk via hetzelfde hoofdafvoersysteem wordt afgevoerd.
   - title: Onderdelen
