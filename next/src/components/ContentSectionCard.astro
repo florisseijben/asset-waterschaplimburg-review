@@ -5,6 +5,8 @@ interface SectionItem {
   title: string;
   text: string;
   href?: string;
+  image?: SectionImage;
+  caption?: string;
 }
 
 interface SectionImage {
@@ -18,9 +20,10 @@ interface Props {
   href?: string;
   items?: SectionItem[];
   image?: SectionImage;
+  caption?: string;
 }
 
-const { title, text, href, items = [], image } = Astro.props;
+const { title, text, href, items = [], image, caption } = Astro.props;
 const hasItems = items.length > 0;
 const Tag = href && !hasItems ? "a" : "article";
 ---
@@ -31,6 +34,7 @@ const Tag = href && !hasItems ? "a" : "article";
   {image?.src && (
     <figure class="info-card__figure">
       <img class="info-card__image" src={withBase(image.src)} alt={image.alt || ""} loading="lazy" />
+      {caption && <figcaption class="info-card__caption">{caption}</figcaption>}
     </figure>
   )}
   {href && !hasItems && <span class="info-card__link">Open</span>}
@@ -43,6 +47,12 @@ const Tag = href && !hasItems ? "a" : "article";
         <ItemTag class="info-card info-card--nested" href={item.href ? withBase(item.href) : undefined}>
           <h3>{item.title}</h3>
           <p>{item.text}</p>
+          {item.image?.src && (
+            <figure class="info-card__figure">
+              <img class="info-card__image" src={withBase(item.image.src)} alt={item.image.alt || ""} loading="lazy" />
+              {item.caption && <figcaption class="info-card__caption">{item.caption}</figcaption>}
+            </figure>
+          )}
           {item.href && <span class="info-card__link">Open</span>}
         </ItemTag>
       )})}
