@@ -52,20 +52,7 @@ contentSections:
   - title: Afbakening
     summary: De afbakening volgt het afzonderlijke deel van de buffer waarvoor oppervlak, volume en functionele relaties apart worden vastgelegd.
   - title: Onderdelen
-    summary: DAMO benoemt geen verdere onderliggende decompositie, maar laat wel zien dat compartimenten samenhangen met objecten zoals vaste dam, verdediging, afsluitmiddel en stuw.
-    items:
-      - title: Vaste dam
-        text: Verwant object dat compartimenten ruimtelijk of functioneel kan scheiden.
-        href: /in-migratie/objectenhandboek/watersysteem/regenwaterbuffer/regenwaterbuffercompartiment/vaste-dam
-      - title: Verdediging
-        text: Verwant object rond het compartiment voor bescherming of begrenzing.
-        href: /in-migratie/objectenhandboek/watersysteem/regenwaterbuffer/regenwaterbuffercompartiment/verdediging
-      - title: Afsluitmiddel
-        text: Regelend of afsluitend object dat op compartimentniveau gekoppeld kan zijn.
-        href: /in-migratie/objectenhandboek/watersysteem/regenwaterbuffer/regenwaterbuffercompartiment/afsluitmiddel
-      - title: Stuw
-        text: Verwant regelobject voor peil- of afvoerbeheersing in relatie tot een compartiment.
-        href: /in-migratie/objectenhandboek/watersysteem/regenwaterbuffer/regenwaterbuffercompartiment/stuw
+    summary: Binnen de huidige hiërarchie zijn voor Regenwaterbuffercompartiment nog geen directe onderliggende objecten uitgewerkt. Verwante objecten zoals vaste dam, verdediging, afsluitmiddel en stuw kunnen inhoudelijk wel aan een compartiment relateren, maar worden niet als directe kinderen van dit object getoond.
   - title: Geometrie
     summary: DAMO beschrijft het compartiment als vlakrepresentatie op basis van de feitelijke contouren van het deelobject.
     items:

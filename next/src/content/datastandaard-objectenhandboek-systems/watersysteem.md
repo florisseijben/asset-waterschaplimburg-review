@@ -34,7 +34,7 @@ contentSections:
   - title: Afbakening
     summary: De afbakening van het watersysteem volgt de regionale beheercontext van oppervlaktewateren, ondersteunende waterstaatswerken en hun samenhangende objectlijnen.
   - title: Onderdelen
-    summary: Binnen deze systeemlijn werken we eerst het subsysteem Stroomgebied uit en vandaar objectfamilies zoals Watergang en Regenwaterbuffer.
+    summary: Binnen deze systeemlijn werken we eerst het subsysteem Stroomgebied uit en daarnaast de objectfamilies Watergang en Regenwaterbuffer op het eerstvolgende hiërarchische niveau.
     items:
       - title: Stroomgebied
         text: Subsysteemlanding voor de hydrologische samenhang en de objectfamilies daarbinnen.
@@ -45,12 +45,6 @@ contentSections:
       - title: Regenwaterbuffer
         text: Objectfamilie voor tijdelijke opvang en gereguleerde afvoer van neerslagpieken.
         href: /datastandaard/objectenhandboek/watersysteem/regenwaterbuffer
-      - title: Watergangsectie
-        text: Onderliggend objecttype binnen de waterganglijn.
-        href: /datastandaard/objectenhandboek/watersysteem/watergangsectie
-      - title: Intersectie
-        text: Parallel objecttype voor kruisingen en snijpunten in de watergangstructuur.
-        href: /datastandaard/objectenhandboek/watersysteem/intersectie
   - title: Geometrie
     summary: De geometrie van het watersysteem wordt op systeemniveau gelezen via waterstructuren, gebieden en de ruimtelijke samenhang tussen objectfamilies en subsystemen.
     items:
