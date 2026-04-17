@@ -9,6 +9,7 @@ import VervolgSection from "../../../../../components/VervolgSection.astro";
 import { getCollection } from "astro:content";
 import regenwaterbufferSamenhangTurtle from "../../../../../data/semantic/regenwaterbuffer-samenhang.ttl?raw";
 import { normalizeUitwerkingSections } from "../../../../../lib/uitwerkingSections";
+import { createRegenwaterbufferGraph } from "../../../../../lib/semanticSamenhangGraphs";
 
 const entries = await getCollection("datastandaard-objectenhandboek-objects");
 const expectedSlug = "/datastandaard/objectenhandboek/watersysteem/regenwaterbuffer";
@@ -26,26 +27,7 @@ if (!entry) {
 const visibleContentSections = normalizeUitwerkingSections(
   (entry.data.contentSections || []).filter((item) => item.title !== "Decompositie")
 );
-const samenhangLayout = [
-  {
-    id: "regenwaterbuffer",
-    label: "Regenwaterbuffer",
-    subtitle: "Hoofdobject",
-    column: 0,
-    row: 0,
-    fill: "#e4f7fa",
-    stroke: "#00a9c1"
-  },
-  {
-    id: "regenwaterbuffercompartiment",
-    label: "Regenwaterbuffercompartiment",
-    subtitle: "Onderdeel",
-    column: 0,
-    row: 1,
-    fill: "#eefafb",
-    stroke: "#00a9c1"
-  }
-];
+const samenhangGraph = createRegenwaterbufferGraph();
 ---
 
 <BaseLayout
@@ -85,7 +67,8 @@ const samenhangLayout = [
     graphId="regenwaterbuffer-samenhang"
     selectedId="regenwaterbuffer"
     turtle={regenwaterbufferSamenhangTurtle}
-    layoutNodes={samenhangLayout}
+    layoutNodes={samenhangGraph.layoutNodes}
+    edges={samenhangGraph.edges}
   />
 
   <UitwerkingSection title="Inhoudelijke opbouw van Regenwaterbuffer" items={visibleContentSections} />

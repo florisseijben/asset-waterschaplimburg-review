@@ -9,6 +9,7 @@ import VervolgSection from "../../../../../components/VervolgSection.astro";
 import { getCollection } from "astro:content";
 import watergangSamenhangTurtle from "../../../../../data/semantic/watergang-samenhang.ttl?raw";
 import { normalizeUitwerkingSections } from "../../../../../lib/uitwerkingSections";
+import { createWatergangsectieGraph } from "../../../../../lib/semanticSamenhangGraphs";
 
 const entries = await getCollection("datastandaard-objectenhandboek-objects");
 const expectedSlug = "/datastandaard/objectenhandboek/watersysteem/watergangsectie";
@@ -26,35 +27,7 @@ if (!entry) {
 const visibleContentSections = normalizeUitwerkingSections(
   (entry.data.contentSections || []).filter((item) => item.title !== "Decompositie")
 );
-const samenhangLayout = [
-  {
-    id: "watergang",
-    label: "Watergang",
-    subtitle: "Hoofdobject",
-    column: 1,
-    row: 0,
-    fill: "#ffffff",
-    stroke: "#00a9c1"
-  },
-  {
-    id: "watergangsectie",
-    label: "Watergangsectie",
-    subtitle: "Objecttype",
-    column: 0,
-    row: 1,
-    fill: "#e4f7fa",
-    stroke: "#00a9c1"
-  },
-  {
-    id: "intersectie",
-    label: "Intersectie",
-    subtitle: "Parallel objecttype",
-    column: 2,
-    row: 1,
-    fill: "#eefafb",
-    stroke: "#00a9c1"
-  }
-];
+const samenhangGraph = createWatergangsectieGraph();
 ---
 
 <BaseLayout
@@ -95,7 +68,8 @@ const samenhangLayout = [
     graphId="watergangsectie-samenhang"
     selectedId="watergangsectie"
     turtle={watergangSamenhangTurtle}
-    layoutNodes={samenhangLayout}
+    layoutNodes={samenhangGraph.layoutNodes}
+    edges={samenhangGraph.edges}
   />
 
   <UitwerkingSection title="Inhoudelijke opbouw van Watergangsectie" items={visibleContentSections} />

@@ -9,6 +9,7 @@ import VervolgSection from "../../../../../../../components/VervolgSection.astro
 import { getCollection } from "astro:content";
 import bekledingsconstructieSamenhangTurtle from "../../../../../../../data/semantic/talud-bekledingsconstructie-samenhang.ttl?raw";
 import { normalizeUitwerkingSections } from "../../../../../../../lib/uitwerkingSections";
+import { createBekledingsconstructieGraph } from "../../../../../../../lib/semanticSamenhangGraphs";
 
 const entries = await getCollection("datastandaard-objectenhandboek-objects");
 const expectedSlug = "/datastandaard/objectenhandboek/watersysteem/watergangsectie/talud/bekledingsconstructie";
@@ -23,44 +24,7 @@ if (!entry) {
   throw new Error("Objectenhandboek Bekledingsconstructie ontbreekt in de nieuwe omgeving.");
 }
 
-const samenhangLayout = [
-  {
-    id: "watergangsectie",
-    label: "Watergangsectie",
-    subtitle: "Bovenliggend object",
-    column: 1,
-    row: 0,
-    fill: "#ffffff",
-    stroke: "#00a9c1"
-  },
-  {
-    id: "talud",
-    label: "Talud",
-    subtitle: "Bovenliggend onderdeel",
-    column: 1,
-    row: 1,
-    fill: "#eefafb",
-    stroke: "#00a9c1"
-  },
-  {
-    id: "bekledingsconstructie",
-    label: "Bekledingsconstructie",
-    subtitle: "Objecttype",
-    column: 1,
-    row: 2,
-    fill: "#e4f7fa",
-    stroke: "#00a9c1"
-  },
-  {
-    id: "toplaag",
-    label: "Toplaag",
-    subtitle: "Onderdeel",
-    column: 1,
-    row: 3,
-    fill: "#eefafb",
-    stroke: "#00a9c1"
-  }
-];
+const samenhangGraph = createBekledingsconstructieGraph();
 ---
 
 <BaseLayout
@@ -103,7 +67,8 @@ const samenhangLayout = [
     graphId="bekledingsconstructie-samenhang"
     selectedId="bekledingsconstructie"
     turtle={bekledingsconstructieSamenhangTurtle}
-    layoutNodes={samenhangLayout}
+    layoutNodes={samenhangGraph.layoutNodes}
+    edges={samenhangGraph.edges}
   />
 
   <UitwerkingSection title="Inhoudelijke opbouw van Bekledingsconstructie" items={normalizeUitwerkingSections(entry.data.contentSections || [])} />

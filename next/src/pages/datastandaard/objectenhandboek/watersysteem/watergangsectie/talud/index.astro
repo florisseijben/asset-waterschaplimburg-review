@@ -9,6 +9,7 @@ import VervolgSection from "../../../../../../components/VervolgSection.astro";
 import { getCollection } from "astro:content";
 import taludSamenhangTurtle from "../../../../../../data/semantic/watergangsectie-talud-samenhang.ttl?raw";
 import { normalizeUitwerkingSections } from "../../../../../../lib/uitwerkingSections";
+import { createTaludGraph } from "../../../../../../lib/semanticSamenhangGraphs";
 
 const entries = await getCollection("datastandaard-objectenhandboek-objects");
 const expectedSlug = "/datastandaard/objectenhandboek/watersysteem/watergangsectie/talud";
@@ -23,53 +24,7 @@ if (!entry) {
   throw new Error("Objectenhandboek Talud ontbreekt in de nieuwe omgeving.");
 }
 
-const samenhangLayout = [
-  {
-    id: "watergang",
-    label: "Watergang",
-    subtitle: "Hoofdobject",
-    column: 1,
-    row: 0,
-    fill: "#ffffff",
-    stroke: "#00a9c1"
-  },
-  {
-    id: "watergangsectie",
-    label: "Watergangsectie",
-    subtitle: "Bovenliggend object",
-    column: 1,
-    row: 1,
-    fill: "#eefafb",
-    stroke: "#00a9c1"
-  },
-  {
-    id: "talud",
-    label: "Talud",
-    subtitle: "Objecttype",
-    column: 1,
-    row: 2,
-    fill: "#e4f7fa",
-    stroke: "#00a9c1"
-  },
-  {
-    id: "bekledingsconstructie",
-    label: "Bekledingsconstructie",
-    subtitle: "Onderdeel",
-    column: 0,
-    row: 3,
-    fill: "#eefafb",
-    stroke: "#00a9c1"
-  },
-  {
-    id: "bodem",
-    label: "Bodem",
-    subtitle: "Aangrenzend onderdeel",
-    column: 2,
-    row: 2,
-    fill: "#ffffff",
-    stroke: "#00a9c1"
-  }
-];
+const samenhangGraph = createTaludGraph();
 ---
 
 <BaseLayout
@@ -111,7 +66,8 @@ const samenhangLayout = [
     graphId="talud-samenhang"
     selectedId="talud"
     turtle={taludSamenhangTurtle}
-    layoutNodes={samenhangLayout}
+    layoutNodes={samenhangGraph.layoutNodes}
+    edges={samenhangGraph.edges}
   />
 
   <UitwerkingSection title="Inhoudelijke opbouw van Talud" items={normalizeUitwerkingSections(entry.data.contentSections || [])} />

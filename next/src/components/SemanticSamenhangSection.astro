@@ -221,6 +221,10 @@ function renderFallbackMarkup(graph: { nodes: LayoutNode[]; edges: GraphEdge[] }
     width +
     " " +
     height +
+    '" width="' +
+    width +
+    '" height="' +
+    height +
     '" role="img" aria-label="Samenhang in het semantische model">' +
     '<defs><marker id="semantic-samenhang-arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#007f91"></path></marker></defs>' +
     edgesMarkup +
@@ -470,7 +474,7 @@ const initialFallbackMarkup = renderFallbackMarkup(initialFallbackGraph);
 
       let svg = '' +
         '<div class="semantic-graph-wrap">' +
-          '<svg class="semantic-graph" viewBox="0 0 ' + width + " " + height + '" role="img" aria-label="Samenhang in het semantische model">' +
+          '<svg class="semantic-graph" viewBox="0 0 ' + width + " " + height + '" width="' + width + '" height="' + height + '" role="img" aria-label="Samenhang in het semantische model">' +
             '<defs><marker id="semantic-samenhang-arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#007f91"></path></marker></defs>';
 
       graph.edges.forEach((edge) => {

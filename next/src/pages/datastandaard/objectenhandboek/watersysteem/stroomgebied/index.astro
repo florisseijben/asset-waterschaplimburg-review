@@ -9,6 +9,7 @@ import VervolgSection from "../../../../../components/VervolgSection.astro";
 import { getCollection } from "astro:content";
 import watersysteemSamenhangTurtle from "../../../../../data/semantic/watersysteem-samenhang.ttl?raw";
 import { normalizeUitwerkingSections } from "../../../../../lib/uitwerkingSections";
+import { createStroomgebiedGraph } from "../../../../../lib/semanticSamenhangGraphs";
 
 const entries = await getCollection("datastandaard-objectenhandboek-objects");
 const expectedSlug = "/datastandaard/objectenhandboek/watersysteem/stroomgebied";
@@ -23,62 +24,7 @@ if (!entry) {
   throw new Error("Objectenhandboek Stroomgebied ontbreekt in de nieuwe omgeving.");
 }
 
-const samenhangLayout = [
-  {
-    id: "watersysteem",
-    label: "Watersysteem",
-    subtitle: "Systeem",
-    column: 1,
-    row: 0,
-    fill: "#ffffff",
-    stroke: "#00a9c1"
-  },
-  {
-    id: "stroomgebied",
-    label: "Stroomgebied",
-    subtitle: "Subsysteem",
-    column: 1,
-    row: 1,
-    fill: "#e4f7fa",
-    stroke: "#00a9c1"
-  },
-  {
-    id: "watergang",
-    label: "Watergang",
-    subtitle: "Objectfamilie",
-    column: 0,
-    row: 2,
-    fill: "#eefafb",
-    stroke: "#00a9c1"
-  },
-  {
-    id: "regenwaterbuffer",
-    label: "Regenwaterbuffer",
-    subtitle: "Objectfamilie",
-    column: 2,
-    row: 2,
-    fill: "#eefafb",
-    stroke: "#00a9c1"
-  },
-  {
-    id: "watergangsectie",
-    label: "Watergangsectie",
-    subtitle: "Objecttype",
-    column: 0,
-    row: 3,
-    fill: "#ffffff",
-    stroke: "#00a9c1"
-  },
-  {
-    id: "intersectie",
-    label: "Intersectie",
-    subtitle: "Objecttype",
-    column: 1,
-    row: 3,
-    fill: "#ffffff",
-    stroke: "#00a9c1"
-  }
-];
+const samenhangGraph = createStroomgebiedGraph();
 ---
 
 <BaseLayout
@@ -118,7 +64,8 @@ const samenhangLayout = [
     graphId="stroomgebied-samenhang"
     selectedId="stroomgebied"
     turtle={watersysteemSamenhangTurtle}
-    layoutNodes={samenhangLayout}
+    layoutNodes={samenhangGraph.layoutNodes}
+    edges={samenhangGraph.edges}
   />
 
   <UitwerkingSection title="Wat werken we vanuit dit subsysteem uit?" items={normalizeUitwerkingSections(entry.data.contentSections || [])} />

@@ -13,6 +13,7 @@ import {
   getDecompositionFromAssetJson
 } from "../../../../../lib/assetConcepts";
 import { normalizeUitwerkingSections } from "../../../../../lib/uitwerkingSections";
+import { createWatergangGraph } from "../../../../../lib/semanticSamenhangGraphs";
 
 const entries = await getCollection("datastandaard-objectenhandboek-objects");
 const expectedSlug = "/datastandaard/objectenhandboek/watersysteem/watergangen";
@@ -42,6 +43,7 @@ const visibleContentSections = (entry.data.contentSections || [])
       : item
   );
 const normalizedContentSections = normalizeUitwerkingSections(visibleContentSections);
+const fallbackGraph = createWatergangGraph();
 const fallbackSamenhang = {
   sourceLabel: "Dummy relatiebron uit de Watergang-pagina.",
   turtle: `@prefix object: <https://data.waterschaplimburg.nl/id/objecttype/> .
@@ -67,47 +69,8 @@ relatie:heeftIntersectie a owl:ObjectProperty ;
 object:watergang relatie:heeftSectie object:watergangsectie .
 object:watergang relatie:heeftIntersectie object:intersectie .
 `,
-  layoutNodes: [
-    {
-      id: "watergang",
-      label: "Watergang",
-      subtitle: "Hoofdobject",
-      column: 1,
-      row: 0,
-      fill: "#e4f7fa",
-      stroke: "#00a9c1"
-    },
-    {
-      id: "watergangsectie",
-      label: "Watergangsectie",
-      subtitle: "Onderdeel",
-      column: 0,
-      row: 1,
-      fill: "#eefafb",
-      stroke: "#00a9c1"
-    },
-    {
-      id: "intersectie",
-      label: "Intersectie",
-      subtitle: "Onderdeel",
-      column: 2,
-      row: 1,
-      fill: "#eefafb",
-      stroke: "#00a9c1"
-    }
-  ],
-  edges: [
-    {
-      from: "watergang",
-      to: "watergangsectie",
-      label: "Heeft sectie"
-    },
-    {
-      from: "watergang",
-      to: "intersectie",
-      label: "Heeft intersectie"
-    }
-  ]
+  layoutNodes: fallbackGraph.layoutNodes,
+  edges: fallbackGraph.edges
 };
 ---
 
