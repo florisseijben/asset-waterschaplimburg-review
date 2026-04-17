@@ -73,11 +73,11 @@ contentSections:
     summary: De geometrie wordt zichtbaar via aslijn, gebiedscontour en dwarsprofiel van dezelfde watergangopbouw.
     items:
       - title: Grootschalig
-        text: Op grootschalig niveau wordt de watergang gelezen via lokale doorsneden, profielonderdelen en directe ruimtelijke kenmerken van het object.
+        text: "Bij grootschalige kaarten, ongeveer schaal 1:1.000 tot 1:10.000, wordt Watergang getoond als lijngeometrie en waar relevant als vlakcontour van het waterlichaam. Op dit detailniveau zijn ook lokale profielkenmerken en directe ruimtelijke begrenzingen van het object leesbaar."
       - title: Midschalig
-        text: Op midschalig niveau wordt de watergang zichtbaar als samenhangend traject of deeltraject met secties, kruisingen en ruimtelijke begrenzing.
+        text: "Bij midschalige kaarten, ongeveer schaal 1:25.000 tot 1:100.000, wordt Watergang primair getoond als lijngeometrie van een samenhangend traject of deeltraject. De watergang blijft op dit schaalniveau goed bruikbaar om secties, kruisingen en ruimtelijke samenhang te positioneren."
       - title: Kleinschalig
-        text: Op kleinschalig niveau maakt de watergang onderdeel uit van het bredere waternetwerk binnen stroomgebied en watersysteem.
+        text: "Bij kleinschalige kaarten, ongeveer schaal 1:500.000 en kleiner, wordt Watergang alleen nog als sterk gegeneraliseerde lijngeometrie getoond. Op dit overzichtsniveau functioneert het object als onderdeel van het bredere waternetwerk binnen stroomgebied en watersysteem."
 productRelations:
   - title: Woordenboek
     text: Begrippen en definities voor de waterganglijn.

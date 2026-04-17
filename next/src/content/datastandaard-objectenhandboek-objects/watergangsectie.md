@@ -86,11 +86,11 @@ contentSections:
     summary: De geometrie van de watergangsectie komt terug in bovenaanzicht, dwarsprofiel en ruimtelijke begrenzing langs de as van de watergang.
     items:
       - title: Grootschalig
-        text: Op grootschalig niveau wordt de sectie gelezen via doorsneden, taluds, bodem en andere directe profielonderdelen.
+        text: "Bij grootschalige kaarten, ongeveer schaal 1:1.000 tot 1:10.000, wordt Watergangsectie getoond als lijngeometrie van een afgebakend deeltraject en in detail gekoppeld aan doorsneden, taluds, bodem en andere profielonderdelen."
       - title: Midschalig
-        text: Op midschalig niveau is de watergangsectie een afgebakend deeltraject met eigen kenmerken, onderhoud en ruimtelijke positie in de watergang.
+        text: "Bij midschalige kaarten, ongeveer schaal 1:25.000 tot 1:100.000, wordt Watergangsectie nog steeds als lijngeometrie getoond, maar dan als gegeneraliseerd deeltraject binnen de watergang. De sectie blijft op dit schaalniveau bruikbaar voor kenmerken, onderhoud en ligging binnen het traject."
       - title: Kleinschalig
-        text: Op kleinschalig niveau maakt de watergangsectie deel uit van de volledige waterganglijn binnen stroomgebied en watersysteem.
+        text: "Bij kleinschalige kaarten, ongeveer schaal 1:500.000 en kleiner, wordt Watergangsectie niet als apart object getoond. Op dit schaalniveau is het detailverschil tussen afzonderlijke secties te klein en wordt alleen de meer algemene watergangstructuur weergegeven."
 productRelations:
   - title: Woordenboek
     text: Begrippen en definities voor Watergangsectie.

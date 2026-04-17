@@ -64,11 +64,11 @@ contentSections:
     summary: De geometrie van de bekledingsconstructie volgt de ligging, helling en reikwijdte van de constructieve opbouw op het talud.
     items:
       - title: Grootschalig
-        text: Op grootschalig niveau wordt de bekledingsconstructie gelezen via lagen, aansluitingen, materialen en lokale bevestiging op het talud.
+        text: "Bij grootschalige kaarten, ongeveer schaal 1:1.000 tot 1:10.000, wordt Bekledingsconstructie getoond als vlakgeometrie van de constructieve laag op het talud. Op dit detailniveau zijn lagen, aansluitingen, materialen en lokale bevestiging goed te onderscheiden."
       - title: Midschalig
-        text: Op midschalig niveau volgt de bekledingsconstructie het verloop van het talud en de delen van de sectie waar bescherming nodig is.
+        text: "Bij midschalige kaarten, ongeveer schaal 1:25.000 tot 1:100.000, wordt Bekledingsconstructie in deze objectlijn niet als apart object getoond. De constructieve bescherming werkt op dit schaalniveau alleen nog indirect door in de vorm en stabiliteit van het talud."
       - title: Kleinschalig
-        text: Op kleinschalig niveau draagt de bekledingsconstructie bij aan de constructieve robuustheid en herkenbaarheid van de waterganglijn.
+        text: "Bij kleinschalige kaarten, ongeveer schaal 1:500.000 en kleiner, wordt Bekledingsconstructie niet als apart object getoond. Op dit overzichtsniveau is de constructieve laag te fijnmazig en blijft alleen de gegeneraliseerde watergangstructuur zichtbaar."
 productRelations:
   - title: Woordenboek
     text: Begrippen en definities voor bekleding, constructie en toplaag.

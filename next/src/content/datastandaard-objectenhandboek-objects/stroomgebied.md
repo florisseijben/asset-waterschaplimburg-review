@@ -87,11 +87,11 @@ contentSections:
     summary: De geometrie van het stroomgebied is gebiedsgericht en sluit aan op de DAMO-methodiek voor afvoer- en aanvoergebieden.
     items:
       - title: Grootschalig
-        text: Bij grootschalige kaarten, ongeveer schaal 1:500 tot 1:2.000, wordt Stroomgebied niet als apart object getoond. Op dit detailniveau ligt de nadruk op lokale objecten en deelstructuren; er wordt daarom geen afzonderlijke geometrie voor Stroomgebied weergegeven.
+        text: "Bij grootschalige kaarten, ongeveer schaal 1:1.000 tot 1:10.000, wordt Stroomgebied niet als apart object getoond. Op dit detailniveau ligt de nadruk op lokale objecten en deelstructuren; er wordt daarom geen afzonderlijke geometrie voor Stroomgebied weergegeven."
       - title: Midschalig
-        text: Bij midschalige kaarten, ongeveer schaal 1:10.000 tot 1:50.000, wordt Stroomgebied getoond als vlakgeometrie. In dit schaalbereik is het object bruikbaar om de samenhang tussen afvoergebieden, objectfamilies en hydrologische deelstructuren zichtbaar te maken.
+        text: "Bij midschalige kaarten, ongeveer schaal 1:25.000 tot 1:100.000, wordt Stroomgebied getoond als vlakgeometrie. In dit schaalbereik is het object bruikbaar om de samenhang tussen afvoergebieden, objectfamilies en hydrologische deelstructuren zichtbaar te maken."
       - title: Kleinschalig
-        text: Bij kleinschalige kaarten, ongeveer schaal 1:100.000 en kleiner, wordt Stroomgebied in deze objectlijn niet als afzonderlijk object getoond. Op dit overzichtsniveau wordt de context vooral op systeem- en landsdekkend niveau weergegeven, zonder aparte objectgeometrie voor Stroomgebied.
+        text: "Bij kleinschalige kaarten, ongeveer schaal 1:500.000 en kleiner, wordt Stroomgebied getoond als sterk gegeneraliseerde vlakgeometrie. Op dit overzichtsniveau maakt het object de grote hydrologische indeling van Nederland en de regionale context van het watersysteem zichtbaar."
         href: https://damo.hetwaterschapshuis.nl/DAMO%202.6/Objectenhandboek%20DAMO%202.6/html/BijlageAfvoeraanvoergebiedmethod.html
 productRelations:
   - title: Woordenboek

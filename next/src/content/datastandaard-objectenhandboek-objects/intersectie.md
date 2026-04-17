@@ -74,11 +74,11 @@ contentSections:
     summary: De geometrie van de intersectie wordt zichtbaar in bovenaanzicht, doorsnede en ruimtelijke positie ten opzichte van de watergang.
     items:
       - title: Grootschalig
-        text: Op grootschalig niveau wordt de intersectie gelezen via het directe kruispunt, de aansluitende randen en de lokale doorsnede.
+        text: "Bij grootschalige kaarten, ongeveer schaal 1:1.000 tot 1:10.000, wordt Intersectie getoond als puntgeometrie op het directe kruispunt of aansluitpunt. Op dit detailniveau zijn ook de lokale aansluiting en de ruimtelijke context van het snijpunt goed leesbaar."
       - title: Midschalig
-        text: Op midschalig niveau toont de intersectie hoe trajecten, secties of overgangen elkaar raken binnen de watergangstructuur.
+        text: "Bij midschalige kaarten, ongeveer schaal 1:25.000 tot 1:100.000, wordt Intersectie alleen getoond als gegeneraliseerde puntgeometrie wanneer het kruispunt relevant is voor de netwerkstructuur. Het object markeert dan vooral waar trajecten, secties of overgangen elkaar raken."
       - title: Kleinschalig
-        text: Op kleinschalig niveau positioneert de intersectie zich als knooppunt binnen het bredere netwerk van waterlopen en systeemovergangen.
+        text: "Bij kleinschalige kaarten, ongeveer schaal 1:500.000 en kleiner, wordt Intersectie niet als apart object getoond. Op dit overzichtsniveau is het kruispuntdetail te klein en wordt alleen de gegeneraliseerde hoofdstructuur van het netwerk weergegeven."
 productRelations:
   - title: Woordenboek
     text: Begripsdefinitie van Intersectie als startpunt van de objectpagina.

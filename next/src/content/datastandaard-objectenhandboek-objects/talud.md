@@ -69,11 +69,11 @@ contentSections:
     summary: De geometrie van het talud wordt bepaald door helling, lengte, hoogteverschil en positie in het dwarsprofiel van de watergangsectie.
     items:
       - title: Grootschalig
-        text: Op grootschalig niveau wordt het talud gelezen via helling, hoogteverschil, bekleding en de directe aansluiting op bodem of maaiveld.
+        text: "Bij grootschalige kaarten, ongeveer schaal 1:1.000 tot 1:10.000, wordt Talud getoond als lijn- of vlakrepresentatie van het schuine profieldeel binnen de watergangsectie. Op dit detailniveau zijn helling, hoogteverschil, bekleding en de directe aansluiting op bodem of maaiveld goed zichtbaar."
       - title: Midschalig
-        text: Op midschalig niveau bepaalt het talud de vorm en begrenzing van het profiel binnen een watergangsectie.
+        text: "Bij midschalige kaarten, ongeveer schaal 1:25.000 tot 1:100.000, wordt Talud in deze objectlijn niet als apart object getoond. De invloed van het talud werkt op dit schaalniveau nog wel door in de vorm van de watergang, maar zonder zelfstandige geometrische weergave."
       - title: Kleinschalig
-        text: Op kleinschalig niveau draagt het talud bij aan de ruimtelijke leesbaarheid en profielopbouw van de volledige watergang.
+        text: "Bij kleinschalige kaarten, ongeveer schaal 1:500.000 en kleiner, wordt Talud niet als apart object getoond. Op dit overzichtsniveau is het profieldetail te klein en blijft alleen de sterk gegeneraliseerde waterstructuur zichtbaar."
 productRelations:
   - title: Woordenboek
     text: Begrippen en definities voor talud en aangrenzende profielonderdelen.

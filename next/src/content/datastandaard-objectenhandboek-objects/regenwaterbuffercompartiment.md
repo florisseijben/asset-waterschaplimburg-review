@@ -70,11 +70,11 @@ contentSections:
     summary: DAMO beschrijft het compartiment als vlakrepresentatie op basis van de feitelijke contouren van het deelobject.
     items:
       - title: Grootschalig
-        text: Op grootschalig niveau wordt het compartiment gelezen via de feitelijke contouren, scheidingen en lokale inrichting van het deelobject.
+        text: "Bij grootschalige kaarten, ongeveer schaal 1:1.000 tot 1:10.000, wordt Regenwaterbuffercompartiment getoond als vlakgeometrie op basis van de feitelijke contour van het deelobject. Op dit detailniveau zijn scheidingen, begrenzingen en lokale inrichting van het compartiment goed leesbaar."
       - title: Midschalig
-        text: Op midschalig niveau maakt het compartiment zichtbaar hoe de regenwaterbuffer intern is opgedeeld in functionele delen.
+        text: "Bij midschalige kaarten, ongeveer schaal 1:25.000 tot 1:100.000, wordt Regenwaterbuffercompartiment alleen nog als gegeneraliseerde vlakgeometrie getoond wanneer de interne opdeling van de buffer relevant blijft. Het object laat dan zien hoe de regenwaterbuffer in functionele delen is verdeeld."
       - title: Kleinschalig
-        text: Op kleinschalig niveau positioneert het compartiment zich als onderdeel van de totale bergings- en sturingsstructuur van de regenwaterbuffer.
+        text: "Bij kleinschalige kaarten, ongeveer schaal 1:500.000 en kleiner, wordt Regenwaterbuffercompartiment niet als apart object getoond. Op dit schaalniveau is de interne opdeling te fijnmazig en wordt alleen de meer algemene buffer- of systeemstructuur weergegeven."
 productRelations:
   - title: Woordenboek
     text: Begrippen en definities voor compartimentering binnen de bufferlijn.
