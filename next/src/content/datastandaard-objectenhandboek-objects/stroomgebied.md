@@ -78,7 +78,7 @@ contentSections:
         text: Objectfamilie voor tijdelijke opvang en gereguleerde afvoer van neerslagpieken binnen het stroomgebied.
         href: /datastandaard/objectenhandboek/watersysteem/regenwaterbuffer
       - title: Kunstwerk
-        text: Objectfamilie voor beheerobjecten zoals stuwen en gemalen binnen de waterstructuur van het stroomgebied.
+        text: Objectfamilie voor kunstwerken binnen de waterstructuur van het stroomgebied, met verdere opbouw naar elementen en bouwdelen.
         href: /datastandaard/objectenhandboek/watersysteem/kunstwerken
   - title: Geometrie
     summary: De geometrie van het stroomgebied is gebiedsgericht en sluit aan op de DAMO-methodiek voor afvoer- en aanvoergebieden.
@@ -112,7 +112,7 @@ nextSteps:
     text: Objectfamilie voor regenwaterberging met onderliggende compartimenten.
     href: /datastandaard/objectenhandboek/watersysteem/regenwaterbuffer
   - title: Kunstwerk
-    text: Objectfamilie voor beheerobjecten die de werking van watergangen, secties en intersecties ondersteunen.
+    text: Objectfamilie die de werking van watergangen, secties en intersecties ondersteunt en intern is opgebouwd uit elementen en bouwdelen.
     href: /datastandaard/objectenhandboek/watersysteem/kunstwerken
 ---
 

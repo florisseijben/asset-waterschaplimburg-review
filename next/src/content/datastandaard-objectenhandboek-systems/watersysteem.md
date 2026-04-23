@@ -46,7 +46,7 @@ contentSections:
         text: Objectfamilie voor tijdelijke opvang en gereguleerde afvoer van neerslagpieken.
         href: /datastandaard/objectenhandboek/watersysteem/regenwaterbuffer
       - title: Kunstwerk
-        text: Objectfamilie voor beheerobjecten zoals stuwen en gemalen die de watergangstructuur ondersteunen.
+        text: Objectfamilie voor kunstwerken die de watergangstructuur ondersteunen en verder uitwerken naar elementen en bouwdelen.
         href: /datastandaard/objectenhandboek/watersysteem/kunstwerken
   - title: Geometrie
     summary: De geometrie van het watersysteem wordt op systeemniveau gelezen via waterstructuren, gebieden en de ruimtelijke samenhang tussen objectfamilies en subsystemen.
@@ -84,7 +84,7 @@ nextSteps:
     text: Objectlijn voor tijdelijke regenwaterberging en de opbouw naar compartimenten.
     href: /datastandaard/objectenhandboek/watersysteem/regenwaterbuffer
   - title: Kunstwerk
-    text: Objectfamilie voor beheerobjecten die watergangsecties en intersecties functioneel invullen.
+    text: Objectfamilie die watergangsecties en intersecties functioneel invult en intern doorloopt naar elementen en bouwdelen.
     href: /datastandaard/objectenhandboek/watersysteem/kunstwerken
   - title: Watergangsectie
     text: Onderliggende objectroute voor de opbouw van de watergang.

@@ -6,7 +6,7 @@ product: objectenhandboek
 ownerTeam: datastandaard
 status: eerste-template
 lastReviewed: 2026-04-23
-summary: Kunstwerk is een objectfamilie binnen het watersysteem. Deze lijn bundelt beheerobjecten zoals stuwen en gemalen.
+summary: Kunstwerk is een objectfamilie binnen het watersysteem. Deze lijn beschrijft hoe kunstwerken invulling geven aan de waterstructuur en intern zijn opgebouwd uit elementen en bouwdelen.
 heroTitle: Kunstwerk
 hierarchy:
   - Watersysteem
@@ -30,7 +30,7 @@ terms:
   - title: Intersectie
     text: Kruising of overgang in de waterstructuur waar een kunstwerk onderdeel van kan zijn.
     href: /datastandaard/woordenboek
-contextNote: Binnen deze objectfamilie brengen we beheerobjecten samen die de werking van watergangen, watergangsecties en intersecties regelen. Deze lijn vormt de opstap naar verdere uitwerking van stuwen, gemalen en verwante objecten.
+contextNote: Binnen deze objectfamilie brengen we kunstwerken samen die de werking van watergangen, watergangsecties en intersecties regelen. Deze lijn vormt de opstap naar verdere uitwerking van elementen, bouwdelen en daarbinnen herkenbare kunstwerktypen.
 subtypes:
   - title: Aquaduct
     text: Kunstwerk waarbij een watergang over een andere infrastructuur of watergang heen wordt geleid.
@@ -119,12 +119,12 @@ nextSteps:
     text: Terug naar de subsysteempagina van Stroomgebied.
     href: /datastandaard/objectenhandboek/watersysteem/stroomgebied
     direction: back
-  - title: Stuw
-    text: Eerste beheerobject voor peilregeling binnen deze objectfamilie.
-    href: /in-migratie/objectenhandboek/watersysteem/kunstwerken/stuw
-  - title: Gemaal
-    text: Beheerobject voor het actief verplaatsen van water.
-    href: /in-migratie/objectenhandboek/watersysteem/kunstwerken/gemaal
+  - title: Element
+    text: Eerste interne decompositiestap binnen Kunstwerk.
+    href: /in-migratie/objectenhandboek/watersysteem/kunstwerken/element
+  - title: Bouwdeel
+    text: Verdere uitwerking van onderdelen binnen een element.
+    href: /in-migratie/objectenhandboek/watersysteem/kunstwerken/bouwdeel
   - title: Watergangsectie
     text: Parallelle objectroute voor de lokale opbouw van de watergang.
     href: /datastandaard/objectenhandboek/watersysteem/watergangsectie
