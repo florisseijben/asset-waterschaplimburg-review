@@ -6,7 +6,7 @@ product: objectenhandboek
 ownerTeam: datastandaard
 status: eerste-template
 lastReviewed: 2026-04-11
-summary: Watergangsectie is een eigen objectpagina onder Watergang en vormt de drager voor de lokale opbouw van taluds, bodem en constructieve onderdelen.
+summary: Watergangsectie is een aparte objectpagina onder Watergang. Het object beschrijft de lokale opbouw van taluds, bodem en constructieve onderdelen.
 heroTitle: Watergangsectie
 hierarchy:
   - Watersysteem

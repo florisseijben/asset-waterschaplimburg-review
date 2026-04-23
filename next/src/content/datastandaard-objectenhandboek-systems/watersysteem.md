@@ -6,7 +6,7 @@ product: objectenhandboek
 ownerTeam: datastandaard
 status: concept
 lastReviewed: 2026-04-11
-summary: Binnen deze systeemlijn ordenen we objecttypen per objectfamilie, zodat de structuur schaalbaar en herbruikbaar blijft.
+summary: In deze systeemlijn delen we objecttypen in per objectfamilie. Zo blijft de structuur overzichtelijk en goed herbruikbaar.
 heroTitle: Objectenhandboek voor Watersysteem
 definition: Het regionale watersysteem is het samenhangende geheel van oppervlaktewaterlichamen, bergingsgebieden, waterkeringen en ondersteunende kunstwerken in beheer bij het waterschap binnen het regionale watersysteem van Limburg.
 definitionSource: "Bronbasis: Omgevingswet-begrip watersysteem, in combinatie met de regionale beheercontext uit de Waterschapsverordening Waterschap Limburg. Formulering is een toepassing op deze objectenhandboeklijn."

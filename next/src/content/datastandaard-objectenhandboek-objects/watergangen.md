@@ -6,7 +6,7 @@ product: objectenhandboek
 ownerTeam: datastandaard
 status: eerste-template
 lastReviewed: 2026-04-11
-summary: Watergang is uitgewerkt als hoofdobject binnen het Objectenhandboek voor Watersysteem.
+summary: Watergang is uitgewerkt als hoofdobject in het Objectenhandboek voor Watersysteem.
 heroTitle: Watergang
 hierarchy:
   - Watersysteem

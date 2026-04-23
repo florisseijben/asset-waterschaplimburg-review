@@ -6,7 +6,7 @@ product: objectenhandboek
 ownerTeam: datastandaard
 status: eerste-template
 lastReviewed: 2026-04-12
-summary: Bekledingsconstructie is een onderliggend object van Talud en beschrijft de constructieve opbouw die het talud beschermt en stabiliseert.
+summary: Bekledingsconstructie is een onderdeel van Talud. Het beschrijft hoe het talud is opgebouwd en beschermd.
 heroTitle: Bekledingsconstructie
 hierarchy:
   - Watersysteem

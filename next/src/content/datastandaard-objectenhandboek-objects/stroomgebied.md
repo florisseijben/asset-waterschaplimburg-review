@@ -6,7 +6,7 @@ product: objectenhandboek
 ownerTeam: datastandaard
 status: eerste-template
 lastReviewed: 2026-04-16
-summary: Stroomgebied vormt binnen het watersysteem de subsysteemlaag waarin watergangen, regenwaterbuffers en hun onderliggende objecten logisch geordend worden.
+summary: Stroomgebied is binnen het watersysteem de laag waarin watergangen, regenwaterbuffers en onderliggende objecten logisch zijn geordend.
 heroTitle: Stroomgebied
 hierarchy:
   - Watersysteem

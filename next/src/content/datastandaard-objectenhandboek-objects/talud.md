@@ -6,7 +6,7 @@ product: objectenhandboek
 ownerTeam: datastandaard
 status: eerste-template
 lastReviewed: 2026-04-12
-summary: Talud is een onderliggend object van de watergangsectie en beschrijft het schuine grensvlak tussen bodem en maaiveld of aangrenzende zone.
+summary: Talud is een onderdeel van de watergangsectie. Het beschrijft het schuine vlak tussen de bodem en het maaiveld of de aangrenzende zone.
 heroTitle: Talud
 hierarchy:
   - Watersysteem

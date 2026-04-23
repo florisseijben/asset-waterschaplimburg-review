@@ -6,7 +6,7 @@ product: objectenhandboek
 ownerTeam: datastandaard
 status: concept
 lastReviewed: 2026-04-11
-summary: Kies eerst het systeem. Daarnaast kun je het objectenhandboek ook lezen vanuit disciplines, zodat objecttypen zowel inhoudelijk als vakmatig geordend kunnen worden.
+summary: Kies eerst een systeem. Je kunt het objectenhandboek ook bekijken vanuit disciplines, zodat objecttypen logisch zijn ingedeeld op inhoud en vakgebied.
 heroTitle: Objectenhandboek
 systems:
   - title: Afvalwaterketen

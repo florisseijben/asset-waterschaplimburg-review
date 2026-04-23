@@ -6,7 +6,7 @@ product: home
 ownerTeam: platform
 status: concept
 lastReviewed: 2026-04-11
-summary: Binnen asset.waterschaplimburg.nl vind je informatie over onze assetdata, assets en assetmanagement in samenhang.
+summary: Op asset.waterschaplimburg.nl vind je op één plek informatie over assetdata, assets en assetmanagement.
 heroTitle: Kennis over onze assets centraal beschikbaar
 platformFlow:
   - title: "1. Datastandaard"

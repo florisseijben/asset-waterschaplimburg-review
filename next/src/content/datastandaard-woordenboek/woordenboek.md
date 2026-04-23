@@ -6,7 +6,7 @@ product: woordenboek
 ownerTeam: datastandaard
 status: concept
 lastReviewed: 2026-04-11
-summary: Eerste productlijn voor de migratieslice van de nieuwe omgeving.
+summary: Dit is de eerste woordenboekpagina in de nieuwe omgeving.
 heroTitle: Woordenboek
 searchIntro: De begrippenlijst staat in de huidige PoC direct op de landingspagina. In de nieuwe omgeving gebruiken we deze eerste slice om metadata, productnavigatie en een latere zoekingang beter te structureren.
 productRelations:
