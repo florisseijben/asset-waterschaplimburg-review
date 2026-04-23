@@ -552,10 +552,10 @@ h1 {
 }
 
 .info-card__header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: var(--space-3);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  column-gap: var(--space-3);
 }
 
 .info-card__title {
@@ -699,16 +699,21 @@ h1 {
 }
 
 .info-card__link {
+  box-sizing: border-box;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 2.25rem;
   height: 2.25rem;
+  min-width: 2.25rem;
+  min-height: 2.25rem;
   flex: 0 0 auto;
+  align-self: start;
   border: 1px solid currentColor;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.92);
   color: var(--color-brand-dark);
+  line-height: 1;
   pointer-events: none;
   transition:
     transform 160ms ease,
@@ -717,6 +722,8 @@ h1 {
 }
 
 .info-card__icon {
+  display: block;
+  flex: 0 0 auto;
   width: 1rem;
   height: 1rem;
 }
