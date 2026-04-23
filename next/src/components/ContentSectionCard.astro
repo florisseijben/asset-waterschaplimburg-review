@@ -37,7 +37,21 @@ const Tag = href && !hasItems ? "a" : "article";
       {caption && <figcaption class="info-card__caption">{caption}</figcaption>}
     </figure>
   )}
-  {href && !hasItems && <span class="info-card__link">Open</span>}
+  {href && !hasItems && (
+    <span class="info-card__link">
+      <svg viewBox="0 0 24 24" class="info-card__icon" focusable="false" aria-hidden="true">
+        <path
+          d="M8 8h8v8M16 8l-9 9"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.8"
+        />
+      </svg>
+      <span class="visually-hidden">Open deze pagina</span>
+    </span>
+  )}
 
   {hasItems && (
     <div class="card-grid card-grid--nested">
@@ -53,7 +67,21 @@ const Tag = href && !hasItems ? "a" : "article";
               {item.caption && <figcaption class="info-card__caption">{item.caption}</figcaption>}
             </figure>
           )}
-          {item.href && <span class="info-card__link">Open</span>}
+          {item.href && (
+            <span class="info-card__link">
+              <svg viewBox="0 0 24 24" class="info-card__icon" focusable="false" aria-hidden="true">
+                <path
+                  d="M8 8h8v8M16 8l-9 9"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.8"
+                />
+              </svg>
+              <span class="visually-hidden">Open deze pagina</span>
+            </span>
+          )}
         </ItemTag>
       )})}
     </div>
