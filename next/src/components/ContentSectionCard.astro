@@ -1,5 +1,6 @@
 ---
 import CardLinkIndicator from "./CardLinkIndicator.astro";
+import CardTitleIcon from "./CardTitleIcon.astro";
 import { withBase } from "../lib/paths";
 
 interface SectionItem {
@@ -31,7 +32,10 @@ const Tag = href && !hasItems ? "a" : "article";
 
 <Tag class:list={["info-card", "info-card--section"]} href={href && !hasItems ? withBase(href) : undefined}>
   <div class="info-card__header">
-    <h2 class="info-card__title">{title}</h2>
+    <div class="info-card__title-wrap">
+      <CardTitleIcon title={title} />
+      <h2 class="info-card__title">{title}</h2>
+    </div>
     {href && !hasItems && <CardLinkIndicator />}
   </div>
   <p>{text}</p>
@@ -49,7 +53,10 @@ const Tag = href && !hasItems ? "a" : "article";
         return (
         <ItemTag class="info-card info-card--nested" href={item.href ? withBase(item.href) : undefined}>
           <div class="info-card__header">
-            <h3 class="info-card__title">{item.title}</h3>
+            <div class="info-card__title-wrap">
+              <CardTitleIcon title={item.title} />
+              <h3 class="info-card__title">{item.title}</h3>
+            </div>
             {item.href && <CardLinkIndicator />}
           </div>
           <p>{item.text}</p>
