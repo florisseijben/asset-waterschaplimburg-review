@@ -535,7 +535,6 @@ h1 {
   gap: var(--space-3);
   min-height: 100%;
   padding: var(--space-5);
-  position: relative;
   background: #ffffff;
   border: 1px solid var(--color-line);
   border-radius: 0 var(--corner-control) 0 0;
@@ -550,6 +549,20 @@ h1 {
 .info-card p {
   margin: 0;
   color: var(--color-muted);
+}
+
+.info-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.info-card__title {
+  margin: 0;
+  flex: 1 1 auto;
+  min-width: 0;
+  color: var(--color-deep);
 }
 
 .info-card--section {
@@ -580,11 +593,6 @@ h1 {
   padding: var(--space-4);
   min-height: auto;
   background: #f8fcfc;
-}
-
-.info-card--nested h3 {
-  margin: 0;
-  color: var(--color-deep);
 }
 
 .info-card[href] {
@@ -691,14 +699,12 @@ h1 {
 }
 
 .info-card__link {
-  position: absolute;
-  top: var(--space-4);
-  right: var(--space-4);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 2.25rem;
   height: 2.25rem;
+  flex: 0 0 auto;
   border: 1px solid currentColor;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.92);
@@ -713,6 +719,11 @@ h1 {
 .info-card__icon {
   width: 1rem;
   height: 1rem;
+}
+
+.info-card[href] .info-card__title,
+.info-card[href] .eyebrow {
+  padding-right: 0;
 }
 
 .info-card[href]:hover .info-card__link,

@@ -28,10 +28,10 @@ if (!entry) {
   <section class="section section-panel">
     <p class="eyebrow">Onderdelen</p>
     <h2>Kies een onderdeel</h2>
-    <div class="card-grid">
+    <CardGrid>
       {(entry.data.parts || []).map((item, index) => (
         <InfoCard eyebrow={`Onderdeel ${index + 1}`} title={item.title} text={item.text} href={item.href} />
       ))}
-    </div>
+    </CardGrid>
   </section>
 </BaseLayout>

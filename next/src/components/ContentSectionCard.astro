@@ -1,4 +1,5 @@
 ---
+import CardLinkIndicator from "./CardLinkIndicator.astro";
 import { withBase } from "../lib/paths";
 
 interface SectionItem {
@@ -29,28 +30,16 @@ const Tag = href && !hasItems ? "a" : "article";
 ---
 
 <Tag class:list={["info-card", "info-card--section"]} href={href && !hasItems ? withBase(href) : undefined}>
-  <h2>{title}</h2>
+  <div class="info-card__header">
+    <h2 class="info-card__title">{title}</h2>
+    {href && !hasItems && <CardLinkIndicator />}
+  </div>
   <p>{text}</p>
   {image?.src && (
     <figure class="info-card__figure">
       <img class="info-card__image" src={withBase(image.src)} alt={image.alt || ""} loading="lazy" />
       {caption && <figcaption class="info-card__caption">{caption}</figcaption>}
     </figure>
-  )}
-  {href && !hasItems && (
-    <span class="info-card__link">
-      <svg viewBox="0 0 24 24" class="info-card__icon" focusable="false" aria-hidden="true">
-        <path
-          d="M8 8h8v8M16 8l-9 9"
-          fill="none"
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="1.8"
-        />
-      </svg>
-      <span class="visually-hidden">Open deze pagina</span>
-    </span>
   )}
 
   {hasItems && (
@@ -59,28 +48,16 @@ const Tag = href && !hasItems ? "a" : "article";
         const ItemTag = item.href ? "a" : "article";
         return (
         <ItemTag class="info-card info-card--nested" href={item.href ? withBase(item.href) : undefined}>
-          <h3>{item.title}</h3>
+          <div class="info-card__header">
+            <h3 class="info-card__title">{item.title}</h3>
+            {item.href && <CardLinkIndicator />}
+          </div>
           <p>{item.text}</p>
           {item.image?.src && (
             <figure class="info-card__figure">
               <img class="info-card__image" src={withBase(item.image.src)} alt={item.image.alt || ""} loading="lazy" />
               {item.caption && <figcaption class="info-card__caption">{item.caption}</figcaption>}
             </figure>
-          )}
-          {item.href && (
-            <span class="info-card__link">
-              <svg viewBox="0 0 24 24" class="info-card__icon" focusable="false" aria-hidden="true">
-                <path
-                  d="M8 8h8v8M16 8l-9 9"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.8"
-                />
-              </svg>
-              <span class="visually-hidden">Open deze pagina</span>
-            </span>
           )}
         </ItemTag>
       )})}
