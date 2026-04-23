@@ -6,39 +6,53 @@ interface Props {
 const { title } = Astro.props;
 const normalizedTitle = title.trim().toLowerCase();
 
-const titleIcons: Record<string, string> = {
-  "afvalwaterketen": "system-pipes",
-  "watersysteem": "system-water",
-  "waterkeringensysteem": "system-shield",
-  "terreinbeheer en openbare ruimte": "discipline-road",
-  "ecologie en groen": "discipline-eco",
-  "civiele techniek": "discipline-civil",
-  bouwkunde: "discipline-building",
-  werktuigbouwkunde: "discipline-mechanical",
-  electrotechniek: "discipline-electric",
-  procesautomatisering: "discipline-automation",
-  "informatie en data": "discipline-data",
-  "ruimtelijke ordening": "discipline-spatial",
-  groen: "discipline-green",
-  woordenboek: "product-book",
-  objectenhandboek: "product-cube",
-  "object type library": "product-library",
-  referentiedataset: "product-database",
-  werkinstructies: "product-checklist",
-  stroomgebied: "object-watershed",
-  watergang: "object-watercourse",
-  watergangsectie: "object-cross-section",
-  intersectie: "object-intersection",
-  regenwaterbuffer: "object-basin",
-  regenwaterbuffercompartiment: "object-compartment",
-  talud: "object-slope",
-  bekledingsconstructie: "object-revetment"
-};
-
 const matches = (...terms: string[]) => terms.some((term) => normalizedTitle.includes(term));
 
+const titleAliases: Array<{ term: string; icon: string }> = [
+  { term: "assetmanagement", icon: "product-checklist" },
+  { term: "assetregister", icon: "product-database" },
+  { term: "datastandaard", icon: "discipline-data" },
+  { term: "object type library (otl)", icon: "product-library" },
+  { term: "object type library", icon: "product-library" },
+  { term: "objectenhandboek voor watersysteem", icon: "system-water" },
+  { term: "objectenhandboek", icon: "product-cube" },
+  { term: "referentiedataset", icon: "product-database" },
+  { term: "werkinstructies", icon: "product-checklist" },
+  { term: "woordenboek", icon: "product-book" },
+  { term: "afvalwaterketen", icon: "system-pipes" },
+  { term: "waterkeringensysteem", icon: "system-shield" },
+  { term: "watersysteem", icon: "system-water" },
+  { term: "terreinbeheer en openbare ruimte", icon: "discipline-road" },
+  { term: "ecologie en groen", icon: "discipline-eco" },
+  { term: "civiele techniek", icon: "discipline-civil" },
+  { term: "werktuigbouwkunde", icon: "discipline-mechanical" },
+  { term: "electrotechniek", icon: "discipline-electric" },
+  { term: "procesautomatisering", icon: "discipline-automation" },
+  { term: "informatie en data", icon: "discipline-data" },
+  { term: "ruimtelijke ordening", icon: "discipline-spatial" },
+  { term: "bouwkunde", icon: "discipline-building" },
+  { term: "groen", icon: "discipline-green" },
+  { term: "regenwaterbuffercompartiment", icon: "object-compartment" },
+  { term: "bekledingsconstructie", icon: "object-revetment" },
+  { term: "watergangsectie", icon: "object-cross-section" },
+  { term: "watergangsecties", icon: "object-cross-section" },
+  { term: "regenwaterbuffer", icon: "object-basin" },
+  { term: "stroomgebied", icon: "object-watershed" },
+  { term: "stroomgebieden", icon: "object-watershed" },
+  { term: "intersectie", icon: "object-intersection" },
+  { term: "intersecties", icon: "object-intersection" },
+  { term: "watergangen", icon: "object-watercourse" },
+  { term: "watergang", icon: "object-watercourse" },
+  { term: "talud", icon: "object-slope" },
+  { term: "taluds", icon: "object-slope" }
+];
+
+const matchedAlias = titleAliases.find(
+  ({ term }) => normalizedTitle === term || normalizedTitle.includes(term)
+);
+
 const icon =
-  titleIcons[normalizedTitle] ||
+  matchedAlias?.icon ||
   (matches("water", "stroom", "beek", "gracht", "kanaal", "rivier", "sloot") ? "system-water" :
   matches("geo", "kaart", "locatie", "gebied") ? "discipline-spatial" :
   matches("woordenboek", "begrip", "term", "taal") ? "product-book" :
