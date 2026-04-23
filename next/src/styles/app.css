@@ -542,8 +542,6 @@ h1 {
   display: grid;
   gap: var(--space-3);
   min-height: 100%;
-  aspect-ratio: 3 / 2;
-  max-height: 24rem;
   padding: var(--space-5);
   background: #ffffff;
   border: 1px solid var(--color-line);
@@ -641,6 +639,8 @@ h1 {
 
 .info-card[href] {
   cursor: pointer;
+  aspect-ratio: 3 / 2;
+  max-height: 24rem;
 }
 
 .info-card[href]:hover,
