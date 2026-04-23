@@ -15,11 +15,11 @@ object:watergangsectie a owl:Class ;
 object:intersectie a owl:Class ;
   rdfs:label "Intersectie" .
 
-object:stuw a owl:Class ;
-  rdfs:label "Stuw" .
+object:element a owl:Class ;
+  rdfs:label "Element" .
 
-object:gemaal a owl:Class ;
-  rdfs:label "Gemaal" .
+object:bouwdeel a owl:Class ;
+  rdfs:label "Bouwdeel" .
 
 relatie:omvat a owl:ObjectProperty ;
   rdfs:label "omvat" .
@@ -27,11 +27,8 @@ relatie:omvat a owl:ObjectProperty ;
 relatie:geeftInvullingAan a owl:ObjectProperty ;
   rdfs:label "geeft invulling aan" .
 
-relatie:wordtUitgewerktAls a owl:ObjectProperty ;
-  rdfs:label "wordt uitgewerkt als" .
-
 object:stroomgebied relatie:omvat object:kunstwerk .
 object:kunstwerk relatie:geeftInvullingAan object:watergangsectie .
 object:kunstwerk relatie:geeftInvullingAan object:intersectie .
-object:kunstwerk relatie:wordtUitgewerktAls object:stuw .
-object:kunstwerk relatie:wordtUitgewerktAls object:gemaal .
+object:kunstwerk relatie:omvat object:element .
+object:element relatie:omvat object:bouwdeel .

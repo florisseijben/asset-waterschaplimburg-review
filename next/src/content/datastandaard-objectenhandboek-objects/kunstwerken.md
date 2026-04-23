@@ -91,14 +91,7 @@ contentSections:
   - title: Afbakening
     summary: De afbakening volgt het fysieke beheerobject dat op een vaste plek in het watersysteem water regelt, keert, doorlaat of verplaatst.
   - title: Onderdelen
-    summary: Binnen deze objectfamilie werken we eerst de beheerobjecten Stuw en Gemaal uit.
-    items:
-      - title: Stuw
-        text: Beheerobject voor peilregeling en sturing van de doorstroming.
-        href: /in-migratie/objectenhandboek/watersysteem/kunstwerken/stuw
-      - title: Gemaal
-        text: Beheerobject voor actieve verplaatsing van water binnen het systeem.
-        href: /in-migratie/objectenhandboek/watersysteem/kunstwerken/gemaal
+    summary: De directe onderdelen van Kunstwerk worden in deze lijn later uitgewerkt.
   - title: Geometrie
     summary: Kunstwerken worden in deze lijn meestal vastgelegd als puntobjecten, gekoppeld aan hun positie in de waterstructuur.
     items:
@@ -146,4 +139,4 @@ Doel:
 
 - beheerobjecten binnen het watersysteem zichtbaar maken;
 - de relatie leggen met watergangsecties en intersecties;
-- en een basis leggen voor verdere uitwerking van stuwen en gemalen.
+- en een basis leggen voor verdere uitwerking van elementen en bouwdelen.

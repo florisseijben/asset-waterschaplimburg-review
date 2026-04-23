@@ -86,15 +86,15 @@ export function createKunstwerkGraph(): GraphConfig {
       node("watergangsectie", "Watergangsectie", "Contextobject", 0, 1, relatedFill),
       node("kunstwerk", "Kunstwerk", "Objectfamilie", 1, 1, selectedFill),
       node("intersectie", "Intersectie", "Contextobject", 2, 1, relatedFill),
-      node("stuw", "Stuw", "Beheerobject", 0, 2, relatedFill),
-      node("gemaal", "Gemaal", "Beheerobject", 2, 2, relatedFill)
+      node("element", "Element", "Onderdeel", 1, 2, relatedFill),
+      node("bouwdeel", "Bouwdeel", "Onderdeel", 1, 3, relatedFill)
     ],
     edges: [
       { from: "stroomgebied", to: "kunstwerk", label: "Bevat objectfamilie" },
       { from: "kunstwerk", to: "watergangsectie", label: "Geeft invulling aan" },
       { from: "kunstwerk", to: "intersectie", label: "Geeft invulling aan" },
-      { from: "kunstwerk", to: "stuw", label: "Wordt uitgewerkt als" },
-      { from: "kunstwerk", to: "gemaal", label: "Wordt uitgewerkt als" }
+      { from: "kunstwerk", to: "element", label: "Bevat" },
+      { from: "element", to: "bouwdeel", label: "Bevat" }
     ]
   };
 }
