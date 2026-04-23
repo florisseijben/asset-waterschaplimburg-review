@@ -33,7 +33,7 @@ const Tag = href && !hasItems ? "a" : "article";
 <Tag class:list={["info-card", "info-card--section"]} href={href && !hasItems ? withBase(href) : undefined}>
   <div class="info-card__header">
     <div class="info-card__title-wrap">
-      <CardTitleIcon title={title} />
+      {href && !hasItems && <CardTitleIcon title={title} />}
       <h2 class="info-card__title">{title}</h2>
     </div>
     {href && !hasItems && <CardLinkIndicator />}
@@ -54,7 +54,7 @@ const Tag = href && !hasItems ? "a" : "article";
         <ItemTag class="info-card info-card--nested" href={item.href ? withBase(item.href) : undefined}>
           <div class="info-card__header">
             <div class="info-card__title-wrap">
-              <CardTitleIcon title={item.title} />
+              {item.href && <CardTitleIcon title={item.title} />}
               <h3 class="info-card__title">{item.title}</h3>
             </div>
             {item.href && <CardLinkIndicator />}

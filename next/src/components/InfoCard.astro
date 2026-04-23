@@ -18,7 +18,7 @@ const Tag = href ? "a" : "article";
   {eyebrow && <p class="eyebrow">{eyebrow}</p>}
   <div class="info-card__header">
     <div class="info-card__title-wrap">
-      <CardTitleIcon title={title} />
+      {href && <CardTitleIcon title={title} />}
       <h2 class="info-card__title">{title}</h2>
     </div>
     {href && <CardLinkIndicator />}
