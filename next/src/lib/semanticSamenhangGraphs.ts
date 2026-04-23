@@ -42,17 +42,13 @@ export function createWatersysteemGraph(): GraphConfig {
       node("stroomgebied", "Stroomgebied", "Subsysteem", 1, 1, relatedFill),
       node("watergang", "Watergang", "Objectfamilie", 0, 2, relatedFill),
       node("kunstwerk", "Kunstwerk", "Objectfamilie", 1, 2, relatedFill),
-      node("regenwaterbuffer", "Regenwaterbuffer", "Objectfamilie", 2, 2, relatedFill),
-      node("watergangsectie", "Watergangsectie", "Objecttype", 0, 3, contextFill),
-      node("intersectie", "Intersectie", "Objecttype", 1, 3, contextFill)
+      node("regenwaterbuffer", "Regenwaterbuffer", "Objectfamilie", 2, 2, relatedFill)
     ],
     edges: [
       { from: "watersysteem", to: "stroomgebied", label: "Heeft stroomgebied" },
       { from: "stroomgebied", to: "watergang", label: "Bevat objectfamilie" },
       { from: "stroomgebied", to: "kunstwerk", label: "Bevat objectfamilie" },
-      { from: "stroomgebied", to: "regenwaterbuffer", label: "Bevat objectfamilie" },
-      { from: "watergang", to: "watergangsectie", label: "Heeft sectie" },
-      { from: "watergang", to: "intersectie", label: "Heeft intersectie" }
+      { from: "stroomgebied", to: "regenwaterbuffer", label: "Bevat objectfamilie" }
     ]
   };
 }
