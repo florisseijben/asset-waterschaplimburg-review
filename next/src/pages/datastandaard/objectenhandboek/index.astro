@@ -27,7 +27,7 @@ if (!entry) {
   <section class="section section-panel">
     <p class="eyebrow">Systemen</p>
     <h2>Kies een systeem</h2>
-    <CardGrid>
+    <CardGrid roomy>
       {(entry.data.systems || []).map((item) => (
         <InfoCard title={item.title} text={item.text} href={item.href} />
       ))}
@@ -37,7 +37,7 @@ if (!entry) {
   <section class="section section-panel">
     <p class="eyebrow">Disciplines</p>
     <h2>Bekijk het objectenhandboek per discipline</h2>
-    <CardGrid>
+    <CardGrid roomy>
       {(entry.data.disciplines || []).map((item) => (
         <InfoCard title={item.title} text={item.text} href={item.href} />
       ))}

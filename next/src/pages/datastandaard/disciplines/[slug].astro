@@ -99,7 +99,7 @@ const { title, summary, intro, productCards } = Astro.props;
   <section class="section section-panel">
     <p class="eyebrow">Producten</p>
     <h2>Kies een productlijn binnen {title}</h2>
-    <CardGrid>
+    <CardGrid roomy>
       {productCards.map((item) => (
         <InfoCard title={item.title} text={item.text} href={item.href} />
       ))}
