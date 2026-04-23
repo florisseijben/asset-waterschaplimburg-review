@@ -1,11 +1,12 @@
 ---
 interface Props {
   stacked?: boolean;
+  roomy?: boolean;
 }
 
-const { stacked = false } = Astro.props;
+const { stacked = false, roomy = false } = Astro.props;
 ---
 
-<div class:list={["card-grid", stacked && "card-grid--stacked"]}>
+<div class:list={["card-grid", stacked && "card-grid--stacked", roomy && "card-grid--roomy"]}>
   <slot />
 </div>
