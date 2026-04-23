@@ -543,6 +543,7 @@ h1 {
   gap: var(--space-3);
   min-height: 100%;
   aspect-ratio: 3 / 2;
+  max-height: 24rem;
   padding: var(--space-5);
   background: #ffffff;
   border: 1px solid var(--color-line);
@@ -609,6 +610,7 @@ h1 {
 .info-card--section {
   align-items: start;
   aspect-ratio: auto;
+  max-height: none;
 }
 
 .info-card__figure {
@@ -634,6 +636,7 @@ h1 {
 .info-card--nested {
   padding: var(--space-4);
   background: #f8fcfc;
+  max-height: none;
 }
 
 .info-card[href] {
