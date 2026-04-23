@@ -1,0 +1,113 @@
+---
+title: Kunstwerk
+slug: /datastandaard/objectenhandboek/watersysteem/kunstwerken
+part: datastandaard
+product: objectenhandboek
+ownerTeam: datastandaard
+status: eerste-template
+lastReviewed: 2026-04-23
+summary: Kunstwerk is een objectfamilie binnen het watersysteem. Deze lijn bundelt beheerobjecten zoals stuwen en gemalen.
+heroTitle: Kunstwerk
+hierarchy:
+  - Watersysteem
+  - Stroomgebied
+  - Kunstwerk
+definition: Een kunstwerk is een beheerobject in het watersysteem dat water stuurt, tegenhoudt, verdeelt of verplaatst, zoals een stuw of een gemaal.
+definitionSource: "Werkdefinitie voor deze reviewlijn, gebaseerd op het gebruik van kunstwerken binnen de watersysteemstructuur van het waterschap."
+terms:
+  - title: Kunstwerk
+    text: Verzamelbegrip voor beheerobjecten die de werking van het watersysteem ondersteunen of sturen.
+    href: /datastandaard/woordenboek
+  - title: Stuw
+    text: Beheerobject dat het waterpeil regelt door water tegen te houden of door te laten.
+    href: /datastandaard/woordenboek
+  - title: Gemaal
+    text: Beheerobject dat water actief verplaatst met pompen.
+    href: /datastandaard/woordenboek
+  - title: Watergangsectie
+    text: Deel van de watergang waarop een kunstwerk lokaal invloed kan hebben.
+    href: /datastandaard/woordenboek
+  - title: Intersectie
+    text: Kruising of overgang in de waterstructuur waar een kunstwerk onderdeel van kan zijn.
+    href: /datastandaard/woordenboek
+contextNote: Binnen deze objectfamilie brengen we beheerobjecten samen die de werking van watergangen, watergangsecties en intersecties regelen. Deze lijn vormt de opstap naar verdere uitwerking van stuwen, gemalen en verwante objecten.
+subtypes:
+  - title: Regelend kunstwerk
+    text: Kunstwerk dat vooral het waterpeil, debiet of de doorstroming beinvloedt.
+    href: /datastandaard/woordenboek
+  - title: Transporterend kunstwerk
+    text: Kunstwerk dat water actief verplaatst binnen het systeem.
+    href: /datastandaard/woordenboek
+metadata:
+  - label: Systeem
+    value: Watersysteem
+  - label: Subsysteem
+    value: Stroomgebied
+  - label: Objecttype
+    value: Kunstwerk
+  - label: Bronsysteem
+    value: semantische beheeromgeving
+  - label: URI
+    value: https://data.waterschaplimburg.nl/id/objecttype/kunstwerk
+contentSections:
+  - title: Overzicht / Samenhang
+    summary: Kunstwerken vullen de waterstructuur functioneel in en verbinden beheer, peilregeling en waterverplaatsing met de opbouw van watergangen.
+  - title: Afbakening
+    summary: De afbakening volgt het fysieke beheerobject dat op een vaste plek in het watersysteem water regelt, keert, doorlaat of verplaatst.
+  - title: Onderdelen
+    summary: Binnen deze objectfamilie werken we eerst de beheerobjecten Stuw en Gemaal uit.
+    items:
+      - title: Stuw
+        text: Beheerobject voor peilregeling en sturing van de doorstroming.
+        href: /in-migratie/objectenhandboek/watersysteem/kunstwerken/stuw
+      - title: Gemaal
+        text: Beheerobject voor actieve verplaatsing van water binnen het systeem.
+        href: /in-migratie/objectenhandboek/watersysteem/kunstwerken/gemaal
+  - title: Geometrie
+    summary: Kunstwerken worden in deze lijn meestal vastgelegd als puntobjecten, gekoppeld aan hun positie in de waterstructuur.
+    items:
+      - title: Grootschalig
+        text: Bij grootschalige kaarten wordt het kunstwerk getoond als puntobject op de exacte locatie in de watergang of bij de kruising waar het beheerobject ligt.
+      - title: Midschalig
+        text: Bij midschalige kaarten blijft het kunstwerk als punt zichtbaar, vooral om de functionele rol in het netwerk van watergangen te duiden.
+      - title: Kleinschalig
+        text: Bij kleinschalige kaarten worden alleen de belangrijkste kunstwerken nog getoond, als onderdeel van de bredere systeemstructuur.
+productRelations:
+  - title: Woordenboek
+    text: Begrippen en definities voor kunstwerken en beheerobjecten binnen het watersysteem.
+    href: /datastandaard/woordenboek
+  - title: Object Type Library
+    text: Modellering van eigenschappen, relaties en gedrag van kunstwerken.
+    href: /datastandaard/otl
+  - title: Referentiedataset
+    text: Voorbeelddata en toetsbare referentiegegevens voor kunstwerken.
+    href: /datastandaard/referentiedataset
+  - title: Werkinstructies
+    text: Werkafspraken voor het vastleggen en beheren van kunstwerken.
+    href: /datastandaard/werkinstructies
+nextSteps:
+  - title: Stroomgebied
+    text: Terug naar de subsysteempagina van Stroomgebied.
+    href: /datastandaard/objectenhandboek/watersysteem/stroomgebied
+    direction: back
+  - title: Stuw
+    text: Eerste beheerobject voor peilregeling binnen deze objectfamilie.
+    href: /in-migratie/objectenhandboek/watersysteem/kunstwerken/stuw
+  - title: Gemaal
+    text: Beheerobject voor het actief verplaatsen van water.
+    href: /in-migratie/objectenhandboek/watersysteem/kunstwerken/gemaal
+  - title: Watergangsectie
+    text: Parallelle objectroute voor de lokale opbouw van de watergang.
+    href: /datastandaard/objectenhandboek/watersysteem/watergangsectie
+  - title: Intersectie
+    text: Parallelle objectroute voor kruisingen en aansluitingen in de waterstructuur.
+    href: /datastandaard/objectenhandboek/watersysteem/intersectie
+---
+
+Deze detailpagina werkt `Kunstwerk` uit als objectfamilie binnen het Objectenhandboek.
+
+Doel:
+
+- beheerobjecten binnen het watersysteem zichtbaar maken;
+- de relatie leggen met watergangsecties en intersecties;
+- en een basis leggen voor verdere uitwerking van stuwen en gemalen.

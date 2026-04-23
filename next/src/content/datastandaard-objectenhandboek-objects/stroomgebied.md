@@ -69,7 +69,7 @@ contentSections:
   - title: Afbakening
     summary: De afbakening van het stroomgebied volgt de hydrologische grens waarbinnen oppervlakkig afstromend water uiteindelijk via hetzelfde hoofdafvoersysteem wordt afgevoerd.
   - title: Onderdelen
-    summary: Binnen dit stroomgebied worden op het eerstvolgende hiërarchische niveau de objectfamilies Watergang en Regenwaterbuffer inhoudelijk uitgewerkt.
+    summary: Binnen dit stroomgebied worden op het eerstvolgende hiërarchische niveau de objectfamilies Watergang, Regenwaterbuffer en Kunstwerk inhoudelijk uitgewerkt.
     items:
       - title: Watergang
         text: Eerste uitgewerkte objectfamilie binnen het stroomgebied.
@@ -77,6 +77,9 @@ contentSections:
       - title: Regenwaterbuffer
         text: Objectfamilie voor tijdelijke opvang en gereguleerde afvoer van neerslagpieken binnen het stroomgebied.
         href: /datastandaard/objectenhandboek/watersysteem/regenwaterbuffer
+      - title: Kunstwerk
+        text: Objectfamilie voor beheerobjecten zoals stuwen en gemalen binnen de waterstructuur van het stroomgebied.
+        href: /datastandaard/objectenhandboek/watersysteem/kunstwerken
   - title: Geometrie
     summary: De geometrie van het stroomgebied is gebiedsgericht en sluit aan op de DAMO-methodiek voor afvoer- en aanvoergebieden.
     items:
@@ -108,6 +111,9 @@ nextSteps:
   - title: Regenwaterbuffer
     text: Objectfamilie voor regenwaterberging met onderliggende compartimenten.
     href: /datastandaard/objectenhandboek/watersysteem/regenwaterbuffer
+  - title: Kunstwerk
+    text: Objectfamilie voor beheerobjecten die de werking van watergangen, secties en intersecties ondersteunen.
+    href: /datastandaard/objectenhandboek/watersysteem/kunstwerken
 ---
 
 Deze pagina vormt de eerste landing voor het subsysteem `Stroomgebied` binnen het Objectenhandboek.

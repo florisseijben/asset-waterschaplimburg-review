@@ -12,6 +12,9 @@ object:stroomgebied a owl:Class ;
 object:watergang a owl:Class ;
   rdfs:label "Watergang" .
 
+object:kunstwerk a owl:Class ;
+  rdfs:label "Kunstwerk" .
+
 object:regenwaterbuffer a owl:Class ;
   rdfs:label "Regenwaterbuffer" .
 
@@ -33,8 +36,10 @@ relatie:isOnderdeelVan a owl:ObjectProperty ;
 object:watersysteem relatie:omvat object:stroomgebied .
 object:stroomgebied relatie:isOnderdeelVan object:watersysteem .
 object:stroomgebied relatie:omvat object:watergang .
+object:stroomgebied relatie:omvat object:kunstwerk .
 object:stroomgebied relatie:omvat object:regenwaterbuffer .
 object:watergang relatie:isOnderdeelVan object:stroomgebied .
+object:kunstwerk relatie:isOnderdeelVan object:stroomgebied .
 object:regenwaterbuffer relatie:isOnderdeelVan object:stroomgebied .
 object:watergang relatie:bestaatUit object:watergangsectie .
 object:watergang relatie:bestaatUit object:intersectie .

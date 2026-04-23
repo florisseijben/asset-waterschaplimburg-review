@@ -1,0 +1,37 @@
+@prefix object: <https://data.waterschaplimburg.nl/id/objecttype/> .
+@prefix relatie: <https://data.waterschaplimburg.nl/def/relatie/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+object:stroomgebied a owl:Class ;
+  rdfs:label "Stroomgebied" .
+
+object:kunstwerk a owl:Class ;
+  rdfs:label "Kunstwerk" .
+
+object:watergangsectie a owl:Class ;
+  rdfs:label "Watergangsectie" .
+
+object:intersectie a owl:Class ;
+  rdfs:label "Intersectie" .
+
+object:stuw a owl:Class ;
+  rdfs:label "Stuw" .
+
+object:gemaal a owl:Class ;
+  rdfs:label "Gemaal" .
+
+relatie:omvat a owl:ObjectProperty ;
+  rdfs:label "omvat" .
+
+relatie:geeftInvullingAan a owl:ObjectProperty ;
+  rdfs:label "geeft invulling aan" .
+
+relatie:wordtUitgewerktAls a owl:ObjectProperty ;
+  rdfs:label "wordt uitgewerkt als" .
+
+object:stroomgebied relatie:omvat object:kunstwerk .
+object:kunstwerk relatie:geeftInvullingAan object:watergangsectie .
+object:kunstwerk relatie:geeftInvullingAan object:intersectie .
+object:kunstwerk relatie:wordtUitgewerktAls object:stuw .
+object:kunstwerk relatie:wordtUitgewerktAls object:gemaal .

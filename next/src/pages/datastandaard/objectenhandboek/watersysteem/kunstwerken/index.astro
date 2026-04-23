@@ -7,24 +7,27 @@ import ProductSection from "../../../../../components/ProductSection.astro";
 import UitwerkingSection from "../../../../../components/UitwerkingSection.astro";
 import VervolgSection from "../../../../../components/VervolgSection.astro";
 import { getCollection } from "astro:content";
-import watersysteemSamenhangTurtle from "../../../../../data/semantic/watersysteem-samenhang.ttl?raw";
+import kunstwerkSamenhangTurtle from "../../../../../data/semantic/kunstwerk-samenhang.ttl?raw";
 import { normalizeUitwerkingSections } from "../../../../../lib/uitwerkingSections";
-import { createStroomgebiedGraph } from "../../../../../lib/semanticSamenhangGraphs";
+import { createKunstwerkGraph } from "../../../../../lib/semanticSamenhangGraphs";
 
 const entries = await getCollection("datastandaard-objectenhandboek-objects");
-const expectedSlug = "/datastandaard/objectenhandboek/watersysteem/stroomgebied";
+const expectedSlug = "/datastandaard/objectenhandboek/watersysteem/kunstwerken";
 const entry = entries.find(
   (item) =>
-    item.id === "stroomgebied" ||
+    item.id === "kunstwerken" ||
     item.data.slug === expectedSlug ||
-    item.data.title === "Stroomgebied"
+    item.data.title === "Kunstwerk"
 );
 
 if (!entry) {
-  throw new Error("Objectenhandboek Stroomgebied ontbreekt in de nieuwe omgeving.");
+  throw new Error("Objectenhandboek Kunstwerk ontbreekt in de nieuwe omgeving.");
 }
 
-const samenhangGraph = createStroomgebiedGraph();
+const visibleContentSections = normalizeUitwerkingSections(
+  (entry.data.contentSections || []).filter((item) => item.title !== "Decompositie")
+);
+const samenhangGraph = createKunstwerkGraph();
 ---
 
 <BaseLayout
@@ -35,7 +38,7 @@ const samenhangGraph = createStroomgebiedGraph();
     { label: "Datastandaard", href: "/datastandaard" },
     { label: "Objectenhandboek", href: "/datastandaard/objectenhandboek" },
     { label: "Watersysteem", href: "/datastandaard/objectenhandboek/watersysteem" },
-    { label: "Stroomgebied" }
+    { label: "Kunstwerk" }
   ]}
 >
   <Hero eyebrow="Objectenhandboek" title={entry.data.heroTitle || entry.data.title} summary={entry.data.summary}>
@@ -50,7 +53,7 @@ const samenhangGraph = createStroomgebiedGraph();
   </Hero>
 
   <ConceptSummarySection
-    subjectLabel="Stroomgebied"
+    subjectLabel="Kunstwerk"
     definition={entry.data.definition}
     definitionSource={entry.data.definitionSource}
     relatedTerms={entry.data.terms || []}
@@ -58,17 +61,17 @@ const samenhangGraph = createStroomgebiedGraph();
   />
 
   <SemanticSamenhangSection
-    title="Decompositie en hoofdrelaties binnen Stroomgebied"
-    summary="Deze samenhangsweergave laat zien hoe Stroomgebied binnen het watersysteem doorloopt naar de uitgewerkte objectfamilies rond Watergang, Regenwaterbuffer en Kunstwerk."
-    sourceLabel="Dummy Turtle-export uit de semantische modelleertool voor de watersysteemlijn."
-    graphId="stroomgebied-samenhang"
-    selectedId="stroomgebied"
-    turtle={watersysteemSamenhangTurtle}
+    title="Decompositie en hoofdrelaties binnen Kunstwerk"
+    summary="Deze samenhangsweergave laat zien hoe Kunstwerk binnen Stroomgebied als objectfamilie doorloopt naar beheerobjecten zoals Stuw en Gemaal, en daarbij invulling geeft aan Watergangsectie en Intersectie."
+    sourceLabel="Dummy Turtle-export uit de semantische modelleertool voor de kunstwerklijn."
+    graphId="kunstwerk-samenhang"
+    selectedId="kunstwerk"
+    turtle={kunstwerkSamenhangTurtle}
     layoutNodes={samenhangGraph.layoutNodes}
     edges={samenhangGraph.edges}
   />
 
-  <UitwerkingSection title="Wat werken we vanuit dit subsysteem uit?" items={normalizeUitwerkingSections(entry.data.contentSections || [])} />
+  <UitwerkingSection title="Inhoudelijke opbouw van Kunstwerk" items={visibleContentSections} />
 
   <ProductSection eyebrow="Productlijn" items={entry.data.productRelations || []} />
 

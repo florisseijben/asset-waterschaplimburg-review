@@ -33,6 +33,8 @@ const titleAliases: Array<{ term: string; icon: string }> = [
   { term: "bouwkunde", icon: "discipline-building" },
   { term: "groen", icon: "discipline-green" },
   { term: "regenwaterbuffercompartiment", icon: "object-compartment" },
+  { term: "kunstwerken", icon: "object-structure" },
+  { term: "kunstwerk", icon: "object-structure" },
   { term: "bekledingsconstructie", icon: "object-revetment" },
   { term: "watergangsectie", icon: "object-cross-section" },
   { term: "watergangsecties", icon: "object-cross-section" },
@@ -189,6 +191,11 @@ const icon =
   {icon === "object-compartment" && (
     <svg viewBox="0 0 24 24" class="info-card__title-icon-svg" focusable="false">
       <path d="M5 7h14v10H5zM9.7 7v10M14.3 7v10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" />
+    </svg>
+  )}
+  {icon === "object-structure" && (
+    <svg viewBox="0 0 24 24" class="info-card__title-icon-svg" focusable="false">
+      <path d="M5 19h14M7 19V9l5-4 5 4v10M9.5 12h5M12 9v7" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" />
     </svg>
   )}
   {icon === "object-slope" && (
