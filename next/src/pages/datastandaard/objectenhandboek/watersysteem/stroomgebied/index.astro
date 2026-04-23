@@ -68,7 +68,10 @@ const samenhangGraph = createStroomgebiedGraph();
     edges={samenhangGraph.edges}
   />
 
-  <UitwerkingSection title="Wat werken we vanuit dit subsysteem uit?" items={normalizeUitwerkingSections(entry.data.contentSections || [])} />
+  <UitwerkingSection
+    title="Wat werken we vanuit dit subsysteem uit?"
+    items={normalizeUitwerkingSections(entry.data.contentSections || [], { subtypes: entry.data.subtypes || [] })}
+  />
 
   <ProductSection eyebrow="Productlijn" items={entry.data.productRelations || []} />
 

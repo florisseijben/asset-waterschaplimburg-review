@@ -42,7 +42,9 @@ const visibleContentSections = (entry.data.contentSections || [])
         }
       : item
   );
-const normalizedContentSections = normalizeUitwerkingSections(visibleContentSections);
+const normalizedContentSections = normalizeUitwerkingSections(visibleContentSections, {
+  subtypes: entry.data.subtypes || []
+});
 const fallbackGraph = createWatergangGraph();
 const fallbackSamenhang = {
   sourceLabel: "Dummy relatiebron uit de Watergang-pagina.",

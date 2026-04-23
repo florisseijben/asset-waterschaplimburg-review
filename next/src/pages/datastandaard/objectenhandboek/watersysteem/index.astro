@@ -59,7 +59,10 @@ const samenhangGraph = createWatersysteemGraph();
     edges={samenhangGraph.edges}
   />
 
-  <UitwerkingSection title="Inhoudelijke opbouw van Watersysteem" items={normalizeUitwerkingSections(entry.data.contentSections || [])} />
+  <UitwerkingSection
+    title="Inhoudelijke opbouw van Watersysteem"
+    items={normalizeUitwerkingSections(entry.data.contentSections || [], { subtypes: entry.data.subtypes || [] })}
+  />
 
   <ProductSection eyebrow="Productlijn" items={entry.data.productRelations || entry.data.relatedProducts || []} />
 

@@ -25,7 +25,8 @@ if (!entry) {
 }
 
 const visibleContentSections = normalizeUitwerkingSections(
-  (entry.data.contentSections || []).filter((item) => item.title !== "Decompositie")
+  (entry.data.contentSections || []).filter((item) => item.title !== "Decompositie"),
+  { subtypes: entry.data.subtypes || [] }
 );
 const samenhangGraph = createIntersectieGraph();
 ---

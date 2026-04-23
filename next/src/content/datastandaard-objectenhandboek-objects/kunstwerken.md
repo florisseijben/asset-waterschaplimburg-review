@@ -32,11 +32,47 @@ terms:
     href: /datastandaard/woordenboek
 contextNote: Binnen deze objectfamilie brengen we beheerobjecten samen die de werking van watergangen, watergangsecties en intersecties regelen. Deze lijn vormt de opstap naar verdere uitwerking van stuwen, gemalen en verwante objecten.
 subtypes:
-  - title: Regelend kunstwerk
-    text: Kunstwerk dat vooral het waterpeil, debiet of de doorstroming beinvloedt.
+  - title: Aquaduct
+    text: Kunstwerk waarbij een watergang over een andere infrastructuur of watergang heen wordt geleid.
     href: /datastandaard/woordenboek
-  - title: Transporterend kunstwerk
-    text: Kunstwerk dat water actief verplaatst binnen het systeem.
+  - title: Bodemval
+    text: Kunstwerk dat hoogteverschil in de bodem opvangt en erosie of instabiliteit helpt beperken.
+    href: /datastandaard/woordenboek
+  - title: Brug
+    text: Kunstwerk dat een overbrugging vormt boven een watergang of een ander nat profiel.
+    href: /datastandaard/woordenboek
+  - title: Coupure
+    text: Afsluitbare opening in een waterkerend of scheidend werk binnen de waterstructuur.
+    href: /datastandaard/woordenboek
+  - title: Dam
+    text: Kunstwerk dat water tegenhoudt, scheidt of het peil in een watergang beinvloedt.
+    href: /datastandaard/woordenboek
+  - title: Duiker
+    text: Kunstwerk dat water onder een weg, dam of ander obstakel door leidt.
+    href: /datastandaard/woordenboek
+  - title: Gemaal
+    text: Kunstwerk dat water actief verplaatst met pompen.
+    href: /datastandaard/woordenboek
+  - title: Hevel
+    text: Kunstwerk dat water via een leiding of constructie over een hoger gelegen punt voert.
+    href: /datastandaard/woordenboek
+  - title: Sifon
+    text: Kunstwerk dat water onder een obstakel of kruising door leidt in een gesloten constructie.
+    href: /datastandaard/woordenboek
+  - title: Stuw
+    text: Kunstwerk dat het waterpeil regelt door water tegen te houden of gecontroleerd door te laten.
+    href: /datastandaard/woordenboek
+  - title: Voorde
+    text: Ondiepe oversteekplaats waar verkeer of vee een watergang kan passeren.
+    href: /datastandaard/woordenboek
+  - title: Vuilvang
+    text: Kunstwerk dat drijfvuil en grof materiaal opvangt voordat het andere objecten bereikt.
+    href: /datastandaard/woordenboek
+  - title: Vispassage
+    text: Kunstwerk dat vismigratie mogelijk maakt langs of door een waterregulerend object.
+    href: /datastandaard/woordenboek
+  - title: Overkluizing
+    text: Overdekte constructie waarbij een watergang geheel of gedeeltelijk wordt afgedekt.
     href: /datastandaard/woordenboek
 metadata:
   - label: Systeem
