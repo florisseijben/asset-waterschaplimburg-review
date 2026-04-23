@@ -24,7 +24,15 @@ const titleIcons: Record<string, string> = {
   objectenhandboek: "product-cube",
   "object type library": "product-library",
   referentiedataset: "product-database",
-  werkinstructies: "product-checklist"
+  werkinstructies: "product-checklist",
+  stroomgebied: "object-watershed",
+  watergang: "object-watercourse",
+  watergangsectie: "object-cross-section",
+  intersectie: "object-intersection",
+  regenwaterbuffer: "object-basin",
+  regenwaterbuffercompartiment: "object-compartment",
+  talud: "object-slope",
+  bekledingsconstructie: "object-revetment"
 };
 
 const matches = (...terms: string[]) => terms.some((term) => normalizedTitle.includes(term));
@@ -137,6 +145,46 @@ const icon =
   {icon === "product-checklist" && (
     <svg viewBox="0 0 24 24" class="info-card__title-icon-svg" focusable="false">
       <path d="M8 5h11v16H5V5h3ZM9 10h6M9 15h6M7.5 10l1 1 1.5-2M7.5 15l1 1 1.5-2M9 3h6v4H9z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" />
+    </svg>
+  )}
+  {icon === "object-watershed" && (
+    <svg viewBox="0 0 24 24" class="info-card__title-icon-svg" focusable="false">
+      <path d="M4 8c3 0 4 2 8 2s5-2 8-2M6 18c2.5-4.5 5.5-7 10-10M4 18h16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" />
+    </svg>
+  )}
+  {icon === "object-watercourse" && (
+    <svg viewBox="0 0 24 24" class="info-card__title-icon-svg" focusable="false">
+      <path d="M4 7c4 0 4 4 8 4s4-4 8-4M4 13c4 0 4 4 8 4s4-4 8-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" />
+    </svg>
+  )}
+  {icon === "object-cross-section" && (
+    <svg viewBox="0 0 24 24" class="info-card__title-icon-svg" focusable="false">
+      <path d="M4 8h4l3 8h2l3-8h4M4 18h16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" />
+    </svg>
+  )}
+  {icon === "object-intersection" && (
+    <svg viewBox="0 0 24 24" class="info-card__title-icon-svg" focusable="false">
+      <path d="M5 5l14 14M19 5 5 19M9 9h6v6H9z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" />
+    </svg>
+  )}
+  {icon === "object-basin" && (
+    <svg viewBox="0 0 24 24" class="info-card__title-icon-svg" focusable="false">
+      <path d="M5 8h14l-2 10H7L5 8ZM8 12c1.2 0 1.2 1 2.4 1s1.2-1 2.4-1 1.2 1 2.4 1" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" />
+    </svg>
+  )}
+  {icon === "object-compartment" && (
+    <svg viewBox="0 0 24 24" class="info-card__title-icon-svg" focusable="false">
+      <path d="M5 7h14v10H5zM9.7 7v10M14.3 7v10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" />
+    </svg>
+  )}
+  {icon === "object-slope" && (
+    <svg viewBox="0 0 24 24" class="info-card__title-icon-svg" focusable="false">
+      <path d="M4 18h16M6 18l10-10M10 18l6-6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" />
+    </svg>
+  )}
+  {icon === "object-revetment" && (
+    <svg viewBox="0 0 24 24" class="info-card__title-icon-svg" focusable="false">
+      <path d="M6 18h12M8 18l8-10M9 13h5M11 9h4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" />
     </svg>
   )}
   {icon === "document" && (

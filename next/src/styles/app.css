@@ -542,6 +542,7 @@ h1 {
   display: grid;
   gap: var(--space-3);
   min-height: 100%;
+  aspect-ratio: 2 / 3;
   padding: var(--space-5);
   background: #ffffff;
   border: 1px solid var(--color-line);
@@ -588,8 +589,10 @@ h1 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2rem;
-  height: 2rem;
+  width: 2.25rem;
+  height: 2.25rem;
+  min-width: 2.25rem;
+  min-height: 2.25rem;
   flex: 0 0 auto;
   border-radius: 999px;
   background: var(--color-brand-soft);
@@ -604,6 +607,7 @@ h1 {
 
 .info-card--section {
   align-items: start;
+  aspect-ratio: auto;
 }
 
 .info-card__figure {
@@ -628,7 +632,6 @@ h1 {
 
 .info-card--nested {
   padding: var(--space-4);
-  min-height: auto;
   background: #f8fcfc;
 }
 
