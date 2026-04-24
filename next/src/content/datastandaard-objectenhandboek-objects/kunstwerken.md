@@ -34,46 +34,46 @@ contextNote: Binnen deze objectfamilie brengen we kunstwerken samen die de werki
 subtypes:
   - title: Aquaduct
     text: Kunstwerk waarbij een watergang over een andere infrastructuur of watergang heen wordt geleid.
-    href: /datastandaard/woordenboek
+    href: /datastandaard/objectenhandboek/watersysteem/kunstwerken/aquaduct
   - title: Bodemval
     text: Kunstwerk dat hoogteverschil in de bodem opvangt en erosie of instabiliteit helpt beperken.
-    href: /datastandaard/woordenboek
+    href: /datastandaard/objectenhandboek/watersysteem/kunstwerken/bodemval
   - title: Brug
     text: Kunstwerk dat een overbrugging vormt boven een watergang of een ander nat profiel.
-    href: /datastandaard/woordenboek
+    href: /datastandaard/objectenhandboek/watersysteem/kunstwerken/brug
   - title: Coupure
     text: Afsluitbare opening in een waterkerend of scheidend werk binnen de waterstructuur.
-    href: /datastandaard/woordenboek
+    href: /datastandaard/objectenhandboek/watersysteem/kunstwerken/coupure
   - title: Dam
     text: Kunstwerk dat water tegenhoudt, scheidt of het peil in een watergang beinvloedt.
-    href: /datastandaard/woordenboek
+    href: /datastandaard/objectenhandboek/watersysteem/kunstwerken/dam
   - title: Duiker
     text: Kunstwerk dat water onder een weg, dam of ander obstakel door leidt.
-    href: /datastandaard/woordenboek
+    href: /datastandaard/objectenhandboek/watersysteem/kunstwerken/duiker
   - title: Gemaal
     text: Kunstwerk dat water actief verplaatst met pompen.
-    href: /datastandaard/woordenboek
+    href: /datastandaard/objectenhandboek/watersysteem/kunstwerken/gemaal
   - title: Hevel
     text: Kunstwerk dat water via een leiding of constructie over een hoger gelegen punt voert.
-    href: /datastandaard/woordenboek
+    href: /datastandaard/objectenhandboek/watersysteem/kunstwerken/hevel
   - title: Sifon
     text: Kunstwerk dat water onder een obstakel of kruising door leidt in een gesloten constructie.
-    href: /datastandaard/woordenboek
+    href: /datastandaard/objectenhandboek/watersysteem/kunstwerken/sifon
   - title: Stuw
     text: Kunstwerk dat het waterpeil regelt door water tegen te houden of gecontroleerd door te laten.
-    href: /datastandaard/woordenboek
+    href: /datastandaard/objectenhandboek/watersysteem/kunstwerken/stuw
   - title: Voorde
     text: Ondiepe oversteekplaats waar verkeer of vee een watergang kan passeren.
-    href: /datastandaard/woordenboek
+    href: /datastandaard/objectenhandboek/watersysteem/kunstwerken/voorde
   - title: Vuilvang
     text: Kunstwerk dat drijfvuil en grof materiaal opvangt voordat het andere objecten bereikt.
-    href: /datastandaard/woordenboek
+    href: /datastandaard/objectenhandboek/watersysteem/kunstwerken/vuilvang
   - title: Vispassage
     text: Kunstwerk dat vismigratie mogelijk maakt langs of door een waterregulerend object.
-    href: /datastandaard/woordenboek
+    href: /datastandaard/objectenhandboek/watersysteem/kunstwerken/vispassage
   - title: Overkluizing
     text: Overdekte constructie waarbij een watergang geheel of gedeeltelijk wordt afgedekt.
-    href: /datastandaard/woordenboek
+    href: /datastandaard/objectenhandboek/watersysteem/kunstwerken/overkluizing
 metadata:
   - label: Systeem
     value: Watersysteem

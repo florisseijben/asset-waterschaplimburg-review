@@ -36,6 +36,7 @@ function normalizeGeometryItems(items: SectionLinkItem[] = []) {
 
 type NormalizedUitwerkingOptions = {
   subtypes?: SectionLinkItem[];
+  includeTypen?: boolean;
 };
 
 function createTypenSection(subtypes: SectionLinkItem[] = []): ContentSection {
@@ -85,7 +86,10 @@ export function normalizeUitwerkingSections(
   sections: ContentSection[] = [],
   options: NormalizedUitwerkingOptions = {}
 ) {
-  const withTypen = insertTypenSection(sections, createTypenSection(options.subtypes || []));
+  const withTypen =
+    options.includeTypen === false
+      ? sections
+      : insertTypenSection(sections, createTypenSection(options.subtypes || []));
 
   return withTypen.map((section) =>
     section.title === "Geometrie"

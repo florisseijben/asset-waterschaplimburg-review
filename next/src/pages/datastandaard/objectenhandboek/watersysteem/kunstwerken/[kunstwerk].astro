@@ -1,0 +1,81 @@
+---
+import BaseLayout from "../../../../../layouts/BaseLayout.astro";
+import Hero from "../../../../../components/Hero.astro";
+import ConceptSummarySection from "../../../../../components/ConceptSummarySection.astro";
+import ProductSection from "../../../../../components/ProductSection.astro";
+import UitwerkingSection from "../../../../../components/UitwerkingSection.astro";
+import VervolgSection from "../../../../../components/VervolgSection.astro";
+import { getCollection } from "astro:content";
+import { normalizeUitwerkingSections } from "../../../../../lib/uitwerkingSections";
+
+const routePrefix = "/datastandaard/objectenhandboek/watersysteem/kunstwerken/";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("datastandaard-objectenhandboek-objects");
+
+  return entries.flatMap((entry) => {
+    if (!entry.data.slug.startsWith(routePrefix)) {
+      return [];
+    }
+
+    const kunstwerk = entry.data.slug.slice(routePrefix.length).replace(/\/$/, "");
+
+    if (!kunstwerk || kunstwerk.includes("/")) {
+      return [];
+    }
+
+    return [
+      {
+        params: { kunstwerk },
+        props: { entry }
+      }
+    ];
+  });
+}
+
+const { entry } = Astro.props;
+---
+
+<BaseLayout
+  title={entry.data.title}
+  currentPath="/datastandaard"
+  breadcrumbs={[
+    { label: "Home", href: "/" },
+    { label: "Datastandaard", href: "/datastandaard" },
+    { label: "Objectenhandboek", href: "/datastandaard/objectenhandboek" },
+    { label: "Watersysteem", href: "/datastandaard/objectenhandboek/watersysteem" },
+    { label: "Kunstwerk", href: "/datastandaard/objectenhandboek/watersysteem/kunstwerken" },
+    { label: entry.data.title }
+  ]}
+>
+  <Hero eyebrow="Objectenhandboek" title={entry.data.heroTitle || entry.data.title} summary={entry.data.summary}>
+    <dl class="hero-meta-list">
+      {(entry.data.metadata || []).map((item) => (
+        <div class="hero-meta-item">
+          <dt>{item.label}</dt>
+          <dd>{item.value}</dd>
+        </div>
+      ))}
+    </dl>
+  </Hero>
+
+  <ConceptSummarySection
+    subjectLabel={entry.data.title}
+    definition={entry.data.definition}
+    definitionSource={entry.data.definitionSource}
+    relatedTerms={entry.data.terms || []}
+    subtypes={entry.data.subtypes || []}
+  />
+
+  <UitwerkingSection
+    title={`Inhoudelijke opbouw van ${entry.data.title}`}
+    items={normalizeUitwerkingSections(entry.data.contentSections || [], {
+      subtypes: entry.data.subtypes || [],
+      includeTypen: false
+    })}
+  />
+
+  <ProductSection eyebrow="Productlijn" items={entry.data.productRelations || []} />
+
+  <VervolgSection title="Logische volgende stappen binnen deze lijn" items={entry.data.nextSteps || []} />
+</BaseLayout>
