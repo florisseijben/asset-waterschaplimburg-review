@@ -9,33 +9,41 @@ import { getCollection } from "astro:content";
 import { normalizeUitwerkingSections } from "../../../../../lib/uitwerkingSections";
 
 export async function getStaticPaths() {
-  const kunstwerkIds = [
-    "aquaduct",
-    "bodemval",
-    "brug",
-    "coupure",
-    "dam",
-    "duiker",
-    "gemaal",
-    "hevel",
-    "sifon",
-    "stuw",
-    "voorde",
-    "vuilvang",
-    "vispassage",
-    "overkluizing"
+  const kunstwerkPages = [
+    { path: "aquaduct", title: "Aquaduct" },
+    { path: "bodemval", title: "Bodemval" },
+    { path: "brug", title: "Brug" },
+    { path: "coupure", title: "Coupure" },
+    { path: "dam", title: "Dam" },
+    { path: "duiker", title: "Duiker" },
+    { path: "gemaal", title: "Gemaal" },
+    { path: "hevel", title: "Hevel" },
+    { path: "sifon", title: "Sifon" },
+    { path: "stuw", title: "Stuw" },
+    { path: "voorde", title: "Voorde" },
+    { path: "vuilvang", title: "Vuilvang" },
+    { path: "vispassage", title: "Vispassage" },
+    { path: "overkluizing", title: "Overkluizing" }
   ];
   const entries = await getCollection("datastandaard-objectenhandboek-objects");
 
-  return kunstwerkIds.map((kunstwerk) => {
-    const entry = entries.find((item) => item.id === kunstwerk);
+  return kunstwerkPages.map(({ path, title }) => {
+    const expectedSlug = `/datastandaard/objectenhandboek/watersysteem/kunstwerken/${path}`;
+    const entry = entries.find(
+      (item) =>
+        item.id === path ||
+        item.id === `${path}.md` ||
+        item.data.slug === expectedSlug ||
+        item.data.slug?.replace(/\/$/, "") === expectedSlug ||
+        item.data.title === title
+    );
 
     if (!entry) {
-      throw new Error(`Objectenhandboekpagina voor kunstwerktype ${kunstwerk} ontbreekt.`);
+      throw new Error(`Objectenhandboekpagina voor kunstwerktype ${title} ontbreekt.`);
     }
 
     return {
-      params: { kunstwerk },
+      params: { kunstwerk: path },
       props: { entry }
     };
   });
