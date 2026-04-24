@@ -8,9 +8,8 @@ import VervolgSection from "../../../../../components/VervolgSection.astro";
 import { getCollection } from "astro:content";
 import { normalizeUitwerkingSections } from "../../../../../lib/uitwerkingSections";
 
-const routePrefix = "/datastandaard/objectenhandboek/watersysteem/kunstwerken/";
-
 export async function getStaticPaths() {
+  const routePrefix = "/datastandaard/objectenhandboek/watersysteem/kunstwerken/";
   const entries = await getCollection("datastandaard-objectenhandboek-objects");
 
   return entries.flatMap((entry) => {
