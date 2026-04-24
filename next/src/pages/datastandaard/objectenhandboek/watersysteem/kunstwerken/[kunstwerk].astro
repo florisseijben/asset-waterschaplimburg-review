@@ -9,26 +9,35 @@ import { getCollection } from "astro:content";
 import { normalizeUitwerkingSections } from "../../../../../lib/uitwerkingSections";
 
 export async function getStaticPaths() {
-  const routePrefix = "/datastandaard/objectenhandboek/watersysteem/kunstwerken/";
+  const kunstwerkIds = [
+    "aquaduct",
+    "bodemval",
+    "brug",
+    "coupure",
+    "dam",
+    "duiker",
+    "gemaal",
+    "hevel",
+    "sifon",
+    "stuw",
+    "voorde",
+    "vuilvang",
+    "vispassage",
+    "overkluizing"
+  ];
   const entries = await getCollection("datastandaard-objectenhandboek-objects");
 
-  return entries.flatMap((entry) => {
-    if (!entry.data.slug.startsWith(routePrefix)) {
-      return [];
+  return kunstwerkIds.map((kunstwerk) => {
+    const entry = entries.find((item) => item.id === kunstwerk);
+
+    if (!entry) {
+      throw new Error(`Objectenhandboekpagina voor kunstwerktype ${kunstwerk} ontbreekt.`);
     }
 
-    const kunstwerk = entry.data.slug.slice(routePrefix.length).replace(/\/$/, "");
-
-    if (!kunstwerk || kunstwerk.includes("/")) {
-      return [];
-    }
-
-    return [
-      {
-        params: { kunstwerk },
-        props: { entry }
-      }
-    ];
+    return {
+      params: { kunstwerk },
+      props: { entry }
+    };
   });
 }
 
