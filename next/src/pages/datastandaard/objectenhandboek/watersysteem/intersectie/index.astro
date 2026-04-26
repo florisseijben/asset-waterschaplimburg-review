@@ -5,10 +5,11 @@ import ConceptSummarySection from "../../../../../components/ConceptSummarySecti
 import SemanticSamenhangSection from "../../../../../components/SemanticSamenhangSection.astro";
 import ProductSection from "../../../../../components/ProductSection.astro";
 import UitwerkingSection from "../../../../../components/UitwerkingSection.astro";
+import GeometrySection from "../../../../../components/GeometrySection.astro";
 import VervolgSection from "../../../../../components/VervolgSection.astro";
 import { getCollection } from "astro:content";
 import watergangSamenhangTurtle from "../../../../../data/semantic/watergang-samenhang.ttl?raw";
-import { normalizeUitwerkingSections } from "../../../../../lib/uitwerkingSections";
+import { getGeometrySection, normalizeObjectUitwerkingSections } from "../../../../../lib/uitwerkingSections";
 import { createIntersectieGraph } from "../../../../../lib/semanticSamenhangGraphs";
 
 const entries = await getCollection("datastandaard-objectenhandboek-objects");
@@ -24,10 +25,9 @@ if (!entry) {
   throw new Error("Objectenhandboek Intersectie ontbreekt in de nieuwe omgeving.");
 }
 
-const visibleContentSections = normalizeUitwerkingSections(
-  (entry.data.contentSections || []).filter((item) => item.title !== "Decompositie"),
-  { subtypes: entry.data.subtypes || [] }
-);
+const contentSections = entry.data.contentSections || [];
+const visibleContentSections = normalizeObjectUitwerkingSections(contentSections, { subtypes: entry.data.subtypes || [] });
+const geometrySection = getGeometrySection(contentSections);
 const samenhangGraph = createIntersectieGraph();
 ---
 
@@ -54,13 +54,13 @@ const samenhangGraph = createIntersectieGraph();
     </dl>
   </Hero>
 
-    <ConceptSummarySection
-      subjectLabel="Intersectie"
-      definition={entry.data.definition}
-      definitionSource={entry.data.definitionSource}
-      relatedTerms={entry.data.terms || []}
-      subtypes={entry.data.subtypes || []}
-    />
+  <ConceptSummarySection
+    subjectLabel="Intersectie"
+    definition={entry.data.definition}
+    definitionSource={entry.data.definitionSource}
+    relatedTerms={entry.data.terms || []}
+    subtypes={entry.data.subtypes || []}
+  />
 
   <SemanticSamenhangSection
     title="Decompositie en hoofdrelaties binnen Intersectie"
@@ -74,6 +74,8 @@ const samenhangGraph = createIntersectieGraph();
   />
 
   <UitwerkingSection title="Inhoudelijke opbouw van Intersectie" items={visibleContentSections} />
+
+  <GeometrySection section={geometrySection} />
 
   <ProductSection eyebrow="Productlijn" items={entry.data.productRelations || []} />
 

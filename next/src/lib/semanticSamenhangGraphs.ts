@@ -95,6 +95,24 @@ export function createKunstwerkGraph(): GraphConfig {
   };
 }
 
+export function createKunstwerkTypeGraph(typeId: string, typeLabel: string): GraphConfig {
+  return {
+    layoutNodes: [
+      node("stroomgebied", "Stroomgebied", "Subsysteem", 1, 0, contextFill),
+      node("kunstwerk", "Kunstwerk", "Objectfamilie", 1, 1, relatedFill),
+      node(typeId, typeLabel, "Kunstwerktype", 1, 2, selectedFill),
+      node("watergangsectie", "Watergangsectie", "Contextobject", 0, 3, contextFill),
+      node("intersectie", "Intersectie", "Contextobject", 2, 3, contextFill)
+    ],
+    edges: [
+      { from: "stroomgebied", to: "kunstwerk", label: "Bevat objectfamilie" },
+      { from: "kunstwerk", to: typeId, label: "Heeft type" },
+      { from: typeId, to: "watergangsectie", label: "Kan liggen bij" },
+      { from: typeId, to: "intersectie", label: "Kan liggen bij" }
+    ]
+  };
+}
+
 export function createWatergangGraph(): GraphConfig {
   return {
     layoutNodes: [

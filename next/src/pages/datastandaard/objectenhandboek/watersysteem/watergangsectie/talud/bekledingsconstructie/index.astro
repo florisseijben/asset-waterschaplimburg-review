@@ -5,10 +5,11 @@ import ConceptSummarySection from "../../../../../../../components/ConceptSummar
 import SemanticSamenhangSection from "../../../../../../../components/SemanticSamenhangSection.astro";
 import ProductSection from "../../../../../../../components/ProductSection.astro";
 import UitwerkingSection from "../../../../../../../components/UitwerkingSection.astro";
+import GeometrySection from "../../../../../../../components/GeometrySection.astro";
 import VervolgSection from "../../../../../../../components/VervolgSection.astro";
 import { getCollection } from "astro:content";
 import bekledingsconstructieSamenhangTurtle from "../../../../../../../data/semantic/talud-bekledingsconstructie-samenhang.ttl?raw";
-import { normalizeUitwerkingSections } from "../../../../../../../lib/uitwerkingSections";
+import { getGeometrySection, normalizeObjectUitwerkingSections } from "../../../../../../../lib/uitwerkingSections";
 import { createBekledingsconstructieGraph } from "../../../../../../../lib/semanticSamenhangGraphs";
 
 const entries = await getCollection("datastandaard-objectenhandboek-objects");
@@ -25,6 +26,9 @@ if (!entry) {
 }
 
 const samenhangGraph = createBekledingsconstructieGraph();
+const contentSections = entry.data.contentSections || [];
+const uitwerkingSections = normalizeObjectUitwerkingSections(contentSections, { subtypes: entry.data.subtypes || [] });
+const geometrySection = getGeometrySection(contentSections);
 ---
 
 <BaseLayout
@@ -73,8 +77,10 @@ const samenhangGraph = createBekledingsconstructieGraph();
 
   <UitwerkingSection
     title="Inhoudelijke opbouw van Bekledingsconstructie"
-    items={normalizeUitwerkingSections(entry.data.contentSections || [], { subtypes: entry.data.subtypes || [] })}
+    items={uitwerkingSections}
   />
+
+  <GeometrySection section={geometrySection} />
 
   <ProductSection eyebrow="Productlijn" items={entry.data.productRelations || []} />
 

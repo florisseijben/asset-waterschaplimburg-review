@@ -91,7 +91,14 @@ contentSections:
   - title: Afbakening
     summary: De afbakening volgt het fysieke beheerobject dat op een vaste plek in het watersysteem water regelt, keert, doorlaat of verplaatst.
   - title: Onderdelen
-    summary: De directe onderdelen van Kunstwerk worden in deze lijn later uitgewerkt.
+    summary: De directe onderdelen van Kunstwerk worden in deze lijn later uitgewerkt via Element en Bouwdeel.
+    items:
+      - title: Element
+        text: Eerste interne decompositiestap binnen Kunstwerk.
+        href: /in-migratie/objectenhandboek/watersysteem/kunstwerken/element
+      - title: Bouwdeel
+        text: Verdere uitwerking van onderdelen binnen een element.
+        href: /in-migratie/objectenhandboek/watersysteem/kunstwerken/bouwdeel
   - title: Geometrie
     summary: Kunstwerken worden in deze lijn meestal vastgelegd als puntobjecten, gekoppeld aan hun positie in de waterstructuur.
     items:

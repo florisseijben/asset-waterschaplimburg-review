@@ -2,11 +2,14 @@
 import BaseLayout from "../../../../../layouts/BaseLayout.astro";
 import Hero from "../../../../../components/Hero.astro";
 import ConceptSummarySection from "../../../../../components/ConceptSummarySection.astro";
+import SemanticSamenhangSection from "../../../../../components/SemanticSamenhangSection.astro";
 import ProductSection from "../../../../../components/ProductSection.astro";
 import UitwerkingSection from "../../../../../components/UitwerkingSection.astro";
+import GeometrySection from "../../../../../components/GeometrySection.astro";
 import VervolgSection from "../../../../../components/VervolgSection.astro";
 import { getCollection } from "astro:content";
-import { normalizeUitwerkingSections } from "../../../../../lib/uitwerkingSections";
+import { getGeometrySection, normalizeObjectUitwerkingSections } from "../../../../../lib/uitwerkingSections";
+import { createKunstwerkTypeGraph } from "../../../../../lib/semanticSamenhangGraphs";
 
 export async function getStaticPaths() {
   const kunstwerkPages = [
@@ -50,6 +53,49 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
+const kunstwerkId = Astro.params.kunstwerk || entry.data.slug?.split("/").pop() || "kunstwerktype";
+const contentSections = entry.data.contentSections || [];
+const uitwerkingSections = normalizeObjectUitwerkingSections(contentSections, {
+  subtypes: entry.data.subtypes || [],
+  includeTypen: false
+});
+const geometrySection = getGeometrySection(contentSections);
+const samenhangGraph = createKunstwerkTypeGraph(kunstwerkId, entry.data.title);
+const escapedTitle = String(entry.data.title || "").replace(/\\/g, "\\\\").replace(/"/g, '\\"');
+const kunstwerkTypeTurtle = `@prefix object: <https://data.waterschaplimburg.nl/id/objecttype/> .
+@prefix relatie: <https://data.waterschaplimburg.nl/def/relatie/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+object:stroomgebied a owl:Class ;
+  rdfs:label "Stroomgebied" .
+
+object:kunstwerk a owl:Class ;
+  rdfs:label "Kunstwerk" .
+
+object:${kunstwerkId} a owl:Class ;
+  rdfs:label "${escapedTitle}" .
+
+object:watergangsectie a owl:Class ;
+  rdfs:label "Watergangsectie" .
+
+object:intersectie a owl:Class ;
+  rdfs:label "Intersectie" .
+
+relatie:omvat a owl:ObjectProperty ;
+  rdfs:label "omvat" .
+
+relatie:heeftType a owl:ObjectProperty ;
+  rdfs:label "heeft type" .
+
+relatie:kanLiggenBij a owl:ObjectProperty ;
+  rdfs:label "kan liggen bij" .
+
+object:stroomgebied relatie:omvat object:kunstwerk .
+object:kunstwerk relatie:heeftType object:${kunstwerkId} .
+object:${kunstwerkId} relatie:kanLiggenBij object:watergangsectie .
+object:${kunstwerkId} relatie:kanLiggenBij object:intersectie .
+`;
 ---
 
 <BaseLayout
@@ -83,13 +129,23 @@ const { entry } = Astro.props;
     subtypes={entry.data.subtypes || []}
   />
 
+  <SemanticSamenhangSection
+    title={`Samenhang binnen ${entry.data.title}`}
+    summary={`${entry.data.title} is een kunstwerktype binnen de objectfamilie Kunstwerk en wordt in de uitwerking verbonden met de context van watergangsecties en intersecties.`}
+    sourceLabel="Dummy Turtle-export uit de semantische modelleertool voor de kunstwerktypepagina's."
+    graphId={`kunstwerk-${kunstwerkId}-samenhang`}
+    selectedId={kunstwerkId}
+    turtle={kunstwerkTypeTurtle}
+    layoutNodes={samenhangGraph.layoutNodes}
+    edges={samenhangGraph.edges}
+  />
+
   <UitwerkingSection
     title={`Inhoudelijke opbouw van ${entry.data.title}`}
-    items={normalizeUitwerkingSections(entry.data.contentSections || [], {
-      subtypes: entry.data.subtypes || [],
-      includeTypen: false
-    })}
+    items={uitwerkingSections}
   />
+
+  <GeometrySection section={geometrySection} />
 
   <ProductSection eyebrow="Productlijn" items={entry.data.productRelations || []} />
 

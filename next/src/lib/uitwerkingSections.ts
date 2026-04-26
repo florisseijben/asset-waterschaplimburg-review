@@ -2,6 +2,8 @@ type SectionLinkItem = {
   title: string;
   text: string;
   href?: string;
+  image?: SectionImage;
+  caption?: string;
 };
 
 type SectionImage = {
@@ -122,5 +124,29 @@ export function normalizeHoofdstukUitwerkingSections(sections: ContentSection[] 
     includeTypen: false,
     includeGeometry: false,
     excludeTitles: ["Decompositie", "Typen"]
+  });
+}
+
+export function getGeometrySection(sections: ContentSection[] = []) {
+  const geometrySection = sections.find((section) => section.title === "Geometrie");
+
+  if (!geometrySection) {
+    return undefined;
+  }
+
+  return {
+    ...geometrySection,
+    items: normalizeGeometryItems(geometrySection.items)
+  };
+}
+
+export function normalizeObjectUitwerkingSections(
+  sections: ContentSection[] = [],
+  options: NormalizedUitwerkingOptions = {}
+) {
+  return normalizeUitwerkingSections(sections, {
+    ...options,
+    includeGeometry: false,
+    excludeTitles: [...(options.excludeTitles || []), "Decompositie"]
   });
 }

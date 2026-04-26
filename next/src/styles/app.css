@@ -672,6 +672,52 @@ h1 {
   outline-offset: 2px;
 }
 
+.geometry-section {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.geometry-section .content-copy {
+  margin: 0;
+}
+
+.geometry-section__figure {
+  margin: 0;
+}
+
+.geometry-section__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--color-line);
+  border-radius: 0 var(--corner-control) 0 0;
+  background: #f8fcfc;
+}
+
+.geometry-section__caption {
+  margin-top: var(--space-2);
+  color: var(--color-muted);
+  font-size: 0.94rem;
+  line-height: 1.5;
+}
+
+.geometry-section__grid {
+  margin-top: 0;
+}
+
+.geometry-section__card {
+  align-self: start;
+  height: auto;
+  min-height: auto;
+  aspect-ratio: auto;
+  max-height: none;
+}
+
+.geometry-section__card[href] {
+  aspect-ratio: auto;
+  max-height: none;
+}
+
 .semantic-samenhang {
   display: grid;
   gap: var(--space-4);

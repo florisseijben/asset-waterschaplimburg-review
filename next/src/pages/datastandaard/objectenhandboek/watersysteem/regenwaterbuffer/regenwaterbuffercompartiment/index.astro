@@ -5,10 +5,11 @@ import ConceptSummarySection from "../../../../../../components/ConceptSummarySe
 import SemanticSamenhangSection from "../../../../../../components/SemanticSamenhangSection.astro";
 import ProductSection from "../../../../../../components/ProductSection.astro";
 import UitwerkingSection from "../../../../../../components/UitwerkingSection.astro";
+import GeometrySection from "../../../../../../components/GeometrySection.astro";
 import VervolgSection from "../../../../../../components/VervolgSection.astro";
 import { getCollection } from "astro:content";
 import regenwaterbufferSamenhangTurtle from "../../../../../../data/semantic/regenwaterbuffer-samenhang.ttl?raw";
-import { normalizeUitwerkingSections } from "../../../../../../lib/uitwerkingSections";
+import { getGeometrySection, normalizeObjectUitwerkingSections } from "../../../../../../lib/uitwerkingSections";
 import { createRegenwaterbufferCompartimentGraph } from "../../../../../../lib/semanticSamenhangGraphs";
 
 const entries = await getCollection("datastandaard-objectenhandboek-objects");
@@ -25,10 +26,9 @@ if (!entry) {
   throw new Error("Objectenhandboek Regenwaterbuffercompartiment ontbreekt in de nieuwe omgeving.");
 }
 
-const visibleContentSections = normalizeUitwerkingSections(
-  (entry.data.contentSections || []).filter((item) => item.title !== "Decompositie"),
-  { subtypes: entry.data.subtypes || [] }
-);
+const contentSections = entry.data.contentSections || [];
+const visibleContentSections = normalizeObjectUitwerkingSections(contentSections, { subtypes: entry.data.subtypes || [] });
+const geometrySection = getGeometrySection(contentSections);
 const samenhangGraph = createRegenwaterbufferCompartimentGraph();
 ---
 
@@ -75,6 +75,8 @@ const samenhangGraph = createRegenwaterbufferCompartimentGraph();
   />
 
   <UitwerkingSection title="Inhoudelijke opbouw van Regenwaterbuffercompartiment" items={visibleContentSections} />
+
+  <GeometrySection section={geometrySection} />
 
   <ProductSection eyebrow="Productlijn" items={entry.data.productRelations || []} />
 

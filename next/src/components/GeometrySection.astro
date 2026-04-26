@@ -1,0 +1,69 @@
+---
+import { withBase } from "../lib/paths";
+
+interface SectionImage {
+  src: string;
+  alt?: string;
+}
+
+interface GeometryItem {
+  title: string;
+  text: string;
+  href?: string;
+  image?: SectionImage;
+  caption?: string;
+}
+
+interface GeometrySectionData {
+  title: string;
+  summary: string;
+  href?: string;
+  items?: GeometryItem[];
+  image?: SectionImage;
+  caption?: string;
+}
+
+interface Props {
+  section?: GeometrySectionData;
+  title?: string;
+}
+
+const { section, title } = Astro.props;
+const heading = title || "Geometrie";
+const items = section?.items || [];
+---
+
+{section && (
+  <section class="section section-panel geometry-section">
+    <p class="eyebrow">Geometrie</p>
+    <h2>{heading}</h2>
+    {section.summary && <p class="content-copy">{section.summary}</p>}
+
+    {section.image?.src && (
+      <figure class="geometry-section__figure">
+        <img class="geometry-section__image" src={withBase(section.image.src)} alt={section.image.alt || ""} loading="lazy" />
+        {section.caption && <figcaption class="geometry-section__caption">{section.caption}</figcaption>}
+      </figure>
+    )}
+
+    {items.length > 0 && (
+      <div class="card-grid geometry-section__grid">
+        {items.map((item) => {
+          const ItemTag = item.href ? "a" : "article";
+          return (
+            <ItemTag class="info-card geometry-section__card" href={item.href ? withBase(item.href) : undefined}>
+              <h3 class="info-card__title">{item.title}</h3>
+              <p>{item.text}</p>
+              {item.image?.src && (
+                <figure class="geometry-section__figure">
+                  <img class="geometry-section__image" src={withBase(item.image.src)} alt={item.image.alt || ""} loading="lazy" />
+                  {item.caption && <figcaption class="geometry-section__caption">{item.caption}</figcaption>}
+                </figure>
+              )}
+            </ItemTag>
+          );
+        })}
+      </div>
+    )}
+  </section>
+)}

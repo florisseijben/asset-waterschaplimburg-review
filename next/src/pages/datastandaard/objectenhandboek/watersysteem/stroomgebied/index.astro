@@ -5,10 +5,11 @@ import ConceptSummarySection from "../../../../../components/ConceptSummarySecti
 import SemanticSamenhangSection from "../../../../../components/SemanticSamenhangSection.astro";
 import ProductSection from "../../../../../components/ProductSection.astro";
 import UitwerkingSection from "../../../../../components/UitwerkingSection.astro";
+import GeometrySection from "../../../../../components/GeometrySection.astro";
 import VervolgSection from "../../../../../components/VervolgSection.astro";
 import { getCollection } from "astro:content";
 import watersysteemSamenhangTurtle from "../../../../../data/semantic/watersysteem-samenhang.ttl?raw";
-import { normalizeUitwerkingSections } from "../../../../../lib/uitwerkingSections";
+import { getGeometrySection, normalizeObjectUitwerkingSections } from "../../../../../lib/uitwerkingSections";
 import { createStroomgebiedGraph } from "../../../../../lib/semanticSamenhangGraphs";
 
 const entries = await getCollection("datastandaard-objectenhandboek-objects");
@@ -25,6 +26,9 @@ if (!entry) {
 }
 
 const samenhangGraph = createStroomgebiedGraph();
+const contentSections = entry.data.contentSections || [];
+const uitwerkingSections = normalizeObjectUitwerkingSections(contentSections, { subtypes: entry.data.subtypes || [] });
+const geometrySection = getGeometrySection(contentSections);
 ---
 
 <BaseLayout
@@ -70,8 +74,10 @@ const samenhangGraph = createStroomgebiedGraph();
 
   <UitwerkingSection
     title="Wat werken we vanuit dit subsysteem uit?"
-    items={normalizeUitwerkingSections(entry.data.contentSections || [], { subtypes: entry.data.subtypes || [] })}
+    items={uitwerkingSections}
   />
+
+  <GeometrySection section={geometrySection} />
 
   <ProductSection eyebrow="Productlijn" items={entry.data.productRelations || []} />
 
