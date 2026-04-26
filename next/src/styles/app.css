@@ -611,6 +611,15 @@ h1 {
   max-height: none;
 }
 
+.info-card--with-image,
+.info-card:has(.info-card__image) {
+  align-self: start;
+  height: auto;
+  min-height: auto;
+  aspect-ratio: auto;
+  max-height: none;
+}
+
 .info-card__figure {
   margin: 0;
 }
@@ -641,6 +650,12 @@ h1 {
   cursor: pointer;
   aspect-ratio: 3 / 2;
   max-height: 24rem;
+}
+
+.info-card[href].info-card--with-image,
+.info-card[href]:has(.info-card__image) {
+  aspect-ratio: auto;
+  max-height: none;
 }
 
 .info-card[href]:hover,

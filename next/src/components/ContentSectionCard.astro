@@ -27,10 +27,14 @@ interface Props {
 
 const { title, text, href, items = [], image, caption } = Astro.props;
 const hasItems = items.length > 0;
+const hasImage = Boolean(image?.src);
 const Tag = href && !hasItems ? "a" : "article";
 ---
 
-<Tag class:list={["info-card", "info-card--section"]} href={href && !hasItems ? withBase(href) : undefined}>
+<Tag
+  class:list={["info-card", "info-card--section", hasImage && "info-card--with-image"]}
+  href={href && !hasItems ? withBase(href) : undefined}
+>
   <div class="info-card__header">
     <div class="info-card__title-wrap">
       {href && !hasItems && <CardTitleIcon title={title} />}
@@ -50,8 +54,12 @@ const Tag = href && !hasItems ? "a" : "article";
     <div class="card-grid card-grid--nested">
       {items.map((item) => {
         const ItemTag = item.href ? "a" : "article";
+        const hasItemImage = Boolean(item.image?.src);
         return (
-        <ItemTag class="info-card info-card--nested" href={item.href ? withBase(item.href) : undefined}>
+        <ItemTag
+          class:list={["info-card", "info-card--nested", hasItemImage && "info-card--with-image"]}
+          href={item.href ? withBase(item.href) : undefined}
+        >
           <div class="info-card__header">
             <div class="info-card__title-wrap">
               {item.href && <CardTitleIcon title={item.title} />}
