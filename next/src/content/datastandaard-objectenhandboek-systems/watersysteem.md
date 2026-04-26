@@ -6,8 +6,11 @@ product: objectenhandboek
 ownerTeam: datastandaard
 status: concept
 lastReviewed: 2026-04-11
-summary: In deze systeemlijn delen we objecttypen in per objectfamilie. Zo blijft de structuur overzichtelijk en goed herbruikbaar.
+pageType: chapter
+heroEyebrow: Objectenhandboek hoofdstuk
+summary: Kies binnen dit hoofdstuk de subsystemen en objectfamilies van het watersysteem. De inhoudelijke objectdetails staan in de onderliggende routes.
 heroTitle: Objectenhandboek voor Watersysteem
+uitwerkingTitle: Hoofdstukindeling voor Watersysteem
 definition: Het regionale watersysteem is het samenhangende geheel van oppervlaktewaterlichamen, bergingsgebieden, waterkeringen en ondersteunende kunstwerken in beheer bij het waterschap binnen het regionale watersysteem van Limburg.
 definitionSource: "Bronbasis: Omgevingswet-begrip watersysteem, in combinatie met de regionale beheercontext uit de Waterschapsverordening Waterschap Limburg. Formulering is een toepassing op deze objectenhandboeklijn."
 terms:
@@ -20,7 +23,7 @@ terms:
   - title: Regionale wateren
     text: Wateren die niet tot de rijkswateren behoren en binnen de regionale beheercontext van het waterschap vallen.
     href: /datastandaard/woordenboek
-contextNote: Het watersysteem vormt de kapstok voor subsystemen zoals stroomgebieden en voor objectfamilies zoals watergangen, watervlakten en kunstwerken. Vanuit deze systeemlaag wordt duidelijk hoe decompositie, begrippen en productrelaties samenhangen.
+contextNote: Het watersysteem vormt de kapstok voor subsystemen zoals stroomgebieden en voor objectfamilies zoals watergangen, watervlakten en kunstwerken. Vanuit deze systeemlaag wordt duidelijk hoe begrippen, hoofdstukindeling en productrelaties samenhangen.
 subtypes:
   - title: Regionale wateren
     text: Wateren binnen het regionale watersysteem en de beheercontext van provincie en waterschap.
@@ -34,7 +37,7 @@ contentSections:
   - title: Afbakening
     summary: De afbakening van het watersysteem volgt de oppervlaktewateren binnen de provinciegrenzen van Limburg. Daarbij heeft het watersysteem raakvlakken met het stelsel van primaire waterkeringen langs de Maas en met de afvalwaterketen.
   - title: Onderdelen
-    summary: Binnen deze systeemlijn werken we eerst het subsysteem Stroomgebied uit. Daarna volgen de objectfamilies Watergang, Regenwaterbuffer en Kunstwerk op het eerstvolgende hiërarchische niveau.
+    summary: Binnen deze systeemlijn werken we eerst het subsysteem Stroomgebied uit. Daarna volgen de objectfamilies Watergang, Regenwaterbuffer en Kunstwerk op het eerstvolgende hierarchische niveau.
     items:
       - title: Stroomgebied
         text: Subsysteemlanding voor de hydrologische samenhang en de objectfamilies daarbinnen.
@@ -48,15 +51,6 @@ contentSections:
       - title: Kunstwerk
         text: Objectfamilie voor kunstwerken die de watergangstructuur ondersteunen en verder uitwerken naar elementen en bouwdelen.
         href: /datastandaard/objectenhandboek/watersysteem/kunstwerken
-  - title: Geometrie
-    summary: De geometrie van het watersysteem wordt op systeemniveau gelezen via waterstructuren, gebieden en de ruimtelijke samenhang tussen objectfamilies en subsystemen.
-    items:
-      - title: Grootschalig
-        text: "Bij grootschalige kaarten, ongeveer schaal 1:1.000 tot 1:10.000, wordt Watersysteem niet als apart object getoond. Op dit detailniveau ligt de nadruk op afzonderlijke objecten en lokale inrichting; er wordt daarom geen zelfstandige geometrie voor Watersysteem weergegeven."
-      - title: Midschalig
-        text: "Bij midschalige kaarten, ongeveer schaal 1:25.000 tot 1:100.000, wordt Watersysteem in deze objectlijn doorgaans niet als apart object getoond. De samenhang tussen objectfamilies en subsystemen wordt hier vooral via onderliggende objecten en gebieden zichtbaar gemaakt, zonder aparte systeemgeometrie."
-      - title: Kleinschalig
-        text: "Bij kleinschalige kaarten, ongeveer schaal 1:500.000 en kleiner, wordt Watersysteem getoond als sterk gegeneraliseerde vlak- en netwerkrepresentatie. Op dit schaalniveau functioneert het object als overkoepelende systeemcontext voor het volledige regionale netwerk van wateren en waterstaatswerken."
 productRelations:
   - title: Woordenboek
     text: Begrippen en definities voor het watersysteem.

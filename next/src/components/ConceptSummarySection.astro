@@ -15,6 +15,7 @@ interface Props {
   subtypes?: TermItem[];
   runtimeSourceUrl?: string;
   runtimeSourceLabel?: string;
+  showTypes?: boolean;
 }
 
 const {
@@ -24,7 +25,8 @@ const {
   relatedTerms = [],
   subtypes = [],
   runtimeSourceUrl,
-  runtimeSourceLabel = "IMBOR"
+  runtimeSourceLabel = "IMBOR",
+  showTypes = true
 } = Astro.props;
 
 const hasSynonyms = synonyms.length > 0;
@@ -86,23 +88,25 @@ const runtimeId = `concept-runtime-${subjectLabel.toLowerCase().replace(/\s+/g, 
       </div>
     </details>
 
-    <details class="concept-disclosure">
-      <summary>Typen</summary>
-      <div class="concept-disclosure__body" data-concept-types>
-        {hasSubtypes ? (
-          <div class="concept-summary__list">
-            {subtypes.map((item) => (
-              <a class="concept-summary__item" href={withBase(item.href || "/datastandaard/woordenboek")}>
-                <strong>{item.title}</strong>
-                <span>{item.text || "Open begrip in woordenboek."}</span>
-              </a>
-            ))}
-          </div>
-        ) : (
-          <span class="concept-summary__empty">Geen typen uitgewerkt.</span>
-        )}
-      </div>
-    </details>
+    {showTypes && (
+      <details class="concept-disclosure">
+        <summary>Typen</summary>
+        <div class="concept-disclosure__body" data-concept-types>
+          {hasSubtypes ? (
+            <div class="concept-summary__list">
+              {subtypes.map((item) => (
+                <a class="concept-summary__item" href={withBase(item.href || "/datastandaard/woordenboek")}>
+                  <strong>{item.title}</strong>
+                  <span>{item.text || "Open begrip in woordenboek."}</span>
+                </a>
+              ))}
+            </div>
+          ) : (
+            <span class="concept-summary__empty">Geen typen uitgewerkt.</span>
+          )}
+        </div>
+      </details>
+    )}
   </div>
 </section>
 

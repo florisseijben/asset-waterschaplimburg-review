@@ -15,6 +15,7 @@ type ContentSection = {
   href?: string;
   items?: SectionLinkItem[];
   image?: SectionImage;
+  caption?: string;
 };
 
 const GEOMETRY_ORDER = ["Grootschalig", "Midschalig", "Kleinschalig"] as const;
@@ -37,6 +38,8 @@ function normalizeGeometryItems(items: SectionLinkItem[] = []) {
 type NormalizedUitwerkingOptions = {
   subtypes?: SectionLinkItem[];
   includeTypen?: boolean;
+  includeGeometry?: boolean;
+  excludeTitles?: string[];
 };
 
 function createTypenSection(subtypes: SectionLinkItem[] = []): ContentSection {
@@ -86,10 +89,23 @@ export function normalizeUitwerkingSections(
   sections: ContentSection[] = [],
   options: NormalizedUitwerkingOptions = {}
 ) {
+  const excludedTitles = new Set(options.excludeTitles || []);
+  const visibleSections = sections.filter((section) => {
+    if (excludedTitles.has(section.title)) {
+      return false;
+    }
+
+    if (options.includeGeometry === false && section.title === "Geometrie") {
+      return false;
+    }
+
+    return true;
+  });
+
   const withTypen =
     options.includeTypen === false
-      ? sections
-      : insertTypenSection(sections, createTypenSection(options.subtypes || []));
+      ? visibleSections
+      : insertTypenSection(visibleSections, createTypenSection(options.subtypes || []));
 
   return withTypen.map((section) =>
     section.title === "Geometrie"
@@ -99,4 +115,12 @@ export function normalizeUitwerkingSections(
         }
       : section
   );
+}
+
+export function normalizeHoofdstukUitwerkingSections(sections: ContentSection[] = []) {
+  return normalizeUitwerkingSections(sections, {
+    includeTypen: false,
+    includeGeometry: false,
+    excludeTitles: ["Decompositie", "Typen"]
+  });
 }

@@ -1,0 +1,73 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "./Hero.astro";
+import ConceptSummarySection from "./ConceptSummarySection.astro";
+import ProductSection from "./ProductSection.astro";
+import UitwerkingSection from "./UitwerkingSection.astro";
+import VervolgSection from "./VervolgSection.astro";
+import { normalizeHoofdstukUitwerkingSections } from "../lib/uitwerkingSections";
+
+interface Breadcrumb {
+  label: string;
+  href?: string;
+}
+
+interface Props {
+  entry: {
+    data: Record<string, any>;
+  };
+  subjectLabel: string;
+  breadcrumbs: Breadcrumb[];
+  conceptRuntimeSourceUrl?: string;
+  conceptRuntimeSourceLabel?: string;
+}
+
+const {
+  entry,
+  subjectLabel,
+  breadcrumbs,
+  conceptRuntimeSourceUrl,
+  conceptRuntimeSourceLabel
+} = Astro.props;
+
+const uitwerkingItems = normalizeHoofdstukUitwerkingSections(entry.data.contentSections || []);
+const productItems = entry.data.productRelations || entry.data.relatedProducts || [];
+const nextStepItems = entry.data.nextSteps || [];
+const hasConceptSummary = Boolean(
+  entry.data.definition || (entry.data.terms || []).length || (entry.data.subtypes || []).length
+);
+const showConceptTypes = entry.data.showConceptTypes ?? false;
+---
+
+<BaseLayout title={entry.data.title} currentPath="/datastandaard" breadcrumbs={breadcrumbs}>
+  <Hero
+    eyebrow={entry.data.heroEyebrow || "Objectenhandboek hoofdstuk"}
+    title={entry.data.heroTitle || entry.data.title}
+    summary={entry.data.summary}
+  />
+
+  {hasConceptSummary && (
+    <ConceptSummarySection
+      subjectLabel={subjectLabel}
+      definition={entry.data.definition}
+      relatedTerms={entry.data.terms || []}
+      subtypes={entry.data.subtypes || []}
+      runtimeSourceUrl={conceptRuntimeSourceUrl}
+      runtimeSourceLabel={conceptRuntimeSourceLabel}
+      showTypes={showConceptTypes}
+    />
+  )}
+
+  {uitwerkingItems.length > 0 && (
+    <UitwerkingSection
+      title={entry.data.uitwerkingTitle || `Hoofdstukindeling voor ${subjectLabel}`}
+      items={uitwerkingItems}
+    />
+  )}
+
+  {productItems.length > 0 && <ProductSection eyebrow="Productlijn" items={productItems} />}
+
+  {nextStepItems.length > 0 && (
+    <VervolgSection title={entry.data.nextStepsTitle || "Logische volgende objectlijnen"} items={nextStepItems} />
+  )}
+</BaseLayout>

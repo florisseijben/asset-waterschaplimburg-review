@@ -1,15 +1,6 @@
 ---
-import BaseLayout from "../../../../layouts/BaseLayout.astro";
-import Hero from "../../../../components/Hero.astro";
-import ConceptSummarySection from "../../../../components/ConceptSummarySection.astro";
-import SemanticSamenhangSection from "../../../../components/SemanticSamenhangSection.astro";
-import ProductSection from "../../../../components/ProductSection.astro";
-import UitwerkingSection from "../../../../components/UitwerkingSection.astro";
-import VervolgSection from "../../../../components/VervolgSection.astro";
+import ObjectenhandboekChapterPage from "../../../../components/ObjectenhandboekChapterPage.astro";
 import { getCollection } from "astro:content";
-import watersysteemSamenhangTurtle from "../../../../data/semantic/watersysteem-samenhang.ttl?raw";
-import { normalizeUitwerkingSections } from "../../../../lib/uitwerkingSections";
-import { createWatersysteemGraph } from "../../../../lib/semanticSamenhangGraphs";
 
 const entries = await getCollection("datastandaard-objectenhandboek-systems");
 const expectedSlug = "/datastandaard/objectenhandboek/watersysteem";
@@ -23,48 +14,17 @@ const entry = entries.find(
 if (!entry) {
   throw new Error("Objectenhandboek Watersysteem ontbreekt in de nieuwe omgeving.");
 }
-
-const samenhangGraph = createWatersysteemGraph();
 ---
 
-<BaseLayout
-  title={entry.data.title}
-  currentPath="/datastandaard"
+<ObjectenhandboekChapterPage
+  entry={entry}
+  subjectLabel="Watersysteem"
+  conceptRuntimeSourceUrl="https://begrippen.crow.nl/imbor/nl/page/?uri=https%3A%2F%2Fdata.crow.nl%2Fimbor%2Fterm%2Fd8aa7344-09e5-4136-bc7b-b9185afaec4a"
+  conceptRuntimeSourceLabel="IMBOR"
   breadcrumbs={[
     { label: "Home", href: "/" },
     { label: "Datastandaard", href: "/datastandaard" },
     { label: "Objectenhandboek", href: "/datastandaard/objectenhandboek" },
     { label: "Watersysteem" }
   ]}
->
-  <Hero eyebrow="Objectenhandboek" title={entry.data.heroTitle || entry.data.title} summary={entry.data.summary} />
-
-  <ConceptSummarySection
-    subjectLabel="Watersysteem"
-    definition={entry.data.definition}
-    relatedTerms={entry.data.terms || []}
-    subtypes={entry.data.subtypes || []}
-    runtimeSourceUrl="https://begrippen.crow.nl/imbor/nl/page/?uri=https%3A%2F%2Fdata.crow.nl%2Fimbor%2Fterm%2Fd8aa7344-09e5-4136-bc7b-b9185afaec4a"
-    runtimeSourceLabel="IMBOR"
-  />
-
-  <SemanticSamenhangSection
-    title="Decompositie en hoofdrelaties binnen Watersysteem"
-    summary='Het watersysteem bevat alle watergangen, watervlakten, regenwaterbuffers, terreinen, civieltechnische kunstwerken en terreininrichtingselementen die bijdragen aan de opgaven "water eerlijk verdelen" en "water schoon maken en schoon houden".'
-    sourceLabel="Dummy Turtle-export uit de semantische modelleertool voor de watersysteemlijn."
-    graphId="watersysteem-samenhang"
-    selectedId="watersysteem"
-    turtle={watersysteemSamenhangTurtle}
-    layoutNodes={samenhangGraph.layoutNodes}
-    edges={samenhangGraph.edges}
-  />
-
-  <UitwerkingSection
-    title="Inhoudelijke opbouw van Watersysteem"
-    items={normalizeUitwerkingSections(entry.data.contentSections || [], { subtypes: entry.data.subtypes || [] })}
-  />
-
-  <ProductSection eyebrow="Productlijn" items={entry.data.productRelations || entry.data.relatedProducts || []} />
-
-  <VervolgSection title="Logische volgende objectlijnen" items={entry.data.nextSteps || []} />
-</BaseLayout>
+/>

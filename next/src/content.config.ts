@@ -9,7 +9,12 @@ const baseSchema = z.object({
   status: z.coerce.string(),
   lastReviewed: z.any().optional(),
   summary: z.coerce.string(),
-  heroTitle: z.coerce.string().optional()
+  heroTitle: z.coerce.string().optional(),
+  heroEyebrow: z.coerce.string().optional(),
+  pageType: z.coerce.string().optional(),
+  uitwerkingTitle: z.coerce.string().optional(),
+  nextStepsTitle: z.coerce.string().optional(),
+  showConceptTypes: z.boolean().optional()
 });
 
 const platform = defineCollection({

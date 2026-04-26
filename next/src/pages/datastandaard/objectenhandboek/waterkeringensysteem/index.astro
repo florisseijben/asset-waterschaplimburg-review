@@ -1,29 +1,28 @@
 ---
-import BaseLayout from "../../../../layouts/BaseLayout.astro";
-import Hero from "../../../../components/Hero.astro";
-import PlaceholderStatus from "../../../../components/PlaceholderStatus.astro";
+import ObjectenhandboekChapterPage from "../../../../components/ObjectenhandboekChapterPage.astro";
+import { getCollection } from "astro:content";
 
+const entries = await getCollection("datastandaard-objectenhandboek-systems");
+const expectedSlug = "/datastandaard/objectenhandboek/waterkeringensysteem";
+const entry = entries.find(
+  (item) =>
+    item.id === "waterkeringensysteem" ||
+    item.data.slug === expectedSlug ||
+    item.data.title === "Objectenhandboek voor Waterkeringensysteem"
+);
+
+if (!entry) {
+  throw new Error("Objectenhandboek Waterkeringensysteem ontbreekt in de nieuwe omgeving.");
+}
 ---
 
-<BaseLayout
-  title="Objectenhandboek voor Waterkeringensysteem"
-  currentPath="/datastandaard"
+<ObjectenhandboekChapterPage
+  entry={entry}
+  subjectLabel="Waterkeringensysteem"
   breadcrumbs={[
     { label: "Home", href: "/" },
     { label: "Datastandaard", href: "/datastandaard" },
     { label: "Objectenhandboek", href: "/datastandaard/objectenhandboek" },
     { label: "Waterkeringensysteem" }
   ]}
->
-  <Hero
-    eyebrow="Objectenhandboek"
-    title="Objectenhandboek voor Waterkeringensysteem"
-    summary="Deze systeempagina is gereserveerd voor een volgende inhoudelijke migratieslice binnen het Objectenhandboek."
-  />
-
-  <PlaceholderStatus
-    title="Waterkeringensysteem volgt na Watersysteem"
-    summary="De systeemroute is alvast klikbaar gemaakt zodat de productstructuur volledig zichtbaar blijft in de preview."
-    scope="de systeemuitwerking van het Waterkeringensysteem binnen het Objectenhandboek"
-  />
-</BaseLayout>
+/>
