@@ -44,7 +44,8 @@ const visibleContentSections = (entry.data.contentSections || [])
       : item
   );
 const normalizedContentSections = normalizeObjectUitwerkingSections(visibleContentSections, {
-  subtypes: entry.data.subtypes || []
+  subtypes: entry.data.subtypes || [],
+  subtypeIconTitle: entry.data.heroTitle || entry.data.title
 });
 const geometrySection = getGeometrySection(visibleContentSections);
 const fallbackGraph = createWatergangGraph();

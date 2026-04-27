@@ -27,7 +27,10 @@ if (!entry) {
 }
 
 const contentSections = entry.data.contentSections || [];
-const visibleContentSections = normalizeObjectUitwerkingSections(contentSections, { subtypes: entry.data.subtypes || [] });
+const visibleContentSections = normalizeObjectUitwerkingSections(contentSections, {
+  subtypes: entry.data.subtypes || [],
+  subtypeIconTitle: entry.data.heroTitle || entry.data.title
+});
 const geometrySection = getGeometrySection(contentSections);
 const samenhangGraph = createRegenwaterbufferCompartimentGraph();
 ---

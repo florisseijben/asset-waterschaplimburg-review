@@ -7,6 +7,7 @@ interface SectionItem {
   title: string;
   text: string;
   href?: string;
+  iconTitle?: string;
   image?: SectionImage;
   caption?: string;
 }
@@ -20,12 +21,13 @@ interface Props {
   title: string;
   text: string;
   href?: string;
+  iconTitle?: string;
   items?: SectionItem[];
   image?: SectionImage;
   caption?: string;
 }
 
-const { title, text, href, items = [], image, caption } = Astro.props;
+const { title, text, href, iconTitle, items = [], image, caption } = Astro.props;
 const hasItems = items.length > 0;
 const hasImage = Boolean(image?.src);
 const Tag = href && !hasItems ? "a" : "article";
@@ -37,7 +39,7 @@ const Tag = href && !hasItems ? "a" : "article";
 >
   <div class="info-card__header">
     <div class="info-card__title-wrap">
-      {href && !hasItems && <CardTitleIcon title={title} />}
+      {href && !hasItems && <CardTitleIcon title={iconTitle || title} />}
       <h2 class="info-card__title">{title}</h2>
     </div>
     {href && !hasItems && <CardLinkIndicator />}
@@ -62,7 +64,7 @@ const Tag = href && !hasItems ? "a" : "article";
         >
           <div class="info-card__header">
             <div class="info-card__title-wrap">
-              {item.href && <CardTitleIcon title={item.title} />}
+              {item.href && <CardTitleIcon title={item.iconTitle || item.title} />}
               <h3 class="info-card__title">{item.title}</h3>
             </div>
             {item.href && <CardLinkIndicator />}

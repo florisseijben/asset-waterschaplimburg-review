@@ -57,6 +57,7 @@ const kunstwerkId = Astro.params.kunstwerk || entry.data.slug?.split("/").pop() 
 const contentSections = entry.data.contentSections || [];
 const uitwerkingSections = normalizeObjectUitwerkingSections(contentSections, {
   subtypes: entry.data.subtypes || [],
+  subtypeIconTitle: entry.data.heroTitle || entry.data.title,
   includeTypen: false
 });
 const geometrySection = getGeometrySection(contentSections);

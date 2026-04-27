@@ -10,11 +10,13 @@ interface SectionItem {
     title: string;
     text: string;
     href?: string;
+    iconTitle?: string;
     image?: { src: string; alt?: string };
     caption?: string;
   }[];
   image?: { src: string; alt?: string };
   caption?: string;
+  iconTitle?: string;
 }
 
 interface Props {
@@ -34,6 +36,7 @@ const { title = "Inhoudelijke opbouw", items = [] } = Astro.props;
         title={item.title}
         text={item.summary}
         href={item.href}
+        iconTitle={item.iconTitle}
         items={item.items}
         image={item.image}
         caption={item.caption}

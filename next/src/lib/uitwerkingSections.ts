@@ -2,6 +2,7 @@ type SectionLinkItem = {
   title: string;
   text: string;
   href?: string;
+  iconTitle?: string;
   image?: SectionImage;
   caption?: string;
 };
@@ -15,6 +16,7 @@ type ContentSection = {
   title: string;
   summary: string;
   href?: string;
+  iconTitle?: string;
   items?: SectionLinkItem[];
   image?: SectionImage;
   caption?: string;
@@ -39,19 +41,23 @@ function normalizeGeometryItems(items: SectionLinkItem[] = []) {
 
 type NormalizedUitwerkingOptions = {
   subtypes?: SectionLinkItem[];
+  subtypeIconTitle?: string;
   includeTypen?: boolean;
   includeGeometry?: boolean;
   excludeTitles?: string[];
 };
 
-function createTypenSection(subtypes: SectionLinkItem[] = []): ContentSection {
+function createTypenSection(subtypes: SectionLinkItem[] = [], subtypeIconTitle?: string): ContentSection {
   return {
     title: "Typen",
     summary: subtypes.length
       ? "Deze pagina onderscheidt de belangrijkste typen en varianten binnen deze lijn."
       : "Typen en varianten voor deze pagina worden later uitgewerkt.",
     items: subtypes.length
-      ? subtypes
+      ? subtypes.map((subtype) => ({
+          ...subtype,
+          iconTitle: subtype.iconTitle || subtypeIconTitle
+        }))
       : [
           {
             title: "Nog in uitwerking",
@@ -107,7 +113,7 @@ export function normalizeUitwerkingSections(
   const withTypen =
     options.includeTypen === false
       ? visibleSections
-      : insertTypenSection(visibleSections, createTypenSection(options.subtypes || []));
+      : insertTypenSection(visibleSections, createTypenSection(options.subtypes || [], options.subtypeIconTitle));
 
   return withTypen.map((section) =>
     section.title === "Geometrie"

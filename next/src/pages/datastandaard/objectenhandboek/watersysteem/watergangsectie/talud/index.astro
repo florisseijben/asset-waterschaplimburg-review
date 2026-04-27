@@ -27,7 +27,10 @@ if (!entry) {
 
 const samenhangGraph = createTaludGraph();
 const contentSections = entry.data.contentSections || [];
-const uitwerkingSections = normalizeObjectUitwerkingSections(contentSections, { subtypes: entry.data.subtypes || [] });
+const uitwerkingSections = normalizeObjectUitwerkingSections(contentSections, {
+  subtypes: entry.data.subtypes || [],
+  subtypeIconTitle: entry.data.heroTitle || entry.data.title
+});
 const geometrySection = getGeometrySection(contentSections);
 ---
 

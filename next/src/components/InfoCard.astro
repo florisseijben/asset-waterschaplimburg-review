@@ -8,9 +8,10 @@ interface Props {
   text?: string;
   href?: string;
   eyebrow?: string;
+  iconTitle?: string;
 }
 
-const { title, text, href, eyebrow } = Astro.props;
+const { title, text, href, eyebrow, iconTitle } = Astro.props;
 const Tag = href ? "a" : "article";
 ---
 
@@ -18,7 +19,7 @@ const Tag = href ? "a" : "article";
   {eyebrow && <p class="eyebrow">{eyebrow}</p>}
   <div class="info-card__header">
     <div class="info-card__title-wrap">
-      {href && <CardTitleIcon title={title} />}
+      {href && <CardTitleIcon title={iconTitle || title} />}
       <h2 class="info-card__title">{title}</h2>
     </div>
     {href && <CardLinkIndicator />}
