@@ -6,7 +6,7 @@ product: objectenhandboek
 ownerTeam: datastandaard
 status: eerste-template
 lastReviewed: 2026-04-24
-summary: Voorde is een ondiepe oversteekplaats waar verkeer of vee een watergang kan passeren.
+summary: Op deze pagina vind je de definitie en afbakening van Voorde, de positie van dit kunstwerktype binnen Kunstwerk, de geometrische uitgangspunten en de relaties met watergangen en oversteekplaatsen.
 heroTitle: Voorde
 hierarchy:
   - Watersysteem

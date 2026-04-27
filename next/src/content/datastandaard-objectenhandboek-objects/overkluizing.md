@@ -6,7 +6,7 @@ product: objectenhandboek
 ownerTeam: datastandaard
 status: eerste-template
 lastReviewed: 2026-04-24
-summary: Overkluizing is een overdekte constructie waarbij een watergang geheel of gedeeltelijk wordt afgedekt.
+summary: Op deze pagina vind je de definitie en afbakening van Overkluizing, de positie van dit kunstwerktype binnen Kunstwerk, de geometrische uitgangspunten en de relaties met watergangen en duikers.
 heroTitle: Overkluizing
 hierarchy:
   - Watersysteem

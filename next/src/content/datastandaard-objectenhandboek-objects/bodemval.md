@@ -6,7 +6,7 @@ product: objectenhandboek
 ownerTeam: datastandaard
 status: eerste-template
 lastReviewed: 2026-04-24
-summary: Bodemval is een kunstwerktype dat hoogteverschil in de bodem opvangt en erosie of instabiliteit helpt beperken.
+summary: Op deze pagina vind je de definitie en afbakening van Bodemval, de positie van dit kunstwerktype binnen Kunstwerk, de geometrische uitgangspunten en de relaties met watergangsecties.
 heroTitle: Bodemval
 hierarchy:
   - Watersysteem

@@ -6,7 +6,7 @@ product: objectenhandboek
 ownerTeam: datastandaard
 status: eerste-template
 lastReviewed: 2026-04-24
-summary: Coupure is een afsluitbare opening in een waterkerend of scheidend werk binnen de waterstructuur.
+summary: Op deze pagina vind je de definitie en afbakening van Coupure, de positie van dit kunstwerktype binnen Kunstwerk, de geometrische uitgangspunten en de relaties met waterkeringen en waterstructuur.
 heroTitle: Coupure
 hierarchy:
   - Watersysteem

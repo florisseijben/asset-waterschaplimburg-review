@@ -6,7 +6,7 @@ product: objectenhandboek
 ownerTeam: datastandaard
 status: eerste-template
 lastReviewed: 2026-04-24
-summary: Duiker is een kunstwerktype dat water onder een weg, dam of ander obstakel door leidt.
+summary: Op deze pagina vind je de definitie en afbakening van Duiker, de positie van dit kunstwerktype binnen Kunstwerk, de geometrische uitgangspunten en de relaties met kruisingen en watergangen.
 heroTitle: Duiker
 hierarchy:
   - Watersysteem

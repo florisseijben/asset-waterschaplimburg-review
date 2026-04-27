@@ -6,7 +6,7 @@ product: objectenhandboek
 ownerTeam: datastandaard
 status: eerste-template
 lastReviewed: 2026-04-11
-summary: Intersectie is een aparte objectpagina voor kruisingen in een watergang. Het object staat op hetzelfde niveau als Watergangsectie.
+summary: Op deze pagina vind je de definitie en afbakening van Intersectie, de typen kruisingen, de samenhang met Watergang en Watergangsectie, de geometrische uitgangspunten en de productrelaties.
 heroTitle: Intersectie
 hierarchy:
   - Watersysteem

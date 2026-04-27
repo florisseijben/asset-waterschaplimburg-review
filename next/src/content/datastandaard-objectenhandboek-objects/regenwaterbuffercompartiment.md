@@ -6,7 +6,7 @@ product: objectenhandboek
 ownerTeam: datastandaard
 status: eerste-template
 lastReviewed: 2026-04-16
-summary: Regenwaterbuffercompartiment is een onderdeel van Regenwaterbuffer. Het is in deze lijn het eerste uitgewerkte niveau onder het hoofdobject.
+summary: Op deze pagina vind je de definitie en afbakening van Regenwaterbuffercompartiment, de relatie met Regenwaterbuffer, de typen compartimenten, de geometrische uitgangspunten en de productrelaties.
 heroTitle: Regenwaterbuffercompartiment
 hierarchy:
   - Watersysteem

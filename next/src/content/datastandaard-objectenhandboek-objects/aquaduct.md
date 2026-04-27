@@ -6,7 +6,7 @@ product: objectenhandboek
 ownerTeam: datastandaard
 status: eerste-template
 lastReviewed: 2026-04-24
-summary: Aquaduct is een kunstwerktype waarbij een watergang over een andere infrastructuur of watergang heen wordt geleid.
+summary: Op deze pagina vind je de definitie en afbakening van Aquaduct, de positie van dit kunstwerktype binnen Kunstwerk, de geometrische uitgangspunten en de relaties met watergangen en andere kunstwerken.
 heroTitle: Aquaduct
 hierarchy:
   - Watersysteem

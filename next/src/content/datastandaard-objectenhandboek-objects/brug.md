@@ -6,7 +6,7 @@ product: objectenhandboek
 ownerTeam: datastandaard
 status: eerste-template
 lastReviewed: 2026-04-24
-summary: Brug is een kunstwerktype dat een overbrugging vormt boven een watergang of een ander nat profiel.
+summary: Op deze pagina vind je de definitie en afbakening van Brug, de positie van dit kunstwerktype binnen Kunstwerk, de geometrische uitgangspunten en de relaties met watergangen.
 heroTitle: Brug
 hierarchy:
   - Watersysteem

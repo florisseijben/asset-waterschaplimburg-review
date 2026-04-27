@@ -6,7 +6,7 @@ product: objectenhandboek
 ownerTeam: datastandaard
 status: eerste-template
 lastReviewed: 2026-04-24
-summary: Stuw is een kunstwerktype dat het waterpeil regelt door water tegen te houden of gecontroleerd door te laten.
+summary: Op deze pagina vind je de definitie en afbakening van Stuw, de positie van dit kunstwerktype binnen Kunstwerk, de geometrische uitgangspunten en de relaties met peilbeheer en watergangsecties.
 heroTitle: Stuw
 hierarchy:
   - Watersysteem

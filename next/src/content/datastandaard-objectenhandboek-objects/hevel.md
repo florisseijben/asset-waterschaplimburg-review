@@ -6,7 +6,7 @@ product: objectenhandboek
 ownerTeam: datastandaard
 status: eerste-template
 lastReviewed: 2026-04-24
-summary: Hevel is een kunstwerktype dat water via een leiding of constructie over een hoger gelegen punt voert.
+summary: Op deze pagina vind je de definitie en afbakening van Hevel, de positie van dit kunstwerktype binnen Kunstwerk, de geometrische uitgangspunten en de relaties met watergangen en kruisingen.
 heroTitle: Hevel
 hierarchy:
   - Watersysteem

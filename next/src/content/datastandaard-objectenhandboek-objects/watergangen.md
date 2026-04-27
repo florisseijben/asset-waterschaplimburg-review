@@ -6,7 +6,7 @@ product: objectenhandboek
 ownerTeam: datastandaard
 status: eerste-template
 lastReviewed: 2026-04-11
-summary: Watergang is uitgewerkt als hoofdobject in het Objectenhandboek voor Watersysteem.
+summary: Op deze pagina vind je de definitie en afbakening van Watergang, de typen watergang, de samenhang met Watergangsectie en Intersectie, de geometrische uitgangspunten en de productrelaties.
 heroTitle: Watergang
 hierarchy:
   - Watersysteem

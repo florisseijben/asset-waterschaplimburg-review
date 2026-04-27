@@ -6,7 +6,7 @@ product: objectenhandboek
 ownerTeam: datastandaard
 status: eerste-template
 lastReviewed: 2026-04-24
-summary: Vispassage is een kunstwerktype dat vismigratie mogelijk maakt langs of door een waterregulerend object.
+summary: Op deze pagina vind je de definitie en afbakening van Vispassage, de positie van dit kunstwerktype binnen Kunstwerk, de geometrische uitgangspunten en de relaties met stuwen en vismigratie.
 heroTitle: Vispassage
 hierarchy:
   - Watersysteem

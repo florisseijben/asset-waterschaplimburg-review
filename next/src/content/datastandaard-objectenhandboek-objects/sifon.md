@@ -6,7 +6,7 @@ product: objectenhandboek
 ownerTeam: datastandaard
 status: eerste-template
 lastReviewed: 2026-04-24
-summary: Sifon is een kunstwerktype dat water onder een obstakel of kruising door leidt in een gesloten constructie.
+summary: Op deze pagina vind je de definitie en afbakening van Sifon, de positie van dit kunstwerktype binnen Kunstwerk, de geometrische uitgangspunten en de relaties met ondergrondse of gesloten kruisingen.
 heroTitle: Sifon
 hierarchy:
   - Watersysteem

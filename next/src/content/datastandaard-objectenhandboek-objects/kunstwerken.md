@@ -6,7 +6,7 @@ product: objectenhandboek
 ownerTeam: datastandaard
 status: eerste-template
 lastReviewed: 2026-04-23
-summary: Kunstwerk is een objectfamilie binnen het watersysteem. Deze lijn beschrijft hoe kunstwerken invulling geven aan de waterstructuur en intern zijn opgebouwd uit elementen en bouwdelen.
+summary: Op deze pagina vind je de definitie en afbakening van Kunstwerk, de kunstwerktypen binnen het watersysteem, de samenhang met watergangsecties en intersecties, de geometrische uitgangspunten en de vervolgstappen naar elementen en bouwdelen.
 heroTitle: Kunstwerk
 hierarchy:
   - Watersysteem

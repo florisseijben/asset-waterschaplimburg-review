@@ -6,7 +6,7 @@ product: objectenhandboek
 ownerTeam: datastandaard
 status: eerste-template
 lastReviewed: 2026-04-24
-summary: Gemaal is een kunstwerktype dat water actief verplaatst met pompen.
+summary: Op deze pagina vind je de definitie en afbakening van Gemaal, de positie van dit kunstwerktype binnen Kunstwerk, de geometrische uitgangspunten en de relaties met waterverplaatsing binnen het watersysteem.
 heroTitle: Gemaal
 hierarchy:
   - Watersysteem

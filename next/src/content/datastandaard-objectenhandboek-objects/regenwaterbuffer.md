@@ -6,7 +6,7 @@ product: objectenhandboek
 ownerTeam: datastandaard
 status: eerste-template
 lastReviewed: 2026-04-16
-summary: Regenwaterbuffer is een apart object binnen het watersysteem. In deze lijn staat het op hetzelfde niveau als Watergang.
+summary: Op deze pagina vind je de definitie en afbakening van Regenwaterbuffer, de typen buffer, de samenhang met Regenwaterbuffercompartiment, de geometrische uitgangspunten en de productrelaties.
 heroTitle: Regenwaterbuffer
 hierarchy:
   - Watersysteem

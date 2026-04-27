@@ -6,7 +6,7 @@ product: objectenhandboek
 ownerTeam: datastandaard
 status: eerste-template
 lastReviewed: 2026-04-24
-summary: Vuilvang is een kunstwerktype dat drijfvuil en grof materiaal opvangt voordat het andere objecten bereikt.
+summary: Op deze pagina vind je de definitie en afbakening van Vuilvang, de positie van dit kunstwerktype binnen Kunstwerk, de geometrische uitgangspunten en de relaties met gemalen, watergangen en beheerobjecten.
 heroTitle: Vuilvang
 hierarchy:
   - Watersysteem
