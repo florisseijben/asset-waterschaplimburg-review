@@ -424,10 +424,6 @@ h1 {
   line-height: 1.7;
 }
 
-.concept-summary__linkline {
-  margin-top: var(--space-4);
-}
-
 .concept-summary__empty {
   color: var(--color-muted);
   font-style: italic;

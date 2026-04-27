@@ -46,9 +46,6 @@ const runtimeId = `concept-runtime-${subjectLabel.toLowerCase().replace(/\s+/g, 
       <strong>Definitie</strong>
       <div>
         <p data-concept-definition>{definition}</p>
-        <p class="concept-summary__linkline">
-          <a href={withBase("/datastandaard/woordenboek")}>Bekijk dit begrip in het woordenboek</a>
-        </p>
       </div>
     </div>
 
@@ -139,7 +136,7 @@ const runtimeId = `concept-runtime-${subjectLabel.toLowerCase().replace(/\s+/g, 
           (item) => `
             <a class="concept-summary__item" href="/datastandaard/woordenboek">
               <strong>${item.title}</strong>
-              <span>${item.text || "Bekijk dit begrip in het woordenboek."}</span>
+              <span>${item.text || "Live opgehaald uit IMBOR."}</span>
             </a>
           `
         )
