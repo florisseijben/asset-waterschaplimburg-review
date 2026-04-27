@@ -33,18 +33,25 @@ const inferDirection = (item: StepItem) => {
 
 const backItems = items.filter((item) => inferDirection(item) === "back");
 const forwardItems = items.filter((item) => inferDirection(item) === "forward");
+const hasBackItems = backItems.length > 0;
+const hasForwardItems = forwardItems.length > 0;
+const isSingleColumn = hasBackItems !== hasForwardItems;
 ---
 
-<div class="next-steps-layout">
-  <div class="next-steps-column next-steps-column--back">
-    {backItems.map((item) => (
-      <InfoCard title={item.title} text={item.text} href={item.href} eyebrow="<- Terug" />
-    ))}
-  </div>
+<div class:list={["next-steps-layout", isSingleColumn && "next-steps-layout--single"]}>
+  {hasBackItems && (
+    <div class="next-steps-column next-steps-column--back">
+      {backItems.map((item) => (
+        <InfoCard title={item.title} text={item.text} href={item.href} eyebrow="<- Terug" />
+      ))}
+    </div>
+  )}
 
-  <div class="next-steps-column next-steps-column--forward">
-    {forwardItems.map((item) => (
-      <InfoCard title={item.title} text={item.text} href={item.href} eyebrow="Verder ->" />
-    ))}
-  </div>
+  {hasForwardItems && (
+    <div class="next-steps-column next-steps-column--forward">
+      {forwardItems.map((item) => (
+        <InfoCard title={item.title} text={item.text} href={item.href} eyebrow="Verder ->" />
+      ))}
+    </div>
+  )}
 </div>
