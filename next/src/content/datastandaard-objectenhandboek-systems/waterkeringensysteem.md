@@ -8,9 +8,9 @@ status: concept
 lastReviewed: 2026-04-26
 pageType: chapter
 heroEyebrow: Objectenhandboek hoofdstuk
-summary: Kies binnen dit hoofdstuk de objectfamilies van het waterkeringensysteem. De inhoudelijke objectdetails staan in de onderliggende routes.
-heroTitle: Objectenhandboek voor Waterkeringensysteem
-uitwerkingTitle: Hoofdstukindeling voor Waterkeringensysteem
+summary: Dit is de landingspagina voor de objecttypen binnen de waterkeringen. Je vindt hier de hoofdstukstructuur, de belangrijkste objectfamilies en de samenhang met de producten van de datastandaard.
+heroTitle: Hoofdstuk Waterkeringen
+uitwerkingTitle: Hoofdstukindeling voor Waterkeringen
 definition: Het waterkeringensysteem is het samenhangende geheel van waterkeringen, constructies, kunstwerken en ondersteunende objecten waarmee waterveiligheid wordt beheerd.
 definitionSource: Werkdefinitie voor de hoofdstuklanding van het Objectenhandboek.
 terms:

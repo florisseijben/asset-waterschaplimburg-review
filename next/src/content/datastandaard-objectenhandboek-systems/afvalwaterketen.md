@@ -8,9 +8,9 @@ status: concept
 lastReviewed: 2026-04-26
 pageType: chapter
 heroEyebrow: Objectenhandboek hoofdstuk
-summary: Kies binnen dit hoofdstuk de objectfamilies van de afvalwaterketen. De inhoudelijke objectdetails staan in de onderliggende routes.
-heroTitle: Objectenhandboek voor Afvalwaterketen
-uitwerkingTitle: Hoofdstukindeling voor Afvalwaterketen
+summary: Dit is de landingspagina voor de objecttypen binnen de waterketen. Je vindt hier de hoofdstukstructuur, de belangrijkste objectfamilies en de samenhang met de producten van de datastandaard.
+heroTitle: Hoofdstuk Waterketen
+uitwerkingTitle: Hoofdstukindeling voor Waterketen
 definition: De afvalwaterketen is het samenhangende geheel van voorzieningen waarmee afvalwater wordt ingezameld, getransporteerd, gezuiverd en afgevoerd binnen het beheergebied.
 definitionSource: Werkdefinitie voor de hoofdstuklanding van het Objectenhandboek.
 terms:

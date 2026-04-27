@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "./Hero.astro";
 import ConceptSummarySection from "./ConceptSummarySection.astro";
+import SemanticSamenhangSection from "./SemanticSamenhangSection.astro";
 import ProductSection from "./ProductSection.astro";
 import UitwerkingSection from "./UitwerkingSection.astro";
 import VervolgSection from "./VervolgSection.astro";
@@ -37,6 +38,89 @@ const hasConceptSummary = Boolean(
   entry.data.definition || (entry.data.terms || []).length || (entry.data.subtypes || []).length
 );
 const showConceptTypes = entry.data.showConceptTypes ?? false;
+
+const slugifyId = (value: string) =>
+  String(value || "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "") || "onderdeel";
+
+const escapeTurtleLabel = (value: string) => String(value || "").replace(/\\/g, "\\\\").replace(/"/g, '\\"');
+
+const structureSection =
+  (entry.data.contentSections || []).find((section: any) => ["Objectfamilies", "Onderdelen"].includes(section.title)) ||
+  (entry.data.contentSections || []).find((section: any) => (section.items || []).length > 0);
+const structureItems = structureSection?.items || [];
+const chapterId = slugifyId(entry.data.heroTitle || entry.data.title);
+const layoutNodes = [
+  {
+    id: "objectenhandboek",
+    label: "Objectenhandboek",
+    subtitle: "Product",
+    column: 1,
+    row: 0,
+    fill: "#ffffff",
+    stroke: "#00a9c1"
+  },
+  {
+    id: chapterId,
+    label: entry.data.heroTitle || entry.data.title,
+    subtitle: "Hoofdstuk",
+    column: 1,
+    row: 1,
+    fill: "#e4f7fa",
+    stroke: "#00a9c1"
+  },
+  ...structureItems.map((item: any, index: number) => ({
+    id: slugifyId(item.title),
+    label: item.title,
+    subtitle: item.title === "Stroomgebied" ? "Subsysteem" : "Objectfamilie",
+    column: index % 3,
+    row: 2 + Math.floor(index / 3),
+    fill: "#eefafb",
+    stroke: "#00a9c1"
+  }))
+];
+const graphEdges = [
+  { from: "objectenhandboek", to: chapterId, label: "bevat hoofdstuk" },
+  ...structureItems.map((item: any) => ({
+    from: chapterId,
+    to: slugifyId(item.title),
+    label: item.title === "Stroomgebied" ? "ordent via subsysteem" : "bevat objectfamilie"
+  }))
+];
+const chapterTurtle = [
+  '@prefix object: <https://data.waterschaplimburg.nl/id/objecttype/> .',
+  '@prefix hoofdstuk: <https://data.waterschaplimburg.nl/id/objectenhandboek/hoofdstuk/> .',
+  '@prefix product: <https://data.waterschaplimburg.nl/id/product/> .',
+  '@prefix relatie: <https://data.waterschaplimburg.nl/def/relatie/> .',
+  '@prefix owl: <http://www.w3.org/2002/07/owl#> .',
+  '@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .',
+  "",
+  'product:objectenhandboek a owl:Class .',
+  'product:objectenhandboek rdfs:label "Objectenhandboek" .',
+  `hoofdstuk:${chapterId} a owl:Class .`,
+  `hoofdstuk:${chapterId} rdfs:label "${escapeTurtleLabel(entry.data.heroTitle || entry.data.title)}" .`,
+  'relatie:bevatHoofdstuk a owl:ObjectProperty .',
+  'relatie:bevatHoofdstuk rdfs:label "bevat hoofdstuk" .',
+  'relatie:bevatObjectfamilie a owl:ObjectProperty .',
+  'relatie:bevatObjectfamilie rdfs:label "bevat objectfamilie" .',
+  'relatie:ordentViaSubsysteem a owl:ObjectProperty .',
+  'relatie:ordentViaSubsysteem rdfs:label "ordent via subsysteem" .',
+  'product:objectenhandboek relatie:bevatHoofdstuk hoofdstuk:' + chapterId + " .",
+  ...structureItems.flatMap((item: any) => {
+    const itemId = slugifyId(item.title);
+    const relation = item.title === "Stroomgebied" ? "ordentViaSubsysteem" : "bevatObjectfamilie";
+
+    return [
+      `object:${itemId} a owl:Class .`,
+      `object:${itemId} rdfs:label "${escapeTurtleLabel(item.title)}" .`,
+      `hoofdstuk:${chapterId} relatie:${relation} object:${itemId} .`
+    ];
+  })
+].join("\n");
 ---
 
 <BaseLayout title={entry.data.title} currentPath="/datastandaard" breadcrumbs={breadcrumbs}>
@@ -46,17 +130,32 @@ const showConceptTypes = entry.data.showConceptTypes ?? false;
     summary={entry.data.summary}
   />
 
-  {hasConceptSummary && (
-    <ConceptSummarySection
-      subjectLabel={subjectLabel}
-      definition={entry.data.definition}
-      relatedTerms={entry.data.terms || []}
-      subtypes={entry.data.subtypes || []}
-      runtimeSourceUrl={conceptRuntimeSourceUrl}
-      runtimeSourceLabel={conceptRuntimeSourceLabel}
-      showTypes={showConceptTypes}
-    />
-  )}
+  <div class="detail-stack">
+    {hasConceptSummary && (
+      <ConceptSummarySection
+        subjectLabel={subjectLabel}
+        definition={entry.data.definition}
+        relatedTerms={entry.data.terms || []}
+        subtypes={entry.data.subtypes || []}
+        runtimeSourceUrl={conceptRuntimeSourceUrl}
+        runtimeSourceLabel={conceptRuntimeSourceLabel}
+        showTypes={showConceptTypes}
+      />
+    )}
+
+    {structureItems.length > 0 && (
+      <SemanticSamenhangSection
+        title={`Samenhang binnen ${entry.data.heroTitle || entry.data.title}`}
+        summary={`Deze decompositie laat zien hoe het hoofdstuk in het Objectenhandboek is opgebouwd en welke objectfamilies de ingang vormen voor de onderliggende objecttypen.`}
+        sourceLabel="Eenvoudige hoofdstukontologie voor het Objectenhandboek."
+        graphId={`chapter-${chapterId}-samenhang`}
+        selectedId={chapterId}
+        turtle={chapterTurtle}
+        layoutNodes={layoutNodes}
+        edges={graphEdges}
+      />
+    )}
+  </div>
 
   {uitwerkingItems.length > 0 && (
     <UitwerkingSection

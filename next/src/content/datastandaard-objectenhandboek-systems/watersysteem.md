@@ -8,8 +8,8 @@ status: concept
 lastReviewed: 2026-04-11
 pageType: chapter
 heroEyebrow: Objectenhandboek hoofdstuk
-summary: In dit objectenhandboek vind je een beschrijving van het begrip watersysteem en een beschrijving van de onderdelen van het watersysteem in samenhang. In deze systeemlijn delen we objecttypen binnen een stroomgebied in per objectfamilie. Zo blijft de structuur overzichtelijk en goed herbruikbaar.
-heroTitle: Objectenhandboek voor Watersysteem
+summary: Dit is de landingspagina voor de objecttypen binnen het watersysteem. Je vindt hier de hoofdstukstructuur, de belangrijkste subsystemen en objectfamilies, en hoe deze binnen een stroomgebied samenhangen.
+heroTitle: Hoofdstuk Watersysteem
 uitwerkingTitle: Hoofdstukindeling voor Watersysteem
 definition: Het regionale watersysteem is het samenhangende geheel van oppervlaktewaterlichamen, bergingsgebieden, waterkeringen en ondersteunende kunstwerken in beheer bij het waterschap binnen het regionale watersysteem van Limburg.
 definitionSource: "Bronbasis: Omgevingswet-begrip watersysteem, in combinatie met de regionale beheercontext uit de Waterschapsverordening Waterschap Limburg. Formulering is een toepassing op deze objectenhandboeklijn."
