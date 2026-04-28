@@ -1,0 +1,19 @@
+---
+interface Props {
+  label?: string;
+}
+
+const { label = "Print of maak PDF" } = Astro.props;
+---
+
+<div class="print-action" aria-label="Pagina-acties">
+  <button class="button button-secondary print-action__button" type="button" data-print-page>
+    {label}
+  </button>
+</div>
+
+<script>
+  document.querySelectorAll("[data-print-page]").forEach((button) => {
+    button.addEventListener("click", () => window.print());
+  });
+</script>

@@ -179,6 +179,16 @@ h1 {
   background: #ffffff;
 }
 
+.print-action {
+  display: flex;
+  justify-content: flex-end;
+  margin: calc(-1 * var(--space-2)) 0 var(--space-5);
+}
+
+.print-action__button {
+  cursor: pointer;
+}
+
 .section {
   margin-bottom: var(--space-5);
 }
@@ -1102,5 +1112,31 @@ a.classification-tag:focus-visible {
 
   .info-card__link {
     justify-self: end;
+  }
+}
+
+@media print {
+  body {
+    background: #ffffff;
+  }
+
+  .shell {
+    width: 100%;
+    max-width: none;
+    padding: 0;
+  }
+
+  .site-header,
+  .breadcrumb-nav,
+  .site-footer,
+  .print-action,
+  .object-classification {
+    display: none !important;
+  }
+
+  .hero,
+  .section-panel {
+    box-shadow: none;
+    break-inside: avoid;
   }
 }
