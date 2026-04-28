@@ -1,0 +1,47 @@
+---
+import { withBase } from "../lib/paths";
+import { resolveObjectClassification, type ObjectClassification } from "../lib/objectenhandboekTaxonomy";
+
+interface Props {
+  classification?: ObjectClassification;
+}
+
+const { classification } = Astro.props;
+const resolved = resolveObjectClassification(classification || {});
+const rows = [
+  { label: "Systemen", items: resolved.systems },
+  { label: "Technische disciplines", items: resolved.disciplines },
+  { label: "Objectfamilies", items: resolved.objectFamilies },
+  { label: "Publicatiebundels", items: resolved.publications }
+].filter((row) => row.items.length > 0);
+const confidenceLabel = resolved.confidence === "bevestigd" ? "Bevestigd" : "Afgeleid, ter review";
+---
+
+{rows.length > 0 && (
+  <section class="section section-panel object-classification">
+    <p class="eyebrow">Classificatie</p>
+    <h2>Waar komt dit objecttype terug?</h2>
+    <div class="classification-list">
+      {rows.map((row) => (
+        <div class="classification-row">
+          <strong>{row.label}</strong>
+          <div class="classification-tags">
+            {row.items.map((item) => (
+              item.href ? (
+                <a class="classification-tag" href={withBase(item.href)}>{item.label}</a>
+              ) : (
+                <span class="classification-tag">{item.label}</span>
+              )
+            ))}
+          </div>
+        </div>
+      ))}
+      <div class="classification-row">
+        <strong>Status metadata</strong>
+        <div class="classification-tags">
+          <span class="classification-tag classification-tag--muted">{confidenceLabel}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+)}

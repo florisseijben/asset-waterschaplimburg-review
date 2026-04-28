@@ -13,6 +13,19 @@ hierarchy:
   - Stroomgebied
   - Kunstwerk
   - Sifon
+classification:
+  systems:
+    - watersysteem
+  disciplines:
+    - civiele-techniek
+    - informatie-en-data
+  objectFamilies:
+    - kunstwerken
+  publications:
+    - objectenhandboek-watersysteem
+    - objectenhandboek-civiele-techniek
+    - objectenhandboek-informatie-en-data
+  confidence: afgeleid
 definition: Een sifon is een gesloten kunstwerk waarmee water onder een obstakel, watergang of infrastructuur door wordt geleid.
 definitionSource: Werkdefinitie voor deze reviewlijn, gebaseerd op de kunstwerktypen binnen het watersysteem.
 terms:

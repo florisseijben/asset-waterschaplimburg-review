@@ -14,6 +14,23 @@ hierarchy:
   - Watergang
   - Watergangsectie
   - Talud
+classification:
+  systems:
+    - watersysteem
+  disciplines:
+    - civiele-techniek
+    - terreinbeheer-openbare-ruimte
+    - ecologie-en-groen
+    - informatie-en-data
+  objectFamilies:
+    - profielonderdelen
+  publications:
+    - objectenhandboek-watersysteem
+    - objectenhandboek-civiele-techniek
+    - objectenhandboek-terreinbeheer-openbare-ruimte
+    - objectenhandboek-ecologie-en-groen
+    - objectenhandboek-informatie-en-data
+  confidence: afgeleid
 definition: Een talud is het schuine vlak dat de overgang vormt tussen de bodem van de watergang en het aansluitende maaiveld of de bovenliggende rand van de sectie.
 definitionSource: "Werkdefinitie voor de eerste migratieslice, afgestemd op de decompositie van Watergangsectie binnen het Objectenhandboek."
 terms:

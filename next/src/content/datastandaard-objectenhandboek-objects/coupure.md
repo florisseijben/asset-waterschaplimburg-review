@@ -13,6 +13,22 @@ hierarchy:
   - Stroomgebied
   - Kunstwerk
   - Coupure
+classification:
+  systems:
+    - watersysteem
+    - waterkeringen
+  disciplines:
+    - civiele-techniek
+    - bouwkunde
+    - informatie-en-data
+  objectFamilies:
+    - kunstwerken
+  publications:
+    - objectenhandboek-watersysteem
+    - objectenhandboek-waterkeringen
+    - objectenhandboek-civiele-techniek
+    - objectenhandboek-informatie-en-data
+  confidence: afgeleid
 definition: Een coupure is een afsluitbare opening in een constructie of grondlichaam waarmee passage mogelijk blijft zolang afsluiting niet nodig is.
 definitionSource: Werkdefinitie voor deze reviewlijn, gebaseerd op de kunstwerktypen binnen het watersysteem.
 terms:

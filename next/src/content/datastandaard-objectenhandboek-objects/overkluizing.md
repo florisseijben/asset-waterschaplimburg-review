@@ -13,6 +13,20 @@ hierarchy:
   - Stroomgebied
   - Kunstwerk
   - Overkluizing
+classification:
+  systems:
+    - watersysteem
+  disciplines:
+    - civiele-techniek
+    - bouwkunde
+    - informatie-en-data
+  objectFamilies:
+    - kunstwerken
+  publications:
+    - objectenhandboek-watersysteem
+    - objectenhandboek-civiele-techniek
+    - objectenhandboek-informatie-en-data
+  confidence: afgeleid
 definition: Een overkluizing is een kunstwerk waarbij een watergang over een bepaalde lengte wordt afgedekt of overbouwd.
 definitionSource: Werkdefinitie voor deze reviewlijn, gebaseerd op de kunstwerktypen binnen het watersysteem.
 terms:

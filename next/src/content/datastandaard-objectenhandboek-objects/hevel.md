@@ -13,6 +13,21 @@ hierarchy:
   - Stroomgebied
   - Kunstwerk
   - Hevel
+classification:
+  systems:
+    - watersysteem
+  disciplines:
+    - civiele-techniek
+    - werktuigbouwkunde
+    - informatie-en-data
+  objectFamilies:
+    - kunstwerken
+  publications:
+    - objectenhandboek-watersysteem
+    - objectenhandboek-civiele-techniek
+    - objectenhandboek-werktuigbouwkunde
+    - objectenhandboek-informatie-en-data
+  confidence: afgeleid
 definition: Een hevel is een kunstwerk waarmee water via een gesloten leiding of constructie over een hoger gelegen punt wordt geleid.
 definitionSource: Werkdefinitie voor deze reviewlijn, gebaseerd op de kunstwerktypen binnen het watersysteem.
 terms:

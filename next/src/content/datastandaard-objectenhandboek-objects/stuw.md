@@ -13,6 +13,23 @@ hierarchy:
   - Stroomgebied
   - Kunstwerk
   - Stuw
+classification:
+  systems:
+    - watersysteem
+  disciplines:
+    - civiele-techniek
+    - werktuigbouwkunde
+    - procesautomatisering
+    - informatie-en-data
+  objectFamilies:
+    - kunstwerken
+  publications:
+    - objectenhandboek-watersysteem
+    - objectenhandboek-civiele-techniek
+    - objectenhandboek-werktuigbouwkunde
+    - objectenhandboek-procesautomatisering
+    - objectenhandboek-informatie-en-data
+  confidence: afgeleid
 definition: Een stuw is een kunstwerk waarmee de waterstand in een watergang wordt geregeld door water te keren of gecontroleerd door te laten.
 definitionSource: Werkdefinitie voor deze reviewlijn, gebaseerd op de kunstwerktypen binnen het watersysteem.
 terms:

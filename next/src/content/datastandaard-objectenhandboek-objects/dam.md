@@ -13,6 +13,19 @@ hierarchy:
   - Stroomgebied
   - Kunstwerk
   - Dam
+classification:
+  systems:
+    - watersysteem
+  disciplines:
+    - civiele-techniek
+    - informatie-en-data
+  objectFamilies:
+    - kunstwerken
+  publications:
+    - objectenhandboek-watersysteem
+    - objectenhandboek-civiele-techniek
+    - objectenhandboek-informatie-en-data
+  confidence: afgeleid
 definition: Een dam is een kunstwerk of grondlichaam in of langs een watergang dat water keert, scheidt of de doorstroming beinvloedt.
 definitionSource: Werkdefinitie voor deze reviewlijn, gebaseerd op de kunstwerktypen binnen het watersysteem.
 terms:

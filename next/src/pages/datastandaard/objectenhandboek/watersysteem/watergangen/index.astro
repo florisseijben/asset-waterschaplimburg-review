@@ -2,6 +2,7 @@
 import BaseLayout from "../../../../../layouts/BaseLayout.astro";
 import Hero from "../../../../../components/Hero.astro";
 import ConceptSummarySection from "../../../../../components/ConceptSummarySection.astro";
+import ObjectClassificationSection from "../../../../../components/ObjectClassificationSection.astro";
 import SemanticSamenhangSection from "../../../../../components/SemanticSamenhangSection.astro";
 import ProductSection from "../../../../../components/ProductSection.astro";
 import UitwerkingSection from "../../../../../components/UitwerkingSection.astro";
@@ -100,6 +101,8 @@ object:watergang relatie:heeftIntersectie object:intersectie .
       relatedTerms={conceptData?.relatedTerms || entry.data.terms || []}
       subtypes={conceptData?.types || entry.data.subtypes || []}
     />
+
+    <ObjectClassificationSection classification={entry.data.classification} />
 
     <SemanticSamenhangSection
       title="Decompositie binnen de objectlijn"

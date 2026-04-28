@@ -14,7 +14,8 @@ const baseSchema = z.object({
   pageType: z.coerce.string().optional(),
   uitwerkingTitle: z.coerce.string().optional(),
   nextStepsTitle: z.coerce.string().optional(),
-  showConceptTypes: z.boolean().optional()
+  showConceptTypes: z.boolean().optional(),
+  classification: z.any().optional()
 });
 
 const platform = defineCollection({

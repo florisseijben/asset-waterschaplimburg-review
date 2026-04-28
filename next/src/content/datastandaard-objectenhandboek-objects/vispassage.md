@@ -13,6 +13,21 @@ hierarchy:
   - Stroomgebied
   - Kunstwerk
   - Vispassage
+classification:
+  systems:
+    - watersysteem
+  disciplines:
+    - civiele-techniek
+    - ecologie-en-groen
+    - informatie-en-data
+  objectFamilies:
+    - kunstwerken
+  publications:
+    - objectenhandboek-watersysteem
+    - objectenhandboek-civiele-techniek
+    - objectenhandboek-ecologie-en-groen
+    - objectenhandboek-informatie-en-data
+  confidence: afgeleid
 definition: Een vispassage is een kunstwerk of voorziening waarmee vissen een obstakel in het watersysteem kunnen passeren.
 definitionSource: Werkdefinitie voor deze reviewlijn, gebaseerd op de kunstwerktypen binnen het watersysteem.
 terms:

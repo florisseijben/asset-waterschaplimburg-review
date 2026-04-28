@@ -13,6 +13,25 @@ hierarchy:
   - Stroomgebied
   - Kunstwerk
   - Gemaal
+classification:
+  systems:
+    - watersysteem
+  disciplines:
+    - civiele-techniek
+    - werktuigbouwkunde
+    - electrotechniek
+    - procesautomatisering
+    - informatie-en-data
+  objectFamilies:
+    - kunstwerken
+  publications:
+    - objectenhandboek-watersysteem
+    - objectenhandboek-civiele-techniek
+    - objectenhandboek-werktuigbouwkunde
+    - objectenhandboek-electrotechniek
+    - objectenhandboek-procesautomatisering
+    - objectenhandboek-informatie-en-data
+  confidence: afgeleid
 definition: Een gemaal is een kunstwerk waarmee water mechanisch wordt verpompt om waterpeil, afvoer of aanvoer te beheren.
 definitionSource: Werkdefinitie voor deze reviewlijn, gebaseerd op de kunstwerktypen binnen het watersysteem.
 terms:

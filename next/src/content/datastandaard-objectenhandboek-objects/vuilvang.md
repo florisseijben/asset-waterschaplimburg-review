@@ -13,6 +13,21 @@ hierarchy:
   - Stroomgebied
   - Kunstwerk
   - Vuilvang
+classification:
+  systems:
+    - watersysteem
+  disciplines:
+    - civiele-techniek
+    - werktuigbouwkunde
+    - informatie-en-data
+  objectFamilies:
+    - kunstwerken
+  publications:
+    - objectenhandboek-watersysteem
+    - objectenhandboek-civiele-techniek
+    - objectenhandboek-werktuigbouwkunde
+    - objectenhandboek-informatie-en-data
+  confidence: afgeleid
 definition: Een vuilvang is een kunstwerk of voorziening in het watersysteem waarmee drijfvuil, takken of grof materiaal worden tegengehouden.
 definitionSource: Werkdefinitie voor deze reviewlijn, gebaseerd op de kunstwerktypen binnen het watersysteem.
 terms:

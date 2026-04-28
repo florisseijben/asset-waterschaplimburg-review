@@ -13,6 +13,19 @@ hierarchy:
   - Stroomgebied
   - Kunstwerk
   - Brug
+classification:
+  systems:
+    - watersysteem
+  disciplines:
+    - civiele-techniek
+    - informatie-en-data
+  objectFamilies:
+    - kunstwerken
+  publications:
+    - objectenhandboek-watersysteem
+    - objectenhandboek-civiele-techniek
+    - objectenhandboek-informatie-en-data
+  confidence: afgeleid
 definition: Een brug is een kunstwerk dat verkeer, beheer of passage over een watergang mogelijk maakt zonder de watergang te onderbreken.
 definitionSource: Werkdefinitie voor deze reviewlijn, gebaseerd op de kunstwerktypen binnen het watersysteem.
 terms:

@@ -13,6 +13,21 @@ hierarchy:
   - Stroomgebied
   - Kunstwerk
   - Voorde
+classification:
+  systems:
+    - watersysteem
+  disciplines:
+    - civiele-techniek
+    - terreinbeheer-openbare-ruimte
+    - informatie-en-data
+  objectFamilies:
+    - kunstwerken
+  publications:
+    - objectenhandboek-watersysteem
+    - objectenhandboek-civiele-techniek
+    - objectenhandboek-terreinbeheer-openbare-ruimte
+    - objectenhandboek-informatie-en-data
+  confidence: afgeleid
 definition: Een voorde is een ingerichte ondiepe passage door een watergang waar verkeer, vee of beheer materieel kan oversteken.
 definitionSource: Werkdefinitie voor deze reviewlijn, gebaseerd op de kunstwerktypen binnen het watersysteem.
 terms:

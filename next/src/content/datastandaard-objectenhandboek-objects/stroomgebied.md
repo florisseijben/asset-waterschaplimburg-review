@@ -11,6 +11,21 @@ heroTitle: Stroomgebied
 hierarchy:
   - Watersysteem
   - Stroomgebied
+classification:
+  systems:
+    - watersysteem
+  disciplines:
+    - civiele-techniek
+    - ecologie-en-groen
+    - informatie-en-data
+  objectFamilies:
+    - stroomgebieden
+  publications:
+    - objectenhandboek-watersysteem
+    - objectenhandboek-civiele-techniek
+    - objectenhandboek-ecologie-en-groen
+    - objectenhandboek-informatie-en-data
+  confidence: afgeleid
 definition: Een stroomgebied is een gebied vanwaar al het over het oppervlak lopende water via een reeks stromen, rivieren en eventueel meren door een riviermond, estuarium of delta in zee stroomt.
 definitionSource: "Definitiebron: DAMO Objectenhandboek 2.6, Bijlage Afvoeraanvoergebied methodiek, paragraaf 2.1 Definities."
 terms:

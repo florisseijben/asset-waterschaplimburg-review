@@ -13,6 +13,21 @@ hierarchy:
   - Stroomgebied
   - Regenwaterbuffer
   - Regenwaterbuffercompartiment
+classification:
+  systems:
+    - watersysteem
+  disciplines:
+    - civiele-techniek
+    - terreinbeheer-openbare-ruimte
+    - informatie-en-data
+  objectFamilies:
+    - regenwaterbuffers
+  publications:
+    - objectenhandboek-watersysteem
+    - objectenhandboek-civiele-techniek
+    - objectenhandboek-terreinbeheer-openbare-ruimte
+    - objectenhandboek-informatie-en-data
+  confidence: afgeleid
 definition: Een regenwaterbuffer compartiment is een deel van een regenwaterbuffer.
 definitionSource: "Definitiebron: DAMO 2.4.1 Objectenhandboek, object RegenwaterbufferCompartiment."
 terms:

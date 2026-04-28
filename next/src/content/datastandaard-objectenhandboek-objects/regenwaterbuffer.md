@@ -12,6 +12,23 @@ hierarchy:
   - Watersysteem
   - Stroomgebied
   - Regenwaterbuffer
+classification:
+  systems:
+    - watersysteem
+  disciplines:
+    - civiele-techniek
+    - terreinbeheer-openbare-ruimte
+    - ecologie-en-groen
+    - informatie-en-data
+  objectFamilies:
+    - regenwaterbuffers
+  publications:
+    - objectenhandboek-watersysteem
+    - objectenhandboek-civiele-techniek
+    - objectenhandboek-terreinbeheer-openbare-ruimte
+    - objectenhandboek-ecologie-en-groen
+    - objectenhandboek-informatie-en-data
+  confidence: afgeleid
 definition: Een regenwaterbuffer is een opvangbassin dat bij hevige regen het teveel aan water tijdelijk opvangt en geleidelijk weer loost.
 definitionSource: "Definitiebron: DAMO 2.4.1 Objectenhandboek, object Regenwaterbuffer. Aanvullende bronvermelding in DAMO verwijst naar AQUO voor de begrippen buffer en regenwater."
 terms:

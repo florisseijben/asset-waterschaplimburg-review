@@ -13,6 +13,19 @@ hierarchy:
   - Stroomgebied
   - Watergang
   - Intersectie
+classification:
+  systems:
+    - watersysteem
+  disciplines:
+    - civiele-techniek
+    - informatie-en-data
+  objectFamilies:
+    - watergangen
+  publications:
+    - objectenhandboek-watersysteem
+    - objectenhandboek-civiele-techniek
+    - objectenhandboek-informatie-en-data
+  confidence: afgeleid
 definition: Een intersectie is een kruising binnen de watergangstructuur en ligt als object op hetzelfde niveau als een watergangsectie.
 definitionSource: "Definitiebron: semantische beheeromgeving conceptdefinitie voor Intersectie."
 terms:

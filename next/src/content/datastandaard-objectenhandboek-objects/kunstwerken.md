@@ -12,6 +12,25 @@ hierarchy:
   - Watersysteem
   - Stroomgebied
   - Kunstwerk
+classification:
+  systems:
+    - watersysteem
+  disciplines:
+    - civiele-techniek
+    - werktuigbouwkunde
+    - electrotechniek
+    - procesautomatisering
+    - informatie-en-data
+  objectFamilies:
+    - kunstwerken
+  publications:
+    - objectenhandboek-watersysteem
+    - objectenhandboek-civiele-techniek
+    - objectenhandboek-werktuigbouwkunde
+    - objectenhandboek-electrotechniek
+    - objectenhandboek-procesautomatisering
+    - objectenhandboek-informatie-en-data
+  confidence: afgeleid
 definition: Een kunstwerk is een beheerobject in het watersysteem dat water stuurt, tegenhoudt, verdeelt of verplaatst, zoals een stuw of een gemaal.
 definitionSource: "Werkdefinitie voor deze reviewlijn, gebaseerd op het gebruik van kunstwerken binnen de watersysteemstructuur van het waterschap."
 terms:

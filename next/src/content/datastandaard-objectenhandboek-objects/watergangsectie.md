@@ -13,6 +13,22 @@ hierarchy:
   - Stroomgebied
   - Watergang
   - Watergangsectie
+classification:
+  systems:
+    - watersysteem
+  disciplines:
+    - civiele-techniek
+    - terreinbeheer-openbare-ruimte
+    - informatie-en-data
+  objectFamilies:
+    - watergangen
+    - profielonderdelen
+  publications:
+    - objectenhandboek-watersysteem
+    - objectenhandboek-civiele-techniek
+    - objectenhandboek-terreinbeheer-openbare-ruimte
+    - objectenhandboek-informatie-en-data
+  confidence: afgeleid
 definition: Een watergangsectie is een afgebakend deel van een watergang waarmee kenmerken, onderhoud en opbouw specifieker beschreven kunnen worden.
 definitionSource: "Definitiebron: semantische beheeromgeving conceptdefinitie voor Watergangsectie."
 terms:

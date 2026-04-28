@@ -15,6 +15,19 @@ hierarchy:
   - Watergangsectie
   - Talud
   - Bekledingsconstructie
+classification:
+  systems:
+    - watersysteem
+  disciplines:
+    - civiele-techniek
+    - informatie-en-data
+  objectFamilies:
+    - profielonderdelen
+  publications:
+    - objectenhandboek-watersysteem
+    - objectenhandboek-civiele-techniek
+    - objectenhandboek-informatie-en-data
+  confidence: afgeleid
 definition: Een bekledingsconstructie is een constructieve opbouw op of in het talud die tot doel heeft het oppervlak te beschermen tegen erosie, uitspoeling of instabiliteit en die in ieder geval bestaat uit een toplaag.
 definitionSource: "Definitiebron: DAMO/Aquo-objectlijnen voor waterveiligheid, hergebruikt als principe voor de constructieve uitwerking van taluds binnen de watergangenlijn."
 terms:

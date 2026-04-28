@@ -12,6 +12,21 @@ hierarchy:
   - Watersysteem
   - Stroomgebied
   - Watergang
+classification:
+  systems:
+    - watersysteem
+  disciplines:
+    - civiele-techniek
+    - ecologie-en-groen
+    - informatie-en-data
+  objectFamilies:
+    - watergangen
+  publications:
+    - objectenhandboek-watersysteem
+    - objectenhandboek-civiele-techniek
+    - objectenhandboek-ecologie-en-groen
+    - objectenhandboek-informatie-en-data
+  confidence: afgeleid
 definition: Een watergang is een voor de waterbeheersing bestemde geul met een vlakke bodem die meestal permanent water bevat.
 definitionSource: "Definitiebron: IMBOR Begrippenkader, begrip Watergang. Aanvullende terminologische aansluiting op Aquo-begrippen voor waterbeheer."
 terms:

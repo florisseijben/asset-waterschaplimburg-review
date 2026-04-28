@@ -13,6 +13,19 @@ hierarchy:
   - Stroomgebied
   - Kunstwerk
   - Bodemval
+classification:
+  systems:
+    - watersysteem
+  disciplines:
+    - civiele-techniek
+    - informatie-en-data
+  objectFamilies:
+    - kunstwerken
+  publications:
+    - objectenhandboek-watersysteem
+    - objectenhandboek-civiele-techniek
+    - objectenhandboek-informatie-en-data
+  confidence: afgeleid
 definition: Een bodemval is een kunstwerk in een watergang waarmee een hoogteverschil in de bodem gecontroleerd wordt overbrugd.
 definitionSource: Werkdefinitie voor deze reviewlijn, gebaseerd op de kunstwerktypen binnen het watersysteem.
 terms:

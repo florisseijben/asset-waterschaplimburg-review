@@ -13,6 +13,19 @@ hierarchy:
   - Stroomgebied
   - Kunstwerk
   - Aquaduct
+classification:
+  systems:
+    - watersysteem
+  disciplines:
+    - civiele-techniek
+    - informatie-en-data
+  objectFamilies:
+    - kunstwerken
+  publications:
+    - objectenhandboek-watersysteem
+    - objectenhandboek-civiele-techniek
+    - objectenhandboek-informatie-en-data
+  confidence: afgeleid
 definition: Een aquaduct is een kunstwerk dat een watergang boven een kruisende weg, spoorlijn, watergang of andere infrastructuur doorvoert.
 definitionSource: Werkdefinitie voor deze reviewlijn, gebaseerd op de kunstwerktypen binnen het watersysteem.
 terms:
