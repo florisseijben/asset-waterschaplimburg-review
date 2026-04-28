@@ -29,10 +29,10 @@ contextNote: DAMO beschrijft expliciet dat een regenwaterbuffer uit een of meerd
 subtypes:
   - title: Volume compartiment
     text: DAMO-attribuut voor de inhoud van een afzonderlijk compartiment.
-    href: /datastandaard/woordenboek
+    href: /datastandaard/objectenhandboek/watersysteem/regenwaterbuffer/regenwaterbuffercompartiment/volume-compartiment
   - title: Oppervlakte compartiment
     text: DAMO-attribuut voor de oppervlakte van een afzonderlijk compartiment.
-    href: /datastandaard/woordenboek
+    href: /datastandaard/objectenhandboek/watersysteem/regenwaterbuffer/regenwaterbuffercompartiment/oppervlakte-compartiment
 metadata:
   - label: Systeem
     value: Watersysteem

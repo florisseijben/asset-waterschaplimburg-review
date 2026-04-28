@@ -1,4 +1,5 @@
 import assetConcepts from "../data/concepts/asset-concepts.json";
+import { getObjectTypeHref, getObjectTypeRoute } from "./objectTypeRoutes";
 
 type JsonValue = {
   lex?: string;
@@ -99,22 +100,7 @@ function uniqueByKey<T>(items: T[], getKey: (item: T) => string) {
 }
 
 function getObjectRoute(label: string) {
-  const routes: Record<string, string> = {
-    stroomgebied: "/datastandaard/objectenhandboek/watersysteem/stroomgebied",
-    watergang: "/datastandaard/objectenhandboek/watersysteem/watergangen",
-    watergangsectie: "/datastandaard/objectenhandboek/watersysteem/watergangsectie",
-    intersectie: "/datastandaard/objectenhandboek/watersysteem/intersectie",
-    talud: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/talud",
-    bekledingsconstructie:
-      "/datastandaard/objectenhandboek/watersysteem/watergangsectie/talud/bekledingsconstructie",
-    toplaag:
-      "/in-migratie/datastandaard/objectenhandboek/watersysteem/watergangsectie/talud/toplaag",
-    bodem: "/in-migratie/datastandaard/objectenhandboek/watersysteem/watergangsectie/bodem",
-    berm: "/in-migratie/datastandaard/objectenhandboek/watersysteem/watergangsectie/berm",
-    werkpad: "/in-migratie/datastandaard/objectenhandboek/watersysteem/watergangsectie/werkpad"
-  };
-
-  return routes[normalizeId(label)] || "/datastandaard/woordenboek";
+  return getObjectTypeRoute(label) || "/datastandaard/woordenboek";
 }
 
 export function getConceptFromAssetJson(label: string) {
@@ -131,7 +117,7 @@ export function getConceptFromAssetJson(label: string) {
           {
             title: taxLabel,
             text: `Voorkeursbegrip uit de gekoppelde taxonomiebron voor ${label}.`,
-            href: "/datastandaard/woordenboek"
+            href: getObjectTypeHref(taxLabel, "/datastandaard/woordenboek")
           }
         ]
       : []
@@ -143,7 +129,7 @@ export function getConceptFromAssetJson(label: string) {
       .map((item) => ({
         title: fromUriLabel(item.targetID),
         text: asLex(item.propLabel) || "Gerelateerd begrip uit de dummy conceptbron.",
-        href: "/datastandaard/woordenboek"
+        href: getObjectTypeHref(fromUriLabel(item.targetID), "/datastandaard/woordenboek")
       }))
       .filter((item) => item.title)
   );
@@ -154,7 +140,7 @@ export function getConceptFromAssetJson(label: string) {
       .map((item) => ({
         title: asLex(item.verschijningsvormenLabel),
         text: "Verschijningsvorm uit de dummy conceptbron.",
-        href: "/datastandaard/woordenboek"
+        href: getObjectTypeHref(asLex(item.verschijningsvormenLabel), "/datastandaard/woordenboek")
       }))
   );
 

@@ -27,22 +27,22 @@ contentSections:
     items:
       - title: Waterkeringen
         text: Objecten, begrippen, modellen en referenties rond waterkeringen.
-        href: /in-migratie/objectenhandboek/waterkeringensysteem/waterkeringen
+        href: /datastandaard/objectenhandboek/waterkeringensysteem/waterkeringen
       - title: Constructies
         text: Objecten, begrippen, modellen en referenties rond constructies.
-        href: /in-migratie/objectenhandboek/waterkeringensysteem/constructies
+        href: /datastandaard/objectenhandboek/waterkeringensysteem/constructies
       - title: Kunstwerken
         text: Objecten, begrippen, modellen en referenties rond kunstwerken binnen de waterkering.
-        href: /in-migratie/objectenhandboek/waterkeringensysteem/kunstwerken
+        href: /datastandaard/objectenhandboek/waterkeringensysteem/kunstwerken
       - title: Terreinen
         text: Objecten, begrippen, modellen en referenties rond terreinen.
-        href: /in-migratie/objectenhandboek/waterkeringensysteem/terreinen
+        href: /datastandaard/objectenhandboek/waterkeringensysteem/terreinen
       - title: Terreininrichting
         text: Objecten, begrippen, modellen en referenties rond terreininrichting.
-        href: /in-migratie/objectenhandboek/waterkeringensysteem/terreininrichting
+        href: /datastandaard/objectenhandboek/waterkeringensysteem/terreininrichting
       - title: Groenobjecten
         text: Objecten, begrippen, modellen en referenties rond groenobjecten.
-        href: /in-migratie/objectenhandboek/waterkeringensysteem/groenobjecten
+        href: /datastandaard/objectenhandboek/waterkeringensysteem/groenobjecten
 productRelations:
   - title: Woordenboek
     text: Begrippen en definities voor het waterkeringensysteem.
@@ -62,13 +62,13 @@ productRelations:
 nextSteps:
   - title: Waterkeringen
     text: Door naar de objectfamilie voor waterkeringen.
-    href: /in-migratie/objectenhandboek/waterkeringensysteem/waterkeringen
+    href: /datastandaard/objectenhandboek/waterkeringensysteem/waterkeringen
   - title: Constructies
     text: Door naar de objectfamilie voor constructies.
-    href: /in-migratie/objectenhandboek/waterkeringensysteem/constructies
+    href: /datastandaard/objectenhandboek/waterkeringensysteem/constructies
   - title: Kunstwerken
     text: Door naar de objectfamilie voor kunstwerken binnen de waterkering.
-    href: /in-migratie/objectenhandboek/waterkeringensysteem/kunstwerken
+    href: /datastandaard/objectenhandboek/waterkeringensysteem/kunstwerken
 ---
 
 Deze hoofdstuklanding vormt de ingang naar de objectfamilies binnen het waterkeringensysteem.

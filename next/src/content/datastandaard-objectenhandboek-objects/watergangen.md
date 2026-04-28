@@ -31,19 +31,19 @@ contextNote: In IMBOR ligt de nadruk op de watergang als beheerd fysiek object. 
 subtypes:
   - title: Beek
     text: Onderliggend begrip van Watergang in IMBOR.
-    href: /datastandaard/woordenboek
+    href: /datastandaard/objectenhandboek/watersysteem/watergangen/beek
   - title: Gracht
     text: Onderliggend begrip van Watergang in IMBOR.
-    href: /datastandaard/woordenboek
+    href: /datastandaard/objectenhandboek/watersysteem/watergangen/gracht
   - title: Kanaal
     text: Onderliggend begrip van Watergang in IMBOR.
-    href: /datastandaard/woordenboek
+    href: /datastandaard/objectenhandboek/watersysteem/watergangen/kanaal
   - title: Rivier
     text: Onderliggend begrip van Watergang in IMBOR.
-    href: /datastandaard/woordenboek
+    href: /datastandaard/objectenhandboek/watersysteem/watergangen/rivier
   - title: Sloot
     text: Onderliggend begrip van Watergang in IMBOR.
-    href: /datastandaard/woordenboek
+    href: /datastandaard/objectenhandboek/watersysteem/watergangen/sloot
 metadata:
   - label: Systeem
     value: Watersysteem

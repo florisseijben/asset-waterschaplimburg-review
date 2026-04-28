@@ -34,10 +34,10 @@ contextNote: "Binnen DAMO en Aquo wordt bekledingsconstructie vooral gebruikt in
 subtypes:
   - title: Open bekleding
     text: Bekledingsconstructie met een open of doorlatende structuur, passend bij uitwisseling met de ondergrond.
-    href: /datastandaard/woordenboek
+    href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/talud/bekledingsconstructie/open-bekleding
   - title: Gesloten bekleding
     text: Bekledingsconstructie met een meer gesloten oppervlak of afwerking voor bescherming en stabiliteit.
-    href: /datastandaard/woordenboek
+    href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/talud/bekledingsconstructie/gesloten-bekleding
 metadata:
   - label: Systeem
     value: Watersysteem
@@ -59,7 +59,7 @@ contentSections:
     items:
       - title: Toplaag
         text: Buitenste verdedigingslaag van de bekledingsconstructie en eerste expliciete component in deze uitwerking.
-        href: /in-migratie/objectenhandboek/watersysteem/watergangsectie/talud/bekledingsconstructie/toplaag
+        href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/talud/bekledingsconstructie/toplaag
   - title: Geometrie
     summary: De geometrie van de bekledingsconstructie volgt de ligging, helling en reikwijdte van de constructieve opbouw op het talud.
     items:
@@ -85,7 +85,7 @@ productRelations:
 nextSteps:
   - title: Toplaag
     text: Door naar de buitenste verdedigingslaag van de bekledingsconstructie.
-    href: /in-migratie/objectenhandboek/watersysteem/watergangsectie/talud/bekledingsconstructie/toplaag
+    href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/talud/bekledingsconstructie/toplaag
   - title: Talud
     text: Terug naar het bovenliggende profielonderdeel waarin bekledingsconstructie wordt uitgewerkt.
     href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/talud

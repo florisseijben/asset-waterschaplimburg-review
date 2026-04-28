@@ -1,3 +1,5 @@
+import { getObjectTypeHref } from "./objectTypeRoutes";
+
 type SectionLinkItem = {
   title: string;
   text: string;
@@ -56,6 +58,7 @@ function createTypenSection(subtypes: SectionLinkItem[] = [], subtypeIconTitle?:
     items: subtypes.length
       ? subtypes.map((subtype) => ({
           ...subtype,
+          href: getObjectTypeHref(subtype.title, subtype.href),
           iconTitle: subtype.iconTitle || subtypeIconTitle
         }))
       : [
@@ -115,14 +118,24 @@ export function normalizeUitwerkingSections(
       ? visibleSections
       : insertTypenSection(visibleSections, createTypenSection(options.subtypes || [], options.subtypeIconTitle));
 
-  return withTypen.map((section) =>
-    section.title === "Geometrie"
-      ? {
-          ...section,
-          items: normalizeGeometryItems(section.items)
-        }
-      : section
-  );
+  return withTypen.map((section) => {
+    const normalizedSection =
+      section.title === "Geometrie"
+        ? {
+            ...section,
+            items: normalizeGeometryItems(section.items)
+          }
+        : section;
+
+    return {
+      ...normalizedSection,
+      href: getObjectTypeHref(normalizedSection.title, normalizedSection.href),
+      items: normalizedSection.items?.map((item) => ({
+        ...item,
+        href: getObjectTypeHref(item.title, item.href)
+      }))
+    };
+  });
 }
 
 export function normalizeHoofdstukUitwerkingSections(sections: ContentSection[] = []) {

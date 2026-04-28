@@ -33,10 +33,10 @@ contextNote: In de DAMO-methodiek is stroomgebied het grootste hydrologische geb
 subtypes:
   - title: 1e gebiedsorde
     text: Afvoergebied dat ontstaat door alle afvoergebieden van de 2e gebiedsorde die op hetzelfde RWS-hoofdwater lozen samen te voegen, bijvoorbeeld richting de Maas.
-    href: /datastandaard/woordenboek
+    href: /datastandaard/objectenhandboek/watersysteem/stroomgebied/1e-gebiedsorde
   - title: 2e gebiedsorde
     text: Afvoergebied dat in een normale afvoersituatie via een afvoerpunt direct op een RWS-hoofdwater loost, bijvoorbeeld via een waterloop die uitkomt in de Maas.
-    href: /datastandaard/woordenboek
+    href: /datastandaard/objectenhandboek/watersysteem/stroomgebied/2e-gebiedsorde
 metadata:
   - label: Systeem
     value: Watersysteem

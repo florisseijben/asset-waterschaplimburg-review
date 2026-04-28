@@ -27,10 +27,10 @@ contextNote: Het watersysteem vormt de kapstok voor subsystemen zoals stroomgebi
 subtypes:
   - title: Regionale wateren
     text: Wateren binnen het regionale watersysteem en de beheercontext van provincie en waterschap.
-    href: /datastandaard/woordenboek
+    href: /datastandaard/objectenhandboek/watersysteem/regionale-wateren
   - title: Rijkswateren
     text: Wateren die onderdeel uitmaken van het hoofdwatersysteem onder beheer van het Rijk.
-    href: /datastandaard/woordenboek
+    href: /datastandaard/objectenhandboek/watersysteem/rijkswateren
 contentSections:
   - title: Overzicht / Samenhang
     summary: Het watersysteem vormt de kapstok voor subsystemen, objectfamilies en objecttypen die samen de regionale waterstructuur beschrijven.

@@ -95,10 +95,10 @@ contentSections:
     items:
       - title: Element
         text: Eerste interne decompositiestap binnen Kunstwerk.
-        href: /in-migratie/objectenhandboek/watersysteem/kunstwerken/element
+        href: /datastandaard/objectenhandboek/watersysteem/kunstwerken/element
       - title: Bouwdeel
         text: Verdere uitwerking van onderdelen binnen een element.
-        href: /in-migratie/objectenhandboek/watersysteem/kunstwerken/bouwdeel
+        href: /datastandaard/objectenhandboek/watersysteem/kunstwerken/bouwdeel
   - title: Geometrie
     summary: Kunstwerken worden in deze lijn meestal vastgelegd als puntobjecten, gekoppeld aan hun positie in de waterstructuur.
     items:
@@ -128,10 +128,10 @@ nextSteps:
     direction: back
   - title: Element
     text: Eerste interne decompositiestap binnen Kunstwerk.
-    href: /in-migratie/objectenhandboek/watersysteem/kunstwerken/element
+    href: /datastandaard/objectenhandboek/watersysteem/kunstwerken/element
   - title: Bouwdeel
     text: Verdere uitwerking van onderdelen binnen een element.
-    href: /in-migratie/objectenhandboek/watersysteem/kunstwerken/bouwdeel
+    href: /datastandaard/objectenhandboek/watersysteem/kunstwerken/bouwdeel
   - title: Watergangsectie
     text: Parallelle objectroute voor de lokale opbouw van de watergang.
     href: /datastandaard/objectenhandboek/watersysteem/watergangsectie

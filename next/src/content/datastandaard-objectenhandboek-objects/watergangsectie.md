@@ -35,22 +35,22 @@ contextNote: De watergangsectie maakt het mogelijk om een watergang in opeenvolg
 subtypes:
   - title: Watergang met taluds
     text: Sectie waarin taluds de primaire begrenzing vormen.
-    href: /in-migratie/objectenhandboek/watersysteem/watergangsectie/met-taluds
+    href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/met-taluds
   - title: Watergang met onderhoudspad
     text: Sectie met een expliciet onderhoudspad als onderdeel van de opbouw.
-    href: /in-migratie/objectenhandboek/watersysteem/watergangsectie/met-onderhoudspad
+    href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/met-onderhoudspad
   - title: Watergang met beschoeiing
     text: Sectie waarin een beschoeiing onderdeel is van de constructieve opbouw.
-    href: /in-migratie/objectenhandboek/watersysteem/watergangsectie/met-beschoeiing
+    href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/met-beschoeiing
   - title: Watergang met wandconstructie
     text: Sectie met een verticale of semi-verticale wandoplossing.
-    href: /in-migratie/objectenhandboek/watersysteem/watergangsectie/met-wandconstructie
+    href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/met-wandconstructie
   - title: Watergang met accoladeprofiel
     text: Sectie met een profielvorm die accent legt op doorstroom en onderhoud.
-    href: /in-migratie/objectenhandboek/watersysteem/watergangsectie/met-accoladeprofiel
+    href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/met-accoladeprofiel
   - title: Vrij meanderende watergang
     text: Sectie met een natuurlijker verloop en minder strak profiel.
-    href: /in-migratie/objectenhandboek/watersysteem/watergangsectie/vrij-meanderend
+    href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/vrij-meanderend
 metadata:
   - label: Systeem
     value: Watersysteem
@@ -75,13 +75,13 @@ contentSections:
         href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/talud
       - title: Bodem
         text: Onderdeel dat de onderzijde van het profiel en de afvoer- en bergingsruimte van de watergangsectie vormt.
-        href: /in-migratie/objectenhandboek/watersysteem/watergangsectie/bodem
+        href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/bodem
       - title: Berm
         text: Tussenliggend profielonderdeel dat kan bijdragen aan stabiliteit, onderhoud en overgang binnen de watergangsectie.
-        href: /in-migratie/objectenhandboek/watersysteem/watergangsectie/berm
+        href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/berm
       - title: Werkpad
         text: Onderhouds- en beheerzone langs de watergangsectie voor bereikbaarheid en uitvoering.
-        href: /in-migratie/objectenhandboek/watersysteem/watergangsectie/werkpad
+        href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/werkpad
   - title: Geometrie
     summary: De geometrie van de watergangsectie komt terug in bovenaanzicht, dwarsprofiel en ruimtelijke begrenzing langs de as van de watergang.
     items:

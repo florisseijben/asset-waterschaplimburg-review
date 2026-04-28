@@ -1,0 +1,53 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Hero from "../../../components/Hero.astro";
+import PlaceholderStatus from "../../../components/PlaceholderStatus.astro";
+import InfoCard from "../../../components/InfoCard.astro";
+import { objectTypePlaceholderRoutes } from "../../../lib/objectTypeRoutes";
+
+export function getStaticPaths() {
+  const prefix = "/datastandaard/objectenhandboek/";
+
+  return objectTypePlaceholderRoutes.map((page) => ({
+    params: { slug: page.href.replace(prefix, "") },
+    props: { page }
+  }));
+}
+
+const { page } = Astro.props;
+const parentTitle = page.parentTitle || "Objectenhandboek";
+const parentHref = page.parentHref || "/datastandaard/objectenhandboek";
+const summary =
+  page.summary ||
+  `Op deze objecttypepagina vind je straks de definitie, afbakening, samenhang, geometrie en vastleggingsafspraken voor ${page.title}.`;
+---
+
+<BaseLayout
+  title={page.title}
+  currentPath="/datastandaard"
+  breadcrumbs={[
+    { label: "Home", href: "/" },
+    { label: "Datastandaard", href: "/datastandaard" },
+    { label: "Objectenhandboek", href: "/datastandaard/objectenhandboek" },
+    { label: parentTitle, href: parentHref },
+    { label: page.title }
+  ]}
+>
+  <Hero eyebrow="Objectenhandboek objecttype" title={page.title} summary={summary} />
+
+  <PlaceholderStatus
+    title={`${page.title} volgt in een volgende uitwerkingsslag`}
+    summary="Deze kaart verwijst alvast naar een objecttypepagina binnen het Objectenhandboek, zodat objecttypen en subtypen niet naar het woordenboek hoeven te verwijzen."
+    scope={`de objecttypepagina voor ${page.title}`}
+  />
+
+  <section class="section section-panel">
+    <p class="eyebrow">Bovenliggend object</p>
+    <h2>Werk verder vanuit {parentTitle}</h2>
+    <InfoCard
+      title={parentTitle}
+      text={`Bekijk de bovenliggende objectlijn waar ${page.title} onderdeel van is.`}
+      href={parentHref}
+    />
+  </section>
+</BaseLayout>

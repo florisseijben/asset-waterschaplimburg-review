@@ -31,7 +31,7 @@ contextNote: Binnen deze objectlijn wordt de regenwaterbuffer gelezen als zelfst
 subtypes:
   - title: Type regenwaterbuffer
     text: DAMO-attribuut voor het type of de verschijningsvorm van de regenwaterbuffer.
-    href: /datastandaard/woordenboek
+    href: /datastandaard/objectenhandboek/watersysteem/regenwaterbuffer/type-regenwaterbuffer
 metadata:
   - label: Systeem
     value: Watersysteem

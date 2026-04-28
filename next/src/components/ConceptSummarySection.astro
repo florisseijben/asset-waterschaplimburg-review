@@ -1,5 +1,6 @@
 ---
 import { withBase } from "../lib/paths";
+import { getObjectTypeHref, getObjectTypeRouteRecord } from "../lib/objectTypeRoutes";
 
 interface TermItem {
   title: string;
@@ -33,6 +34,9 @@ const hasSynonyms = synonyms.length > 0;
 const hasRelatedTerms = relatedTerms.length > 0;
 const hasSubtypes = subtypes.length > 0;
 const runtimeId = `concept-runtime-${subjectLabel.toLowerCase().replace(/\s+/g, "-")}`;
+const objectTypeRouteRecord = getObjectTypeRouteRecord();
+const getRelatedHref = (item: TermItem) => getObjectTypeHref(item.title, item.href || "/datastandaard/woordenboek");
+const getSubtypeHref = (item: TermItem) => getObjectTypeHref(item.title, item.href || "/datastandaard/woordenboek");
 ---
 
 <section class="section section-panel">
@@ -73,7 +77,7 @@ const runtimeId = `concept-runtime-${subjectLabel.toLowerCase().replace(/\s+/g, 
         {hasRelatedTerms ? (
           <div class="concept-summary__list">
             {relatedTerms.map((item) => (
-              <a class="concept-summary__item" href={withBase(item.href || "/datastandaard/woordenboek")}>
+              <a class="concept-summary__item" href={withBase(getRelatedHref(item))}>
                 <strong>{item.title}</strong>
                 <span>{item.text || "Open begrip in woordenboek."}</span>
               </a>
@@ -92,9 +96,9 @@ const runtimeId = `concept-runtime-${subjectLabel.toLowerCase().replace(/\s+/g, 
           {hasSubtypes ? (
             <div class="concept-summary__list">
               {subtypes.map((item) => (
-                <a class="concept-summary__item" href={withBase(item.href || "/datastandaard/woordenboek")}>
+                <a class="concept-summary__item" href={withBase(getSubtypeHref(item))}>
                   <strong>{item.title}</strong>
-                  <span>{item.text || "Open begrip in woordenboek."}</span>
+                  <span>{item.text || "Open objecttype in het objectenhandboek."}</span>
                 </a>
               ))}
             </div>
@@ -113,7 +117,8 @@ const runtimeId = `concept-runtime-${subjectLabel.toLowerCase().replace(/\s+/g, 
     define:vars={{
       runtimeId,
       runtimeSourceUrl,
-      runtimeSourceLabel
+      runtimeSourceLabel,
+      objectTypeRouteRecord
     }}
   >
     const note = document.getElementById(runtimeId);
@@ -125,6 +130,16 @@ const runtimeId = `concept-runtime-${subjectLabel.toLowerCase().replace(/\s+/g, 
 
     const fallbackMessage = `Live ophalen uit ${runtimeSourceLabel} lukte niet. Hieronder zie je de build-time versie.`;
     const successMessage = `Begripsinformatie is live bijgewerkt vanuit ${runtimeSourceLabel}.`;
+    const normalizeObjectTypeKey = (value) =>
+      String(value || "")
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase()
+        .replace(/&/g, " en ")
+        .replace(/['"]/g, "")
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-|-$/g, "");
+    const getObjectTypeHref = (title) => objectTypeRouteRecord[normalizeObjectTypeKey(title)] || "/datastandaard/woordenboek";
 
     const createListMarkup = (items) => {
       if (!items?.length) {
@@ -134,7 +149,7 @@ const runtimeId = `concept-runtime-${subjectLabel.toLowerCase().replace(/\s+/g, 
       const rows = items
         .map(
           (item) => `
-            <a class="concept-summary__item" href="/datastandaard/woordenboek">
+            <a class="concept-summary__item" href="${getObjectTypeHref(item.title)}">
               <strong>${item.title}</strong>
               <span>${item.text || "Live opgehaald uit IMBOR."}</span>
             </a>

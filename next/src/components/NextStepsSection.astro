@@ -1,5 +1,6 @@
 ---
 import InfoCard from "./InfoCard.astro";
+import { getObjectTypeHref } from "../lib/objectTypeRoutes";
 
 interface StepItem {
   title: string;
@@ -13,6 +14,10 @@ interface Props {
 }
 
 const { items = [] } = Astro.props;
+const normalizedItems = items.map((item) => ({
+  ...item,
+  href: getObjectTypeHref(item.title, item.href)
+}));
 
 const inferDirection = (item: StepItem) => {
   if (item.direction === "back" || item.direction === "forward") {
@@ -31,8 +36,8 @@ const inferDirection = (item: StepItem) => {
   return "forward";
 };
 
-const backItems = items.filter((item) => inferDirection(item) === "back");
-const forwardItems = items.filter((item) => inferDirection(item) === "forward");
+const backItems = normalizedItems.filter((item) => inferDirection(item) === "back");
+const forwardItems = normalizedItems.filter((item) => inferDirection(item) === "forward");
 const hasBackItems = backItems.length > 0;
 const hasForwardItems = forwardItems.length > 0;
 const isSingleColumn = hasBackItems !== hasForwardItems;

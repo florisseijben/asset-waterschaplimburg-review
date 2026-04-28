@@ -27,22 +27,22 @@ contentSections:
     items:
       - title: RWZI's
         text: Objecten, begrippen, modellen en referenties rond rioolwaterzuiveringsinstallaties.
-        href: /in-migratie/objectenhandboek/afvalwaterketen/rwzis
+        href: /datastandaard/objectenhandboek/afvalwaterketen/rwzis
       - title: Rioolgemalen
         text: Objecten, begrippen, modellen en referenties rond rioolgemalen.
-        href: /in-migratie/objectenhandboek/afvalwaterketen/rioolgemalen
+        href: /datastandaard/objectenhandboek/afvalwaterketen/rioolgemalen
       - title: Transportleidingen
         text: Objecten, begrippen, modellen en referenties rond transportleidingen.
-        href: /in-migratie/objectenhandboek/afvalwaterketen/transportleidingen
+        href: /datastandaard/objectenhandboek/afvalwaterketen/transportleidingen
       - title: Terreinen
         text: Objecten, begrippen, modellen en referenties rond terreinen binnen de afvalwaterketen.
-        href: /in-migratie/objectenhandboek/afvalwaterketen/terreinen
+        href: /datastandaard/objectenhandboek/afvalwaterketen/terreinen
       - title: Terreininrichting
         text: Objecten, begrippen, modellen en referenties rond terreininrichting.
-        href: /in-migratie/objectenhandboek/afvalwaterketen/terreininrichting
+        href: /datastandaard/objectenhandboek/afvalwaterketen/terreininrichting
       - title: Vegetatieobjecten
         text: Objecten, begrippen, modellen en referenties rond vegetatieobjecten.
-        href: /in-migratie/objectenhandboek/afvalwaterketen/vegetatieobjecten
+        href: /datastandaard/objectenhandboek/afvalwaterketen/vegetatieobjecten
 productRelations:
   - title: Woordenboek
     text: Begrippen en definities voor de afvalwaterketen.
@@ -62,13 +62,13 @@ productRelations:
 nextSteps:
   - title: RWZI's
     text: Door naar de objectfamilie voor rioolwaterzuiveringsinstallaties.
-    href: /in-migratie/objectenhandboek/afvalwaterketen/rwzis
+    href: /datastandaard/objectenhandboek/afvalwaterketen/rwzis
   - title: Rioolgemalen
     text: Door naar de objectfamilie voor rioolgemalen.
-    href: /in-migratie/objectenhandboek/afvalwaterketen/rioolgemalen
+    href: /datastandaard/objectenhandboek/afvalwaterketen/rioolgemalen
   - title: Transportleidingen
     text: Door naar de objectfamilie voor transportleidingen.
-    href: /in-migratie/objectenhandboek/afvalwaterketen/transportleidingen
+    href: /datastandaard/objectenhandboek/afvalwaterketen/transportleidingen
 ---
 
 Deze hoofdstuklanding vormt de ingang naar de objectfamilies binnen de afvalwaterketen.

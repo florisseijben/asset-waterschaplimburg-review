@@ -33,16 +33,16 @@ contextNote: Binnen deze objectlijn is het talud geen zelfstandig hoofdobject, m
 subtypes:
   - title: Linkertalud
     text: Talud aan de linkerzijde van het profiel in de gekozen kijkrichting van de watergang.
-    href: /datastandaard/woordenboek
+    href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/talud/linkertalud
   - title: Rechtertalud
     text: Talud aan de rechterzijde van het profiel in de gekozen kijkrichting van de watergang.
-    href: /datastandaard/woordenboek
+    href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/talud/rechtertalud
   - title: Flauw talud
     text: Talud met een relatief geleidelijke helling en bredere overgang naar maaiveld.
-    href: /datastandaard/woordenboek
+    href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/talud/flauw-talud
   - title: Steil talud
     text: Talud met een relatief scherpe helling en compact profiel.
-    href: /datastandaard/woordenboek
+    href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/talud/steil-talud
 metadata:
   - label: Systeem
     value: Watersysteem
