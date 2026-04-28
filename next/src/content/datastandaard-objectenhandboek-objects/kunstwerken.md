@@ -6,7 +6,7 @@ product: objectenhandboek
 ownerTeam: datastandaard
 status: eerste-template
 lastReviewed: 2026-04-23
-summary: Op deze pagina vind je de definitie en afbakening van Kunstwerk, de kunstwerktypen binnen het watersysteem, de samenhang met watergangsecties en intersecties, de geometrische uitgangspunten en de vervolgstappen naar elementen en bouwdelen.
+summary: Op deze pagina vind je de definitie en afbakening van Kunstwerk, de positie onder Stroomgebied, de ondersteunende relatie met Watergang en Regenwaterbuffer, de relatie met Watergangsectie en Intersectie, de kunstwerktypen en de geometrische uitgangspunten.
 heroTitle: Kunstwerk
 hierarchy:
   - Watersysteem
@@ -30,40 +30,40 @@ terms:
   - title: Intersectie
     text: Kruising of overgang in de waterstructuur waar een kunstwerk onderdeel van kan zijn.
     href: /datastandaard/woordenboek
-contextNote: Binnen deze objectfamilie brengen we kunstwerken samen die de werking van watergangen, watergangsecties en intersecties regelen. Deze lijn vormt de opstap naar verdere uitwerking van elementen, bouwdelen en daarbinnen herkenbare kunstwerktypen.
+contextNote: Binnen deze objectfamilie brengen we kunstwerken samen die de watergangstructuur en regenwaterbuffers ondersteunen. Regulerende kunstwerken, zoals stuwen en bodemvallen, raken aan of vullen watergangsecties in. Kruisende kunstwerken, zoals bruggen, aquaducten, duikers en voorden, geven vooral invulling aan intersecties.
 subtypes:
   - title: Aquaduct
-    text: Kunstwerk waarbij een watergang over een andere infrastructuur of watergang heen wordt geleid.
+    text: Kruisend kunstwerktype waarbij een watergang over een andere infrastructuur of watergang heen wordt geleid.
     href: /datastandaard/objectenhandboek/watersysteem/kunstwerken/aquaduct
   - title: Bodemval
-    text: Kunstwerk dat hoogteverschil in de bodem opvangt en erosie of instabiliteit helpt beperken.
+    text: Regulerend kunstwerktype dat hoogteverschil in de bodem opvangt en stroomsnelheid of erosie helpt beheersen.
     href: /datastandaard/objectenhandboek/watersysteem/kunstwerken/bodemval
   - title: Brug
-    text: Kunstwerk dat een overbrugging vormt boven een watergang of een ander nat profiel.
+    text: Kruisend kunstwerktype dat een netwerk over een watergang of ander nat profiel voert.
     href: /datastandaard/objectenhandboek/watersysteem/kunstwerken/brug
   - title: Coupure
-    text: Afsluitbare opening in een waterkerend of scheidend werk binnen de waterstructuur.
+    text: Kruisend of afsluitbaar kunstwerktype op een overgang tussen waterstructuur en waterkering.
     href: /datastandaard/objectenhandboek/watersysteem/kunstwerken/coupure
   - title: Dam
-    text: Kunstwerk dat water tegenhoudt, scheidt of het peil in een watergang beinvloedt.
+    text: Regulerend kunstwerktype dat water tegenhoudt, scheidt of het peil in een watergang beinvloedt.
     href: /datastandaard/objectenhandboek/watersysteem/kunstwerken/dam
   - title: Duiker
-    text: Kunstwerk dat water onder een weg, dam of ander obstakel door leidt.
+    text: Kruisend kunstwerktype dat water onder een weg, dam of ander obstakel door leidt.
     href: /datastandaard/objectenhandboek/watersysteem/kunstwerken/duiker
   - title: Gemaal
-    text: Kunstwerk dat water actief verplaatst met pompen.
+    text: Regulerend kunstwerktype dat peil of debiet actief beinvloedt door water met pompen te verplaatsen.
     href: /datastandaard/objectenhandboek/watersysteem/kunstwerken/gemaal
   - title: Hevel
     text: Kunstwerk dat water via een leiding of constructie over een hoger gelegen punt voert.
     href: /datastandaard/objectenhandboek/watersysteem/kunstwerken/hevel
   - title: Sifon
-    text: Kunstwerk dat water onder een obstakel of kruising door leidt in een gesloten constructie.
+    text: Kruisend kunstwerktype dat water onder een obstakel of kruising door leidt in een gesloten constructie.
     href: /datastandaard/objectenhandboek/watersysteem/kunstwerken/sifon
   - title: Stuw
-    text: Kunstwerk dat het waterpeil regelt door water tegen te houden of gecontroleerd door te laten.
+    text: Regulerend kunstwerktype dat het waterpeil regelt door water tegen te houden of gecontroleerd door te laten.
     href: /datastandaard/objectenhandboek/watersysteem/kunstwerken/stuw
   - title: Voorde
-    text: Ondiepe oversteekplaats waar verkeer of vee een watergang kan passeren.
+    text: Kruisend kunstwerktype waar verkeer of vee een watergang via een ondiepe oversteekplaats kan passeren.
     href: /datastandaard/objectenhandboek/watersysteem/kunstwerken/voorde
   - title: Vuilvang
     text: Kunstwerk dat drijfvuil en grof materiaal opvangt voordat het andere objecten bereikt.
@@ -87,11 +87,11 @@ metadata:
     value: https://data.waterschaplimburg.nl/id/objecttype/kunstwerk
 contentSections:
   - title: Overzicht / Samenhang
-    summary: Kunstwerken vullen de waterstructuur functioneel in en verbinden beheer, peilregeling en waterverplaatsing met de opbouw van watergangen.
+    summary: Stroomgebied is bovenliggend aan Watergang, Regenwaterbuffer en Kunstwerk. Kunstwerken liggen niet los in het landschap, maar ondersteunen de watergangstructuur en de werking van regenwaterbuffers.
   - title: Afbakening
     summary: De afbakening volgt het fysieke beheerobject dat op een vaste plek in het watersysteem water regelt, keert, doorlaat of verplaatst.
   - title: Onderdelen
-    summary: De directe onderdelen van Kunstwerk worden in deze lijn later uitgewerkt via Element en Bouwdeel.
+    summary: Naast de kunstwerktypen kent Kunstwerk een interne opbouw naar Element en Bouwdeel. Deze onderdelen worden later verder uitgewerkt.
     items:
       - title: Element
         text: Eerste interne decompositiestap binnen Kunstwerk.

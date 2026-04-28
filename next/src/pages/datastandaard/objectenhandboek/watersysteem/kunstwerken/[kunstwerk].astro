@@ -54,6 +54,19 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const kunstwerkId = Astro.params.kunstwerk || entry.data.slug?.split("/").pop() || "kunstwerktype";
+const crossingKunstwerkTypes = ["aquaduct", "brug", "coupure", "duiker", "sifon", "voorde"];
+const regulatingKunstwerkTypes = ["bodemval", "dam", "gemaal", "stuw"];
+const relationKind: "crossing" | "regulating" | "supporting" = crossingKunstwerkTypes.includes(kunstwerkId)
+  ? "crossing"
+  : regulatingKunstwerkTypes.includes(kunstwerkId)
+    ? "regulating"
+    : "supporting";
+const relationSummary =
+  relationKind === "crossing"
+    ? `${entry.data.title} is een kruisend kunstwerktype dat invulling geeft aan een Intersectie binnen de watergangstructuur.`
+    : relationKind === "regulating"
+      ? `${entry.data.title} is een regulerend kunstwerktype dat een Watergangsectie kan invullen of eraan kan grenzen, en waar relevant aan een Intersectie kan raken.`
+      : `${entry.data.title} is een ondersteunend kunstwerktype binnen de watergangstructuur en kan samenhangen met Watergangsectie of Intersectie.`;
 const contentSections = entry.data.contentSections || [];
 const uitwerkingSections = normalizeObjectUitwerkingSections(contentSections, {
   subtypes: entry.data.subtypes || [],
@@ -61,8 +74,16 @@ const uitwerkingSections = normalizeObjectUitwerkingSections(contentSections, {
   includeTypen: false
 });
 const geometrySection = getGeometrySection(contentSections);
-const samenhangGraph = createKunstwerkTypeGraph(kunstwerkId, entry.data.title);
+const samenhangGraph = createKunstwerkTypeGraph(kunstwerkId, entry.data.title, relationKind);
 const escapedTitle = String(entry.data.title || "").replace(/\\/g, "\\\\").replace(/"/g, '\\"');
+const typeRelationTriples =
+  relationKind === "crossing"
+    ? `object:${kunstwerkId} relatie:geeftInvullingAan object:intersectie .`
+    : relationKind === "regulating"
+      ? `object:${kunstwerkId} relatie:vultInOfGrenstAan object:watergangsectie .
+object:${kunstwerkId} relatie:kanGrenzenAan object:intersectie .`
+      : `object:${kunstwerkId} relatie:ondersteunt object:watergangsectie .
+object:${kunstwerkId} relatie:kanOndersteunen object:intersectie .`;
 const kunstwerkTypeTurtle = `@prefix object: <https://data.waterschaplimburg.nl/id/objecttype/> .
 @prefix relatie: <https://data.waterschaplimburg.nl/def/relatie/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -70,6 +91,12 @@ const kunstwerkTypeTurtle = `@prefix object: <https://data.waterschaplimburg.nl/
 
 object:stroomgebied a owl:Class ;
   rdfs:label "Stroomgebied" .
+
+object:watergang a owl:Class ;
+  rdfs:label "Watergang" .
+
+object:regenwaterbuffer a owl:Class ;
+  rdfs:label "Regenwaterbuffer" .
 
 object:kunstwerk a owl:Class ;
   rdfs:label "Kunstwerk" .
@@ -86,16 +113,42 @@ object:intersectie a owl:Class ;
 relatie:omvat a owl:ObjectProperty ;
   rdfs:label "omvat" .
 
+relatie:wordtOndersteundDoor a owl:ObjectProperty ;
+  rdfs:label "wordt ondersteund door" .
+
+relatie:heeftSectie a owl:ObjectProperty ;
+  rdfs:label "heeft sectie" .
+
+relatie:heeftIntersectie a owl:ObjectProperty ;
+  rdfs:label "heeft intersectie" .
+
 relatie:heeftType a owl:ObjectProperty ;
   rdfs:label "heeft type" .
 
-relatie:kanLiggenBij a owl:ObjectProperty ;
-  rdfs:label "kan liggen bij" .
+relatie:geeftInvullingAan a owl:ObjectProperty ;
+  rdfs:label "geeft invulling aan" .
 
+relatie:vultInOfGrenstAan a owl:ObjectProperty ;
+  rdfs:label "vult in of grenst aan" .
+
+relatie:kanGrenzenAan a owl:ObjectProperty ;
+  rdfs:label "kan grenzen aan" .
+
+relatie:ondersteunt a owl:ObjectProperty ;
+  rdfs:label "ondersteunt" .
+
+relatie:kanOndersteunen a owl:ObjectProperty ;
+  rdfs:label "kan ondersteunen" .
+
+object:stroomgebied relatie:omvat object:watergang .
+object:stroomgebied relatie:omvat object:regenwaterbuffer .
 object:stroomgebied relatie:omvat object:kunstwerk .
+object:watergang relatie:wordtOndersteundDoor object:kunstwerk .
+object:regenwaterbuffer relatie:wordtOndersteundDoor object:kunstwerk .
+object:watergang relatie:heeftSectie object:watergangsectie .
+object:watergang relatie:heeftIntersectie object:intersectie .
 object:kunstwerk relatie:heeftType object:${kunstwerkId} .
-object:${kunstwerkId} relatie:kanLiggenBij object:watergangsectie .
-object:${kunstwerkId} relatie:kanLiggenBij object:intersectie .
+${typeRelationTriples}
 `;
 ---
 
@@ -132,7 +185,7 @@ object:${kunstwerkId} relatie:kanLiggenBij object:intersectie .
 
   <SemanticSamenhangSection
     title={`Samenhang binnen ${entry.data.title}`}
-    summary={`${entry.data.title} is een kunstwerktype binnen de objectfamilie Kunstwerk en wordt in de uitwerking verbonden met de context van watergangsecties en intersecties.`}
+    summary={relationSummary}
     sourceLabel="Dummy Turtle-export uit de semantische modelleertool voor de kunstwerktypepagina's."
     graphId={`kunstwerk-${kunstwerkId}-samenhang`}
     selectedId={kunstwerkId}

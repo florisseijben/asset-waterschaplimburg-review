@@ -6,8 +6,20 @@
 object:stroomgebied a owl:Class ;
   rdfs:label "Stroomgebied" .
 
+object:watergang a owl:Class ;
+  rdfs:label "Watergang" .
+
+object:regenwaterbuffer a owl:Class ;
+  rdfs:label "Regenwaterbuffer" .
+
 object:kunstwerk a owl:Class ;
   rdfs:label "Kunstwerk" .
+
+object:regelend-kunstwerk a owl:Class ;
+  rdfs:label "Peil- en debietregelend" .
+
+object:kruisend-kunstwerk a owl:Class ;
+  rdfs:label "Kruisend kunstwerk" .
 
 object:watergangsectie a owl:Class ;
   rdfs:label "Watergangsectie" .
@@ -15,20 +27,35 @@ object:watergangsectie a owl:Class ;
 object:intersectie a owl:Class ;
   rdfs:label "Intersectie" .
 
-object:element a owl:Class ;
-  rdfs:label "Element" .
-
-object:bouwdeel a owl:Class ;
-  rdfs:label "Bouwdeel" .
-
 relatie:omvat a owl:ObjectProperty ;
   rdfs:label "omvat" .
+
+relatie:wordtOndersteundDoor a owl:ObjectProperty ;
+  rdfs:label "wordt ondersteund door" .
+
+relatie:heeftSectie a owl:ObjectProperty ;
+  rdfs:label "heeft sectie" .
+
+relatie:heeftIntersectie a owl:ObjectProperty ;
+  rdfs:label "heeft intersectie" .
+
+relatie:heeftType a owl:ObjectProperty ;
+  rdfs:label "heeft type" .
+
+relatie:grenstAanOfVultIn a owl:ObjectProperty ;
+  rdfs:label "grenst aan of vult in" .
 
 relatie:geeftInvullingAan a owl:ObjectProperty ;
   rdfs:label "geeft invulling aan" .
 
+object:stroomgebied relatie:omvat object:watergang .
+object:stroomgebied relatie:omvat object:regenwaterbuffer .
 object:stroomgebied relatie:omvat object:kunstwerk .
-object:kunstwerk relatie:geeftInvullingAan object:watergangsectie .
-object:kunstwerk relatie:geeftInvullingAan object:intersectie .
-object:kunstwerk relatie:omvat object:element .
-object:element relatie:omvat object:bouwdeel .
+object:watergang relatie:wordtOndersteundDoor object:kunstwerk .
+object:regenwaterbuffer relatie:wordtOndersteundDoor object:kunstwerk .
+object:watergang relatie:heeftSectie object:watergangsectie .
+object:watergang relatie:heeftIntersectie object:intersectie .
+object:kunstwerk relatie:heeftType object:regelend-kunstwerk .
+object:kunstwerk relatie:heeftType object:kruisend-kunstwerk .
+object:regelend-kunstwerk relatie:grenstAanOfVultIn object:watergangsectie .
+object:kruisend-kunstwerk relatie:geeftInvullingAan object:intersectie .
