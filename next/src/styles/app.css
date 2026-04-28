@@ -531,6 +531,56 @@ a.classification-tag:focus-visible {
   font-weight: 600;
 }
 
+.handbook-document {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.handbook-toc ol {
+  display: grid;
+  gap: var(--space-2);
+  margin: var(--space-4) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.handbook-toc li {
+  margin-left: calc(var(--handbook-level, 0) * var(--space-5));
+}
+
+.handbook-object {
+  margin-left: calc(var(--handbook-level, 0) * var(--space-4));
+}
+
+.handbook-object__block {
+  margin-top: var(--space-5);
+}
+
+.handbook-object__block h3,
+.handbook-object__subsection h4 {
+  margin-bottom: var(--space-2);
+}
+
+.handbook-object__subsection {
+  margin-top: var(--space-4);
+}
+
+.handbook-object__source {
+  color: var(--color-muted);
+  font-size: 0.94rem;
+  line-height: 1.6;
+}
+
+.handbook-object ul {
+  margin: var(--space-3) 0 0;
+  padding-left: var(--space-5);
+}
+
+.handbook-object li {
+  margin-bottom: var(--space-2);
+  line-height: 1.6;
+}
+
 .meta-list {
   display: grid;
   gap: var(--space-3);
@@ -1116,6 +1166,10 @@ a.classification-tag:focus-visible {
 }
 
 @media print {
+  @page {
+    margin: 16mm;
+  }
+
   body {
     background: #ffffff;
   }
@@ -1137,6 +1191,24 @@ a.classification-tag:focus-visible {
   .hero,
   .section-panel {
     box-shadow: none;
+  }
+
+  .handbook-object {
+    margin-left: 0;
+    break-inside: auto;
+  }
+
+  .hero,
+  .handbook-object__block,
+  .handbook-object__subsection {
     break-inside: avoid;
+  }
+
+  .handbook-object--level-1 {
+    break-before: page;
+  }
+
+  .handbook-toc + .handbook-object--level-1 {
+    break-before: auto;
   }
 }

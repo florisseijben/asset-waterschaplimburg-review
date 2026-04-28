@@ -3,7 +3,6 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
 import Hero from "../../../components/Hero.astro";
 import PlaceholderStatus from "../../../components/PlaceholderStatus.astro";
 import InfoCard from "../../../components/InfoCard.astro";
-import PrintPageAction from "../../../components/PrintPageAction.astro";
 import { objectTypePlaceholderRoutes } from "../../../lib/objectTypeRoutes";
 
 export function getStaticPaths() {
@@ -35,7 +34,6 @@ const summary =
   ]}
 >
   <Hero eyebrow="Objectenhandboek objecttype" title={page.title} summary={summary} />
-  <PrintPageAction />
 
   <PlaceholderStatus
     title={`${page.title} volgt in een volgende uitwerkingsslag`}

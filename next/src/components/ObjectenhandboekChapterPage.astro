@@ -1,7 +1,9 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "./Hero.astro";
+import CardGrid from "./CardGrid.astro";
 import ConceptSummarySection from "./ConceptSummarySection.astro";
+import InfoCard from "./InfoCard.astro";
 import SemanticSamenhangSection from "./SemanticSamenhangSection.astro";
 import ProductSection from "./ProductSection.astro";
 import UitwerkingSection from "./UitwerkingSection.astro";
@@ -21,6 +23,7 @@ interface Props {
   breadcrumbs: Breadcrumb[];
   conceptRuntimeSourceUrl?: string;
   conceptRuntimeSourceLabel?: string;
+  handbookHref?: string;
 }
 
 const {
@@ -28,7 +31,8 @@ const {
   subjectLabel,
   breadcrumbs,
   conceptRuntimeSourceUrl,
-  conceptRuntimeSourceLabel
+  conceptRuntimeSourceLabel,
+  handbookHref
 } = Astro.props;
 
 const uitwerkingItems = normalizeHoofdstukUitwerkingSections(entry.data.contentSections || []);
@@ -129,6 +133,20 @@ const chapterTurtle = [
     title={entry.data.heroTitle || entry.data.title}
     summary={entry.data.summary}
   />
+
+  {handbookHref && (
+    <section class="section section-panel">
+      <p class="eyebrow">Printbaar handboek</p>
+      <h2>Open de bundel voor {subjectLabel}</h2>
+      <CardGrid roomy>
+        <InfoCard
+          title={`Objectenhandboek ${subjectLabel}`}
+          text={`Printbare bundel met de objecttypen binnen ${subjectLabel}, opgebouwd uit definitie, begrip en inhoudelijke uitwerking.`}
+          href={handbookHref}
+        />
+      </CardGrid>
+    </section>
+  )}
 
   <div class="detail-stack">
     {hasConceptSummary && (

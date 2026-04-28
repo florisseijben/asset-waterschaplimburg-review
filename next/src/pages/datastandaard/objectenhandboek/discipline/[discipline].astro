@@ -1,0 +1,72 @@
+---
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import Hero from "../../../../components/Hero.astro";
+import CardGrid from "../../../../components/CardGrid.astro";
+import InfoCard from "../../../../components/InfoCard.astro";
+import { getCollection } from "astro:content";
+import { getDisciplineScopes } from "../../../../lib/objectenhandboekHandbooks";
+
+export function getStaticPaths() {
+  return getDisciplineScopes().map((scope) => ({
+    params: { discipline: scope.id },
+    props: { scope }
+  }));
+}
+
+const { scope } = Astro.props;
+const entries = await getCollection("datastandaard-objectenhandboek-objects");
+const collator = new Intl.Collator("nl", { numeric: true, sensitivity: "base" });
+const objectEntries = entries
+  .filter((entry) => {
+    const disciplines = entry.data.classification?.disciplines || [];
+
+    return Array.isArray(disciplines) && disciplines.includes(scope.id);
+  })
+  .sort((left, right) => collator.compare(left.data.heroTitle || left.data.title, right.data.heroTitle || right.data.title));
+---
+
+<BaseLayout
+  title={`Objectenhandboek ${scope.label}`}
+  currentPath="/datastandaard"
+  breadcrumbs={[
+    { label: "Home", href: "/" },
+    { label: "Datastandaard", href: "/datastandaard" },
+    { label: "Objectenhandboek", href: "/datastandaard/objectenhandboek" },
+    { label: scope.label }
+  ]}
+>
+  <Hero
+    eyebrow="Objectenhandboek discipline"
+    title={scope.label}
+    summary={`Deze disciplinepagina verzamelt de objecttypen die relevant zijn voor ${scope.label.toLowerCase()}. Je kunt de digitale objectpagina's openen of de selectie als printbaar handboek bekijken.`}
+  />
+
+  <section class="section section-panel">
+    <p class="eyebrow">Printbaar handboek</p>
+    <h2>Open de bundel voor {scope.label}</h2>
+    <CardGrid roomy>
+      <InfoCard title={`Objectenhandboek ${scope.label}`} text={scope.summary} href={scope.href} />
+    </CardGrid>
+  </section>
+
+  <section class="section section-panel">
+    <p class="eyebrow">Objecttypen</p>
+    <h2>Digitale objectpagina's binnen deze discipline</h2>
+    {objectEntries.length > 0 ? (
+      <CardGrid roomy>
+        {objectEntries.map((entry) => (
+          <InfoCard
+            title={entry.data.heroTitle || entry.data.title}
+            text={entry.data.summary}
+            href={entry.data.slug}
+          />
+        ))}
+      </CardGrid>
+    ) : (
+      <p class="content-copy">
+        Er zijn nog geen objecttypepagina's met deze discipline gekoppeld. De bundel wordt automatisch gevuld zodra
+        deze classificatie beschikbaar is.
+      </p>
+    )}
+  </section>
+</BaseLayout>

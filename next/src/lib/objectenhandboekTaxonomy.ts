@@ -35,42 +35,42 @@ const disciplines: TaxonomyItem[] = [
   {
     id: "terreinbeheer-openbare-ruimte",
     label: "Terreinbeheer en openbare ruimte",
-    href: "/datastandaard/disciplines/terreinbeheer-openbare-ruimte"
+    href: "/datastandaard/objectenhandboek/discipline/terreinbeheer-openbare-ruimte"
   },
   {
     id: "ecologie-en-groen",
     label: "Ecologie en groen",
-    href: "/datastandaard/disciplines/ecologie-en-groen"
+    href: "/datastandaard/objectenhandboek/discipline/ecologie-en-groen"
   },
   {
     id: "civiele-techniek",
     label: "Civiele techniek",
-    href: "/datastandaard/disciplines/civiele-techniek"
+    href: "/datastandaard/objectenhandboek/discipline/civiele-techniek"
   },
   {
     id: "bouwkunde",
     label: "Bouwkunde",
-    href: "/datastandaard/disciplines/bouwkunde"
+    href: "/datastandaard/objectenhandboek/discipline/bouwkunde"
   },
   {
     id: "werktuigbouwkunde",
     label: "Werktuigbouwkunde",
-    href: "/datastandaard/disciplines/werktuigbouwkunde"
+    href: "/datastandaard/objectenhandboek/discipline/werktuigbouwkunde"
   },
   {
     id: "electrotechniek",
     label: "Electrotechniek",
-    href: "/datastandaard/disciplines/electrotechniek"
+    href: "/datastandaard/objectenhandboek/discipline/electrotechniek"
   },
   {
     id: "procesautomatisering",
     label: "Procesautomatisering",
-    href: "/datastandaard/disciplines/procesautomatisering"
+    href: "/datastandaard/objectenhandboek/discipline/procesautomatisering"
   },
   {
     id: "informatie-en-data",
     label: "Informatie en data",
-    href: "/datastandaard/disciplines/informatie-en-data"
+    href: "/datastandaard/objectenhandboek/discipline/informatie-en-data"
   }
 ];
 

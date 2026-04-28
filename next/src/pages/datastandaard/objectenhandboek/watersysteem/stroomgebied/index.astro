@@ -3,7 +3,6 @@ import BaseLayout from "../../../../../layouts/BaseLayout.astro";
 import Hero from "../../../../../components/Hero.astro";
 import ConceptSummarySection from "../../../../../components/ConceptSummarySection.astro";
 import ObjectClassificationSection from "../../../../../components/ObjectClassificationSection.astro";
-import PrintPageAction from "../../../../../components/PrintPageAction.astro";
 import SemanticSamenhangSection from "../../../../../components/SemanticSamenhangSection.astro";
 import ProductSection from "../../../../../components/ProductSection.astro";
 import UitwerkingSection from "../../../../../components/UitwerkingSection.astro";
@@ -48,7 +47,6 @@ const geometrySection = getGeometrySection(contentSections);
   ]}
 >
   <Hero eyebrow="Objectenhandboek" title={entry.data.heroTitle || entry.data.title} summary={entry.data.summary} />
-  <PrintPageAction />
 
   <ConceptSummarySection
     subjectLabel="Stroomgebied"
