@@ -126,6 +126,53 @@ a:hover {
   background: var(--color-brand-soft);
 }
 
+.hero__layout {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.hero--with-aside .hero__layout {
+  grid-template-columns: minmax(0, 1fr) minmax(18rem, 24rem);
+  align-items: start;
+}
+
+.hero__content {
+  min-width: 0;
+}
+
+.hero-handbook-card {
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border: 1px solid #b8dbe1;
+  border-left: 0.35rem solid var(--color-brand);
+  background: #ffffff;
+  color: inherit;
+  box-shadow: var(--shadow-s);
+}
+
+.hero-handbook-card:hover,
+.hero-handbook-card:focus-visible {
+  text-decoration: none;
+  border-color: var(--color-brand);
+}
+
+.hero-handbook-card h2 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.hero-handbook-card p:not(.eyebrow) {
+  margin: 0;
+  color: var(--color-muted);
+  line-height: 1.6;
+}
+
+.hero-handbook-card .button {
+  width: fit-content;
+  margin-top: var(--space-2);
+}
+
 .eyebrow {
   margin: 0 0 var(--space-2);
   color: var(--color-brand-dark);
@@ -1063,6 +1110,10 @@ a.classification-tag:focus-visible {
 @media (max-width: 900px) {
   h1 {
     font-size: clamp(1.8rem, 5vw, 2.5rem);
+  }
+
+  .hero--with-aside .hero__layout {
+    grid-template-columns: 1fr;
   }
 
   .semantic-samenhang__meta {

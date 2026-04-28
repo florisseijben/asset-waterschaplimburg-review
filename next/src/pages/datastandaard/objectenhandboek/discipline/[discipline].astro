@@ -2,6 +2,7 @@
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
 import Hero from "../../../../components/Hero.astro";
 import CardGrid from "../../../../components/CardGrid.astro";
+import HandbookHeroCard from "../../../../components/HandbookHeroCard.astro";
 import InfoCard from "../../../../components/InfoCard.astro";
 import { getCollection } from "astro:content";
 import { getDisciplineScopes } from "../../../../lib/objectenhandboekHandbooks";
@@ -39,15 +40,14 @@ const objectEntries = entries
     eyebrow="Objectenhandboek discipline"
     title={scope.label}
     summary={`Deze disciplinepagina verzamelt de objecttypen die relevant zijn voor ${scope.label.toLowerCase()}. Je kunt de digitale objectpagina's openen of de selectie als printbaar handboek bekijken.`}
-  />
-
-  <section class="section section-panel">
-    <p class="eyebrow">Printbaar handboek</p>
-    <h2>Open de bundel voor {scope.label}</h2>
-    <CardGrid roomy>
-      <InfoCard title={`Objectenhandboek ${scope.label}`} text={scope.summary} href={scope.href} />
-    </CardGrid>
-  </section>
+  >
+    <HandbookHeroCard
+      slot="aside"
+      href={scope.href}
+      scopeLabel={scope.label}
+      summary={`Open het PDF-overzicht voor ${scope.label.toLowerCase()}: hero, begrip en uitwerking van de objecttypen in deze bundel.`}
+    />
+  </Hero>
 
   <section class="section section-panel">
     <p class="eyebrow">Objecttypen</p>

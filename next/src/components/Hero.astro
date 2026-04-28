@@ -6,11 +6,21 @@ interface Props {
 }
 
 const { eyebrow, title, summary } = Astro.props;
+const hasAside = Astro.slots.has("aside");
 ---
 
-<section class="hero">
-  <p class="eyebrow">{eyebrow}</p>
-  <h1>{title}</h1>
-  <p class="lead">{summary}</p>
-  <slot />
+<section class:list={["hero", hasAside && "hero--with-aside"]}>
+  <div class="hero__layout">
+    <div class="hero__content">
+      <p class="eyebrow">{eyebrow}</p>
+      <h1>{title}</h1>
+      <p class="lead">{summary}</p>
+      <slot />
+    </div>
+    {hasAside && (
+      <div class="hero__aside">
+        <slot name="aside" />
+      </div>
+    )}
+  </div>
 </section>

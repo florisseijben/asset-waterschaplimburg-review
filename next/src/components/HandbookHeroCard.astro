@@ -1,0 +1,21 @@
+---
+import { withBase } from "../lib/paths";
+
+interface Props {
+  href: string;
+  scopeLabel: string;
+  summary?: string;
+}
+
+const { href, scopeLabel, summary } = Astro.props;
+const cardSummary =
+  summary ||
+  `Open het compacte overzicht voor ${scopeLabel}: samenvatting, begrip en uitwerking van de gekoppelde objecttypen.`;
+---
+
+<a class="hero-handbook-card" href={withBase(href)}>
+  <p class="eyebrow">PDF-overzicht</p>
+  <h2>Print het handboek of bekijk in PDF</h2>
+  <p>{cardSummary}</p>
+  <span class="button button-secondary">Open PDF-overzicht</span>
+</a>
