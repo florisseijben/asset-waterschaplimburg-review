@@ -6,7 +6,7 @@ product: home
 ownerTeam: platform
 status: concept
 lastReviewed: 2026-04-11
-summary: Op asset.waterschaplimburg.nl vind je op één plek informatie over assetdata, assets en assetmanagement.
+summary: Op asset.waterschaplimburg.nl vind je de samenhang tussen Datastandaard, Assetregister en Assetmanagement. Je kunt starten bij begrippen en objecttypen, bij registratie van assets of bij de processen die assetinformatie gebruiken.
 heroTitle: Kennis over onze assets centraal beschikbaar
 platformFlow:
   - title: "1. Datastandaard"

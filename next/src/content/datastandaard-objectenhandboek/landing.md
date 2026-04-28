@@ -6,7 +6,7 @@ product: objectenhandboek
 ownerTeam: datastandaard
 status: concept
 lastReviewed: 2026-04-11
-summary: Kies eerst een systeem. Je kunt het objectenhandboek ook bekijken vanuit disciplines, zodat objecttypen logisch zijn ingedeeld op inhoud en vakgebied.
+summary: In het objectenhandboek vind je per objecttype de definitie, afbakening, samenhang, geometrie en vastleggingsafspraken. Je kunt starten vanuit een systeem of discipline.
 heroTitle: Objectenhandboek
 systems:
   - title: Afvalwaterketen

@@ -164,16 +164,7 @@ ${typeRelationTriples}
     { label: entry.data.title }
   ]}
 >
-  <Hero eyebrow="Objectenhandboek" title={entry.data.heroTitle || entry.data.title} summary={entry.data.summary}>
-    <dl class="hero-meta-list">
-      {(entry.data.metadata || []).map((item) => (
-        <div class="hero-meta-item">
-          <dt>{item.label}</dt>
-          <dd>{item.value}</dd>
-        </div>
-      ))}
-    </dl>
-  </Hero>
+  <Hero eyebrow="Objectenhandboek" title={entry.data.heroTitle || entry.data.title} summary={entry.data.summary} />
 
   <ConceptSummarySection
     subjectLabel={entry.data.title}

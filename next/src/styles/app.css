@@ -126,35 +126,6 @@ a:hover {
   background: var(--color-brand-soft);
 }
 
-.hero-meta-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem 1.2rem;
-  margin: var(--space-4) 0 0;
-}
-
-.hero-meta-item {
-  display: inline-flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.35rem;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  font-size: 0.92rem;
-}
-
-.hero-meta-item dt {
-  font-weight: 700;
-  color: var(--color-deep);
-}
-
-.hero-meta-item dd {
-  margin: 0;
-  color: var(--color-muted);
-  overflow-wrap: anywhere;
-}
-
 .eyebrow {
   margin: 0 0 var(--space-2);
   color: var(--color-brand-dark);
@@ -980,7 +951,6 @@ h1 {
     font-size: clamp(1.8rem, 5vw, 2.5rem);
   }
 
-  .hero-meta-list,
   .semantic-samenhang__meta {
     display: grid;
     gap: var(--space-3);
@@ -1069,10 +1039,6 @@ h1 {
 
   .breadcrumb {
     font-size: 0.92rem;
-  }
-
-  .hero-meta-item {
-    font-size: 0.88rem;
   }
 
   .info-card__header {
