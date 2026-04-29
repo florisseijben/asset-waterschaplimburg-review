@@ -101,6 +101,24 @@ export const objectTypePlaceholderRoutes: ObjectTypeRoute[] = [
     parentHref: "/datastandaard/objectenhandboek/watersysteem/watergangsectie"
   },
   {
+    title: "Watergang - Watergang",
+    href: "/datastandaard/objectenhandboek/watersysteem/intersectie/watergang-watergang",
+    parentTitle: "Intersectie",
+    parentHref: "/datastandaard/objectenhandboek/watersysteem/intersectie"
+  },
+  {
+    title: "Watergang - Weg",
+    href: "/datastandaard/objectenhandboek/watersysteem/intersectie/watergang-weg",
+    parentTitle: "Intersectie",
+    parentHref: "/datastandaard/objectenhandboek/watersysteem/intersectie"
+  },
+  {
+    title: "Watergang - Waterkering",
+    href: "/datastandaard/objectenhandboek/watersysteem/intersectie/watergang-waterkering",
+    parentTitle: "Intersectie",
+    parentHref: "/datastandaard/objectenhandboek/watersysteem/intersectie"
+  },
+  {
     title: "Toplaag",
     href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/talud/bekledingsconstructie/toplaag",
     parentTitle: "Bekledingsconstructie",

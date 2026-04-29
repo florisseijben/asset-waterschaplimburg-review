@@ -6,7 +6,7 @@ product: objectenhandboek
 ownerTeam: datastandaard
 status: eerste-template
 lastReviewed: 2026-04-11
-summary: Op deze pagina vind je de definitie en afbakening van Intersectie, de begripsmatige typen kruisingen, de samenhang met Watergang en Watergangsectie, de geometrische uitgangspunten en de productrelaties.
+summary: Op deze pagina vind je de definitie en afbakening van Intersectie, de typen naar compositie, de samenhang met Watergang en Watergangsectie, de geometrische uitgangspunten en de productrelaties.
 heroTitle: Intersectie
 hierarchy:
   - Watersysteem
@@ -42,16 +42,16 @@ terms:
     text: Ruimtelijke aanduiding van het punt waar structuren elkaar raken of kruisen.
     href: /datastandaard/woordenboek
 contextNote: Binnen deze templatefamilie is de intersectie expliciet bedoeld voor kruisingen. Het object ligt op hetzelfde niveau als een watergangsectie, maar beschrijft een ander type onderdeel van de watergang.
-definitionTypes:
+compositionTypes:
   - title: Watergang - Watergang
     text: Kruising of aansluiting tussen twee watergangen.
-    href: /datastandaard/woordenboek
+    href: /datastandaard/objectenhandboek/watersysteem/intersectie/watergang-watergang
   - title: Watergang - Weg
     text: Kruising tussen de watergangstructuur en een wegverbinding.
-    href: /datastandaard/woordenboek
+    href: /datastandaard/objectenhandboek/watersysteem/intersectie/watergang-weg
   - title: Watergang - Waterkering
     text: Kruising tussen watergang en waterkering als specifieke systeemovergang.
-    href: /datastandaard/woordenboek
+    href: /datastandaard/objectenhandboek/watersysteem/intersectie/watergang-waterkering
 metadata:
   - label: Systeem
     value: Watersysteem
@@ -68,8 +68,6 @@ contentSections:
     summary: De intersectie markeert het kruispunt binnen de watergangstructuur en ligt op hetzelfde niveau als een watergangsectie.
   - title: Afbakening
     summary: De afbakening van de intersectie volgt de zone waar waterlijnen, aansluitingen of systeemovergangen elkaar raken of kruisen.
-  - title: Onderdelen
-    summary: Binnen de huidige hiërarchie zijn voor Intersectie nog geen directe onderliggende objecten uitgewerkt. Aangrenzende onderdelen zoals talud, bodem, berm en werkpad blijven wel inhoudelijk relevant, maar worden niet als directe kinderen van Intersectie getoond.
   - title: Geometrie
     summary: De geometrie van de intersectie wordt zichtbaar in bovenaanzicht, doorsnede en ruimtelijke positie ten opzichte van de watergang.
     items:

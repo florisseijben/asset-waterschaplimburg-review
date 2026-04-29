@@ -47,6 +47,7 @@ type NormalizedUitwerkingOptions = {
   subtypeIconTitle?: string;
   includeTypen?: boolean;
   includeGeometry?: boolean;
+  includeOnderdelenWithCompositionTypes?: boolean;
   excludeTitles?: string[];
 };
 
@@ -109,6 +110,14 @@ export function normalizeUitwerkingSections(
     }
 
     if (options.includeGeometry === false && section.title === "Geometrie") {
+      return false;
+    }
+
+    if (
+      options.includeOnderdelenWithCompositionTypes !== true &&
+      compositionTypes.length > 0 &&
+      section.title === "Onderdelen"
+    ) {
       return false;
     }
 

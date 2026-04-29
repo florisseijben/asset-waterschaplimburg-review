@@ -109,15 +109,6 @@ contentSections:
     summary: Stroomgebied is bovenliggend aan Watergang, Regenwaterbuffer en Kunstwerk. Kunstwerken liggen niet los in het landschap, maar ondersteunen de watergangstructuur en de werking van regenwaterbuffers.
   - title: Afbakening
     summary: De afbakening volgt het fysieke beheerobject dat op een vaste plek in het watersysteem water regelt, keert, doorlaat of verplaatst.
-  - title: Onderdelen
-    summary: Naast de kunstwerktypen kent Kunstwerk een interne opbouw naar Element en Bouwdeel. Deze onderdelen worden later verder uitgewerkt.
-    items:
-      - title: Element
-        text: Eerste interne decompositiestap binnen Kunstwerk.
-        href: /datastandaard/objectenhandboek/watersysteem/kunstwerken/element
-      - title: Bouwdeel
-        text: Verdere uitwerking van onderdelen binnen een element.
-        href: /datastandaard/objectenhandboek/watersysteem/kunstwerken/bouwdeel
   - title: Geometrie
     summary: Kunstwerken worden in deze lijn meestal vastgelegd als puntobjecten, gekoppeld aan hun positie in de waterstructuur.
     items:
@@ -145,12 +136,12 @@ nextSteps:
     text: Terug naar de subsysteempagina van Stroomgebied.
     href: /datastandaard/objectenhandboek/watersysteem/stroomgebied
     direction: back
-  - title: Element
-    text: Eerste interne decompositiestap binnen Kunstwerk.
-    href: /datastandaard/objectenhandboek/watersysteem/kunstwerken/element
-  - title: Bouwdeel
-    text: Verdere uitwerking van onderdelen binnen een element.
-    href: /datastandaard/objectenhandboek/watersysteem/kunstwerken/bouwdeel
+  - title: Stuw
+    text: Voorbeeld van een regulerend kunstwerktype binnen deze objectfamilie.
+    href: /datastandaard/objectenhandboek/watersysteem/kunstwerken/stuw
+  - title: Brug
+    text: Voorbeeld van een kruisend kunstwerktype binnen deze objectfamilie.
+    href: /datastandaard/objectenhandboek/watersysteem/kunstwerken/brug
   - title: Watergangsectie
     text: Parallelle objectroute voor de lokale opbouw van de watergang.
     href: /datastandaard/objectenhandboek/watersysteem/watergangsectie

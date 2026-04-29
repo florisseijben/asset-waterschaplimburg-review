@@ -175,53 +175,43 @@ function flattenNodes(nodes: HandbookNode[], prefix: number[] = [], depth = 1): 
   });
 }
 
-const scopedEntries = entries.filter(belongsToScope);
-const knownTitles = new Set(scopedEntries.map((entry) => normalizeKey(getObjectTitle(entry))));
-const entryByTitleKey = new Map(scopedEntries.map((entry) => [normalizeKey(getObjectTitle(entry)), entry]));
 const allEntryByTitleKey = new Map(entries.map((entry) => [normalizeKey(getObjectTitle(entry)), entry]));
 const chapterMap = new Map<string, { label: string; nodes: HandbookNode[] }>();
 
-const getOnderdelenSection = (entry: any) =>
-  (entry.data.contentSections || []).find((section: any) => normalizeKey(section.title) === "onderdelen");
-
-const getRelationCategory = (parentEntry: any, childTitle: string) => {
-  const childKey = normalizeKey(childTitle);
-  const isCompositionType = (parentEntry.data.compositionTypes || []).some(
-    (compositionType: any) => normalizeKey(compositionType.title) === childKey
+const isCompositionTypeOfParent = (parentEntry: any, childTitle: string) =>
+  (parentEntry.data.compositionTypes || []).some(
+    (compositionType: any) => normalizeKey(compositionType.title) === normalizeKey(childTitle)
   );
 
-  if (isCompositionType) {
-    return "Typen";
-  }
-
-  return "Onderdelen";
-};
-
-const createCategorizedPath = (entry: any) => {
+const isAllowedInHandbookTree = (entry: any) => {
   const path = createHandbookPath(entry);
 
-  if (path.length <= 1) {
-    return path;
-  }
+  return path.every((title, index) => {
+    if (index === 0) {
+      return true;
+    }
 
-  return path.slice(1).reduce(
-    (categorizedPath, title, index) => {
-      const parentTitle = path[index];
-      const parentEntry = allEntryByTitleKey.get(normalizeKey(parentTitle));
-      const category = parentEntry ? getRelationCategory(parentEntry, title) : "Onderdelen";
+    const parentEntry = allEntryByTitleKey.get(normalizeKey(path[index - 1]));
 
-      return [...categorizedPath, category, title];
-    },
-    [path[0]]
-  );
+    if (!parentEntry || !(parentEntry.data.compositionTypes || []).length) {
+      return true;
+    }
+
+    return isCompositionTypeOfParent(parentEntry, title);
+  });
+};
+
+const scopedEntries = entries.filter((entry) => belongsToScope(entry) && isAllowedInHandbookTree(entry));
+
+const createCategorizedPath = (entry: any) => {
+  return createHandbookPath(entry);
 };
 
 const getPrintableSections = (entry: any) =>
   normalizeObjectUitwerkingSections(entry.data.contentSections || [], {
-    compositionTypes: [],
+    compositionTypes: entry.data.compositionTypes || [],
     subtypeIconTitle: getObjectTitle(entry),
-    includeTypen: false,
-    excludeTitles: ["Onderdelen"]
+    includeTypen: true
   });
 
 scopedEntries.forEach((entry) => {
@@ -229,9 +219,6 @@ scopedEntries.forEach((entry) => {
   const categorizedPath = createCategorizedPath(entry);
   const chapterLabel = getChapterLabel(path, entry);
   const chapter = chapterMap.get(chapterLabel) || { label: chapterLabel, nodes: [] };
-  const knownCompositionTypes = (entry.data.compositionTypes || []).filter((compositionType: any) =>
-    knownTitles.has(normalizeKey(compositionType.title))
-  );
   insertNode(chapter.nodes, categorizedPath, {
     entry,
     title: getObjectTitle(entry),
@@ -239,50 +226,6 @@ scopedEntries.forEach((entry) => {
     summary: entry.data.summary,
     sections: getPrintableSections(entry)
   });
-
-  if (knownCompositionTypes.length > 0) {
-    insertNode(chapter.nodes, [...categorizedPath, "Typen"], {
-      title: "Typen",
-      path: [...categorizedPath, "Typen"],
-      summary: `Typen naar compositie van ${getObjectTitle(entry)}.`,
-      text: `Typen naar compositie van ${getObjectTitle(entry)}.`,
-      sections: []
-    });
-  }
-
-  const onderdelenSection = getOnderdelenSection(entry);
-  const onderdelenItems = onderdelenSection?.items || [];
-
-  if (onderdelenItems.length > 0) {
-    insertNode(chapter.nodes, [...categorizedPath, "Onderdelen"], {
-      title: "Onderdelen",
-      path: [...categorizedPath, "Onderdelen"],
-      summary: onderdelenSection.summary,
-      text: onderdelenSection.summary,
-      sections: []
-    });
-  }
-
-  onderdelenItems
-    .filter((item: any) => {
-      const childEntry = entryByTitleKey.get(normalizeKey(item.title));
-
-      if (!childEntry) {
-        return true;
-      }
-
-      return getChapterLabel(createHandbookPath(childEntry), childEntry) !== chapterLabel;
-    })
-    .sort((left: any, right: any) => collator.compare(left.title, right.title))
-    .forEach((item: any) => {
-      insertNode(chapter.nodes, [...categorizedPath, "Onderdelen", item.title], {
-        title: item.title,
-        path: [...categorizedPath, "Onderdelen", item.title],
-        summary: item.text,
-        text: item.text,
-        sections: []
-      });
-    });
 
   chapterMap.set(chapterLabel, chapter);
 });

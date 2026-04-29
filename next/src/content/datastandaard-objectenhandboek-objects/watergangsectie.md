@@ -6,7 +6,7 @@ product: objectenhandboek
 ownerTeam: datastandaard
 status: eerste-template
 lastReviewed: 2026-04-11
-summary: Op deze pagina vind je de definitie en afbakening van Watergangsectie, de typen secties, de samenhang met Watergang, Intersectie en profielonderdelen, de geometrische uitgangspunten en de productrelaties.
+summary: Op deze pagina vind je de definitie en afbakening van Watergangsectie, de typen naar compositie, de samenhang met Watergang en Intersectie, de geometrische uitgangspunten en de productrelaties.
 heroTitle: Watergangsectie
 hierarchy:
   - Watersysteem
@@ -83,21 +83,6 @@ contentSections:
     summary: De watergangsectie is het afgebakende deelobject binnen de watergang en vormt samen met intersecties de opbouw van het hoofdobject.
   - title: Afbakening
     summary: De afbakening van de watergangsectie volgt een deeltraject binnen de watergang met eigen kenmerken, onderhoud en profiel.
-  - title: Onderdelen
-    summary: Binnen de watergangsectie worden onderdelen zoals talud, bodem, onderhoudspad en constructieve opbouw onderscheiden, waarbij Talud als eerste vervolgstap is uitgewerkt.
-    items:
-      - title: Talud
-        text: Schuin grensvlak binnen het profiel van de watergangsectie en eerste uitgewerkte onderliggende component.
-        href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/talud
-      - title: Bodem
-        text: Onderdeel dat de onderzijde van het profiel en de afvoer- en bergingsruimte van de watergangsectie vormt.
-        href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/bodem
-      - title: Berm
-        text: Tussenliggend profielonderdeel dat kan bijdragen aan stabiliteit, onderhoud en overgang binnen de watergangsectie.
-        href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/berm
-      - title: Werkpad
-        text: Onderhouds- en beheerzone langs de watergangsectie voor bereikbaarheid en uitvoering.
-        href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/werkpad
   - title: Geometrie
     summary: De geometrie van de watergangsectie komt terug in bovenaanzicht, dwarsprofiel en ruimtelijke begrenzing langs de as van de watergang.
     items:
@@ -121,9 +106,9 @@ productRelations:
     text: Werkinstructies voor het toepassen en vastleggen van objectinformatie.
     href: /datastandaard/werkinstructies
 nextSteps:
-  - title: Talud
-    text: Door naar het eerste onderliggende profielonderdeel van de watergangsectie.
-    href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/talud
+  - title: Watergang met taluds
+    text: Door naar het eerste type naar compositie van de watergangsectie.
+    href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/met-taluds
   - title: Watergangen
     text: Terug naar het hoofdobject binnen deze objectlijn.
     href: /datastandaard/objectenhandboek/watersysteem/watergangen
