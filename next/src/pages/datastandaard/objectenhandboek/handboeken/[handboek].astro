@@ -297,14 +297,6 @@ const handbookSummary = `${scope.summary} De digitale samenhangsweergaven, produ
                   <span class="handbook-number">{chapter.number}</span>
                   <span>{chapter.label}</span>
                 </summary>
-                <a
-                  class="handbook-toc__link handbook-toc__link--chapter"
-                  href={`#${chapter.id}`}
-                  aria-label={`Naar hoofdstuk ${chapter.number}: ${chapter.label}`}
-                >
-                  <span class="handbook-number">{chapter.number}</span>
-                  <span>Hoofdstuk</span>
-                </a>
                 <ol class="handbook-toc__sections">
                   {chapter.flatNodes.map((item) => (
                     <li

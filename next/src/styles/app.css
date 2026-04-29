@@ -695,12 +695,6 @@ a.classification-tag:focus-visible {
   text-decoration: none;
 }
 
-.handbook-toc__link--chapter {
-  margin-top: var(--space-2);
-  color: var(--color-muted);
-  font-weight: 700;
-}
-
 .handbook-number {
   color: var(--color-brand-dark);
   font-variant-numeric: tabular-nums;
