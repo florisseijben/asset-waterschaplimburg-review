@@ -6,7 +6,7 @@ product: objectenhandboek
 ownerTeam: datastandaard
 status: eerste-template
 lastReviewed: 2026-04-12
-summary: Op deze pagina vind je de definitie en afbakening van Talud, de typen talud, de samenhang met Watergangsectie, Bodem en Bekledingsconstructie, de geometrische uitgangspunten en de productrelaties.
+summary: Op deze pagina vind je de definitie en afbakening van Talud, de begripsmatige typen talud, de samenhang met Watergangsectie, Bodem en Bekledingsconstructie, de geometrische uitgangspunten en de productrelaties.
 heroTitle: Talud
 hierarchy:
   - Watersysteem
@@ -47,19 +47,19 @@ terms:
     text: Begrip waarmee de positie van het talud binnen de watergangsectie leesbaar wordt.
     href: /datastandaard/woordenboek
 contextNote: Binnen deze objectlijn is het talud geen zelfstandig hoofdobject, maar een onderdeel van de watergangsectie. Het talud krijgt betekenis in samenhang met bodem, profielvorm, onderhoud, geometrische begrenzing en constructieve opbouw zoals een bekledingsconstructie.
-subtypes:
+definitionTypes:
   - title: Linkertalud
     text: Talud aan de linkerzijde van het profiel in de gekozen kijkrichting van de watergang.
-    href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/talud/linkertalud
+    href: /datastandaard/woordenboek
   - title: Rechtertalud
     text: Talud aan de rechterzijde van het profiel in de gekozen kijkrichting van de watergang.
-    href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/talud/rechtertalud
+    href: /datastandaard/woordenboek
   - title: Flauw talud
     text: Talud met een relatief geleidelijke helling en bredere overgang naar maaiveld.
-    href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/talud/flauw-talud
+    href: /datastandaard/woordenboek
   - title: Steil talud
     text: Talud met een relatief scherpe helling en compact profiel.
-    href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/talud/steil-talud
+    href: /datastandaard/woordenboek
 metadata:
   - label: Systeem
     value: Watersysteem

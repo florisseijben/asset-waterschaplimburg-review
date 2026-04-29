@@ -6,7 +6,7 @@ product: objectenhandboek
 ownerTeam: datastandaard
 status: eerste-template
 lastReviewed: 2026-04-16
-summary: Op deze pagina vind je de definitie en afbakening van Stroomgebied, de gebiedstypen, de samenhang met Watergang, Regenwaterbuffer en Kunstwerk, de geometrische uitgangspunten en de productrelaties.
+summary: Op deze pagina vind je de definitie en afbakening van Stroomgebied, de begripsmatige gebiedstypen, de samenhang met Watergang, Regenwaterbuffer en Kunstwerk, de geometrische uitgangspunten en de productrelaties.
 heroTitle: Stroomgebied
 hierarchy:
   - Watersysteem
@@ -45,13 +45,13 @@ terms:
     text: Bovenliggende systeemlaag waarin meerdere stroomgebieden en afvoerstructuren samenkomen.
     href: /datastandaard/woordenboek
 contextNote: In de DAMO-methodiek is stroomgebied het grootste hydrologische gebiedsniveau. Binnen Nederland gaat het daarbij om de landgrensoverschrijdende stroomgebieden van Maas, Schelde, Eems en Rijn, waarbinnen verdere afvoergebieden en objectlijnen worden geordend.
-subtypes:
+definitionTypes:
   - title: 1e gebiedsorde
     text: Afvoergebied dat ontstaat door alle afvoergebieden van de 2e gebiedsorde die op hetzelfde RWS-hoofdwater lozen samen te voegen, bijvoorbeeld richting de Maas.
-    href: /datastandaard/objectenhandboek/watersysteem/stroomgebied/1e-gebiedsorde
+    href: /datastandaard/woordenboek
   - title: 2e gebiedsorde
     text: Afvoergebied dat in een normale afvoersituatie via een afvoerpunt direct op een RWS-hoofdwater loost, bijvoorbeeld via een waterloop die uitkomt in de Maas.
-    href: /datastandaard/objectenhandboek/watersysteem/stroomgebied/2e-gebiedsorde
+    href: /datastandaard/woordenboek
 metadata:
   - label: Systeem
     value: Watersysteem

@@ -6,7 +6,7 @@ product: objectenhandboek
 ownerTeam: datastandaard
 status: eerste-template
 lastReviewed: 2026-04-11
-summary: Op deze pagina vind je de definitie en afbakening van Intersectie, de typen kruisingen, de samenhang met Watergang en Watergangsectie, de geometrische uitgangspunten en de productrelaties.
+summary: Op deze pagina vind je de definitie en afbakening van Intersectie, de begripsmatige typen kruisingen, de samenhang met Watergang en Watergangsectie, de geometrische uitgangspunten en de productrelaties.
 heroTitle: Intersectie
 hierarchy:
   - Watersysteem
@@ -42,16 +42,16 @@ terms:
     text: Ruimtelijke aanduiding van het punt waar structuren elkaar raken of kruisen.
     href: /datastandaard/woordenboek
 contextNote: Binnen deze templatefamilie is de intersectie expliciet bedoeld voor kruisingen. Het object ligt op hetzelfde niveau als een watergangsectie, maar beschrijft een ander type onderdeel van de watergang.
-subtypes:
+definitionTypes:
   - title: Watergang - Watergang
     text: Kruising of aansluiting tussen twee watergangen.
-    href: /datastandaard/objectenhandboek/watersysteem/intersectie/watergang-watergang
+    href: /datastandaard/woordenboek
   - title: Watergang - Weg
     text: Kruising tussen de watergangstructuur en een wegverbinding.
-    href: /datastandaard/objectenhandboek/watersysteem/intersectie/watergang-weg
+    href: /datastandaard/woordenboek
   - title: Watergang - Waterkering
     text: Kruising tussen watergang en waterkering als specifieke systeemovergang.
-    href: /datastandaard/objectenhandboek/watersysteem/intersectie/watergang-waterkering
+    href: /datastandaard/woordenboek
 metadata:
   - label: Systeem
     value: Watersysteem

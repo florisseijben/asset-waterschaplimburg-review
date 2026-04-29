@@ -31,6 +31,7 @@ if (!entry) {
 }
 
 const conceptData = getConceptFromAssetJson("Watergang");
+const definitionTypes = conceptData?.types?.length ? conceptData.types : entry.data.definitionTypes || [];
 const decompositionData = getDecompositionFromAssetJson("Watergang");
 const samenhangData = createWatergangSamenhangFromAssetJson();
 const visibleContentSections = (entry.data.contentSections || [])
@@ -45,7 +46,7 @@ const visibleContentSections = (entry.data.contentSections || [])
       : item
   );
 const normalizedContentSections = normalizeObjectUitwerkingSections(visibleContentSections, {
-  subtypes: entry.data.subtypes || [],
+  compositionTypes: entry.data.compositionTypes || [],
   subtypeIconTitle: entry.data.heroTitle || entry.data.title
 });
 const geometrySection = getGeometrySection(visibleContentSections);
@@ -99,7 +100,7 @@ object:watergang relatie:heeftIntersectie object:intersectie .
       definition={conceptData?.definition || entry.data.definition}
       synonyms={conceptData?.synonyms || []}
       relatedTerms={conceptData?.relatedTerms || entry.data.terms || []}
-      subtypes={conceptData?.types || entry.data.subtypes || []}
+      definitionTypes={definitionTypes}
     />
 
     <SemanticSamenhangSection

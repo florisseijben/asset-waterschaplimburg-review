@@ -28,7 +28,7 @@ if (!entry) {
 
 const contentSections = entry.data.contentSections || [];
 const visibleContentSections = normalizeObjectUitwerkingSections(contentSections, {
-  subtypes: entry.data.subtypes || [],
+  compositionTypes: entry.data.compositionTypes || [],
   subtypeIconTitle: entry.data.heroTitle || entry.data.title
 });
 const geometrySection = getGeometrySection(contentSections);
@@ -53,7 +53,7 @@ const samenhangGraph = createKunstwerkGraph();
     definition={entry.data.definition}
     definitionSource={entry.data.definitionSource}
     relatedTerms={entry.data.terms || []}
-    subtypes={entry.data.subtypes || []}
+    definitionTypes={entry.data.definitionTypes || []}
   />
 
   <SemanticSamenhangSection

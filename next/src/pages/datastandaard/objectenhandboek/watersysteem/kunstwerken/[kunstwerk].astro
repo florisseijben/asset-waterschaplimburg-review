@@ -70,7 +70,7 @@ const relationSummary =
       : `${entry.data.title} is een ondersteunend kunstwerktype binnen de watergangstructuur en kan samenhangen met Watergangsectie of Intersectie.`;
 const contentSections = entry.data.contentSections || [];
 const uitwerkingSections = normalizeObjectUitwerkingSections(contentSections, {
-  subtypes: entry.data.subtypes || [],
+  compositionTypes: entry.data.compositionTypes || [],
   subtypeIconTitle: entry.data.heroTitle || entry.data.title,
   includeTypen: false
 });
@@ -172,7 +172,7 @@ ${typeRelationTriples}
     definition={entry.data.definition}
     definitionSource={entry.data.definitionSource}
     relatedTerms={entry.data.terms || []}
-    subtypes={entry.data.subtypes || []}
+    definitionTypes={entry.data.definitionTypes || []}
   />
 
   <SemanticSamenhangSection

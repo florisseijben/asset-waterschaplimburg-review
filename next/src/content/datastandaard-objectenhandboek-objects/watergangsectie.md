@@ -48,7 +48,7 @@ terms:
     text: Ruimtelijk afgebakend segment binnen een watergang.
     href: /datastandaard/woordenboek
 contextNote: De watergangsectie maakt het mogelijk om een watergang in opeenvolgende delen te beschrijven en vormt de directe ingang naar de compositie van onderliggende objecten. Binnen de kernregistratie wordt de watergangsectie geografisch vastgelegd door middel van de as van de watergang.
-subtypes:
+compositionTypes:
   - title: Watergang met taluds
     text: Sectie waarin taluds de primaire begrenzing vormen.
     href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/met-taluds

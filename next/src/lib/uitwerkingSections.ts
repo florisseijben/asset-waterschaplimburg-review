@@ -43,23 +43,24 @@ function normalizeGeometryItems(items: SectionLinkItem[] = []) {
 
 type NormalizedUitwerkingOptions = {
   subtypes?: SectionLinkItem[];
+  compositionTypes?: SectionLinkItem[];
   subtypeIconTitle?: string;
   includeTypen?: boolean;
   includeGeometry?: boolean;
   excludeTitles?: string[];
 };
 
-function createTypenSection(subtypes: SectionLinkItem[] = [], subtypeIconTitle?: string): ContentSection {
+function createTypenSection(compositionTypes: SectionLinkItem[] = [], subtypeIconTitle?: string): ContentSection {
   return {
     title: "Typen",
-    summary: subtypes.length
-      ? "Deze pagina onderscheidt de belangrijkste typen en varianten binnen deze lijn."
+    summary: compositionTypes.length
+      ? "Deze pagina onderscheidt de typen naar compositie binnen deze lijn."
       : "Typen en varianten voor deze pagina worden later uitgewerkt.",
-    items: subtypes.length
-      ? subtypes.map((subtype) => ({
-          ...subtype,
-          href: getObjectTypeHref(subtype.title, subtype.href),
-          iconTitle: subtype.iconTitle || subtypeIconTitle
+    items: compositionTypes.length
+      ? compositionTypes.map((compositionType) => ({
+          ...compositionType,
+          href: getObjectTypeHref(compositionType.title, compositionType.href),
+          iconTitle: compositionType.iconTitle || subtypeIconTitle
         }))
       : [
           {
@@ -100,6 +101,7 @@ export function normalizeUitwerkingSections(
   sections: ContentSection[] = [],
   options: NormalizedUitwerkingOptions = {}
 ) {
+  const compositionTypes = options.compositionTypes || options.subtypes || [];
   const excludedTitles = new Set(options.excludeTitles || []);
   const visibleSections = sections.filter((section) => {
     if (excludedTitles.has(section.title)) {
@@ -114,9 +116,9 @@ export function normalizeUitwerkingSections(
   });
 
   const withTypen =
-    options.includeTypen === false
+    options.includeTypen === false || compositionTypes.length === 0
       ? visibleSections
-      : insertTypenSection(visibleSections, createTypenSection(options.subtypes || [], options.subtypeIconTitle));
+      : insertTypenSection(visibleSections, createTypenSection(compositionTypes, options.subtypeIconTitle));
 
   return withTypen.map((section) => {
     const normalizedSection =

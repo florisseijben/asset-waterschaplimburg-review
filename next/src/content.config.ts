@@ -78,6 +78,8 @@ const datastandaardObjectenhandboekObjects = defineCollection({
     terms: z.any().optional(),
     contextNote: z.coerce.string().optional(),
     subtypes: z.any().optional(),
+    definitionTypes: z.any().optional(),
+    compositionTypes: z.any().optional(),
     metadata: z.any().optional(),
     contentSections: z.any().optional(),
     productRelations: z.any().optional(),

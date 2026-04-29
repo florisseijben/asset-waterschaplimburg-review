@@ -1,6 +1,6 @@
 ---
 import { withBase } from "../lib/paths";
-import { getObjectTypeHref, getObjectTypeRouteRecord } from "../lib/objectTypeRoutes";
+import { getObjectTypeHref } from "../lib/objectTypeRoutes";
 
 interface TermItem {
   title: string;
@@ -13,6 +13,7 @@ interface Props {
   definition?: string;
   synonyms?: TermItem[];
   relatedTerms?: TermItem[];
+  definitionTypes?: TermItem[];
   subtypes?: TermItem[];
   runtimeSourceUrl?: string;
   runtimeSourceLabel?: string;
@@ -24,19 +25,21 @@ const {
   definition,
   synonyms = [],
   relatedTerms = [],
+  definitionTypes = [],
   subtypes = [],
   runtimeSourceUrl,
   runtimeSourceLabel = "IMBOR",
-  showTypes = true
+  showTypes
 } = Astro.props;
 
+const conceptTypes = definitionTypes.length > 0 ? definitionTypes : subtypes;
 const hasSynonyms = synonyms.length > 0;
 const hasRelatedTerms = relatedTerms.length > 0;
-const hasSubtypes = subtypes.length > 0;
+const hasConceptTypes = conceptTypes.length > 0;
+const shouldShowTypes = showTypes ?? hasConceptTypes;
 const runtimeId = `concept-runtime-${subjectLabel.toLowerCase().replace(/\s+/g, "-")}`;
-const objectTypeRouteRecord = getObjectTypeRouteRecord();
 const getRelatedHref = (item: TermItem) => getObjectTypeHref(item.title, item.href || "/datastandaard/woordenboek");
-const getSubtypeHref = (item: TermItem) => getObjectTypeHref(item.title, item.href || "/datastandaard/woordenboek");
+const getConceptTypeHref = (item: TermItem) => item.href || "/datastandaard/woordenboek";
 ---
 
 <section class="section section-panel">
@@ -89,21 +92,21 @@ const getSubtypeHref = (item: TermItem) => getObjectTypeHref(item.title, item.hr
       </div>
     </details>
 
-    {showTypes && (
+    {shouldShowTypes && (
       <details class="concept-disclosure">
-        <summary>Typen</summary>
+        <summary>Typen naar definitie</summary>
         <div class="concept-disclosure__body" data-concept-types>
-          {hasSubtypes ? (
+          {hasConceptTypes ? (
             <div class="concept-summary__list">
-              {subtypes.map((item) => (
-                <a class="concept-summary__item" href={withBase(getSubtypeHref(item))}>
+              {conceptTypes.map((item) => (
+                <a class="concept-summary__item" href={withBase(getConceptTypeHref(item))}>
                   <strong>{item.title}</strong>
-                  <span>{item.text || "Open objecttype in het objectenhandboek."}</span>
+                  <span>{item.text || "Open begrip in het woordenboek."}</span>
                 </a>
               ))}
             </div>
           ) : (
-            <span class="concept-summary__empty">Geen typen uitgewerkt.</span>
+            <span class="concept-summary__empty">Geen begripsmatige typen uitgewerkt.</span>
           )}
         </div>
       </details>
@@ -117,8 +120,7 @@ const getSubtypeHref = (item: TermItem) => getObjectTypeHref(item.title, item.hr
     define:vars={{
       runtimeId,
       runtimeSourceUrl,
-      runtimeSourceLabel,
-      objectTypeRouteRecord
+      runtimeSourceLabel
     }}
   >
     const note = document.getElementById(runtimeId);
@@ -130,16 +132,7 @@ const getSubtypeHref = (item: TermItem) => getObjectTypeHref(item.title, item.hr
 
     const fallbackMessage = `Live ophalen uit ${runtimeSourceLabel} lukte niet. Hieronder zie je de build-time versie.`;
     const successMessage = `Begripsinformatie is live bijgewerkt vanuit ${runtimeSourceLabel}.`;
-    const normalizeObjectTypeKey = (value) =>
-      String(value || "")
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-        .toLowerCase()
-        .replace(/&/g, " en ")
-        .replace(/['"]/g, "")
-        .replace(/[^a-z0-9]+/g, "-")
-        .replace(/^-|-$/g, "");
-    const getObjectTypeHref = (title) => objectTypeRouteRecord[normalizeObjectTypeKey(title)] || "/datastandaard/woordenboek";
+    const getObjectTypeHref = () => "/datastandaard/woordenboek";
 
     const createListMarkup = (items) => {
       if (!items?.length) {

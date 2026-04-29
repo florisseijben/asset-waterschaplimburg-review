@@ -186,9 +186,11 @@ const getOnderdelenSection = (entry: any) =>
 
 const getRelationCategory = (parentEntry: any, childTitle: string) => {
   const childKey = normalizeKey(childTitle);
-  const isSubtype = (parentEntry.data.subtypes || []).some((subtype: any) => normalizeKey(subtype.title) === childKey);
+  const isCompositionType = (parentEntry.data.compositionTypes || []).some(
+    (compositionType: any) => normalizeKey(compositionType.title) === childKey
+  );
 
-  if (isSubtype) {
+  if (isCompositionType) {
     return "Typen";
   }
 
@@ -216,7 +218,7 @@ const createCategorizedPath = (entry: any) => {
 
 const getPrintableSections = (entry: any) =>
   normalizeObjectUitwerkingSections(entry.data.contentSections || [], {
-    subtypes: [],
+    compositionTypes: [],
     subtypeIconTitle: getObjectTitle(entry),
     includeTypen: false,
     excludeTitles: ["Onderdelen"]
@@ -227,9 +229,9 @@ scopedEntries.forEach((entry) => {
   const categorizedPath = createCategorizedPath(entry);
   const chapterLabel = getChapterLabel(path, entry);
   const chapter = chapterMap.get(chapterLabel) || { label: chapterLabel, nodes: [] };
-  const looseSubtypes = (entry.data.subtypes || [])
-    .filter((subtype: any) => !knownTitles.has(normalizeKey(subtype.title)))
-    .sort((left: any, right: any) => collator.compare(left.title, right.title));
+  const knownCompositionTypes = (entry.data.compositionTypes || []).filter((compositionType: any) =>
+    knownTitles.has(normalizeKey(compositionType.title))
+  );
   insertNode(chapter.nodes, categorizedPath, {
     entry,
     title: getObjectTitle(entry),
@@ -238,25 +240,15 @@ scopedEntries.forEach((entry) => {
     sections: getPrintableSections(entry)
   });
 
-  if ((entry.data.subtypes || []).length > 0) {
+  if (knownCompositionTypes.length > 0) {
     insertNode(chapter.nodes, [...categorizedPath, "Typen"], {
       title: "Typen",
       path: [...categorizedPath, "Typen"],
-      summary: `Typen en varianten van ${getObjectTitle(entry)}.`,
-      text: `Typen en varianten van ${getObjectTitle(entry)}.`,
+      summary: `Typen naar compositie van ${getObjectTitle(entry)}.`,
+      text: `Typen naar compositie van ${getObjectTitle(entry)}.`,
       sections: []
     });
   }
-
-  looseSubtypes.forEach((subtype: any) => {
-    insertNode(chapter.nodes, [...categorizedPath, "Typen", subtype.title], {
-      title: subtype.title,
-      path: [...categorizedPath, "Typen", subtype.title],
-      summary: subtype.text,
-      text: subtype.text,
-      sections: []
-    });
-  });
 
   const onderdelenSection = getOnderdelenSection(entry);
   const onderdelenItems = onderdelenSection?.items || [];

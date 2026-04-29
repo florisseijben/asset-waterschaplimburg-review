@@ -6,7 +6,7 @@ product: objectenhandboek
 ownerTeam: datastandaard
 status: eerste-template
 lastReviewed: 2026-04-12
-summary: Op deze pagina vind je de definitie en afbakening van Bekledingsconstructie, de relatie met Talud, de typen bekleding, de geometrische uitgangspunten en de vervolgstap naar Toplaag.
+summary: Op deze pagina vind je de definitie en afbakening van Bekledingsconstructie, de relatie met Talud, de begripsmatige typen bekleding, de geometrische uitgangspunten en de vervolgstap naar Toplaag.
 heroTitle: Bekledingsconstructie
 hierarchy:
   - Watersysteem
@@ -44,13 +44,13 @@ terms:
     text: Buitenste verdedigingslaag van de bekledingsconstructie en eerste onderliggende component.
     href: /datastandaard/woordenboek
 contextNote: "Binnen DAMO en Aquo wordt bekledingsconstructie vooral gebruikt in de context van waterkeringen. In deze objectlijn passen we hetzelfde principe toe op taluds van watergangen: als constructieve opbouw die het talud beschermt en waarvan minimaal de toplaag expliciet benoemd wordt."
-subtypes:
+definitionTypes:
   - title: Open bekleding
     text: Bekledingsconstructie met een open of doorlatende structuur, passend bij uitwisseling met de ondergrond.
-    href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/talud/bekledingsconstructie/open-bekleding
+    href: /datastandaard/woordenboek
   - title: Gesloten bekleding
     text: Bekledingsconstructie met een meer gesloten oppervlak of afwerking voor bescherming en stabiliteit.
-    href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/talud/bekledingsconstructie/gesloten-bekleding
+    href: /datastandaard/woordenboek
 metadata:
   - label: Systeem
     value: Watersysteem

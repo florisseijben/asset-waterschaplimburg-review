@@ -50,7 +50,7 @@ terms:
     text: Kruising of overgang in de waterstructuur waar een kunstwerk onderdeel van kan zijn.
     href: /datastandaard/woordenboek
 contextNote: Binnen deze objectfamilie brengen we kunstwerken samen die de watergangstructuur en regenwaterbuffers ondersteunen. Regulerende kunstwerken, zoals stuwen en bodemvallen, raken aan of vullen watergangsecties in. Kruisende kunstwerken, zoals bruggen, aquaducten, duikers en voorden, geven vooral invulling aan intersecties.
-subtypes:
+compositionTypes:
   - title: Aquaduct
     text: Kruisend kunstwerktype waarbij een watergang over een andere infrastructuur of watergang heen wordt geleid.
     href: /datastandaard/objectenhandboek/watersysteem/kunstwerken/aquaduct

@@ -65,41 +65,6 @@ export const objectTypePlaceholderRoutes: ObjectTypeRoute[] = [
     parentHref: "/datastandaard/objectenhandboek/watersysteem"
   },
   {
-    title: "Beek",
-    href: "/datastandaard/objectenhandboek/watersysteem/watergangen/beek",
-    parentTitle: "Watergang",
-    parentHref: "/datastandaard/objectenhandboek/watersysteem/watergangen",
-    summary: "Subtype van Watergang voor een natuurlijke of genaturaliseerde stromende watergang."
-  },
-  {
-    title: "Gracht",
-    href: "/datastandaard/objectenhandboek/watersysteem/watergangen/gracht",
-    parentTitle: "Watergang",
-    parentHref: "/datastandaard/objectenhandboek/watersysteem/watergangen",
-    summary: "Subtype van Watergang voor een gegraven watergang met een stedelijke, verdedigende of landschappelijke context."
-  },
-  {
-    title: "Kanaal",
-    href: "/datastandaard/objectenhandboek/watersysteem/watergangen/kanaal",
-    parentTitle: "Watergang",
-    parentHref: "/datastandaard/objectenhandboek/watersysteem/watergangen",
-    summary: "Subtype van Watergang voor een kunstmatig aangelegde watergang met een doorgaande waterfunctie."
-  },
-  {
-    title: "Rivier",
-    href: "/datastandaard/objectenhandboek/watersysteem/watergangen/rivier",
-    parentTitle: "Watergang",
-    parentHref: "/datastandaard/objectenhandboek/watersysteem/watergangen",
-    summary: "Subtype van Watergang voor een grotere natuurlijke stromende waterloop."
-  },
-  {
-    title: "Sloot",
-    href: "/datastandaard/objectenhandboek/watersysteem/watergangen/sloot",
-    parentTitle: "Watergang",
-    parentHref: "/datastandaard/objectenhandboek/watersysteem/watergangen",
-    summary: "Subtype van Watergang voor een kleinere gegraven watergang voor afvoer, aanvoer of ontwatering."
-  },
-  {
     title: "Watergang met taluds",
     href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/met-taluds",
     parentTitle: "Watergangsectie",
@@ -136,60 +101,6 @@ export const objectTypePlaceholderRoutes: ObjectTypeRoute[] = [
     parentHref: "/datastandaard/objectenhandboek/watersysteem/watergangsectie"
   },
   {
-    title: "Watergang - Watergang",
-    href: "/datastandaard/objectenhandboek/watersysteem/intersectie/watergang-watergang",
-    parentTitle: "Intersectie",
-    parentHref: "/datastandaard/objectenhandboek/watersysteem/intersectie"
-  },
-  {
-    title: "Watergang - Weg",
-    href: "/datastandaard/objectenhandboek/watersysteem/intersectie/watergang-weg",
-    parentTitle: "Intersectie",
-    parentHref: "/datastandaard/objectenhandboek/watersysteem/intersectie"
-  },
-  {
-    title: "Watergang - Waterkering",
-    href: "/datastandaard/objectenhandboek/watersysteem/intersectie/watergang-waterkering",
-    parentTitle: "Intersectie",
-    parentHref: "/datastandaard/objectenhandboek/watersysteem/intersectie"
-  },
-  {
-    title: "Linkertalud",
-    href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/talud/linkertalud",
-    parentTitle: "Talud",
-    parentHref: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/talud"
-  },
-  {
-    title: "Rechtertalud",
-    href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/talud/rechtertalud",
-    parentTitle: "Talud",
-    parentHref: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/talud"
-  },
-  {
-    title: "Flauw talud",
-    href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/talud/flauw-talud",
-    parentTitle: "Talud",
-    parentHref: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/talud"
-  },
-  {
-    title: "Steil talud",
-    href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/talud/steil-talud",
-    parentTitle: "Talud",
-    parentHref: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/talud"
-  },
-  {
-    title: "Open bekleding",
-    href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/talud/bekledingsconstructie/open-bekleding",
-    parentTitle: "Bekledingsconstructie",
-    parentHref: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/talud/bekledingsconstructie"
-  },
-  {
-    title: "Gesloten bekleding",
-    href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/talud/bekledingsconstructie/gesloten-bekleding",
-    parentTitle: "Bekledingsconstructie",
-    parentHref: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/talud/bekledingsconstructie"
-  },
-  {
     title: "Toplaag",
     href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/talud/bekledingsconstructie/toplaag",
     parentTitle: "Bekledingsconstructie",
@@ -224,18 +135,6 @@ export const objectTypePlaceholderRoutes: ObjectTypeRoute[] = [
     href: "/datastandaard/objectenhandboek/watersysteem/kunstwerken/bouwdeel",
     parentTitle: "Kunstwerk",
     parentHref: "/datastandaard/objectenhandboek/watersysteem/kunstwerken"
-  },
-  {
-    title: "1e gebiedsorde",
-    href: "/datastandaard/objectenhandboek/watersysteem/stroomgebied/1e-gebiedsorde",
-    parentTitle: "Stroomgebied",
-    parentHref: "/datastandaard/objectenhandboek/watersysteem/stroomgebied"
-  },
-  {
-    title: "2e gebiedsorde",
-    href: "/datastandaard/objectenhandboek/watersysteem/stroomgebied/2e-gebiedsorde",
-    parentTitle: "Stroomgebied",
-    parentHref: "/datastandaard/objectenhandboek/watersysteem/stroomgebied"
   },
   {
     title: "RWZI's",

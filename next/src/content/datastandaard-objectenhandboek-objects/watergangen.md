@@ -6,7 +6,7 @@ product: objectenhandboek
 ownerTeam: datastandaard
 status: eerste-template
 lastReviewed: 2026-04-11
-summary: Op deze pagina vind je de definitie en afbakening van Watergang, de typen watergang, de samenhang met Watergangsectie en Intersectie, de geometrische uitgangspunten en de productrelaties.
+summary: Op deze pagina vind je de definitie en afbakening van Watergang, de begripsmatige typen watergang, de samenhang met Watergangsectie en Intersectie, de geometrische uitgangspunten en de productrelaties.
 heroTitle: Watergang
 hierarchy:
   - Watersysteem
@@ -43,22 +43,22 @@ terms:
     text: IMBOR-attribuut voor het type beheer en het belang van de watergang.
     href: /datastandaard/woordenboek
 contextNote: In IMBOR ligt de nadruk op de watergang als beheerd fysiek object. In deze objectlijn combineren we dat met Aquo-terminologie voor waterbeheer en met de semantische decompositie naar watergangsecties en intersecties.
-subtypes:
+definitionTypes:
   - title: Beek
     text: Onderliggend begrip van Watergang in IMBOR.
-    href: /datastandaard/objectenhandboek/watersysteem/watergangen/beek
+    href: /datastandaard/woordenboek
   - title: Gracht
     text: Onderliggend begrip van Watergang in IMBOR.
-    href: /datastandaard/objectenhandboek/watersysteem/watergangen/gracht
+    href: /datastandaard/woordenboek
   - title: Kanaal
     text: Onderliggend begrip van Watergang in IMBOR.
-    href: /datastandaard/objectenhandboek/watersysteem/watergangen/kanaal
+    href: /datastandaard/woordenboek
   - title: Rivier
     text: Onderliggend begrip van Watergang in IMBOR.
-    href: /datastandaard/objectenhandboek/watersysteem/watergangen/rivier
+    href: /datastandaard/woordenboek
   - title: Sloot
     text: Onderliggend begrip van Watergang in IMBOR.
-    href: /datastandaard/objectenhandboek/watersysteem/watergangen/sloot
+    href: /datastandaard/woordenboek
 metadata:
   - label: Systeem
     value: Watersysteem
