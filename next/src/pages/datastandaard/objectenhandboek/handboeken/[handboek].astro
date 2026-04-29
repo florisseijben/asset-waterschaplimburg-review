@@ -343,157 +343,169 @@ const handbookSummary = `${scope.summary} De digitale samenhangsweergaven, produ
     </section>
   ) : (
     <div class="handbook-document">
-      <section class="section section-panel handbook-toc">
+      <aside class="section-panel handbook-toc" aria-label="Inhoudsopgave">
         <p class="eyebrow">Inhoud</p>
         <h2>Inhoudsopgave</h2>
         <ol class="handbook-toc__chapters">
           {handbookChapters.map((chapter) => (
             <li class="handbook-toc__chapter">
-              <a class="handbook-toc__link handbook-toc__link--chapter" href={`#${chapter.id}`}>
-                <span class="handbook-number">{chapter.number}</span>
-                <span>{chapter.label}</span>
-              </a>
-              <ol class="handbook-toc__sections">
-                {chapter.flatNodes.map((item) => (
-                  <li
-                    class="handbook-toc__section"
-                    style={`--handbook-level: ${Math.max(item.depth - 1, 0)};`}
-                  >
-                    <a class="handbook-toc__link" href={`#${item.id}`}>
-                      <span class="handbook-number">{item.number}</span>
-                      <span>{item.title}</span>
-                    </a>
-                  </li>
-                ))}
-              </ol>
+              <details class="handbook-toc__details" open>
+                <summary class="handbook-toc__summary">
+                  <span class="handbook-number">{chapter.number}</span>
+                  <span>{chapter.label}</span>
+                </summary>
+                <a
+                  class="handbook-toc__link handbook-toc__link--chapter"
+                  href={`#${chapter.id}`}
+                  aria-label={`Naar hoofdstuk ${chapter.number}: ${chapter.label}`}
+                >
+                  <span class="handbook-number">{chapter.number}</span>
+                  <span>Hoofdstuk</span>
+                </a>
+                <ol class="handbook-toc__sections">
+                  {chapter.flatNodes.map((item) => (
+                    <li
+                      class="handbook-toc__section"
+                      style={`--handbook-level: ${Math.max(item.depth - 1, 0)};`}
+                    >
+                      <a class="handbook-toc__link" href={`#${item.id}`}>
+                        <span class="handbook-number">{item.number}</span>
+                        <span>{item.title}</span>
+                      </a>
+                    </li>
+                  ))}
+                </ol>
+              </details>
             </li>
           ))}
         </ol>
-      </section>
+      </aside>
 
-      {handbookChapters.map((chapter) => (
-        <section class="section handbook-chapter" id={chapter.id}>
-          <header class="section-panel handbook-chapter__heading">
-            <p class="eyebrow">Hoofdstuk {chapter.number}</p>
-            <h2>
-              <span class="handbook-number">{chapter.number}</span>
-              <span>{chapter.label}</span>
-            </h2>
-            {chapter.introNode && (
-              <div class="handbook-chapter__intro">
-                {chapter.introNode.summary && <p class="lead">{chapter.introNode.summary}</p>}
+      <div class="handbook-content">
+        {handbookChapters.map((chapter) => (
+          <section class="section handbook-chapter" id={chapter.id}>
+            <header class="section-panel handbook-chapter__heading">
+              <p class="eyebrow">Hoofdstuk {chapter.number}</p>
+              <h2>
+                <span class="handbook-number">{chapter.number}</span>
+                <span>{chapter.label}</span>
+              </h2>
+              {chapter.introNode && (
+                <div class="handbook-chapter__intro">
+                  {chapter.introNode.summary && <p class="lead">{chapter.introNode.summary}</p>}
 
-                <section class="handbook-object__block">
-                  <h3>Begrip</h3>
-                  {chapter.introNode.entry.data.definition && <p>{chapter.introNode.entry.data.definition}</p>}
-                  {chapter.introNode.entry.data.definitionSource && (
-                    <p class="handbook-object__source">{chapter.introNode.entry.data.definitionSource}</p>
-                  )}
-                </section>
-
-                {chapter.introNode.sections.length > 0 && (
                   <section class="handbook-object__block">
-                    <h3>Uitwerking</h3>
-                    {chapter.introNode.sections.map((section: any) => (
-                      <section class="handbook-object__subsection">
-                        <h4>{section.title}</h4>
-                        {section.summary && <p>{section.summary}</p>}
-                        {(section.items || []).length > 0 && (
-                          <ul>
-                            {section.items.map((sectionItem: any) => (
-                              <li>
-                                <strong>{sectionItem.title}</strong>
-                                {sectionItem.text && <span> {sectionItem.text}</span>}
-                              </li>
-                            ))}
-                          </ul>
+                    <h3>Begrip</h3>
+                    {chapter.introNode.entry.data.definition && <p>{chapter.introNode.entry.data.definition}</p>}
+                    {chapter.introNode.entry.data.definitionSource && (
+                      <p class="handbook-object__source">{chapter.introNode.entry.data.definitionSource}</p>
+                    )}
+                  </section>
+
+                  {chapter.introNode.sections.length > 0 && (
+                    <section class="handbook-object__block">
+                      <h3>Uitwerking</h3>
+                      {chapter.introNode.sections.map((section: any) => (
+                        <section class="handbook-object__subsection">
+                          <h4>{section.title}</h4>
+                          {section.summary && <p>{section.summary}</p>}
+                          {(section.items || []).length > 0 && (
+                            <ul>
+                              {section.items.map((sectionItem: any) => (
+                                <li>
+                                  <strong>{sectionItem.title}</strong>
+                                  {sectionItem.text && <span> {sectionItem.text}</span>}
+                                </li>
+                              ))}
+                            </ul>
+                          )}
+                        </section>
+                      ))}
+                    </section>
+                  )}
+                </div>
+              )}
+            </header>
+
+            {chapter.flatNodes.map((item) => {
+              const entry = item.entry;
+
+              return (
+                <article
+                  class:list={[
+                    "section-panel",
+                    "handbook-object",
+                    `handbook-object--depth-${Math.min(item.depth, 4)}`
+                  ]}
+                  id={item.id}
+                  style={`--handbook-level: ${Math.min(item.depth - 1, 3)};`}
+                >
+                  <p class="eyebrow">Paragraaf {item.number}</p>
+                  <h3>
+                    <span class="handbook-number">{item.number}</span>
+                    <span>{item.title}</span>
+                  </h3>
+                  {item.summary && <p class="lead">{item.summary}</p>}
+
+                  {entry ? (
+                    <>
+                      <section class="handbook-object__block">
+                        <h4>Begrip</h4>
+                        {entry.data.definition && <p>{entry.data.definition}</p>}
+                        {entry.data.definitionSource && (
+                          <p class="handbook-object__source">{entry.data.definitionSource}</p>
+                        )}
+                        {(entry.data.terms || []).length > 0 && (
+                          <div>
+                            <h5>Gerelateerde begrippen</h5>
+                            <ul>
+                              {(entry.data.terms || []).map((term: any) => (
+                                <li>
+                                  <strong>{term.title}</strong>
+                                  {term.text && <span> {term.text}</span>}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
                         )}
                       </section>
-                    ))}
-                  </section>
-                )}
-              </div>
-            )}
-          </header>
 
-          {chapter.flatNodes.map((item) => {
-            const entry = item.entry;
-
-            return (
-              <article
-                class:list={[
-                  "section-panel",
-                  "handbook-object",
-                  `handbook-object--depth-${Math.min(item.depth, 4)}`
-                ]}
-                id={item.id}
-                style={`--handbook-level: ${Math.min(item.depth - 1, 3)};`}
-              >
-                <p class="eyebrow">Paragraaf {item.number}</p>
-                <h3>
-                  <span class="handbook-number">{item.number}</span>
-                  <span>{item.title}</span>
-                </h3>
-                {item.summary && <p class="lead">{item.summary}</p>}
-
-                {entry ? (
-                  <>
-                    <section class="handbook-object__block">
-                      <h4>Begrip</h4>
-                      {entry.data.definition && <p>{entry.data.definition}</p>}
-                      {entry.data.definitionSource && (
-                        <p class="handbook-object__source">{entry.data.definitionSource}</p>
+                      {item.sections.length > 0 && (
+                        <section class="handbook-object__block">
+                          <h4>Uitwerking</h4>
+                          {item.sections.map((section: any) => (
+                            <section class="handbook-object__subsection">
+                              <h5>{section.title}</h5>
+                              {section.summary && <p>{section.summary}</p>}
+                              {(section.items || []).length > 0 && (
+                                <ul>
+                                  {section.items.map((sectionItem: any) => (
+                                    <li>
+                                      <strong>{sectionItem.title}</strong>
+                                      {sectionItem.text && <span> {sectionItem.text}</span>}
+                                    </li>
+                                  ))}
+                                </ul>
+                              )}
+                            </section>
+                          ))}
+                        </section>
                       )}
-                      {(entry.data.terms || []).length > 0 && (
-                        <div>
-                          <h5>Gerelateerde begrippen</h5>
-                          <ul>
-                            {(entry.data.terms || []).map((term: any) => (
-                              <li>
-                                <strong>{term.title}</strong>
-                                {term.text && <span> {term.text}</span>}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
-                    </section>
-
-                    {item.sections.length > 0 && (
+                    </>
+                  ) : (
+                    item.text && item.text !== item.summary && (
                       <section class="handbook-object__block">
-                        <h4>Uitwerking</h4>
-                        {item.sections.map((section: any) => (
-                          <section class="handbook-object__subsection">
-                            <h5>{section.title}</h5>
-                            {section.summary && <p>{section.summary}</p>}
-                            {(section.items || []).length > 0 && (
-                              <ul>
-                                {section.items.map((sectionItem: any) => (
-                                  <li>
-                                    <strong>{sectionItem.title}</strong>
-                                    {sectionItem.text && <span> {sectionItem.text}</span>}
-                                  </li>
-                                ))}
-                              </ul>
-                            )}
-                          </section>
-                        ))}
+                        <h4>Korte omschrijving</h4>
+                        <p>{item.text}</p>
                       </section>
-                    )}
-                  </>
-                ) : (
-                  item.text && item.text !== item.summary && (
-                    <section class="handbook-object__block">
-                      <h4>Korte omschrijving</h4>
-                      <p>{item.text}</p>
-                    </section>
-                  )
-                )}
-              </article>
-            );
-          })}
-        </section>
-      ))}
+                    )
+                  )}
+                </article>
+              );
+            })}
+          </section>
+        ))}
+      </div>
     </div>
   )}
 </BaseLayout>

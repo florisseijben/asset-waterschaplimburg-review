@@ -580,7 +580,27 @@ a.classification-tag:focus-visible {
 
 .handbook-document {
   display: grid;
+  grid-template-columns: minmax(16rem, 22rem) minmax(0, 1fr);
   gap: var(--space-8);
+  align-items: start;
+}
+
+.handbook-content {
+  display: grid;
+  gap: var(--space-8);
+  min-width: 0;
+}
+
+.handbook-content > .section {
+  margin-bottom: 0;
+}
+
+.handbook-toc {
+  position: sticky;
+  top: var(--space-4);
+  max-height: calc(100vh - var(--space-8));
+  overflow: auto;
+  overscroll-behavior: contain;
 }
 
 .handbook-toc__chapters,
@@ -601,8 +621,58 @@ a.classification-tag:focus-visible {
   gap: var(--space-2);
 }
 
+.handbook-toc__details {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.handbook-toc__summary {
+  display: grid;
+  grid-template-columns: 4.5rem minmax(0, 1fr) 0.75rem;
+  gap: var(--space-3);
+  align-items: baseline;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid rgba(16, 35, 33, 0.32);
+  color: var(--color-deep);
+  cursor: pointer;
+  font-weight: 800;
+  list-style: none;
+}
+
+.handbook-toc__summary::-webkit-details-marker {
+  display: none;
+}
+
+.handbook-toc__summary::marker {
+  content: "";
+}
+
+.handbook-toc__summary::after {
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  border-right: 2px solid var(--color-brand-dark);
+  border-bottom: 2px solid var(--color-brand-dark);
+  transform: rotate(45deg);
+  transition: transform 0.18s ease;
+  justify-self: end;
+  align-self: center;
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.handbook-toc__details[open] > .handbook-toc__summary::after {
+  transform: rotate(225deg);
+}
+
+.handbook-toc__summary:hover,
+.handbook-toc__summary:focus-visible {
+  color: var(--color-brand-dark);
+}
+
 .handbook-toc__sections {
   gap: 0.25rem;
+  margin-top: var(--space-2);
 }
 
 .handbook-toc__section {
@@ -626,8 +696,9 @@ a.classification-tag:focus-visible {
 }
 
 .handbook-toc__link--chapter {
-  border-bottom-style: solid;
-  font-weight: 800;
+  margin-top: var(--space-2);
+  color: var(--color-muted);
+  font-weight: 700;
 }
 
 .handbook-number {
@@ -1173,6 +1244,17 @@ a.classification-tag:focus-visible {
     grid-template-columns: 1fr;
   }
 
+  .handbook-document {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+
+  .handbook-toc {
+    position: static;
+    max-height: none;
+    overflow: visible;
+  }
+
   .next-steps-layout {
     grid-template-columns: 1fr;
   }
@@ -1235,6 +1317,10 @@ a.classification-tag:focus-visible {
 
   .handbook-toc__link {
     grid-template-columns: 3.5rem minmax(0, 1fr);
+  }
+
+  .handbook-toc__summary {
+    grid-template-columns: 3.5rem minmax(0, 1fr) 0.75rem;
   }
 
   .card-grid,
@@ -1325,6 +1411,22 @@ a.classification-tag:focus-visible {
     box-shadow: none;
   }
 
+  .handbook-document,
+  .handbook-content {
+    display: block;
+  }
+
+  .handbook-toc {
+    position: static;
+    max-height: none;
+    overflow: visible;
+  }
+
+  .handbook-toc__details:not([open]) > .handbook-toc__link,
+  .handbook-toc__details:not([open]) > .handbook-toc__sections {
+    display: grid;
+  }
+
   .handbook-object {
     margin-left: 0;
     break-inside: auto;
@@ -1341,7 +1443,7 @@ a.classification-tag:focus-visible {
     break-before: page;
   }
 
-  .handbook-toc + .handbook-chapter {
+  .handbook-content .handbook-chapter:first-child {
     break-before: auto;
   }
 
