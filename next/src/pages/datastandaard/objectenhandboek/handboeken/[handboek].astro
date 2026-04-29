@@ -295,7 +295,13 @@ const handbookSummary = `${scope.summary} De digitale samenhangsweergaven, produ
               <details class="handbook-toc__details" open>
                 <summary class="handbook-toc__summary">
                   <span class="handbook-number">{chapter.number}</span>
-                  <span>{chapter.label}</span>
+                  <a
+                    class="handbook-toc__chapter-link"
+                    href={`#${chapter.id}`}
+                    onclick="event.stopPropagation()"
+                  >
+                    {chapter.label}
+                  </a>
                 </summary>
                 <ol class="handbook-toc__sections">
                   {chapter.flatNodes.map((item) => (
