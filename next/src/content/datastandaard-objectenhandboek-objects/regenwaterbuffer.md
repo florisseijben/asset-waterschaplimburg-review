@@ -6,7 +6,7 @@ product: objectenhandboek
 ownerTeam: datastandaard
 status: eerste-template
 lastReviewed: 2026-04-16
-summary: Op deze pagina vind je de definitie en afbakening van Regenwaterbuffer, de typen buffer, de samenhang met Regenwaterbuffercompartiment, de geometrische uitgangspunten en de productrelaties.
+summary: Op deze pagina vind je de definitie en afbakening van Regenwaterbuffer, de samenhang met Regenwaterbuffercompartiment, de geometrische uitgangspunten en de productrelaties.
 heroTitle: Regenwaterbuffer
 hierarchy:
   - Watersysteem
@@ -45,10 +45,6 @@ terms:
     text: Functioneel begrip voor het tijdelijk opslaan van water in het watersysteem.
     href: /datastandaard/woordenboek
 contextNote: Binnen deze objectlijn wordt de regenwaterbuffer gelezen als zelfstandig hoofdobject voor tijdelijke opvang en gereguleerde lozing van neerslagpieken. In DAMO is de relatie naar compartimenten expliciet gemaakt, waardoor decompositie naar onderliggende delen logisch aansluit op de bestaande opzet van het objectenhandboek.
-subtypes:
-  - title: Type regenwaterbuffer
-    text: DAMO-attribuut voor het type of de verschijningsvorm van de regenwaterbuffer.
-    href: /datastandaard/objectenhandboek/watersysteem/regenwaterbuffer/type-regenwaterbuffer
 metadata:
   - label: Systeem
     value: Watersysteem

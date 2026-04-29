@@ -6,7 +6,7 @@ product: objectenhandboek
 ownerTeam: datastandaard
 status: eerste-template
 lastReviewed: 2026-04-16
-summary: Op deze pagina vind je de definitie en afbakening van Regenwaterbuffercompartiment, de relatie met Regenwaterbuffer, de typen compartimenten, de geometrische uitgangspunten en de productrelaties.
+summary: Op deze pagina vind je de definitie en afbakening van Regenwaterbuffercompartiment, de relatie met Regenwaterbuffer, de geometrische uitgangspunten en de productrelaties.
 heroTitle: Regenwaterbuffercompartiment
 hierarchy:
   - Watersysteem
@@ -41,13 +41,6 @@ terms:
     text: Bovenliggend object waarvan een of meerdere compartimenten onderdeel uitmaken.
     href: /datastandaard/objectenhandboek/watersysteem/regenwaterbuffer
 contextNote: DAMO beschrijft expliciet dat een regenwaterbuffer uit een of meerdere compartimenten bestaat. Binnen deze objectlijn gebruiken we dat als decompositieprincipe, zodat oppervlak, volume en relaties met scheidende of regelende objecten op compartimentniveau beschreven kunnen worden.
-subtypes:
-  - title: Volume compartiment
-    text: DAMO-attribuut voor de inhoud van een afzonderlijk compartiment.
-    href: /datastandaard/objectenhandboek/watersysteem/regenwaterbuffer/regenwaterbuffercompartiment/volume-compartiment
-  - title: Oppervlakte compartiment
-    text: DAMO-attribuut voor de oppervlakte van een afzonderlijk compartiment.
-    href: /datastandaard/objectenhandboek/watersysteem/regenwaterbuffer/regenwaterbuffercompartiment/oppervlakte-compartiment
 metadata:
   - label: Systeem
     value: Watersysteem

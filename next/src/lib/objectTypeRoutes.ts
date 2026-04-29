@@ -154,24 +154,6 @@ export const objectTypePlaceholderRoutes: ObjectTypeRoute[] = [
     parentHref: "/datastandaard/objectenhandboek/watersysteem/intersectie"
   },
   {
-    title: "Type regenwaterbuffer",
-    href: "/datastandaard/objectenhandboek/watersysteem/regenwaterbuffer/type-regenwaterbuffer",
-    parentTitle: "Regenwaterbuffer",
-    parentHref: "/datastandaard/objectenhandboek/watersysteem/regenwaterbuffer"
-  },
-  {
-    title: "Volume compartiment",
-    href: "/datastandaard/objectenhandboek/watersysteem/regenwaterbuffer/regenwaterbuffercompartiment/volume-compartiment",
-    parentTitle: "Regenwaterbuffercompartiment",
-    parentHref: "/datastandaard/objectenhandboek/watersysteem/regenwaterbuffer/regenwaterbuffercompartiment"
-  },
-  {
-    title: "Oppervlakte compartiment",
-    href: "/datastandaard/objectenhandboek/watersysteem/regenwaterbuffer/regenwaterbuffercompartiment/oppervlakte-compartiment",
-    parentTitle: "Regenwaterbuffercompartiment",
-    parentHref: "/datastandaard/objectenhandboek/watersysteem/regenwaterbuffer/regenwaterbuffercompartiment"
-  },
-  {
     title: "Linkertalud",
     href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/talud/linkertalud",
     parentTitle: "Talud",
