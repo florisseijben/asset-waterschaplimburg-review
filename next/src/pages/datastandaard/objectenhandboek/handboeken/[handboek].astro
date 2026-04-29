@@ -138,8 +138,26 @@ function insertNode(nodes: HandbookNode[], path: string[], payload: Partial<Hand
   node.sections = payload.sections || node.sections;
 }
 
+const getNodeSortRank = (title: string) => {
+  const key = normalizeKey(title);
+
+  if (key === "typen") {
+    return 0;
+  }
+
+  if (key === "onderdelen") {
+    return 1;
+  }
+
+  return 2;
+};
+
 function sortNodes(nodes: HandbookNode[]) {
-  nodes.sort((left, right) => collator.compare(left.title, right.title));
+  nodes.sort(
+    (left, right) =>
+      getNodeSortRank(left.title) - getNodeSortRank(right.title) ||
+      collator.compare(left.title, right.title)
+  );
   nodes.forEach((node) => sortNodes(node.children));
 }
 
@@ -159,38 +177,120 @@ function flattenNodes(nodes: HandbookNode[], prefix: number[] = [], depth = 1): 
 
 const scopedEntries = entries.filter(belongsToScope);
 const knownTitles = new Set(scopedEntries.map((entry) => normalizeKey(getObjectTitle(entry))));
+const entryByTitleKey = new Map(scopedEntries.map((entry) => [normalizeKey(getObjectTitle(entry)), entry]));
+const allEntryByTitleKey = new Map(entries.map((entry) => [normalizeKey(getObjectTitle(entry)), entry]));
 const chapterMap = new Map<string, { label: string; nodes: HandbookNode[] }>();
+
+const getOnderdelenSection = (entry: any) =>
+  (entry.data.contentSections || []).find((section: any) => normalizeKey(section.title) === "onderdelen");
+
+const getRelationCategory = (parentEntry: any, childTitle: string) => {
+  const childKey = normalizeKey(childTitle);
+  const isSubtype = (parentEntry.data.subtypes || []).some((subtype: any) => normalizeKey(subtype.title) === childKey);
+
+  if (isSubtype) {
+    return "Typen";
+  }
+
+  return "Onderdelen";
+};
+
+const createCategorizedPath = (entry: any) => {
+  const path = createHandbookPath(entry);
+
+  if (path.length <= 1) {
+    return path;
+  }
+
+  return path.slice(1).reduce(
+    (categorizedPath, title, index) => {
+      const parentTitle = path[index];
+      const parentEntry = allEntryByTitleKey.get(normalizeKey(parentTitle));
+      const category = parentEntry ? getRelationCategory(parentEntry, title) : "Onderdelen";
+
+      return [...categorizedPath, category, title];
+    },
+    [path[0]]
+  );
+};
+
+const getPrintableSections = (entry: any) =>
+  normalizeObjectUitwerkingSections(entry.data.contentSections || [], {
+    subtypes: [],
+    subtypeIconTitle: getObjectTitle(entry),
+    includeTypen: false,
+    excludeTitles: ["Onderdelen"]
+  });
 
 scopedEntries.forEach((entry) => {
   const path = createHandbookPath(entry);
+  const categorizedPath = createCategorizedPath(entry);
   const chapterLabel = getChapterLabel(path, entry);
   const chapter = chapterMap.get(chapterLabel) || { label: chapterLabel, nodes: [] };
   const looseSubtypes = (entry.data.subtypes || [])
     .filter((subtype: any) => !knownTitles.has(normalizeKey(subtype.title)))
     .sort((left: any, right: any) => collator.compare(left.title, right.title));
-  const sections = normalizeObjectUitwerkingSections(entry.data.contentSections || [], {
-    subtypes: [],
-    subtypeIconTitle: getObjectTitle(entry),
-    includeTypen: false
-  });
-
-  insertNode(chapter.nodes, path, {
+  insertNode(chapter.nodes, categorizedPath, {
     entry,
     title: getObjectTitle(entry),
-    path,
+    path: categorizedPath,
     summary: entry.data.summary,
-    sections
+    sections: getPrintableSections(entry)
   });
 
+  if ((entry.data.subtypes || []).length > 0) {
+    insertNode(chapter.nodes, [...categorizedPath, "Typen"], {
+      title: "Typen",
+      path: [...categorizedPath, "Typen"],
+      summary: `Typen en varianten van ${getObjectTitle(entry)}.`,
+      text: `Typen en varianten van ${getObjectTitle(entry)}.`,
+      sections: []
+    });
+  }
+
   looseSubtypes.forEach((subtype: any) => {
-    insertNode(chapter.nodes, [...path, subtype.title], {
+    insertNode(chapter.nodes, [...categorizedPath, "Typen", subtype.title], {
       title: subtype.title,
-      path: [...path, subtype.title],
+      path: [...categorizedPath, "Typen", subtype.title],
       summary: subtype.text,
       text: subtype.text,
       sections: []
     });
   });
+
+  const onderdelenSection = getOnderdelenSection(entry);
+  const onderdelenItems = onderdelenSection?.items || [];
+
+  if (onderdelenItems.length > 0) {
+    insertNode(chapter.nodes, [...categorizedPath, "Onderdelen"], {
+      title: "Onderdelen",
+      path: [...categorizedPath, "Onderdelen"],
+      summary: onderdelenSection.summary,
+      text: onderdelenSection.summary,
+      sections: []
+    });
+  }
+
+  onderdelenItems
+    .filter((item: any) => {
+      const childEntry = entryByTitleKey.get(normalizeKey(item.title));
+
+      if (!childEntry) {
+        return true;
+      }
+
+      return getChapterLabel(createHandbookPath(childEntry), childEntry) !== chapterLabel;
+    })
+    .sort((left: any, right: any) => collator.compare(left.title, right.title))
+    .forEach((item: any) => {
+      insertNode(chapter.nodes, [...categorizedPath, "Onderdelen", item.title], {
+        title: item.title,
+        path: [...categorizedPath, "Onderdelen", item.title],
+        summary: item.text,
+        text: item.text,
+        sections: []
+      });
+    });
 
   chapterMap.set(chapterLabel, chapter);
 });
@@ -202,12 +302,22 @@ const handbookChapters = [...chapterMap.values()]
     return chapter;
   })
   .sort((left, right) => collator.compare(left.label, right.label))
-  .map((chapter, index) => ({
-    ...chapter,
-    number: String(index + 1),
-    id: normalizeKey(chapter.label),
-    flatNodes: flattenNodes(chapter.nodes, [index + 1])
-  }));
+  .map((chapter, index) => {
+    const promotedRoot = chapter.nodes.length === 1 && chapter.nodes[0].children.length > 0
+      ? chapter.nodes[0]
+      : undefined;
+    const introNode = promotedRoot?.entry ? promotedRoot : undefined;
+    const printableNodes = promotedRoot ? promotedRoot.children : chapter.nodes;
+
+    return {
+      ...chapter,
+      introNode,
+      nodes: printableNodes,
+      number: String(index + 1),
+      id: normalizeKey(chapter.label),
+      flatNodes: flattenNodes(printableNodes, [index + 1])
+    };
+  });
 
 const handbookItemCount = handbookChapters.reduce((count, chapter) => count + chapter.flatNodes.length, 0);
 
@@ -277,6 +387,41 @@ const handbookSummary = `${scope.summary} De digitale samenhangsweergaven, produ
               <span class="handbook-number">{chapter.number}</span>
               <span>{chapter.label}</span>
             </h2>
+            {chapter.introNode && (
+              <div class="handbook-chapter__intro">
+                {chapter.introNode.summary && <p class="lead">{chapter.introNode.summary}</p>}
+
+                <section class="handbook-object__block">
+                  <h3>Begrip</h3>
+                  {chapter.introNode.entry.data.definition && <p>{chapter.introNode.entry.data.definition}</p>}
+                  {chapter.introNode.entry.data.definitionSource && (
+                    <p class="handbook-object__source">{chapter.introNode.entry.data.definitionSource}</p>
+                  )}
+                </section>
+
+                {chapter.introNode.sections.length > 0 && (
+                  <section class="handbook-object__block">
+                    <h3>Uitwerking</h3>
+                    {chapter.introNode.sections.map((section: any) => (
+                      <section class="handbook-object__subsection">
+                        <h4>{section.title}</h4>
+                        {section.summary && <p>{section.summary}</p>}
+                        {(section.items || []).length > 0 && (
+                          <ul>
+                            {section.items.map((sectionItem: any) => (
+                              <li>
+                                <strong>{sectionItem.title}</strong>
+                                {sectionItem.text && <span> {sectionItem.text}</span>}
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </section>
+                    ))}
+                  </section>
+                )}
+              </div>
+            )}
           </header>
 
           {chapter.flatNodes.map((item) => {
@@ -345,7 +490,7 @@ const handbookSummary = `${scope.summary} De digitale samenhangsweergaven, produ
                     )}
                   </>
                 ) : (
-                  item.text && (
+                  item.text && item.text !== item.summary && (
                     <section class="handbook-object__block">
                       <h4>Korte omschrijving</h4>
                       <p>{item.text}</p>

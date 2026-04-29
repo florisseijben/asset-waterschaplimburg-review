@@ -654,6 +654,10 @@ a.classification-tag:focus-visible {
   margin: 0;
 }
 
+.handbook-chapter__intro {
+  margin-top: var(--space-5);
+}
+
 .handbook-object {
   margin-left: calc(var(--handbook-level, 0) * var(--space-5));
 }
@@ -670,6 +674,7 @@ a.classification-tag:focus-visible {
   margin-top: var(--space-5);
 }
 
+.handbook-chapter__intro h3,
 .handbook-object__block h4,
 .handbook-object__subsection h5 {
   margin-bottom: var(--space-2);
