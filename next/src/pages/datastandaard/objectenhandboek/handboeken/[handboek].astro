@@ -3,12 +3,27 @@ import BaseLayout from "../../../../layouts/BaseLayout.astro";
 import Hero from "../../../../components/Hero.astro";
 import PrintPageAction from "../../../../components/PrintPageAction.astro";
 import { getCollection } from "astro:content";
-import { handbookScopes } from "../../../../lib/objectenhandboekHandbooks";
+import {
+  getObjectHandbookHref,
+  getObjectHandbookId,
+  handbookScopes
+} from "../../../../lib/objectenhandboekHandbooks";
 import { objectenhandboekTaxonomy } from "../../../../lib/objectenhandboekTaxonomy";
 import { normalizeObjectUitwerkingSections } from "../../../../lib/uitwerkingSections";
 
-export function getStaticPaths() {
-  return handbookScopes.map((scope) => ({
+export async function getStaticPaths() {
+  const objectEntries = await getCollection("datastandaard-objectenhandboek-objects");
+  const objectScopes = objectEntries.map((entry) => ({
+    id: getObjectHandbookId(entry.id),
+    kind: "object" as const,
+    label: entry.data.heroTitle || entry.data.title,
+    href: getObjectHandbookHref(entry.id),
+    landingHref: entry.data.slug,
+    objectEntryId: entry.id,
+    summary: `Printbare versie van ${entry.data.heroTitle || entry.data.title}, opgebouwd uit definitie, begrip en inhoudelijke uitwerking.`
+  }));
+
+  return [...handbookScopes, ...objectScopes].map((scope) => ({
     params: { handboek: scope.id },
     props: { scope }
   }));
@@ -52,6 +67,15 @@ const objectFamilyLabelById = new Map(
 
 const belongsToScope = (entry: any) => {
   const classification = entry.data.classification || {};
+
+  if (scope.kind === "all") {
+    return true;
+  }
+
+  if (scope.kind === "object") {
+    return entry.id === scope.objectEntryId;
+  }
+
   const values = scope.kind === "system" ? classification.systems : classification.disciplines;
 
   return Array.isArray(values) && values.includes(scope.id);
@@ -256,22 +280,23 @@ const handbookChapters = [...chapterMap.values()]
 
 const handbookItemCount = handbookChapters.reduce((count, chapter) => count + chapter.flatNodes.length, 0);
 
-const handbookTitle = `Objectenhandboek ${scope.label}`;
+const handbookTitle = scope.kind === "all" ? "Objectenhandboek" : `Objectenhandboek ${scope.label}`;
 const handbookSummary = `${scope.summary} De digitale samenhangsweergaven, productlijn en vervolgstappen zijn in deze printversie weggelaten.`;
+const handbookBreadcrumbs = [
+  { label: "Home", href: "/" },
+  { label: "Datastandaard", href: "/datastandaard" },
+  { label: "Objectenhandboek", href: "/datastandaard/objectenhandboek" },
+  ...(scope.kind === "all" ? [] : [{ label: scope.label, href: scope.landingHref }]),
+  { label: "Printbare versie" }
+];
 ---
 
 <BaseLayout
   title={handbookTitle}
   currentPath="/datastandaard"
-  breadcrumbs={[
-    { label: "Home", href: "/" },
-    { label: "Datastandaard", href: "/datastandaard" },
-    { label: "Objectenhandboek", href: "/datastandaard/objectenhandboek" },
-    { label: scope.label, href: scope.landingHref },
-    { label: "PDF-overzicht" }
-  ]}
+  breadcrumbs={handbookBreadcrumbs}
 >
-  <Hero eyebrow="PDF-overzicht" title={handbookTitle} summary={handbookSummary} />
+  <Hero eyebrow="Printbare versie" title={handbookTitle} summary={handbookSummary} />
 
   <PrintPageAction label="Print handboek of maak PDF" />
 

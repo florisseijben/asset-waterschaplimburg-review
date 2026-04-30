@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../../../../layouts/BaseLayout.astro";
 import Hero from "../../../../../components/Hero.astro";
+import HandbookHeroCard from "../../../../../components/HandbookHeroCard.astro";
 import ConceptSummarySection from "../../../../../components/ConceptSummarySection.astro";
 import ObjectClassificationSection from "../../../../../components/ObjectClassificationSection.astro";
 import SemanticSamenhangSection from "../../../../../components/SemanticSamenhangSection.astro";
@@ -9,6 +10,7 @@ import UitwerkingSection from "../../../../../components/UitwerkingSection.astro
 import GeometrySection from "../../../../../components/GeometrySection.astro";
 import VervolgSection from "../../../../../components/VervolgSection.astro";
 import { getCollection } from "astro:content";
+import { getObjectHandbookHref } from "../../../../../lib/objectenhandboekHandbooks";
 import {
   createWatergangSamenhangFromAssetJson,
   getConceptFromAssetJson,
@@ -92,7 +94,9 @@ object:watergang relatie:heeftIntersectie object:intersectie .
     { label: "Watergangen" }
   ]}
 >
-  <Hero eyebrow="Objectenhandboek" title={entry.data.heroTitle || entry.data.title} summary={entry.data.summary} />
+  <Hero eyebrow="Objectenhandboek" title={entry.data.heroTitle || entry.data.title} summary={entry.data.summary}>
+    <HandbookHeroCard slot="aside" href={getObjectHandbookHref(entry.id)} />
+  </Hero>
 
   <div class="detail-stack">
     <ConceptSummarySection

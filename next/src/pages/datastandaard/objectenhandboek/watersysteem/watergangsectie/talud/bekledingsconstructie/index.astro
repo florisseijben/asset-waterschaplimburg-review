@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../../../../../../layouts/BaseLayout.astro";
 import Hero from "../../../../../../../components/Hero.astro";
+import HandbookHeroCard from "../../../../../../../components/HandbookHeroCard.astro";
 import ConceptSummarySection from "../../../../../../../components/ConceptSummarySection.astro";
 import ObjectClassificationSection from "../../../../../../../components/ObjectClassificationSection.astro";
 import SemanticSamenhangSection from "../../../../../../../components/SemanticSamenhangSection.astro";
@@ -10,6 +11,7 @@ import GeometrySection from "../../../../../../../components/GeometrySection.ast
 import VervolgSection from "../../../../../../../components/VervolgSection.astro";
 import { getCollection } from "astro:content";
 import bekledingsconstructieSamenhangTurtle from "../../../../../../../data/semantic/talud-bekledingsconstructie-samenhang.ttl?raw";
+import { getObjectHandbookHref } from "../../../../../../../lib/objectenhandboekHandbooks";
 import { getGeometrySection, normalizeObjectUitwerkingSections } from "../../../../../../../lib/uitwerkingSections";
 import { createBekledingsconstructieGraph } from "../../../../../../../lib/semanticSamenhangGraphs";
 
@@ -49,7 +51,9 @@ const geometrySection = getGeometrySection(contentSections);
     { label: "Bekledingsconstructie" }
   ]}
 >
-  <Hero eyebrow="Objectenhandboek" title={entry.data.heroTitle || entry.data.title} summary={entry.data.summary} />
+  <Hero eyebrow="Objectenhandboek" title={entry.data.heroTitle || entry.data.title} summary={entry.data.summary}>
+    <HandbookHeroCard slot="aside" href={getObjectHandbookHref(entry.id)} />
+  </Hero>
 
   <ConceptSummarySection
     subjectLabel="Bekledingsconstructie"

@@ -1,6 +1,6 @@
 import { objectenhandboekTaxonomy, type TaxonomyItem } from "./objectenhandboekTaxonomy";
 
-export type HandbookScopeKind = "system" | "discipline";
+export type HandbookScopeKind = "all" | "system" | "discipline";
 
 export type HandbookScope = TaxonomyItem & {
   kind: HandbookScopeKind;
@@ -9,6 +9,20 @@ export type HandbookScope = TaxonomyItem & {
 };
 
 const handbookHref = (id: string) => `/datastandaard/objectenhandboek/handboeken/${id}`;
+
+export const getObjectHandbookId = (id: string) => `object-${id.replace(/\.md$/, "")}`;
+
+export const getObjectHandbookHref = (id: string) => handbookHref(getObjectHandbookId(id));
+
+const allScope: HandbookScope = {
+  id: "objectenhandboek",
+  kind: "all",
+  label: "Objectenhandboek",
+  href: handbookHref("objectenhandboek"),
+  landingHref: "/datastandaard/objectenhandboek",
+  summary:
+    "Printbare bundel met alle beschikbare objecttypen in het Objectenhandboek, opgebouwd uit definitie, begrip en inhoudelijke uitwerking."
+};
 
 const systemScopes: HandbookScope[] = [
   {
@@ -48,7 +62,7 @@ const disciplineScopes: HandbookScope[] = objectenhandboekTaxonomy.disciplines.m
   summary: `Printbare bundel met objecttypen die relevant zijn voor ${discipline.label.toLowerCase()}, opgebouwd uit definitie, begrip en inhoudelijke uitwerking.`
 }));
 
-export const handbookScopes: HandbookScope[] = [...systemScopes, ...disciplineScopes];
+export const handbookScopes: HandbookScope[] = [allScope, ...systemScopes, ...disciplineScopes];
 
 export const handbookScopeById = new Map(handbookScopes.map((scope) => [scope.id, scope]));
 
