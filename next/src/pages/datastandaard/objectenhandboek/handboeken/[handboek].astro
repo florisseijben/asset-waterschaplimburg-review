@@ -9,6 +9,7 @@ import {
   handbookScopes
 } from "../../../../lib/objectenhandboekHandbooks";
 import { objectenhandboekTaxonomy } from "../../../../lib/objectenhandboekTaxonomy";
+import { withBase } from "../../../../lib/paths";
 import { normalizeObjectUitwerkingSections } from "../../../../lib/uitwerkingSections";
 
 export async function getStaticPaths() {
@@ -375,12 +376,36 @@ const handbookBreadcrumbs = [
                         <section class="handbook-object__subsection">
                           <h4>{section.title}</h4>
                           {section.summary && <p>{section.summary}</p>}
+                          {section.image?.src && (
+                            <figure class="handbook-object__figure">
+                              <img
+                                class="handbook-object__image"
+                                src={withBase(section.image.src)}
+                                alt={section.image.alt || ""}
+                                loading="lazy"
+                              />
+                              {section.caption && <figcaption class="handbook-object__caption">{section.caption}</figcaption>}
+                            </figure>
+                          )}
                           {(section.items || []).length > 0 && (
                             <ul>
                               {section.items.map((sectionItem: any) => (
                                 <li>
                                   <strong>{sectionItem.title}</strong>
                                   {sectionItem.text && <span> {sectionItem.text}</span>}
+                                  {sectionItem.image?.src && (
+                                    <figure class="handbook-object__figure">
+                                      <img
+                                        class="handbook-object__image"
+                                        src={withBase(sectionItem.image.src)}
+                                        alt={sectionItem.image.alt || ""}
+                                        loading="lazy"
+                                      />
+                                      {sectionItem.caption && (
+                                        <figcaption class="handbook-object__caption">{sectionItem.caption}</figcaption>
+                                      )}
+                                    </figure>
+                                  )}
                                 </li>
                               ))}
                             </ul>
@@ -443,12 +468,36 @@ const handbookBreadcrumbs = [
                             <section class="handbook-object__subsection">
                               <h5>{section.title}</h5>
                               {section.summary && <p>{section.summary}</p>}
+                              {section.image?.src && (
+                                <figure class="handbook-object__figure">
+                                  <img
+                                    class="handbook-object__image"
+                                    src={withBase(section.image.src)}
+                                    alt={section.image.alt || ""}
+                                    loading="lazy"
+                                  />
+                                  {section.caption && <figcaption class="handbook-object__caption">{section.caption}</figcaption>}
+                                </figure>
+                              )}
                               {(section.items || []).length > 0 && (
                                 <ul>
                                   {section.items.map((sectionItem: any) => (
                                     <li>
                                       <strong>{sectionItem.title}</strong>
                                       {sectionItem.text && <span> {sectionItem.text}</span>}
+                                      {sectionItem.image?.src && (
+                                        <figure class="handbook-object__figure">
+                                          <img
+                                            class="handbook-object__image"
+                                            src={withBase(sectionItem.image.src)}
+                                            alt={sectionItem.image.alt || ""}
+                                            loading="lazy"
+                                          />
+                                          {sectionItem.caption && (
+                                            <figcaption class="handbook-object__caption">{sectionItem.caption}</figcaption>
+                                          )}
+                                        </figure>
+                                      )}
                                     </li>
                                   ))}
                                 </ul>
