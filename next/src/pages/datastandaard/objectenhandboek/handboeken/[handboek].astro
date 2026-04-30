@@ -186,9 +186,9 @@ function sortNodes(nodes: HandbookNode[]) {
   nodes.forEach((node) => sortNodes(node.children));
 }
 
-function flattenNodes(nodes: HandbookNode[], prefix: number[] = [], depth = 1): any[] {
+function flattenNodes(nodes: HandbookNode[], prefix: number[] = [], depth = 1, startIndex = 0): any[] {
   return nodes.flatMap((node, index) => {
-    const numberParts = [...prefix, index + 1];
+    const numberParts = [...prefix, startIndex + index + 1];
     const numberedNode = {
       ...node,
       depth,
@@ -268,14 +268,21 @@ const handbookChapters = [...chapterMap.values()]
       : undefined;
     const introNode = promotedRoot?.entry ? promotedRoot : undefined;
     const printableNodes = promotedRoot ? promotedRoot.children : chapter.nodes;
+    const introNumber = introNode ? `${index + 1}.1` : undefined;
+    const flatNodes = flattenNodes(printableNodes, [index + 1], 1, introNode ? 1 : 0);
+    const tocIntroNode = introNode && introNumber
+      ? [{ ...introNode, depth: 1, number: introNumber, id: normalizeKey(chapter.label) }]
+      : [];
 
     return {
       ...chapter,
       introNode,
+      introNumber,
       nodes: printableNodes,
       number: String(index + 1),
       id: normalizeKey(chapter.label),
-      flatNodes: flattenNodes(printableNodes, [index + 1])
+      flatNodes,
+      tocNodes: [...tocIntroNode, ...flatNodes]
     };
   });
 
@@ -330,7 +337,7 @@ const handbookBreadcrumbs = [
                   </a>
                 </summary>
                 <ol class="handbook-toc__sections">
-                  {chapter.flatNodes.map((item) => (
+                  {chapter.tocNodes.map((item) => (
                     <li
                       class="handbook-toc__section"
                       style={`--handbook-level: ${Math.max(item.depth - 1, 0)};`}
@@ -359,10 +366,19 @@ const handbookBreadcrumbs = [
               </h2>
               {chapter.introNode && (
                 <div class="handbook-chapter__intro">
+                  {chapter.introNumber && (
+                    <h3 class="handbook-object__numbered-heading">
+                      <span class="handbook-number">{chapter.introNumber}</span>
+                      <span>{chapter.introNode.title}</span>
+                    </h3>
+                  )}
                   {chapter.introNode.summary && <p class="lead">{chapter.introNode.summary}</p>}
 
                   <section class="handbook-object__block">
-                    <h3>Begrip</h3>
+                    <h4 class="handbook-object__numbered-heading">
+                      <span class="handbook-number">{chapter.introNumber}.1</span>
+                      <span>Begrip</span>
+                    </h4>
                     {chapter.introNode.entry.data.definition && <p>{chapter.introNode.entry.data.definition}</p>}
                     {chapter.introNode.entry.data.definitionSource && (
                       <p class="handbook-object__source">{chapter.introNode.entry.data.definitionSource}</p>
@@ -371,10 +387,16 @@ const handbookBreadcrumbs = [
 
                   {chapter.introNode.sections.length > 0 && (
                     <section class="handbook-object__block">
-                      <h3>Uitwerking</h3>
-                      {chapter.introNode.sections.map((section: any) => (
+                      <h4 class="handbook-object__numbered-heading">
+                        <span class="handbook-number">{chapter.introNumber}.2</span>
+                        <span>Uitwerking</span>
+                      </h4>
+                      {chapter.introNode.sections.map((section: any, sectionIndex: number) => (
                         <section class="handbook-object__subsection">
-                          <h4>{section.title}</h4>
+                          <h5 class="handbook-object__numbered-heading">
+                            <span class="handbook-number">{chapter.introNumber}.2.{sectionIndex + 1}</span>
+                            <span>{section.title}</span>
+                          </h5>
                           {section.summary && <p>{section.summary}</p>}
                           {section.image?.src && (
                             <figure class="handbook-object__figure">
@@ -441,14 +463,20 @@ const handbookBreadcrumbs = [
                   {entry ? (
                     <>
                       <section class="handbook-object__block">
-                        <h4>Begrip</h4>
+                        <h4 class="handbook-object__numbered-heading">
+                          <span class="handbook-number">{item.number}.1</span>
+                          <span>Begrip</span>
+                        </h4>
                         {entry.data.definition && <p>{entry.data.definition}</p>}
                         {entry.data.definitionSource && (
                           <p class="handbook-object__source">{entry.data.definitionSource}</p>
                         )}
                         {(entry.data.terms || []).length > 0 && (
                           <div>
-                            <h5>Gerelateerde begrippen</h5>
+                            <h5 class="handbook-object__numbered-heading">
+                              <span class="handbook-number">{item.number}.1.1</span>
+                              <span>Gerelateerde begrippen</span>
+                            </h5>
                             <ul>
                               {(entry.data.terms || []).map((term: any) => (
                                 <li>
@@ -463,10 +491,16 @@ const handbookBreadcrumbs = [
 
                       {item.sections.length > 0 && (
                         <section class="handbook-object__block">
-                          <h4>Uitwerking</h4>
-                          {item.sections.map((section: any) => (
+                          <h4 class="handbook-object__numbered-heading">
+                            <span class="handbook-number">{item.number}.2</span>
+                            <span>Uitwerking</span>
+                          </h4>
+                          {item.sections.map((section: any, sectionIndex: number) => (
                             <section class="handbook-object__subsection">
-                              <h5>{section.title}</h5>
+                              <h5 class="handbook-object__numbered-heading">
+                                <span class="handbook-number">{item.number}.2.{sectionIndex + 1}</span>
+                                <span>{section.title}</span>
+                              </h5>
                               {section.summary && <p>{section.summary}</p>}
                               {section.image?.src && (
                                 <figure class="handbook-object__figure">
