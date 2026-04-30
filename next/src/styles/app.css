@@ -742,11 +742,14 @@ a.classification-tag:focus-visible {
 .handbook-object__image {
   display: block;
   width: 100%;
-  max-width: 52rem;
+  max-width: 100%;
+  max-height: 34rem;
   height: auto;
   border: 1px solid var(--color-line);
   border-radius: 0;
   background: #f8fcfc;
+  object-fit: contain;
+  object-position: left top;
 }
 
 .handbook-object__caption {
