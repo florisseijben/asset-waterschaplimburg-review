@@ -73,6 +73,9 @@ metadata:
 contentSections:
   - title: Overzicht / Samenhang
     summary: De watergang wordt gelezen als hoofdobject waarin traject, gebied, secties en intersecties samen één lijn vormen.
+    image:
+      src: /images/objectenhandboek/watersysteem/watergangen/watergangoverzicht.png
+      alt: Overzicht van de samenhang binnen Watergang met traject, gebied, secties en intersecties.
   - title: Afbakening
     summary: De afbakening van de watergang volgt het verloop van het traject en de ruimtelijke begrenzing van het bijbehorende waterganggebied.
   - title: Onderdelen
