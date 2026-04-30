@@ -745,7 +745,7 @@ a.classification-tag:focus-visible {
   max-width: 52rem;
   height: auto;
   border: 1px solid var(--color-line);
-  border-radius: 0 var(--corner-control) 0 0;
+  border-radius: 0;
   background: #f8fcfc;
 }
 
@@ -903,7 +903,7 @@ a.classification-tag:focus-visible {
   width: 100%;
   height: auto;
   border: 1px solid var(--color-line);
-  border-radius: 0 var(--corner-control) 0 0;
+  border-radius: 0;
   background: #f8fcfc;
 }
 
@@ -992,7 +992,7 @@ a.classification-tag:focus-visible {
   width: 100%;
   height: auto;
   border: 1px solid var(--color-line);
-  border-radius: 0 var(--corner-control) 0 0;
+  border-radius: 0;
   background: #f8fcfc;
 }
 
