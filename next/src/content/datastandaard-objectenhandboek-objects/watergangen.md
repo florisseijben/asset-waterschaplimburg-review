@@ -72,7 +72,7 @@ metadata:
     value: https://data.waterschaplimburg.nl/id/objecttype/watergang
 contentSections:
   - title: Overzicht / Samenhang
-    summary: De watergang wordt gelezen als hoofdobject waarin traject, gebied, secties en intersecties samen één lijn vormen.
+    summary: De watergang wordt gelezen als hoofdobject dat binnen een afvoergebied een traject volgt van aanvoerpunt naar afvoerpunt en dat bestaat uit een gebied dat is opgedeeld in watergangsecties en intersecties en waarin verschillende typen kunstwerken zijn gelegen.
     image:
       src: /images/objectenhandboek/watersysteem/watergangen/watergangoverzicht.png
       alt: Overzicht van de samenhang binnen Watergang met traject, gebied, secties en intersecties.
