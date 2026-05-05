@@ -744,6 +744,22 @@ a.classification-tag:focus-visible {
   line-height: 1.6;
 }
 
+.handbook-object__item-grid {
+  margin-top: var(--space-3);
+}
+
+.handbook-object__item-card {
+  min-height: 0;
+  height: auto;
+  break-inside: avoid;
+}
+
+.handbook-object__item-title {
+  color: var(--color-deep);
+  font-weight: 800;
+  line-height: 1.35;
+}
+
 .handbook-object__figure {
   margin: var(--space-3) 0 0;
   break-inside: avoid;

@@ -11,6 +11,7 @@ import {
 import { objectenhandboekTaxonomy } from "../../../../lib/objectenhandboekTaxonomy";
 import { withBase } from "../../../../lib/paths";
 import { normalizeObjectUitwerkingSections } from "../../../../lib/uitwerkingSections";
+import { getDecompositionFromAssetJson } from "../../../../lib/assetConcepts";
 
 export async function getStaticPaths() {
   const objectEntries = await getCollection("datastandaard-objectenhandboek-objects");
@@ -66,15 +67,11 @@ const objectFamilyLabelById = new Map(
   objectenhandboekTaxonomy.objectFamilies.map((family) => [family.id, family.label])
 );
 
-const belongsToScope = (entry: any) => {
+const belongsToClassificationScope = (entry: any) => {
   const classification = entry.data.classification || {};
 
   if (scope.kind === "all") {
     return true;
-  }
-
-  if (scope.kind === "object") {
-    return entry.id === scope.objectEntryId;
   }
 
   const values = scope.kind === "system" ? classification.systems : classification.disciplines;
@@ -203,6 +200,45 @@ function flattenNodes(nodes: HandbookNode[], prefix: number[] = [], depth = 1, s
 const allEntryByTitleKey = new Map(entries.map((entry) => [normalizeKey(getObjectTitle(entry)), entry]));
 const chapterMap = new Map<string, { label: string; nodes: HandbookNode[] }>();
 
+const getOnderdeelItems = (entry: any) =>
+  (entry.data.contentSections || []).find((section: any) => normalizeKey(section.title) === "onderdelen")?.items || [];
+
+const getDirectChildTitleKeys = (entry: any) => {
+  const decomposition = getDecompositionFromAssetJson(getObjectTitle(entry));
+  const titleKeys = [
+    ...getOnderdeelItems(entry),
+    ...(entry.data.compositionTypes || []),
+    ...(decomposition?.items || [])
+  ]
+    .map((item: any) => normalizeKey(item.title))
+    .filter(Boolean);
+
+  return new Set(titleKeys);
+};
+
+const scopeRootEntry = scope.kind === "object"
+  ? entries.find((entry) => entry.id === scope.objectEntryId)
+  : undefined;
+const scopeRootPath = scopeRootEntry ? createHandbookPath(scopeRootEntry) : [];
+const scopeRootChildTitleKeys = scopeRootEntry ? getDirectChildTitleKeys(scopeRootEntry) : new Set<string>();
+
+const isDirectChildOfScopeRoot = (entry: any) => {
+  if (!scopeRootEntry || entry.id === scopeRootEntry.id) {
+    return false;
+  }
+
+  const path = createHandbookPath(entry);
+  const isDirectPathChild =
+    path.length === scopeRootPath.length + 1 &&
+    scopeRootPath.every((title, index) => normalizeKey(title) === normalizeKey(path[index]));
+
+  return isDirectPathChild || scopeRootChildTitleKeys.has(normalizeKey(getObjectTitle(entry)));
+};
+
+const belongsToObjectScope = (entry: any) =>
+  scope.kind === "object" &&
+  (entry.id === scope.objectEntryId || isDirectChildOfScopeRoot(entry));
+
 const isCompositionTypeOfParent = (parentEntry: any, childTitle: string) =>
   (parentEntry.data.compositionTypes || []).some(
     (compositionType: any) => normalizeKey(compositionType.title) === normalizeKey(childTitle)
@@ -226,17 +262,63 @@ const isAllowedInHandbookTree = (entry: any) => {
   });
 };
 
-const scopedEntries = entries.filter((entry) => belongsToScope(entry) && isAllowedInHandbookTree(entry));
+const scopedEntries = entries.filter(
+  (entry) =>
+    (scope.kind === "object" ? belongsToObjectScope(entry) : belongsToClassificationScope(entry)) &&
+    isAllowedInHandbookTree(entry)
+);
 
 const createCategorizedPath = (entry: any) => {
   return createHandbookPath(entry);
 };
 
+const mergeContentItemMedia = (derivedItems: any[] = [], contentItems: any[] = []) => {
+  const contentItemsByTitle = new Map(contentItems.map((item) => [normalizeKey(item.title), item]));
+  const derivedItemsByTitle = new Map(derivedItems.map((item) => [normalizeKey(item.title), item]));
+  const orderedDerivedItems = contentItems.length
+    ? [
+        ...contentItems
+          .map((item) => derivedItemsByTitle.get(normalizeKey(item.title)))
+          .filter(Boolean),
+        ...derivedItems.filter((item) => !contentItemsByTitle.has(normalizeKey(item.title)))
+      ]
+    : derivedItems;
+
+  return orderedDerivedItems.map((item) => {
+    const contentItem = contentItemsByTitle.get(normalizeKey(item.title));
+
+    if (!contentItem) {
+      return item;
+    }
+
+    return {
+      ...item,
+      image: contentItem.image || item.image,
+      caption: contentItem.caption || item.caption
+    };
+  });
+};
+
+const getContentSectionsForPrint = (entry: any) => {
+  const decomposition = getDecompositionFromAssetJson(getObjectTitle(entry));
+
+  return (entry.data.contentSections || []).map((section: any) =>
+    normalizeKey(section.title) === "onderdelen" && decomposition
+      ? {
+          ...section,
+          summary: decomposition.summary,
+          items: mergeContentItemMedia(decomposition.items, section.items)
+        }
+      : section
+  );
+};
+
 const getPrintableSections = (entry: any) =>
-  normalizeObjectUitwerkingSections(entry.data.contentSections || [], {
+  normalizeObjectUitwerkingSections(getContentSectionsForPrint(entry), {
     compositionTypes: entry.data.compositionTypes || [],
     subtypeIconTitle: getObjectTitle(entry),
-    includeTypen: true
+    includeTypen: true,
+    includeOnderdelenWithCompositionTypes: true
   });
 
 scopedEntries.forEach((entry) => {
@@ -426,11 +508,21 @@ const handbookBreadcrumbs = [
                             </>
                           ))}
                           {(section.items || []).length > 0 && (
-                            <ul>
-                              {section.items.map((sectionItem: any) => (
-                                <li>
-                                  <strong>{sectionItem.title}</strong>
-                                  {sectionItem.text && <span> {sectionItem.text}</span>}
+                            <div class="card-grid card-grid--nested handbook-object__item-grid">
+                              {section.items.map((sectionItem: any) => {
+                                const SectionItemTag = sectionItem.href ? "a" : "article";
+
+                                return (
+                                <SectionItemTag
+                                  class:list={[
+                                    "info-card",
+                                    "handbook-object__item-card",
+                                    sectionItem.image?.src && "info-card--with-image"
+                                  ]}
+                                  href={sectionItem.href ? withBase(sectionItem.href) : undefined}
+                                >
+                                  <strong class="handbook-object__item-title">{sectionItem.title}</strong>
+                                  {sectionItem.text && <p>{sectionItem.text}</p>}
                                   {sectionItem.image?.src && (
                                     <figure class="handbook-object__figure">
                                       <img
@@ -444,9 +536,9 @@ const handbookBreadcrumbs = [
                                       )}
                                     </figure>
                                   )}
-                                </li>
-                              ))}
-                            </ul>
+                                </SectionItemTag>
+                              )})}
+                            </div>
                           )}
                         </section>
                       ))}
@@ -546,11 +638,21 @@ const handbookBreadcrumbs = [
                                 </>
                               ))}
                               {(section.items || []).length > 0 && (
-                                <ul>
-                                  {section.items.map((sectionItem: any) => (
-                                    <li>
-                                      <strong>{sectionItem.title}</strong>
-                                      {sectionItem.text && <span> {sectionItem.text}</span>}
+                                <div class="card-grid card-grid--nested handbook-object__item-grid">
+                                  {section.items.map((sectionItem: any) => {
+                                    const SectionItemTag = sectionItem.href ? "a" : "article";
+
+                                    return (
+                                    <SectionItemTag
+                                      class:list={[
+                                        "info-card",
+                                        "handbook-object__item-card",
+                                        sectionItem.image?.src && "info-card--with-image"
+                                      ]}
+                                      href={sectionItem.href ? withBase(sectionItem.href) : undefined}
+                                    >
+                                      <strong class="handbook-object__item-title">{sectionItem.title}</strong>
+                                      {sectionItem.text && <p>{sectionItem.text}</p>}
                                       {sectionItem.image?.src && (
                                         <figure class="handbook-object__figure">
                                           <img
@@ -564,9 +666,9 @@ const handbookBreadcrumbs = [
                                           )}
                                         </figure>
                                       )}
-                                    </li>
-                                  ))}
-                                </ul>
+                                    </SectionItemTag>
+                                  )})}
+                                </div>
                               )}
                             </section>
                           ))}
