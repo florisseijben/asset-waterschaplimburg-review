@@ -36,6 +36,33 @@ const conceptData = getConceptFromAssetJson("Watergang");
 const definitionTypes = conceptData?.types?.length ? conceptData.types : entry.data.definitionTypes || [];
 const decompositionData = getDecompositionFromAssetJson("Watergang");
 const samenhangData = createWatergangSamenhangFromAssetJson();
+const normalizeTitle = (value: string) => String(value || "").trim().toLowerCase();
+const mergeContentItemMedia = (derivedItems: any[] = [], contentItems: any[] = []) => {
+  const contentItemsByTitle = new Map(contentItems.map((item) => [normalizeTitle(item.title), item]));
+  const derivedItemsByTitle = new Map(derivedItems.map((item) => [normalizeTitle(item.title), item]));
+  const orderedDerivedItems = contentItems.length
+    ? [
+        ...contentItems
+          .map((item) => derivedItemsByTitle.get(normalizeTitle(item.title)))
+          .filter(Boolean),
+        ...derivedItems.filter((item) => !contentItemsByTitle.has(normalizeTitle(item.title)))
+      ]
+    : derivedItems;
+
+  return orderedDerivedItems.map((item) => {
+    const contentItem = contentItemsByTitle.get(normalizeTitle(item.title));
+
+    if (!contentItem) {
+      return item;
+    }
+
+    return {
+      ...item,
+      image: contentItem.image || item.image,
+      caption: contentItem.caption || item.caption
+    };
+  });
+};
 const visibleContentSections = (entry.data.contentSections || [])
   .filter((item) => item.title !== "Decompositie")
   .map((item) =>
@@ -43,7 +70,7 @@ const visibleContentSections = (entry.data.contentSections || [])
       ? {
           ...item,
           summary: decompositionData.summary,
-          items: decompositionData.items
+          items: mergeContentItemMedia(decompositionData.items, item.items)
         }
       : item
   );
