@@ -104,6 +104,10 @@ contentSections:
         caption: Afbeelding 4. Intersectie binnen de watergangstructuur.
   - title: Geometrie
     summary: De geometrie wordt zichtbaar via aslijn, gebiedscontour en dwarsprofiel van dezelfde watergangopbouw.
+    image:
+      src: /images/objectenhandboek/watersysteem/watergangen/geometrie.png
+      alt: Geometrische weergave van de watergang met aslijn, gebiedscontour en dwarsprofiel.
+    caption: Afbeelding 5. Geometrie van de watergang.
     items:
       - title: Grootschalig
         text: "Bij grootschalige kaarten, ongeveer schaal 1:1.000 tot 1:10.000, wordt Watergang getoond als lijngeometrie en waar relevant als vlakcontour van het waterlichaam. Op dit detailniveau zijn ook lokale profielkenmerken en directe ruimtelijke begrenzingen van het object leesbaar."
