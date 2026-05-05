@@ -89,6 +89,10 @@ contentSections:
     summary: De afbakening van de watergangsectie volgt een deeltraject binnen de watergang met eigen kenmerken, onderhoud en profiel.
   - title: Geometrie
     summary: De geometrie van de watergangsectie komt terug in bovenaanzicht, dwarsprofiel en ruimtelijke begrenzing langs de as van de watergang.
+    image:
+      src: /images/objectenhandboek/watersysteem/watergangen/geometrie.png
+      alt: Geometrische weergave van de watergangsectie met ligging en ruimtelijke begrenzing.
+    caption: Afbeelding 2. Geometrie van de watergangsectie.
     items:
       - title: Grootschalig
         text: "Bij grootschalige kaarten, ongeveer schaal 1:1.000 tot 1:10.000, wordt Watergangsectie getoond als lijngeometrie van een afgebakend deeltraject en in detail gekoppeld aan doorsneden, taluds, bodem en andere profielonderdelen."

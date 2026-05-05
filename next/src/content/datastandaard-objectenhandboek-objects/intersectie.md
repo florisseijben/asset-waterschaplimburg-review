@@ -70,6 +70,10 @@ contentSections:
     summary: De afbakening van de intersectie volgt de zone waar waterlijnen, aansluitingen of systeemovergangen elkaar raken of kruisen.
   - title: Geometrie
     summary: De geometrie van de intersectie wordt zichtbaar in bovenaanzicht, doorsnede en ruimtelijke positie ten opzichte van de watergang.
+    image:
+      src: /images/objectenhandboek/watersysteem/watergangen/geometrie.png
+      alt: Geometrische weergave van de intersectie en de ruimtelijke positie ten opzichte van de watergang.
+    caption: Afbeelding 1. Geometrie van de intersectie.
     items:
       - title: Grootschalig
         text: "Bij grootschalige kaarten, ongeveer schaal 1:1.000 tot 1:10.000, wordt Intersectie getoond als puntgeometrie op het directe kruispunt of aansluitpunt. Op dit detailniveau zijn ook de lokale aansluiting en de ruimtelijke context van het snijpunt goed leesbaar."
