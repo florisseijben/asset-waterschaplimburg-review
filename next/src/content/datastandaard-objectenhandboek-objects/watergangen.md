@@ -76,6 +76,13 @@ contentSections:
     image:
       src: /images/objectenhandboek/watersysteem/watergangen/watergangoverzicht.png
       alt: Overzicht van de samenhang binnen Watergang met traject, gebied, secties en intersecties.
+    caption: Afbeelding 1. Overzicht van de samenhang binnen Watergang.
+    blocks:
+      - text: het watergang gebied omvat het gebied van aanvoerpunt tot afvoerpunt en wordt in de langsrichting begrensd door de profielgrenzen zoals gedefinieerd bij de watergangsecties en intersecties.
+        image:
+          src: /images/objectenhandboek/watersysteem/watergangen/watergang gebied.png
+          alt: Watergang gebied begrensd van aanvoerpunt tot afvoerpunt en door profielgrenzen.
+        caption: Afbeelding 2. Watergang gebied van aanvoerpunt tot afvoerpunt.
   - title: Afbakening
     summary: De afbakening van de watergang volgt het verloop van het traject en de ruimtelijke begrenzing van het bijbehorende waterganggebied.
   - title: Onderdelen

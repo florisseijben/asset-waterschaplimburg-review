@@ -409,6 +409,22 @@ const handbookBreadcrumbs = [
                               {section.caption && <figcaption class="handbook-object__caption">{section.caption}</figcaption>}
                             </figure>
                           )}
+                          {(section.blocks || []).map((block: any) => (
+                            <>
+                              {block.text && <p>{block.text}</p>}
+                              {block.image?.src && (
+                                <figure class="handbook-object__figure">
+                                  <img
+                                    class="handbook-object__image"
+                                    src={withBase(block.image.src)}
+                                    alt={block.image.alt || ""}
+                                    loading="lazy"
+                                  />
+                                  {block.caption && <figcaption class="handbook-object__caption">{block.caption}</figcaption>}
+                                </figure>
+                              )}
+                            </>
+                          ))}
                           {(section.items || []).length > 0 && (
                             <ul>
                               {section.items.map((sectionItem: any) => (
@@ -513,6 +529,22 @@ const handbookBreadcrumbs = [
                                   {section.caption && <figcaption class="handbook-object__caption">{section.caption}</figcaption>}
                                 </figure>
                               )}
+                              {(section.blocks || []).map((block: any) => (
+                                <>
+                                  {block.text && <p>{block.text}</p>}
+                                  {block.image?.src && (
+                                    <figure class="handbook-object__figure">
+                                      <img
+                                        class="handbook-object__image"
+                                        src={withBase(block.image.src)}
+                                        alt={block.image.alt || ""}
+                                        loading="lazy"
+                                      />
+                                      {block.caption && <figcaption class="handbook-object__caption">{block.caption}</figcaption>}
+                                    </figure>
+                                  )}
+                                </>
+                              ))}
                               {(section.items || []).length > 0 && (
                                 <ul>
                                   {section.items.map((sectionItem: any) => (

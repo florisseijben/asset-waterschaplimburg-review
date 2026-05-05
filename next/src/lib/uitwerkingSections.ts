@@ -14,6 +14,12 @@ type SectionImage = {
   alt?: string;
 };
 
+type SectionBlock = {
+  text?: string;
+  image?: SectionImage;
+  caption?: string;
+};
+
 type ContentSection = {
   title: string;
   summary: string;
@@ -22,6 +28,7 @@ type ContentSection = {
   items?: SectionLinkItem[];
   image?: SectionImage;
   caption?: string;
+  blocks?: SectionBlock[];
 };
 
 const GEOMETRY_ORDER = ["Grootschalig", "Midschalig", "Kleinschalig"] as const;

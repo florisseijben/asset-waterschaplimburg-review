@@ -911,6 +911,12 @@ a.classification-tag:focus-visible {
   margin: 0;
 }
 
+.info-card__blocks,
+.info-card__block {
+  display: grid;
+  gap: var(--space-3);
+}
+
 .info-card__image {
   display: block;
   width: 100%;

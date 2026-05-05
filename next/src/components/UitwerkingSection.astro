@@ -16,6 +16,11 @@ interface SectionItem {
   }[];
   image?: { src: string; alt?: string };
   caption?: string;
+  blocks?: {
+    text?: string;
+    image?: { src: string; alt?: string };
+    caption?: string;
+  }[];
   iconTitle?: string;
 }
 
@@ -40,6 +45,7 @@ const { title = "Inhoudelijke opbouw", items = [] } = Astro.props;
         items={item.items}
         image={item.image}
         caption={item.caption}
+        blocks={item.blocks}
       />
     ))}
   </CardGrid>
