@@ -91,9 +91,17 @@ contentSections:
       - title: Watergangsectie
         text: Afgebakend deelobject binnen de watergang met eigen profiel en onderhoudskenmerken.
         href: /datastandaard/objectenhandboek/watersysteem/watergangsectie
+        image:
+          src: /images/objectenhandboek/watersysteem/watergangen/watergang sectie.png
+          alt: Schematische weergave van een watergangsectie binnen een watergang.
+        caption: Afbeelding 3. Watergangsectie binnen de watergang.
       - title: Intersectie
         text: Kruising of overgang binnen de watergangstructuur op hetzelfde niveau als een watergangsectie.
         href: /datastandaard/objectenhandboek/watersysteem/intersectie
+        image:
+          src: /images/objectenhandboek/watersysteem/watergangen/intersectie.png
+          alt: Schematische weergave van een intersectie binnen een watergang.
+        caption: Afbeelding 4. Intersectie binnen de watergangstructuur.
   - title: Geometrie
     summary: De geometrie wordt zichtbaar via aslijn, gebiedscontour en dwarsprofiel van dezelfde watergangopbouw.
     items:
