@@ -82,9 +82,9 @@ contentSections:
   - title: Overzicht / Samenhang
     summary: De watergangsectie is het afgebakende deelobject binnen de watergang en vormt samen met intersecties de opbouw van het hoofdobject.
     image:
-      src: /images/objectenhandboek/watersysteem/watergangen/watergangsecties en intersecties.png
-      alt: Schematisch overzicht van watergangsecties en intersecties binnen een watergang.
-    caption: Afbeelding 1. Watergangsecties en intersecties binnen de watergang.
+      src: /images/objectenhandboek/watersysteem/watergangen/watergang sectie.png
+      alt: Schematische weergave van een watergangsectie binnen een watergang.
+    caption: Afbeelding 1. Watergangsectie binnen de watergang.
   - title: Afbakening
     summary: De afbakening van de watergangsectie volgt een deeltraject binnen de watergang met eigen kenmerken, onderhoud en profiel.
   - title: Geometrie
