@@ -244,6 +244,22 @@ const isCompositionTypeOfParent = (parentEntry: any, childTitle: string) =>
     (compositionType: any) => normalizeKey(compositionType.title) === normalizeKey(childTitle)
   );
 
+const isCompositionTypeParagraph = (entry: any) => {
+  if (scope.kind === "object" && entry.id === scope.objectEntryId) {
+    return false;
+  }
+
+  const path = createHandbookPath(entry);
+
+  if (path.length < 2) {
+    return false;
+  }
+
+  const parentEntry = allEntryByTitleKey.get(normalizeKey(path[path.length - 2]));
+
+  return parentEntry ? isCompositionTypeOfParent(parentEntry, getObjectTitle(entry)) : false;
+};
+
 const isAllowedInHandbookTree = (entry: any) => {
   const path = createHandbookPath(entry);
 
@@ -300,10 +316,15 @@ const mergeContentItemMedia = (derivedItems: any[] = [], contentItems: any[] = [
   });
 };
 
-const getContentSectionsForPrint = (entry: any) => {
+const getContentSectionsForPrint = (entry: any, options: { excludeOverviewSamenhang?: boolean } = {}) => {
   const decomposition = getDecompositionFromAssetJson(getObjectTitle(entry));
+  const contentSections = options.excludeOverviewSamenhang
+    ? (entry.data.contentSections || []).filter(
+        (section: any) => normalizeKey(section.title) !== "overzicht-samenhang"
+      )
+    : entry.data.contentSections || [];
 
-  return (entry.data.contentSections || []).map((section: any) =>
+  return contentSections.map((section: any) =>
     normalizeKey(section.title) === "onderdelen" && decomposition
       ? {
           ...section,
@@ -314,8 +335,8 @@ const getContentSectionsForPrint = (entry: any) => {
   );
 };
 
-const getPrintableSections = (entry: any) =>
-  normalizeUitwerkingSections(getContentSectionsForPrint(entry), {
+const getPrintableSections = (entry: any, options: { excludeOverviewSamenhang?: boolean } = {}) =>
+  normalizeUitwerkingSections(getContentSectionsForPrint(entry, options), {
     compositionTypes: entry.data.compositionTypes || [],
     subtypeIconTitle: getObjectTitle(entry),
     includeTypen: true,
@@ -335,7 +356,9 @@ scopedEntries.forEach((entry) => {
     title: getObjectTitle(entry),
     path: categorizedPath,
     summary: entry.data.summary,
-    sections: getPrintableSections(entry)
+    sections: getPrintableSections(entry, {
+      excludeOverviewSamenhang: isCompositionTypeParagraph(entry)
+    })
   });
 
   chapterMap.set(chapterLabel, chapter);
@@ -369,7 +392,9 @@ scopedEntries.forEach((entry) => {
       insertNode(chapter.nodes, childPath, {
         entry: childEntry,
         summary: childEntry.data.summary,
-        sections: getPrintableSections(childEntry)
+        sections: getPrintableSections(childEntry, {
+          excludeOverviewSamenhang: true
+        })
       });
       scopedEntryIds.add(childEntry.id);
       return;
