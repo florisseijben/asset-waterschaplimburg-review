@@ -1042,6 +1042,12 @@ a.classification-tag:focus-visible {
   margin-top: 0;
 }
 
+.geometry-section__blocks,
+.geometry-section__block {
+  display: grid;
+  gap: var(--space-3);
+}
+
 .geometry-section__card {
   aspect-ratio: auto;
   max-height: none;

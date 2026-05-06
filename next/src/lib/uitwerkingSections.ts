@@ -7,6 +7,7 @@ type SectionLinkItem = {
   iconTitle?: string;
   image?: SectionImage;
   caption?: string;
+  blocks?: SectionBlock[];
 };
 
 type SectionImage = {
@@ -34,6 +35,12 @@ type ContentSection = {
 const GEOMETRY_ORDER = ["Grootschalig", "Midschalig", "Kleinschalig"] as const;
 
 function normalizeGeometryItems(items: SectionLinkItem[] = []) {
+  const usesScaleLevels = items.length === 0 || items.some((item) => GEOMETRY_ORDER.includes(item.title as any));
+
+  if (!usesScaleLevels) {
+    return items;
+  }
+
   return GEOMETRY_ORDER.map((title) => {
     const existing = items.find((item) => item.title === title);
 

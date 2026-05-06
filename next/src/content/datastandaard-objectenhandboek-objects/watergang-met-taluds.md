@@ -79,17 +79,35 @@ contentSections:
         href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/bodem
   - title: Geometrie
     summary: De geometrie van Watergang met taluds wordt bepaald door het deeltraject, de profielgrenzen, de bodemligging en de taludhellingen binnen het dwarsprofiel.
-    image:
-      src: /images/objectenhandboek/watersysteem/watergangen/geometrie.png
-      alt: Geometrische weergave van een watergangsectie met taluds, profielgrenzen en dwarsprofiel.
-    caption: Afbeelding 2. Geometrie van Watergang met taluds.
     items:
-      - title: Grootschalig
-        text: "Bij grootschalige kaarten, ongeveer schaal 1:1.000 tot 1:10.000, wordt Watergang met taluds uitgewerkt via de lijn of het vlak van de watergangsectie en de profielinformatie van bodem, taludhelling en profielgrenzen."
-      - title: Midschalig
-        text: "Bij midschalige kaarten, ongeveer schaal 1:25.000 tot 1:100.000, wordt dit type vooral gebruikt om de sectie functioneel te typeren. De individuele taluddetails worden dan niet afzonderlijk getoond, maar blijven relevant als attribuut of profielkenmerk."
-      - title: Kleinschalig
-        text: "Bij kleinschalige kaarten, ongeveer schaal 1:500.000 en kleiner, wordt Watergang met taluds niet als apart type zichtbaar gemaakt. Alleen de gegeneraliseerde watergangstructuur blijft op dit schaalniveau herkenbaar."
+      - title: Overzicht
+        text: Het overzicht toont de watergangsectie met taluds als samenhang tussen profiel, begrenzing en ligging binnen de watergang.
+        image:
+          src: /images/objectenhandboek/watersysteem/watergangen/geometrie.png
+          alt: Geometrische weergave van een watergangsectie met taluds, profielgrenzen en dwarsprofiel.
+        caption: Afbeelding 2. Geometrie van Watergang met taluds.
+        blocks:
+          - image:
+              src: /images/objectenhandboek/watersysteem/watergangsectie_watergang met taluds/watergang met taluds overzicht.png
+              alt: Overzicht van Watergang met taluds met profielopbouw en begrenzing.
+            caption: Afbeelding 3. Overzicht van Watergang met taluds.
+      - title: Dwarsprofiel
+        text: Het dwarsprofiel maakt zichtbaar hoe profiellijnen en profielvlakken de bodem, taluds en aansluitende grenzen beschrijven.
+        blocks:
+          - image:
+              src: /images/objectenhandboek/watersysteem/watergangsectie_watergang met taluds/watergang met taluds profiellijnen.png
+              alt: Dwarsprofiel van Watergang met taluds met profiellijnen.
+            caption: Afbeelding 4. Dwarsprofiel met profiellijnen.
+          - image:
+              src: /images/objectenhandboek/watersysteem/watergangsectie_watergang met taluds/watergang met taluds profielvlakken.png
+              alt: Dwarsprofiel van Watergang met taluds met profielvlakken.
+            caption: Afbeelding 5. Dwarsprofiel met profielvlakken.
+      - title: Bovenaanzicht
+        text: Het bovenaanzicht toont de ligging van de watergangsectie met taluds in de lengterichting van de watergang.
+        image:
+          src: /images/objectenhandboek/watersysteem/watergangsectie_watergang met taluds/watergang met taluds bovenaanzicht.png
+          alt: Bovenaanzicht van Watergang met taluds.
+        caption: Afbeelding 6. Bovenaanzicht van Watergang met taluds.
 productRelations:
   - title: Woordenboek
     text: Begrippen en definities voor watergangsecties, taluds en profielopbouw.

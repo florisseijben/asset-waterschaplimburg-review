@@ -6,12 +6,19 @@ interface SectionImage {
   alt?: string;
 }
 
+interface SectionBlock {
+  text?: string;
+  image?: SectionImage;
+  caption?: string;
+}
+
 interface GeometryItem {
   title: string;
   text: string;
   href?: string;
   image?: SectionImage;
   caption?: string;
+  blocks?: SectionBlock[];
 }
 
 interface GeometrySectionData {
@@ -59,6 +66,21 @@ const items = section?.items || [];
                   <img class="geometry-section__image" src={withBase(item.image.src)} alt={item.image.alt || ""} loading="lazy" />
                   {item.caption && <figcaption class="geometry-section__caption">{item.caption}</figcaption>}
                 </figure>
+              )}
+              {item.blocks && item.blocks.length > 0 && (
+                <div class="geometry-section__blocks">
+                  {item.blocks.map((block) => (
+                    <div class="geometry-section__block">
+                      {block.text && <p>{block.text}</p>}
+                      {block.image?.src && (
+                        <figure class="geometry-section__figure">
+                          <img class="geometry-section__image" src={withBase(block.image.src)} alt={block.image.alt || ""} loading="lazy" />
+                          {block.caption && <figcaption class="geometry-section__caption">{block.caption}</figcaption>}
+                        </figure>
+                      )}
+                    </div>
+                  ))}
+                </div>
               )}
             </ItemTag>
           );
