@@ -173,6 +173,24 @@ export function createWatergangsectieGraph(): GraphConfig {
   };
 }
 
+export function createWatergangMetTaludsGraph(): GraphConfig {
+  return {
+    layoutNodes: [
+      node("watergang", "Watergang", "Hoofdobject", 1, 0, contextFill),
+      node("watergangsectie", "Watergangsectie", "Bovenliggend object", 1, 1, relatedFill),
+      node("watergang-met-taluds", "Watergang met taluds", "Sectietype", 1, 2, selectedFill),
+      node("talud", "Talud", "Profielonderdeel", 0, 3, relatedFill),
+      node("bodem", "Bodem", "Aangrenzend profielonderdeel", 2, 3, contextFill)
+    ],
+    edges: [
+      { from: "watergang", to: "watergangsectie", label: "Heeft sectie" },
+      { from: "watergangsectie", to: "watergang-met-taluds", label: "Heeft type" },
+      { from: "watergang-met-taluds", to: "talud", label: "Heeft talud" },
+      { from: "watergang-met-taluds", to: "bodem", label: "Heeft bodem" }
+    ]
+  };
+}
+
 export function createIntersectieGraph(): GraphConfig {
   return {
     layoutNodes: [

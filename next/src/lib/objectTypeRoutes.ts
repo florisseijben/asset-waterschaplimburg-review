@@ -23,6 +23,7 @@ const existingObjectTypeRoutes: ObjectTypeRoute[] = [
   { title: "Watergang", href: "/datastandaard/objectenhandboek/watersysteem/watergangen" },
   { title: "Watergangen", href: "/datastandaard/objectenhandboek/watersysteem/watergangen" },
   { title: "Watergangsectie", href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie" },
+  { title: "Watergang met taluds", href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/met-taluds" },
   { title: "Intersectie", href: "/datastandaard/objectenhandboek/watersysteem/intersectie" },
   { title: "Regenwaterbuffer", href: "/datastandaard/objectenhandboek/watersysteem/regenwaterbuffer" },
   {
@@ -63,12 +64,6 @@ export const objectTypePlaceholderRoutes: ObjectTypeRoute[] = [
     href: "/datastandaard/objectenhandboek/watersysteem/rijkswateren",
     parentTitle: "Watersysteem",
     parentHref: "/datastandaard/objectenhandboek/watersysteem"
-  },
-  {
-    title: "Watergang met taluds",
-    href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/met-taluds",
-    parentTitle: "Watergangsectie",
-    parentHref: "/datastandaard/objectenhandboek/watersysteem/watergangsectie"
   },
   {
     title: "Watergang met onderhoudspad",
