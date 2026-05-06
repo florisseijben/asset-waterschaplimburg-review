@@ -535,6 +535,38 @@ const handbookBreadcrumbs = [
                     {chapter.introNode.entry.data.definitionSource && (
                       <p class="handbook-object__source">{chapter.introNode.entry.data.definitionSource}</p>
                     )}
+                    {(chapter.introNode.entry.data.terms || []).length > 0 && (
+                      <div>
+                        <h5 class="handbook-object__numbered-heading">
+                          <span class="handbook-number">{chapter.introNumber}.1.1</span>
+                          <span>Gerelateerde begrippen</span>
+                        </h5>
+                        <ul>
+                          {(chapter.introNode.entry.data.terms || []).map((term: any) => (
+                            <li>
+                              <strong>{term.title}</strong>
+                              {term.text && <span> {term.text}</span>}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                    {(chapter.introNode.entry.data.definitionTypes || []).length > 0 && (
+                      <div>
+                        <h5 class="handbook-object__numbered-heading">
+                          <span class="handbook-number">{chapter.introNumber}.1.2</span>
+                          <span>Typen naar definitie</span>
+                        </h5>
+                        <ul>
+                          {(chapter.introNode.entry.data.definitionTypes || []).map((definitionType: any) => (
+                            <li>
+                              <strong>{definitionType.title}</strong>
+                              {definitionType.text && <span> {definitionType.text}</span>}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
                   </section>
 
                   {chapter.introNode.sections.length > 0 && (
@@ -678,6 +710,22 @@ const handbookBreadcrumbs = [
                                 <li>
                                   <strong>{term.title}</strong>
                                   {term.text && <span> {term.text}</span>}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+                        {(entry.data.definitionTypes || []).length > 0 && (
+                          <div>
+                            <h5 class="handbook-object__numbered-heading">
+                              <span class="handbook-number">{item.number}.1.2</span>
+                              <span>Typen naar definitie</span>
+                            </h5>
+                            <ul>
+                              {(entry.data.definitionTypes || []).map((definitionType: any) => (
+                                <li>
+                                  <strong>{definitionType.title}</strong>
+                                  {definitionType.text && <span> {definitionType.text}</span>}
                                 </li>
                               ))}
                             </ul>

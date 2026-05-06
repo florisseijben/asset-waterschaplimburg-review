@@ -33,10 +33,25 @@ if (!entry) {
 }
 
 const conceptData = getConceptFromAssetJson("Watergang");
-const definitionTypes = conceptData?.types?.length ? conceptData.types : entry.data.definitionTypes || [];
 const decompositionData = getDecompositionFromAssetJson("Watergang");
 const samenhangData = createWatergangSamenhangFromAssetJson();
 const normalizeTitle = (value: string) => String(value || "").trim().toLowerCase();
+const mergeTermItems = (...itemGroups: any[][]) => {
+  const seen = new Set<string>();
+
+  return itemGroups.flatMap((items) => items || []).filter((item) => {
+    const key = normalizeTitle(item.title);
+
+    if (!key || seen.has(key)) {
+      return false;
+    }
+
+    seen.add(key);
+    return true;
+  });
+};
+const relatedTerms = mergeTermItems(conceptData?.relatedTerms || [], entry.data.terms || []);
+const definitionTypes = mergeTermItems(conceptData?.types || [], entry.data.definitionTypes || []);
 const mergeContentItemMedia = (derivedItems: any[] = [], contentItems: any[] = []) => {
   const contentItemsByTitle = new Map(contentItems.map((item) => [normalizeTitle(item.title), item]));
   const derivedItemsByTitle = new Map(derivedItems.map((item) => [normalizeTitle(item.title), item]));
@@ -130,7 +145,7 @@ object:watergang relatie:heeftIntersectie object:intersectie .
       subjectLabel="Watergang"
       definition={conceptData?.definition || entry.data.definition}
       synonyms={conceptData?.synonyms || []}
-      relatedTerms={conceptData?.relatedTerms || entry.data.terms || []}
+      relatedTerms={relatedTerms}
       definitionTypes={definitionTypes}
     />
 

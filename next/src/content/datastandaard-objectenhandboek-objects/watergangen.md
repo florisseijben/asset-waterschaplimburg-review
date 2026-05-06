@@ -42,6 +42,9 @@ terms:
   - title: Type watergang
     text: IMBOR-attribuut voor het type beheer en het belang van de watergang.
     href: /datastandaard/woordenboek
+  - title: Hydroobjectgroepering
+    text: Een samenvoeging van HydroObjecten die samen één geheel vormen waaraan homogene kenmerken zijn toe te kennen zoals de naam van het water.
+    href: /datastandaard/woordenboek
 contextNote: In IMBOR ligt de nadruk op de watergang als beheerd fysiek object. In deze objectlijn combineren we dat met Aquo-terminologie voor waterbeheer en met de semantische decompositie naar watergangsecties en intersecties.
 definitionTypes:
   - title: Beek
@@ -59,6 +62,9 @@ definitionTypes:
   - title: Sloot
     text: Onderliggend begrip van Watergang in IMBOR.
     href: /datastandaard/woordenboek
+  - title: Watervoerende weg
+    text: Een weg die bij hevige buien water geleidt naar een nabijgelegen watergang of regenwaterbuffer.
+    href: /datastandaard/woordenboek
 metadata:
   - label: Systeem
     value: Watersysteem
@@ -72,7 +78,7 @@ metadata:
     value: https://data.waterschaplimburg.nl/id/objecttype/watergang
 contentSections:
   - title: Overzicht / Samenhang
-    summary: De watergang wordt gelezen als hoofdobject dat binnen een afvoergebied een traject volgt van aanvoerpunt naar afvoerpunt en dat bestaat uit een gebied dat is opgedeeld in watergangsecties en intersecties en waarin verschillende typen kunstwerken zijn gelegen.
+    summary: De watergang volgt binnen een afvoergebied een traject van aanvoerpunt naar afvoerpunt. De watergang bestaat uit een ruimtelijk gebied dat wordt opgedeeld in watergangsecties en intersecties en bevat verschillende soorten civieltechnische kunstwerken.
     image:
       src: /images/objectenhandboek/watersysteem/watergangen/watergangoverzicht.png
       alt: Overzicht van de samenhang binnen Watergang met traject, gebied, secties en intersecties.
@@ -84,9 +90,9 @@ contentSections:
           alt: Watergang gebied begrensd van aanvoerpunt tot afvoerpunt en door profielgrenzen.
         caption: Afbeelding 2. Watergang gebied van aanvoerpunt tot afvoerpunt.
   - title: Afbakening
-    summary: De afbakening van de watergang volgt het verloop van het traject en de ruimtelijke begrenzing van het bijbehorende waterganggebied.
+    summary: Het ruimtelijk gebied wordt bovenstrooms ruimtelijk afgebakend door het aanvoerpunt en benedenstrooms door het afvoerpunt. In de richting parallel aan het traject van de watergang wordt het ruimtelijk gebied afgebakend door de begrenzingen zoals aangegeven bij de watergangsecties en intersecties.
   - title: Onderdelen
-    summary: Watergangsecties en intersecties vormen samen de belangrijkste onderdelen binnen deze objectlijn en werken de decompositie van de watergang verder uit.
+    summary: De watergang wordt gedecomponeerd in onderling aansluitende watergangsecties en intersecties.
     items:
       - title: Watergangsectie
         text: Afgebakend deelobject binnen de watergang met eigen profiel en onderhoudskenmerken.
@@ -103,7 +109,7 @@ contentSections:
           alt: Schematische weergave van een intersectie binnen een watergang.
         caption: Afbeelding 4. Intersectie binnen de watergangstructuur.
   - title: Geometrie
-    summary: De geometrie wordt zichtbaar via aslijn, gebiedscontour en dwarsprofiel van dezelfde watergangopbouw.
+    summary: De geometrie van de watergang wordt geaggregeerd vanuit de geometrie van de watergangsecties en intersecties en wordt uitgedrukt in een vlak dat de grenzen van de watergang weergeeft en een polyline die de aslijn van de watergang weergeeft.
     image:
       src: /images/objectenhandboek/watersysteem/watergangen/geometrie.png
       alt: Geometrische weergave van de watergang met aslijn, gebiedscontour en dwarsprofiel.
