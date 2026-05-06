@@ -768,10 +768,11 @@ a.classification-tag:focus-visible {
 
 .handbook-object__image {
   display: block;
-  width: 100%;
+  width: auto;
   max-width: 100%;
   max-height: 34rem;
   height: auto;
+  margin-inline: auto;
   border: 1px solid var(--color-line);
   border-radius: 0;
   background: #f8fcfc;
@@ -936,8 +937,10 @@ a.classification-tag:focus-visible {
 
 .info-card__image {
   display: block;
-  width: 100%;
+  width: auto;
+  max-width: 100%;
   height: auto;
+  margin-inline: auto;
   border: 1px solid var(--color-line);
   border-radius: 0;
   background: #f8fcfc;
@@ -1025,8 +1028,10 @@ a.classification-tag:focus-visible {
 
 .geometry-section__image {
   display: block;
-  width: 100%;
+  width: auto;
+  max-width: 100%;
   height: auto;
+  margin-inline: auto;
   border: 1px solid var(--color-line);
   border-radius: 0;
   background: #f8fcfc;
