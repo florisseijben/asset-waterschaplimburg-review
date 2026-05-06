@@ -10,7 +10,7 @@ import {
 } from "../../../../lib/objectenhandboekHandbooks";
 import { objectenhandboekTaxonomy } from "../../../../lib/objectenhandboekTaxonomy";
 import { withBase } from "../../../../lib/paths";
-import { normalizeObjectUitwerkingSections } from "../../../../lib/uitwerkingSections";
+import { normalizeUitwerkingSections } from "../../../../lib/uitwerkingSections";
 import { getDecompositionFromAssetJson } from "../../../../lib/assetConcepts";
 
 export async function getStaticPaths() {
@@ -294,7 +294,8 @@ const mergeContentItemMedia = (derivedItems: any[] = [], contentItems: any[] = [
     return {
       ...item,
       image: contentItem.image || item.image,
-      caption: contentItem.caption || item.caption
+      caption: contentItem.caption || item.caption,
+      blocks: contentItem.blocks || item.blocks
     };
   });
 };
@@ -314,12 +315,15 @@ const getContentSectionsForPrint = (entry: any) => {
 };
 
 const getPrintableSections = (entry: any) =>
-  normalizeObjectUitwerkingSections(getContentSectionsForPrint(entry), {
+  normalizeUitwerkingSections(getContentSectionsForPrint(entry), {
     compositionTypes: entry.data.compositionTypes || [],
     subtypeIconTitle: getObjectTitle(entry),
     includeTypen: true,
-    includeOnderdelenWithCompositionTypes: true
+    includeOnderdelenWithCompositionTypes: true,
+    excludeTitles: ["Decompositie"]
   });
+
+const scopedEntryIds = new Set(scopedEntries.map((entry) => entry.id));
 
 scopedEntries.forEach((entry) => {
   const path = createHandbookPath(entry);
@@ -335,6 +339,47 @@ scopedEntries.forEach((entry) => {
   });
 
   chapterMap.set(chapterLabel, chapter);
+});
+
+scopedEntries.forEach((entry) => {
+  const compositionTypes = entry.data.compositionTypes || [];
+
+  if (!compositionTypes.length) {
+    return;
+  }
+
+  const parentPath = createCategorizedPath(entry);
+  const chapterLabel = getChapterLabel(parentPath, entry);
+  const chapter = chapterMap.get(chapterLabel);
+
+  if (!chapter) {
+    return;
+  }
+
+  compositionTypes.forEach((compositionType: any) => {
+    const childEntry = allEntryByTitleKey.get(normalizeKey(compositionType.title));
+
+    if (childEntry && scopedEntryIds.has(childEntry.id)) {
+      return;
+    }
+
+    if (childEntry && (scope.kind === "object" || belongsToClassificationScope(childEntry))) {
+      const childPath = createCategorizedPath(childEntry);
+
+      insertNode(chapter.nodes, childPath, {
+        entry: childEntry,
+        summary: childEntry.data.summary,
+        sections: getPrintableSections(childEntry)
+      });
+      scopedEntryIds.add(childEntry.id);
+      return;
+    }
+
+    insertNode(chapter.nodes, [...parentPath, compositionType.title], {
+      summary: compositionType.text,
+      text: compositionType.text
+    });
+  });
 });
 
 const handbookChapters = [...chapterMap.values()]
@@ -536,6 +581,24 @@ const handbookBreadcrumbs = [
                                       )}
                                     </figure>
                                   )}
+                                  {(sectionItem.blocks || []).map((block: any) => (
+                                    <>
+                                      {block.text && <p>{block.text}</p>}
+                                      {block.image?.src && (
+                                        <figure class="handbook-object__figure">
+                                          <img
+                                            class="handbook-object__image"
+                                            src={withBase(block.image.src)}
+                                            alt={block.image.alt || ""}
+                                            loading="lazy"
+                                          />
+                                          {block.caption && (
+                                            <figcaption class="handbook-object__caption">{block.caption}</figcaption>
+                                          )}
+                                        </figure>
+                                      )}
+                                    </>
+                                  ))}
                                 </SectionItemTag>
                               )})}
                             </div>
@@ -666,6 +729,24 @@ const handbookBreadcrumbs = [
                                           )}
                                         </figure>
                                       )}
+                                      {(sectionItem.blocks || []).map((block: any) => (
+                                        <>
+                                          {block.text && <p>{block.text}</p>}
+                                          {block.image?.src && (
+                                            <figure class="handbook-object__figure">
+                                              <img
+                                                class="handbook-object__image"
+                                                src={withBase(block.image.src)}
+                                                alt={block.image.alt || ""}
+                                                loading="lazy"
+                                              />
+                                              {block.caption && (
+                                                <figcaption class="handbook-object__caption">{block.caption}</figcaption>
+                                              )}
+                                            </figure>
+                                          )}
+                                        </>
+                                      ))}
                                     </SectionItemTag>
                                   )})}
                                 </div>

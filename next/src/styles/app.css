@@ -746,6 +746,7 @@ a.classification-tag:focus-visible {
 
 .handbook-object__item-grid {
   margin-top: var(--space-3);
+  grid-template-columns: 1fr;
 }
 
 .handbook-object__item-card {
@@ -1038,8 +1039,9 @@ a.classification-tag:focus-visible {
   line-height: 1.5;
 }
 
-.geometry-section__grid {
+.geometry-section .geometry-section__grid {
   margin-top: 0;
+  grid-template-columns: 1fr;
 }
 
 .geometry-section__blocks,
