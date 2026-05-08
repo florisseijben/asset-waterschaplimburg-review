@@ -96,6 +96,36 @@ export const objectTypePlaceholderRoutes: ObjectTypeRoute[] = [
     parentHref: "/datastandaard/objectenhandboek/watersysteem/watergangsectie"
   },
   {
+    title: "Watergang met dijk",
+    href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/met-dijk",
+    parentTitle: "Watergangsectie",
+    parentHref: "/datastandaard/objectenhandboek/watersysteem/watergangsectie"
+  },
+  {
+    title: "Lijnvormig element",
+    href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/lijnvormig-element",
+    parentTitle: "Watergangsectie",
+    parentHref: "/datastandaard/objectenhandboek/watersysteem/watergangsectie"
+  },
+  {
+    title: "Weg - watergang",
+    href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/weg-watergang",
+    parentTitle: "Watergangsectie",
+    parentHref: "/datastandaard/objectenhandboek/watersysteem/watergangsectie"
+  },
+  {
+    title: "Bronloop",
+    href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/bronloop",
+    parentTitle: "Watergangsectie",
+    parentHref: "/datastandaard/objectenhandboek/watersysteem/watergangsectie"
+  },
+  {
+    title: "Holle weg",
+    href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/holle-weg",
+    parentTitle: "Watergangsectie",
+    parentHref: "/datastandaard/objectenhandboek/watersysteem/watergangsectie"
+  },
+  {
     title: "Watergang - Watergang",
     href: "/datastandaard/objectenhandboek/watersysteem/intersectie/watergang-watergang",
     parentTitle: "Intersectie",
