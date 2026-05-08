@@ -1,41 +1,21 @@
 ---
-import BaseLayout from "../../../../../layouts/BaseLayout.astro";
-import Hero from "../../../../../components/Hero.astro";
-import HandbookHeroCard from "../../../../../components/HandbookHeroCard.astro";
-import ConceptSummarySection from "../../../../../components/ConceptSummarySection.astro";
-import ObjectClassificationSection from "../../../../../components/ObjectClassificationSection.astro";
-import SemanticSamenhangSection from "../../../../../components/SemanticSamenhangSection.astro";
-import ProductSection from "../../../../../components/ProductSection.astro";
-import UitwerkingSection from "../../../../../components/UitwerkingSection.astro";
-import GeometrySection from "../../../../../components/GeometrySection.astro";
-import VervolgSection from "../../../../../components/VervolgSection.astro";
-import { getCollection } from "astro:content";
-import { getObjectHandbookHref } from "../../../../../lib/objectenhandboekHandbooks";
-import { getGeometrySection, normalizeObjectUitwerkingSections } from "../../../../../lib/uitwerkingSections";
-import { createWatergangsectieTypeGraph } from "../../../../../lib/semanticSamenhangGraphs";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "./Hero.astro";
+import HandbookHeroCard from "./HandbookHeroCard.astro";
+import ConceptSummarySection from "./ConceptSummarySection.astro";
+import ObjectClassificationSection from "./ObjectClassificationSection.astro";
+import SemanticSamenhangSection from "./SemanticSamenhangSection.astro";
+import ProductSection from "./ProductSection.astro";
+import UitwerkingSection from "./UitwerkingSection.astro";
+import GeometrySection from "./GeometrySection.astro";
+import VervolgSection from "./VervolgSection.astro";
+import { getObjectHandbookHref } from "../lib/objectenhandboekHandbooks";
+import { getGeometrySection, normalizeObjectUitwerkingSections } from "../lib/uitwerkingSections";
+import { createWatergangsectieTypeGraph } from "../lib/semanticSamenhangGraphs";
 
-export async function getStaticPaths() {
-  const slugPrefix = "/datastandaard/objectenhandboek/watersysteem/watergangsectie/";
-  const entries = await getCollection("datastandaard-objectenhandboek-objects");
-  const staticPageSlugs = new Set(["met-taluds", "talud"]);
-
-  return entries
-    .map((entry) => {
-      const slug = String(entry.data.slug || "").replace(/\/$/, "");
-      const sectietype = slug.startsWith(slugPrefix) ? slug.slice(slugPrefix.length) : "";
-
-      return { entry, sectietype };
-    })
-    .filter(
-      (item) =>
-        item.sectietype &&
-        !item.sectietype.includes("/") &&
-        !staticPageSlugs.has(item.sectietype)
-    )
-    .map((item) => ({
-      params: { sectietype: item.sectietype },
-      props: { entry: item.entry, sectietype: item.sectietype }
-    }));
+interface Props {
+  entry: any;
+  sectietype: string;
 }
 
 const { entry, sectietype } = Astro.props;

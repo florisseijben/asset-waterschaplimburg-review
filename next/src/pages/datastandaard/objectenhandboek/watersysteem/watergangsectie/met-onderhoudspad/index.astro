@@ -1,0 +1,19 @@
+---
+import { getCollection } from "astro:content";
+import WatergangsectieTypePage from "../../../../../../components/WatergangsectieTypePage.astro";
+
+const entries = await getCollection("datastandaard-objectenhandboek-objects");
+const expectedSlug = "/datastandaard/objectenhandboek/watersysteem/watergangsectie/met-onderhoudspad";
+const entry = entries.find(
+  (item) =>
+    item.data.slug === expectedSlug ||
+    item.data.slug?.replace(/\/$/, "") === expectedSlug ||
+    item.data.title === "Watergang met onderhoudspad"
+);
+
+if (!entry) {
+  throw new Error("Objectenhandboek Watergang met onderhoudspad ontbreekt in de nieuwe omgeving.");
+}
+---
+
+<WatergangsectieTypePage entry={entry} sectietype="met-onderhoudspad" />

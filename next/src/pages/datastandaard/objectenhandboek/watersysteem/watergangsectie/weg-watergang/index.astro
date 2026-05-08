@@ -1,0 +1,19 @@
+---
+import { getCollection } from "astro:content";
+import WatergangsectieTypePage from "../../../../../../components/WatergangsectieTypePage.astro";
+
+const entries = await getCollection("datastandaard-objectenhandboek-objects");
+const expectedSlug = "/datastandaard/objectenhandboek/watersysteem/watergangsectie/weg-watergang";
+const entry = entries.find(
+  (item) =>
+    item.data.slug === expectedSlug ||
+    item.data.slug?.replace(/\/$/, "") === expectedSlug ||
+    item.data.title === "Weg - watergang"
+);
+
+if (!entry) {
+  throw new Error("Objectenhandboek Weg - watergang ontbreekt in de nieuwe omgeving.");
+}
+---
+
+<WatergangsectieTypePage entry={entry} sectietype="weg-watergang" />
