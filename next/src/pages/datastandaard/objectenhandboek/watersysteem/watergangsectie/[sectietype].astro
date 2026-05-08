@@ -1,0 +1,143 @@
+---
+import BaseLayout from "../../../../../layouts/BaseLayout.astro";
+import Hero from "../../../../../components/Hero.astro";
+import HandbookHeroCard from "../../../../../components/HandbookHeroCard.astro";
+import ConceptSummarySection from "../../../../../components/ConceptSummarySection.astro";
+import ObjectClassificationSection from "../../../../../components/ObjectClassificationSection.astro";
+import SemanticSamenhangSection from "../../../../../components/SemanticSamenhangSection.astro";
+import ProductSection from "../../../../../components/ProductSection.astro";
+import UitwerkingSection from "../../../../../components/UitwerkingSection.astro";
+import GeometrySection from "../../../../../components/GeometrySection.astro";
+import VervolgSection from "../../../../../components/VervolgSection.astro";
+import { getCollection } from "astro:content";
+import { getObjectHandbookHref } from "../../../../../lib/objectenhandboekHandbooks";
+import { getGeometrySection, normalizeObjectUitwerkingSections } from "../../../../../lib/uitwerkingSections";
+import { createWatergangsectieTypeGraph } from "../../../../../lib/semanticSamenhangGraphs";
+
+const sectionTypeSlugs = new Set([
+  "met-onderhoudspad",
+  "met-beschoeiing",
+  "met-wandconstructie",
+  "met-accoladeprofiel",
+  "vrij-meanderend",
+  "met-dijk",
+  "lijnvormig-element",
+  "weg-watergang",
+  "bronloop",
+  "holle-weg"
+]);
+const slugPrefix = "/datastandaard/objectenhandboek/watersysteem/watergangsectie/";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("datastandaard-objectenhandboek-objects");
+
+  return entries
+    .map((entry) => {
+      const slug = String(entry.data.slug || "");
+      const sectietype = slug.startsWith(slugPrefix) ? slug.slice(slugPrefix.length) : "";
+
+      return { entry, sectietype };
+    })
+    .filter((item) => sectionTypeSlugs.has(item.sectietype))
+    .map((item) => ({
+      params: { sectietype: item.sectietype },
+      props: { entry: item.entry, sectietype: item.sectietype }
+    }));
+}
+
+const { entry, sectietype } = Astro.props;
+const contentSections = entry.data.contentSections || [];
+const visibleContentSections = normalizeObjectUitwerkingSections(contentSections, {
+  compositionTypes: entry.data.compositionTypes || [],
+  subtypeIconTitle: entry.data.heroTitle || entry.data.title
+});
+const geometrySection = getGeometrySection(contentSections);
+const typeId = String(entry.id || sectietype).replace(/\.md$/, "");
+const typeLabel = entry.data.heroTitle || entry.data.title;
+const typeTurtleLabel = String(typeLabel).replace(/\\/g, "\\\\").replace(/"/g, '\\"');
+const samenhangGraph = createWatergangsectieTypeGraph(typeId, typeLabel);
+const samenhangTurtle = `@prefix object: <https://data.waterschaplimburg.nl/id/objecttype/> .
+@prefix relatie: <https://data.waterschaplimburg.nl/def/relatie/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+object:watergang a owl:Class ;
+  rdfs:label "Watergang" .
+
+object:watergangsectie a owl:Class ;
+  rdfs:label "Watergangsectie" .
+
+object:${typeId} a owl:Class ;
+  rdfs:label "${typeTurtleLabel}" .
+
+object:dwarsprofiel a owl:Class ;
+  rdfs:label "Dwarsprofiel" .
+
+object:profielgrens a owl:Class ;
+  rdfs:label "Profielgrens" .
+
+relatie:heeftSectie a owl:ObjectProperty ;
+  rdfs:label "Heeft sectie" .
+
+relatie:heeftType a owl:ObjectProperty ;
+  rdfs:label "Heeft type" .
+
+relatie:heeftProfiel a owl:ObjectProperty ;
+  rdfs:label "Heeft profiel" .
+
+relatie:heeftBegrenzing a owl:ObjectProperty ;
+  rdfs:label "Heeft begrenzing" .
+
+object:watergang relatie:heeftSectie object:watergangsectie .
+object:watergangsectie relatie:heeftType object:${typeId} .
+object:${typeId} relatie:heeftProfiel object:dwarsprofiel .
+object:${typeId} relatie:heeftBegrenzing object:profielgrens .
+`;
+---
+
+<BaseLayout
+  title={entry.data.title}
+  currentPath="/datastandaard"
+  breadcrumbs={[
+    { label: "Home", href: "/" },
+    { label: "Datastandaard", href: "/datastandaard" },
+    { label: "Objectenhandboek", href: "/datastandaard/objectenhandboek" },
+    { label: "Watersysteem", href: "/datastandaard/objectenhandboek/watersysteem" },
+    { label: "Watergangen", href: "/datastandaard/objectenhandboek/watersysteem/watergangen" },
+    { label: "Watergangsectie", href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie" },
+    { label: typeLabel }
+  ]}
+>
+  <Hero eyebrow="Objectenhandboek" title={typeLabel} summary={entry.data.summary}>
+    <HandbookHeroCard slot="aside" href={getObjectHandbookHref(entry.id)} />
+  </Hero>
+
+  <ConceptSummarySection
+    subjectLabel={typeLabel}
+    definition={entry.data.definition}
+    definitionSource={entry.data.definitionSource}
+    relatedTerms={entry.data.terms || []}
+    definitionTypes={entry.data.definitionTypes || []}
+  />
+
+  <SemanticSamenhangSection
+    title={`Decompositie en hoofdrelaties binnen ${typeLabel}`}
+    summary={`${typeLabel} wordt hier als type van Watergangsectie getoond, met de relatie naar dwarsprofiel en profielgrenzen.`}
+    sourceLabel="Dummy Turtle-export uit de semantische modelleertool voor typen naar compositie binnen Watergangsectie."
+    graphId={`${typeId}-samenhang`}
+    selectedId={typeId}
+    turtle={samenhangTurtle}
+    layoutNodes={samenhangGraph.layoutNodes}
+    edges={samenhangGraph.edges}
+  />
+
+  <UitwerkingSection title={`Inhoudelijke opbouw van ${typeLabel}`} items={visibleContentSections} />
+
+  <GeometrySection section={geometrySection} />
+
+  <ProductSection eyebrow="Productlijn" items={entry.data.productRelations || []} />
+
+  <VervolgSection title="Logische volgende stappen binnen deze lijn" items={entry.data.nextSteps || []} />
+
+  <ObjectClassificationSection classification={entry.data.classification} />
+</BaseLayout>

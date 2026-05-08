@@ -24,6 +24,16 @@ const existingObjectTypeRoutes: ObjectTypeRoute[] = [
   { title: "Watergangen", href: "/datastandaard/objectenhandboek/watersysteem/watergangen" },
   { title: "Watergangsectie", href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie" },
   { title: "Watergang met taluds", href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/met-taluds" },
+  { title: "Watergang met onderhoudspad", href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/met-onderhoudspad" },
+  { title: "Watergang met beschoeiing", href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/met-beschoeiing" },
+  { title: "Watergang met wandconstructie", href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/met-wandconstructie" },
+  { title: "Watergang met accoladeprofiel", href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/met-accoladeprofiel" },
+  { title: "Vrij meanderende watergang", href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/vrij-meanderend" },
+  { title: "Watergang met dijk", href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/met-dijk" },
+  { title: "Lijnvormig element", href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/lijnvormig-element" },
+  { title: "Weg - watergang", href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/weg-watergang" },
+  { title: "Bronloop", href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/bronloop" },
+  { title: "Holle weg", href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/holle-weg" },
   { title: "Intersectie", href: "/datastandaard/objectenhandboek/watersysteem/intersectie" },
   { title: "Regenwaterbuffer", href: "/datastandaard/objectenhandboek/watersysteem/regenwaterbuffer" },
   {
@@ -64,66 +74,6 @@ export const objectTypePlaceholderRoutes: ObjectTypeRoute[] = [
     href: "/datastandaard/objectenhandboek/watersysteem/rijkswateren",
     parentTitle: "Watersysteem",
     parentHref: "/datastandaard/objectenhandboek/watersysteem"
-  },
-  {
-    title: "Watergang met onderhoudspad",
-    href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/met-onderhoudspad",
-    parentTitle: "Watergangsectie",
-    parentHref: "/datastandaard/objectenhandboek/watersysteem/watergangsectie"
-  },
-  {
-    title: "Watergang met beschoeiing",
-    href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/met-beschoeiing",
-    parentTitle: "Watergangsectie",
-    parentHref: "/datastandaard/objectenhandboek/watersysteem/watergangsectie"
-  },
-  {
-    title: "Watergang met wandconstructie",
-    href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/met-wandconstructie",
-    parentTitle: "Watergangsectie",
-    parentHref: "/datastandaard/objectenhandboek/watersysteem/watergangsectie"
-  },
-  {
-    title: "Watergang met accoladeprofiel",
-    href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/met-accoladeprofiel",
-    parentTitle: "Watergangsectie",
-    parentHref: "/datastandaard/objectenhandboek/watersysteem/watergangsectie"
-  },
-  {
-    title: "Vrij meanderende watergang",
-    href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/vrij-meanderend",
-    parentTitle: "Watergangsectie",
-    parentHref: "/datastandaard/objectenhandboek/watersysteem/watergangsectie"
-  },
-  {
-    title: "Watergang met dijk",
-    href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/met-dijk",
-    parentTitle: "Watergangsectie",
-    parentHref: "/datastandaard/objectenhandboek/watersysteem/watergangsectie"
-  },
-  {
-    title: "Lijnvormig element",
-    href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/lijnvormig-element",
-    parentTitle: "Watergangsectie",
-    parentHref: "/datastandaard/objectenhandboek/watersysteem/watergangsectie"
-  },
-  {
-    title: "Weg - watergang",
-    href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/weg-watergang",
-    parentTitle: "Watergangsectie",
-    parentHref: "/datastandaard/objectenhandboek/watersysteem/watergangsectie"
-  },
-  {
-    title: "Bronloop",
-    href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/bronloop",
-    parentTitle: "Watergangsectie",
-    parentHref: "/datastandaard/objectenhandboek/watersysteem/watergangsectie"
-  },
-  {
-    title: "Holle weg",
-    href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/holle-weg",
-    parentTitle: "Watergangsectie",
-    parentHref: "/datastandaard/objectenhandboek/watersysteem/watergangsectie"
   },
   {
     title: "Watergang - Watergang",
