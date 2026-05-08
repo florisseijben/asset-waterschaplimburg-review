@@ -14,21 +14,20 @@ import { getObjectHandbookHref } from "../../../../../lib/objectenhandboekHandbo
 import { getGeometrySection, normalizeObjectUitwerkingSections } from "../../../../../lib/uitwerkingSections";
 import { createWatergangsectieTypeGraph } from "../../../../../lib/semanticSamenhangGraphs";
 
-const sectionTypeSlugs = new Set([
-  "met-onderhoudspad",
-  "met-beschoeiing",
-  "met-wandconstructie",
-  "met-accoladeprofiel",
-  "vrij-meanderend",
-  "met-dijk",
-  "lijnvormig-element",
-  "weg-watergang",
-  "bronloop",
-  "holle-weg"
-]);
-const slugPrefix = "/datastandaard/objectenhandboek/watersysteem/watergangsectie/";
-
 export async function getStaticPaths() {
+  const sectionTypeSlugs = new Set([
+    "met-onderhoudspad",
+    "met-beschoeiing",
+    "met-wandconstructie",
+    "met-accoladeprofiel",
+    "vrij-meanderend",
+    "met-dijk",
+    "lijnvormig-element",
+    "weg-watergang",
+    "bronloop",
+    "holle-weg"
+  ]);
+  const slugPrefix = "/datastandaard/objectenhandboek/watersysteem/watergangsectie/";
   const entries = await getCollection("datastandaard-objectenhandboek-objects");
 
   return entries
