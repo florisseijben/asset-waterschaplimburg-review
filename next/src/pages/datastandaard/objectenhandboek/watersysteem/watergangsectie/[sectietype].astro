@@ -17,42 +17,25 @@ import { createWatergangsectieTypeGraph } from "../../../../../lib/semanticSamen
 export async function getStaticPaths() {
   const slugPrefix = "/datastandaard/objectenhandboek/watersysteem/watergangsectie/";
   const entries = await getCollection("datastandaard-objectenhandboek-objects");
-  const parentEntry = entries.find(
-    (entry) =>
-      entry.id === "watergangsectie" ||
-      entry.data.slug === slugPrefix.replace(/\/$/, "") ||
-      entry.data.title === "Watergangsectie"
-  );
+  const staticPageSlugs = new Set(["met-taluds", "talud"]);
 
-  if (!parentEntry) {
-    throw new Error("Objectenhandboek Watergangsectie ontbreekt voor de typepagina-routes.");
-  }
+  return entries
+    .map((entry) => {
+      const slug = String(entry.data.slug || "").replace(/\/$/, "");
+      const sectietype = slug.startsWith(slugPrefix) ? slug.slice(slugPrefix.length) : "";
 
-  const sectionTypeSlugs = Array.from(new Set(
-    (parentEntry.data.compositionTypes || [])
-      .map((item: any) => String(item.href || ""))
-      .filter((href: string) => href.startsWith(slugPrefix))
-      .map((href: string) => href.slice(slugPrefix.length).replace(/\/$/, ""))
-      .filter((sectietype: string) => sectietype && sectietype !== "met-taluds" && !sectietype.includes("/"))
-  ));
-
-  return sectionTypeSlugs.map((sectietype: string) => {
-    const expectedSlug = `${slugPrefix}${sectietype}`;
-    const entry = entries.find(
+      return { entry, sectietype };
+    })
+    .filter(
       (item) =>
-        item.data.slug === expectedSlug ||
-        item.data.slug?.replace(/\/$/, "") === expectedSlug
-    );
-
-    if (!entry) {
-      throw new Error(`Objectenhandboekpagina voor Watergangsectie-type ${sectietype} ontbreekt.`);
-    }
-
-    return {
-      params: { sectietype },
-      props: { entry, sectietype }
-    };
-  });
+        item.sectietype &&
+        !item.sectietype.includes("/") &&
+        !staticPageSlugs.has(item.sectietype)
+    )
+    .map((item) => ({
+      params: { sectietype: item.sectietype },
+      props: { entry: item.entry, sectietype: item.sectietype }
+    }));
 }
 
 const { entry, sectietype } = Astro.props;
