@@ -76,7 +76,7 @@ contentSections:
         image:
           src: /images/objectenhandboek/watersysteem/watergangsectie_bronloop/Bronloop profiellijn.png
           alt: Doorsnede van Bronloop met profiellijn.
-        caption: Doorsnede. Bronloop.
+        caption: Afbeelding 1. Dwarsprofiel van Bronloop.
 productRelations:
   - title: Woordenboek
     text: Begrippen en definities voor bronlopen en watergangsecties.

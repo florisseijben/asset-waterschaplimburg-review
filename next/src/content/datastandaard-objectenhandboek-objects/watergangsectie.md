@@ -66,6 +66,10 @@ compositionTypes:
   - title: Watergang met beschoeiing
     text: Sectie waarin een beschoeiing onderdeel is van de constructieve opbouw.
     href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/met-beschoeiing
+    image:
+      src: /images/objectenhandboek/watersysteem/watergangsectie_watergang met beschoeiing/watergang met beschoeiing overzicht.jpg
+      alt: Overzicht van Watergang met beschoeiing.
+    caption: Overzicht. Watergang met beschoeiing.
   - title: Watergang met wandconstructie
     text: Sectie met een verticale of semi-verticale wandoplossing.
     href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/met-wandconstructie

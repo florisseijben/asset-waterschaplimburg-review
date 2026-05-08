@@ -76,7 +76,7 @@ contentSections:
         image:
           src: /images/objectenhandboek/watersysteem/watergangsectie_vrij meanderende watergang/Vrij meanderende watergang.png
           alt: Doorsnede van Vrij meanderende watergang.
-        caption: Doorsnede. Vrij meanderende watergang.
+        caption: Afbeelding 1. Dwarsprofiel van Vrij meanderende watergang.
 productRelations:
   - title: Woordenboek
     text: Begrippen en definities voor watergangsecties en meanderende watergangen.

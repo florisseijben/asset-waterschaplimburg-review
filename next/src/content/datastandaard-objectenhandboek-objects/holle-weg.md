@@ -74,7 +74,7 @@ contentSections:
         image:
           src: /images/objectenhandboek/watersysteem/watergangsectie_holle weg/Holleweg profiellijn.png
           alt: Doorsnede van Holle weg met profiellijn.
-        caption: Doorsnede. Holle weg.
+        caption: Afbeelding 1. Dwarsprofiel van Holle weg.
 productRelations:
   - title: Woordenboek
     text: Begrippen en definities voor holle wegen en watergangsecties.

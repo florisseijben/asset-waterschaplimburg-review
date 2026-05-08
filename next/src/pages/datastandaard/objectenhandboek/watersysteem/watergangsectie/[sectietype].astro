@@ -15,33 +15,44 @@ import { getGeometrySection, normalizeObjectUitwerkingSections } from "../../../
 import { createWatergangsectieTypeGraph } from "../../../../../lib/semanticSamenhangGraphs";
 
 export async function getStaticPaths() {
-  const sectionTypeSlugs = new Set([
-    "met-onderhoudspad",
-    "met-beschoeiing",
-    "met-wandconstructie",
-    "met-accoladeprofiel",
-    "vrij-meanderend",
-    "met-dijk",
-    "lijnvormig-element",
-    "weg-watergang",
-    "bronloop",
-    "holle-weg"
-  ]);
   const slugPrefix = "/datastandaard/objectenhandboek/watersysteem/watergangsectie/";
   const entries = await getCollection("datastandaard-objectenhandboek-objects");
+  const parentEntry = entries.find(
+    (entry) =>
+      entry.id === "watergangsectie" ||
+      entry.data.slug === slugPrefix.replace(/\/$/, "") ||
+      entry.data.title === "Watergangsectie"
+  );
 
-  return entries
-    .map((entry) => {
-      const slug = String(entry.data.slug || "");
-      const sectietype = slug.startsWith(slugPrefix) ? slug.slice(slugPrefix.length) : "";
+  if (!parentEntry) {
+    throw new Error("Objectenhandboek Watergangsectie ontbreekt voor de typepagina-routes.");
+  }
 
-      return { entry, sectietype };
-    })
-    .filter((item) => sectionTypeSlugs.has(item.sectietype))
-    .map((item) => ({
-      params: { sectietype: item.sectietype },
-      props: { entry: item.entry, sectietype: item.sectietype }
-    }));
+  const sectionTypeSlugs = Array.from(new Set(
+    (parentEntry.data.compositionTypes || [])
+      .map((item: any) => String(item.href || ""))
+      .filter((href: string) => href.startsWith(slugPrefix))
+      .map((href: string) => href.slice(slugPrefix.length).replace(/\/$/, ""))
+      .filter((sectietype: string) => sectietype && sectietype !== "met-taluds" && !sectietype.includes("/"))
+  ));
+
+  return sectionTypeSlugs.map((sectietype: string) => {
+    const expectedSlug = `${slugPrefix}${sectietype}`;
+    const entry = entries.find(
+      (item) =>
+        item.data.slug === expectedSlug ||
+        item.data.slug?.replace(/\/$/, "") === expectedSlug
+    );
+
+    if (!entry) {
+      throw new Error(`Objectenhandboekpagina voor Watergangsectie-type ${sectietype} ontbreekt.`);
+    }
+
+    return {
+      params: { sectietype },
+      props: { entry, sectietype }
+    };
+  });
 }
 
 const { entry, sectietype } = Astro.props;

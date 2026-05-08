@@ -69,12 +69,23 @@ contentSections:
   - title: Geometrie
     summary: De geometrie wordt bepaald door het deeltraject, de ligging van het waterprofiel en de positie van het onderhoudspad ten opzichte van de watergang.
     items:
+      - title: Overzicht
+        text: Het overzicht toont hoe het onderhoudspad ruimtelijk samenhangt met het waterprofiel en de begrenzing van de watergangsectie.
+        blocks:
+          - image:
+              src: /images/objectenhandboek/watersysteem/watergangsectie_watergang met onderhoudspad/Watergang met onderhoudspad overzicht.png
+              alt: Overzicht van Watergang met onderhoudspad met waterprofiel en onderhoudspad.
+            caption: Afbeelding 1. Overzicht van Watergang met onderhoudspad.
+          - image:
+              src: /images/objectenhandboek/watersysteem/watergangsectie_watergang met onderhoudspad/watergang met onderhoudspad overzicht_2.jpg
+              alt: Aanvullend overzicht van Watergang met onderhoudspad.
+            caption: Afbeelding 2. Aanvullend overzicht van Watergang met onderhoudspad.
       - title: Dwarsprofiel
         text: Het dwarsprofiel laat zien hoe het onderhoudspad samenhangt met de profielopbouw van de watergangsectie.
         image:
           src: /images/objectenhandboek/watersysteem/watergangsectie_watergang met onderhoudspad/Watergang met onderhoudspad profiellijn.png
           alt: Doorsnede van Watergang met onderhoudspad met profiellijn.
-        caption: Doorsnede. Watergang met onderhoudspad.
+        caption: Afbeelding 3. Dwarsprofiel van Watergang met onderhoudspad.
 productRelations:
   - title: Woordenboek
     text: Begrippen en definities voor watergangsecties en onderhoudspaden.

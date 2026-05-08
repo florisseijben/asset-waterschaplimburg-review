@@ -74,7 +74,7 @@ contentSections:
         image:
           src: /images/objectenhandboek/watersysteem/watergangsectie_weg-watergang/Weg-watergang profiellijn.png
           alt: Doorsnede van Weg - watergang met profiellijn.
-        caption: Doorsnede. Weg - watergang.
+        caption: Afbeelding 1. Dwarsprofiel van Weg - watergang.
 productRelations:
   - title: Woordenboek
     text: Begrippen en definities voor watergangsecties en wegprofielen.

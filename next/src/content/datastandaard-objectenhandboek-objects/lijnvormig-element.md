@@ -74,7 +74,7 @@ contentSections:
         image:
           src: /images/objectenhandboek/watersysteem/watergangsectie_lijnvormig element/Lijnvormig element profiellijn.png
           alt: Doorsnede van Lijnvormig element met profiellijn.
-        caption: Doorsnede. Lijnvormig element.
+        caption: Afbeelding 1. Dwarsprofiel van Lijnvormig element.
 productRelations:
   - title: Woordenboek
     text: Begrippen en definities voor watergangsecties en lijnvormige elementen.

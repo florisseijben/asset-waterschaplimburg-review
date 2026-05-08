@@ -76,7 +76,7 @@ contentSections:
         image:
           src: /images/objectenhandboek/watersysteem/watergangsectie_watergang met accoladeprofiel/Watergang met accoladeprofiel profiellijn.png
           alt: Doorsnede van Watergang met accoladeprofiel met profiellijn.
-        caption: Doorsnede. Watergang met accoladeprofiel.
+        caption: Afbeelding 1. Dwarsprofiel van Watergang met accoladeprofiel.
 productRelations:
   - title: Woordenboek
     text: Begrippen en definities voor watergangsecties en profielvormen.

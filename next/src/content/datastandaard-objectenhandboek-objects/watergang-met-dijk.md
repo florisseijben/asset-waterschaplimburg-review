@@ -69,12 +69,18 @@ contentSections:
   - title: Geometrie
     summary: De geometrie wordt bepaald door de ligging van het waterprofiel, het dijkprofiel en de profielgrenzen binnen het deeltraject.
     items:
+      - title: Overzicht
+        text: Het overzicht toont hoe het waterprofiel en het dijkprofiel samen de ruimtelijke opbouw van de watergangsectie bepalen.
+        image:
+          src: /images/objectenhandboek/watersysteem/watergangsectie_watergang met dijk/Watergang met dijk overzicht.png
+          alt: Overzicht van Watergang met dijk met waterprofiel en dijkprofiel.
+        caption: Afbeelding 1. Overzicht van Watergang met dijk.
       - title: Dwarsprofiel
         text: Het dwarsprofiel laat zien hoe de dijk ruimtelijk samenhangt met de watergangsectie.
         image:
           src: /images/objectenhandboek/watersysteem/watergangsectie_watergang met dijk/Watergang met dijk profiellijn.png
           alt: Doorsnede van Watergang met dijk met profiellijn.
-        caption: Doorsnede. Watergang met dijk.
+        caption: Afbeelding 2. Dwarsprofiel van Watergang met dijk.
 productRelations:
   - title: Woordenboek
     text: Begrippen en definities voor watergangsecties en dijkprofielen.

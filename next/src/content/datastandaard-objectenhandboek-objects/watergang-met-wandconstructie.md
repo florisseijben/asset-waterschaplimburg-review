@@ -69,12 +69,18 @@ contentSections:
   - title: Geometrie
     summary: De geometrie wordt bepaald door de ligging van de wandconstructie, de bodemligging en de ruimtelijke begrenzing van de sectie.
     items:
+      - title: Overzicht
+        text: Het overzicht toont hoe de wandconstructie de overgang tussen waterprofiel en omgeving binnen de watergangsectie begrenst.
+        image:
+          src: /images/objectenhandboek/watersysteem/watergangsectie_watergang met wandconstructie/Watergang met wandconstructie overzicht.png
+          alt: Overzicht van Watergang met wandconstructie met waterprofiel en wandbegrenzing.
+        caption: Afbeelding 1. Overzicht van Watergang met wandconstructie.
       - title: Dwarsprofiel
         text: Het dwarsprofiel laat zien hoe de wandconstructie het waterprofiel begrenst.
         image:
           src: /images/objectenhandboek/watersysteem/watergangsectie_watergang met wandconstructie/Watergang met wandconstructie profiellijn.png
           alt: Doorsnede van Watergang met wandconstructie met profiellijn.
-        caption: Doorsnede. Watergang met wandconstructie.
+        caption: Afbeelding 2. Dwarsprofiel van Watergang met wandconstructie.
 productRelations:
   - title: Woordenboek
     text: Begrippen en definities voor watergangsecties en wandconstructies.

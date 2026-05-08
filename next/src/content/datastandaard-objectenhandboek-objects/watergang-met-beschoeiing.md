@@ -69,8 +69,14 @@ contentSections:
   - title: Geometrie
     summary: De geometrie wordt bepaald door het deeltraject, de positie van de beschoeiing en de aansluiting op bodem, talud of randzone.
     items:
+      - title: Overzicht
+        text: Het overzicht toont de watergangsectie met beschoeiing als constructieve begrenzing of oeverbescherming binnen het profiel.
+        image:
+          src: /images/objectenhandboek/watersysteem/watergangsectie_watergang met beschoeiing/watergang met beschoeiing overzicht.jpg
+          alt: Overzicht van Watergang met beschoeiing met constructieve profielbegrenzing.
+        caption: Afbeelding 1. Overzicht van Watergang met beschoeiing.
       - title: Dwarsprofiel
-        text: Het dwarsprofiel voor Watergang met beschoeiing wordt in een volgende uitwerking gekoppeld aan een specifieke doorsnede.
+        text: Het dwarsprofiel beschrijft hoe de beschoeiing aansluit op bodem, talud of randzone binnen de watergangsectie.
 productRelations:
   - title: Woordenboek
     text: Begrippen en definities voor watergangsecties en beschoeiing.
