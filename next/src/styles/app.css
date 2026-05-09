@@ -618,6 +618,10 @@ a.classification-tag:focus-visible {
   list-style: none;
 }
 
+.handbook-toc__summary--group {
+  grid-template-columns: minmax(0, 1fr) 0.75rem;
+}
+
 .handbook-toc__summary::-webkit-details-marker {
   display: none;
 }
@@ -638,6 +642,10 @@ a.classification-tag:focus-visible {
   align-self: center;
   grid-column: 3;
   grid-row: 1;
+}
+
+.handbook-toc__summary--group::after {
+  grid-column: 2;
 }
 
 .handbook-toc__details[open] > .handbook-toc__summary::after {
@@ -734,6 +742,23 @@ a.classification-tag:focus-visible {
 .handbook-object__block h4,
 .handbook-object__subsection h5 {
   margin-bottom: var(--space-2);
+}
+
+.handbook-object__block h4 {
+  color: var(--color-deep);
+  font-size: 1.15rem;
+}
+
+.handbook-object__block h5 {
+  margin-top: var(--space-3);
+  color: var(--color-deep);
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.handbook-object__subsection h5 {
+  color: var(--color-brand-dark);
+  font-size: 1.02rem;
 }
 
 .handbook-object__numbered-heading {
@@ -1377,6 +1402,10 @@ a.classification-tag:focus-visible {
 
   .handbook-toc__summary {
     grid-template-columns: 3.5rem minmax(0, 1fr) 0.75rem;
+  }
+
+  .handbook-toc__summary--group {
+    grid-template-columns: minmax(0, 1fr) 0.75rem;
   }
 
   .card-grid,
