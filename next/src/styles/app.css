@@ -20,6 +20,9 @@
   --corner-control: 0.7rem;
   --shadow-s: 0 10px 24px rgba(16, 35, 33, 0.06);
   --container: 96rem;
+  --object-image-max-width: 72rem;
+  --object-image-max-height: 34rem;
+  --object-card-image-max-height: 22rem;
 }
 
 * {
@@ -769,8 +772,8 @@ a.classification-tag:focus-visible {
 .handbook-object__image {
   display: block;
   width: auto;
-  max-width: 100%;
-  max-height: 34rem;
+  max-width: min(100%, var(--object-image-max-width));
+  max-height: var(--object-image-max-height);
   height: auto;
   margin-inline: auto;
   border: 1px solid var(--color-line);
@@ -938,12 +941,15 @@ a.classification-tag:focus-visible {
 .info-card__image {
   display: block;
   width: auto;
-  max-width: 100%;
+  max-width: min(100%, var(--object-image-max-width));
+  max-height: var(--object-card-image-max-height);
   height: auto;
   margin-inline: auto;
   border: 1px solid var(--color-line);
   border-radius: 0;
   background: #f8fcfc;
+  object-fit: contain;
+  object-position: left top;
 }
 
 .info-card__caption {
@@ -1029,12 +1035,15 @@ a.classification-tag:focus-visible {
 .geometry-section__image {
   display: block;
   width: auto;
-  max-width: 100%;
+  max-width: min(100%, var(--object-image-max-width));
+  max-height: var(--object-image-max-height);
   height: auto;
   margin-inline: auto;
   border: 1px solid var(--color-line);
   border-radius: 0;
   background: #f8fcfc;
+  object-fit: contain;
+  object-position: left top;
 }
 
 .geometry-section__caption {
