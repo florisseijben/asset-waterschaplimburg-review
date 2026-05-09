@@ -3,6 +3,7 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
 import Hero from "../../../components/Hero.astro";
 import PlaceholderStatus from "../../../components/PlaceholderStatus.astro";
 import InfoCard from "../../../components/InfoCard.astro";
+import { createObjectRouteBreadcrumbs } from "../../../lib/objectenhandboekBreadcrumbs";
 import { objectTypePlaceholderRoutes } from "../../../lib/objectTypeRoutes";
 
 export function getStaticPaths() {
@@ -25,13 +26,7 @@ const summary =
 <BaseLayout
   title={page.title}
   currentPath="/datastandaard"
-  breadcrumbs={[
-    { label: "Home", href: "/" },
-    { label: "Datastandaard", href: "/datastandaard" },
-    { label: "Objectenhandboek", href: "/datastandaard/objectenhandboek" },
-    { label: parentTitle, href: parentHref },
-    { label: page.title }
-  ]}
+  breadcrumbs={createObjectRouteBreadcrumbs(page)}
 >
   <Hero eyebrow="Objectenhandboek objecttype" title={page.title} summary={summary} />
 

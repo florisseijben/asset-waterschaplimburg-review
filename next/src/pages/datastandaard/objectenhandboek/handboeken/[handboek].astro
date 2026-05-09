@@ -8,6 +8,7 @@ import {
   getObjectHandbookId,
   handbookScopes
 } from "../../../../lib/objectenhandboekHandbooks";
+import { createObjectBreadcrumbs } from "../../../../lib/objectenhandboekBreadcrumbs";
 import { objectenhandboekTaxonomy } from "../../../../lib/objectenhandboekTaxonomy";
 import { withBase } from "../../../../lib/paths";
 import { normalizeUitwerkingSections } from "../../../../lib/uitwerkingSections";
@@ -586,11 +587,16 @@ const handbookItemCount = handbookChapters.reduce((count, chapter) => count + ch
 
 const handbookTitle = scope.kind === "all" ? "Objectenhandboek" : `Objectenhandboek ${scope.label}`;
 const handbookSummary = `${scope.summary} De digitale samenhangsweergaven, productlijn en vervolgstappen zijn in deze printversie weggelaten.`;
-const handbookBreadcrumbs = [
+const defaultHandbookBreadcrumbs = [
   { label: "Home", href: "/" },
   { label: "Datastandaard", href: "/datastandaard" },
   { label: "Objectenhandboek", href: "/datastandaard/objectenhandboek" },
-  ...(scope.kind === "all" ? [] : [{ label: scope.label, href: scope.landingHref }]),
+  ...(scope.kind === "all" ? [] : [{ label: scope.label, href: scope.landingHref }])
+];
+const handbookBreadcrumbs = [
+  ...(scope.kind === "object" && scopeRootEntry
+    ? createObjectBreadcrumbs(scopeRootEntry, { includeCurrentHref: true })
+    : defaultHandbookBreadcrumbs),
   { label: "Printbare versie" }
 ];
 ---

@@ -10,6 +10,7 @@ import UitwerkingSection from "./UitwerkingSection.astro";
 import GeometrySection from "./GeometrySection.astro";
 import VervolgSection from "./VervolgSection.astro";
 import { getObjectHandbookHref } from "../lib/objectenhandboekHandbooks";
+import { createObjectBreadcrumbs } from "../lib/objectenhandboekBreadcrumbs";
 import { getGeometrySection, normalizeObjectUitwerkingSections } from "../lib/uitwerkingSections";
 import { createWatergangsectieTypeGraph } from "../lib/semanticSamenhangGraphs";
 
@@ -71,15 +72,7 @@ object:${typeId} relatie:heeftBegrenzing object:profielgrens .
 <BaseLayout
   title={entry.data.title}
   currentPath="/datastandaard"
-  breadcrumbs={[
-    { label: "Home", href: "/" },
-    { label: "Datastandaard", href: "/datastandaard" },
-    { label: "Objectenhandboek", href: "/datastandaard/objectenhandboek" },
-    { label: "Watersysteem", href: "/datastandaard/objectenhandboek/watersysteem" },
-    { label: "Watergangen", href: "/datastandaard/objectenhandboek/watersysteem/watergangen" },
-    { label: "Watergangsectie", href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie" },
-    { label: typeLabel }
-  ]}
+  breadcrumbs={createObjectBreadcrumbs(entry)}
 >
   <Hero eyebrow="Objectenhandboek" title={typeLabel} summary={entry.data.summary}>
     <HandbookHeroCard slot="aside" href={getObjectHandbookHref(entry.id)} />

@@ -18,7 +18,10 @@ export function normalizeObjectTypeKey(value: string) {
 }
 
 const existingObjectTypeRoutes: ObjectTypeRoute[] = [
+  { title: "Afvalwaterketen", href: "/datastandaard/objectenhandboek/afvalwaterketen" },
+  { title: "Waterketen", href: "/datastandaard/objectenhandboek/afvalwaterketen" },
   { title: "Watersysteem", href: "/datastandaard/objectenhandboek/watersysteem" },
+  { title: "Waterkeringensysteem", href: "/datastandaard/objectenhandboek/waterkeringensysteem" },
   { title: "Stroomgebied", href: "/datastandaard/objectenhandboek/watersysteem/stroomgebied" },
   { title: "Watergang", href: "/datastandaard/objectenhandboek/watersysteem/watergangen" },
   { title: "Watergangen", href: "/datastandaard/objectenhandboek/watersysteem/watergangen" },

@@ -11,6 +11,7 @@ import GeometrySection from "../../../../../components/GeometrySection.astro";
 import VervolgSection from "../../../../../components/VervolgSection.astro";
 import { getCollection } from "astro:content";
 import { getObjectHandbookHref } from "../../../../../lib/objectenhandboekHandbooks";
+import { createObjectBreadcrumbs } from "../../../../../lib/objectenhandboekBreadcrumbs";
 import {
   createWatergangSamenhangFromAssetJson,
   getConceptFromAssetJson,
@@ -128,13 +129,7 @@ object:watergang relatie:heeftIntersectie object:intersectie .
 <BaseLayout
   title={entry.data.title}
   currentPath="/datastandaard"
-  breadcrumbs={[
-    { label: "Home", href: "/" },
-    { label: "Datastandaard", href: "/datastandaard" },
-    { label: "Objectenhandboek", href: "/datastandaard/objectenhandboek" },
-    { label: "Watersysteem", href: "/datastandaard/objectenhandboek/watersysteem" },
-    { label: "Watergangen" }
-  ]}
+  breadcrumbs={createObjectBreadcrumbs(entry)}
 >
   <Hero eyebrow="Objectenhandboek" title={entry.data.heroTitle || entry.data.title} summary={entry.data.summary}>
     <HandbookHeroCard slot="aside" href={getObjectHandbookHref(entry.id)} />
