@@ -198,18 +198,51 @@ function flattenNodes(nodes: HandbookNode[], prefix: number[] = [], depth = 1, s
 }
 
 const allEntryByTitleKey = new Map(entries.map((entry) => [normalizeKey(getObjectTitle(entry)), entry]));
+const normalizeHrefKey = (value = "") =>
+  String(value || "")
+    .split(/[?#]/)[0]
+    .replace(/\/+$/g, "");
+const allEntryByHrefKey = new Map(
+  entries
+    .map((entry) => [normalizeHrefKey(entry.data.slug), entry])
+    .filter(([href]) => href)
+);
 const chapterMap = new Map<string, { label: string; nodes: HandbookNode[] }>();
 
 const getOnderdeelItems = (entry: any) =>
   (entry.data.contentSections || []).find((section: any) => normalizeKey(section.title) === "onderdelen")?.items || [];
 
-const getDirectChildTitleKeys = (entry: any) => {
+const getObjectEntryForItem = (item: any) =>
+  allEntryByTitleKey.get(normalizeKey(item?.title)) ||
+  allEntryByHrefKey.get(normalizeHrefKey(item?.href));
+
+const uniqueChildItems = (items: any[]) => {
+  const seen = new Set<string>();
+
+  return items.filter((item) => {
+    const key = normalizeKey(item.title);
+
+    if (!key || seen.has(key)) {
+      return false;
+    }
+
+    seen.add(key);
+    return true;
+  });
+};
+
+const getPrintChildItems = (entry: any) => {
   const decomposition = getDecompositionFromAssetJson(getObjectTitle(entry));
-  const titleKeys = [
-    ...getOnderdeelItems(entry),
+
+  return uniqueChildItems([
+    ...getOnderdeelItems(entry).filter((item: any) => getObjectEntryForItem(item)),
     ...(entry.data.compositionTypes || []),
-    ...(decomposition?.items || [])
-  ]
+    ...(decomposition?.items || []).filter((item: any) => getObjectEntryForItem(item))
+  ]);
+};
+
+const getDirectChildTitleKeys = (entry: any) => {
+  const titleKeys = getPrintChildItems(entry)
     .map((item: any) => normalizeKey(item.title))
     .filter(Boolean);
 
@@ -285,72 +318,72 @@ const scopedEntries = entries.filter(
 );
 
 const createCategorizedPath = (entry: any) => {
-  return createHandbookPath(entry);
-};
+  const path = createHandbookPath(entry);
 
-const mergeContentItemMedia = (derivedItems: any[] = [], contentItems: any[] = []) => {
-  const contentItemsByTitle = new Map(contentItems.map((item) => [normalizeKey(item.title), item]));
-  const derivedItemsByTitle = new Map(derivedItems.map((item) => [normalizeKey(item.title), item]));
-  const orderedDerivedItems = contentItems.length
-    ? [
-        ...contentItems
-          .map((item) => derivedItemsByTitle.get(normalizeKey(item.title)))
-          .filter(Boolean),
-        ...derivedItems.filter((item) => !contentItemsByTitle.has(normalizeKey(item.title)))
-      ]
-    : derivedItems;
+  if (scope.kind !== "object" || !scopeRootEntry || entry.id === scopeRootEntry.id) {
+    return path;
+  }
 
-  return orderedDerivedItems.map((item) => {
-    const contentItem = contentItemsByTitle.get(normalizeKey(item.title));
+  const isDirectPathChild =
+    path.length === scopeRootPath.length + 1 &&
+    scopeRootPath.every((title, index) => normalizeKey(title) === normalizeKey(path[index]));
 
-    if (!contentItem) {
-      return item;
-    }
+  if (!isDirectPathChild && scopeRootChildTitleKeys.has(normalizeKey(getObjectTitle(entry)))) {
+    return [...scopeRootPath, getObjectTitle(entry)];
+  }
 
-    return {
-      ...item,
-      image: contentItem.image || item.image,
-      caption: contentItem.caption || item.caption,
-      blocks: contentItem.blocks || item.blocks
-    };
-  });
+  return path;
 };
 
 const getContentSectionsForPrint = (entry: any, options: { excludeOverviewSamenhang?: boolean } = {}) => {
-  const decomposition = getDecompositionFromAssetJson(getObjectTitle(entry));
-  const contentSections = options.excludeOverviewSamenhang
-    ? (entry.data.contentSections || []).filter(
-        (section: any) => normalizeKey(section.title) !== "overzicht-samenhang"
-      )
-    : entry.data.contentSections || [];
+  const childTitleKeys = getDirectChildTitleKeys(entry);
 
-  return contentSections.map((section: any) =>
-    normalizeKey(section.title) === "onderdelen" && decomposition
-      ? {
-          ...section,
-          summary: decomposition.summary,
-          items: mergeContentItemMedia(decomposition.items, section.items)
-        }
-      : section
-  );
+  return (entry.data.contentSections || [])
+    .filter((section: any) => {
+      const sectionKey = normalizeKey(section.title);
+
+      if (options.excludeOverviewSamenhang && sectionKey === "overzicht-samenhang") {
+        return false;
+      }
+
+      return sectionKey !== "typen" && sectionKey !== "decompositie";
+    })
+    .map((section: any) => {
+      if (normalizeKey(section.title) !== "onderdelen" || !(section.items || []).length) {
+        return section;
+      }
+
+      const remainingItems = section.items.filter(
+        (item: any) => !childTitleKeys.has(normalizeKey(item.title))
+      );
+
+      return remainingItems.length
+        ? {
+            ...section,
+            items: remainingItems
+          }
+        : undefined;
+    })
+    .filter(Boolean);
 };
 
 const getPrintableSections = (entry: any, options: { excludeOverviewSamenhang?: boolean } = {}) =>
   normalizeUitwerkingSections(getContentSectionsForPrint(entry, options), {
-    compositionTypes: entry.data.compositionTypes || [],
+    compositionTypes: [],
     subtypeIconTitle: getObjectTitle(entry),
-    includeTypen: true,
+    includeTypen: false,
     includeOnderdelenWithCompositionTypes: true,
-    excludeTitles: ["Decompositie"]
+    excludeTitles: ["Decompositie", "Typen"]
   });
 
 const scopedEntryIds = new Set(scopedEntries.map((entry) => entry.id));
+const printPathByEntryId = new Map<string, string[]>();
 
 scopedEntries.forEach((entry) => {
-  const path = createHandbookPath(entry);
   const categorizedPath = createCategorizedPath(entry);
-  const chapterLabel = getChapterLabel(path, entry);
+  const chapterLabel = getChapterLabel(categorizedPath, entry);
   const chapter = chapterMap.get(chapterLabel) || { label: chapterLabel, nodes: [] };
+  printPathByEntryId.set(entry.id, categorizedPath);
   insertNode(chapter.nodes, categorizedPath, {
     entry,
     title: getObjectTitle(entry),
@@ -364,23 +397,26 @@ scopedEntries.forEach((entry) => {
   chapterMap.set(chapterLabel, chapter);
 });
 
-scopedEntries.forEach((entry) => {
-  const compositionTypes = entry.data.compositionTypes || [];
+const entryQueue = [...scopedEntries];
 
-  if (!compositionTypes.length) {
-    return;
+for (let entryIndex = 0; entryIndex < entryQueue.length; entryIndex += 1) {
+  const entry = entryQueue[entryIndex];
+  const childItems = getPrintChildItems(entry);
+
+  if (!childItems.length) {
+    continue;
   }
 
-  const parentPath = createCategorizedPath(entry);
+  const parentPath = printPathByEntryId.get(entry.id) || createCategorizedPath(entry);
   const chapterLabel = getChapterLabel(parentPath, entry);
   const chapter = chapterMap.get(chapterLabel);
 
   if (!chapter) {
-    return;
+    continue;
   }
 
-  compositionTypes.forEach((compositionType: any) => {
-    const childEntry = allEntryByTitleKey.get(normalizeKey(compositionType.title));
+  childItems.forEach((childItem: any) => {
+    const childEntry = getObjectEntryForItem(childItem);
 
     if (childEntry && scopedEntryIds.has(childEntry.id)) {
       return;
@@ -388,24 +424,32 @@ scopedEntries.forEach((entry) => {
 
     if (childEntry && (scope.kind === "object" || belongsToClassificationScope(childEntry))) {
       const childPath = createCategorizedPath(childEntry);
+      const childPathIsBelowParent =
+        childPath.length > parentPath.length &&
+        parentPath.every((title, index) => normalizeKey(title) === normalizeKey(childPath[index]));
+      const printChildPath = childPathIsBelowParent ? childPath : [...parentPath, getObjectTitle(childEntry)];
 
-      insertNode(chapter.nodes, childPath, {
+      insertNode(chapter.nodes, printChildPath, {
         entry: childEntry,
         summary: childEntry.data.summary,
         sections: getPrintableSections(childEntry, {
-          excludeOverviewSamenhang: true
+          excludeOverviewSamenhang: isCompositionTypeOfParent(entry, getObjectTitle(childEntry))
         })
       });
+      printPathByEntryId.set(childEntry.id, printChildPath);
       scopedEntryIds.add(childEntry.id);
+      entryQueue.push(childEntry);
       return;
     }
 
-    insertNode(chapter.nodes, [...parentPath, compositionType.title], {
-      summary: compositionType.text,
-      text: compositionType.text
-    });
+    if (isCompositionTypeOfParent(entry, childItem.title)) {
+      insertNode(chapter.nodes, [...parentPath, childItem.title], {
+        summary: childItem.text,
+        text: childItem.text
+      });
+    }
   });
-});
+}
 
 const handbookChapters = [...chapterMap.values()]
   .map((chapter) => {
