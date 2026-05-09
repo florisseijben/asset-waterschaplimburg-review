@@ -285,6 +285,29 @@ const getDirectChildTitleKeys = (entry: any) => {
   return new Set(titleKeys);
 };
 
+const createDecompositionSectionForPrint = (entry: any) => {
+  const childItems = getPrintChildItems(entry);
+
+  if (!childItems.length) {
+    return undefined;
+  }
+
+  return {
+    title: "Decompositie",
+    summary: "De decompositie toont de eerstvolgende onderliggende objecten die onder dit object als eigen paragraaf worden uitgewerkt.",
+    items: childItems.map((item: any) => {
+      const childEntry = getObjectEntryForItem(item);
+
+      return {
+        title: childEntry ? getObjectTitle(childEntry) : item.title,
+        text: item.text || childEntry?.data.summary || "",
+        href: childEntry?.data.slug || item.href,
+        iconTitle: getObjectTitle(entry)
+      };
+    })
+  };
+};
+
 const scopeRootEntry = scope.kind === "object"
   ? entries.find((entry) => entry.id === scope.objectEntryId)
   : undefined;
@@ -371,10 +394,44 @@ const createCategorizedPath = (entry: any) => {
   return path;
 };
 
-const getContentSectionsForPrint = (entry: any, options: { excludeOverviewSamenhang?: boolean } = {}) => {
-  const childTitleKeys = getDirectChildTitleKeys(entry);
+type PrintSectionOptions = {
+  excludeOverviewSamenhang?: boolean;
+  includeDecompositionOverview?: boolean;
+};
 
-  return (entry.data.contentSections || [])
+const isHighestPrintLevelEntry = (entry: any, path: string[]) => {
+  if (scope.kind === "object") {
+    return entry.id === scope.objectEntryId;
+  }
+
+  return path.length === 1;
+};
+
+const insertDecompositionSection = (sections: any[], decompositionSection: any) => {
+  if (!decompositionSection) {
+    return sections;
+  }
+
+  const overviewIndex = sections.findIndex((section: any) => normalizeKey(section.title) === "overzicht-samenhang");
+
+  if (overviewIndex < 0) {
+    return [decompositionSection, ...sections];
+  }
+
+  return [
+    ...sections.slice(0, overviewIndex + 1),
+    decompositionSection,
+    ...sections.slice(overviewIndex + 1)
+  ];
+};
+
+const getContentSectionsForPrint = (entry: any, options: PrintSectionOptions = {}) => {
+  const childTitleKeys = getDirectChildTitleKeys(entry);
+  const decompositionSection = options.includeDecompositionOverview
+    ? createDecompositionSectionForPrint(entry)
+    : undefined;
+
+  const sections = (entry.data.contentSections || [])
     .filter((section: any) => {
       const sectionKey = normalizeKey(section.title);
 
@@ -401,15 +458,17 @@ const getContentSectionsForPrint = (entry: any, options: { excludeOverviewSamenh
         : undefined;
     })
     .filter(Boolean);
+
+  return insertDecompositionSection(sections, decompositionSection);
 };
 
-const getPrintableSections = (entry: any, options: { excludeOverviewSamenhang?: boolean } = {}) =>
+const getPrintableSections = (entry: any, options: PrintSectionOptions = {}) =>
   normalizeUitwerkingSections(getContentSectionsForPrint(entry, options), {
     compositionTypes: [],
     subtypeIconTitle: getObjectTitle(entry),
     includeTypen: false,
     includeOnderdelenWithCompositionTypes: true,
-    excludeTitles: ["Decompositie", "Typen"]
+    excludeTitles: options.includeDecompositionOverview ? ["Typen"] : ["Decompositie", "Typen"]
   });
 
 const scopedEntryIds = new Set(scopedEntries.map((entry) => entry.id));
@@ -426,7 +485,8 @@ scopedEntries.forEach((entry) => {
     path: categorizedPath,
     summary: entry.data.summary,
     sections: getPrintableSections(entry, {
-      excludeOverviewSamenhang: isCompositionTypeParagraph(entry)
+      excludeOverviewSamenhang: isCompositionTypeParagraph(entry),
+      includeDecompositionOverview: isHighestPrintLevelEntry(entry, categorizedPath)
     })
   });
 
