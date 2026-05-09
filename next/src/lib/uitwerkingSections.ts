@@ -65,6 +65,15 @@ type NormalizedUitwerkingOptions = {
   excludeTitles?: string[];
 };
 
+function withoutMedia(item: SectionLinkItem): SectionLinkItem {
+  return {
+    title: item.title,
+    text: item.text,
+    href: item.href,
+    iconTitle: item.iconTitle
+  };
+}
+
 function createTypenSection(compositionTypes: SectionLinkItem[] = [], subtypeIconTitle?: string): ContentSection {
   return {
     title: "Typen",
@@ -73,7 +82,7 @@ function createTypenSection(compositionTypes: SectionLinkItem[] = [], subtypeIco
       : "Typen en varianten voor deze pagina worden later uitgewerkt.",
     items: compositionTypes.length
       ? compositionTypes.map((compositionType) => ({
-          ...compositionType,
+          ...withoutMedia(compositionType),
           href: getObjectTypeHref(compositionType.title, compositionType.href),
           iconTitle: compositionType.iconTitle || subtypeIconTitle
         }))
@@ -156,7 +165,7 @@ export function normalizeUitwerkingSections(
       ...normalizedSection,
       href: getObjectTypeHref(normalizedSection.title, normalizedSection.href),
       items: normalizedSection.items?.map((item) => ({
-        ...item,
+        ...(normalizedSection.title === "Typen" ? withoutMedia(item) : item),
         href: getObjectTypeHref(item.title, item.href)
       }))
     };
