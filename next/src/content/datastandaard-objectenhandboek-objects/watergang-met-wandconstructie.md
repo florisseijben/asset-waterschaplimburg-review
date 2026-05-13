@@ -72,7 +72,7 @@ contentSections:
       - title: Overzicht
         text: Het overzicht toont hoe de wandconstructie de overgang tussen waterprofiel en omgeving binnen de watergangsectie begrenst.
         image:
-          src: /images/objectenhandboek/watersysteem/watergangsectie_watergang met wandconstructie/Watergang met wandconstructie overzicht.png
+          src: /images/objectenhandboek/watersysteem/watergangsectie_watergang met wandconstructie/Watergang met wandconstructie overzicht.jpg
           alt: Overzicht van Watergang met wandconstructie met waterprofiel en wandbegrenzing.
         caption: Afbeelding 1. Overzicht van Watergang met wandconstructie.
       - title: Dwarsprofiel

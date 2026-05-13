@@ -69,9 +69,6 @@ contentSections:
         href: /datastandaard/objectenhandboek/watersysteem/regenwaterbuffer/regenwaterbuffercompartiment
   - title: Geometrie
     summary: In DAMO wordt de regenwaterbuffer als punt vastgelegd, als representatie van de feitelijke voorziening binnen het watersysteem.
-    image:
-      src: /images/objectenhandboek/watersysteem/regenwaterbuffer/regenwaterbuffer-geometrie.png
-      alt: Geometrische representatie van een regenwaterbuffer als puntobject binnen het watersysteem.
     items:
       - title: Grootschalig
         text: "Bij grootschalige kaarten, ongeveer schaal 1:1.000 tot 1:10.000, wordt Regenwaterbuffer volgens DAMO getoond als puntgeometrie die de feitelijke voorziening representeert. Op dit detailniveau zijn ook inlaat, uitlaat en de directe ligging van het bassin goed te duiden."

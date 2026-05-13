@@ -80,13 +80,13 @@ contentSections:
   - title: Overzicht / Samenhang
     summary: De watergang volgt binnen een afvoergebied een traject van aanvoerpunt naar afvoerpunt. De watergang bestaat uit een ruimtelijk gebied dat wordt opgedeeld in watergangsecties en intersecties en bevat verschillende soorten civieltechnische kunstwerken.
     image:
-      src: /images/objectenhandboek/watersysteem/watergangen/watergangoverzicht.png
+      src: /images/objectenhandboek/watersysteem/watergangen/watergangoverzicht.jpg
       alt: Overzicht van de samenhang binnen Watergang met traject, gebied, secties en intersecties.
     caption: Afbeelding 1. Overzicht van de samenhang binnen Watergang.
     blocks:
       - text: het watergang gebied omvat het gebied van aanvoerpunt tot afvoerpunt en wordt in de langsrichting begrensd door de profielgrenzen zoals gedefinieerd bij de watergangsecties en intersecties.
         image:
-          src: /images/objectenhandboek/watersysteem/watergangen/watergang gebied.png
+          src: /images/objectenhandboek/watersysteem/watergangen/watergang gebied.jpg
           alt: Watergang gebied begrensd van aanvoerpunt tot afvoerpunt en door profielgrenzen.
         caption: Afbeelding 2. Watergang gebied van aanvoerpunt tot afvoerpunt.
   - title: Afbakening
@@ -98,14 +98,14 @@ contentSections:
         text: Afgebakend deelobject binnen de watergang met eigen profiel en onderhoudskenmerken.
         href: /datastandaard/objectenhandboek/watersysteem/watergangsectie
         image:
-          src: /images/objectenhandboek/watersysteem/watergangen/watergang sectie.png
+          src: /images/objectenhandboek/watersysteem/watergangen/watergang sectie.jpg
           alt: Schematische weergave van een watergangsectie binnen een watergang.
         caption: Afbeelding 3. Watergangsectie binnen de watergang.
       - title: Intersectie
         text: Kruising of overgang binnen de watergangstructuur op hetzelfde niveau als een watergangsectie.
         href: /datastandaard/objectenhandboek/watersysteem/intersectie
         image:
-          src: /images/objectenhandboek/watersysteem/watergangen/intersectie.png
+          src: /images/objectenhandboek/watersysteem/watergangen/intersectie.jpg
           alt: Schematische weergave van een intersectie binnen een watergang.
         caption: Afbeelding 4. Intersectie binnen de watergangstructuur.
   - title: Geometrie

@@ -73,7 +73,7 @@ contentSections:
         text: Het overzicht toont hoe het onderhoudspad ruimtelijk samenhangt met het waterprofiel en de begrenzing van de watergangsectie.
         blocks:
           - image:
-              src: /images/objectenhandboek/watersysteem/watergangsectie_watergang met onderhoudspad/Watergang met onderhoudspad overzicht.png
+              src: /images/objectenhandboek/watersysteem/watergangsectie_watergang met onderhoudspad/Watergang met onderhoudspad overzicht.jpg
               alt: Overzicht van Watergang met onderhoudspad met waterprofiel en onderhoudspad.
             caption: Afbeelding 1. Overzicht van Watergang met onderhoudspad.
           - image:

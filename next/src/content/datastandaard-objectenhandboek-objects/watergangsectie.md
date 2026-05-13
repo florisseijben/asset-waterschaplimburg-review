@@ -67,7 +67,7 @@ compositionTypes:
     text: Sectie waarin een beschoeiing onderdeel is van de constructieve opbouw.
     href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/met-beschoeiing
     image:
-      src: /images/objectenhandboek/watersysteem/watergangsectie_watergang met beschoeiing/watergang met beschoeiing overzicht.jpg
+      src: /images/objectenhandboek/watersysteem/watergangsectie_watergang met beschoeiing/watergang met beschoeiing overzicht-optimized.jpg
       alt: Overzicht van Watergang met beschoeiing.
     caption: Overzicht. Watergang met beschoeiing.
   - title: Watergang met wandconstructie
@@ -141,7 +141,7 @@ contentSections:
   - title: Overzicht / Samenhang
     summary: De watergangsectie is het afgebakende deelobject binnen de watergang en vormt samen met intersecties de opbouw van het hoofdobject.
     image:
-      src: /images/objectenhandboek/watersysteem/watergangen/watergang sectie.png
+      src: /images/objectenhandboek/watersysteem/watergangen/watergang sectie.jpg
       alt: Schematische weergave van een watergangsectie binnen een watergang.
     caption: Afbeelding 1. Watergangsectie binnen de watergang.
   - title: Afbakening

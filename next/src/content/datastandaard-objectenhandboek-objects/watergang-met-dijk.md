@@ -72,7 +72,7 @@ contentSections:
       - title: Overzicht
         text: Het overzicht toont hoe het waterprofiel en het dijkprofiel samen de ruimtelijke opbouw van de watergangsectie bepalen.
         image:
-          src: /images/objectenhandboek/watersysteem/watergangsectie_watergang met dijk/Watergang met dijk overzicht.png
+          src: /images/objectenhandboek/watersysteem/watergangsectie_watergang met dijk/Watergang met dijk overzicht.jpg
           alt: Overzicht van Watergang met dijk met waterprofiel en dijkprofiel.
         caption: Afbeelding 1. Overzicht van Watergang met dijk.
       - title: Dwarsprofiel

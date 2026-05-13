@@ -72,7 +72,7 @@ contentSections:
       - title: Overzicht
         text: Het overzicht toont de watergangsectie met beschoeiing als constructieve begrenzing of oeverbescherming binnen het profiel.
         image:
-          src: /images/objectenhandboek/watersysteem/watergangsectie_watergang met beschoeiing/watergang met beschoeiing overzicht.jpg
+          src: /images/objectenhandboek/watersysteem/watergangsectie_watergang met beschoeiing/watergang met beschoeiing overzicht-optimized.jpg
           alt: Overzicht van Watergang met beschoeiing met constructieve profielbegrenzing.
         caption: Afbeelding 1. Overzicht van Watergang met beschoeiing.
       - title: Dwarsprofiel

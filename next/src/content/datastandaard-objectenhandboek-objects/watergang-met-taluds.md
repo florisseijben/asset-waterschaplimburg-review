@@ -63,7 +63,7 @@ contentSections:
   - title: Overzicht / Samenhang
     summary: Watergang met taluds is een type watergangsectie waarin taluds aan een of beide zijden de overgang vormen tussen de bodem van de watergang en de aansluitende omgeving.
     image:
-      src: /images/objectenhandboek/watersysteem/watergangen/watergang sectie.png
+      src: /images/objectenhandboek/watersysteem/watergangen/watergang sectie.jpg
       alt: Schematische weergave van een watergangsectie met taluds binnen een watergang.
     caption: Afbeelding 1. Watergang met taluds binnen de watergangsectie.
   - title: Afbakening
@@ -88,7 +88,7 @@ contentSections:
         caption: Afbeelding 2. Geometrie van Watergang met taluds.
         blocks:
           - image:
-              src: /images/objectenhandboek/watersysteem/watergangsectie_watergang met taluds/watergang met taluds overzicht.png
+              src: /images/objectenhandboek/watersysteem/watergangsectie_watergang met taluds/watergang met taluds overzicht.jpg
               alt: Overzicht van Watergang met taluds met profielopbouw en begrenzing.
             caption: Afbeelding 3. Overzicht van Watergang met taluds.
       - title: Dwarsprofiel
