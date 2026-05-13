@@ -30,13 +30,15 @@ interface Props {
   href?: string;
   iconTitle?: string;
   items?: SectionItem[];
+  itemLayout?: "cards" | "sections";
   image?: SectionImage;
   caption?: string;
   blocks?: SectionBlock[];
 }
 
-const { title, text, href, iconTitle, items = [], image, caption, blocks = [] } = Astro.props;
+const { title, text, href, iconTitle, items = [], itemLayout = "cards", image, caption, blocks = [] } = Astro.props;
 const hasItems = items.length > 0;
+const usesSectionItems = itemLayout === "sections";
 const hasImage = Boolean(image?.src);
 const Tag = href && !hasItems ? "a" : "article";
 ---
@@ -76,7 +78,46 @@ const Tag = href && !hasItems ? "a" : "article";
     </div>
   )}
 
-  {hasItems && (
+  {hasItems && usesSectionItems && (
+    <div class="info-card__subsections">
+      {items.map((item) => (
+        <section class:list={["info-card__subsection", item.image?.src && "info-card__subsection--with-image"]}>
+          {item.href ? (
+            <a class="info-card__subsection-title info-card__subsection-title--link" href={withBase(item.href)}>
+              <span>{item.title}</span>
+              <CardLinkIndicator />
+            </a>
+          ) : (
+            <h3 class="info-card__subsection-title">{item.title}</h3>
+          )}
+          <p>{item.text}</p>
+          {item.image?.src && (
+            <figure class="info-card__figure">
+              <img class="info-card__image" src={withBase(item.image.src)} alt={item.image.alt || ""} loading="lazy" decoding="async" fetchpriority="low" />
+              {item.caption && <figcaption class="info-card__caption">{item.caption}</figcaption>}
+            </figure>
+          )}
+          {item.blocks && item.blocks.length > 0 && (
+            <div class="info-card__blocks">
+              {item.blocks.map((block) => (
+                <div class="info-card__block">
+                  {block.text && <p>{block.text}</p>}
+                  {block.image?.src && (
+                    <figure class="info-card__figure">
+                      <img class="info-card__image" src={withBase(block.image.src)} alt={block.image.alt || ""} loading="lazy" decoding="async" fetchpriority="low" />
+                      {block.caption && <figcaption class="info-card__caption">{block.caption}</figcaption>}
+                    </figure>
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
+        </section>
+      ))}
+    </div>
+  )}
+
+  {hasItems && !usesSectionItems && (
     <div class="card-grid card-grid--nested">
       {items.map((item) => {
         const ItemTag = item.href ? "a" : "article";

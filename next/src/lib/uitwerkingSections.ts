@@ -27,15 +27,18 @@ type ContentSection = {
   href?: string;
   iconTitle?: string;
   items?: SectionLinkItem[];
+  itemLayout?: "cards" | "sections";
   image?: SectionImage;
   caption?: string;
   blocks?: SectionBlock[];
 };
 
-const GEOMETRY_ORDER = ["Grootschalig", "Midschalig", "Kleinschalig"] as const;
+const SCALE_LEVEL_TITLES = ["Grootschalig", "Midschalig", "Kleinschalig"] as const;
+const SPATIAL_SUBSECTION_TITLES = ["Overzicht", "Dwarsprofiel", "Bovenaanzicht"] as const;
 const OVERVIEW_TITLE = "Overzicht / Samenhang";
 const SPATIAL_DESCRIPTION_TITLE = "Ruimtelijke beschrijving";
 const PARTS_TITLE = "Onderdelen";
+const ARCHETYPES_TITLE = "Archetypen";
 const OVERVIEW_KEYS = new Set(["overzicht", "samenhang", "overzicht-samenhang"]);
 const SPATIAL_DESCRIPTION_KEYS = new Set(["afbakening", "geometrie", "ruimtelijke-beschrijving"]);
 const PARTS_KEYS = new Set(["onderdelen", "typen", "decompositie"]);
@@ -51,24 +54,7 @@ function normalizeKey(value: string) {
 }
 
 function normalizeGeometryItems(items: SectionLinkItem[] = []) {
-  const usesScaleLevels = items.length === 0 || items.some((item) => GEOMETRY_ORDER.includes(item.title as any));
-
-  if (!usesScaleLevels) {
-    return items;
-  }
-
-  return GEOMETRY_ORDER.map((title) => {
-    const existing = items.find((item) => item.title === title);
-
-    if (existing) {
-      return existing;
-    }
-
-    return {
-      title,
-      text: "Nog in te vullen voor dit schaalniveau."
-    };
-  });
+  return items.filter((item) => !SCALE_LEVEL_TITLES.includes(item.title as any));
 }
 
 type NormalizedUitwerkingOptions = {
@@ -143,6 +129,97 @@ function compactSummary(parts: Array<string | undefined>) {
   return parts.map((part) => String(part || "").trim()).filter(Boolean).join(" ");
 }
 
+function uniqueBlocks(blocks: SectionBlock[] = []) {
+  const seen = new Set<string>();
+
+  return blocks.filter((block) => {
+    if (!block.text && !block.image?.src) {
+      return false;
+    }
+
+    const key = block.image?.src
+      ? `image:${block.image.src}`
+      : `text:${normalizeKey(block.text || "")}:${block.caption || ""}`;
+
+    if (seen.has(key)) {
+      return false;
+    }
+
+    seen.add(key);
+    return true;
+  });
+}
+
+function mediaBlock(image?: SectionImage, caption?: string): SectionBlock | undefined {
+  if (!image?.src) {
+    return undefined;
+  }
+
+  return { image, caption };
+}
+
+function mergeItemContent(current: SectionLinkItem, incoming: SectionLinkItem): SectionLinkItem {
+  const blocks = uniqueBlocks([
+    ...(current.blocks || []),
+    ...(current.image?.src && incoming.image?.src && current.image.src !== incoming.image.src
+      ? [{ image: incoming.image, caption: incoming.caption }]
+      : []),
+    ...(incoming.blocks || [])
+  ]);
+  const merged: SectionLinkItem = {
+    title: current.title || incoming.title,
+    text: compactSummary([current.text, incoming.text]),
+    href: current.href || incoming.href,
+    iconTitle: current.iconTitle || incoming.iconTitle,
+    image: current.image || incoming.image,
+    caption: current.caption || incoming.caption
+  };
+
+  if (blocks.length) {
+    merged.blocks = blocks;
+  }
+
+  return merged;
+}
+
+function createSpatialPlaceholder(title: string): SectionLinkItem {
+  const text =
+    title === "Overzicht"
+      ? "De ruimtelijke afbakening en geometrie worden op dit objectniveau samengebracht."
+      : "Niet apart uitgewerkt voor dit objecttype.";
+
+  return { title, text };
+}
+
+function itemToBlocks(item: SectionLinkItem): SectionBlock[] {
+  return uniqueBlocks([
+    item.text ? { text: `${item.title}: ${item.text}` } : undefined,
+    mediaBlock(item.image, item.caption),
+    ...(item.blocks || [])
+  ].filter(Boolean) as SectionBlock[]);
+}
+
+function withPromotedMedia(item: SectionLinkItem, prependedBlocks: SectionBlock[] = []): SectionLinkItem {
+  const blocks = uniqueBlocks([...prependedBlocks, ...(item.blocks || [])]);
+  const nextItem: SectionLinkItem = { ...item };
+  const primaryBlockIndex =
+    nextItem.image?.src ? -1 : blocks.findIndex((block) => block.image?.src && !block.text);
+
+  if (primaryBlockIndex >= 0) {
+    const [primaryBlock] = blocks.splice(primaryBlockIndex, 1);
+    nextItem.image = primaryBlock.image;
+    nextItem.caption = primaryBlock.caption;
+  }
+
+  if (blocks.length) {
+    nextItem.blocks = blocks;
+  } else {
+    delete nextItem.blocks;
+  }
+
+  return nextItem;
+}
+
 function normalizeSection(section: ContentSection): ContentSection {
   if (normalizeKey(section.title) !== "geometrie") {
     return section;
@@ -186,6 +263,46 @@ function mergeSectionGroup(title: string, sections: ContentSection[], fallbackSu
   return mergedSection;
 }
 
+function createSpatialDescriptionSection(sections: ContentSection[], fallbackSummary: string): ContentSection {
+  const baseSection = mergeSectionGroup(SPATIAL_DESCRIPTION_TITLE, sections, fallbackSummary);
+  const baseBlocks = uniqueBlocks([
+    mediaBlock(baseSection.image, baseSection.caption),
+    ...(baseSection.blocks || [])
+  ].filter(Boolean) as SectionBlock[]);
+  const standardItemKeys = new Set(SPATIAL_SUBSECTION_TITLES.map((title) => normalizeKey(title)));
+  const itemsByKey = new Map<string, SectionLinkItem>();
+  const extraBlocks: SectionBlock[] = [];
+
+  (baseSection.items || []).forEach((item) => {
+    const itemKey = normalizeKey(item.title);
+
+    if (!standardItemKeys.has(itemKey)) {
+      extraBlocks.push(...itemToBlocks(item));
+      return;
+    }
+
+    const current = itemsByKey.get(itemKey);
+    itemsByKey.set(itemKey, current ? mergeItemContent(current, item) : item);
+  });
+
+  const items = SPATIAL_SUBSECTION_TITLES.map((title) => {
+    const item = itemsByKey.get(normalizeKey(title)) || createSpatialPlaceholder(title);
+
+    if (title !== "Overzicht") {
+      return withPromotedMedia(item);
+    }
+
+    return withPromotedMedia(item, uniqueBlocks([...baseBlocks, ...extraBlocks]));
+  });
+
+  return {
+    title: SPATIAL_DESCRIPTION_TITLE,
+    summary: baseSection.summary,
+    items,
+    itemLayout: "sections"
+  };
+}
+
 function uniqueItems(items: SectionLinkItem[]) {
   const seen = new Set<string>();
 
@@ -214,11 +331,13 @@ function createPartsSection(
   compositionTypes: SectionLinkItem[] = [],
   options: NormalizedUitwerkingOptions = {}
 ) {
+  const hasConcretePartsSection = sections.some((section) => normalizeKey(section.title) !== "typen");
+  const usesArchetypes = compositionTypes.length > 0 && !hasConcretePartsSection;
   const baseSection = mergeSectionGroup(
-    PARTS_TITLE,
+    usesArchetypes ? ARCHETYPES_TITLE : PARTS_TITLE,
     sections,
-    compositionTypes.length
-      ? "Deze pagina onderscheidt de typen en onderdelen binnen deze lijn."
+    usesArchetypes
+      ? "Deze pagina onderscheidt de archetypen binnen deze objectlijn."
       : "Voor dit objecttype zijn nog geen onderliggende onderdelen uitgewerkt."
   );
   const generatedItems =
@@ -273,8 +392,7 @@ function standardizeObjectSections(
       : []),
     ...(required || spatialDescriptionSections.length
       ? [
-          mergeSectionGroup(
-            SPATIAL_DESCRIPTION_TITLE,
+          createSpatialDescriptionSection(
             spatialDescriptionSections,
             "De ruimtelijke beschrijving voor dit objecttype wordt nog uitgewerkt."
           )

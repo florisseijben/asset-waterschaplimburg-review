@@ -6,6 +6,7 @@ interface SectionItem {
   title: string;
   summary: string;
   href?: string;
+  itemLayout?: "cards" | "sections";
   items?: {
     title: string;
     text: string;
@@ -48,6 +49,7 @@ const { title = "Inhoudelijke opbouw", items = [] } = Astro.props;
         href={item.href}
         iconTitle={item.iconTitle}
         items={item.items}
+        itemLayout={item.itemLayout}
         image={item.image}
         caption={item.caption}
         blocks={item.blocks}

@@ -779,7 +779,13 @@ const handbookBreadcrumbs = [
                             </>
                           ))}
                           {(section.items || []).length > 0 && (
-                            <div class="card-grid card-grid--nested handbook-object__item-grid">
+                            <div
+                              class:list={[
+                                "card-grid",
+                                section.itemLayout === "sections" ? "card-grid--stacked" : "card-grid--nested",
+                                "handbook-object__item-grid"
+                              ]}
+                            >
                               {section.items.map((sectionItem: any) => {
                                 const SectionItemTag = sectionItem.href ? "a" : "article";
 
@@ -936,7 +942,13 @@ const handbookBreadcrumbs = [
                                 </>
                               ))}
                               {(section.items || []).length > 0 && (
-                                <div class="card-grid card-grid--nested handbook-object__item-grid">
+                                <div
+                                  class:list={[
+                                    "card-grid",
+                                    section.itemLayout === "sections" ? "card-grid--stacked" : "card-grid--nested",
+                                    "handbook-object__item-grid"
+                                  ]}
+                                >
                                   {section.items.map((sectionItem: any) => {
                                     const SectionItemTag = sectionItem.href ? "a" : "article";
 
