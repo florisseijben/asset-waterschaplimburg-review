@@ -49,27 +49,13 @@ terms:
     href: /datastandaard/woordenboek
 contextNote: De watergangsectie maakt het mogelijk om een watergang in opeenvolgende delen te beschrijven en vormt de directe ingang naar de compositie van onderliggende objecten. Binnen de kernregistratie wordt de watergangsectie geografisch vastgelegd door middel van de as van de watergang.
 compositionTypes:
-  - title: Watergang met taluds
-    text: Sectie waarin taluds de primaire begrenzing vormen.
-    href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/met-taluds
+  - title: Watergang met standaardprofiel
+    text: Sectie waarin bodem, taluds, profielgrenzen en standaardvoorzieningen zoals onderhoudspad of beschoeiing in samenhang worden beschreven.
+    href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/met-standaardprofiel
     image:
       src: /images/objectenhandboek/watersysteem/watergangsectie_watergang met taluds/watergang met taluds profiellijnen.png
-      alt: Doorsnede van Watergang met taluds met profiellijnen.
-    caption: Doorsnede. Watergang met taluds.
-  - title: Watergang met onderhoudspad
-    text: Sectie met een expliciet onderhoudspad als onderdeel van de opbouw.
-    href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/met-onderhoudspad
-    image:
-      src: /images/objectenhandboek/watersysteem/watergangsectie_watergang met onderhoudspad/Watergang met onderhoudspad profiellijn.png
-      alt: Doorsnede van Watergang met onderhoudspad met profiellijn.
-    caption: Doorsnede. Watergang met onderhoudspad.
-  - title: Watergang met beschoeiing
-    text: Sectie waarin een beschoeiing onderdeel is van de constructieve opbouw.
-    href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/met-beschoeiing
-    image:
-      src: /images/objectenhandboek/watersysteem/watergangsectie_watergang met beschoeiing/watergang met beschoeiing overzicht-optimized.jpg
-      alt: Overzicht van Watergang met beschoeiing.
-    caption: Overzicht. Watergang met beschoeiing.
+      alt: Doorsnede van Watergang met standaardprofiel met profiellijnen.
+    caption: Doorsnede. Watergang met standaardprofiel.
   - title: Watergang met wandconstructie
     text: Sectie met een verticale of semi-verticale wandoplossing.
     href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/met-wandconstructie
@@ -173,9 +159,9 @@ productRelations:
     text: Werkinstructies voor het toepassen en vastleggen van objectinformatie.
     href: /datastandaard/werkinstructies
 nextSteps:
-  - title: Watergang met taluds
-    text: Door naar het eerste type naar compositie van de watergangsectie.
-    href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/met-taluds
+  - title: Watergang met standaardprofiel
+    text: Door naar het standaardprofiel waarin taluds, onderhoudspad en beschoeiing in samenhang zijn uitgewerkt.
+    href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/met-standaardprofiel
   - title: Watergangen
     text: Terug naar het hoofdobject binnen deze objectlijn.
     href: /datastandaard/objectenhandboek/watersysteem/watergangen

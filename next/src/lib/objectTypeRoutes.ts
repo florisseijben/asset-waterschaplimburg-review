@@ -26,9 +26,22 @@ const existingObjectTypeRoutes: ObjectTypeRoute[] = [
   { title: "Watergang", href: "/datastandaard/objectenhandboek/watersysteem/watergangen" },
   { title: "Watergangen", href: "/datastandaard/objectenhandboek/watersysteem/watergangen" },
   { title: "Watergangsectie", href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie" },
-  { title: "Watergang met taluds", href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/met-taluds" },
-  { title: "Watergang met onderhoudspad", href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/met-onderhoudspad" },
-  { title: "Watergang met beschoeiing", href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/met-beschoeiing" },
+  {
+    title: "Watergang met standaardprofiel",
+    href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/met-standaardprofiel"
+  },
+  {
+    title: "Watergang met taluds",
+    href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/met-standaardprofiel"
+  },
+  {
+    title: "Watergang met onderhoudspad",
+    href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/met-standaardprofiel"
+  },
+  {
+    title: "Watergang met beschoeiing",
+    href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/met-standaardprofiel"
+  },
   { title: "Watergang met wandconstructie", href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/met-wandconstructie" },
   { title: "Watergang met accoladeprofiel", href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/met-accoladeprofiel" },
   { title: "Vrij meanderende watergang", href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/vrij-meanderend" },
