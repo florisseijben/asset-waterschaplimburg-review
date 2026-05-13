@@ -7,12 +7,11 @@ import ObjectClassificationSection from "../../../../../components/ObjectClassif
 import SemanticSamenhangSection from "../../../../../components/SemanticSamenhangSection.astro";
 import ProductSection from "../../../../../components/ProductSection.astro";
 import UitwerkingSection from "../../../../../components/UitwerkingSection.astro";
-import GeometrySection from "../../../../../components/GeometrySection.astro";
 import VervolgSection from "../../../../../components/VervolgSection.astro";
 import { getCollection } from "astro:content";
 import { getObjectHandbookHref } from "../../../../../lib/objectenhandboekHandbooks";
 import { createObjectBreadcrumbs } from "../../../../../lib/objectenhandboekBreadcrumbs";
-import { getGeometrySection, normalizeObjectUitwerkingSections } from "../../../../../lib/uitwerkingSections";
+import { normalizeObjectUitwerkingSections } from "../../../../../lib/uitwerkingSections";
 import { createKunstwerkTypeGraph } from "../../../../../lib/semanticSamenhangGraphs";
 
 export async function getStaticPaths() {
@@ -77,7 +76,6 @@ const uitwerkingSections = normalizeObjectUitwerkingSections(contentSections, {
   subtypeIconTitle: entry.data.heroTitle || entry.data.title,
   includeTypen: false
 });
-const geometrySection = getGeometrySection(contentSections);
 const samenhangGraph = createKunstwerkTypeGraph(kunstwerkId, entry.data.title, relationKind);
 const escapedTitle = String(entry.data.title || "").replace(/\\/g, "\\\\").replace(/"/g, '\\"');
 const typeRelationTriples =
@@ -188,8 +186,6 @@ ${typeRelationTriples}
     title={`Inhoudelijke opbouw van ${entry.data.title}`}
     items={uitwerkingSections}
   />
-
-  <GeometrySection section={geometrySection} />
 
   <ProductSection eyebrow="Productlijn" items={entry.data.productRelations || []} />
 

@@ -7,13 +7,12 @@ import ObjectClassificationSection from "../../../../../../components/ObjectClas
 import SemanticSamenhangSection from "../../../../../../components/SemanticSamenhangSection.astro";
 import ProductSection from "../../../../../../components/ProductSection.astro";
 import UitwerkingSection from "../../../../../../components/UitwerkingSection.astro";
-import GeometrySection from "../../../../../../components/GeometrySection.astro";
 import VervolgSection from "../../../../../../components/VervolgSection.astro";
 import { getCollection } from "astro:content";
 import taludSamenhangTurtle from "../../../../../../data/semantic/watergangsectie-talud-samenhang.ttl?raw";
 import { getObjectHandbookHref } from "../../../../../../lib/objectenhandboekHandbooks";
 import { createObjectBreadcrumbs } from "../../../../../../lib/objectenhandboekBreadcrumbs";
-import { getGeometrySection, normalizeObjectUitwerkingSections } from "../../../../../../lib/uitwerkingSections";
+import { normalizeObjectUitwerkingSections } from "../../../../../../lib/uitwerkingSections";
 import { createTaludGraph } from "../../../../../../lib/semanticSamenhangGraphs";
 
 const entries = await getCollection("datastandaard-objectenhandboek-objects");
@@ -35,7 +34,6 @@ const uitwerkingSections = normalizeObjectUitwerkingSections(contentSections, {
   compositionTypes: entry.data.compositionTypes || [],
   subtypeIconTitle: entry.data.heroTitle || entry.data.title
 });
-const geometrySection = getGeometrySection(contentSections);
 ---
 
 <BaseLayout
@@ -70,8 +68,6 @@ const geometrySection = getGeometrySection(contentSections);
     title="Inhoudelijke opbouw van Talud"
     items={uitwerkingSections}
   />
-
-  <GeometrySection section={geometrySection} />
 
   <ProductSection eyebrow="Productlijn" items={entry.data.productRelations || []} />
 

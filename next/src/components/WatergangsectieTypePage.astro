@@ -7,11 +7,10 @@ import ObjectClassificationSection from "./ObjectClassificationSection.astro";
 import SemanticSamenhangSection from "./SemanticSamenhangSection.astro";
 import ProductSection from "./ProductSection.astro";
 import UitwerkingSection from "./UitwerkingSection.astro";
-import GeometrySection from "./GeometrySection.astro";
 import VervolgSection from "./VervolgSection.astro";
 import { getObjectHandbookHref } from "../lib/objectenhandboekHandbooks";
 import { createObjectBreadcrumbs } from "../lib/objectenhandboekBreadcrumbs";
-import { getGeometrySection, normalizeObjectUitwerkingSections } from "../lib/uitwerkingSections";
+import { normalizeObjectUitwerkingSections } from "../lib/uitwerkingSections";
 import { createWatergangsectieTypeGraph } from "../lib/semanticSamenhangGraphs";
 
 interface Props {
@@ -25,7 +24,6 @@ const visibleContentSections = normalizeObjectUitwerkingSections(contentSections
   compositionTypes: entry.data.compositionTypes || [],
   subtypeIconTitle: entry.data.heroTitle || entry.data.title
 });
-const geometrySection = getGeometrySection(contentSections);
 const typeId = String(entry.id || sectietype).replace(/\.md$/, "");
 const typeLabel = entry.data.heroTitle || entry.data.title;
 const typeTurtleLabel = String(typeLabel).replace(/\\/g, "\\\\").replace(/"/g, '\\"');
@@ -98,8 +96,6 @@ object:${typeId} relatie:heeftBegrenzing object:profielgrens .
   />
 
   <UitwerkingSection title={`Inhoudelijke opbouw van ${typeLabel}`} items={visibleContentSections} />
-
-  <GeometrySection section={geometrySection} />
 
   <ProductSection eyebrow="Productlijn" items={entry.data.productRelations || []} />
 

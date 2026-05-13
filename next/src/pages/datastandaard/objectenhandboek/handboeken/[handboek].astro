@@ -11,7 +11,7 @@ import {
 import { createObjectBreadcrumbs } from "../../../../lib/objectenhandboekBreadcrumbs";
 import { objectenhandboekTaxonomy } from "../../../../lib/objectenhandboekTaxonomy";
 import { withBase } from "../../../../lib/paths";
-import { normalizeUitwerkingSections } from "../../../../lib/uitwerkingSections";
+import { normalizeObjectUitwerkingSections } from "../../../../lib/uitwerkingSections";
 import { getDecompositionFromAssetJson } from "../../../../lib/assetConcepts";
 
 export async function getStaticPaths() {
@@ -464,11 +464,13 @@ const getContentSectionsForPrint = (entry: any, options: PrintSectionOptions = {
 };
 
 const getPrintableSections = (entry: any, options: PrintSectionOptions = {}) =>
-  normalizeUitwerkingSections(getContentSectionsForPrint(entry, options), {
+  normalizeObjectUitwerkingSections(getContentSectionsForPrint(entry, options), {
     compositionTypes: [],
     subtypeIconTitle: getObjectTitle(entry),
     includeTypen: false,
     includeOnderdelenWithCompositionTypes: true,
+    includeDecomposition: options.includeDecompositionOverview,
+    requireStandardSections: false,
     excludeTitles: options.includeDecompositionOverview ? ["Typen"] : ["Decompositie", "Typen"]
   });
 

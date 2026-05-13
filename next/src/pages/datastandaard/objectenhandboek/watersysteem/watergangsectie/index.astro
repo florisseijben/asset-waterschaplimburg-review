@@ -7,13 +7,12 @@ import ObjectClassificationSection from "../../../../../components/ObjectClassif
 import SemanticSamenhangSection from "../../../../../components/SemanticSamenhangSection.astro";
 import ProductSection from "../../../../../components/ProductSection.astro";
 import UitwerkingSection from "../../../../../components/UitwerkingSection.astro";
-import GeometrySection from "../../../../../components/GeometrySection.astro";
 import VervolgSection from "../../../../../components/VervolgSection.astro";
 import { getCollection } from "astro:content";
 import watergangSamenhangTurtle from "../../../../../data/semantic/watergang-samenhang.ttl?raw";
 import { getObjectHandbookHref } from "../../../../../lib/objectenhandboekHandbooks";
 import { createObjectBreadcrumbs } from "../../../../../lib/objectenhandboekBreadcrumbs";
-import { getGeometrySection, normalizeObjectUitwerkingSections } from "../../../../../lib/uitwerkingSections";
+import { normalizeObjectUitwerkingSections } from "../../../../../lib/uitwerkingSections";
 import { createWatergangsectieGraph } from "../../../../../lib/semanticSamenhangGraphs";
 
 const entries = await getCollection("datastandaard-objectenhandboek-objects");
@@ -34,7 +33,6 @@ const visibleContentSections = normalizeObjectUitwerkingSections(contentSections
   compositionTypes: entry.data.compositionTypes || [],
   subtypeIconTitle: entry.data.heroTitle || entry.data.title
 });
-const geometrySection = getGeometrySection(contentSections);
 const samenhangGraph = createWatergangsectieGraph();
 ---
 
@@ -67,8 +65,6 @@ const samenhangGraph = createWatergangsectieGraph();
   />
 
   <UitwerkingSection title="Inhoudelijke opbouw van Watergangsectie" items={visibleContentSections} />
-
-  <GeometrySection section={geometrySection} />
 
   <ProductSection eyebrow="Productlijn" items={entry.data.productRelations || []} />
 

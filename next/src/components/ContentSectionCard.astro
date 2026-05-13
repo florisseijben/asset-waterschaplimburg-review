@@ -10,6 +10,7 @@ interface SectionItem {
   iconTitle?: string;
   image?: SectionImage;
   caption?: string;
+  blocks?: SectionBlock[];
 }
 
 interface SectionImage {
@@ -98,6 +99,21 @@ const Tag = href && !hasItems ? "a" : "article";
               <img class="info-card__image" src={withBase(item.image.src)} alt={item.image.alt || ""} loading="lazy" />
               {item.caption && <figcaption class="info-card__caption">{item.caption}</figcaption>}
             </figure>
+          )}
+          {item.blocks && item.blocks.length > 0 && (
+            <div class="info-card__blocks">
+              {item.blocks.map((block) => (
+                <div class="info-card__block">
+                  {block.text && <p>{block.text}</p>}
+                  {block.image?.src && (
+                    <figure class="info-card__figure">
+                      <img class="info-card__image" src={withBase(block.image.src)} alt={block.image.alt || ""} loading="lazy" />
+                      {block.caption && <figcaption class="info-card__caption">{block.caption}</figcaption>}
+                    </figure>
+                  )}
+                </div>
+              ))}
+            </div>
           )}
         </ItemTag>
       )})}

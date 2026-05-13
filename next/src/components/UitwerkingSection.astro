@@ -13,6 +13,11 @@ interface SectionItem {
     iconTitle?: string;
     image?: { src: string; alt?: string };
     caption?: string;
+    blocks?: {
+      text?: string;
+      image?: { src: string; alt?: string };
+      caption?: string;
+    }[];
   }[];
   image?: { src: string; alt?: string };
   caption?: string;
