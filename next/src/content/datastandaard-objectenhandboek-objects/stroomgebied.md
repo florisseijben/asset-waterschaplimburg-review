@@ -5,7 +5,7 @@ part: datastandaard
 product: objectenhandboek
 ownerTeam: datastandaard
 status: eerste-template
-lastReviewed: 2026-04-16
+lastReviewed: 2026-05-14
 summary: Op deze pagina vind je de definitie en afbakening van Stroomgebied, de begripsmatige gebiedstypen, de samenhang met Watergang, Regenwaterbuffer en Kunstwerk, de geometrische uitgangspunten en de productrelaties.
 heroTitle: Stroomgebied
 hierarchy:
@@ -26,25 +26,26 @@ classification:
     - objectenhandboek-ecologie-en-groen
     - objectenhandboek-informatie-en-data
   confidence: afgeleid
-definition: Een stroomgebied is een gebied vanwaar al het over het oppervlak lopende water via een reeks stromen, rivieren en eventueel meren door een riviermond, estuarium of delta in zee stroomt.
-definitionSource: "Definitiebron: DAMO Objectenhandboek 2.6, Bijlage Afvoeraanvoergebied methodiek, paragraaf 2.1 Definities."
+definition: een afwateringsgebied waarbinnen water afstroomt naar oppervlaktewater en uiteindelijk via één riviermond, estuarium of delta, in zee stroomt
+definitionSource: "IMWA-WS, objecttype Stroomgebied."
 terms:
-  - title: Stroomgebied
-    text: Gebied waarvan al het oppervlakkig afstromende water uiteindelijk via eenzelfde hoofdsysteem in zee terechtkomt.
-    href: /datastandaard/woordenboek
-  - title: Afvoergebied
-    text: Gebied begrensd door stroomscheidingen waaruit water via afstroming of bemaling naar een afvoerpunt wordt geleid.
-    href: /datastandaard/woordenboek
-  - title: Drainage basin
-    text: INSPIRE-term voor een gebied met een gemeenschappelijk afvoerpunt voor oppervlakkige afstroming.
-    href: /datastandaard/woordenboek
-  - title: River basin
-    text: INSPIRE-term voor het grootste afwateringsgebied en daarmee verwant aan het begrip stroomgebied.
-    href: /datastandaard/woordenboek
-  - title: Watersysteem
-    text: Bovenliggende systeemlaag waarin meerdere stroomgebieden en afvoerstructuren samenkomen.
-    href: /datastandaard/woordenboek
-contextNote: In de DAMO-methodiek is stroomgebied het grootste hydrologische gebiedsniveau. Binnen Nederland gaat het daarbij om de landgrensoverschrijdende stroomgebieden van Maas, Schelde, Eems en Rijn, waarbinnen verdere afvoergebieden en objectlijnen worden geordend.
+  - title: Afwateringseenheid
+    text: >-
+      IMWA-WS-definitie: een afwateringsgebied dat geschematiseerd is als (kleinste) eenheid in een hydrologisch model.
+    href: https://aquo-standaard.github.io/IMWA-WS/#global_class_Watersysteem_Afwateringseenheid
+  - title: Afwateringsgebied
+    text: >-
+      IMWA-WS-definitie: een gebied waarbinnen het water wordt afgevoerd naar het oppervlaktewater en dat wordt begrensd door een waterscheiding.
+    href: https://aquo-standaard.github.io/IMWA-WS/#global_class_Watersysteem_Afwateringsgebied
+  - title: AfvoerAanvoergebied
+    text: >-
+      DAMO-definitie: Een gebied begrensd door (stroom)scheidingen, waaruit beschouwd vanuit het afvoerpunt het water van dat gebied afstroomt of via bemaling getransporteerd wordt naar het desbetreffende afvoerpunt.
+    href: https://damo.hetwaterschapshuis.nl/DAMO%202.4.1/Objectenhandboek%20DAMO%202.4/html/AfvoerAanvoergebied.html
+  - title: AfvoergebiedAanvoergebied
+    text: >-
+      DAMO-definitie: Een gebied begrensd door (stroom)scheidingen, waaruit beschouwd vanuit het afvoerpunt het water van dat gebied afstroomt of via bemaling getransporteerd wordt naar het desbetreffende afvoerpunt. Het afvoerpunt is vaak een zee of meer en de afvoer wordt vaak gerealiseerd door een waterloop. Dit kan een afvoergebied zijn (verzameling van peilgebieden) die via een gemeenschappelijk punt hun water lozen/ontvangen op een hoofdsysteem. Dit kan ook een KRW deelstroomgebied zijn.
+    href: https://damo.hetwaterschapshuis.nl/DAMO%202.4.1/Objectenhandboek%20DAMO%202.4/html/AfvoergebiedAanvoergebied.html
+contextNote: Stroomgebied is als begrip direct gekoppeld aan IMWA-WS. De aanliggende gebiedsbegrippen uit IMWA-WS en DAMO staan onder gerelateerde termen, zodat de objectpagina zelf niet meerdere brondefinities door elkaar gebruikt.
 definitionTypes:
   - title: 1e gebiedsorde
     text: Afvoergebied dat ontstaat door alle afvoergebieden van de 2e gebiedsorde die op hetzelfde RWS-hoofdwater lozen samen te voegen, bijvoorbeeld richting de Maas.
