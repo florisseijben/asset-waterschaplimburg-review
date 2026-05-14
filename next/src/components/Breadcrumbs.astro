@@ -11,13 +11,29 @@ interface Props {
 }
 
 const { items } = Astro.props;
+
+function normalizeBreadcrumbHref(href?: string) {
+  if (!href || href.startsWith("#") || /^(?:[a-z][a-z0-9+.-]*:)?\/\//i.test(href)) {
+    return href;
+  }
+
+  const match = href.match(/^([^?#]*)([?#].*)?$/);
+  const pathname = match?.[1] || href;
+  const suffix = match?.[2] || "";
+
+  if (!pathname || pathname === "/" || pathname.endsWith("/") || /\.[^/]+$/.test(pathname)) {
+    return href;
+  }
+
+  return `${pathname}/${suffix}`;
+}
 ---
 
 <nav aria-label="Breadcrumb" class="breadcrumb-nav">
   <ol class="breadcrumb">
     {items.map((item) => (
       <li>
-        {item.href ? <a href={withBase(item.href)}>{item.label}</a> : <span>{item.label}</span>}
+        {item.href ? <a href={withBase(normalizeBreadcrumbHref(item.href))}>{item.label}</a> : <span>{item.label}</span>}
       </li>
     ))}
   </ol>
