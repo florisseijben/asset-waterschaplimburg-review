@@ -2,6 +2,7 @@
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
 import Hero from "../../../../components/Hero.astro";
 import PrintPageAction from "../../../../components/PrintPageAction.astro";
+import ResponsiveContentImage from "../../../../components/ResponsiveContentImage.astro";
 import { getCollection } from "astro:content";
 import {
   getObjectHandbookHref,
@@ -749,13 +750,10 @@ const handbookBreadcrumbs = [
                           {section.summary && <p>{section.summary}</p>}
                           {section.image?.src && (
                             <figure class="handbook-object__figure">
-                              <img
+                              <ResponsiveContentImage
                                 class="handbook-object__image"
-                                src={withBase(section.image.src)}
+                                src={section.image.src}
                                 alt={section.image.alt || ""}
-                                loading="lazy"
-                                decoding="async"
-                                fetchpriority="low"
                               />
                               {section.caption && <figcaption class="handbook-object__caption">{section.caption}</figcaption>}
                             </figure>
@@ -765,13 +763,10 @@ const handbookBreadcrumbs = [
                               {block.text && <p>{block.text}</p>}
                               {block.image?.src && (
                                 <figure class="handbook-object__figure">
-                                  <img
+                                  <ResponsiveContentImage
                                     class="handbook-object__image"
-                                    src={withBase(block.image.src)}
+                                    src={block.image.src}
                                     alt={block.image.alt || ""}
-                                    loading="lazy"
-                                    decoding="async"
-                                    fetchpriority="low"
                                   />
                                   {block.caption && <figcaption class="handbook-object__caption">{block.caption}</figcaption>}
                                 </figure>
@@ -802,13 +797,10 @@ const handbookBreadcrumbs = [
                                   {sectionItem.text && <p>{sectionItem.text}</p>}
                                   {sectionItem.image?.src && (
                                     <figure class="handbook-object__figure">
-                                      <img
+                                      <ResponsiveContentImage
                                         class="handbook-object__image"
-                                        src={withBase(sectionItem.image.src)}
+                                        src={sectionItem.image.src}
                                         alt={sectionItem.image.alt || ""}
-                                        loading="lazy"
-                                        decoding="async"
-                                        fetchpriority="low"
                                       />
                                       {sectionItem.caption && (
                                         <figcaption class="handbook-object__caption">{sectionItem.caption}</figcaption>
@@ -820,13 +812,10 @@ const handbookBreadcrumbs = [
                                       {block.text && <p>{block.text}</p>}
                                       {block.image?.src && (
                                         <figure class="handbook-object__figure">
-                                          <img
+                                          <ResponsiveContentImage
                                             class="handbook-object__image"
-                                            src={withBase(block.image.src)}
+                                            src={block.image.src}
                                             alt={block.image.alt || ""}
-                                            loading="lazy"
-                                            decoding="async"
-                                            fetchpriority="low"
                                           />
                                           {block.caption && (
                                             <figcaption class="handbook-object__caption">{block.caption}</figcaption>
@@ -912,13 +901,10 @@ const handbookBreadcrumbs = [
                               {section.summary && <p>{section.summary}</p>}
                               {section.image?.src && (
                                 <figure class="handbook-object__figure">
-                                  <img
+                                  <ResponsiveContentImage
                                     class="handbook-object__image"
-                                    src={withBase(section.image.src)}
+                                    src={section.image.src}
                                     alt={section.image.alt || ""}
-                                    loading="lazy"
-                                    decoding="async"
-                                    fetchpriority="low"
                                   />
                                   {section.caption && <figcaption class="handbook-object__caption">{section.caption}</figcaption>}
                                 </figure>
@@ -928,13 +914,10 @@ const handbookBreadcrumbs = [
                                   {block.text && <p>{block.text}</p>}
                                   {block.image?.src && (
                                     <figure class="handbook-object__figure">
-                                      <img
+                                      <ResponsiveContentImage
                                         class="handbook-object__image"
-                                        src={withBase(block.image.src)}
+                                        src={block.image.src}
                                         alt={block.image.alt || ""}
-                                        loading="lazy"
-                                        decoding="async"
-                                        fetchpriority="low"
                                       />
                                       {block.caption && <figcaption class="handbook-object__caption">{block.caption}</figcaption>}
                                     </figure>
@@ -965,13 +948,10 @@ const handbookBreadcrumbs = [
                                       {sectionItem.text && <p>{sectionItem.text}</p>}
                                       {sectionItem.image?.src && (
                                         <figure class="handbook-object__figure">
-                                          <img
+                                          <ResponsiveContentImage
                                             class="handbook-object__image"
-                                            src={withBase(sectionItem.image.src)}
+                                            src={sectionItem.image.src}
                                             alt={sectionItem.image.alt || ""}
-                                            loading="lazy"
-                                            decoding="async"
-                                            fetchpriority="low"
                                           />
                                           {sectionItem.caption && (
                                             <figcaption class="handbook-object__caption">{sectionItem.caption}</figcaption>
@@ -983,13 +963,10 @@ const handbookBreadcrumbs = [
                                           {block.text && <p>{block.text}</p>}
                                           {block.image?.src && (
                                             <figure class="handbook-object__figure">
-                                              <img
+                                              <ResponsiveContentImage
                                                 class="handbook-object__image"
-                                                src={withBase(block.image.src)}
+                                                src={block.image.src}
                                                 alt={block.image.alt || ""}
-                                                loading="lazy"
-                                                decoding="async"
-                                                fetchpriority="low"
                                               />
                                               {block.caption && (
                                                 <figcaption class="handbook-object__caption">{block.caption}</figcaption>
