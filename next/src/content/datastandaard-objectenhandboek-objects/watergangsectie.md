@@ -29,32 +29,18 @@ classification:
     - objectenhandboek-terreinbeheer-openbare-ruimte
     - objectenhandboek-informatie-en-data
   confidence: afgeleid
-definition: "Een watergangsectie is de lokale objecthandboektoepassing van een OppervlaktewaterSegment: een afgebakend deeltraject van een watergang waarmee ligging, profiel, kenmerken en onderhoud als samenhangend segment worden beschreven."
-definitionSource: "Aquo/IMWA-WS, objecttype OppervlaktewaterSegment. Lokale objectnaam in dit handboek: Watergangsectie."
-synonyms:
-  - title: OppervlaktewaterSegment
-    text: Bronconcept in Aquo/IMWA-WS voor de hydrologische segmentering van oppervlaktewater.
-    href: /datastandaard/woordenboek
-  - title: Deeltraject
-    text: Praktijkterm voor een ruimtelijk afgebakend segment binnen een watergang.
-    href: /datastandaard/woordenboek
+definition: Een watergangsectie is een afgebakend deel van een watergang waarmee kenmerken, onderhoud en opbouw specifieker beschreven kunnen worden.
+definitionSource: "Lokale definitie binnen het Objectenhandboek Waterschap Limburg."
 terms:
-  - title: Watergang
-    text: Bovenliggend object binnen deze objectlijn; een watergang is opgebouwd uit secties en intersecties.
-    href: /datastandaard/woordenboek
-  - title: Oppervlaktewaterlichaam
-    text: Aquo/IMWA-WS objecttype dat door oppervlaktewatersegmenten wordt geschematiseerd.
-    href: /datastandaard/woordenboek
-  - title: OppervlaktewaterKnooppunt
-    text: Aquo/IMWA-WS objecttype voor begin- en eindpunten van segmenten binnen het hydrologisch netwerk.
-    href: /datastandaard/woordenboek
-  - title: Profieldeel
-    text: Uitsnede van de fysieke opbouw van de watergang.
-    href: /datastandaard/woordenboek
-  - title: Intersectie
-    text: Parallel objectniveau naast Watergangsectie voor kruisingen en knooppunten in de watergangstructuur.
-    href: /datastandaard/woordenboek
-contextNote: De watergangsectie maakt het mogelijk om een watergang in opeenvolgende delen te beschrijven. De begripsmatige koppeling ligt bij Aquo/IMWA-WS OppervlaktewaterSegment; de lokale uitwerking voegt profiel, onderhoud en compositietypen toe voor het objectenhandboek.
+  - title: Oppervlaktewatersegment
+    text: >-
+      IMWA-WS-definitie: een segment van een oppervlaktewater in een hydrologisch netwerk.
+    href: https://aquo-standaard.github.io/IMWA-WS/#global_class_Watersysteem_Oppervlaktewatersegment
+  - title: HydroObject
+    text: >-
+      DAMO-definitie: Samenhangend geheel van vrij aan het aardoppervlak voorkomend water, met de daarin aanwezige stoffen, alsmede de bijbehorende bodem, oevers en, voor zover uitdrukkelijk aangewezen krachtens deze wet, drogere oevergebieden, alsmede flora en fauna. (Definitie volgens de waterwet)
+    href: https://damo.hetwaterschapshuis.nl/DAMO%202.4.1/Objectenhandboek%20DAMO%202.4/html/HydroObject.html
+contextNote: De watergangsectie maakt het mogelijk om een watergang in opeenvolgende delen te beschrijven. De koppeling met externe standaardbegrippen staat onder gerelateerde termen; synoniemen zijn voor dit lokale objecttype niet uitgewerkt.
 compositionTypes:
   - title: Watergang met standaardprofiel
     text: Sectie waarin bodem, taluds, profielgrenzen en standaardvoorzieningen zoals onderhoudspad of beschoeiing in samenhang worden beschreven.

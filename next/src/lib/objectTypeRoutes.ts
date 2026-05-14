@@ -4,6 +4,13 @@ export type ObjectTypeRoute = {
   parentTitle?: string;
   parentHref?: string;
   summary?: string;
+  definition?: string;
+  definitionSource?: string;
+  relatedTerms?: {
+    title: string;
+    text?: string;
+    href?: string;
+  }[];
 };
 
 export function normalizeObjectTypeKey(value: string) {
@@ -95,19 +102,49 @@ export const objectTypePlaceholderRoutes: ObjectTypeRoute[] = [
     title: "Watergang - Watergang",
     href: "/datastandaard/objectenhandboek/watersysteem/intersectie/watergang-watergang",
     parentTitle: "Intersectie",
-    parentHref: "/datastandaard/objectenhandboek/watersysteem/intersectie"
+    parentHref: "/datastandaard/objectenhandboek/watersysteem/intersectie",
+    summary: "Lokale uitwerking van een intersectie waar twee watergangen elkaar raken of op elkaar aansluiten.",
+    definition: "Een Watergang - Watergang-intersectie is een lokale uitwerking van Intersectie voor de kruising of aansluiting tussen twee watergangen.",
+    definitionSource: "Lokale definitie binnen het Objectenhandboek Waterschap Limburg.",
+    relatedTerms: [
+      {
+        title: "Oppervlaktewaterknooppunt",
+        text: "IMWA-WS-definitie: een punt binnen een hydrologisch netwerk.",
+        href: "https://aquo-standaard.github.io/IMWA-WS/#global_class_Watersysteem_OppervlaktewaterKnooppunt"
+      }
+    ]
   },
   {
     title: "Watergang - Weg",
     href: "/datastandaard/objectenhandboek/watersysteem/intersectie/watergang-weg",
     parentTitle: "Intersectie",
-    parentHref: "/datastandaard/objectenhandboek/watersysteem/intersectie"
+    parentHref: "/datastandaard/objectenhandboek/watersysteem/intersectie",
+    summary: "Lokale uitwerking van een intersectie waar een watergang een wegverbinding kruist.",
+    definition: "Een Watergang - Weg-intersectie is een lokale uitwerking van Intersectie voor de kruising tussen een watergang en een wegverbinding.",
+    definitionSource: "Lokale definitie binnen het Objectenhandboek Waterschap Limburg.",
+    relatedTerms: [
+      {
+        title: "Oppervlaktewaterkruising",
+        text: "IMWA-WS-definitie: een element in een hydrologisch netwerk dat wordt gebruikt om een kruising aan te geven van oppervlaktewater segmenten die geen interactie met elkaar hebben, doordat deze segmenten in het verticale vlak gescheiden zijn.",
+        href: "https://aquo-standaard.github.io/IMWA-WS/#global_class_Watersysteem_OppervlaktewaterKruising"
+      }
+    ]
   },
   {
     title: "Watergang - Waterkering",
     href: "/datastandaard/objectenhandboek/watersysteem/intersectie/watergang-waterkering",
     parentTitle: "Intersectie",
-    parentHref: "/datastandaard/objectenhandboek/watersysteem/intersectie"
+    parentHref: "/datastandaard/objectenhandboek/watersysteem/intersectie",
+    summary: "Lokale uitwerking van een intersectie waar een watergang een waterkering kruist.",
+    definition: "Een Watergang - Waterkering-intersectie is een lokale uitwerking van Intersectie voor de kruising tussen een watergang en een waterkering.",
+    definitionSource: "Lokale definitie binnen het Objectenhandboek Waterschap Limburg.",
+    relatedTerms: [
+      {
+        title: "Oppervlaktewaterkruising",
+        text: "IMWA-WS-definitie: een element in een hydrologisch netwerk dat wordt gebruikt om een kruising aan te geven van oppervlaktewater segmenten die geen interactie met elkaar hebben, doordat deze segmenten in het verticale vlak gescheiden zijn.",
+        href: "https://aquo-standaard.github.io/IMWA-WS/#global_class_Watersysteem_OppervlaktewaterKruising"
+      }
+    ]
   },
   {
     title: "Toplaag",

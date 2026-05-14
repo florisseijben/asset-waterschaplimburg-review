@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import Hero from "../../../components/Hero.astro";
+import ConceptSummarySection from "../../../components/ConceptSummarySection.astro";
 import PlaceholderStatus from "../../../components/PlaceholderStatus.astro";
 import InfoCard from "../../../components/InfoCard.astro";
 import { createObjectRouteBreadcrumbs } from "../../../lib/objectenhandboekBreadcrumbs";
@@ -21,6 +22,7 @@ const parentHref = page.parentHref || "/datastandaard/objectenhandboek";
 const summary =
   page.summary ||
   `Op deze objecttypepagina vind je straks de definitie, afbakening, samenhang, geometrie en vastleggingsafspraken voor ${page.title}.`;
+const hasConceptSummary = Boolean(page.definition || (page.relatedTerms || []).length);
 ---
 
 <BaseLayout
@@ -29,6 +31,15 @@ const summary =
   breadcrumbs={createObjectRouteBreadcrumbs(page)}
 >
   <Hero eyebrow="Objectenhandboek objecttype" title={page.title} summary={summary} />
+
+  {hasConceptSummary && (
+    <ConceptSummarySection
+      subjectLabel={page.title}
+      definition={page.definition}
+      definitionSource={page.definitionSource}
+      relatedTerms={page.relatedTerms || []}
+    />
+  )}
 
   <PlaceholderStatus
     title={`${page.title} volgt in een volgende uitwerkingsslag`}

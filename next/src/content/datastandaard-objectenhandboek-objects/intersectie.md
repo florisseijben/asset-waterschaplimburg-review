@@ -26,41 +26,27 @@ classification:
     - objectenhandboek-civiele-techniek
     - objectenhandboek-informatie-en-data
   confidence: afgeleid
-definition: "Een intersectie is de lokale objectnaam voor een kruising of knooppunt in de watergangstructuur: een OppervlaktewaterKruising wanneer een watergang een ander netwerk kruist, of een OppervlaktewaterKnooppunt bij een watergang-watergangkruising."
-definitionSource: "Aquo/IMWA-WS, objecttypen OppervlaktewaterKruising en OppervlaktewaterKnooppunt. Lokale objectnaam in dit handboek: Intersectie."
-synonyms:
-  - title: OppervlaktewaterKruising
-    text: Bronconcept in Aquo/IMWA-WS voor kruisingen tussen oppervlaktewater en andere netwerken.
-    href: /datastandaard/woordenboek
-  - title: OppervlaktewaterKnooppunt
-    text: Bronconcept in Aquo/IMWA-WS voor knooppunten in het oppervlaktewaternetwerk, zoals watergang-watergangkruisingen.
-    href: /datastandaard/woordenboek
-  - title: Kruising
-    text: Praktijkterm voor de plek waar trajecten of netwerken elkaar kruisen.
-    href: /datastandaard/woordenboek
+definition: Een intersectie is een kruising binnen de watergangstructuur en ligt als object op hetzelfde niveau als een watergangsectie.
+definitionSource: "Lokale definitie binnen het Objectenhandboek Waterschap Limburg."
 terms:
-  - title: Watergang
-    text: Bovenliggend object binnen deze objectlijn; intersecties liggen tussen of op aansluitingen van watergangdelen.
-    href: /datastandaard/woordenboek
-  - title: Watergangsectie
-    text: Parallel objectniveau voor het trajectdeel tussen intersecties.
-    href: /datastandaard/woordenboek
-  - title: OppervlaktewaterSegment
-    text: Aquo/IMWA-WS objecttype waarvan begin- en eindpunten aan oppervlaktewaterknooppunten kunnen liggen.
-    href: /datastandaard/woordenboek
-  - title: Ander netwerk
-    text: Verzamelterm voor wegen, waterkeringen of andere netwerken die een watergang kunnen kruisen.
-    href: /datastandaard/woordenboek
-contextNote: Binnen deze templatefamilie blijft Intersectie de objecthandboeknaam. De begripsmatige uitwerking maakt onderscheid tussen een Aquo/IMWA-WS oppervlaktewaterknooppunt voor watergang-watergangkruisingen en een oppervlaktewaterkruising voor kruisingen met andere netwerken.
+  - title: Oppervlaktewaterkruising
+    text: >-
+      IMWA-WS-definitie: een element in een hydrologisch netwerk dat wordt gebruikt om een kruising aan te geven van oppervlaktewater segmenten die geen interactie met elkaar hebben, doordat deze segmenten in het verticale vlak gescheiden zijn.
+    href: https://aquo-standaard.github.io/IMWA-WS/#global_class_Watersysteem_OppervlaktewaterKruising
+  - title: Oppervlaktewaterknooppunt
+    text: >-
+      IMWA-WS-definitie: een punt binnen een hydrologisch netwerk.
+    href: https://aquo-standaard.github.io/IMWA-WS/#global_class_Watersysteem_OppervlaktewaterKnooppunt
+contextNote: Binnen deze templatefamilie blijft Intersectie de objecthandboeknaam. De koppeling met externe standaardbegrippen staat onder gerelateerde termen; synoniemen zijn voor dit lokale objecttype niet uitgewerkt.
 compositionTypes:
   - title: Watergang - Watergang
-    text: Kruising of aansluiting tussen twee watergangen.
+    text: Kruising of aansluiting tussen twee watergangen; gerelateerd aan het IMWA-WS-begrip Oppervlaktewaterknooppunt.
     href: /datastandaard/objectenhandboek/watersysteem/intersectie/watergang-watergang
   - title: Watergang - Weg
-    text: Kruising tussen de watergangstructuur en een wegverbinding.
+    text: Kruising tussen de watergangstructuur en een wegverbinding; gerelateerd aan het IMWA-WS-begrip Oppervlaktewaterkruising.
     href: /datastandaard/objectenhandboek/watersysteem/intersectie/watergang-weg
   - title: Watergang - Waterkering
-    text: Kruising tussen watergang en waterkering als specifieke systeemovergang.
+    text: Kruising tussen watergang en waterkering als specifieke systeemovergang; gerelateerd aan het IMWA-WS-begrip Oppervlaktewaterkruising.
     href: /datastandaard/objectenhandboek/watersysteem/intersectie/watergang-waterkering
 metadata:
   - label: Systeem
