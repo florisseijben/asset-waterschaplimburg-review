@@ -36,23 +36,9 @@ const conceptData = getConceptFromAssetJson("Watergang");
 const decompositionData = getDecompositionFromAssetJson("Watergang");
 const samenhangData = createWatergangSamenhangFromAssetJson();
 const normalizeTitle = (value: string) => String(value || "").trim().toLowerCase();
-const mergeTermItems = (...itemGroups: any[][]) => {
-  const seen = new Set<string>();
-
-  return itemGroups.flatMap((items) => items || []).filter((item) => {
-    const key = normalizeTitle(item.title);
-
-    if (!key || seen.has(key)) {
-      return false;
-    }
-
-    seen.add(key);
-    return true;
-  });
-};
-const relatedTerms = mergeTermItems(entry.data.terms || [], conceptData?.relatedTerms || []);
-const definitionTypes = mergeTermItems(entry.data.definitionTypes || [], conceptData?.types || []);
-const synonyms = mergeTermItems(entry.data.synonyms || [], conceptData?.synonyms || []);
+const relatedTerms = entry.data.terms || [];
+const definitionTypes = entry.data.definitionTypes || [];
+const synonyms = entry.data.synonyms || [];
 const mergeContentItemMedia = (derivedItems: any[] = [], contentItems: any[] = []) => {
   const contentItemsByTitle = new Map(contentItems.map((item) => [normalizeTitle(item.title), item]));
   const derivedItemsByTitle = new Map(derivedItems.map((item) => [normalizeTitle(item.title), item]));

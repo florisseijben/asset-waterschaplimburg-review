@@ -37,10 +37,12 @@ const SCALE_LEVEL_TITLES = ["Grootschalig", "Midschalig", "Kleinschalig"] as con
 const SPATIAL_SUBSECTION_TITLES = ["Overzicht", "Dwarsprofiel", "Bovenaanzicht"] as const;
 const OVERVIEW_TITLE = "Overzicht / Samenhang";
 const SPATIAL_DESCRIPTION_TITLE = "Ruimtelijke beschrijving";
+const PROTECTION_TITLE = "Bescherming";
 const PARTS_TITLE = "Onderdelen";
 const ARCHETYPES_TITLE = "Archetypen";
 const OVERVIEW_KEYS = new Set(["overzicht", "samenhang", "overzicht-samenhang"]);
 const SPATIAL_DESCRIPTION_KEYS = new Set(["afbakening", "geometrie", "ruimtelijke-beschrijving"]);
+const PROTECTION_KEYS = new Set(["bescherming"]);
 const PARTS_KEYS = new Set(["onderdelen", "typen", "decompositie"]);
 
 function normalizeKey(value: string) {
@@ -263,6 +265,101 @@ function mergeSectionGroup(title: string, sections: ContentSection[], fallbackSu
   return mergedSection;
 }
 
+function getSectionMediaBlocks(section: ContentSection): SectionBlock[] {
+  return uniqueBlocks([
+    mediaBlock(section.image, section.caption),
+    ...(section.blocks || [])
+  ].filter((block) => block?.image?.src) as SectionBlock[]);
+}
+
+function getItemMediaBlocks(item: SectionLinkItem): SectionBlock[] {
+  return uniqueBlocks([
+    mediaBlock(item.image, item.caption),
+    ...(item.blocks || []).filter((block) => block.image?.src)
+  ].filter(Boolean) as SectionBlock[]);
+}
+
+function withoutItemMedia(item: SectionLinkItem): SectionLinkItem {
+  const blocks = (item.blocks || []).flatMap((block) => {
+    if (!block.image?.src) {
+      return [block];
+    }
+
+    return block.text ? [{ text: block.text }] : [];
+  });
+  const nextItem: SectionLinkItem = {
+    title: item.title,
+    text: item.text,
+    href: item.href,
+    iconTitle: item.iconTitle
+  };
+
+  if (blocks.length) {
+    nextItem.blocks = blocks;
+  }
+
+  return nextItem;
+}
+
+function extractProtectionMedia(sections: ContentSection[]) {
+  const protectionMediaBlocks: SectionBlock[] = [];
+  const sectionsWithoutExtractedMedia = sections.map((section) => {
+    if (!SPATIAL_DESCRIPTION_KEYS.has(normalizeKey(section.title)) || !(section.items || []).length) {
+      return section;
+    }
+
+    return {
+      ...section,
+      items: section.items?.map((item) => {
+        if (normalizeKey(item.title) !== "dwarsprofiel") {
+          return item;
+        }
+
+        const itemMediaBlocks = getItemMediaBlocks(item);
+        if (!itemMediaBlocks.length) {
+          return item;
+        }
+
+        protectionMediaBlocks.push(...itemMediaBlocks);
+        return withoutItemMedia(item);
+      })
+    };
+  });
+
+  return {
+    sections: sectionsWithoutExtractedMedia,
+    protectionMediaBlocks: uniqueBlocks(protectionMediaBlocks)
+  };
+}
+
+function createProtectionSection(sections: ContentSection[], extractedBlocks: SectionBlock[]): ContentSection {
+  const explicitSection = mergeSectionGroup(
+    PROTECTION_TITLE,
+    sections,
+    extractedBlocks.length
+      ? "De beschermingsbeelden tonen de profielvlakken, constructieve begrenzingen en doorsneden die de bescherming of beheerfunctie van dit objecttype verduidelijken."
+      : "Beschermingszones of beschermende profielonderdelen zijn voor dit objecttype nog niet apart uitgewerkt."
+  );
+  const blocks = uniqueBlocks([
+    ...getSectionMediaBlocks(explicitSection),
+    ...extractedBlocks
+  ]);
+  const protectionSection: ContentSection = {
+    title: PROTECTION_TITLE,
+    summary: explicitSection.summary
+  };
+
+  if (blocks.length) {
+    protectionSection.blocks = blocks;
+  }
+
+  if (explicitSection.items?.length) {
+    protectionSection.items = explicitSection.items;
+  }
+
+  return protectionSection;
+}
+
 function createSpatialDescriptionSection(sections: ContentSection[], fallbackSummary: string): ContentSection {
   const baseSection = mergeSectionGroup(SPATIAL_DESCRIPTION_TITLE, sections, fallbackSummary);
   const baseBlocks = uniqueBlocks([
@@ -370,16 +467,26 @@ function standardizeObjectSections(
   const compositionTypes = options.compositionTypes || options.subtypes || [];
   const required = options.requireStandardSections !== false;
   const normalizedSections = sections.map(normalizeSection);
+  const { sections: normalizedSectionsWithoutProtectionMedia, protectionMediaBlocks } =
+    extractProtectionMedia(normalizedSections);
   const groupedKeys = new Set([
     ...OVERVIEW_KEYS,
     ...SPATIAL_DESCRIPTION_KEYS,
+    ...PROTECTION_KEYS,
     ...PARTS_KEYS
   ]);
-  const overviewSections = normalizedSections.filter((section) => OVERVIEW_KEYS.has(normalizeKey(section.title)));
-  const spatialDescriptionSections = normalizedSections.filter((section) =>
+  const overviewSections = normalizedSectionsWithoutProtectionMedia.filter((section) =>
+    OVERVIEW_KEYS.has(normalizeKey(section.title))
+  );
+  const spatialDescriptionSections = normalizedSectionsWithoutProtectionMedia.filter((section) =>
     SPATIAL_DESCRIPTION_KEYS.has(normalizeKey(section.title))
   );
-  const partsSections = normalizedSections.filter((section) => PARTS_KEYS.has(normalizeKey(section.title)));
+  const protectionSections = normalizedSectionsWithoutProtectionMedia.filter((section) =>
+    PROTECTION_KEYS.has(normalizeKey(section.title))
+  );
+  const partsSections = normalizedSectionsWithoutProtectionMedia.filter((section) =>
+    PARTS_KEYS.has(normalizeKey(section.title))
+  );
   const standardSections = [
     ...(required || overviewSections.length
       ? [
@@ -398,11 +505,16 @@ function standardizeObjectSections(
           )
         ]
       : []),
+    ...(required || protectionSections.length || protectionMediaBlocks.length
+      ? [createProtectionSection(protectionSections, protectionMediaBlocks)]
+      : []),
     ...(required || partsSections.length || compositionTypes.length
       ? [createPartsSection(partsSections, compositionTypes, options)]
       : [])
   ];
-  const extraSections = normalizedSections.filter((section) => !groupedKeys.has(normalizeKey(section.title)));
+  const extraSections = normalizedSectionsWithoutProtectionMedia.filter(
+    (section) => !groupedKeys.has(normalizeKey(section.title))
+  );
 
   return [...standardSections, ...extraSections];
 }
