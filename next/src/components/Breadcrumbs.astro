@@ -13,16 +13,24 @@ interface Props {
 const { items } = Astro.props;
 
 function normalizeBreadcrumbHref(href?: string) {
-  if (!href || href.startsWith("#") || /^(?:[a-z][a-z0-9+.-]*:)?\/\//i.test(href)) {
-    return href;
+  const normalizedHref = String(href || "").trim();
+
+  if (
+    !normalizedHref ||
+    normalizedHref === "undefined" ||
+    normalizedHref === "null" ||
+    normalizedHref.startsWith("#") ||
+    /^(?:[a-z][a-z0-9+.-]*:)?\/\//i.test(normalizedHref)
+  ) {
+    return normalizedHref || undefined;
   }
 
-  const match = href.match(/^([^?#]*)([?#].*)?$/);
-  const pathname = match?.[1] || href;
+  const match = normalizedHref.match(/^([^?#]*)([?#].*)?$/);
+  const pathname = match?.[1] || normalizedHref;
   const suffix = match?.[2] || "";
 
   if (!pathname || pathname === "/" || pathname.endsWith("/") || /\.[^/]+$/.test(pathname)) {
-    return href;
+    return normalizedHref;
   }
 
   return `${pathname}/${suffix}`;
@@ -31,10 +39,14 @@ function normalizeBreadcrumbHref(href?: string) {
 
 <nav aria-label="Breadcrumb" class="breadcrumb-nav">
   <ol class="breadcrumb">
-    {items.map((item) => (
-      <li>
-        {item.href ? <a href={withBase(normalizeBreadcrumbHref(item.href))}>{item.label}</a> : <span>{item.label}</span>}
-      </li>
-    ))}
+    {items.map((item) => {
+      const href = normalizeBreadcrumbHref(item.href);
+
+      return (
+        <li>
+          {href ? <a href={withBase(href)}>{item.label}</a> : <span>{item.label}</span>}
+        </li>
+      );
+    })}
   </ol>
 </nav>

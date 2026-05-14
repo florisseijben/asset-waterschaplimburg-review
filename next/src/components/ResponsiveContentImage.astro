@@ -20,7 +20,7 @@ const {
   fetchpriority = "low"
 } = Astro.props;
 const responsiveSources = getResponsiveImageSources(src);
-const toAssetUrl = (assetSrc: string) => encodeURI(withBase(assetSrc));
+const toAssetUrl = (assetSrc: string) => withBase(assetSrc);
 const srcset = responsiveSources.srcset
   ?.map((variant) => `${toAssetUrl(variant.src)} ${variant.width}w`)
   .join(", ");

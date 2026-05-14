@@ -31,6 +31,16 @@ const normalizeKey = (value: string) =>
 
 const getObjectTitle = (entry: any) => entry.data.heroTitle || entry.data.title;
 
+function validHref(value?: string) {
+  const href = String(value || "").trim();
+
+  if (!href || href === "undefined" || href === "null") {
+    return undefined;
+  }
+
+  return href;
+}
+
 const knownAncestorLabelsByParent = new Map<string, string[]>([
   ["stroomgebied", ["Watersysteem"]],
   ["watergang", ["Watersysteem", "Stroomgebied"]],
@@ -59,7 +69,7 @@ export function createObjectBreadcrumbs(entry: any, options: ObjectBreadcrumbOpt
       const isCurrent = normalizeKey(label) === currentKey && index === labels.length - 1;
       const href = isCurrent
         ? options.includeCurrentHref
-          ? entry.data.slug || getObjectTypeHref(label)
+          ? validHref(entry.data.slug) || getObjectTypeHref(label)
           : undefined
         : getObjectTypeHref(label);
 
