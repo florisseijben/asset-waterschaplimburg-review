@@ -26,7 +26,7 @@ classification:
     - objectenhandboek-civiele-techniek
     - objectenhandboek-informatie-en-data
   confidence: afgeleid
-definition: Een intersectie is de lokale objectnaam voor een kruising of knooppunt in de watergangstructuur: een OppervlaktewaterKruising wanneer een watergang een ander netwerk kruist, of een OppervlaktewaterKnooppunt bij een watergang-watergangkruising.
+definition: "Een intersectie is de lokale objectnaam voor een kruising of knooppunt in de watergangstructuur: een OppervlaktewaterKruising wanneer een watergang een ander netwerk kruist, of een OppervlaktewaterKnooppunt bij een watergang-watergangkruising."
 definitionSource: "Aquo/IMWA-WS, objecttypen OppervlaktewaterKruising en OppervlaktewaterKnooppunt. Lokale objectnaam in dit handboek: Intersectie."
 synonyms:
   - title: OppervlaktewaterKruising

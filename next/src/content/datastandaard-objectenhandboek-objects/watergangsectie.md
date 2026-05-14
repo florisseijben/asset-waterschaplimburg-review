@@ -29,7 +29,7 @@ classification:
     - objectenhandboek-terreinbeheer-openbare-ruimte
     - objectenhandboek-informatie-en-data
   confidence: afgeleid
-definition: Een watergangsectie is de lokale objecthandboektoepassing van een OppervlaktewaterSegment: een afgebakend deeltraject van een watergang waarmee ligging, profiel, kenmerken en onderhoud als samenhangend segment worden beschreven.
+definition: "Een watergangsectie is de lokale objecthandboektoepassing van een OppervlaktewaterSegment: een afgebakend deeltraject van een watergang waarmee ligging, profiel, kenmerken en onderhoud als samenhangend segment worden beschreven."
 definitionSource: "Aquo/IMWA-WS, objecttype OppervlaktewaterSegment. Lokale objectnaam in dit handboek: Watergangsectie."
 synonyms:
   - title: OppervlaktewaterSegment
