@@ -23,6 +23,8 @@
   --site-image-max-width: 64rem;
   --site-image-max-height: 30rem;
   --site-card-image-max-height: 22rem;
+  --site-protection-image-max-width: 96rem;
+  --site-protection-card-image-max-height: 33rem;
 }
 
 * {
@@ -1076,6 +1078,11 @@ a.classification-tag:focus-visible {
   background: #f8fcfc;
   object-fit: contain;
   object-position: left top;
+}
+
+.section-panel--protection .info-card__image {
+  max-width: min(100%, var(--site-protection-image-max-width));
+  max-height: var(--site-protection-card-image-max-height);
 }
 
 .info-card__caption {

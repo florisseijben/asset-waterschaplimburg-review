@@ -36,13 +36,39 @@ interface Props {
 }
 
 const { title = "Inhoudelijke opbouw", items = [] } = Astro.props;
+const isProtectionSection = (item: SectionItem) =>
+  String(item.title || "").trim().toLowerCase() === "bescherming";
+const uitwerkingItems = items.filter((item) => !isProtectionSection(item));
+const protectionItems = items.filter(isProtectionSection);
 ---
 
-<section class="section section-panel">
-  <p class="eyebrow">Uitwerking</p>
-  <h2>{title}</h2>
-  <CardGrid stacked={true}>
-    {items.map((item) => (
+{uitwerkingItems.length > 0 && (
+  <section class="section section-panel">
+    <p class="eyebrow">Uitwerking</p>
+    <h2>{title}</h2>
+    <CardGrid stacked={true}>
+      {uitwerkingItems.map((item) => (
+        <ContentSectionCard
+          title={item.title}
+          text={item.summary}
+          href={item.href}
+          iconTitle={item.iconTitle}
+          items={item.items}
+          itemLayout={item.itemLayout}
+          image={item.image}
+          caption={item.caption}
+          blocks={item.blocks}
+        />
+      ))}
+    </CardGrid>
+  </section>
+)}
+
+{protectionItems.map((item) => (
+  <section class="section section-panel section-panel--protection">
+    <p class="eyebrow">Bescherming</p>
+    <h2>{item.title}</h2>
+    <CardGrid stacked={true}>
       <ContentSectionCard
         title={item.title}
         text={item.summary}
@@ -54,6 +80,6 @@ const { title = "Inhoudelijke opbouw", items = [] } = Astro.props;
         caption={item.caption}
         blocks={item.blocks}
       />
-    ))}
-  </CardGrid>
-</section>
+    </CardGrid>
+  </section>
+))}

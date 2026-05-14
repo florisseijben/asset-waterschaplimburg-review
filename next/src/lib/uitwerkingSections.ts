@@ -279,20 +279,41 @@ function getItemMediaBlocks(item: SectionLinkItem): SectionBlock[] {
   ].filter(Boolean) as SectionBlock[]);
 }
 
-function withoutItemMedia(item: SectionLinkItem): SectionLinkItem {
+function isSameMediaBlock(left: SectionBlock, right: SectionBlock) {
+  return left.image?.src === right.image?.src && (left.caption || "") === (right.caption || "");
+}
+
+function keepDwarsprofielMediaInSpatialDescription(block: SectionBlock, options: NormalizedUitwerkingOptions = {}) {
+  const sectionTitle = normalizeKey(options.subtypeIconTitle || "");
+  const captionKey = normalizeKey(block.caption || "");
+
+  return sectionTitle === "watergang-met-standaardprofiel" &&
+    (captionKey === "afbeelding-7-dwarsprofiel-met-profiellijnen" ||
+      captionKey === "afbeelding-8-dwarsprofiel-met-profielvlakken");
+}
+
+function withoutExtractedItemMedia(item: SectionLinkItem, extractedBlocks: SectionBlock[]): SectionLinkItem {
   const blocks = (item.blocks || []).flatMap((block) => {
-    if (!block.image?.src) {
+    const shouldRemoveImage = block.image?.src && extractedBlocks.some((extractedBlock) =>
+      isSameMediaBlock(extractedBlock, block)
+    );
+
+    if (!shouldRemoveImage) {
       return [block];
     }
 
     return block.text ? [{ text: block.text }] : [];
   });
-  const nextItem: SectionLinkItem = {
-    title: item.title,
-    text: item.text,
-    href: item.href,
-    iconTitle: item.iconTitle
-  };
+  const nextItem: SectionLinkItem = { ...item };
+  const primaryImageBlock = mediaBlock(nextItem.image, nextItem.caption);
+  const shouldRemovePrimaryImage = primaryImageBlock && extractedBlocks.some((extractedBlock) =>
+    isSameMediaBlock(extractedBlock, primaryImageBlock)
+  );
+
+  if (shouldRemovePrimaryImage) {
+    delete nextItem.image;
+    delete nextItem.caption;
+  }
 
   if (blocks.length) {
     nextItem.blocks = blocks;
@@ -301,7 +322,7 @@ function withoutItemMedia(item: SectionLinkItem): SectionLinkItem {
   return nextItem;
 }
 
-function extractProtectionMedia(sections: ContentSection[]) {
+function extractProtectionMedia(sections: ContentSection[], options: NormalizedUitwerkingOptions = {}) {
   const protectionMediaBlocks: SectionBlock[] = [];
   const sectionsWithoutExtractedMedia = sections.map((section) => {
     if (!SPATIAL_DESCRIPTION_KEYS.has(normalizeKey(section.title)) || !(section.items || []).length) {
@@ -315,13 +336,16 @@ function extractProtectionMedia(sections: ContentSection[]) {
           return item;
         }
 
-        const itemMediaBlocks = getItemMediaBlocks(item);
-        if (!itemMediaBlocks.length) {
+        const extractedItemMediaBlocks = getItemMediaBlocks(item).filter(
+          (block) => !keepDwarsprofielMediaInSpatialDescription(block, options)
+        );
+
+        if (!extractedItemMediaBlocks.length) {
           return item;
         }
 
-        protectionMediaBlocks.push(...itemMediaBlocks);
-        return withoutItemMedia(item);
+        protectionMediaBlocks.push(...extractedItemMediaBlocks);
+        return withoutExtractedItemMedia(item, extractedItemMediaBlocks);
       })
     };
   });
@@ -468,7 +492,7 @@ function standardizeObjectSections(
   const required = options.requireStandardSections !== false;
   const normalizedSections = sections.map(normalizeSection);
   const { sections: normalizedSectionsWithoutProtectionMedia, protectionMediaBlocks } =
-    extractProtectionMedia(normalizedSections);
+    extractProtectionMedia(normalizedSections, options);
   const groupedKeys = new Set([
     ...OVERVIEW_KEYS,
     ...SPATIAL_DESCRIPTION_KEYS,
