@@ -145,6 +145,8 @@ const chapterTurtle = [
       <ConceptSummarySection
         subjectLabel={subjectLabel}
         definition={entry.data.definition}
+        definitionSource={entry.data.definitionSource}
+        synonyms={entry.data.synonyms || []}
         relatedTerms={entry.data.terms || []}
         subtypes={entry.data.subtypes || []}
         runtimeSourceUrl={conceptRuntimeSourceUrl}

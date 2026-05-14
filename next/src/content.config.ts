@@ -58,6 +58,7 @@ const datastandaardObjectenhandboekSystems = defineCollection({
   schema: baseSchema.extend({
     definition: z.coerce.string().optional(),
     definitionSource: z.coerce.string().optional(),
+    synonyms: z.any().optional(),
     terms: z.any().optional(),
     contextNote: z.coerce.string().optional(),
     subtypes: z.any().optional(),
@@ -75,6 +76,7 @@ const datastandaardObjectenhandboekObjects = defineCollection({
     hierarchy: z.any().optional(),
     definition: z.coerce.string().optional(),
     definitionSource: z.coerce.string().optional(),
+    synonyms: z.any().optional(),
     terms: z.any().optional(),
     contextNote: z.coerce.string().optional(),
     subtypes: z.any().optional(),

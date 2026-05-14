@@ -50,8 +50,9 @@ const mergeTermItems = (...itemGroups: any[][]) => {
     return true;
   });
 };
-const relatedTerms = mergeTermItems(conceptData?.relatedTerms || [], entry.data.terms || []);
-const definitionTypes = mergeTermItems(conceptData?.types || [], entry.data.definitionTypes || []);
+const relatedTerms = mergeTermItems(entry.data.terms || [], conceptData?.relatedTerms || []);
+const definitionTypes = mergeTermItems(entry.data.definitionTypes || [], conceptData?.types || []);
+const synonyms = mergeTermItems(entry.data.synonyms || [], conceptData?.synonyms || []);
 const mergeContentItemMedia = (derivedItems: any[] = [], contentItems: any[] = []) => {
   const contentItemsByTitle = new Map(contentItems.map((item) => [normalizeTitle(item.title), item]));
   const derivedItemsByTitle = new Map(derivedItems.map((item) => [normalizeTitle(item.title), item]));
@@ -136,8 +137,9 @@ object:watergang relatie:heeftIntersectie object:intersectie .
   <div class="detail-stack">
     <ConceptSummarySection
       subjectLabel="Watergang"
-      definition={conceptData?.definition || entry.data.definition}
-      synonyms={conceptData?.synonyms || []}
+      definition={entry.data.definition || conceptData?.definition}
+      definitionSource={entry.data.definitionSource}
+      synonyms={synonyms}
       relatedTerms={relatedTerms}
       definitionTypes={definitionTypes}
     />

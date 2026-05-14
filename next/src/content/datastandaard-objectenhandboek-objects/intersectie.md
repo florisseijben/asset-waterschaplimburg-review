@@ -5,7 +5,7 @@ part: datastandaard
 product: objectenhandboek
 ownerTeam: datastandaard
 status: eerste-template
-lastReviewed: 2026-04-11
+lastReviewed: 2026-05-14
 summary: Op deze pagina vind je de definitie en afbakening van Intersectie, de typen naar compositie, de samenhang met Watergang en Watergangsectie, de geometrische uitgangspunten en de productrelaties.
 heroTitle: Intersectie
 hierarchy:
@@ -26,22 +26,32 @@ classification:
     - objectenhandboek-civiele-techniek
     - objectenhandboek-informatie-en-data
   confidence: afgeleid
-definition: Een intersectie is een kruising binnen de watergangstructuur en ligt als object op hetzelfde niveau als een watergangsectie.
-definitionSource: "Definitiebron: semantische beheeromgeving conceptdefinitie voor Intersectie."
-terms:
-  - title: Intersectie
-    text: Kernbegrip voor kruisingen binnen de watergangstructuur.
+definition: Een intersectie is de lokale objectnaam voor een kruising of knooppunt in de watergangstructuur: een OppervlaktewaterKruising wanneer een watergang een ander netwerk kruist, of een OppervlaktewaterKnooppunt bij een watergang-watergangkruising.
+definitionSource: "Aquo/IMWA-WS, objecttypen OppervlaktewaterKruising en OppervlaktewaterKnooppunt. Lokale objectnaam in dit handboek: Intersectie."
+synonyms:
+  - title: OppervlaktewaterKruising
+    text: Bronconcept in Aquo/IMWA-WS voor kruisingen tussen oppervlaktewater en andere netwerken.
+    href: /datastandaard/woordenboek
+  - title: OppervlaktewaterKnooppunt
+    text: Bronconcept in Aquo/IMWA-WS voor knooppunten in het oppervlaktewaternetwerk, zoals watergang-watergangkruisingen.
     href: /datastandaard/woordenboek
   - title: Kruising
-    text: Verwante term voor het snijpunt of de overgang tussen structuren.
+    text: Praktijkterm voor de plek waar trajecten of netwerken elkaar kruisen.
     href: /datastandaard/woordenboek
-  - title: Kruispunt
-    text: Benadrukt de plek waar twee lijnen of trajecten samenkomen.
+terms:
+  - title: Watergang
+    text: Bovenliggend object binnen deze objectlijn; intersecties liggen tussen of op aansluitingen van watergangdelen.
     href: /datastandaard/woordenboek
-  - title: Snijpunt
-    text: Ruimtelijke aanduiding van het punt waar structuren elkaar raken of kruisen.
+  - title: Watergangsectie
+    text: Parallel objectniveau voor het trajectdeel tussen intersecties.
     href: /datastandaard/woordenboek
-contextNote: Binnen deze templatefamilie is de intersectie expliciet bedoeld voor kruisingen. Het object ligt op hetzelfde niveau als een watergangsectie, maar beschrijft een ander type onderdeel van de watergang.
+  - title: OppervlaktewaterSegment
+    text: Aquo/IMWA-WS objecttype waarvan begin- en eindpunten aan oppervlaktewaterknooppunten kunnen liggen.
+    href: /datastandaard/woordenboek
+  - title: Ander netwerk
+    text: Verzamelterm voor wegen, waterkeringen of andere netwerken die een watergang kunnen kruisen.
+    href: /datastandaard/woordenboek
+contextNote: Binnen deze templatefamilie blijft Intersectie de objecthandboeknaam. De begripsmatige uitwerking maakt onderscheid tussen een Aquo/IMWA-WS oppervlaktewaterknooppunt voor watergang-watergangkruisingen en een oppervlaktewaterkruising voor kruisingen met andere netwerken.
 compositionTypes:
   - title: Watergang - Watergang
     text: Kruising of aansluiting tussen twee watergangen.

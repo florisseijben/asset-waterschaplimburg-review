@@ -5,7 +5,7 @@ part: datastandaard
 product: objectenhandboek
 ownerTeam: datastandaard
 status: eerste-template
-lastReviewed: 2026-04-11
+lastReviewed: 2026-05-14
 summary: Op deze pagina vind je de definitie en afbakening van Watergang, de begripsmatige typen watergang, de samenhang met Watergangsectie en Intersectie, de geometrische uitgangspunten en de productrelaties.
 heroTitle: Watergang
 hierarchy:
@@ -28,24 +28,28 @@ classification:
     - objectenhandboek-informatie-en-data
   confidence: afgeleid
 definition: Een watergang is een voor de waterbeheersing bestemde geul met een vlakke bodem die meestal permanent water bevat.
-definitionSource: "Definitiebron: IMBOR Begrippenkader, begrip Watergang. Aanvullende terminologische aansluiting op Aquo-begrippen voor waterbeheer."
-terms:
-  - title: Watergang
-    text: Voorkeursterm in IMBOR voor een voor de waterbeheersing bestemde geul met meestal permanent water.
-    href: /datastandaard/woordenboek
+definitionSource: "IMBOR Begrippenkader, begrip Watergang. Voor watersysteemrelaties afgestemd op Aquo/IMWA-WS, waarin Oppervlaktewaterlichaam door OppervlaktewaterSegmenten wordt geschematiseerd."
+synonyms:
   - title: Waterloop
-    text: Aquo-verwant begrip voor stromende of afvoerende waterstructuren binnen het watersysteem.
+    text: Aquo-verwante term voor een waterloop; bruikbaar als semantische koppeling, maar niet in elke context exact gelijk aan het IMBOR-begrip Watergang.
+    href: /datastandaard/woordenboek
+terms:
+  - title: Oppervlaktewaterlichaam
+    text: Aquo/IMWA-WS objecttype voor het samenhangende oppervlaktewater waarvan een watergang een lokale objecthandboektoepassing kan zijn.
+    href: /datastandaard/woordenboek
+  - title: OppervlaktewaterSegment
+    text: Aquo/IMWA-WS objecttype dat het oppervlaktewaterlichaam als hydrologisch netwerksegment schematiseert.
+    href: /datastandaard/woordenboek
+  - title: Watergangsectie
+    text: Lokale toepassing van het segmentprincipe binnen deze objectlijn; beschrijft een afgebakend deel van de watergang.
+    href: /datastandaard/woordenboek
+  - title: Intersectie
+    text: Lokale objectnaam voor kruisingen en knooppunten in de watergangstructuur.
     href: /datastandaard/woordenboek
   - title: Permanent water
-    text: Bovenliggend begrip in IMBOR waar Watergang onder valt.
+    text: IMBOR-bovenliggend begrip waaronder Watergang is gepositioneerd.
     href: /datastandaard/woordenboek
-  - title: Type watergang
-    text: IMBOR-attribuut voor het type beheer en het belang van de watergang.
-    href: /datastandaard/woordenboek
-  - title: Hydroobjectgroepering
-    text: Een samenvoeging van HydroObjecten die samen één geheel vormen waaraan homogene kenmerken zijn toe te kennen zoals de naam van het water.
-    href: /datastandaard/woordenboek
-contextNote: In IMBOR ligt de nadruk op de watergang als beheerd fysiek object. In deze objectlijn combineren we dat met Aquo-terminologie voor waterbeheer en met de semantische decompositie naar watergangsecties en intersecties.
+contextNote: In IMBOR ligt de nadruk op de watergang als beheerd fysiek object. In deze objectlijn combineren we dat met Aquo/IMWA-WS voor oppervlaktewaterlichaam, segmenten en knooppunten, en met de lokale decompositie naar watergangsecties en intersecties.
 definitionTypes:
   - title: Beek
     text: Onderliggend begrip van Watergang in IMBOR.

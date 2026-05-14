@@ -11,6 +11,7 @@ interface TermItem {
 interface Props {
   subjectLabel: string;
   definition?: string;
+  definitionSource?: string;
   synonyms?: TermItem[];
   relatedTerms?: TermItem[];
   definitionTypes?: TermItem[];
@@ -23,6 +24,7 @@ interface Props {
 const {
   subjectLabel,
   definition,
+  definitionSource,
   synonyms = [],
   relatedTerms = [],
   definitionTypes = [],
@@ -55,6 +57,15 @@ const getConceptTypeHref = (item: TermItem) => item.href || "/datastandaard/woor
         <p data-concept-definition>{definition}</p>
       </div>
     </div>
+
+    {definitionSource && (
+      <div class="concept-summary__row">
+        <strong>Bron</strong>
+        <div>
+          <p>{definitionSource}</p>
+        </div>
+      </div>
+    )}
 
     <details class="concept-disclosure">
       <summary>Synoniemen</summary>
