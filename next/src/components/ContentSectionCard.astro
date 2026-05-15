@@ -19,8 +19,14 @@ interface SectionImage {
   alt?: string;
 }
 
+interface SectionTextLink {
+  text: string;
+  href: string;
+}
+
 interface SectionBlock {
   text?: string;
+  link?: SectionTextLink;
   image?: SectionImage;
   caption?: string;
 }
@@ -42,6 +48,8 @@ const hasItems = items.length > 0;
 const usesSectionItems = itemLayout === "sections";
 const hasImage = Boolean(image?.src);
 const Tag = href && !hasItems ? "a" : "article";
+const getBlockHref = (value: string) => value.startsWith("/") ? withBase(value) : value;
+const isExternalHref = (value: string) => /^https?:\/\//i.test(value);
 ---
 
 <Tag
@@ -68,6 +76,17 @@ const Tag = href && !hasItems ? "a" : "article";
       {blocks.map((block) => (
         <div class="info-card__block">
           {block.text && <p>{block.text}</p>}
+          {block.link?.href && (
+            <p>
+              <a
+                href={getBlockHref(block.link.href)}
+                target={isExternalHref(block.link.href) ? "_blank" : undefined}
+                rel={isExternalHref(block.link.href) ? "noreferrer" : undefined}
+              >
+                {block.link.text}
+              </a>
+            </p>
+          )}
           {block.image?.src && (
             <figure class="info-card__figure">
               <ResponsiveContentImage class="info-card__image" src={block.image.src} alt={block.image.alt || ""} />
@@ -103,6 +122,17 @@ const Tag = href && !hasItems ? "a" : "article";
               {item.blocks.map((block) => (
                 <div class="info-card__block">
                   {block.text && <p>{block.text}</p>}
+                  {block.link?.href && (
+                    <p>
+                      <a
+                        href={getBlockHref(block.link.href)}
+                        target={isExternalHref(block.link.href) ? "_blank" : undefined}
+                        rel={isExternalHref(block.link.href) ? "noreferrer" : undefined}
+                      >
+                        {block.link.text}
+                      </a>
+                    </p>
+                  )}
                   {block.image?.src && (
                     <figure class="info-card__figure">
                       <ResponsiveContentImage class="info-card__image" src={block.image.src} alt={block.image.alt || ""} />
@@ -147,6 +177,17 @@ const Tag = href && !hasItems ? "a" : "article";
               {item.blocks.map((block) => (
                 <div class="info-card__block">
                   {block.text && <p>{block.text}</p>}
+                  {block.link?.href && (
+                    <p>
+                      <a
+                        href={getBlockHref(block.link.href)}
+                        target={isExternalHref(block.link.href) ? "_blank" : undefined}
+                        rel={isExternalHref(block.link.href) ? "noreferrer" : undefined}
+                      >
+                        {block.link.text}
+                      </a>
+                    </p>
+                  )}
                   {block.image?.src && (
                     <figure class="info-card__figure">
                       <ResponsiveContentImage class="info-card__image" src={block.image.src} alt={block.image.alt || ""} />

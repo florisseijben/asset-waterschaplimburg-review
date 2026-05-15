@@ -10,6 +10,11 @@ type SectionLinkItem = {
   blocks?: SectionBlock[];
 };
 
+type SectionTextLink = {
+  text: string;
+  href: string;
+};
+
 type SectionImage = {
   src: string;
   alt?: string;
@@ -17,6 +22,7 @@ type SectionImage = {
 
 type SectionBlock = {
   text?: string;
+  link?: SectionTextLink;
   image?: SectionImage;
   caption?: string;
 };
@@ -38,6 +44,12 @@ const SPATIAL_SUBSECTION_TITLES = ["Overzicht", "Dwarsprofiel", "Bovenaanzicht"]
 const OVERVIEW_TITLE = "Overzicht / Samenhang";
 const SPATIAL_DESCRIPTION_TITLE = "Ruimtelijke beschrijving";
 const PROTECTION_TITLE = "Bescherming";
+const PROTECTION_REGULATION_SUMMARY =
+  "De waterschapsverordening bevat regels voor waterkeringen, watergangen en grondwater binnen het beheergebied van een waterschap. Deze regels gelden voor iedereen. Een beperkingengebied is een gebied rondom een werk of object, waarin regels gelden vanwege de aanwezigheid van dat werk of object. Het beperkingengebied omvat zowel het werk zelf (voorheen 'kernzone') als een zone rond het werk (voorheen 'beschermingszone').";
+const PROTECTION_REGULATION_LINK: SectionTextLink = {
+  text: "Lees meer over decentrale regels voor het uitvoeren van activiteiten in een beperkingengebied met betrekking tot een waterstaatswerk.",
+  href: "https://iplo.nl/regelgeving/regels-voor-activiteiten/beperkingengebiedactiviteit-weg/decentrale-regels/"
+};
 const PARTS_TITLE = "Onderdelen";
 const ARCHETYPES_TITLE = "Archetypen";
 const OVERVIEW_KEYS = new Set(["overzicht", "samenhang", "overzicht-samenhang"]);
@@ -135,12 +147,14 @@ function uniqueBlocks(blocks: SectionBlock[] = []) {
   const seen = new Set<string>();
 
   return blocks.filter((block) => {
-    if (!block.text && !block.image?.src) {
+    if (!block.text && !block.link?.href && !block.image?.src) {
       return false;
     }
 
     const key = block.image?.src
       ? `image:${block.image.src}`
+      : block.link?.href
+        ? `link:${block.link.href}:${normalizeKey(block.link.text)}`
       : `text:${normalizeKey(block.text || "")}:${block.caption || ""}`;
 
     if (seen.has(key)) {
@@ -364,13 +378,18 @@ function createProtectionSection(sections: ContentSection[], extractedBlocks: Se
       ? "De beschermingsbeelden tonen de profielvlakken, constructieve begrenzingen en doorsneden die de bescherming of beheerfunctie van dit objecttype verduidelijken."
       : "Beschermingszones of beschermende profielonderdelen zijn voor dit objecttype nog niet apart uitgewerkt."
   );
-  const blocks = uniqueBlocks([
+  const mediaBlocks = uniqueBlocks([
     ...getSectionMediaBlocks(explicitSection),
     ...extractedBlocks
   ]);
+  const blocks = uniqueBlocks([
+    { link: PROTECTION_REGULATION_LINK },
+    ...(sections.length || mediaBlocks.length ? [{ text: explicitSection.summary }] : []),
+    ...mediaBlocks
+  ]);
   const protectionSection: ContentSection = {
     title: PROTECTION_TITLE,
-    summary: explicitSection.summary
+    summary: PROTECTION_REGULATION_SUMMARY
   };
 
   if (blocks.length) {

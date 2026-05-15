@@ -16,6 +16,7 @@ interface SectionItem {
     caption?: string;
     blocks?: {
       text?: string;
+      link?: { text: string; href: string };
       image?: { src: string; alt?: string };
       caption?: string;
     }[];
@@ -24,6 +25,7 @@ interface SectionItem {
   caption?: string;
   blocks?: {
     text?: string;
+    link?: { text: string; href: string };
     image?: { src: string; alt?: string };
     caption?: string;
   }[];

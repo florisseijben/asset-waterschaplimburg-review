@@ -240,6 +240,8 @@ const normalizeHrefKey = (value = "") =>
   String(value || "")
     .split(/[?#]/)[0]
     .replace(/\/+$/g, "");
+const getBlockHref = (value: string) => value.startsWith("/") ? withBase(value) : value;
+const isExternalHref = (value: string) => /^https?:\/\//i.test(value);
 const allEntryByHrefKey = new Map(
   entries
     .map((entry) => [normalizeHrefKey(entry.data.slug), entry])
@@ -761,6 +763,17 @@ const handbookBreadcrumbs = [
                           {(section.blocks || []).map((block: any) => (
                             <>
                               {block.text && <p>{block.text}</p>}
+                              {block.link?.href && (
+                                <p>
+                                  <a
+                                    href={getBlockHref(block.link.href)}
+                                    target={isExternalHref(block.link.href) ? "_blank" : undefined}
+                                    rel={isExternalHref(block.link.href) ? "noreferrer" : undefined}
+                                  >
+                                    {block.link.text}
+                                  </a>
+                                </p>
+                              )}
                               {block.image?.src && (
                                 <figure class="handbook-object__figure">
                                   <ResponsiveContentImage
@@ -810,6 +823,17 @@ const handbookBreadcrumbs = [
                                   {(sectionItem.blocks || []).map((block: any) => (
                                     <>
                                       {block.text && <p>{block.text}</p>}
+                                      {block.link?.href && (
+                                        <p>
+                                          <a
+                                            href={getBlockHref(block.link.href)}
+                                            target={isExternalHref(block.link.href) ? "_blank" : undefined}
+                                            rel={isExternalHref(block.link.href) ? "noreferrer" : undefined}
+                                          >
+                                            {block.link.text}
+                                          </a>
+                                        </p>
+                                      )}
                                       {block.image?.src && (
                                         <figure class="handbook-object__figure">
                                           <ResponsiveContentImage
@@ -912,6 +936,17 @@ const handbookBreadcrumbs = [
                               {(section.blocks || []).map((block: any) => (
                                 <>
                                   {block.text && <p>{block.text}</p>}
+                                  {block.link?.href && (
+                                    <p>
+                                      <a
+                                        href={getBlockHref(block.link.href)}
+                                        target={isExternalHref(block.link.href) ? "_blank" : undefined}
+                                        rel={isExternalHref(block.link.href) ? "noreferrer" : undefined}
+                                      >
+                                        {block.link.text}
+                                      </a>
+                                    </p>
+                                  )}
                                   {block.image?.src && (
                                     <figure class="handbook-object__figure">
                                       <ResponsiveContentImage
@@ -961,6 +996,17 @@ const handbookBreadcrumbs = [
                                       {(sectionItem.blocks || []).map((block: any) => (
                                         <>
                                           {block.text && <p>{block.text}</p>}
+                                          {block.link?.href && (
+                                            <p>
+                                              <a
+                                                href={getBlockHref(block.link.href)}
+                                                target={isExternalHref(block.link.href) ? "_blank" : undefined}
+                                                rel={isExternalHref(block.link.href) ? "noreferrer" : undefined}
+                                              >
+                                                {block.link.text}
+                                              </a>
+                                            </p>
+                                          )}
                                           {block.image?.src && (
                                             <figure class="handbook-object__figure">
                                               <ResponsiveContentImage
