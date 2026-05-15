@@ -62,10 +62,10 @@ contentSections:
     items:
       - title: Wegprofiel
         text: Deel van de doorsnede waarin de weg of verharding is gepositioneerd.
-        href: /datastandaard/woordenboek
+        href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/wegprofiel
       - title: Waterprofiel
         text: Deel van de doorsnede waarin de watergang is gepositioneerd.
-        href: /datastandaard/woordenboek
+        href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/waterprofiel
   - title: Geometrie
     summary: De geometrie wordt bepaald door de gezamenlijke ligging van wegprofiel, waterprofiel en profielgrenzen.
     items:

@@ -64,10 +64,10 @@ contentSections:
     items:
       - title: Bovenloopprofiel
         text: Profieldeel dat kenmerkend is voor het begintraject van de watergang.
-        href: /datastandaard/woordenboek
+        href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/bovenloopprofiel
       - title: Profielgrens
         text: Begrenzing waarmee de overgang naar de omgeving en opvolgende secties wordt vastgelegd.
-        href: /datastandaard/woordenboek
+        href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/profielgrens
   - title: Geometrie
     summary: De geometrie wordt bepaald door het begintraject, de profielvorm en de aansluiting op bovenstroomse toevoer of opvolgende watergangsecties.
     items:

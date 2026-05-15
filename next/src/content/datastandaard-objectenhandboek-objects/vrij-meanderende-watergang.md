@@ -64,10 +64,10 @@ contentSections:
     items:
       - title: Meanderzone
         text: Zone waarbinnen het verloop en de profielvorm van de watergang variatie kunnen vertonen.
-        href: /datastandaard/woordenboek
+        href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/meanderzone
       - title: Oever
         text: Randzone waar waterprofiel en omgeving op elkaar aansluiten.
-        href: /datastandaard/woordenboek
+        href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/oever
   - title: Geometrie
     summary: De geometrie wordt bepaald door het deeltraject, de meanderzone en de profielvariatie binnen de sectie.
     items:

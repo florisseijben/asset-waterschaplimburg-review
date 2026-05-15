@@ -62,10 +62,10 @@ contentSections:
     items:
       - title: Verdiept profiel
         text: Profielvorm waarin weg, maaiveld of waterafvoer lager ligt dan de aangrenzende omgeving.
-        href: /datastandaard/woordenboek
+        href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/verdiept-profiel
       - title: Randzone
         text: Overgang tussen het verdiepte profiel en de omgeving.
-        href: /datastandaard/woordenboek
+        href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/randzone
   - title: Geometrie
     summary: De geometrie wordt bepaald door de diepte, hellingen, randzones en aansluiting op het waterprofiel binnen het deeltraject.
     items:

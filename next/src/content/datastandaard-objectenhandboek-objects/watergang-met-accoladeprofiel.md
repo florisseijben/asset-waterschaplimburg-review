@@ -64,7 +64,7 @@ contentSections:
     items:
       - title: Profielzone
         text: Deel van het dwarsprofiel met een eigen functie in afvoer, onderhoud of overgang.
-        href: /datastandaard/woordenboek
+        href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/profielzone
       - title: Talud
         text: Schuin profielonderdeel dat de overgang binnen het profiel mede bepaalt.
         href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/talud

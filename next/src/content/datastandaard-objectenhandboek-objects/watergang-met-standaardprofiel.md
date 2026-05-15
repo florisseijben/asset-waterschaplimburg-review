@@ -90,13 +90,13 @@ contentSections:
         href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/bodem
       - title: Onderhoudspad
         text: Bereikbare strook of pad dat beheer en onderhoud langs de watergang mogelijk maakt.
-        href: /datastandaard/woordenboek
+        href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/onderhoudspad
       - title: Beschoeiing
         text: Constructief onderdeel dat de oever of profielrand ondersteunt of beschermt.
-        href: /datastandaard/woordenboek
+        href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/beschoeiing
       - title: Profielgrens
         text: Begrenzing waarmee de ruimtelijke afbakening van de sectie leesbaar wordt.
-        href: /datastandaard/woordenboek
+        href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/profielgrens
   - title: Geometrie
     summary: De geometrie van Watergang met standaardprofiel wordt bepaald door het deeltraject, de profielgrenzen, de bodemligging, de taludhellingen en de positie van onderhoudspad of beschoeiing binnen het dwarsprofiel.
     items:

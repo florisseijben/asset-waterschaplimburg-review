@@ -62,10 +62,10 @@ contentSections:
     items:
       - title: Lijnvormig element
         text: Lineaire structuur die de watergangsectie mede ruimtelijk ordent.
-        href: /datastandaard/woordenboek
+        href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/lijnvormig-element
       - title: Waterprofiel
         text: Doorsnede van de watergangsectie waarin het lijnvormige element wordt gepositioneerd.
-        href: /datastandaard/woordenboek
+        href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/waterprofiel
   - title: Geometrie
     summary: De geometrie wordt bepaald door de as of lijn van het element en de relatie met het waterprofiel binnen het deeltraject.
     items:

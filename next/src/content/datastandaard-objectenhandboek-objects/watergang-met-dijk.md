@@ -62,10 +62,10 @@ contentSections:
     items:
       - title: Dijkprofiel
         text: Waterkerend profieldeel dat langs of naast de watergang ligt.
-        href: /datastandaard/woordenboek
+        href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/dijkprofiel
       - title: Waterprofiel
         text: Doorsnede van de watergangsectie waaraan het dijkprofiel ruimtelijk is gekoppeld.
-        href: /datastandaard/woordenboek
+        href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/waterprofiel
   - title: Geometrie
     summary: De geometrie wordt bepaald door de ligging van het waterprofiel, het dijkprofiel en de profielgrenzen binnen het deeltraject.
     items:

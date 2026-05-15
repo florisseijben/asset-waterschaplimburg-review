@@ -62,7 +62,7 @@ contentSections:
     items:
       - title: Wandconstructie
         text: Constructieve begrenzing die het profiel compact of steiler maakt.
-        href: /datastandaard/woordenboek
+        href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/wandconstructie
       - title: Bodem
         text: Onderste profieldeel waarop de wandconstructie kan aansluiten.
         href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/bodem

@@ -171,6 +171,84 @@ export const objectTypePlaceholderRoutes: ObjectTypeRoute[] = [
     parentHref: "/datastandaard/objectenhandboek/watersysteem/watergangsectie"
   },
   {
+    title: "Onderhoudspad",
+    href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/onderhoudspad",
+    parentTitle: "Watergangsectie",
+    parentHref: "/datastandaard/objectenhandboek/watersysteem/watergangsectie"
+  },
+  {
+    title: "Beschoeiing",
+    href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/beschoeiing",
+    parentTitle: "Watergangsectie",
+    parentHref: "/datastandaard/objectenhandboek/watersysteem/watergangsectie"
+  },
+  {
+    title: "Profielgrens",
+    href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/profielgrens",
+    parentTitle: "Watergangsectie",
+    parentHref: "/datastandaard/objectenhandboek/watersysteem/watergangsectie"
+  },
+  {
+    title: "Waterprofiel",
+    href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/waterprofiel",
+    parentTitle: "Watergangsectie",
+    parentHref: "/datastandaard/objectenhandboek/watersysteem/watergangsectie"
+  },
+  {
+    title: "Bovenloopprofiel",
+    href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/bovenloopprofiel",
+    parentTitle: "Bronloop",
+    parentHref: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/bronloop"
+  },
+  {
+    title: "Verdiept profiel",
+    href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/verdiept-profiel",
+    parentTitle: "Holle weg",
+    parentHref: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/holle-weg"
+  },
+  {
+    title: "Randzone",
+    href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/randzone",
+    parentTitle: "Watergangsectie",
+    parentHref: "/datastandaard/objectenhandboek/watersysteem/watergangsectie"
+  },
+  {
+    title: "Dijkprofiel",
+    href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/dijkprofiel",
+    parentTitle: "Watergang met dijk",
+    parentHref: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/met-dijk"
+  },
+  {
+    title: "Profielzone",
+    href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/profielzone",
+    parentTitle: "Watergang met accoladeprofiel",
+    parentHref: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/met-accoladeprofiel"
+  },
+  {
+    title: "Wandconstructie",
+    href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/wandconstructie",
+    parentTitle: "Watergang met wandconstructie",
+    parentHref: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/met-wandconstructie"
+  },
+  {
+    title: "Meanderzone",
+    href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/meanderzone",
+    parentTitle: "Vrij meanderende watergang",
+    parentHref: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/vrij-meanderend"
+  },
+  {
+    title: "Oever",
+    href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/oever",
+    parentTitle: "Watergangsectie",
+    parentHref: "/datastandaard/objectenhandboek/watersysteem/watergangsectie"
+  },
+  {
+    title: "Wegprofiel",
+    href: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/wegprofiel",
+    parentTitle: "Weg - watergang",
+    parentHref: "/datastandaard/objectenhandboek/watersysteem/watergangsectie/weg-watergang"
+  },
+  {
     title: "Element",
     href: "/datastandaard/objectenhandboek/watersysteem/kunstwerken/element",
     parentTitle: "Kunstwerk",
