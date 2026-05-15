@@ -43,6 +43,8 @@ const SCALE_LEVEL_TITLES = ["Grootschalig", "Midschalig", "Kleinschalig"] as con
 const SPATIAL_SUBSECTION_TITLES = ["Overzicht", "Dwarsprofiel", "Bovenaanzicht"] as const;
 const OVERVIEW_TITLE = "Overzicht / Samenhang";
 const SPATIAL_DESCRIPTION_TITLE = "Ruimtelijke beschrijving";
+const CONDITION_DESCRIPTION_TITLE = "Beschrijving van de toestand";
+const CONDITION_SUBSECTION_TITLES = ["Normatieve toestand", "Feitelijke toestand"] as const;
 const PROTECTION_TITLE = "Bescherming";
 const PROTECTION_REGULATION_SUMMARY =
   "De waterschapsverordening bevat regels voor waterkeringen, watergangen en grondwater binnen het beheergebied van een waterschap. Deze regels gelden voor iedereen. Een beperkingengebied is een gebied rondom een werk of object, waarin regels gelden vanwege de aanwezigheid van dat werk of object. Het beperkingengebied omvat zowel het werk zelf (voorheen 'kernzone') als een zone rond het werk (voorheen 'beschermingszone').";
@@ -54,6 +56,7 @@ const PARTS_TITLE = "Onderdelen";
 const ARCHETYPES_TITLE = "Archetypen";
 const OVERVIEW_KEYS = new Set(["overzicht", "samenhang", "overzicht-samenhang"]);
 const SPATIAL_DESCRIPTION_KEYS = new Set(["afbakening", "geometrie", "ruimtelijke-beschrijving"]);
+const CONDITION_DESCRIPTION_KEYS = new Set(["toestand", "beschrijving-van-de-toestand"]);
 const PROTECTION_KEYS = new Set(["bescherming"]);
 const PARTS_KEYS = new Set(["onderdelen", "typen", "decompositie"]);
 
@@ -203,6 +206,15 @@ function createSpatialPlaceholder(title: string): SectionLinkItem {
     title === "Overzicht"
       ? "De ruimtelijke afbakening en geometrie worden op dit objectniveau samengebracht."
       : "Niet apart uitgewerkt voor dit objecttype.";
+
+  return { title, text };
+}
+
+function createConditionPlaceholder(title: string): SectionLinkItem {
+  const text =
+    title === "Normatieve toestand"
+      ? "Beschrijft de gewenste, voorgeschreven of vastgestelde toestand waaraan het objecttype moet voldoen."
+      : "Beschrijft de actuele, waargenomen of geregistreerde toestand van het object in beheer en onderhoud.";
 
   return { title, text };
 }
@@ -443,6 +455,48 @@ function createSpatialDescriptionSection(sections: ContentSection[], fallbackSum
   };
 }
 
+function createConditionDescriptionSection(sections: ContentSection[]): ContentSection {
+  const baseSection = mergeSectionGroup(
+    CONDITION_DESCRIPTION_TITLE,
+    sections,
+    "De beschrijving van de toestand maakt onderscheid tussen de normatieve toestand en de feitelijke toestand van dit objecttype."
+  );
+  const standardItemKeys = new Set(CONDITION_SUBSECTION_TITLES.map((title) => normalizeKey(title)));
+  const itemsByKey = new Map<string, SectionLinkItem>();
+  const extraBlocks: SectionBlock[] = [
+    mediaBlock(baseSection.image, baseSection.caption),
+    ...(baseSection.blocks || [])
+  ].filter(Boolean) as SectionBlock[];
+
+  (baseSection.items || []).forEach((item) => {
+    const itemKey = normalizeKey(item.title);
+
+    if (!standardItemKeys.has(itemKey)) {
+      extraBlocks.push(...itemToBlocks(item));
+      return;
+    }
+
+    const current = itemsByKey.get(itemKey);
+    itemsByKey.set(itemKey, current ? mergeItemContent(current, item) : item);
+  });
+
+  const conditionSection: ContentSection = {
+    title: CONDITION_DESCRIPTION_TITLE,
+    summary: baseSection.summary,
+    items: CONDITION_SUBSECTION_TITLES.map((title) =>
+      withPromotedMedia(itemsByKey.get(normalizeKey(title)) || createConditionPlaceholder(title))
+    ),
+    itemLayout: "sections"
+  };
+
+  const blocks = uniqueBlocks(extraBlocks);
+  if (blocks.length) {
+    conditionSection.blocks = blocks;
+  }
+
+  return conditionSection;
+}
+
 function uniqueItems(items: SectionLinkItem[]) {
   const seen = new Set<string>();
 
@@ -515,6 +569,7 @@ function standardizeObjectSections(
   const groupedKeys = new Set([
     ...OVERVIEW_KEYS,
     ...SPATIAL_DESCRIPTION_KEYS,
+    ...CONDITION_DESCRIPTION_KEYS,
     ...PROTECTION_KEYS,
     ...PARTS_KEYS
   ]);
@@ -523,6 +578,9 @@ function standardizeObjectSections(
   );
   const spatialDescriptionSections = normalizedSectionsWithoutProtectionMedia.filter((section) =>
     SPATIAL_DESCRIPTION_KEYS.has(normalizeKey(section.title))
+  );
+  const conditionDescriptionSections = normalizedSectionsWithoutProtectionMedia.filter((section) =>
+    CONDITION_DESCRIPTION_KEYS.has(normalizeKey(section.title))
   );
   const protectionSections = normalizedSectionsWithoutProtectionMedia.filter((section) =>
     PROTECTION_KEYS.has(normalizeKey(section.title))
@@ -547,6 +605,9 @@ function standardizeObjectSections(
             "De ruimtelijke beschrijving voor dit objecttype wordt nog uitgewerkt."
           )
         ]
+      : []),
+    ...(required || conditionDescriptionSections.length
+      ? [createConditionDescriptionSection(conditionDescriptionSections)]
       : []),
     ...(required || protectionSections.length || protectionMediaBlocks.length
       ? [createProtectionSection(protectionSections, protectionMediaBlocks)]

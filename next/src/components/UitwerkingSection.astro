@@ -38,9 +38,13 @@ interface Props {
 }
 
 const { title = "Inhoudelijke opbouw", items = [] } = Astro.props;
+const normalizeSectionTitle = (value: string) => String(value || "").trim().toLowerCase();
+const isConditionSection = (item: SectionItem) =>
+  normalizeSectionTitle(item.title) === "beschrijving van de toestand";
 const isProtectionSection = (item: SectionItem) =>
-  String(item.title || "").trim().toLowerCase() === "bescherming";
-const uitwerkingItems = items.filter((item) => !isProtectionSection(item));
+  normalizeSectionTitle(item.title) === "bescherming";
+const uitwerkingItems = items.filter((item) => !isConditionSection(item) && !isProtectionSection(item));
+const conditionItems = items.filter(isConditionSection);
 const protectionItems = items.filter(isProtectionSection);
 ---
 
@@ -65,6 +69,26 @@ const protectionItems = items.filter(isProtectionSection);
     </CardGrid>
   </section>
 )}
+
+{conditionItems.map((item) => (
+  <section class="section section-panel section-panel--condition">
+    <p class="eyebrow">Toestand</p>
+    <h2>{item.title}</h2>
+    <CardGrid stacked={true}>
+      <ContentSectionCard
+        title={item.title}
+        text={item.summary}
+        href={item.href}
+        iconTitle={item.iconTitle}
+        items={item.items}
+        itemLayout={item.itemLayout}
+        image={item.image}
+        caption={item.caption}
+        blocks={item.blocks}
+      />
+    </CardGrid>
+  </section>
+))}
 
 {protectionItems.map((item) => (
   <section class="section section-panel section-panel--protection">
