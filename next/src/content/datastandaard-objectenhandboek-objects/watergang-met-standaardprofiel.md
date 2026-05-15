@@ -74,17 +74,9 @@ contentSections:
     caption: Afbeelding 1. Watergangsectie binnen de watergang.
     blocks:
       - image:
-          src: /images/objectenhandboek/watersysteem/watergangsectie_watergang met taluds/watergang met taluds overzicht.jpg
-          alt: Overzicht van een standaardprofiel met taluds, profielopbouw en begrenzing.
-        caption: Afbeelding 2. Standaardprofiel met taluds.
-      - image:
-          src: /images/objectenhandboek/watersysteem/watergangsectie_watergang met onderhoudspad/Watergang met onderhoudspad overzicht.jpg
-          alt: Overzicht van een standaardprofiel met waterprofiel en onderhoudspad.
-        caption: Afbeelding 3. Standaardprofiel met onderhoudspad.
-      - image:
-          src: /images/objectenhandboek/watersysteem/watergangsectie_watergang met beschoeiing/watergang met beschoeiing overzicht-optimized.jpg
-          alt: Overzicht van een standaardprofiel met constructieve profielbegrenzing.
-        caption: Afbeelding 4. Standaardprofiel met beschoeiing.
+          src: /images/objectenhandboek/watersysteem/watergangen/geometrie.png
+          alt: Geometrische weergave van een watergangsectie met profielgrenzen en dwarsprofiel.
+        caption: Afbeelding 5. Geometrie van de watergangsectie.
   - title: Afbakening
     summary: De afbakening volgt het deeltraject van de watergangsectie en omvat de bodem, taluds, profielgrenzen, het onderhoudspad en beschoeiing voor zover die nodig zijn om het standaardprofiel eenduidig te beschrijven.
   - title: Onderdelen
@@ -110,11 +102,19 @@ contentSections:
     items:
       - title: Overzicht
         text: De overzichtsbeelden tonen hoe profiel, begrenzing, onderhoud en constructieve oeverbescherming binnen dezelfde watergangsectie samenhangen.
-        image:
-          src: /images/objectenhandboek/watersysteem/watergangen/geometrie.png
-          alt: Geometrische weergave van een watergangsectie met profielgrenzen en dwarsprofiel.
-        caption: Afbeelding 5. Geometrie van de watergangsectie.
         blocks:
+          - image:
+              src: /images/objectenhandboek/watersysteem/watergangsectie_watergang met taluds/watergang met taluds overzicht.jpg
+              alt: Overzicht van een standaardprofiel met taluds, profielopbouw en begrenzing.
+            caption: Afbeelding 2. Standaardprofiel met taluds.
+          - image:
+              src: /images/objectenhandboek/watersysteem/watergangsectie_watergang met onderhoudspad/Watergang met onderhoudspad overzicht.jpg
+              alt: Overzicht van een standaardprofiel met waterprofiel en onderhoudspad.
+            caption: Afbeelding 3. Standaardprofiel met onderhoudspad.
+          - image:
+              src: /images/objectenhandboek/watersysteem/watergangsectie_watergang met beschoeiing/watergang met beschoeiing overzicht-optimized.jpg
+              alt: Overzicht van een standaardprofiel met constructieve profielbegrenzing.
+            caption: Afbeelding 4. Standaardprofiel met beschoeiing.
           - image:
               src: /images/objectenhandboek/watersysteem/watergangsectie_watergang met onderhoudspad/watergang met onderhoudspad overzicht_2.jpg
               alt: Aanvullend overzicht van een standaardprofiel met onderhoudspad.
