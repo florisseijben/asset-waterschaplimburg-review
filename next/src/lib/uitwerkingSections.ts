@@ -312,10 +312,16 @@ function isSameMediaBlock(left: SectionBlock, right: SectionBlock) {
 function keepDwarsprofielMediaInSpatialDescription(block: SectionBlock, options: NormalizedUitwerkingOptions = {}) {
   const sectionTitle = normalizeKey(options.subtypeIconTitle || "");
   const captionKey = normalizeKey(block.caption || "");
+  const standardProfileDwarsprofielCaptions = new Set([
+    "afbeelding-7-dwarsprofiel-met-profiellijnen",
+    "afbeelding-8-dwarsprofiel-met-profielvlakken",
+    "afbeelding-9-gecombineerd-dwarsprofiel-met-profiellijnen-en-profielvlakken",
+    "afbeelding-10-dwarsprofielvariant-met-onderhoudspad-werkpad",
+    "afbeelding-11-dwarsprofielvariant-met-beschoeiing"
+  ]);
 
   return sectionTitle === "watergang-met-standaardprofiel" &&
-    (captionKey === "afbeelding-7-dwarsprofiel-met-profiellijnen" ||
-      captionKey === "afbeelding-8-dwarsprofiel-met-profielvlakken");
+    standardProfileDwarsprofielCaptions.has(captionKey);
 }
 
 function withoutExtractedItemMedia(item: SectionLinkItem, extractedBlocks: SectionBlock[]): SectionLinkItem {

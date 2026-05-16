@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 380" role="img" aria-labelledby="title desc">
+  <title id="title">Dwarsprofielvariant met beschoeiing</title>
+  <desc id="desc">Schematisch dwarsprofiel van een watergang met talud, bodem en een beschoeide profielrand.</desc>
+  <style>
+    .line { fill: none; stroke: #111; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+    .wall { stroke: #111; stroke-width: 5; stroke-linecap: round; }
+    .hatch { stroke: #111; stroke-width: 2; }
+    .node { fill: #111; }
+    .label { fill: #111; font-family: "Avenir Next", Arial, sans-serif; font-size: 20px; font-weight: 600; }
+    .small { fill: #111; font-family: "Avenir Next", Arial, sans-serif; font-size: 16px; }
+    .water { stroke: #00a9c1; stroke-width: 4; stroke-linecap: round; }
+  </style>
+  <rect width="1200" height="380" fill="#fff"/>
+  <path class="line" d="M70 115H300L470 275H680"/>
+  <line class="wall" x1="680" y1="115" x2="680" y2="275"/>
+  <path class="line" d="M680 115H1130"/>
+  <line class="water" x1="430" y1="238" x2="680" y2="238"/>
+
+  <line class="hatch" x1="695" y1="128" x2="735" y2="108"/>
+  <line class="hatch" x1="695" y1="160" x2="735" y2="140"/>
+  <line class="hatch" x1="695" y1="192" x2="735" y2="172"/>
+  <line class="hatch" x1="695" y1="224" x2="735" y2="204"/>
+  <line class="hatch" x1="695" y1="256" x2="735" y2="236"/>
+
+  <circle class="node" cx="300" cy="115" r="6"/>
+  <circle class="node" cx="470" cy="275" r="6"/>
+  <circle class="node" cx="680" cy="275" r="6"/>
+  <circle class="node" cx="680" cy="115" r="6"/>
+  <circle class="node" cx="1130" cy="115" r="6"/>
+
+  <text class="small" x="300" y="75" text-anchor="middle">Insteek links</text>
+  <text class="small" x="470" y="318" text-anchor="middle">Teen links</text>
+  <text class="small" x="680" y="318" text-anchor="middle">Teen rechts</text>
+  <text class="small" x="680" y="75" text-anchor="middle">Beschoeide insteek</text>
+  <text class="small" x="1130" y="75" text-anchor="middle">Einde dwarsprofiel</text>
+
+  <text class="label" x="185" y="95" text-anchor="middle">Berm</text>
+  <text class="label" x="403" y="188" text-anchor="middle" transform="rotate(43 403 188)">Talud</text>
+  <text class="label" x="575" y="255" text-anchor="middle">Bodem</text>
+  <text class="label" x="805" y="186" text-anchor="middle">Beschoeiing</text>
+  <text class="label" x="935" y="95" text-anchor="middle">Berm</text>
+</svg>

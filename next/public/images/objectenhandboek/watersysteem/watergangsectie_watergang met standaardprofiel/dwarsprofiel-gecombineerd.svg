@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" role="img" aria-labelledby="title desc">
+  <title id="title">Gecombineerd dwarsprofiel met profiellijnen en profielvlakken</title>
+  <desc id="desc">Schematisch dwarsprofiel van een watergang met labels voor de profiellijnen en profielvlakken.</desc>
+  <style>
+    .line { fill: none; stroke: #111; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+    .node { fill: #111; }
+    .label { fill: #111; font-family: "Avenir Next", Arial, sans-serif; font-size: 18px; }
+    .small { fill: #111; font-family: "Avenir Next", Arial, sans-serif; font-size: 15px; }
+    .water { stroke: #00a9c1; stroke-width: 4; stroke-linecap: round; }
+  </style>
+  <rect width="1200" height="360" fill="#fff"/>
+  <path class="line" d="M70 95H300L465 255H700L865 95H1130"/>
+  <line class="water" x1="425" y1="220" x2="740" y2="220"/>
+
+  <circle class="node" cx="70" cy="95" r="6"/>
+  <circle class="node" cx="300" cy="95" r="6"/>
+  <circle class="node" cx="465" cy="255" r="6"/>
+  <circle class="node" cx="582" cy="255" r="6"/>
+  <circle class="node" cx="700" cy="255" r="6"/>
+  <circle class="node" cx="865" cy="95" r="6"/>
+  <circle class="node" cx="1130" cy="95" r="6"/>
+
+  <text class="small" x="70" y="55" text-anchor="middle">Begin dwarsprofiel</text>
+  <text class="small" x="300" y="55" text-anchor="middle">Insteek links</text>
+  <text class="small" x="465" y="295" text-anchor="middle">Teen links</text>
+  <text class="small" x="582" y="295" text-anchor="middle">As bodem</text>
+  <text class="small" x="700" y="295" text-anchor="middle">Teen rechts</text>
+  <text class="small" x="865" y="55" text-anchor="middle">Insteek rechts</text>
+  <text class="small" x="1130" y="55" text-anchor="middle">Einde dwarsprofiel</text>
+
+  <text class="label" x="185" y="78" text-anchor="middle">Berm</text>
+  <text class="label" x="410" y="164" text-anchor="middle" transform="rotate(44 410 164)">Talud</text>
+  <text class="label" x="582" y="238" text-anchor="middle">Bodem</text>
+  <text class="label" x="790" y="164" text-anchor="middle" transform="rotate(-44 790 164)">Talud</text>
+  <text class="label" x="997" y="78" text-anchor="middle">Berm</text>
+  <text class="small" x="582" y="210" text-anchor="middle" fill="#007f91">Waterlijn</text>
+</svg>

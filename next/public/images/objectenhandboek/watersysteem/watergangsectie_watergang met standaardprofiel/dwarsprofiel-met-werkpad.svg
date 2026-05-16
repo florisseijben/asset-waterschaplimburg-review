@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" role="img" aria-labelledby="title desc">
+  <title id="title">Dwarsprofielvariant met onderhoudspad of werkpad</title>
+  <desc id="desc">Schematisch dwarsprofiel van een watergang met een onderhoudspad of werkpad aan de rechterzijde.</desc>
+  <style>
+    .line { fill: none; stroke: #111; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+    .path-fill { fill: #f1f3f3; stroke: #111; stroke-width: 2; }
+    .node { fill: #111; }
+    .label { fill: #111; font-family: "Avenir Next", Arial, sans-serif; font-size: 20px; font-weight: 600; }
+    .small { fill: #111; font-family: "Avenir Next", Arial, sans-serif; font-size: 16px; }
+    .dim { fill: none; stroke: #00a9c1; stroke-width: 4; stroke-linecap: round; }
+    .guide { stroke: #111; stroke-width: 2; stroke-dasharray: 8 8; }
+    .water { stroke: #00a9c1; stroke-width: 4; stroke-linecap: round; }
+  </style>
+  <rect width="1200" height="400" fill="#fff"/>
+  <path class="path-fill" d="M820 86H1120V120H820Z"/>
+  <path class="line" d="M70 120H300L470 275H650L820 120H1120"/>
+  <line class="water" x1="430" y1="238" x2="690" y2="238"/>
+
+  <line class="guide" x1="300" y1="120" x2="300" y2="328"/>
+  <line class="guide" x1="1120" y1="120" x2="1120" y2="328"/>
+  <line class="dim" x1="300" y1="328" x2="1120" y2="328"/>
+
+  <circle class="node" cx="300" cy="120" r="6"/>
+  <circle class="node" cx="470" cy="275" r="6"/>
+  <circle class="node" cx="650" cy="275" r="6"/>
+  <circle class="node" cx="820" cy="120" r="6"/>
+  <circle class="node" cx="1120" cy="120" r="6"/>
+
+  <text class="small" x="300" y="78" text-anchor="middle">Insteek links</text>
+  <text class="small" x="820" y="78" text-anchor="middle">Insteek rechts</text>
+  <text class="small" x="1120" y="78" text-anchor="middle">Grens werkpad</text>
+
+  <text class="label" x="185" y="100" text-anchor="middle">Berm</text>
+  <text class="label" x="403" y="194" text-anchor="middle" transform="rotate(43 403 194)">Talud</text>
+  <text class="label" x="560" y="254" text-anchor="middle">Bodem</text>
+  <text class="label" x="735" y="194" text-anchor="middle" transform="rotate(-43 735 194)">Talud</text>
+  <text class="label" x="970" y="112" text-anchor="middle">Onderhoudspad / werkpad</text>
+  <text class="small" x="710" y="354" text-anchor="middle" fill="#007f91">Werkingsgebied langs watergang en pad</text>
+</svg>

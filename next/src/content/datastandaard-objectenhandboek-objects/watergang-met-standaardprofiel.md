@@ -131,15 +131,27 @@ contentSections:
               alt: Dwarsprofiel van een standaardprofiel met profielvlakken.
             caption: Afbeelding 8. Dwarsprofiel met profielvlakken.
           - image:
+              src: /images/objectenhandboek/watersysteem/watergangsectie_watergang met standaardprofiel/dwarsprofiel-gecombineerd.svg
+              alt: Gecombineerd dwarsprofiel van een standaardprofiel met profiellijnen en profielvlakken.
+            caption: Afbeelding 9. Gecombineerd dwarsprofiel met profiellijnen en profielvlakken.
+          - image:
+              src: /images/objectenhandboek/watersysteem/watergangsectie_watergang met standaardprofiel/dwarsprofiel-met-werkpad.svg
+              alt: Dwarsprofielvariant van een standaardprofiel met onderhoudspad of werkpad.
+            caption: Afbeelding 10. Dwarsprofielvariant met onderhoudspad / werkpad.
+          - image:
+              src: /images/objectenhandboek/watersysteem/watergangsectie_watergang met standaardprofiel/dwarsprofiel-met-beschoeiing.svg
+              alt: Dwarsprofielvariant van een standaardprofiel met beschoeiing.
+            caption: Afbeelding 11. Dwarsprofielvariant met beschoeiing.
+          - image:
               src: /images/objectenhandboek/watersysteem/watergangsectie_watergang met onderhoudspad/Watergang met onderhoudspad profiellijn.png
               alt: Doorsnede van een standaardprofiel met onderhoudspad.
-            caption: Afbeelding 9. Dwarsprofiel met onderhoudspad.
+            caption: Afbeelding 12. Uitgebreid dwarsprofiel met onderhoudspad.
       - title: Bovenaanzicht
         text: Het bovenaanzicht toont de ligging van de watergangsectie in de lengterichting van de watergang.
         image:
           src: /images/objectenhandboek/watersysteem/watergangsectie_watergang met taluds/watergang met taluds bovenaanzicht.png
           alt: Bovenaanzicht van een standaardprofiel binnen een watergangsectie.
-        caption: Afbeelding 10. Bovenaanzicht van het standaardprofiel.
+        caption: Afbeelding 13. Bovenaanzicht van het standaardprofiel.
 productRelations:
   - title: Woordenboek
     text: Begrippen en definities voor watergangsecties, profielopbouw, taluds, onderhoudspaden en beschoeiing.
