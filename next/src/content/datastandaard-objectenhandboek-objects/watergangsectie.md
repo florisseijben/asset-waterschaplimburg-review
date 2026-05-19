@@ -118,7 +118,7 @@ metadata:
     value: https://data.waterschaplimburg.nl/id/objecttype/watergangsectie
 contentSections:
   - title: Overzicht / Samenhang
-    summary: De watergangsectie is het afgebakende deelobject binnen de watergang en vormt samen met intersecties de opbouw van het hoofdobject.
+    summary: De watergangsectie is het afgebakende deelobject binnen de watergang en vormt samen met intersecties de opbouw van het hoofdobject. De watergangsectie wordt gevormd door een ruimte in de driedimensionele ruimte.
     image:
       src: /images/objectenhandboek/watersysteem/watergangen/watergang sectie.jpg
       alt: Schematische weergave van een watergangsectie binnen een watergang.
@@ -131,6 +131,12 @@ contentSections:
       src: /images/objectenhandboek/watersysteem/watergangen/geometrie.png
       alt: Geometrische weergave van de watergangsectie met ligging en ruimtelijke begrenzing.
     caption: Afbeelding 2. Geometrie van de watergangsectie.
+    blocks:
+      - text: "Watergangen worden in drie granulariteitsniveaus opgedeeld: 1. het hele gebied van de watergang: dit omvat de hele breedte van de watergang inclusief werkpaden en bermen, 2. de ruimte binnen de insteek van de watergang (de waterverplaatsingsruimte), bermen en werkpaden als individuele objecten en 3. de onderliggende elementen zoals talud en bodem, die de watergang verder opdelen."
+      - image:
+          src: /images/objectenhandboek/watersysteem/watergangsectie_granulariteitsniveaus/granulariteitsniveaus-placeholder.svg
+          alt: Placeholder voor afbeelding met drie granulariteitsniveaus van watergangen.
+        caption: Afbeelding volgt. Granulariteitsniveaus van watergangen.
     items:
       - title: Grootschalig
         text: "Bij grootschalige kaarten, ongeveer schaal 1:1.000 tot 1:10.000, wordt Watergangsectie getoond als lijngeometrie van een afgebakend deeltraject en in detail gekoppeld aan doorsneden, taluds, bodem en andere profielonderdelen."
