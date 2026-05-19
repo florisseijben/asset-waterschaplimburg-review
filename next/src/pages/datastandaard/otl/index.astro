@@ -2,8 +2,54 @@
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import Hero from "../../../components/Hero.astro";
 import ConceptSummarySection from "../../../components/ConceptSummarySection.astro";
-import PlaceholderStatus from "../../../components/PlaceholderStatus.astro";
+import CardGrid from "../../../components/CardGrid.astro";
+import InfoCard from "../../../components/InfoCard.astro";
+import VervolgSection from "../../../components/VervolgSection.astro";
 
+const modelParts = [
+  {
+    title: "Objecttypen",
+    text: "De OTL beschrijft welke typen objecten binnen de datastandaard worden gebruikt en hoe ze binnen systemen en disciplines worden afgebakend."
+  },
+  {
+    title: "Eigenschappen",
+    text: "Per objecttype worden kenmerken vastgelegd waarmee objecten eenduidig kunnen worden geregistreerd, beheerd en uitgewisseld."
+  },
+  {
+    title: "Relaties",
+    text: "Relaties maken zichtbaar hoe objecttypen onderling samenhangen, bijvoorbeeld als onderdeel, bovenliggend object of functionele koppeling."
+  },
+  {
+    title: "Gedrag",
+    text: "Waar relevant legt de bibliotheek vast welke functie of werking bij een objecttype hoort, zodat ontwerp, beheer en verificatie dezelfde taal gebruiken."
+  },
+  {
+    title: "Eisen",
+    text: "Eisen kunnen aan objecttypen worden gekoppeld, zodat duidelijk is welke voorwaarden of prestatieafspraken voor een type object gelden."
+  },
+  {
+    title: "Verificaties",
+    text: "Verificaties maken toetsbaar of objectinformatie en kwaliteitseisen volgens de afgesproken modelstructuur zijn ingevuld."
+  }
+];
+
+const chainLinks = [
+  {
+    title: "Woordenboek",
+    text: "Begrippen geven betekenis aan de termen die in de OTL worden gebruikt.",
+    href: "/datastandaard/woordenboek"
+  },
+  {
+    title: "Objectenhandboek",
+    text: "Objectpagina's vertalen objecttypen naar herkenbare context, toepassing en voorbeelden.",
+    href: "/datastandaard/objectenhandboek"
+  },
+  {
+    title: "Referentiedataset",
+    text: "Referentiegegevens maken OTL-afspraken concreet en toetsbaar in voorbeeldsets.",
+    href: "/datastandaard/referentiedataset"
+  }
+];
 ---
 
 <BaseLayout
@@ -31,9 +77,52 @@ import PlaceholderStatus from "../../../components/PlaceholderStatus.astro";
     ]}
   />
 
-  <PlaceholderStatus
-    title="Object Type Library volgt inhoudelijk in een volgende slice"
-    summary="De productroute is nu inhoudelijk gepositioneerd en kan in een volgende stap verder worden uitgewerkt met modelroutes, relatieverkenning en graphfunctionaliteit."
-    scope="OTL-landingen, modelroutes en Reactodia-gerelateerde verkenning"
+  <section class="section section-panel">
+    <p class="eyebrow">Modelinhoud</p>
+    <h2>Wat legt de OTL vast?</h2>
+    <CardGrid roomy>
+      {modelParts.map((item) => (
+        <InfoCard title={item.title} text={item.text} />
+      ))}
+    </CardGrid>
+  </section>
+
+  <section class="section section-panel">
+    <p class="eyebrow">Samenhang</p>
+    <h2>Van begrip naar toetsbare objectinformatie</h2>
+    <div class="content-copy">
+      <p>
+        De OTL verbindt de taal van het woordenboek met de objecttypen uit het objectenhandboek. Daardoor kunnen dezelfde objectafspraken worden gebruikt in ontwerp, areaalregistratie, gegevensuitwisseling en kwaliteitscontrole.
+      </p>
+      <p>
+        In deze eerste productuitwerking ligt de nadruk op de route en de inhoudelijke bouwstenen. De interactieve modelverkenning en graphweergave kunnen hier later op aansluiten zonder de productstructuur opnieuw te moeten wijzigen.
+      </p>
+    </div>
+    <CardGrid>
+      {chainLinks.map((item) => (
+        <InfoCard title={item.title} text={item.text} href={item.href} />
+      ))}
+    </CardGrid>
+  </section>
+
+  <VervolgSection
+    items={[
+      {
+        title: "Datastandaard",
+        text: "Terug naar het overzicht met systemen, disciplines en producten.",
+        href: "/datastandaard",
+        direction: "back"
+      },
+      {
+        title: "Objectenhandboek",
+        text: "Bekijk hoe objecttypen inhoudelijk worden uitgewerkt in herkenbare objectpagina's.",
+        href: "/datastandaard/objectenhandboek"
+      },
+      {
+        title: "Referentiedataset",
+        text: "Ga door naar de productroute waar voorbeeldgegevens en toetsbaarheid landen.",
+        href: "/datastandaard/referentiedataset"
+      }
+    ]}
   />
 </BaseLayout>
