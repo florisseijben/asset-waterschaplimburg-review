@@ -335,6 +335,9 @@ const belongsToObjectScope = (entry: any) =>
   scope.kind === "object" &&
   (entry.id === scope.objectEntryId || isDirectChildOfScopeRoot(entry));
 
+const isHiddenInAllObjectsHandbook = (entry: any) =>
+  scope.kind === "all" && normalizeKey(getObjectTitle(entry)) === "stroomgebied";
+
 const isCompositionTypeOfParent = (parentEntry: any, childTitle: string) =>
   (parentEntry.data.compositionTypes || []).some(
     (compositionType: any) => normalizeKey(compositionType.title) === normalizeKey(childTitle)
@@ -376,6 +379,7 @@ const isAllowedInHandbookTree = (entry: any) => {
 
 const scopedEntries = entries.filter(
   (entry) =>
+    !isHiddenInAllObjectsHandbook(entry) &&
     (scope.kind === "object" ? belongsToObjectScope(entry) : belongsToClassificationScope(entry)) &&
     isAllowedInHandbookTree(entry)
 );
@@ -519,6 +523,10 @@ for (let entryIndex = 0; entryIndex < entryQueue.length; entryIndex += 1) {
 
   childItems.forEach((childItem: any) => {
     const childEntry = getObjectEntryForItem(childItem);
+
+    if (childEntry && isHiddenInAllObjectsHandbook(childEntry)) {
+      return;
+    }
 
     if (childEntry && scopedEntryIds.has(childEntry.id)) {
       return;
