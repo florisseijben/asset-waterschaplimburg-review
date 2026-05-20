@@ -1,0 +1,86 @@
+---
+import BaseLayout from "../../../../../../layouts/BaseLayout.astro";
+import Hero from "../../../../../../components/Hero.astro";
+import HandbookHeroCard from "../../../../../../components/HandbookHeroCard.astro";
+import ConceptSummarySection from "../../../../../../components/ConceptSummarySection.astro";
+import ObjectClassificationSection from "../../../../../../components/ObjectClassificationSection.astro";
+import ProductSection from "../../../../../../components/ProductSection.astro";
+import UitwerkingSection from "../../../../../../components/UitwerkingSection.astro";
+import VervolgSection from "../../../../../../components/VervolgSection.astro";
+import { getCollection } from "astro:content";
+import { getObjectHandbookHref } from "../../../../../../lib/objectenhandboekHandbooks";
+import { createObjectBreadcrumbs } from "../../../../../../lib/objectenhandboekBreadcrumbs";
+import { normalizeObjectUitwerkingSections } from "../../../../../../lib/uitwerkingSections";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("datastandaard-objectenhandboek-objects");
+  const prefix = "/datastandaard/objectenhandboek/watersysteem/kunstwerken/";
+
+  return entries
+    .filter((entry) => {
+      const slug = (entry.data.slug || "").replace(/\/$/, "");
+      if (!slug.startsWith(prefix)) {
+        return false;
+      }
+
+      const parts = slug.slice(prefix.length).split("/");
+      return parts.length === 2 && parts[0] && parts[1];
+    })
+    .map((entry) => {
+      const slug = (entry.data.slug || "").replace(/\/$/, "");
+      const parts = slug.slice(prefix.length).split("/");
+
+      return {
+        params: {
+          kunstwerk: parts[0],
+          onderdeel: parts[1]
+        }
+      };
+    });
+}
+
+const entries = await getCollection("datastandaard-objectenhandboek-objects");
+const slugFromParams = `/datastandaard/objectenhandboek/watersysteem/kunstwerken/${Astro.params.kunstwerk}/${Astro.params.onderdeel}`;
+const entry = entries.find((item) => (item.data.slug || "").replace(/\/$/, "") === slugFromParams);
+
+if (!entry) {
+  throw new Error(`Objectenhandboekpagina ontbreekt voor ${slugFromParams}.`);
+}
+
+const contentSections = entry.data.contentSections || [];
+const uitwerkingSections = normalizeObjectUitwerkingSections(contentSections, {
+  compositionTypes: entry.data.compositionTypes || [],
+  subtypeIconTitle: entry.data.heroTitle || entry.data.title,
+  includeTypen: false
+});
+---
+
+<BaseLayout
+  title={entry.data.title}
+  currentPath="/datastandaard"
+  breadcrumbs={createObjectBreadcrumbs(entry)}
+>
+  <Hero eyebrow="Objectenhandboek" title={entry.data.heroTitle || entry.data.title} summary={entry.data.summary}>
+    <HandbookHeroCard slot="aside" href={getObjectHandbookHref(entry.id)} />
+  </Hero>
+
+  <ConceptSummarySection
+    subjectLabel={entry.data.title}
+    definition={entry.data.definition}
+    definitionSource={entry.data.definitionSource}
+    synonyms={entry.data.synonyms || []}
+    relatedTerms={entry.data.terms || []}
+    definitionTypes={entry.data.definitionTypes || []}
+  />
+
+  <UitwerkingSection
+    title={`Inhoudelijke opbouw van ${entry.data.title}`}
+    items={uitwerkingSections}
+  />
+
+  <ProductSection eyebrow="Productlijn" items={entry.data.productRelations || []} />
+
+  <VervolgSection title="Logische volgende stappen binnen deze lijn" items={entry.data.nextSteps || []} />
+
+  <ObjectClassificationSection classification={entry.data.classification} />
+</BaseLayout>

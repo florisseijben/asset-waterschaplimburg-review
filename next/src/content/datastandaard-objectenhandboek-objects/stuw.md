@@ -58,77 +58,24 @@ metadata:
 contentSections:
   - title: Overzicht / Samenhang
     summary: We onderscheiden verschillende soorten stuwen op basis van het type stuwhoofd (waterkerende constructie of een grondlichaam), het type regelmiddel (klepconstructie, schuifconstructie, schotbalkconstructie en balgconstructie), het type aandrijving en bewegingswerk en de regelbaarheid (niet regelbaar, handmatig regelbaar, mechanisch automatisch regelbaar, elektrisch automatisch regelbaar).
-  - title: Type stuwhoofd
-    summary: Het type stuwhoofd beschrijft de constructieve hoofdvorm waarmee de stuw water keert of ondersteunt.
+  - title: Onderdelen
+    summary: De decompositie van Stuw bestaat in de basis uit vijf onderdelen die ieder als eigen objectpagina zijn uitgewerkt.
     items:
-      - title: Waterkerende constructie
-        text: Stuw waarbij de waterkerende constructie de hoofdvorm van het stuwhoofd bepaalt.
-        image:
-          src: /images/objectenhandboek/Stuw/stuw met waterkerende constructie.jpg
-          alt: Stuw met waterkerende constructie.
-        caption: Stuw met waterkerende constructie.
-      - title: Grondlichaam
-        text: Stuw waarbij een grondlichaam of gronddam onderdeel is van de constructieve opbouw.
-        image:
-          src: /images/objectenhandboek/Stuw/stuw met gronddam.jpg
-          alt: Stuw met gronddam.
-        caption: Stuw met gronddam.
-  - title: Type regelmiddel
-    summary: Het type regelmiddel beschrijft het onderdeel waarmee de waterstand of doorlaat van de stuw wordt ingesteld.
-    items:
-      - title: Klepconstructie
-        text: Regelmiddel waarbij een klepconstructie de doorlaat of waterstand instelt.
-        image:
-          src: /images/objectenhandboek/Stuw/stuw met klepconstructie.jpg
-          alt: Stuw met klepconstructie.
-        caption: Stuw met klepconstructie.
-      - title: Schuifconstructie
-        text: Regelmiddel waarbij een schuifconstructie de doorlaat of waterstand instelt.
-        image:
-          src: /images/objectenhandboek/Stuw/stuw met schuifconstructie.jpg
-          alt: Stuw met schuifconstructie.
-        caption: Stuw met schuifconstructie.
-      - title: Schotbalkconstructie
-        text: Regelmiddel waarbij schotbalken de waterhoogte stapsgewijs instellen.
-        image:
-          src: /images/objectenhandboek/Stuw/stuw met schotbalkconstructie.jpg
-          alt: Stuw met schotbalkconstructie.
-        caption: Stuw met schotbalkconstructie.
-      - title: Balgconstructie
-        text: Regelmiddel waarbij een balgconstructie de kerende of regelende functie verzorgt.
-        image:
-          src: /images/objectenhandboek/Stuw/stuw met balgconstructie.jpg
-          alt: Stuw met balgconstructie.
-        caption: Stuw met balgconstructie.
-  - title: Type aandrijving en bewegingswerk
-    summary: Het type aandrijving en bewegingswerk beschrijft hoe het regelmiddel fysiek wordt bewogen en bediend. De concrete inrichting hangt samen met de gekozen regelbaarheid.
-  - title: Regelbaarheid
-    summary: De regelbaarheid beschrijft of en hoe de stuw kan worden ingesteld, van vaste constructie tot automatische bediening.
-    items:
-      - title: Niet regelbaar
-        text: Stuw met een vaste kerende hoogte zonder bedienbaar regelmiddel.
-        image:
-          src: /images/objectenhandboek/Stuw/stuw niet regelbaar.jpg
-          alt: Niet regelbare stuw.
-        caption: Niet regelbare stuw.
-      - title: Handmatig regelbaar
-        text: Stuw die lokaal met handbediening wordt ingesteld.
-        image:
-          src: /images/objectenhandboek/Stuw/stuw handmatig regelbaar.jpg
-          alt: Handmatig regelbare stuw.
-        caption: Handmatig regelbare stuw.
-      - title: Mechanisch automatisch regelbaar
-        text: Stuw waarbij mechanische voorzieningen de regeling automatisch ondersteunen.
-        image:
-          src: /images/objectenhandboek/Stuw/stuw mechanisch automatisch regelbaar.jpg
-          alt: Mechanisch automatisch regelbare stuw.
-        caption: Mechanisch automatisch regelbare stuw.
-      - title: Elektrisch automatisch regelbaar
-        text: Stuw die elektrisch en automatisch kan worden aangestuurd.
-        image:
-          src: /images/objectenhandboek/Stuw/stuw electrisch-automatisch regelbaar.jpg
-          alt: Elektrisch automatisch regelbare stuw.
-        caption: Elektrisch automatisch regelbare stuw.
+      - title: Stuwhoofd
+        text: Constructief hoofddeel van de stuw met typen naar hoofdvorm.
+        href: /datastandaard/objectenhandboek/watersysteem/kunstwerken/stuw/stuwhoofd
+      - title: Regelmiddel
+        text: Functioneel onderdeel waarmee de doorlaat en waterstand worden ingesteld.
+        href: /datastandaard/objectenhandboek/watersysteem/kunstwerken/stuw/regelmiddel
+      - title: Aandrijving en bewegingswerk
+        text: Technische voorzieningen waarmee het regelmiddel wordt bewogen en bediend.
+        href: /datastandaard/objectenhandboek/watersysteem/kunstwerken/stuw/aandrijving-en-bewegingswerk
+      - title: Regelbaarheid
+        text: Indeling naar de mate en manier van regelbaarheid van de stuw.
+        href: /datastandaard/objectenhandboek/watersysteem/kunstwerken/stuw/regelbaarheid
+      - title: Bedienings- en besturingsinstallatie
+        text: Installatieonderdelen voor bediening, sturing, monitoring en telemetrie.
+        href: /datastandaard/objectenhandboek/watersysteem/kunstwerken/stuw/bedienings-en-besturingsinstallatie
   - title: Afbakening
     summary: De afbakening volgt de constructie die het water keert of doorlaat, inclusief relevante regelbare onderdelen.
   - title: Dwarsprofiel
@@ -166,6 +113,9 @@ productRelations:
     text: Werkafspraken voor het vastleggen en beheren van stuwen.
     href: /datastandaard/werkinstructies
 nextSteps:
+  - title: Stuwhoofd
+    text: Door naar het eerste onderliggende onderdeel van de stuwdecompositie.
+    href: /datastandaard/objectenhandboek/watersysteem/kunstwerken/stuw/stuwhoofd
   - title: Kunstwerk
     text: Terug naar de objectfamilie Kunstwerk.
     href: /datastandaard/objectenhandboek/watersysteem/kunstwerken
