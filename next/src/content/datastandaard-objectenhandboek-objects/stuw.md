@@ -78,21 +78,21 @@ contentSections:
         href: /datastandaard/objectenhandboek/watersysteem/kunstwerken/stuw/bedienings-en-besturingsinstallatie
   - title: Afbakening
     summary: De afbakening volgt de constructie die het water keert of doorlaat, inclusief relevante regelbare onderdelen.
-  - title: Dwarsprofiel
-    summary: De dwarsdoorsnede toont de constructieve opbouw van de stuw in het profiel van de watergang.
-    image:
-      src: /images/objectenhandboek/Stuw/Dwarsprofiel stuw.png
-      alt: Dwarsprofiel van een stuw met decompositie van bouwdelen.
-    caption: Afbeelding 1. Dwarsprofiel van een stuw.
-  - title: Bovenaanzicht
-    summary: Het bovenaanzicht toont de ligging en onderdelen van de stuw vanuit de bovenkant.
-    image:
-      src: /images/objectenhandboek/Stuw/Bovenaanzicht stuw.png
-      alt: Bovenaanzicht van een stuw met decompositie van bouwdelen.
-    caption: Afbeelding 2. Bovenaanzicht van een stuw.
   - title: Geometrie
     summary: Een stuw wordt meestal als puntobject vastgelegd op de locatie waar de watergang wordt geregeld.
     items:
+      - title: Dwarsprofiel
+        text: De dwarsdoorsnede toont de constructieve opbouw van de stuw in het profiel van de watergang.
+        image:
+          src: /images/objectenhandboek/Stuw/Dwarsprofiel stuw.png
+          alt: Dwarsprofiel van een stuw met decompositie van bouwdelen.
+        caption: Afbeelding 1. Dwarsprofiel van een stuw.
+      - title: Bovenaanzicht
+        text: Het bovenaanzicht toont de ligging en onderdelen van de stuw vanuit de bovenkant.
+        image:
+          src: /images/objectenhandboek/Stuw/Bovenaanzicht stuw.png
+          alt: Bovenaanzicht van een stuw met decompositie van bouwdelen.
+        caption: Afbeelding 2. Bovenaanzicht van een stuw.
       - title: Grootschalig
         text: Leg constructiepositie, doorlaat en aansluitingen op watergang en oevers nauwkeurig vast.
       - title: Midschalig
