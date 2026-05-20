@@ -8,12 +8,20 @@ interface TermItem {
   href?: string;
 }
 
+interface ConceptVideo {
+  title: string;
+  text?: string;
+  href?: string;
+  embedUrl: string;
+}
+
 interface Props {
   subjectLabel: string;
   definition?: string;
   definitionSource?: string;
   synonyms?: TermItem[];
   relatedTerms?: TermItem[];
+  conceptVideos?: ConceptVideo[];
   definitionTypes?: TermItem[];
   subtypes?: TermItem[];
   runtimeSourceUrl?: string;
@@ -27,6 +35,7 @@ const {
   definitionSource,
   synonyms = [],
   relatedTerms = [],
+  conceptVideos = [],
   definitionTypes = [],
   subtypes = [],
   runtimeSourceUrl,
@@ -37,6 +46,7 @@ const {
 const conceptTypes = definitionTypes.length > 0 ? definitionTypes : subtypes;
 const hasSynonyms = synonyms.length > 0;
 const hasRelatedTerms = relatedTerms.length > 0;
+const hasConceptVideos = conceptVideos.length > 0;
 const hasConceptTypes = conceptTypes.length > 0;
 const shouldShowTypes = showTypes ?? hasConceptTypes;
 const runtimeId = `concept-runtime-${subjectLabel.toLowerCase().replace(/\s+/g, "-")}`;
@@ -99,6 +109,29 @@ const getConceptTypeHref = (item: TermItem) => item.href || "/datastandaard/woor
           </div>
         ) : (
           <span class="concept-summary__empty">Geen gerelateerde termen uitgewerkt.</span>
+        )}
+
+        {hasConceptVideos && (
+          <div class="concept-summary__videos">
+            {conceptVideos.map((video) => (
+              <article class="concept-summary__video">
+                <div class="concept-summary__video-frame">
+                  <iframe
+                    src={video.embedUrl}
+                    title={video.title}
+                    loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen
+                  ></iframe>
+                </div>
+                <div class="concept-summary__video-copy">
+                  <strong>{video.title}</strong>
+                  {video.text && <span>{video.text}</span>}
+                  {video.href && <a href={video.href}>Open video op YouTube</a>}
+                </div>
+              </article>
+            ))}
+          </div>
         )}
       </div>
     </details>

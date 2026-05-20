@@ -42,6 +42,11 @@ terms:
   - title: Watergangsectie
     text: Deel van de watergang waarop een stuw lokaal invloed heeft.
     href: /datastandaard/objectenhandboek/watersysteem/watergangsectie
+conceptVideos:
+  - title: Video van een stuw
+    text: YouTube-video uit de kennisbank van Waterschap Limburg.
+    href: https://www.youtube.com/watch?v=os4DR_eX8wA
+    embedUrl: https://www.youtube.com/embed/os4DR_eX8wA
 metadata:
   - label: Systeem
     value: Watersysteem
