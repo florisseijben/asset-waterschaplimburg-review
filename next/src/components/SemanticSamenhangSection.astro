@@ -138,34 +138,28 @@ function renderFallbackMarkup(graph: { nodes: LayoutNode[]; edges: GraphEdge[] }
         return "";
       }
 
-      const startX = from.x + Math.round(nodeWidth / 2);
-      const startY = from.y + nodeHeight;
-      const endX = to.x + Math.round(nodeWidth / 2);
-      const endY = to.y;
+      const sameRow = from.y === to.y;
+      const upwards = to.y < from.y;
+      const startX = sameRow
+        ? from.x + (to.x > from.x ? nodeWidth : 0)
+        : from.x + Math.round(nodeWidth / 2);
+      const startY = sameRow ? from.y + Math.round(nodeHeight / 2) : upwards ? from.y : from.y + nodeHeight;
+      const endX = sameRow ? to.x + (to.x > from.x ? 0 : nodeWidth) : to.x + Math.round(nodeWidth / 2);
+      const endY = sameRow ? to.y + Math.round(nodeHeight / 2) : upwards ? to.y + nodeHeight : to.y;
+      const midX = Math.round((startX + endX) / 2);
       const midY = Math.round((startY + endY) / 2);
+      const path = sameRow
+        ? `M ${startX} ${startY} C ${midX} ${startY}, ${midX} ${endY}, ${endX} ${endY}`
+        : `M ${startX} ${startY} C ${startX} ${midY}, ${endX} ${midY}, ${endX} ${endY}`;
 
       return (
-        '<path d="M ' +
-        startX +
-        " " +
-        startY +
-        " C " +
-        startX +
-        " " +
-        midY +
-        ", " +
-        endX +
-        " " +
-        midY +
-        ", " +
-        endX +
-        " " +
-        endY +
+        '<path d="' +
+        path +
         '" fill="none" stroke="#007f91" stroke-width="2" marker-end="url(#semantic-samenhang-arrow)"></path>' +
         '<text x="' +
         Math.round((startX + endX) / 2) +
         '" y="' +
-        (midY - 8) +
+        (sameRow ? midY - 10 : midY - 8) +
         '" fill="#007f91" font-size="11" text-anchor="middle">' +
         escapeHtml(edge.label) +
         "</text>"
@@ -448,15 +442,23 @@ const initialFallbackMarkup = renderFallbackMarkup(initialFallbackGraph);
           return "";
         }
 
-        const startX = from.x + Math.round(nodeWidth / 2);
-        const startY = from.y + nodeHeight;
-        const endX = to.x + Math.round(nodeWidth / 2);
-        const endY = to.y;
+        const sameRow = from.y === to.y;
+        const upwards = to.y < from.y;
+        const startX = sameRow
+          ? from.x + (to.x > from.x ? nodeWidth : 0)
+          : from.x + Math.round(nodeWidth / 2);
+        const startY = sameRow ? from.y + Math.round(nodeHeight / 2) : upwards ? from.y : from.y + nodeHeight;
+        const endX = sameRow ? to.x + (to.x > from.x ? 0 : nodeWidth) : to.x + Math.round(nodeWidth / 2);
+        const endY = sameRow ? to.y + Math.round(nodeHeight / 2) : upwards ? to.y + nodeHeight : to.y;
+        const midX = Math.round((startX + endX) / 2);
         const midY = Math.round((startY + endY) / 2);
+        const path = sameRow
+          ? "M " + startX + " " + startY + " C " + midX + " " + startY + ", " + midX + " " + endY + ", " + endX + " " + endY
+          : "M " + startX + " " + startY + " C " + startX + " " + midY + ", " + endX + " " + midY + ", " + endX + " " + endY;
 
         return '' +
-          '<path d="M ' + startX + " " + startY + " C " + startX + " " + midY + ", " + endX + " " + midY + ", " + endX + " " + endY + '" fill="none" stroke="#007f91" stroke-width="2" marker-end="url(#semantic-samenhang-arrow)"></path>' +
-          '<text x="' + Math.round((startX + endX) / 2) + '" y="' + (midY - 8) + '" fill="#007f91" font-size="11" text-anchor="middle">' + escapeHtml(edge.label) + "</text>";
+          '<path d="' + path + '" fill="none" stroke="#007f91" stroke-width="2" marker-end="url(#semantic-samenhang-arrow)"></path>' +
+          '<text x="' + Math.round((startX + endX) / 2) + '" y="' + (sameRow ? midY - 10 : midY - 8) + '" fill="#007f91" font-size="11" text-anchor="middle">' + escapeHtml(edge.label) + "</text>";
       }
 
       function renderNode(node) {

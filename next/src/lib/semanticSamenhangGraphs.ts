@@ -108,6 +108,35 @@ export function createKunstwerkTypeGraph(
   typeLabel: string,
   relationKind: "crossing" | "regulating" | "supporting" = "supporting"
 ): GraphConfig {
+  if (typeId === "stuw") {
+    return {
+      layoutNodes: [
+        node("kunstwerk", "Kunstwerk", "Bovenliggend objecttype", 2, 0, relatedFill),
+        node(typeId, typeLabel, "Objecttype", 2, 1, selectedFill),
+        node("watergangsectie", "Watergangsectie", "Ruimtelijke context", 4, 1, relatedFill),
+        node("stuwhoofd", "Stuwhoofd", "Onderdeel", 0, 2, relatedFill),
+        node("regelmiddel", "Regelmiddel", "Onderdeel", 1, 2, relatedFill),
+        node("aandrijving-en-bewegingswerk", "Aandrijving en bewegingswerk", "Onderdeel", 3, 2, relatedFill),
+        node(
+          "bedienings-en-besturingsinstallatie",
+          "Bedienings- en besturingsinstallatie",
+          "Onderdeel",
+          4,
+          2,
+          relatedFill
+        )
+      ],
+      edges: [
+        { from: typeId, to: "kunstwerk", label: "is type" },
+        { from: typeId, to: "watergangsectie", label: "ligt in" },
+        { from: typeId, to: "stuwhoofd", label: "heeft onderdeel" },
+        { from: typeId, to: "regelmiddel", label: "heeft onderdeel" },
+        { from: typeId, to: "aandrijving-en-bewegingswerk", label: "heeft onderdeel" },
+        { from: typeId, to: "bedienings-en-besturingsinstallatie", label: "heeft onderdeel" }
+      ]
+    };
+  }
+
   const isCrossing = relationKind === "crossing";
   const isRegulating = relationKind === "regulating";
 
