@@ -508,7 +508,7 @@ h1 {
 .concept-summary__videos {
   display: grid;
   gap: var(--space-3);
-  margin-top: var(--space-4);
+  max-width: 52rem;
 }
 
 .concept-summary__video {

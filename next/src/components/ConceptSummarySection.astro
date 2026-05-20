@@ -110,8 +110,13 @@ const getConceptTypeHref = (item: TermItem) => item.href || "/datastandaard/woor
         ) : (
           <span class="concept-summary__empty">Geen gerelateerde termen uitgewerkt.</span>
         )}
+      </div>
+    </details>
 
-        {hasConceptVideos && (
+    {hasConceptVideos && (
+      <details class="concept-disclosure">
+        <summary>Video</summary>
+        <div class="concept-disclosure__body">
           <div class="concept-summary__videos">
             {conceptVideos.map((video) => (
               <article class="concept-summary__video">
@@ -132,9 +137,9 @@ const getConceptTypeHref = (item: TermItem) => item.href || "/datastandaard/woor
               </article>
             ))}
           </div>
-        )}
-      </div>
-    </details>
+        </div>
+      </details>
+    )}
 
     {shouldShowTypes && (
       <details class="concept-disclosure">
