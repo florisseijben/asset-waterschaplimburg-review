@@ -57,59 +57,95 @@ metadata:
     value: https://data.waterschaplimburg.nl/id/objecttype/stuw
 contentSections:
   - title: Overzicht / Samenhang
-    summary: In het watersysteem kennen we bij stuwen diverse functies. In de meeste gevallen worden stuwen gebruikt om waterpeilen in een watergang te verhogen (regelen), stroomsnelheden te remmen of water vast te houden (conserveren). Stuwconstructies kunnen ook gebruikt worden om water te verdelen over meerdere watergangen. Constructief zit er diversiteit in stuwen (typen en soorten).
-    image:
-      src: /images/objectenhandboek/Stuw/Stuw met Klep.png
-      alt: Overzichtsfoto van een stuw met klep in een watergang.
-    caption: Afbeelding 1. Overzicht van een stuw met klep.
+    summary: We onderscheiden verschillende soorten stuwen op basis van het type stuwhoofd (waterkerende constructie of een grondlichaam), het type regelmiddel (klepconstructie, schuifconstructie, schotbalkconstructie en balgconstructie), het type aandrijving en bewegingswerk en de regelbaarheid (niet regelbaar, handmatig regelbaar, mechanisch automatisch regelbaar, elektrisch automatisch regelbaar).
+  - title: Type stuwhoofd
+    summary: Het type stuwhoofd beschrijft de constructieve hoofdvorm waarmee de stuw water keert of ondersteunt.
     items:
       - title: Waterkerende constructie
-        text: Stuwconstructie waarbij het keren of regelen van water centraal staat.
-      - title: Stuw met een gronddam
-        text: Stuw waarbij een gronddam onderdeel is van de constructieve opbouw.
-      - title: Stuw met een stuwhoofd
-        text: Stuw waarbij het stuwhoofd de constructieve en regelende functie ondersteunt.
-      - title: Regelmiddel
-        text: Onderdeel waarmee de werking of doorlaat van de stuw wordt geregeld.
-      - title: Klep
-        text: Regelmiddel waarmee de waterstand of doorstroming kan worden ingesteld.
-      - title: Schuif
-        text: Regelmiddel dat verticaal of horizontaal kan worden bewogen om de doorlaat te regelen.
-      - title: Schotbalk
-        text: Uitneembaar of stapelbaar regelmiddel waarmee de waterhoogte stapsgewijs kan worden ingesteld.
-      - title: Balgstuw
-        text: Beweegbare stuw waarbij een balgconstructie de kerende of regelende functie verzorgt.
-      - title: Regelbaarheid
-        text: Indeling naar de mate waarin en de manier waarop de stuw kan worden bediend of aangestuurd.
-      - title: Vast stuw (niet regelbaar)
+        text: Stuw waarbij de waterkerende constructie de hoofdvorm van het stuwhoofd bepaalt.
+        image:
+          src: /images/objectenhandboek/Stuw/stuw met waterkerende constructie.jpg
+          alt: Stuw met waterkerende constructie.
+        caption: Stuw met waterkerende constructie.
+      - title: Grondlichaam
+        text: Stuw waarbij een grondlichaam of gronddam onderdeel is van de constructieve opbouw.
+        image:
+          src: /images/objectenhandboek/Stuw/stuw met gronddam.jpg
+          alt: Stuw met gronddam.
+        caption: Stuw met gronddam.
+  - title: Type regelmiddel
+    summary: Het type regelmiddel beschrijft het onderdeel waarmee de waterstand of doorlaat van de stuw wordt ingesteld.
+    items:
+      - title: Klepconstructie
+        text: Regelmiddel waarbij een klepconstructie de doorlaat of waterstand instelt.
+        image:
+          src: /images/objectenhandboek/Stuw/stuw met klepconstructie.jpg
+          alt: Stuw met klepconstructie.
+        caption: Stuw met klepconstructie.
+      - title: Schuifconstructie
+        text: Regelmiddel waarbij een schuifconstructie de doorlaat of waterstand instelt.
+        image:
+          src: /images/objectenhandboek/Stuw/stuw met schuifconstructie.jpg
+          alt: Stuw met schuifconstructie.
+        caption: Stuw met schuifconstructie.
+      - title: Schotbalkconstructie
+        text: Regelmiddel waarbij schotbalken de waterhoogte stapsgewijs instellen.
+        image:
+          src: /images/objectenhandboek/Stuw/stuw met schotbalkconstructie.jpg
+          alt: Stuw met schotbalkconstructie.
+        caption: Stuw met schotbalkconstructie.
+      - title: Balgconstructie
+        text: Regelmiddel waarbij een balgconstructie de kerende of regelende functie verzorgt.
+        image:
+          src: /images/objectenhandboek/Stuw/stuw met balgconstructie.jpg
+          alt: Stuw met balgconstructie.
+        caption: Stuw met balgconstructie.
+  - title: Type aandrijving en bewegingswerk
+    summary: Het type aandrijving en bewegingswerk beschrijft hoe het regelmiddel fysiek wordt bewogen en bediend. De concrete inrichting hangt samen met de gekozen regelbaarheid.
+  - title: Regelbaarheid
+    summary: De regelbaarheid beschrijft of en hoe de stuw kan worden ingesteld, van vaste constructie tot automatische bediening.
+    items:
+      - title: Niet regelbaar
         text: Stuw met een vaste kerende hoogte zonder bedienbaar regelmiddel.
+        image:
+          src: /images/objectenhandboek/Stuw/stuw niet regelbaar.jpg
+          alt: Niet regelbare stuw.
+        caption: Niet regelbare stuw.
       - title: Handmatig regelbaar
         text: Stuw die lokaal met handbediening wordt ingesteld.
-      - title: Mechanisch-automatisch regelbaar
+        image:
+          src: /images/objectenhandboek/Stuw/stuw handmatig regelbaar.jpg
+          alt: Handmatig regelbare stuw.
+        caption: Handmatig regelbare stuw.
+      - title: Mechanisch automatisch regelbaar
         text: Stuw waarbij mechanische voorzieningen de regeling automatisch ondersteunen.
-      - title: Elektisch-automatisch regelbaar (op afstand)
-        text: Stuw die elektrisch en op afstand kan worden aangestuurd.
-      - title: Solar en telemetrie
-        text: Stuw met autonome energievoorziening en telemetrie voor monitoring of aansturing.
-      - title: Vast netaansluiting en telemetrie
-        text: Stuw met vaste netaansluiting en telemetrie voor monitoring of aansturing.
+        image:
+          src: /images/objectenhandboek/Stuw/stuw mechanisch automatisch regelbaar.jpg
+          alt: Mechanisch automatisch regelbare stuw.
+        caption: Mechanisch automatisch regelbare stuw.
+      - title: Elektrisch automatisch regelbaar
+        text: Stuw die elektrisch en automatisch kan worden aangestuurd.
+        image:
+          src: /images/objectenhandboek/Stuw/stuw electrisch-automatisch regelbaar.jpg
+          alt: Elektrisch automatisch regelbare stuw.
+        caption: Elektrisch automatisch regelbare stuw.
   - title: Afbakening
     summary: De afbakening volgt de constructie die het water keert of doorlaat, inclusief relevante regelbare onderdelen.
+  - title: Dwarsprofiel
+    summary: De dwarsdoorsnede toont de constructieve opbouw van de stuw in het profiel van de watergang.
+    image:
+      src: /images/objectenhandboek/Stuw/Dwarsprofiel stuw.png
+      alt: Dwarsprofiel van een stuw met decompositie van bouwdelen.
+    caption: Afbeelding 1. Dwarsprofiel van een stuw.
+  - title: Bovenaanzicht
+    summary: Het bovenaanzicht toont de ligging en onderdelen van de stuw vanuit de bovenkant.
+    image:
+      src: /images/objectenhandboek/Stuw/Bovenaanzicht stuw.png
+      alt: Bovenaanzicht van een stuw met decompositie van bouwdelen.
+    caption: Afbeelding 2. Bovenaanzicht van een stuw.
   - title: Geometrie
     summary: Een stuw wordt meestal als puntobject vastgelegd op de locatie waar de watergang wordt geregeld.
     items:
-      - title: Dwarsprofiel
-        text: De dwarsdoorsnede toont de constructieve opbouw van de stuw in het profiel van de watergang.
-        image:
-          src: /images/objectenhandboek/Stuw/Dwarsprofiel stuw.png
-          alt: Dwarsprofiel van een stuw met decompositie van bouwdelen.
-        caption: Afbeelding 2. Dwarsprofiel van een stuw.
-      - title: Bovenaanzicht
-        text: Het bovenaanzicht toont de ligging en onderdelen van de stuw vanuit de bovenkant.
-        image:
-          src: /images/objectenhandboek/Stuw/Bovenaanzicht stuw.png
-          alt: Bovenaanzicht van een stuw met decompositie van bouwdelen.
-        caption: Afbeelding 3. Bovenaanzicht van een stuw.
       - title: Grootschalig
         text: Leg constructiepositie, doorlaat en aansluitingen op watergang en oevers nauwkeurig vast.
       - title: Midschalig
