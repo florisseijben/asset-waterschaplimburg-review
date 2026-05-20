@@ -12,41 +12,28 @@ import { getObjectHandbookHref } from "../../../../../../lib/objectenhandboekHan
 import { createObjectBreadcrumbs } from "../../../../../../lib/objectenhandboekBreadcrumbs";
 import { normalizeObjectUitwerkingSections } from "../../../../../../lib/uitwerkingSections";
 
+const stuwPrefix = "/datastandaard/objectenhandboek/watersysteem/kunstwerken/stuw/";
+
 export async function getStaticPaths() {
   const entries = await getCollection("datastandaard-objectenhandboek-objects");
-  const prefix = "/datastandaard/objectenhandboek/watersysteem/kunstwerken/";
 
   return entries
     .filter((entry) => {
       const slug = (entry.data.slug || "").replace(/\/$/, "");
-      if (!slug.startsWith(prefix)) {
-        return false;
-      }
-
-      const parts = slug.slice(prefix.length).split("/");
-      return parts.length === 2 && parts[0] && parts[1];
+      return slug.startsWith(stuwPrefix) && slug.slice(stuwPrefix.length).split("/").length === 1;
     })
     .map((entry) => {
       const slug = (entry.data.slug || "").replace(/\/$/, "");
-      const parts = slug.slice(prefix.length).split("/");
+      const onderdeel = slug.slice(stuwPrefix.length);
 
       return {
-        params: {
-          kunstwerk: parts[0],
-          onderdeel: parts[1]
-        }
+        params: { onderdeel },
+        props: { entry }
       };
     });
 }
 
-const entries = await getCollection("datastandaard-objectenhandboek-objects");
-const slugFromParams = `/datastandaard/objectenhandboek/watersysteem/kunstwerken/${Astro.params.kunstwerk}/${Astro.params.onderdeel}`;
-const entry = entries.find((item) => (item.data.slug || "").replace(/\/$/, "") === slugFromParams);
-
-if (!entry) {
-  throw new Error(`Objectenhandboekpagina ontbreekt voor ${slugFromParams}.`);
-}
-
+const { entry } = Astro.props;
 const contentSections = entry.data.contentSections || [];
 const uitwerkingSections = normalizeObjectUitwerkingSections(contentSections, {
   compositionTypes: entry.data.compositionTypes || [],
