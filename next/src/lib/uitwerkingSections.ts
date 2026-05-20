@@ -319,9 +319,19 @@ function keepDwarsprofielMediaInSpatialDescription(block: SectionBlock, options:
     "afbeelding-10-dwarsprofielvariant-met-onderhoudspad-werkpad",
     "afbeelding-11-dwarsprofielvariant-met-beschoeiing"
   ]);
+  const stuwDwarsprofielCaptions = new Set([
+    "afbeelding-1-dwarsprofiel-van-een-stuw"
+  ]);
 
-  return sectionTitle === "watergang-met-standaardprofiel" &&
-    standardProfileDwarsprofielCaptions.has(captionKey);
+  if (sectionTitle === "watergang-met-standaardprofiel") {
+    return standardProfileDwarsprofielCaptions.has(captionKey);
+  }
+
+  if (sectionTitle === "stuw") {
+    return stuwDwarsprofielCaptions.has(captionKey);
+  }
+
+  return false;
 }
 
 function withoutExtractedItemMedia(item: SectionLinkItem, extractedBlocks: SectionBlock[]): SectionLinkItem {
