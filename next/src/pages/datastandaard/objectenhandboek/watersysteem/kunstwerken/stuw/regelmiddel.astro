@@ -1,0 +1,30 @@
+---
+import BaseLayout from "../../../../../../layouts/BaseLayout.astro";
+import InfoCard from "../../../../../../components/InfoCard.astro";
+import { withBase } from "../../../../../../lib/paths";
+
+const target = withBase("/datastandaard/objectenhandboek/watersysteem/kunstwerken/stuw/regelconstructie");
+---
+
+<BaseLayout title="Regelconstructie" currentPath="/datastandaard">
+  <Fragment slot="head">
+    <meta http-equiv="refresh" content={`0; url=${target}`} />
+    <link rel="canonical" href={target} />
+    <meta name="robots" content="noindex" />
+  </Fragment>
+
+  <section class="section section-panel">
+    <p class="eyebrow">Objectenhandboek</p>
+    <h1>Regelconstructie</h1>
+    <p class="content-copy">Regelmiddel heet nu Regelconstructie.</p>
+    <InfoCard
+      title="Regelconstructie"
+      text="Open de actuele objectpagina voor de regelconstructie van een stuw."
+      href="/datastandaard/objectenhandboek/watersysteem/kunstwerken/stuw/regelconstructie"
+    />
+  </section>
+</BaseLayout>
+
+<script is:inline define:vars={{ target }}>
+  window.location.replace(target);
+</script>
