@@ -1,0 +1,13 @@
+---
+import ObjectDetailPage from "../../../../../../components/ObjectDetailPage.astro";
+import { getCollection } from "astro:content";
+
+const entries = await getCollection("datastandaard-objectenhandboek-objects");
+const entry = entries.find((item) => item.id === "bedienings-en-besturingsinstallatie" || item.id === "bedienings-en-besturingsinstallatie.md");
+
+if (!entry) {
+  throw new Error("Objectenhandboekpagina ontbreekt voor Bedienings- en besturingsinstallatie.");
+}
+---
+
+<ObjectDetailPage entry={entry} />

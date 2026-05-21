@@ -1,0 +1,59 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "./Hero.astro";
+import HandbookHeroCard from "./HandbookHeroCard.astro";
+import ConceptSummarySection from "./ConceptSummarySection.astro";
+import ObjectClassificationSection from "./ObjectClassificationSection.astro";
+import ProductSection from "./ProductSection.astro";
+import UitwerkingSection from "./UitwerkingSection.astro";
+import VervolgSection from "./VervolgSection.astro";
+import { getObjectHandbookHref } from "../lib/objectenhandboekHandbooks";
+import { createObjectBreadcrumbs } from "../lib/objectenhandboekBreadcrumbs";
+import { normalizeObjectUitwerkingSections } from "../lib/uitwerkingSections";
+
+interface Props {
+  entry: {
+    id: string;
+    data: Record<string, any>;
+  };
+}
+
+const { entry } = Astro.props;
+const contentSections = entry.data.contentSections || [];
+const uitwerkingSections = normalizeObjectUitwerkingSections(contentSections, {
+  compositionTypes: entry.data.compositionTypes || [],
+  subtypeIconTitle: entry.data.heroTitle || entry.data.title,
+  includeTypen: false
+});
+---
+
+<BaseLayout
+  title={entry.data.title}
+  currentPath="/datastandaard"
+  breadcrumbs={createObjectBreadcrumbs(entry)}
+>
+  <Hero eyebrow="Objectenhandboek" title={entry.data.heroTitle || entry.data.title} summary={entry.data.summary}>
+    <HandbookHeroCard slot="aside" href={getObjectHandbookHref(entry.id)} />
+  </Hero>
+
+  <ConceptSummarySection
+    subjectLabel={entry.data.title}
+    definition={entry.data.definition}
+    definitionSource={entry.data.definitionSource}
+    synonyms={entry.data.synonyms || []}
+    relatedTerms={entry.data.terms || []}
+    conceptVideos={entry.data.conceptVideos || []}
+    definitionTypes={entry.data.definitionTypes || []}
+  />
+
+  <UitwerkingSection
+    title={`Inhoudelijke opbouw van ${entry.data.title}`}
+    items={uitwerkingSections}
+  />
+
+  <ProductSection eyebrow="Productlijn" items={entry.data.productRelations || []} />
+
+  <VervolgSection title="Logische volgende stappen binnen deze lijn" items={entry.data.nextSteps || []} />
+
+  <ObjectClassificationSection classification={entry.data.classification} />
+</BaseLayout>

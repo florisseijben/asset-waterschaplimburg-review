@@ -1,0 +1,13 @@
+---
+import ObjectDetailPage from "../../../../../../components/ObjectDetailPage.astro";
+import { getCollection } from "astro:content";
+
+const entries = await getCollection("datastandaard-objectenhandboek-objects");
+const entry = entries.find((item) => item.id === "regelmiddel" || item.id === "regelmiddel.md");
+
+if (!entry) {
+  throw new Error("Objectenhandboekpagina ontbreekt voor Regelmiddel.");
+}
+---
+
+<ObjectDetailPage entry={entry} />
