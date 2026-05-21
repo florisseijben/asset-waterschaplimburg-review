@@ -12,10 +12,9 @@ import { getObjectHandbookHref } from "../../../../../../lib/objectenhandboekHan
 import { createObjectBreadcrumbs } from "../../../../../../lib/objectenhandboekBreadcrumbs";
 import { normalizeObjectUitwerkingSections } from "../../../../../../lib/uitwerkingSections";
 
-const stuwPrefix = "/datastandaard/objectenhandboek/watersysteem/kunstwerken/stuw/";
-
 export async function getStaticPaths() {
   const entries = await getCollection("datastandaard-objectenhandboek-objects");
+  const stuwPrefix = "/datastandaard/objectenhandboek/watersysteem/kunstwerken/stuw/";
 
   return entries
     .filter((entry) => {
