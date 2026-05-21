@@ -29,7 +29,7 @@ classification:
     - objectenhandboek-procesautomatisering
     - objectenhandboek-informatie-en-data
   confidence: afgeleid
-definition: Aandrijving en bewegingswerk omvat de voorzieningen waarmee het regelmiddel van een stuw wordt bewogen en bediend.
+definition: Aandrijving en bewegingswerk omvat de voorzieningen waarmee de regelconstructie van een stuw wordt bewogen en bediend.
 definitionSource: "Werkdefinitie voor de stuwdecompositie binnen het Objectenhandboek."
 terms:
   - title: Stuw
@@ -37,7 +37,7 @@ terms:
     href: /datastandaard/objectenhandboek/watersysteem/kunstwerken/stuw
 contentSections:
   - title: Overzicht / Samenhang
-    summary: Binnen de decompositie van Stuw vormt Aandrijving en bewegingswerk de technische schakel tussen regeling, bediening en beweging van het regelmiddel.
+    summary: Binnen de decompositie van Stuw vormt Aandrijving en bewegingswerk de technische schakel tussen regeling, bediening en beweging van de regelconstructie.
   - title: Afbakening
     summary: De afbakening volgt de mechanische en elektrische voorzieningen die direct bijdragen aan het verplaatsen van klep, schuif, schotbalken of balg.
   - title: Onderdelen

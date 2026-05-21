@@ -66,7 +66,7 @@ const relationKind: "crossing" | "regulating" | "supporting" = crossingKunstwerk
     : "supporting";
 const relationSummary =
   kunstwerkId === "stuw"
-    ? "Stuw is een type Kunstwerk, ligt in een Watergangsectie en bestaat uit de onderdelen Stuwhoofd, Regelmiddel, Aandrijving en bewegingswerk en Bedienings- en besturingsinstallatie."
+    ? "Stuw is een type Kunstwerk, ligt in een Watergangsectie en bestaat uit de onderdelen Stuwhoofd, Regelconstructie, Aandrijving en bewegingswerk en Bedienings- en besturingsinstallatie."
     : relationKind === "crossing"
     ? `${entry.data.title} is een kruisend kunstwerktype dat invulling geeft aan een Intersectie binnen de watergangstructuur.`
     : relationKind === "regulating"
@@ -85,7 +85,7 @@ const typeRelationTriples =
     ? `object:stuw relatie:isType object:kunstwerk .
 object:stuw relatie:ligtIn object:watergangsectie .
 object:stuw relatie:heeftOnderdeel object:stuwhoofd .
-object:stuw relatie:heeftOnderdeel object:regelmiddel .
+object:stuw relatie:heeftOnderdeel object:regelconstructie .
 object:stuw relatie:heeftOnderdeel object:aandrijving-en-bewegingswerk .
 object:stuw relatie:heeftOnderdeel object:bedienings-en-besturingsinstallatie .`
     : relationKind === "crossing"
@@ -187,8 +187,8 @@ object:watergangsectie a owl:Class ;
 object:stuwhoofd a owl:Class ;
   rdfs:label "Stuwhoofd" .
 
-object:regelmiddel a owl:Class ;
-  rdfs:label "Regelmiddel" .
+object:regelconstructie a owl:Class ;
+  rdfs:label "Regelconstructie" .
 
 object:aandrijving-en-bewegingswerk a owl:Class ;
   rdfs:label "Aandrijving en bewegingswerk" .
@@ -208,7 +208,7 @@ relatie:heeftOnderdeel a owl:ObjectProperty ;
 object:stuw relatie:isType object:kunstwerk .
 object:stuw relatie:ligtIn object:watergangsectie .
 object:stuw relatie:heeftOnderdeel object:stuwhoofd .
-object:stuw relatie:heeftOnderdeel object:regelmiddel .
+object:stuw relatie:heeftOnderdeel object:regelconstructie .
 object:stuw relatie:heeftOnderdeel object:aandrijving-en-bewegingswerk .
 object:stuw relatie:heeftOnderdeel object:bedienings-en-besturingsinstallatie .
 `;

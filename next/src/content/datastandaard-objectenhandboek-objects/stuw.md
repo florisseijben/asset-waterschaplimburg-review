@@ -62,22 +62,19 @@ metadata:
     value: https://data.waterschaplimburg.nl/id/objecttype/stuw
 contentSections:
   - title: Overzicht / Samenhang
-    summary: We onderscheiden verschillende soorten stuwen op basis van het type stuwhoofd (waterkerende constructie of een grondlichaam), het type regelmiddel (klepconstructie, schuifconstructie, schotbalkconstructie en balgconstructie), het type aandrijving en bewegingswerk en de regelbaarheid (niet regelbaar, handmatig regelbaar, mechanisch automatisch regelbaar, elektrisch automatisch regelbaar).
+    summary: We onderscheiden verschillende soorten stuwen op basis van het type stuwhoofd (waterkerende constructie of een grondlichaam), het type regelconstructie (klepconstructie, schuifconstructie, schotbalkconstructie en balgconstructie), het type aandrijving en bewegingswerk en de regelbaarheid van de regelconstructie.
   - title: Onderdelen
-    summary: De decompositie van Stuw bestaat in de basis uit vijf onderdelen die ieder als eigen objectpagina zijn uitgewerkt.
+    summary: De decompositie van Stuw bestaat in de basis uit vier onderdelen die ieder als eigen objectpagina zijn uitgewerkt.
     items:
       - title: Stuwhoofd
         text: Constructief hoofddeel van de stuw met typen naar hoofdvorm.
         href: /datastandaard/objectenhandboek/watersysteem/kunstwerken/stuw/stuwhoofd
-      - title: Regelmiddel
+      - title: Regelconstructie
         text: Functioneel onderdeel waarmee de doorlaat en waterstand worden ingesteld.
-        href: /datastandaard/objectenhandboek/watersysteem/kunstwerken/stuw/regelmiddel
+        href: /datastandaard/objectenhandboek/watersysteem/kunstwerken/stuw/regelconstructie
       - title: Aandrijving en bewegingswerk
-        text: Technische voorzieningen waarmee het regelmiddel wordt bewogen en bediend.
+        text: Technische voorzieningen waarmee de regelconstructie wordt bewogen en bediend.
         href: /datastandaard/objectenhandboek/watersysteem/kunstwerken/stuw/aandrijving-en-bewegingswerk
-      - title: Regelbaarheid
-        text: Indeling naar de mate en manier van regelbaarheid van de stuw.
-        href: /datastandaard/objectenhandboek/watersysteem/kunstwerken/stuw/regelbaarheid
       - title: Bedienings- en besturingsinstallatie
         text: Installatieonderdelen voor bediening, sturing, monitoring en telemetrie.
         href: /datastandaard/objectenhandboek/watersysteem/kunstwerken/stuw/bedienings-en-besturingsinstallatie

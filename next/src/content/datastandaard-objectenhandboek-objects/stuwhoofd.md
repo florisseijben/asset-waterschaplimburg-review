@@ -27,7 +27,7 @@ classification:
     - objectenhandboek-civiele-techniek
     - objectenhandboek-informatie-en-data
   confidence: afgeleid
-definition: Het stuwhoofd is het constructieve hoofddeel van de stuw waarin de waterkerende opbouw en de opname van het regelmiddel zijn ondergebracht.
+definition: Het stuwhoofd is het constructieve hoofddeel van de stuw waarin de waterkerende opbouw en de opname van de regelconstructie zijn ondergebracht.
 definitionSource: "Werkdefinitie voor de stuwdecompositie binnen het Objectenhandboek."
 terms:
   - title: Stuw
