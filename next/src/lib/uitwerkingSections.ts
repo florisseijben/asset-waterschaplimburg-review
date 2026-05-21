@@ -53,7 +53,7 @@ const PROTECTION_REGULATION_LINK: SectionTextLink = {
   href: "https://iplo.nl/regelgeving/regels-voor-activiteiten/beperkingengebiedactiviteit-weg/decentrale-regels/"
 };
 const PARTS_TITLE = "Onderdelen";
-const ARCHETYPES_TITLE = "Archetypen";
+const ARCHETYPES_TITLE = "Typen";
 const OVERVIEW_KEYS = new Set(["overzicht", "samenhang", "overzicht-samenhang"]);
 const SPATIAL_DESCRIPTION_KEYS = new Set(["afbakening", "geometrie", "ruimtelijke-beschrijving"]);
 const CONDITION_DESCRIPTION_KEYS = new Set(["toestand", "beschrijving-van-de-toestand"]);
@@ -547,7 +547,7 @@ function createPartsSection(
     usesArchetypes ? ARCHETYPES_TITLE : PARTS_TITLE,
     sections,
     usesArchetypes
-      ? "Deze pagina onderscheidt de archetypen binnen deze objectlijn."
+      ? "Deze pagina onderscheidt de typen binnen deze objectlijn."
       : "Voor dit objecttype zijn nog geen onderliggende onderdelen uitgewerkt."
   );
   const generatedItems =

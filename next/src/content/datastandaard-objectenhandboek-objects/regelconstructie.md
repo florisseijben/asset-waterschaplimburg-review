@@ -37,6 +37,31 @@ terms:
   - title: Stuw
     text: Bovenliggend kunstwerktype waarin Regelconstructie als onderdeel wordt onderscheiden.
     href: /datastandaard/objectenhandboek/watersysteem/kunstwerken/stuw
+compositionTypes:
+  - title: Klepconstructie
+    text: Regelconstructie waarbij een klep de doorlaat of waterstand instelt.
+    image:
+      src: /images/objectenhandboek/Stuw/stuw met klepconstructie.jpg
+      alt: Stuw met klepconstructie.
+    caption: Regelconstructietype klepconstructie.
+  - title: Schuifconstructie
+    text: Regelconstructie waarbij een schuif de doorlaat of waterstand instelt.
+    image:
+      src: /images/objectenhandboek/Stuw/stuw met schuifconstructie.jpg
+      alt: Stuw met schuifconstructie.
+    caption: Regelconstructietype schuifconstructie.
+  - title: Schotbalkconstructie
+    text: Regelconstructie waarbij schotbalken de waterhoogte stapsgewijs instellen.
+    image:
+      src: /images/objectenhandboek/Stuw/stuw met schotbalkconstructie.jpg
+      alt: Stuw met schotbalkconstructie.
+    caption: Regelconstructietype schotbalkconstructie.
+  - title: Balgconstructie
+    text: Regelconstructie waarbij een balgconstructie de kerende of regelende functie verzorgt.
+    image:
+      src: /images/objectenhandboek/Stuw/stuw met balgconstructie.jpg
+      alt: Stuw met balgconstructie.
+    caption: Regelconstructietype balgconstructie.
 contentSections:
   - title: Overzicht / Samenhang
     summary: Binnen de decompositie van Stuw vormt Regelconstructie het functionele onderdeel waarmee de regeling van waterpeil en doorlaat plaatsvindt. De regelbaarheid beschrijft of en op welke manier de regelconstructie ingesteld en aangestuurd kan worden.
@@ -67,33 +92,6 @@ contentSections:
         caption: Elektrisch automatisch regelbare stuw.
   - title: Afbakening
     summary: De afbakening volgt de bewegende of instelbare delen die direct bijdragen aan het openen, sluiten of begrenzen van de doorlaat.
-  - title: Onderdelen
-    summary: Binnen Regelconstructie worden onderstaande typen onderscheiden.
-    items:
-      - title: Klepconstructie
-        text: Regelconstructie waarbij een klep de doorlaat of waterstand instelt.
-        image:
-          src: /images/objectenhandboek/Stuw/stuw met klepconstructie.jpg
-          alt: Stuw met klepconstructie.
-        caption: Regelconstructietype klepconstructie.
-      - title: Schuifconstructie
-        text: Regelconstructie waarbij een schuif de doorlaat of waterstand instelt.
-        image:
-          src: /images/objectenhandboek/Stuw/stuw met schuifconstructie.jpg
-          alt: Stuw met schuifconstructie.
-        caption: Regelconstructietype schuifconstructie.
-      - title: Schotbalkconstructie
-        text: Regelconstructie waarbij schotbalken de waterhoogte stapsgewijs instellen.
-        image:
-          src: /images/objectenhandboek/Stuw/stuw met schotbalkconstructie.jpg
-          alt: Stuw met schotbalkconstructie.
-        caption: Regelconstructietype schotbalkconstructie.
-      - title: Balgconstructie
-        text: Regelconstructie waarbij een balgconstructie de kerende of regelende functie verzorgt.
-        image:
-          src: /images/objectenhandboek/Stuw/stuw met balgconstructie.jpg
-          alt: Stuw met balgconstructie.
-        caption: Regelconstructietype balgconstructie.
 productRelations:
   - title: Object Type Library
     text: Modellering van eigenschappen en relaties van Regelconstructie.
