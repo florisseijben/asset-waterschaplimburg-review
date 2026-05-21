@@ -22,8 +22,7 @@ const { entry } = Astro.props;
 const contentSections = entry.data.contentSections || [];
 const uitwerkingSections = normalizeObjectUitwerkingSections(contentSections, {
   compositionTypes: entry.data.compositionTypes || [],
-  subtypeIconTitle: entry.data.heroTitle || entry.data.title,
-  includeTypen: false
+  subtypeIconTitle: entry.data.heroTitle || entry.data.title
 });
 ---
 
