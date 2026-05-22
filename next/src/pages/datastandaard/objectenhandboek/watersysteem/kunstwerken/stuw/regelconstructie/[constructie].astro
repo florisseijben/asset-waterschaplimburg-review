@@ -2,14 +2,13 @@
 import ObjectDetailPage from "../../../../../../../components/ObjectDetailPage.astro";
 import { getCollection } from "astro:content";
 
-const constructiePages = [
-  { path: "balgconstructie", id: "balgconstructie", title: "Balgconstructie" },
-  { path: "klepconstructie", id: "klepconstructie", title: "Klepconstructie" },
-  { path: "schotbalkconstructie", id: "schotbalkconstructie", title: "Schotbalkconstructie" },
-  { path: "schuifconstructie", id: "schuifconstructie", title: "Schuifconstructie" }
-];
-
 export async function getStaticPaths() {
+  const constructiePages = [
+    { path: "balgconstructie", id: "balgconstructie", title: "Balgconstructie" },
+    { path: "klepconstructie", id: "klepconstructie", title: "Klepconstructie" },
+    { path: "schotbalkconstructie", id: "schotbalkconstructie", title: "Schotbalkconstructie" },
+    { path: "schuifconstructie", id: "schuifconstructie", title: "Schuifconstructie" }
+  ];
   const entries = await getCollection("datastandaard-objectenhandboek-objects");
 
   return constructiePages.map(({ path, id, title }) => {
