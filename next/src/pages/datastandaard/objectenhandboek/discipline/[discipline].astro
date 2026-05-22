@@ -1,9 +1,5 @@
 ---
-import BaseLayout from "../../../../layouts/BaseLayout.astro";
-import Hero from "../../../../components/Hero.astro";
-import CardGrid from "../../../../components/CardGrid.astro";
-import HandbookHeroCard from "../../../../components/HandbookHeroCard.astro";
-import InfoCard from "../../../../components/InfoCard.astro";
+import ObjectenhandboekChapterPage from "../../../../components/ObjectenhandboekChapterPage.astro";
 import { getCollection } from "astro:content";
 import { getDisciplineScopes } from "../../../../lib/objectenhandboekHandbooks";
 import { objectenhandboekTaxonomy } from "../../../../lib/objectenhandboekTaxonomy";
@@ -67,71 +63,70 @@ const getFamilyTypeSummary = (family) =>
   family.id === "werktuigbouwkundige-constructies"
     ? `Typen naar decompositie: ${mechanicalConstructionTypes.join(", ")}.`
     : "";
+const familyItems = objectFamilyCards.map(({ family, entries }) => ({
+  title: getFamilyCardTitle(family),
+  text: [getFamilyCardText(family, entries.length), getFamilyTypeSummary(family)]
+    .filter(Boolean)
+    .join(" "),
+  href: family.href
+}));
+const objectTypeItems = objectEntries.map((entry) => ({
+  title: entry.data.heroTitle || entry.data.title,
+  text: entry.data.summary,
+  href: entry.data.slug
+}));
+const disciplineEntry = {
+  data: {
+    title: `Objectenhandboek ${scope.label}`,
+    slug: scope.landingHref,
+    part: "datastandaard",
+    product: "objectenhandboek",
+    ownerTeam: "datastandaard",
+    status: "concept",
+    pageType: "chapter",
+    heroEyebrow: "Objectenhandboek discipline",
+    heroTitle: scope.label,
+    summary: `Deze disciplinepagina verzamelt de objecttypen die relevant zijn voor ${scope.label.toLowerCase()}. Je kunt de digitale objectpagina's openen of de selectie als printbaar handboek bekijken.`,
+    uitwerkingTitle: `Hoofdstukindeling voor ${scope.label}`,
+    nextStepsTitle: "Digitale objectpagina's binnen deze discipline",
+    contentSections: [
+      {
+        title: "Overzicht / Samenhang",
+        summary: `${scope.label} vormt binnen het Objectenhandboek een discipline-ingang naast de systeemingangen. De pagina ordent de beschikbare objecttypen eerst via objectfamilies en verwijst daarna door naar de digitale objectpagina's.`
+      },
+      {
+        title: "Objectfamilies",
+        summary: familyItems.length
+          ? "Deze objectfamilies vormen de primaire ingangen binnen deze discipline."
+          : "Objectfamilies worden automatisch gevuld zodra objecttypen aan deze discipline zijn gekoppeld.",
+        items: familyItems
+      }
+    ],
+    productRelations: [
+      {
+        title: "Printbare versie",
+        text: `Bekijk de selectie voor ${scope.label.toLowerCase()} als printbaar handboek.`,
+        href: scope.href
+      },
+      {
+        title: "Objectenhandboek",
+        text: "Terug naar de systeem- en discipline-ingangen van het Objectenhandboek.",
+        href: "/datastandaard/objectenhandboek"
+      }
+    ],
+    nextSteps: objectTypeItems
+  }
+};
 ---
 
-<BaseLayout
-  title={`Objectenhandboek ${scope.label}`}
-  currentPath="/datastandaard"
+<ObjectenhandboekChapterPage
+  entry={disciplineEntry}
+  subjectLabel={scope.label}
+  handbookHref={scope.href}
   breadcrumbs={[
     { label: "Home", href: "/" },
     { label: "Datastandaard", href: "/datastandaard" },
     { label: "Objectenhandboek", href: "/datastandaard/objectenhandboek" },
     { label: scope.label }
   ]}
->
-  <Hero
-    eyebrow="Objectenhandboek discipline"
-    title={scope.label}
-    summary={`Deze disciplinepagina verzamelt de objecttypen die relevant zijn voor ${scope.label.toLowerCase()}. Je kunt de digitale objectpagina's openen of de selectie als printbaar handboek bekijken.`}
-  >
-    <HandbookHeroCard
-      slot="aside"
-      href={scope.href}
-    />
-  </Hero>
-
-  <section class="section section-panel">
-    <p class="eyebrow">Objectfamilies</p>
-    <h2>Primaire ingangen binnen deze discipline</h2>
-    {objectFamilyCards.length > 0 ? (
-      <CardGrid roomy>
-        {objectFamilyCards.map(({ family, entries }) => (
-          <InfoCard
-            title={getFamilyCardTitle(family)}
-            text={getFamilyCardText(family, entries.length)}
-            href={family.href}
-            iconTitle={family.label}
-          >
-            {getFamilyTypeSummary(family) && <p>{getFamilyTypeSummary(family)}</p>}
-          </InfoCard>
-        ))}
-      </CardGrid>
-    ) : (
-      <p class="content-copy">
-        Er zijn nog geen objectfamilies met deze discipline gekoppeld. De bundel wordt automatisch gevuld zodra
-        deze classificatie beschikbaar is.
-      </p>
-    )}
-  </section>
-
-  <section class="section section-panel">
-    <p class="eyebrow">Objecttypen</p>
-    <h2>Digitale objectpagina's binnen deze discipline</h2>
-    {objectEntries.length > 0 ? (
-      <CardGrid roomy>
-        {objectEntries.map((entry) => (
-          <InfoCard
-            title={entry.data.heroTitle || entry.data.title}
-            text={entry.data.summary}
-            href={entry.data.slug}
-          />
-        ))}
-      </CardGrid>
-    ) : (
-      <p class="content-copy">
-        Er zijn nog geen objecttypepagina's met deze discipline gekoppeld. De bundel wordt automatisch gevuld zodra
-        deze classificatie beschikbaar is.
-      </p>
-    )}
-  </section>
-</BaseLayout>
+/>
