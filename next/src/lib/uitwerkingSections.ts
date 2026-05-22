@@ -99,7 +99,7 @@ function createTypenSection(compositionTypes: SectionLinkItem[] = [], subtypeIco
   return {
     title: "Typen",
     summary: compositionTypes.length
-      ? "Deze pagina onderscheidt de typen naar compositie binnen deze lijn."
+      ? "Deze pagina onderscheidt de typen naar decompositie binnen deze lijn."
       : "Typen en varianten voor deze pagina worden later uitgewerkt.",
     items: compositionTypes.length
       ? compositionTypes.map((compositionType) => ({
@@ -565,10 +565,10 @@ function createPartsSection(
 function normalizeSectionLinks(section: ContentSection) {
   return {
     ...section,
-    href: getObjectTypeHref(section.title, section.href),
+    href: section.href || getObjectTypeHref(section.title),
     items: section.items?.map((item) => ({
       ...item,
-      href: getObjectTypeHref(item.title, item.href)
+      href: item.href || getObjectTypeHref(item.title)
     }))
   };
 }
@@ -683,10 +683,10 @@ export function normalizeUitwerkingSections(
 
     return {
       ...normalizedSection,
-      href: getObjectTypeHref(normalizedSection.title, normalizedSection.href),
+      href: normalizedSection.href || getObjectTypeHref(normalizedSection.title),
       items: normalizedSection.items?.map((item) => ({
         ...(normalizeKey(normalizedSection.title) === "typen" ? withoutMedia(item) : item),
-        href: getObjectTypeHref(item.title, item.href)
+        href: item.href || getObjectTypeHref(item.title)
       }))
     };
   });

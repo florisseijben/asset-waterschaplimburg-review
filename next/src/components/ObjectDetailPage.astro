@@ -16,12 +16,49 @@ interface Props {
     id: string;
     data: Record<string, any>;
   };
+  breadcrumbTrail?: {
+    label: string;
+    href?: string;
+  }[];
 }
 
-const { entry } = Astro.props;
+const { entry, breadcrumbTrail } = Astro.props;
+const currentPath = Astro.url.pathname;
+const normalizePath = (value: string) => {
+  let path = String(value || "").split(/[?#]/)[0] || "/";
+  const base = String(import.meta.env.BASE_URL || "/").replace(/\/+$/g, "");
+
+  if (base && base !== "/" && (path === base || path.startsWith(`${base}/`))) {
+    path = path.slice(base.length) || "/";
+  }
+
+  return path.replace(/\/+$/g, "") || "/";
+};
+const legacyRegelconstructieBase = "/datastandaard/objectenhandboek/watersysteem/kunstwerken/stuw/regelconstructie";
+const routePath = normalizePath(currentPath);
+const constructieSlugByTitle = new Map([
+  ["Balgconstructie", "balgconstructie"],
+  ["Klepconstructie", "klepconstructie"],
+  ["Schotbalkconstructie", "schotbalkconstructie"],
+  ["Schuifconstructie", "schuifconstructie"]
+]);
+const isLegacyRegelconstructieRoute =
+  routePath === legacyRegelconstructieBase || routePath.startsWith(`${legacyRegelconstructieBase}/`);
+const compositionTypes = isLegacyRegelconstructieRoute
+  ? (entry.data.compositionTypes || []).map((item) => {
+      const slug = constructieSlugByTitle.get(item.title);
+
+      return slug
+        ? {
+            ...item,
+            href: `${legacyRegelconstructieBase}/${slug}`
+          }
+        : item;
+    })
+  : entry.data.compositionTypes || [];
 const contentSections = entry.data.contentSections || [];
 const uitwerkingSections = normalizeObjectUitwerkingSections(contentSections, {
-  compositionTypes: entry.data.compositionTypes || [],
+  compositionTypes,
   subtypeIconTitle: entry.data.heroTitle || entry.data.title
 });
 ---
@@ -29,7 +66,10 @@ const uitwerkingSections = normalizeObjectUitwerkingSections(contentSections, {
 <BaseLayout
   title={entry.data.title}
   currentPath="/datastandaard"
-  breadcrumbs={createObjectBreadcrumbs(entry)}
+  breadcrumbs={createObjectBreadcrumbs(entry, {
+    currentPath,
+    routeTrail: breadcrumbTrail
+  })}
 >
   <Hero eyebrow="Objectenhandboek" title={entry.data.heroTitle || entry.data.title} summary={entry.data.summary}>
     <HandbookHeroCard slot="aside" href={getObjectHandbookHref(entry.id)} />

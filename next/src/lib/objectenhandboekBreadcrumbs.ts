@@ -7,6 +7,8 @@ type Breadcrumb = {
 
 type ObjectBreadcrumbOptions = {
   includeCurrentHref?: boolean;
+  currentPath?: string;
+  routeTrail?: Breadcrumb[];
 };
 
 type ObjectRouteBreadcrumbInput = {
@@ -41,6 +43,67 @@ function validHref(value?: string) {
   return href;
 }
 
+const normalizeHrefKey = (value?: string) => {
+  let path = String(value || "").split(/[?#]/)[0] || "/";
+  const base = String(import.meta.env.BASE_URL || "/").replace(/\/+$/g, "");
+
+  if (base && base !== "/" && (path === base || path.startsWith(`${base}/`))) {
+    path = path.slice(base.length) || "/";
+  }
+
+  return path.replace(/\/+$/g, "") || "/";
+};
+
+function createTrailBreadcrumbs(
+  entry: any,
+  trail: Breadcrumb[],
+  options: ObjectBreadcrumbOptions = {}
+): Breadcrumb[] {
+  return [
+    ...baseBreadcrumbs,
+    ...trail.map((item, index) => {
+      const isCurrent = index === trail.length - 1;
+      const fallbackHref = isCurrent
+        ? validHref(entry.data.slug) || getObjectTypeHref(item.label)
+        : getObjectTypeHref(item.label);
+      const href = isCurrent && !options.includeCurrentHref
+        ? undefined
+        : validHref(item.href) || fallbackHref;
+
+      return href ? { label: item.label, href } : { label: item.label };
+    })
+  ];
+}
+
+function getObjectRouteTrail(entry: any, currentPath?: string): Breadcrumb[] | undefined {
+  const path = normalizeHrefKey(currentPath);
+  const currentLabel = getObjectTitle(entry);
+  const disciplineBase = "/datastandaard/objectenhandboek/discipline/werktuigbouwkunde";
+  const constructiesBase = `${disciplineBase}/werktuigbouwkundige-constructies`;
+  const regelconstructieBase = `${constructiesBase}/regelconstructie`;
+
+  if (path === constructiesBase || path.startsWith(`${constructiesBase}/`)) {
+    const trail: Breadcrumb[] = [
+      { label: "Werktuigbouwkunde", href: disciplineBase },
+      { label: "Werktuigbouwkundige constructie", href: constructiesBase }
+    ];
+
+    if (path === constructiesBase) {
+      return trail;
+    }
+
+    trail.push({ label: "Regelconstructie", href: regelconstructieBase });
+
+    if (path === regelconstructieBase) {
+      return trail;
+    }
+
+    return [...trail, { label: currentLabel }];
+  }
+
+  return undefined;
+}
+
 const knownAncestorLabelsByParent = new Map<string, string[]>([
   ["stroomgebied", ["Watersysteem"]],
   ["watergang", ["Watersysteem", "Stroomgebied"]],
@@ -54,6 +117,12 @@ const knownAncestorLabelsByParent = new Map<string, string[]>([
 ]);
 
 export function createObjectBreadcrumbs(entry: any, options: ObjectBreadcrumbOptions = {}): Breadcrumb[] {
+  const routeTrail = options.routeTrail || getObjectRouteTrail(entry, options.currentPath);
+
+  if (routeTrail) {
+    return createTrailBreadcrumbs(entry, routeTrail, options);
+  }
+
   const currentLabel = getObjectTitle(entry);
   const currentKey = normalizeKey(currentLabel);
   const hierarchy = Array.isArray(entry.data.hierarchy)

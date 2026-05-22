@@ -99,6 +99,11 @@ const objectFamilies: TaxonomyItem[] = [
     id: "kunstwerken",
     label: "Kunstwerken",
     href: "/datastandaard/objectenhandboek/watersysteem/kunstwerken"
+  },
+  {
+    id: "werktuigbouwkundige-constructies",
+    label: "Werktuigbouwkundige constructies",
+    href: "/datastandaard/objectenhandboek/discipline/werktuigbouwkunde/werktuigbouwkundige-constructies"
   }
 ];
 

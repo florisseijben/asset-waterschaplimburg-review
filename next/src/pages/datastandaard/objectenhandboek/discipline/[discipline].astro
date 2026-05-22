@@ -6,6 +6,7 @@ import HandbookHeroCard from "../../../../components/HandbookHeroCard.astro";
 import InfoCard from "../../../../components/InfoCard.astro";
 import { getCollection } from "astro:content";
 import { getDisciplineScopes } from "../../../../lib/objectenhandboekHandbooks";
+import { objectenhandboekTaxonomy } from "../../../../lib/objectenhandboekTaxonomy";
 
 export function getStaticPaths() {
   return getDisciplineScopes().map((scope) => ({
@@ -24,6 +25,48 @@ const objectEntries = entries
     return Array.isArray(disciplines) && disciplines.includes(scope.id);
   })
   .sort((left, right) => collator.compare(left.data.heroTitle || left.data.title, right.data.heroTitle || right.data.title));
+const objectFamilyById = new Map(objectenhandboekTaxonomy.objectFamilies.map((family) => [family.id, family]));
+const objectFamilyGroups = objectEntries.reduce((groups, entry) => {
+  const familyIds = entry.data.classification?.objectFamilies || [];
+  const ids = Array.isArray(familyIds) && familyIds.length ? familyIds : ["overige-objecttypen"];
+
+  ids.forEach((id) => {
+    const family = objectFamilyById.get(id) || {
+      id,
+      label: "Overige objecttypen"
+    };
+    const group = groups.get(id) || {
+      family,
+      entries: []
+    };
+
+    group.entries.push(entry);
+    groups.set(id, group);
+  });
+
+  return groups;
+}, new Map());
+const objectFamilyCards = [...objectFamilyGroups.values()].sort((left, right) =>
+  collator.compare(left.family.label, right.family.label)
+);
+const mechanicalConstructionTypes = [
+  "Balgconstructie",
+  "Klepconstructie",
+  "Schotbalkconstructie",
+  "Schuifconstructie"
+];
+const getFamilyCardTitle = (family) =>
+  family.id === "werktuigbouwkundige-constructies"
+    ? "Werktuigbouwkundige constructie"
+    : family.label;
+const getFamilyCardText = (family, count) =>
+  family.id === "werktuigbouwkundige-constructies"
+    ? "Primaire objectfamilie voor regelconstructies en de werktuigbouwkundige typen daaronder."
+    : `${count} objecttype${count === 1 ? "" : "n"} binnen deze objectfamilie.`;
+const getFamilyTypeSummary = (family) =>
+  family.id === "werktuigbouwkundige-constructies"
+    ? `Typen naar decompositie: ${mechanicalConstructionTypes.join(", ")}.`
+    : "";
 ---
 
 <BaseLayout
@@ -46,6 +89,30 @@ const objectEntries = entries
       href={scope.href}
     />
   </Hero>
+
+  <section class="section section-panel">
+    <p class="eyebrow">Objectfamilies</p>
+    <h2>Primaire ingangen binnen deze discipline</h2>
+    {objectFamilyCards.length > 0 ? (
+      <CardGrid roomy>
+        {objectFamilyCards.map(({ family, entries }) => (
+          <InfoCard
+            title={getFamilyCardTitle(family)}
+            text={getFamilyCardText(family, entries.length)}
+            href={family.href}
+            iconTitle={family.label}
+          >
+            {getFamilyTypeSummary(family) && <p>{getFamilyTypeSummary(family)}</p>}
+          </InfoCard>
+        ))}
+      </CardGrid>
+    ) : (
+      <p class="content-copy">
+        Er zijn nog geen objectfamilies met deze discipline gekoppeld. De bundel wordt automatisch gevuld zodra
+        deze classificatie beschikbaar is.
+      </p>
+    )}
+  </section>
 
   <section class="section section-panel">
     <p class="eyebrow">Objecttypen</p>

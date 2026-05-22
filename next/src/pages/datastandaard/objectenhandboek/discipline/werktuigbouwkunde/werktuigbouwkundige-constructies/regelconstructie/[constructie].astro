@@ -1,0 +1,32 @@
+---
+import ObjectDetailPage from "../../../../../../../components/ObjectDetailPage.astro";
+import { getCollection } from "astro:content";
+
+const constructiePages = [
+  { path: "balgconstructie", id: "balgconstructie" },
+  { path: "klepconstructie", id: "klepconstructie" },
+  { path: "schotbalkconstructie", id: "schotbalkconstructie" },
+  { path: "schuifconstructie", id: "schuifconstructie" }
+];
+
+export async function getStaticPaths() {
+  const entries = await getCollection("datastandaard-objectenhandboek-objects");
+
+  return constructiePages.map(({ path, id }) => {
+    const entry = entries.find((item) => item.id === id || item.id === `${id}.md`);
+
+    if (!entry) {
+      throw new Error(`Objectenhandboekpagina ontbreekt voor ${id}.`);
+    }
+
+    return {
+      params: { constructie: path },
+      props: { entry }
+    };
+  });
+}
+
+const { entry } = Astro.props;
+---
+
+<ObjectDetailPage entry={entry} />

@@ -1,32 +1,28 @@
 ---
 title: Regelconstructie
-slug: /datastandaard/objectenhandboek/watersysteem/kunstwerken/stuw/regelconstructie
+slug: /datastandaard/objectenhandboek/discipline/werktuigbouwkunde/werktuigbouwkundige-constructies/regelconstructie
 part: datastandaard
 product: objectenhandboek
 ownerTeam: datastandaard
 status: eerste-template
 lastReviewed: 2026-05-20
-summary: Op deze pagina vind je de definitie en afbakening van Regelconstructie, de regelbaarheid en de typen die binnen de stuwdecompositie worden onderscheiden.
+summary: Op deze pagina vind je de definitie en afbakening van Regelconstructie, de regelbaarheid en de werktuigbouwkundige constructietypen die binnen de stuwdecompositie worden onderscheiden.
 heroTitle: Regelconstructie
 hierarchy:
-  - Watersysteem
-  - Stroomgebied
-  - Kunstwerk
-  - Stuw
+  - Werktuigbouwkunde
+  - Werktuigbouwkundige constructie
   - Regelconstructie
 classification:
   systems:
     - watersysteem
   disciplines:
-    - civiele-techniek
     - werktuigbouwkunde
     - procesautomatisering
     - informatie-en-data
   objectFamilies:
-    - kunstwerken
+    - werktuigbouwkundige-constructies
   publications:
     - objectenhandboek-watersysteem
-    - objectenhandboek-civiele-techniek
     - objectenhandboek-werktuigbouwkunde
     - objectenhandboek-procesautomatisering
     - objectenhandboek-informatie-en-data
@@ -34,37 +30,57 @@ classification:
 definition: De regelconstructie is het stuwonderdeel waarmee de doorlaat en daarmee de waterstand actief wordt ingesteld.
 definitionSource: "Werkdefinitie voor de stuwdecompositie binnen het Objectenhandboek."
 terms:
+  - title: Werktuigbouwkundige constructie
+    text: Objectfamilie waarin regelconstructies en hun constructietypen primair worden beheerd.
+    href: /datastandaard/objectenhandboek/discipline/werktuigbouwkunde/werktuigbouwkundige-constructies
   - title: Stuw
-    text: Bovenliggend kunstwerktype waarin Regelconstructie als onderdeel wordt onderscheiden.
+    text: Watersysteemcontext waarin Regelconstructie als onderdeel van een stuw benaderbaar blijft.
     href: /datastandaard/objectenhandboek/watersysteem/kunstwerken/stuw
 compositionTypes:
-  - title: Klepconstructie
-    text: Regelconstructie waarbij een klep de doorlaat of waterstand instelt.
-    image:
-      src: /images/objectenhandboek/Stuw/stuw met klepconstructie.jpg
-      alt: Stuw met klepconstructie.
-    caption: Regelconstructietype klepconstructie.
-  - title: Schuifconstructie
-    text: Regelconstructie waarbij een schuif de doorlaat of waterstand instelt.
-    image:
-      src: /images/objectenhandboek/Stuw/stuw met schuifconstructie.jpg
-      alt: Stuw met schuifconstructie.
-    caption: Regelconstructietype schuifconstructie.
-  - title: Schotbalkconstructie
-    text: Regelconstructie waarbij schotbalken de waterhoogte stapsgewijs instellen.
-    image:
-      src: /images/objectenhandboek/Stuw/stuw met schotbalkconstructie.jpg
-      alt: Stuw met schotbalkconstructie.
-    caption: Regelconstructietype schotbalkconstructie.
   - title: Balgconstructie
     text: Regelconstructie waarbij een balgconstructie de kerende of regelende functie verzorgt.
+    href: /datastandaard/objectenhandboek/discipline/werktuigbouwkunde/werktuigbouwkundige-constructies/regelconstructie/balgconstructie
     image:
       src: /images/objectenhandboek/Stuw/stuw met balgconstructie.jpg
       alt: Stuw met balgconstructie.
     caption: Regelconstructietype balgconstructie.
+  - title: Klepconstructie
+    text: Regelconstructie waarbij een klep de doorlaat of waterstand instelt.
+    href: /datastandaard/objectenhandboek/discipline/werktuigbouwkunde/werktuigbouwkundige-constructies/regelconstructie/klepconstructie
+    image:
+      src: /images/objectenhandboek/Stuw/stuw met klepconstructie.jpg
+      alt: Stuw met klepconstructie.
+    caption: Regelconstructietype klepconstructie.
+  - title: Schotbalkconstructie
+    text: Regelconstructie waarbij schotbalken de waterhoogte stapsgewijs instellen.
+    href: /datastandaard/objectenhandboek/discipline/werktuigbouwkunde/werktuigbouwkundige-constructies/regelconstructie/schotbalkconstructie
+    image:
+      src: /images/objectenhandboek/Stuw/stuw met schotbalkconstructie.jpg
+      alt: Stuw met schotbalkconstructie.
+    caption: Regelconstructietype schotbalkconstructie.
+  - title: Schuifconstructie
+    text: Regelconstructie waarbij een schuif de doorlaat of waterstand instelt.
+    href: /datastandaard/objectenhandboek/discipline/werktuigbouwkunde/werktuigbouwkundige-constructies/regelconstructie/schuifconstructie
+    image:
+      src: /images/objectenhandboek/Stuw/stuw met schuifconstructie.jpg
+      alt: Stuw met schuifconstructie.
+    caption: Regelconstructietype schuifconstructie.
+metadata:
+  - label: Discipline
+    value: Werktuigbouwkunde
+  - label: Objectfamilie
+    value: Werktuigbouwkundige constructie
+  - label: Objecttype
+    value: Regelconstructie
+  - label: Systeemcontext
+    value: Watersysteem > Kunstwerk > Stuw
+  - label: Printbare handboeken
+    value: Objectenhandboek Watersysteem, Objectenhandboek Werktuigbouwkunde, Objectenhandboek Procesautomatisering, Objectenhandboek Informatie en data
+  - label: URI
+    value: https://data.waterschaplimburg.nl/id/objecttype/regelconstructie
 contentSections:
   - title: Overzicht / Samenhang
-    summary: Binnen de decompositie van Stuw vormt Regelconstructie het functionele onderdeel waarmee de regeling van waterpeil en doorlaat plaatsvindt. De regelbaarheid beschrijft of en op welke manier de regelconstructie ingesteld en aangestuurd kan worden.
+    summary: Binnen werktuigbouwkunde is Regelconstructie de constructielijn voor de beweegbare of instelbare delen waarmee waterpeil en doorlaat worden geregeld. Vanuit het watersysteem blijft deze lijn gekoppeld aan Stuw.
     items:
       - title: Niet regelbaar
         text: Regelconstructie met vaste kerende hoogte zonder actieve instelling.
@@ -97,10 +113,13 @@ productRelations:
     text: Modellering van eigenschappen en relaties van Regelconstructie.
     href: /datastandaard/otl
 nextSteps:
-  - title: Stuw
-    text: Terug naar het bovenliggende kunstwerktype.
-    href: /datastandaard/objectenhandboek/watersysteem/kunstwerken/stuw
+  - title: Werktuigbouwkundige constructie
+    text: Terug naar de objectfamilie binnen werktuigbouwkunde.
+    href: /datastandaard/objectenhandboek/discipline/werktuigbouwkunde/werktuigbouwkundige-constructies
     direction: back
+  - title: Stuw
+    text: Watersysteemcontext waarin Regelconstructie als stuwonderdeel wordt gebruikt.
+    href: /datastandaard/objectenhandboek/watersysteem/kunstwerken/stuw
 ---
 
-Deze detailpagina werkt `Regelconstructie` uit als onderdeel van `Stuw`.
+Deze detailpagina werkt `Regelconstructie` uit als werktuigbouwkundige constructie met een watersysteemcontext binnen `Stuw`.

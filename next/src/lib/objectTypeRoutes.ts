@@ -29,6 +29,15 @@ const existingObjectTypeRoutes: ObjectTypeRoute[] = [
   { title: "Waterketen", href: "/datastandaard/objectenhandboek/afvalwaterketen" },
   { title: "Watersysteem", href: "/datastandaard/objectenhandboek/watersysteem" },
   { title: "Waterkeringensysteem", href: "/datastandaard/objectenhandboek/waterkeringensysteem" },
+  { title: "Werktuigbouwkunde", href: "/datastandaard/objectenhandboek/discipline/werktuigbouwkunde" },
+  {
+    title: "Werktuigbouwkundige constructie",
+    href: "/datastandaard/objectenhandboek/discipline/werktuigbouwkunde/werktuigbouwkundige-constructies"
+  },
+  {
+    title: "Werktuigbouwkundige constructies",
+    href: "/datastandaard/objectenhandboek/discipline/werktuigbouwkunde/werktuigbouwkundige-constructies"
+  },
   { title: "Stroomgebied", href: "/datastandaard/objectenhandboek/watersysteem/stroomgebied" },
   { title: "Watergang", href: "/datastandaard/objectenhandboek/watersysteem/watergangen" },
   { title: "Watergangen", href: "/datastandaard/objectenhandboek/watersysteem/watergangen" },
@@ -80,7 +89,26 @@ const existingObjectTypeRoutes: ObjectTypeRoute[] = [
   { title: "Sifon", href: "/datastandaard/objectenhandboek/watersysteem/kunstwerken/sifon" },
   { title: "Stuw", href: "/datastandaard/objectenhandboek/watersysteem/kunstwerken/stuw" },
   { title: "Stuwhoofd", href: "/datastandaard/objectenhandboek/watersysteem/kunstwerken/stuw/stuwhoofd" },
-  { title: "Regelconstructie", href: "/datastandaard/objectenhandboek/watersysteem/kunstwerken/stuw/regelconstructie" },
+  {
+    title: "Regelconstructie",
+    href: "/datastandaard/objectenhandboek/discipline/werktuigbouwkunde/werktuigbouwkundige-constructies/regelconstructie"
+  },
+  {
+    title: "Balgconstructie",
+    href: "/datastandaard/objectenhandboek/discipline/werktuigbouwkunde/werktuigbouwkundige-constructies/regelconstructie/balgconstructie"
+  },
+  {
+    title: "Klepconstructie",
+    href: "/datastandaard/objectenhandboek/discipline/werktuigbouwkunde/werktuigbouwkundige-constructies/regelconstructie/klepconstructie"
+  },
+  {
+    title: "Schotbalkconstructie",
+    href: "/datastandaard/objectenhandboek/discipline/werktuigbouwkunde/werktuigbouwkundige-constructies/regelconstructie/schotbalkconstructie"
+  },
+  {
+    title: "Schuifconstructie",
+    href: "/datastandaard/objectenhandboek/discipline/werktuigbouwkunde/werktuigbouwkundige-constructies/regelconstructie/schuifconstructie"
+  },
   { title: "Aandrijving en bewegingswerk", href: "/datastandaard/objectenhandboek/watersysteem/kunstwerken/stuw/aandrijving-en-bewegingswerk" },
   { title: "Bedienings- en besturingsinstallatie", href: "/datastandaard/objectenhandboek/watersysteem/kunstwerken/stuw/bedienings-en-besturingsinstallatie" },
   { title: "Voorde", href: "/datastandaard/objectenhandboek/watersysteem/kunstwerken/voorde" },

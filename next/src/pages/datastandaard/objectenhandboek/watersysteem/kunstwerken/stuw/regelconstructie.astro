@@ -10,4 +10,13 @@ if (!entry) {
 }
 ---
 
-<ObjectDetailPage entry={entry} />
+<ObjectDetailPage
+  entry={entry}
+  breadcrumbTrail={[
+    { label: "Watersysteem", href: "/datastandaard/objectenhandboek/watersysteem" },
+    { label: "Stroomgebied", href: "/datastandaard/objectenhandboek/watersysteem/stroomgebied" },
+    { label: "Kunstwerk", href: "/datastandaard/objectenhandboek/watersysteem/kunstwerken" },
+    { label: "Stuw", href: "/datastandaard/objectenhandboek/watersysteem/kunstwerken/stuw" },
+    { label: "Regelconstructie" }
+  ]}
+/>

@@ -1,0 +1,42 @@
+---
+import ObjectDetailPage from "../../../../../../../components/ObjectDetailPage.astro";
+import { getCollection } from "astro:content";
+
+const constructiePages = [
+  { path: "balgconstructie", id: "balgconstructie", title: "Balgconstructie" },
+  { path: "klepconstructie", id: "klepconstructie", title: "Klepconstructie" },
+  { path: "schotbalkconstructie", id: "schotbalkconstructie", title: "Schotbalkconstructie" },
+  { path: "schuifconstructie", id: "schuifconstructie", title: "Schuifconstructie" }
+];
+
+export async function getStaticPaths() {
+  const entries = await getCollection("datastandaard-objectenhandboek-objects");
+
+  return constructiePages.map(({ path, id, title }) => {
+    const entry = entries.find((item) => item.id === id || item.id === `${id}.md`);
+
+    if (!entry) {
+      throw new Error(`Objectenhandboekpagina ontbreekt voor ${title}.`);
+    }
+
+    return {
+      params: { constructie: path },
+      props: { entry, title }
+    };
+  });
+}
+
+const { entry, title } = Astro.props;
+---
+
+<ObjectDetailPage
+  entry={entry}
+  breadcrumbTrail={[
+    { label: "Watersysteem", href: "/datastandaard/objectenhandboek/watersysteem" },
+    { label: "Stroomgebied", href: "/datastandaard/objectenhandboek/watersysteem/stroomgebied" },
+    { label: "Kunstwerk", href: "/datastandaard/objectenhandboek/watersysteem/kunstwerken" },
+    { label: "Stuw", href: "/datastandaard/objectenhandboek/watersysteem/kunstwerken/stuw" },
+    { label: "Regelconstructie", href: "/datastandaard/objectenhandboek/watersysteem/kunstwerken/stuw/regelconstructie" },
+    { label: title }
+  ]}
+/>
