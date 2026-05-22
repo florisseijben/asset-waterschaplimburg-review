@@ -1,0 +1,28 @@
+---
+import ObjectDetailPage from "../../../../../../components/ObjectDetailPage.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("datastandaard-objectenhandboek-objects");
+  const entry = entries.find(
+    (item) =>
+      item.id === "werktuigbouwkundige-constructies" ||
+      item.id === "werktuigbouwkundige-constructies.md"
+  );
+
+  if (!entry) {
+    throw new Error("Objectenhandboekpagina ontbreekt voor Werktuigbouwkundige constructie.");
+  }
+
+  return [
+    {
+      params: { discipline: "werktuigbouwkunde" },
+      props: { entry }
+    }
+  ];
+}
+
+const { entry } = Astro.props;
+---
+
+<ObjectDetailPage entry={entry} />
