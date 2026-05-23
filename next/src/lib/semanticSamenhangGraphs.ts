@@ -103,6 +103,37 @@ export function createKunstwerkGraph(): GraphConfig {
   };
 }
 
+export function createWerktuigbouwkundigeConstructieGraph(): GraphConfig {
+  return {
+    layoutNodes: [
+      node("werktuigbouwkunde", "Werktuigbouwkunde", "Discipline", 1, 0, contextFill),
+      node(
+        "werktuigbouwkundige-constructie",
+        "Werktuigbouwkundige constructie",
+        "Objectfamilie",
+        1,
+        1,
+        selectedFill
+      ),
+      node("regelconstructie", "Regelconstructie", "Objecttype", 1, 2, relatedFill),
+      node("balgconstructie", "Balgconstructie", "Type naar decompositie", 0, 3, relatedFill),
+      node("klepconstructie", "Klepconstructie", "Type naar decompositie", 1, 3, relatedFill),
+      node("schotbalkconstructie", "Schotbalkconstructie", "Type naar decompositie", 2, 3, relatedFill),
+      node("schuifconstructie", "Schuifconstructie", "Type naar decompositie", 3, 3, relatedFill),
+      node("stuw", "Stuw", "Watersysteemcontext", 1, 4, contextFill)
+    ],
+    edges: [
+      { from: "werktuigbouwkunde", to: "werktuigbouwkundige-constructie", label: "Bevat objectfamilie" },
+      { from: "werktuigbouwkundige-constructie", to: "regelconstructie", label: "Heeft objecttype" },
+      { from: "regelconstructie", to: "balgconstructie", label: "Heeft type" },
+      { from: "regelconstructie", to: "klepconstructie", label: "Heeft type" },
+      { from: "regelconstructie", to: "schotbalkconstructie", label: "Heeft type" },
+      { from: "regelconstructie", to: "schuifconstructie", label: "Heeft type" },
+      { from: "stuw", to: "regelconstructie", label: "Gebruikt als onderdeel" }
+    ]
+  };
+}
+
 export function createKunstwerkTypeGraph(
   typeId: string,
   typeLabel: string,

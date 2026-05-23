@@ -1,6 +1,19 @@
 ---
-import ObjectDetailPage from "../../../../../../components/ObjectDetailPage.astro";
+import BaseLayout from "../../../../../../layouts/BaseLayout.astro";
+import Hero from "../../../../../../components/Hero.astro";
+import HandbookHeroCard from "../../../../../../components/HandbookHeroCard.astro";
+import ConceptSummarySection from "../../../../../../components/ConceptSummarySection.astro";
+import ObjectClassificationSection from "../../../../../../components/ObjectClassificationSection.astro";
+import SemanticSamenhangSection from "../../../../../../components/SemanticSamenhangSection.astro";
+import ProductSection from "../../../../../../components/ProductSection.astro";
+import UitwerkingSection from "../../../../../../components/UitwerkingSection.astro";
+import VervolgSection from "../../../../../../components/VervolgSection.astro";
 import { getCollection } from "astro:content";
+import werktuigbouwkundigeConstructieSamenhangTurtle from "../../../../../../data/semantic/werktuigbouwkundige-constructie-samenhang.ttl?raw";
+import { getObjectHandbookHref } from "../../../../../../lib/objectenhandboekHandbooks";
+import { createObjectBreadcrumbs } from "../../../../../../lib/objectenhandboekBreadcrumbs";
+import { normalizeObjectUitwerkingSections } from "../../../../../../lib/uitwerkingSections";
+import { createWerktuigbouwkundigeConstructieGraph } from "../../../../../../lib/semanticSamenhangGraphs";
 
 export async function getStaticPaths() {
   const entries = await getCollection("datastandaard-objectenhandboek-objects");
@@ -23,6 +36,48 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
+const contentSections = entry.data.contentSections || [];
+const visibleContentSections = normalizeObjectUitwerkingSections(contentSections, {
+  compositionTypes: entry.data.compositionTypes || [],
+  subtypeIconTitle: entry.data.heroTitle || entry.data.title
+});
+const samenhangGraph = createWerktuigbouwkundigeConstructieGraph();
 ---
 
-<ObjectDetailPage entry={entry} />
+<BaseLayout
+  title={entry.data.title}
+  currentPath="/datastandaard"
+  breadcrumbs={createObjectBreadcrumbs(entry, { currentPath: Astro.url.pathname })}
+>
+  <Hero eyebrow="Objectenhandboek" title={entry.data.heroTitle || entry.data.title} summary={entry.data.summary}>
+    <HandbookHeroCard slot="aside" href={getObjectHandbookHref(entry.id)} />
+  </Hero>
+
+  <ConceptSummarySection
+    subjectLabel="Werktuigbouwkundige constructie"
+    definition={entry.data.definition}
+    definitionSource={entry.data.definitionSource}
+    synonyms={entry.data.synonyms || []}
+    relatedTerms={entry.data.terms || []}
+    definitionTypes={entry.data.definitionTypes || []}
+  />
+
+  <SemanticSamenhangSection
+    title="Decompositie en hoofdrelaties binnen Werktuigbouwkundige constructie"
+    summary="Deze samenhangsweergave laat zien dat Werktuigbouwkundige constructie de discipline-ingang vormt voor Regelconstructie en de typen naar decompositie, met Stuw als watersysteemcontext."
+    sourceLabel="Dummy Turtle-export uit de semantische modelleertool voor de werktuigbouwkundige constructielijn."
+    graphId="werktuigbouwkundige-constructie-samenhang"
+    selectedId="werktuigbouwkundige-constructie"
+    turtle={werktuigbouwkundigeConstructieSamenhangTurtle}
+    layoutNodes={samenhangGraph.layoutNodes}
+    edges={samenhangGraph.edges}
+  />
+
+  <UitwerkingSection title="Inhoudelijke opbouw van Werktuigbouwkundige constructie" items={visibleContentSections} />
+
+  <ProductSection eyebrow="Productlijn" items={entry.data.productRelations || []} />
+
+  <VervolgSection title="Logische volgende stappen binnen deze lijn" items={entry.data.nextSteps || []} />
+
+  <ObjectClassificationSection classification={entry.data.classification} />
+</BaseLayout>

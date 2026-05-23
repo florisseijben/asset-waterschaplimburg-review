@@ -1,0 +1,49 @@
+@prefix object: <https://data.waterschaplimburg.nl/id/objecttype/> .
+@prefix discipline: <https://data.waterschaplimburg.nl/id/discipline/> .
+@prefix relatie: <https://data.waterschaplimburg.nl/def/relatie/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+discipline:werktuigbouwkunde a owl:Class ;
+  rdfs:label "Werktuigbouwkunde" .
+
+object:werktuigbouwkundige-constructie a owl:Class ;
+  rdfs:label "Werktuigbouwkundige constructie" .
+
+object:regelconstructie a owl:Class ;
+  rdfs:label "Regelconstructie" .
+
+object:balgconstructie a owl:Class ;
+  rdfs:label "Balgconstructie" .
+
+object:klepconstructie a owl:Class ;
+  rdfs:label "Klepconstructie" .
+
+object:schotbalkconstructie a owl:Class ;
+  rdfs:label "Schotbalkconstructie" .
+
+object:schuifconstructie a owl:Class ;
+  rdfs:label "Schuifconstructie" .
+
+object:stuw a owl:Class ;
+  rdfs:label "Stuw" .
+
+relatie:bevatObjectfamilie a owl:ObjectProperty ;
+  rdfs:label "bevat objectfamilie" .
+
+relatie:heeftObjecttype a owl:ObjectProperty ;
+  rdfs:label "heeft objecttype" .
+
+relatie:heeftType a owl:ObjectProperty ;
+  rdfs:label "heeft type" .
+
+relatie:gebruiktAlsOnderdeel a owl:ObjectProperty ;
+  rdfs:label "gebruikt als onderdeel" .
+
+discipline:werktuigbouwkunde relatie:bevatObjectfamilie object:werktuigbouwkundige-constructie .
+object:werktuigbouwkundige-constructie relatie:heeftObjecttype object:regelconstructie .
+object:regelconstructie relatie:heeftType object:balgconstructie .
+object:regelconstructie relatie:heeftType object:klepconstructie .
+object:regelconstructie relatie:heeftType object:schotbalkconstructie .
+object:regelconstructie relatie:heeftType object:schuifconstructie .
+object:stuw relatie:gebruiktAlsOnderdeel object:regelconstructie .
