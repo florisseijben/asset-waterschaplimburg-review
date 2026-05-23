@@ -698,6 +698,14 @@ const handbookBreadcrumbs = [
     : defaultHandbookBreadcrumbs),
   { label: "Printbare versie" }
 ];
+const getNumberDepth = (value: string) =>
+  String(value || "")
+    .split(".")
+    .filter(Boolean).length;
+const hasVisibleNumber = (item: { number?: string }) =>
+  Boolean(item.number) && getNumberDepth(item.number || "") <= 2;
+const getParagraphEyebrow = (item: { number?: string }) =>
+  hasVisibleNumber(item) ? `Paragraaf ${item.number}` : "Paragraaf";
 ---
 
 <BaseLayout
@@ -751,7 +759,9 @@ const handbookBreadcrumbs = [
                               href={`#${tocRow.item.id}`}
                               onclick="event.stopPropagation()"
                             >
-                              <span class="handbook-number">{tocRow.item.number}</span>
+                              {hasVisibleNumber(tocRow.item) && (
+                                <span class="handbook-number">{tocRow.item.number}</span>
+                              )}
                               <span>{tocRow.item.title}</span>
                             </a>
                           </summary>
@@ -762,7 +772,9 @@ const handbookBreadcrumbs = [
                                 style={`--handbook-level: ${Math.max(descendant.depth - tocRow.item.depth - 1, 0)};`}
                               >
                                 <a class="handbook-toc__link" href={`#${descendant.id}`}>
-                                  <span class="handbook-number">{descendant.number}</span>
+                                  {hasVisibleNumber(descendant) && (
+                                    <span class="handbook-number">{descendant.number}</span>
+                                  )}
                                   <span>{descendant.title}</span>
                                 </a>
                               </li>
@@ -771,7 +783,9 @@ const handbookBreadcrumbs = [
                         </details>
                       ) : (
                         <a class="handbook-toc__link" href={`#${tocRow.item.id}`}>
-                          <span class="handbook-number">{tocRow.item.number}</span>
+                          {hasVisibleNumber(tocRow.item) && (
+                            <span class="handbook-number">{tocRow.item.number}</span>
+                          )}
                           <span>{tocRow.item.title}</span>
                         </a>
                       )}
@@ -967,9 +981,9 @@ const handbookBreadcrumbs = [
                   id={item.id}
                   style={`--handbook-level: ${Math.min(item.depth - 1, 3)};`}
                 >
-                  <p class="eyebrow">Paragraaf {item.number}</p>
+                  <p class="eyebrow">{getParagraphEyebrow(item)}</p>
                   <h3>
-                    <span class="handbook-number">{item.number}</span>
+                    {hasVisibleNumber(item) && <span class="handbook-number">{item.number}</span>}
                     <span>{item.title}</span>
                   </h3>
                   {item.summary && <p class="lead">{item.summary}</p>}
