@@ -68,6 +68,29 @@ const chapterLabelsByRoot = new Map([
 const objectFamilyLabelById = new Map(
   objectenhandboekTaxonomy.objectFamilies.map((family) => [family.id, family.label])
 );
+const allHandbookRootLabels = {
+  systems: "Systemen",
+  disciplines: "Disciplines",
+  other: "Overige objecttypen"
+};
+const disciplineHierarchyLabels = new Set(
+  objectenhandboekTaxonomy.disciplines.flatMap((discipline) => [
+    normalizeKey(discipline.id),
+    normalizeKey(discipline.label)
+  ])
+);
+const taxonomyOrderByKey = new Map<string, number>([
+  ...objectenhandboekTaxonomy.systems.flatMap((system, index) => [
+    [normalizeKey(system.id), index] as [string, number],
+    [normalizeKey(system.label), index] as [string, number]
+  ]),
+  [normalizeKey("afvalwaterketen"), 0] as [string, number],
+  [normalizeKey("waterkeringensysteem"), 2] as [string, number],
+  ...objectenhandboekTaxonomy.disciplines.flatMap((discipline, index) => [
+    [normalizeKey(discipline.id), 100 + index] as [string, number],
+    [normalizeKey(discipline.label), 100 + index] as [string, number]
+  ])
+]);
 
 const belongsToClassificationScope = (entry: any) => {
   const classification = entry.data.classification || {};
@@ -81,11 +104,22 @@ const belongsToClassificationScope = (entry: any) => {
   return Array.isArray(values) && values.includes(scope.id);
 };
 
-const createHandbookPath = (entry: any) => {
+const createRawHandbookPath = (entry: any) => {
   const title = getObjectTitle(entry);
-  let path = Array.isArray(entry.data.hierarchy) && entry.data.hierarchy.length > 0
+  const path = Array.isArray(entry.data.hierarchy) && entry.data.hierarchy.length > 0
     ? entry.data.hierarchy.map(String)
     : [title];
+
+  if (!path.some((item) => normalizeKey(item) === normalizeKey(title))) {
+    return [...path, title];
+  }
+
+  return path.length ? path : [title];
+};
+
+const createHandbookPath = (entry: any) => {
+  const title = getObjectTitle(entry);
+  let path = createRawHandbookPath(entry);
 
   if (path.length > 1 && systemHierarchyLabels.has(normalizeKey(path[0]))) {
     path = path.slice(1);
@@ -111,7 +145,33 @@ const getPrimaryObjectFamilyLabel = (entry: any) => {
 const getChapterLabel = (path: string[], entry: any) => {
   const root = normalizeKey(path[0] || getObjectTitle(entry));
 
+  if (scope.kind === "all") {
+    if (systemHierarchyLabels.has(root)) {
+      return allHandbookRootLabels.systems;
+    }
+
+    if (disciplineHierarchyLabels.has(root)) {
+      return allHandbookRootLabels.disciplines;
+    }
+
+    return allHandbookRootLabels.other;
+  }
+
   return chapterLabelsByRoot.get(root) || getPrimaryObjectFamilyLabel(entry);
+};
+
+const getSyntheticNodeSummary = (title: string) => {
+  const key = normalizeKey(title);
+
+  if (systemHierarchyLabels.has(key)) {
+    return `Groepering van objecttypen binnen ${title}.`;
+  }
+
+  if (disciplineHierarchyLabels.has(key)) {
+    return `Groepering van objecttypen die primair vanuit ${title} worden benaderd.`;
+  }
+
+  return undefined;
 };
 
 type HandbookNode = {
@@ -135,6 +195,7 @@ function getOrCreateNode(nodes: HandbookNode[], title: string, path: string[]) {
   const node: HandbookNode = {
     title,
     path,
+    summary: getSyntheticNodeSummary(title),
     sections: [],
     children: []
   };
@@ -164,16 +225,21 @@ function insertNode(nodes: HandbookNode[], path: string[], payload: Partial<Hand
 
 const getNodeSortRank = (title: string) => {
   const key = normalizeKey(title);
+  const taxonomyOrder = taxonomyOrderByKey.get(key);
+
+  if (taxonomyOrder !== undefined) {
+    return taxonomyOrder;
+  }
 
   if (key === "typen") {
-    return 0;
+    return 1000;
   }
 
   if (key === "onderdelen") {
-    return 1;
+    return 1001;
   }
 
-  return 2;
+  return 1002;
 };
 
 function sortNodes(nodes: HandbookNode[]) {
@@ -281,8 +347,18 @@ const getPrintChildItems = (entry: any) => {
   ]);
 };
 
+const canPrintEntryInCurrentScope = (entry: any) =>
+  scope.kind === "all" ||
+  scope.kind === "object" ||
+  belongsToClassificationScope(entry);
+
 const getDirectChildTitleKeys = (entry: any) => {
   const titleKeys = getPrintChildItems(entry)
+    .filter((item: any) => {
+      const childEntry = getObjectEntryForItem(item);
+
+      return !childEntry || canPrintEntryInCurrentScope(childEntry);
+    })
     .map((item: any) => normalizeKey(item.title))
     .filter(Boolean);
 
@@ -335,9 +411,6 @@ const belongsToObjectScope = (entry: any) =>
   scope.kind === "object" &&
   (entry.id === scope.objectEntryId || isDirectChildOfScopeRoot(entry));
 
-const isHiddenInAllObjectsHandbook = (entry: any) =>
-  scope.kind === "all" && normalizeKey(getObjectTitle(entry)) === "stroomgebied";
-
 const isCompositionTypeOfParent = (parentEntry: any, childTitle: string) =>
   (parentEntry.data.compositionTypes || []).some(
     (compositionType: any) => normalizeKey(compositionType.title) === normalizeKey(childTitle)
@@ -379,12 +452,15 @@ const isAllowedInHandbookTree = (entry: any) => {
 
 const scopedEntries = entries.filter(
   (entry) =>
-    !isHiddenInAllObjectsHandbook(entry) &&
     (scope.kind === "object" ? belongsToObjectScope(entry) : belongsToClassificationScope(entry)) &&
     isAllowedInHandbookTree(entry)
 );
 
 const createCategorizedPath = (entry: any) => {
+  if (scope.kind === "all") {
+    return createRawHandbookPath(entry);
+  }
+
   const path = createHandbookPath(entry);
 
   if (scope.kind !== "object" || !scopeRootEntry || entry.id === scopeRootEntry.id) {
@@ -402,18 +478,31 @@ const createCategorizedPath = (entry: any) => {
   return path;
 };
 
+const isPrintedDescendantItem = (entry: any, item: any) => {
+  const childEntry = getObjectEntryForItem(item);
+
+  if (!childEntry || !canPrintEntryInCurrentScope(childEntry)) {
+    return false;
+  }
+
+  const parentPath = createCategorizedPath(entry);
+  const childPath = createCategorizedPath(childEntry);
+
+  return childPath.length > parentPath.length &&
+    parentPath.every((title, index) => normalizeKey(title) === normalizeKey(childPath[index]));
+};
+
 type PrintSectionOptions = {
   excludeOverviewSamenhang?: boolean;
   includeDecompositionOverview?: boolean;
 };
 
-const isHighestPrintLevelEntry = (entry: any, path: string[]) => {
-  if (scope.kind === "object") {
-    return entry.id === scope.objectEntryId;
-  }
-
-  return path.length === 1;
-};
+const childIndexSectionKeys = new Set([
+  "onderdelen",
+  "typen",
+  "typen-naar-decompositie",
+  "decompositie"
+]);
 
 const insertDecompositionSection = (sections: any[], decompositionSection: any) => {
   if (!decompositionSection) {
@@ -434,7 +523,6 @@ const insertDecompositionSection = (sections: any[], decompositionSection: any) 
 };
 
 const getContentSectionsForPrint = (entry: any, options: PrintSectionOptions = {}) => {
-  const childTitleKeys = getDirectChildTitleKeys(entry);
   const decompositionSection = options.includeDecompositionOverview
     ? createDecompositionSectionForPrint(entry)
     : undefined;
@@ -443,19 +531,17 @@ const getContentSectionsForPrint = (entry: any, options: PrintSectionOptions = {
     .filter((section: any) => {
       const sectionKey = normalizeKey(section.title);
 
-      if (options.excludeOverviewSamenhang && sectionKey === "overzicht-samenhang") {
-        return false;
-      }
-
-      return sectionKey !== "typen" && sectionKey !== "decompositie";
+      return !(options.excludeOverviewSamenhang && sectionKey === "overzicht-samenhang");
     })
     .map((section: any) => {
-      if (normalizeKey(section.title) !== "onderdelen" || !(section.items || []).length) {
+      const sectionKey = normalizeKey(section.title);
+
+      if (!childIndexSectionKeys.has(sectionKey) || !(section.items || []).length) {
         return section;
       }
 
       const remainingItems = section.items.filter(
-        (item: any) => !childTitleKeys.has(normalizeKey(item.title))
+        (item: any) => !isPrintedDescendantItem(entry, item)
       );
 
       return remainingItems.length
@@ -496,7 +582,7 @@ scopedEntries.forEach((entry) => {
     summary: entry.data.summary,
     sections: getPrintableSections(entry, {
       excludeOverviewSamenhang: isCompositionTypeParagraph(entry),
-      includeDecompositionOverview: isHighestPrintLevelEntry(entry, categorizedPath)
+      includeDecompositionOverview: false
     })
   });
 
@@ -524,10 +610,6 @@ for (let entryIndex = 0; entryIndex < entryQueue.length; entryIndex += 1) {
   childItems.forEach((childItem: any) => {
     const childEntry = getObjectEntryForItem(childItem);
 
-    if (childEntry && isHiddenInAllObjectsHandbook(childEntry)) {
-      return;
-    }
-
     if (childEntry && scopedEntryIds.has(childEntry.id)) {
       return;
     }
@@ -543,7 +625,8 @@ for (let entryIndex = 0; entryIndex < entryQueue.length; entryIndex += 1) {
         entry: childEntry,
         summary: childEntry.data.summary,
         sections: getPrintableSections(childEntry, {
-          excludeOverviewSamenhang: isCompositionTypeOfParent(entry, getObjectTitle(childEntry))
+          excludeOverviewSamenhang: isCompositionTypeOfParent(entry, getObjectTitle(childEntry)),
+          includeDecompositionOverview: false
         })
       });
       printPathByEntryId.set(childEntry.id, printChildPath);
@@ -567,32 +650,35 @@ const handbookChapters = [...chapterMap.values()]
 
     return chapter;
   })
-  .sort((left, right) => collator.compare(left.label, right.label))
+  .sort((left, right) => {
+    const chapterRanks = new Map<string, number>([
+      [allHandbookRootLabels.systems, 0],
+      [allHandbookRootLabels.disciplines, 1],
+      [allHandbookRootLabels.other, 2]
+    ]);
+    const leftRank = chapterRanks.get(left.label) ?? 10;
+    const rightRank = chapterRanks.get(right.label) ?? 10;
+
+    return leftRank - rightRank || collator.compare(left.label, right.label);
+  })
   .map((chapter, index) => {
-    const promotedRoot = chapter.nodes.length === 1 && chapter.nodes[0].children.length > 0
-      ? chapter.nodes[0]
-      : undefined;
-    const introNode = promotedRoot?.entry ? promotedRoot : undefined;
-    const printableNodes = promotedRoot ? promotedRoot.children : chapter.nodes;
-    const introNumber = introNode ? String(index + 1) : undefined;
-    const introId = introNode ? `${index + 1}-${normalizeKey(introNode.path.join("-"))}` : undefined;
-    const flatNodes = flattenNodes(printableNodes, [index + 1], introNode ? 2 : 1, 0);
-    const tocIntroNode = introNode && introNumber
-      ? [{ ...introNode, depth: 1, number: introNumber, id: introId }]
-      : [];
-    const tocNodes = [...tocIntroNode, ...flatNodes];
+    const introNode: HandbookNode | undefined = undefined;
+    const introNumber: string | undefined = undefined;
+    const introId: string | undefined = undefined;
+    const flatNodes = flattenNodes(chapter.nodes, [index + 1], 1, 0);
+    const tocNodes = flatNodes;
 
     return {
       ...chapter,
       introNode,
       introNumber,
       introId,
-      nodes: printableNodes,
+      nodes: chapter.nodes,
       number: String(index + 1),
       id: normalizeKey(chapter.label),
       flatNodes,
       tocNodes,
-      tocRows: createTocRows(tocNodes, introNode ? 2 : 1)
+      tocRows: createTocRows(tocNodes, 1)
     };
   });
 
