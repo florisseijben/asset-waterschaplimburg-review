@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
 import Hero from "../../../../components/Hero.astro";
+import HandbookTocTree from "../../../../components/HandbookTocTree.astro";
 import PrintPageAction from "../../../../components/PrintPageAction.astro";
 import ResponsiveContentImage from "../../../../components/ResponsiveContentImage.astro";
 import { getCollection } from "astro:content";
@@ -184,6 +185,13 @@ type HandbookNode = {
   children: HandbookNode[];
 };
 
+type NumberedHandbookNode = HandbookNode & {
+  depth: number;
+  number: string;
+  id: string;
+  children: NumberedHandbookNode[];
+};
+
 function getOrCreateNode(nodes: HandbookNode[], title: string, path: string[]) {
   const key = normalizeKey(title);
   const existing = nodes.find((node) => normalizeKey(node.title) === key);
@@ -251,54 +259,23 @@ function sortNodes(nodes: HandbookNode[]) {
   nodes.forEach((node) => sortNodes(node.children));
 }
 
-function flattenNodes(nodes: HandbookNode[], prefix: number[] = [], depth = 1, startIndex = 0): any[] {
-  return nodes.flatMap((node, index) => {
+function numberNodes(nodes: HandbookNode[], prefix: number[] = [], depth = 1, startIndex = 0): NumberedHandbookNode[] {
+  return nodes.map((node, index) => {
     const numberParts = [...prefix, startIndex + index + 1];
-    const numberedNode = {
+    const children = numberNodes(node.children, numberParts, depth + 1);
+
+    return {
       ...node,
       depth,
       number: numberParts.join("."),
-      id: `${numberParts.join("-")}-${normalizeKey(node.path.join("-"))}`
+      id: `${numberParts.join("-")}-${normalizeKey(node.path.join("-"))}`,
+      children
     };
-
-    return [numberedNode, ...flattenNodes(node.children, numberParts, depth + 1)];
   });
 }
 
-function createTocRows(items: any[], collapseDepth: number) {
-  const rows = [];
-
-  for (let index = 0; index < items.length; index += 1) {
-    const item = items[index];
-    const descendants = [];
-
-    if (item.depth === collapseDepth) {
-      let descendantIndex = index + 1;
-
-      while (descendantIndex < items.length && items[descendantIndex].depth > item.depth) {
-        descendants.push(items[descendantIndex]);
-        descendantIndex += 1;
-      }
-
-      if (descendants.length > 0) {
-        rows.push({
-          item,
-          descendants,
-          isCollapsible: true
-        });
-        index = descendantIndex - 1;
-        continue;
-      }
-    }
-
-    rows.push({
-      item,
-      descendants: [],
-      isCollapsible: false
-    });
-  }
-
-  return rows;
+function flattenNumberedNodes(nodes: NumberedHandbookNode[]): NumberedHandbookNode[] {
+  return nodes.flatMap((node) => [node, ...flattenNumberedNodes(node.children)]);
 }
 
 const allEntryByTitleKey = new Map(entries.map((entry) => [normalizeKey(getObjectTitle(entry)), entry]));
@@ -665,20 +642,19 @@ const handbookChapters = [...chapterMap.values()]
     const introNode: HandbookNode | undefined = undefined;
     const introNumber: string | undefined = undefined;
     const introId: string | undefined = undefined;
-    const flatNodes = flattenNodes(chapter.nodes, [index + 1], 1, 0);
-    const tocNodes = flatNodes;
+    const tocTree = numberNodes(chapter.nodes, [index + 1], 1, 0);
+    const flatNodes = flattenNumberedNodes(tocTree);
 
     return {
       ...chapter,
       introNode,
       introNumber,
       introId,
-      nodes: chapter.nodes,
+      nodes: tocTree,
       number: String(index + 1),
       id: normalizeKey(chapter.label),
       flatNodes,
-      tocNodes,
-      tocRows: createTocRows(tocNodes, 1)
+      tocTree
     };
   });
 
@@ -745,53 +721,7 @@ const getParagraphEyebrow = (item: { number?: string }) =>
                     {chapter.label}
                   </a>
                 </summary>
-                <ol class="handbook-toc__sections">
-                  {chapter.tocRows.map((tocRow: any) => (
-                    <li
-                      class="handbook-toc__section"
-                      style={`--handbook-level: ${Math.max(tocRow.item.depth - 1, 0)};`}
-                    >
-                      {tocRow.isCollapsible ? (
-                        <details class="handbook-toc__subdetails">
-                          <summary class="handbook-toc__subsummary">
-                            <a
-                              class="handbook-toc__subsummary-link"
-                              href={`#${tocRow.item.id}`}
-                              onclick="event.stopPropagation()"
-                            >
-                              {hasVisibleNumber(tocRow.item) && (
-                                <span class="handbook-number">{tocRow.item.number}</span>
-                              )}
-                              <span>{tocRow.item.title}</span>
-                            </a>
-                          </summary>
-                          <ol class="handbook-toc__subitems">
-                            {tocRow.descendants.map((descendant: any) => (
-                              <li
-                                class="handbook-toc__subitem"
-                                style={`--handbook-level: ${Math.max(descendant.depth - tocRow.item.depth - 1, 0)};`}
-                              >
-                                <a class="handbook-toc__link" href={`#${descendant.id}`}>
-                                  {hasVisibleNumber(descendant) && (
-                                    <span class="handbook-number">{descendant.number}</span>
-                                  )}
-                                  <span>{descendant.title}</span>
-                                </a>
-                              </li>
-                            ))}
-                          </ol>
-                        </details>
-                      ) : (
-                        <a class="handbook-toc__link" href={`#${tocRow.item.id}`}>
-                          {hasVisibleNumber(tocRow.item) && (
-                            <span class="handbook-number">{tocRow.item.number}</span>
-                          )}
-                          <span>{tocRow.item.title}</span>
-                        </a>
-                      )}
-                    </li>
-                  ))}
-                </ol>
+                <HandbookTocTree items={chapter.tocTree} />
               </details>
             </li>
           ))}

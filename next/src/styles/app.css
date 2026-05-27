@@ -783,6 +783,11 @@ a.classification-tag:focus-visible {
   color: var(--color-deep);
 }
 
+.handbook-toc__subsummary-link--unnumbered,
+.handbook-toc__link--unnumbered {
+  grid-template-columns: minmax(0, 1fr);
+}
+
 .handbook-toc__subsummary-link:hover,
 .handbook-toc__subsummary-link:focus-visible,
 .handbook-toc__link:hover,
@@ -1543,6 +1548,11 @@ a.classification-tag:focus-visible {
   .handbook-toc__link,
   .handbook-toc__subsummary-link {
     grid-template-columns: 3.5rem minmax(0, 1fr);
+  }
+
+  .handbook-toc__link--unnumbered,
+  .handbook-toc__subsummary-link--unnumbered {
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .handbook-toc__summary {

@@ -1,0 +1,72 @@
+---
+interface TocItem {
+  id: string;
+  title: string;
+  number?: string;
+  depth: number;
+  children?: TocItem[];
+}
+
+interface Props {
+  items?: TocItem[];
+  listClass?: string;
+}
+
+const { items = [], listClass = "handbook-toc__sections" } = Astro.props;
+
+const getNumberDepth = (value: string) =>
+  String(value || "")
+    .split(".")
+    .filter(Boolean).length;
+const hasVisibleNumber = (item: TocItem) =>
+  Boolean(item.number) && getNumberDepth(item.number || "") <= 2;
+const getItemClass = (item: TocItem) =>
+  item.depth <= 1 ? "handbook-toc__section" : "handbook-toc__subitem";
+const getItemLevel = (item: TocItem) =>
+  item.depth <= 1 ? Math.max(item.depth - 1, 0) : Math.max(item.depth - 2, 0);
+---
+
+<ol class={listClass}>
+  {items.map((item) => {
+    const children = item.children || [];
+    const isCollapsible = children.length > 0;
+    const isNumbered = hasVisibleNumber(item);
+
+    return (
+      <li
+        class={getItemClass(item)}
+        style={`--handbook-level: ${getItemLevel(item)};`}
+      >
+        {isCollapsible ? (
+          <details class="handbook-toc__subdetails" open>
+            <summary class="handbook-toc__subsummary">
+              <a
+                class:list={[
+                  "handbook-toc__subsummary-link",
+                  !isNumbered && "handbook-toc__subsummary-link--unnumbered"
+                ]}
+                href={`#${item.id}`}
+                onclick="event.stopPropagation()"
+              >
+                {isNumbered && <span class="handbook-number">{item.number}</span>}
+                <span>{item.title}</span>
+              </a>
+            </summary>
+            <Astro.self items={children} listClass="handbook-toc__subitems" />
+          </details>
+        ) : (
+          <a
+            class:list={[
+              "handbook-toc__link",
+              !isNumbered && "handbook-toc__link--unnumbered"
+            ]}
+            href={`#${item.id}`}
+          >
+            {isNumbered && <span class="handbook-number">{item.number}</span>}
+            <span>{item.title}</span>
+          </a>
+        )}
+      </li>
+    );
+  })}
+</ol>
