@@ -589,15 +589,21 @@ const getPrintableSections = (entry: any, options: PrintSectionOptions = {}) =>
 type EntryPrintContext = {
   entry: any;
   path: string[];
+  ancestorEntryIds: string[];
 };
 
 const insertedPathKeys = new Set<string>();
 const entryQueue: EntryPrintContext[] = [];
 
-function insertPrintableEntry(entry: any, path: string[], options: PrintSectionOptions = {}) {
+function insertPrintableEntry(
+  entry: any,
+  path: string[],
+  options: PrintSectionOptions = {},
+  ancestorEntryIds: string[] = []
+) {
   const key = pathKey(path);
 
-  if (!key || insertedPathKeys.has(key)) {
+  if (!key || insertedPathKeys.has(key) || ancestorEntryIds.includes(entry.id)) {
     return false;
   }
 
@@ -617,7 +623,7 @@ function insertPrintableEntry(entry: any, path: string[], options: PrintSectionO
 
   chapterMap.set(chapterLabel, chapter);
   insertedPathKeys.add(key);
-  entryQueue.push({ entry, path });
+  entryQueue.push({ entry, path, ancestorEntryIds: [...ancestorEntryIds, entry.id] });
 
   return true;
 }
@@ -629,7 +635,7 @@ scopedEntries.forEach((entry) => {
 });
 
 for (let entryIndex = 0; entryIndex < entryQueue.length; entryIndex += 1) {
-  const { entry, path: parentPath } = entryQueue[entryIndex];
+  const { entry, path: parentPath, ancestorEntryIds } = entryQueue[entryIndex];
   const childItems = getPrintChildItems(entry);
 
   if (!childItems.length) {
@@ -653,10 +659,15 @@ for (let entryIndex = 0; entryIndex < entryQueue.length; entryIndex += 1) {
         parentPath.every((title, index) => normalizeKey(title) === normalizeKey(childPath[index]));
       const printChildPath = childPathIsBelowParent ? childPath : [...parentPath, getObjectTitle(childEntry)];
 
-      insertPrintableEntry(childEntry, printChildPath, {
-        excludeOverviewSamenhang: isCompositionTypeOfParent(entry, getObjectTitle(childEntry)),
-        includeDecompositionOverview: false
-      });
+      insertPrintableEntry(
+        childEntry,
+        printChildPath,
+        {
+          excludeOverviewSamenhang: isCompositionTypeOfParent(entry, getObjectTitle(childEntry)),
+          includeDecompositionOverview: false
+        },
+        ancestorEntryIds
+      );
       return;
     }
 
