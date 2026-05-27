@@ -291,6 +291,22 @@ const allEntryByHrefKey = new Map(
     .filter(([href]) => href)
 );
 const chapterMap = new Map<string, { label: string; nodes: HandbookNode[] }>();
+const disciplineById = new Map(objectenhandboekTaxonomy.disciplines.map((discipline) => [discipline.id, discipline]));
+const pathKey = (path: string[]) => path.map((part) => normalizeKey(part)).join("/");
+const uniquePaths = (paths: string[][]) => {
+  const seen = new Set<string>();
+
+  return paths.filter((path) => {
+    const key = pathKey(path);
+
+    if (!key || seen.has(key)) {
+      return false;
+    }
+
+    seen.add(key);
+    return true;
+  });
+};
 
 const getOnderdeelItems = (entry: any) =>
   (entry.data.contentSections || []).find((section: any) => normalizeKey(section.title) === "onderdelen")?.items || [];
@@ -455,18 +471,44 @@ const createCategorizedPath = (entry: any) => {
   return path;
 };
 
-const isPrintedDescendantItem = (entry: any, item: any) => {
-  const childEntry = getObjectEntryForItem(item);
+const getDisciplinePrintPath = (entry: any, disciplineId: string) => {
+  const discipline = disciplineById.get(disciplineId);
 
-  if (!childEntry || !canPrintEntryInCurrentScope(childEntry)) {
-    return false;
+  if (!discipline) {
+    return undefined;
   }
 
-  const parentPath = createCategorizedPath(entry);
-  const childPath = createCategorizedPath(childEntry);
+  const rawPath = createRawHandbookPath(entry);
+  const disciplineKey = normalizeKey(discipline.label);
+  const disciplineIdKey = normalizeKey(discipline.id);
+  const rootKey = normalizeKey(rawPath[0] || "");
 
-  return childPath.length > parentPath.length &&
-    parentPath.every((title, index) => normalizeKey(title) === normalizeKey(childPath[index]));
+  if (rootKey === disciplineKey || rootKey === disciplineIdKey) {
+    return rawPath;
+  }
+
+  return [discipline.label, getPrimaryObjectFamilyLabel(entry), getObjectTitle(entry)];
+};
+
+const getInitialPrintPaths = (entry: any) => {
+  if (scope.kind !== "all") {
+    return [createCategorizedPath(entry)];
+  }
+
+  const disciplinePaths = (entry.data.classification?.disciplines || [])
+    .map((disciplineId: string) => getDisciplinePrintPath(entry, disciplineId))
+    .filter(Boolean) as string[][];
+
+  return uniquePaths([
+    createRawHandbookPath(entry),
+    ...disciplinePaths
+  ]);
+};
+
+const isPrintedDescendantItem = (_entry: any, item: any) => {
+  const childEntry = getObjectEntryForItem(item);
+
+  return Boolean(childEntry && canPrintEntryInCurrentScope(childEntry));
 };
 
 type PrintSectionOptions = {
@@ -544,39 +586,56 @@ const getPrintableSections = (entry: any, options: PrintSectionOptions = {}) =>
     excludeTitles: options.includeDecompositionOverview ? ["Typen"] : ["Decompositie", "Typen"]
   });
 
-const scopedEntryIds = new Set(scopedEntries.map((entry) => entry.id));
-const printPathByEntryId = new Map<string, string[]>();
+type EntryPrintContext = {
+  entry: any;
+  path: string[];
+};
 
-scopedEntries.forEach((entry) => {
-  const categorizedPath = createCategorizedPath(entry);
-  const chapterLabel = getChapterLabel(categorizedPath, entry);
+const insertedPathKeys = new Set<string>();
+const entryQueue: EntryPrintContext[] = [];
+
+function insertPrintableEntry(entry: any, path: string[], options: PrintSectionOptions = {}) {
+  const key = pathKey(path);
+
+  if (!key || insertedPathKeys.has(key)) {
+    return false;
+  }
+
+  const chapterLabel = getChapterLabel(path, entry);
   const chapter = chapterMap.get(chapterLabel) || { label: chapterLabel, nodes: [] };
-  printPathByEntryId.set(entry.id, categorizedPath);
-  insertNode(chapter.nodes, categorizedPath, {
+  insertNode(chapter.nodes, path, {
     entry,
     title: getObjectTitle(entry),
-    path: categorizedPath,
+    path,
     summary: entry.data.summary,
     sections: getPrintableSections(entry, {
       excludeOverviewSamenhang: isCompositionTypeParagraph(entry),
-      includeDecompositionOverview: false
+      includeDecompositionOverview: false,
+      ...options
     })
   });
 
   chapterMap.set(chapterLabel, chapter);
+  insertedPathKeys.add(key);
+  entryQueue.push({ entry, path });
+
+  return true;
+}
+
+scopedEntries.forEach((entry) => {
+  getInitialPrintPaths(entry).forEach((path) => {
+    insertPrintableEntry(entry, path);
+  });
 });
 
-const entryQueue = [...scopedEntries];
-
 for (let entryIndex = 0; entryIndex < entryQueue.length; entryIndex += 1) {
-  const entry = entryQueue[entryIndex];
+  const { entry, path: parentPath } = entryQueue[entryIndex];
   const childItems = getPrintChildItems(entry);
 
   if (!childItems.length) {
     continue;
   }
 
-  const parentPath = printPathByEntryId.get(entry.id) || createCategorizedPath(entry);
   const chapterLabel = getChapterLabel(parentPath, entry);
   const chapter = chapterMap.get(chapterLabel);
 
@@ -587,10 +646,6 @@ for (let entryIndex = 0; entryIndex < entryQueue.length; entryIndex += 1) {
   childItems.forEach((childItem: any) => {
     const childEntry = getObjectEntryForItem(childItem);
 
-    if (childEntry && scopedEntryIds.has(childEntry.id)) {
-      return;
-    }
-
     if (childEntry && (scope.kind === "object" || belongsToClassificationScope(childEntry))) {
       const childPath = createCategorizedPath(childEntry);
       const childPathIsBelowParent =
@@ -598,25 +653,26 @@ for (let entryIndex = 0; entryIndex < entryQueue.length; entryIndex += 1) {
         parentPath.every((title, index) => normalizeKey(title) === normalizeKey(childPath[index]));
       const printChildPath = childPathIsBelowParent ? childPath : [...parentPath, getObjectTitle(childEntry)];
 
-      insertNode(chapter.nodes, printChildPath, {
-        entry: childEntry,
-        summary: childEntry.data.summary,
-        sections: getPrintableSections(childEntry, {
-          excludeOverviewSamenhang: isCompositionTypeOfParent(entry, getObjectTitle(childEntry)),
-          includeDecompositionOverview: false
-        })
+      insertPrintableEntry(childEntry, printChildPath, {
+        excludeOverviewSamenhang: isCompositionTypeOfParent(entry, getObjectTitle(childEntry)),
+        includeDecompositionOverview: false
       });
-      printPathByEntryId.set(childEntry.id, printChildPath);
-      scopedEntryIds.add(childEntry.id);
-      entryQueue.push(childEntry);
       return;
     }
 
     if (isCompositionTypeOfParent(entry, childItem.title)) {
-      insertNode(chapter.nodes, [...parentPath, childItem.title], {
+      const placeholderPath = [...parentPath, childItem.title];
+      const placeholderKey = pathKey(placeholderPath);
+
+      if (insertedPathKeys.has(placeholderKey)) {
+        return;
+      }
+
+      insertNode(chapter.nodes, placeholderPath, {
         summary: childItem.text,
         text: childItem.text
       });
+      insertedPathKeys.add(placeholderKey);
     }
   });
 }

@@ -18,7 +18,7 @@ classification:
   systems:
     - watersysteem
   disciplines:
-    - elektrotechniek
+    - electrotechniek
     - procesautomatisering
     - informatie-en-data
   objectFamilies:
