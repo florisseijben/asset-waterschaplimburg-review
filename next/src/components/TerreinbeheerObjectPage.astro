@@ -4,9 +4,11 @@ import Hero from "./Hero.astro";
 import HandbookHeroCard from "./HandbookHeroCard.astro";
 import ConceptSummarySection from "./ConceptSummarySection.astro";
 import ObjectClassificationSection from "./ObjectClassificationSection.astro";
+import SemanticSamenhangSection from "./SemanticSamenhangSection.astro";
 import ProductSection from "./ProductSection.astro";
 import UitwerkingSection from "./UitwerkingSection.astro";
 import VervolgSection from "./VervolgSection.astro";
+import { normalizeObjectUitwerkingSections } from "../lib/uitwerkingSections";
 import type { TerreinbeheerObjectNode } from "../lib/terreinbeheerObjectStructure";
 
 interface Props {
@@ -14,7 +16,6 @@ interface Props {
 }
 
 const { node } = Astro.props;
-const isObjectPage = node.kind === "object";
 const childItems = node.children.map((child) => ({
   title: child.title,
   text: child.summary,
@@ -36,77 +37,252 @@ const remainingImageBlocks = node.images.slice(1).map((image) => ({
   },
   caption: image.caption
 }));
-const structureLabel =
-  node.kind === "family"
-    ? "Onderliggende structuur"
-    : node.children.length
-      ? "Onderliggende objecttypen"
-      : "Structuur";
-const contentSections = isObjectPage
-  ? [
+const overviewSummary = node.parentTitle
+  ? `${node.title} staat onder ${node.parentTitle} binnen de objectfamilie ${node.familyTitle}.`
+  : `${node.title} is een objectfamilie binnen Terreinbeheer en openbare ruimte.`;
+const contentSections = [
+  {
+    title: "Overzicht / Samenhang",
+    summary: `${overviewSummary} De beschikbare beelden zijn overgenomen uit de afbeeldingenstructuur van het Objectenhandboek.`,
+    image: firstImage
+      ? {
+          src: firstImage.src,
+          alt: firstImage.alt
+        }
+      : node.previewImage
+        ? {
+            src: node.previewImage.src,
+            alt: node.previewImage.alt
+          }
+        : undefined,
+    caption: firstImage?.caption || node.previewImage?.caption
+  },
+  {
+    title: "Afbakening",
+    summary: node.children.length
+      ? `${node.title} wordt afgebakend door de onderliggende structuur die in de afbeeldingenmap onder deze map staat.`
+      : `${node.title} wordt op deze pagina als afzonderlijk objecttype behandeld binnen ${node.familyTitle}.`
+  },
+  {
+    title: "Geometrie",
+    summary: "De ruimtelijke beschrijving wordt voor deze objectlijn voorlopig ondersteund met de beschikbare foto's uit de afbeeldingenstructuur.",
+    items: [
       {
-        title: "Overzicht / Samenhang",
-        summary: `${node.title} staat onder ${node.parentTitle} binnen de objectfamilie ${node.familyTitle}. De beschikbare beelden zijn overgenomen uit de afbeeldingenstructuur van het Objectenhandboek.`,
-        image: firstImage
+        title: "Overzicht",
+        text: node.previewImage
+          ? `Het overzichtsbeeld toont een voorbeeld van ${node.title} binnen de objectfamilie ${node.familyTitle}.`
+          : `Voor ${node.title} is nog geen overzichtsbeeld beschikbaar in de afbeeldingenstructuur.`,
+        image: node.previewImage
           ? {
-              src: firstImage.src,
-              alt: firstImage.alt
+              src: node.previewImage.src,
+              alt: node.previewImage.alt
             }
           : undefined,
-        caption: firstImage?.caption,
+        caption: node.previewImage?.caption,
         blocks: remainingImageBlocks
       }
     ]
-  : [
-      {
-        title: structureLabel,
-        summary: node.children.length
-          ? `${node.title} is opgebouwd uit de onderstaande ${node.kind === "family" ? "groepen en objecttypen" : "objecttypen"}.`
-          : `${node.title} heeft nog geen onderliggende foto's of objecttypen in de afbeeldingenstructuur.`,
-        items: childItems
-      }
-    ];
-const productItems = [
-  {
-    title: "Terreinbeheer en openbare ruimte",
-    text: "Terug naar de disciplinepagina met de objectfamilies Constructie, Terreindeel en Vegetatie.",
-    href: "/datastandaard/objectenhandboek/discipline/terreinbeheer-openbare-ruimte"
   },
   {
-    title: "Objectenhandboek",
-    text: "Terug naar de systeem- en discipline-ingangen van het Objectenhandboek.",
-    href: "/datastandaard/objectenhandboek"
+    title: "Onderdelen",
+    summary: node.children.length
+      ? `${node.title} is opgebouwd uit de onderstaande onderliggende objecttypen.`
+      : `Voor ${node.title} zijn nog geen onderliggende onderdelen als aparte objectpagina uitgewerkt.`,
+    items: childItems
   }
 ];
-const nextSteps = isObjectPage
+const visibleContentSections = normalizeObjectUitwerkingSections(contentSections, {
+  compositionTypes: childItems,
+  subtypeIconTitle: node.title,
+  includeOnderdelenWithCompositionTypes: true
+});
+const productItems = [
+  {
+    title: "Woordenboek",
+    text: `Begrippen en definities voor ${node.title}.`,
+    href: "/datastandaard/woordenboek"
+  },
+  {
+    title: "Object Type Library",
+    text: "Dit product definieert de eigenschappen, relaties en het gedrag van een bepaald type object in een gestandaardiseerde vorm.",
+    href: "/datastandaard/otl"
+  },
+  {
+    title: "Referentiedataset",
+    text: `Voorbeelddata en referenties voor ${node.familyTitle}.`,
+    href: "/datastandaard/referentiedataset"
+  },
+  {
+    title: "Werkinstructies",
+    text: "Werkinstructies voor het toepassen en vastleggen van objectinformatie.",
+    href: "/datastandaard/werkinstructies"
+  }
+];
+const familyStep = {
+  title: node.familyTitle,
+  text: `Bekijk de volledige objectfamilie ${node.familyTitle}.`,
+  href: `/datastandaard/objectenhandboek/discipline/terreinbeheer-openbare-ruimte/${node.familyId}`
+};
+const disciplineStep = {
+  title: "Terreinbeheer en openbare ruimte",
+  text: "Terug naar de disciplinepagina met de objectfamilies Constructie, Terreindeel en Vegetatie.",
+  href: "/datastandaard/objectenhandboek/discipline/terreinbeheer-openbare-ruimte",
+  direction: "back"
+};
+const parentStep = node.parentHref
+  ? {
+      title: node.parentTitle || node.familyTitle,
+      text: `Terug naar de bovenliggende structuur waar ${node.title} onder valt.`,
+      href: node.parentHref,
+      direction: "back"
+    }
+  : undefined;
+const nextSteps = node.kind === "object"
   ? [
-      ...(node.parentHref
-        ? [
-            {
-              title: node.parentTitle,
-              text: `Terug naar de bovenliggende structuur waar ${node.title} onder valt.`,
-              href: node.parentHref,
-              direction: "back"
-            }
-          ]
-        : []),
-      {
-        title: node.familyTitle,
-        text: `Bekijk de volledige objectfamilie ${node.familyTitle}.`,
-        href: `/datastandaard/objectenhandboek/discipline/terreinbeheer-openbare-ruimte/${node.familyId}`
-      }
+      ...(parentStep ? [parentStep] : []),
+      familyStep,
+      disciplineStep
     ]
-  : childItems.map((child) => ({
-      title: child.title,
-      text: child.text,
-      href: child.href
-    }));
+  : [
+      ...childItems.map((child) => ({
+        title: child.title,
+        text: child.text,
+        href: child.href
+      })),
+      ...(node.kind === "group" && parentStep ? [parentStep] : []),
+      ...(node.kind === "group" ? [familyStep] : []),
+      disciplineStep
+    ];
 const classification = {
   disciplines: ["terreinbeheer-openbare-ruimte"],
   objectFamilies: [node.familyId],
   publications: ["objectenhandboek-terreinbeheer-openbare-ruimte"],
-  confidence: "afgeleid"
+  confidence: "afgeleid" as const
 };
+const normalizeKey = (value: string) =>
+  String(value || "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/&/g, " en ")
+    .replace(/['"]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+const escapeTurtleLabel = (value: string) => String(value || "").replace(/\\/g, "\\\\").replace(/"/g, '\\"');
+const toGraphId = (value: string) => normalizeKey(value).replace(/\//g, "-") || "objecttype";
+const selectedId = toGraphId(node.relativeSlug);
+const familyNodeId = toGraphId(node.familyId);
+const disciplineId = "terreinbeheer-openbare-ruimte";
+const selectedFill = "#e4f7fa";
+const relatedFill = "#eefafb";
+const contextFill = "#ffffff";
+const stroke = "#00a9c1";
+const createGraphNode = (
+  id: string,
+  label: string,
+  subtitle: string,
+  column: number,
+  row: number,
+  fill: string
+) => ({ id, label, subtitle, column, row, fill, stroke });
+const graphNodes = [
+  createGraphNode(disciplineId, "Terreinbeheer en openbare ruimte", "Discipline", 1, 0, contextFill),
+  createGraphNode(
+    familyNodeId,
+    node.familyTitle,
+    "Objectfamilie",
+    1,
+    1,
+    node.kind === "family" ? selectedFill : relatedFill
+  )
+];
+const graphEdges = [
+  { from: disciplineId, to: familyNodeId, label: "Bevat objectfamilie" }
+];
+let parentGraphId = familyNodeId;
+let nextRow = 2;
+
+if (node.kind !== "family") {
+  const parentIsFamily = node.parentTitle === node.familyTitle;
+
+  if (!parentIsFamily && node.parentTitle) {
+    parentGraphId = toGraphId(`${node.familyId}-${node.parentTitle}`);
+    graphNodes.push(
+      createGraphNode(
+        parentGraphId,
+        node.parentTitle,
+        "Groep",
+        1,
+        nextRow,
+        relatedFill
+      )
+    );
+    graphEdges.push({ from: familyNodeId, to: parentGraphId, label: "Heeft groep" });
+    nextRow += 1;
+  }
+
+  graphNodes.push(
+    createGraphNode(
+      selectedId,
+      node.title,
+      node.kind === "object" ? "Objecttype" : "Groep",
+      1,
+      nextRow,
+      selectedFill
+    )
+  );
+  graphEdges.push({
+    from: parentGraphId,
+    to: selectedId,
+    label: node.kind === "object" ? "Heeft objecttype" : "Heeft groep"
+  });
+  parentGraphId = selectedId;
+  nextRow += 1;
+}
+
+node.children.forEach((child, index) => {
+  const childId = toGraphId(child.relativeSlug);
+  graphNodes.push(
+    createGraphNode(
+      childId,
+      child.title,
+      child.kind === "object" ? "Objecttype" : "Groep",
+      index % 3,
+      nextRow + Math.floor(index / 3),
+      relatedFill
+    )
+  );
+  graphEdges.push({
+    from: parentGraphId,
+    to: childId,
+    label: child.kind === "object" ? "Heeft objecttype" : "Heeft groep"
+  });
+});
+const turtleNodes = graphNodes
+  .map(
+    (graphNode) => `object:${graphNode.id} a owl:Class ;
+  rdfs:label "${escapeTurtleLabel(graphNode.label)}" .`
+  )
+  .join("\n\n");
+const turtleEdges = graphEdges
+  .map((edge) => {
+    const relationId = normalizeKey(edge.label).replace(/-/g, "");
+
+    return `relatie:${relationId} a owl:ObjectProperty ;
+  rdfs:label "${escapeTurtleLabel(edge.label)}" .
+
+object:${edge.from} relatie:${relationId} object:${edge.to} .`;
+  })
+  .join("\n\n");
+const semanticTurtle = `@prefix object: <https://data.waterschaplimburg.nl/id/objecttype/> .
+@prefix relatie: <https://data.waterschaplimburg.nl/def/relatie/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+${turtleNodes}
+
+${turtleEdges}
+`;
 const breadcrumbs = [
   { label: "Home", href: "/" },
   { label: "Datastandaard", href: "/datastandaard" },
@@ -129,8 +305,9 @@ const breadcrumbs = [
 
   <ConceptSummarySection
     subjectLabel={node.title}
-    definition={`Deze pagina is afgeleid uit de afbeeldingenstructuur voor ${node.familyTitle}.`}
-    definitionSource="Afgeleid uit public/images/objectenhandboek."
+    definition={`${node.title} is een objecttype of objectgroep binnen ${node.familyTitle} zoals afgeleid uit de afbeeldingenstructuur van het Objectenhandboek.`}
+    definitionSource="Lokale werkdefinitie binnen het Objectenhandboek Waterschap Limburg."
+    synonyms={[]}
     relatedTerms={[
       {
         title: node.familyTitle,
@@ -138,9 +315,21 @@ const breadcrumbs = [
         href: `/datastandaard/objectenhandboek/discipline/terreinbeheer-openbare-ruimte/${node.familyId}`
       }
     ]}
+    definitionTypes={[]}
   />
 
-  <UitwerkingSection title={`Inhoudelijke opbouw van ${node.title}`} items={contentSections} />
+  <SemanticSamenhangSection
+    title={`Decompositie en hoofdrelaties binnen ${node.title}`}
+    summary={`Deze samenhangsweergave laat zien hoe ${node.title} binnen Terreinbeheer en openbare ruimte is gepositioneerd ten opzichte van objectfamilie, bovenliggende groep en onderliggende objecttypen.`}
+    sourceLabel="Dummy Turtle-export uit de semantische modelleertool voor de terreinbeheerlijn."
+    graphId={`terreinbeheer-${selectedId}-samenhang`}
+    selectedId={selectedId}
+    turtle={semanticTurtle}
+    layoutNodes={graphNodes}
+    edges={graphEdges}
+  />
+
+  <UitwerkingSection title={`Inhoudelijke opbouw van ${node.title}`} items={visibleContentSections} />
 
   <ProductSection eyebrow="Productlijn" items={productItems} />
 
