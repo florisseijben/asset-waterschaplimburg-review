@@ -3,6 +3,10 @@ import ObjectenhandboekChapterPage from "../../../../components/Objectenhandboek
 import { getCollection } from "astro:content";
 import { getDisciplineScopes } from "../../../../lib/objectenhandboekHandbooks";
 import { objectenhandboekTaxonomy } from "../../../../lib/objectenhandboekTaxonomy";
+import {
+  getTerreinbeheerLeafObjectNodes,
+  getTerreinbeheerObjectFamilies
+} from "../../../../lib/terreinbeheerObjectStructure";
 
 export function getStaticPaths() {
   return getDisciplineScopes().map((scope) => ({
@@ -14,9 +18,23 @@ export function getStaticPaths() {
 const { scope } = Astro.props;
 const entries = await getCollection("datastandaard-objectenhandboek-objects");
 const collator = new Intl.Collator("nl", { numeric: true, sensitivity: "base" });
+const isTerreinbeheerOpenbareRuimte = scope.id === "terreinbeheer-openbare-ruimte";
+const terreinbeheerFamilies = isTerreinbeheerOpenbareRuimte ? getTerreinbeheerObjectFamilies() : [];
+const terreinbeheerLeafNodes = isTerreinbeheerOpenbareRuimte ? getTerreinbeheerLeafObjectNodes() : [];
+const terreinbeheerFamilyIds = new Set(terreinbeheerFamilies.map((family) => family.familyId));
 const objectEntries = entries
   .filter((entry) => {
     const disciplines = entry.data.classification?.disciplines || [];
+    const objectFamilies = entry.data.classification?.objectFamilies || [];
+
+    if (isTerreinbeheerOpenbareRuimte) {
+      return (
+        Array.isArray(disciplines) &&
+        disciplines.includes(scope.id) &&
+        Array.isArray(objectFamilies) &&
+        objectFamilies.some((id: string) => terreinbeheerFamilyIds.has(id))
+      );
+    }
 
     return Array.isArray(disciplines) && disciplines.includes(scope.id);
   })
@@ -63,18 +81,37 @@ const getFamilyTypeSummary = (family) =>
   family.id === "werktuigbouwkundige-constructies"
     ? `Typen naar decompositie: ${mechanicalConstructionTypes.join(", ")}.`
     : "";
-const familyItems = objectFamilyCards.map(({ family, entries }) => ({
-  title: getFamilyCardTitle(family),
-  text: [getFamilyCardText(family, entries.length), getFamilyTypeSummary(family)]
-    .filter(Boolean)
-    .join(" "),
-  href: family.href
-}));
-const objectTypeItems = objectEntries.map((entry) => ({
-  title: entry.data.heroTitle || entry.data.title,
-  text: entry.data.summary,
-  href: entry.data.slug
-}));
+const familyItems = isTerreinbeheerOpenbareRuimte
+  ? terreinbeheerFamilies.map((family) => ({
+      title: family.title,
+      text: family.summary,
+      href: family.href,
+      image: family.previewImage
+        ? {
+            src: family.previewImage.src,
+            alt: family.previewImage.alt
+          }
+        : undefined,
+      caption: family.previewImage?.caption
+    }))
+  : objectFamilyCards.map(({ family, entries }) => ({
+      title: getFamilyCardTitle(family),
+      text: [getFamilyCardText(family, entries.length), getFamilyTypeSummary(family)]
+        .filter(Boolean)
+        .join(" "),
+      href: family.href
+    }));
+const objectTypeItems = isTerreinbeheerOpenbareRuimte
+  ? terreinbeheerLeafNodes.map((node) => ({
+      title: node.title,
+      text: node.summary,
+      href: node.href
+    }))
+  : objectEntries.map((entry) => ({
+      title: entry.data.heroTitle || entry.data.title,
+      text: entry.data.summary,
+      href: entry.data.slug
+    }));
 const disciplineEntry = {
   data: {
     title: `Objectenhandboek ${scope.label}`,

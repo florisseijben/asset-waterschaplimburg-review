@@ -1,0 +1,15 @@
+---
+import TerreinbeheerObjectPage from "../../../../../components/TerreinbeheerObjectPage.astro";
+import { getTerreinbeheerObjectNodes } from "../../../../../lib/terreinbeheerObjectStructure";
+
+export function getStaticPaths() {
+  return getTerreinbeheerObjectNodes().map((node) => ({
+    params: { objectSlug: node.relativeSlug },
+    props: { node }
+  }));
+}
+
+const { node } = Astro.props;
+---
+
+<TerreinbeheerObjectPage node={node} />

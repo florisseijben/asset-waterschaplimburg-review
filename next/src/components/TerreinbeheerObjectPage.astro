@@ -1,0 +1,150 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "./Hero.astro";
+import HandbookHeroCard from "./HandbookHeroCard.astro";
+import ConceptSummarySection from "./ConceptSummarySection.astro";
+import ObjectClassificationSection from "./ObjectClassificationSection.astro";
+import ProductSection from "./ProductSection.astro";
+import UitwerkingSection from "./UitwerkingSection.astro";
+import VervolgSection from "./VervolgSection.astro";
+import type { TerreinbeheerObjectNode } from "../lib/terreinbeheerObjectStructure";
+
+interface Props {
+  node: TerreinbeheerObjectNode;
+}
+
+const { node } = Astro.props;
+const isObjectPage = node.kind === "object";
+const childItems = node.children.map((child) => ({
+  title: child.title,
+  text: child.summary,
+  href: child.href,
+  iconTitle: child.familyTitle,
+  image: child.previewImage
+    ? {
+        src: child.previewImage.src,
+        alt: child.previewImage.alt
+      }
+    : undefined,
+  caption: child.previewImage?.caption
+}));
+const firstImage = node.images[0];
+const remainingImageBlocks = node.images.slice(1).map((image) => ({
+  image: {
+    src: image.src,
+    alt: image.alt
+  },
+  caption: image.caption
+}));
+const structureLabel =
+  node.kind === "family"
+    ? "Onderliggende structuur"
+    : node.children.length
+      ? "Onderliggende objecttypen"
+      : "Structuur";
+const contentSections = isObjectPage
+  ? [
+      {
+        title: "Overzicht / Samenhang",
+        summary: `${node.title} staat onder ${node.parentTitle} binnen de objectfamilie ${node.familyTitle}. De beschikbare beelden zijn overgenomen uit de afbeeldingenstructuur van het Objectenhandboek.`,
+        image: firstImage
+          ? {
+              src: firstImage.src,
+              alt: firstImage.alt
+            }
+          : undefined,
+        caption: firstImage?.caption,
+        blocks: remainingImageBlocks
+      }
+    ]
+  : [
+      {
+        title: structureLabel,
+        summary: node.children.length
+          ? `${node.title} is opgebouwd uit de onderstaande ${node.kind === "family" ? "groepen en objecttypen" : "objecttypen"}.`
+          : `${node.title} heeft nog geen onderliggende foto's of objecttypen in de afbeeldingenstructuur.`,
+        items: childItems
+      }
+    ];
+const productItems = [
+  {
+    title: "Terreinbeheer en openbare ruimte",
+    text: "Terug naar de disciplinepagina met de objectfamilies Constructie, Terreindeel en Vegetatie.",
+    href: "/datastandaard/objectenhandboek/discipline/terreinbeheer-openbare-ruimte"
+  },
+  {
+    title: "Objectenhandboek",
+    text: "Terug naar de systeem- en discipline-ingangen van het Objectenhandboek.",
+    href: "/datastandaard/objectenhandboek"
+  }
+];
+const nextSteps = isObjectPage
+  ? [
+      ...(node.parentHref
+        ? [
+            {
+              title: node.parentTitle,
+              text: `Terug naar de bovenliggende structuur waar ${node.title} onder valt.`,
+              href: node.parentHref,
+              direction: "back"
+            }
+          ]
+        : []),
+      {
+        title: node.familyTitle,
+        text: `Bekijk de volledige objectfamilie ${node.familyTitle}.`,
+        href: `/datastandaard/objectenhandboek/discipline/terreinbeheer-openbare-ruimte/${node.familyId}`
+      }
+    ]
+  : childItems.map((child) => ({
+      title: child.title,
+      text: child.text,
+      href: child.href
+    }));
+const classification = {
+  disciplines: ["terreinbeheer-openbare-ruimte"],
+  objectFamilies: [node.familyId],
+  publications: ["objectenhandboek-terreinbeheer-openbare-ruimte"],
+  confidence: "afgeleid"
+};
+const breadcrumbs = [
+  { label: "Home", href: "/" },
+  { label: "Datastandaard", href: "/datastandaard" },
+  { label: "Objectenhandboek", href: "/datastandaard/objectenhandboek" },
+  {
+    label: "Terreinbeheer en openbare ruimte",
+    href: "/datastandaard/objectenhandboek/discipline/terreinbeheer-openbare-ruimte"
+  },
+  ...node.trail.map((item, index) => ({
+    label: item.title,
+    href: index === node.trail.length - 1 ? undefined : item.href
+  }))
+];
+---
+
+<BaseLayout title={node.title} currentPath="/datastandaard" breadcrumbs={breadcrumbs}>
+  <Hero eyebrow="Objectenhandboek" title={node.title} summary={node.summary}>
+    <HandbookHeroCard slot="aside" href="/datastandaard/objectenhandboek/handboeken/terreinbeheer-openbare-ruimte" />
+  </Hero>
+
+  <ConceptSummarySection
+    subjectLabel={node.title}
+    definition={`Deze pagina is afgeleid uit de afbeeldingenstructuur voor ${node.familyTitle}.`}
+    definitionSource="Afgeleid uit public/images/objectenhandboek."
+    relatedTerms={[
+      {
+        title: node.familyTitle,
+        text: `Objectfamilie binnen Terreinbeheer en openbare ruimte.`,
+        href: `/datastandaard/objectenhandboek/discipline/terreinbeheer-openbare-ruimte/${node.familyId}`
+      }
+    ]}
+  />
+
+  <UitwerkingSection title={`Inhoudelijke opbouw van ${node.title}`} items={contentSections} />
+
+  <ProductSection eyebrow="Productlijn" items={productItems} />
+
+  {nextSteps.length > 0 && <VervolgSection title="Logische volgende stappen binnen deze lijn" items={nextSteps} />}
+
+  <ObjectClassificationSection classification={classification} />
+</BaseLayout>

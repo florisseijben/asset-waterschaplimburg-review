@@ -101,6 +101,21 @@ const objectFamilies: TaxonomyItem[] = [
     href: "/datastandaard/objectenhandboek/watersysteem/kunstwerken"
   },
   {
+    id: "constructie",
+    label: "Constructie",
+    href: "/datastandaard/objectenhandboek/discipline/terreinbeheer-openbare-ruimte/constructie"
+  },
+  {
+    id: "terreindeel",
+    label: "Terreindeel",
+    href: "/datastandaard/objectenhandboek/discipline/terreinbeheer-openbare-ruimte/terreindeel"
+  },
+  {
+    id: "vegetatie",
+    label: "Vegetatie",
+    href: "/datastandaard/objectenhandboek/discipline/terreinbeheer-openbare-ruimte/vegetatie"
+  },
+  {
     id: "werktuigbouwkundige-constructies",
     label: "Werktuigbouwkundige constructies",
     href: "/datastandaard/objectenhandboek/discipline/werktuigbouwkunde/werktuigbouwkundige-constructies"
