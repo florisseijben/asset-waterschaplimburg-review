@@ -40,10 +40,53 @@ const remainingImageBlocks = node.images.slice(1).map((image) => ({
 const overviewSummary = node.parentTitle
   ? `${node.title} staat onder ${node.parentTitle} binnen de objectfamilie ${node.familyTitle}.`
   : `${node.title} is een objectfamilie binnen Terreinbeheer en openbare ruimte.`;
+const conceptDefinition =
+  node.concept?.definition ||
+  `${node.title} is een objecttype of objectgroep binnen ${node.familyTitle} zoals afgeleid uit de afbeeldingenstructuur van het Objectenhandboek.`;
+const conceptDefinitionSource = node.concept
+  ? `${node.concept.sourceLabel}${node.concept.sourceUrl ? " via IMBOR-viewer" : ""}`
+  : "Lokale werkdefinitie binnen het Objectenhandboek Waterschap Limburg.";
+const conceptMatchLabel = node.concept
+  ? {
+      exact: "IMBOR",
+      broader: "IMBOR bovenliggend begrip",
+      closest: "IMBOR-match",
+      local: "Lokale mapping"
+    }[node.concept.matchType]
+  : undefined;
+const conceptRelatedTerm = node.concept
+  ? {
+      title: `${conceptMatchLabel}: ${node.concept.label}`,
+      text: [node.concept.description, node.concept.note].filter(Boolean).join(" "),
+      href: node.concept.sourceUrl || "/datastandaard/woordenboek"
+    }
+  : undefined;
+const conceptRelatedTerms = [
+  ...(conceptRelatedTerm ? [conceptRelatedTerm] : []),
+  {
+    title: node.familyTitle,
+    text: "Objectfamilie binnen Terreinbeheer en openbare ruimte.",
+    href: `/datastandaard/objectenhandboek/discipline/terreinbeheer-openbare-ruimte/${node.familyId}`
+  }
+];
+const definitionTypes = node.children.map((child) => ({
+  title: child.title,
+  text: child.summary,
+  href: child.href
+}));
+const overviewDetail =
+  node.concept?.description ||
+  "De beschikbare beelden zijn overgenomen uit de afbeeldingenstructuur van het Objectenhandboek.";
+const afbakeningBaseSummary = node.children.length
+  ? `${node.title} wordt afgebakend door de onderliggende structuur die in de afbeeldingenmap onder deze map staat.`
+  : `${node.title} wordt op deze pagina als afzonderlijk objecttype behandeld binnen ${node.familyTitle}.`;
+const afbakeningSummary = node.concept?.note
+  ? `${node.concept.note} ${afbakeningBaseSummary}`
+  : afbakeningBaseSummary;
 const contentSections = [
   {
     title: "Overzicht / Samenhang",
-    summary: `${overviewSummary} De beschikbare beelden zijn overgenomen uit de afbeeldingenstructuur van het Objectenhandboek.`,
+    summary: `${overviewSummary} ${overviewDetail}`,
     image: firstImage
       ? {
           src: firstImage.src,
@@ -59,9 +102,7 @@ const contentSections = [
   },
   {
     title: "Afbakening",
-    summary: node.children.length
-      ? `${node.title} wordt afgebakend door de onderliggende structuur die in de afbeeldingenmap onder deze map staat.`
-      : `${node.title} wordt op deze pagina als afzonderlijk objecttype behandeld binnen ${node.familyTitle}.`
+    summary: afbakeningSummary
   },
   {
     title: "Geometrie",
@@ -305,17 +346,11 @@ const breadcrumbs = [
 
   <ConceptSummarySection
     subjectLabel={node.title}
-    definition={`${node.title} is een objecttype of objectgroep binnen ${node.familyTitle} zoals afgeleid uit de afbeeldingenstructuur van het Objectenhandboek.`}
-    definitionSource="Lokale werkdefinitie binnen het Objectenhandboek Waterschap Limburg."
+    definition={conceptDefinition}
+    definitionSource={conceptDefinitionSource}
     synonyms={[]}
-    relatedTerms={[
-      {
-        title: node.familyTitle,
-        text: `Objectfamilie binnen Terreinbeheer en openbare ruimte.`,
-        href: `/datastandaard/objectenhandboek/discipline/terreinbeheer-openbare-ruimte/${node.familyId}`
-      }
-    ]}
-    definitionTypes={[]}
+    relatedTerms={conceptRelatedTerms}
+    definitionTypes={definitionTypes}
   />
 
   <SemanticSamenhangSection
