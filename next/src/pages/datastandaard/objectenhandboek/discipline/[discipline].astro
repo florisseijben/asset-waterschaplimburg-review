@@ -59,6 +59,7 @@ const objectFamilyGroups = objectEntries.reduce((groups, entry) => {
 const objectFamilyCards = [...objectFamilyGroups.values()].sort((left, right) =>
   collator.compare(left.family.label, right.family.label)
 );
+const lowerScopeLabel = scope.label.toLowerCase();
 const mechanicalConstructionTypes = [
   "Balgconstructie",
   "Klepconstructie",
@@ -69,39 +70,46 @@ const getFamilyCardTitle = (family) =>
   family.id === "werktuigbouwkundige-constructies"
     ? "Werktuigbouwkundige constructie"
     : family.label;
-const getFamilyCardText = (family, count) =>
+const createFamilyCardText = (title, context = lowerScopeLabel) =>
+  `Objecten, begrippen, modellen en referenties rond ${title.toLowerCase()} binnen ${context}.`;
+const getFamilyCardText = (family) =>
   family.id === "werktuigbouwkundige-constructies"
-    ? "Primaire objectfamilie voor regelconstructies en de werktuigbouwkundige typen daaronder."
-    : `${count} objecttype${count === 1 ? "" : "n"} binnen deze objectfamilie.`;
+    ? "Objecten, begrippen, modellen en referenties rond werktuigbouwkundige constructies binnen werktuigbouwkunde."
+    : createFamilyCardText(getFamilyCardTitle(family));
 const getFamilyTypeSummary = (family) =>
   family.id === "werktuigbouwkundige-constructies"
     ? `Typen naar decompositie: ${mechanicalConstructionTypes.join(", ")}.`
     : "";
+const terrainFamilyTextById = new Map([
+  [
+    "constructie",
+    "Objecten, begrippen, modellen en referenties rond constructies voor afbakening en toegang binnen terreinbeheer en openbare ruimte."
+  ],
+  [
+    "terreindeel",
+    "Objecten, begrippen, modellen en referenties rond begroeide en onbegroeide terreindelen binnen terreinbeheer en openbare ruimte."
+  ],
+  [
+    "vegetatie",
+    "Objecten, begrippen, modellen en referenties rond bomen, gras, hagen, riet, struiken en andere vegetatieobjecten binnen terreinbeheer en openbare ruimte."
+  ]
+]);
 const familyItems = isTerreinbeheerOpenbareRuimte
   ? terreinbeheerFamilies.map((family) => ({
       title: family.title,
-      text: family.summary,
-      href: family.href,
-      image: family.previewImage
-        ? {
-            src: family.previewImage.src,
-            alt: family.previewImage.alt
-          }
-        : undefined,
-      caption: family.previewImage?.caption
+      text: terrainFamilyTextById.get(family.familyId) || createFamilyCardText(family.title),
+      href: family.href
     }))
-  : objectFamilyCards.map(({ family, entries }) => ({
+  : objectFamilyCards.map(({ family }) => ({
       title: getFamilyCardTitle(family),
-      text: [getFamilyCardText(family, entries.length), getFamilyTypeSummary(family)]
+      text: [getFamilyCardText(family), getFamilyTypeSummary(family)]
         .filter(Boolean)
         .join(" "),
       href: family.href
     }));
-const lowerScopeLabel = scope.label.toLowerCase();
 const chapterTitle = `Hoofdstuk ${scope.label}`;
-const objectFamilyList = familyItems.map((item) => item.title).join(", ");
 const objectFamilySummary = familyItems.length
-  ? `Deze objectfamilies vormen de hoofdingangen voor de verdere uitwerking binnen ${lowerScopeLabel}: ${objectFamilyList}.`
+  ? `Deze objectfamilies vormen de hoofdingangen voor de verdere uitwerking binnen ${lowerScopeLabel}.`
   : `Objectfamilies worden automatisch gevuld zodra objecttypen aan ${lowerScopeLabel} zijn gekoppeld.`;
 const nextStepItems = familyItems.map((item) => ({
   title: item.title,
