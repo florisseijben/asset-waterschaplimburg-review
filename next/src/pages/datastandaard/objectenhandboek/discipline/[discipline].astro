@@ -3,10 +3,7 @@ import ObjectenhandboekChapterPage from "../../../../components/Objectenhandboek
 import { getCollection } from "astro:content";
 import { getDisciplineScopes } from "../../../../lib/objectenhandboekHandbooks";
 import { objectenhandboekTaxonomy } from "../../../../lib/objectenhandboekTaxonomy";
-import {
-  getTerreinbeheerLeafObjectNodes,
-  getTerreinbeheerObjectFamilies
-} from "../../../../lib/terreinbeheerObjectStructure";
+import { getTerreinbeheerObjectFamilies } from "../../../../lib/terreinbeheerObjectStructure";
 
 export function getStaticPaths() {
   return getDisciplineScopes().map((scope) => ({
@@ -20,7 +17,6 @@ const entries = await getCollection("datastandaard-objectenhandboek-objects");
 const collator = new Intl.Collator("nl", { numeric: true, sensitivity: "base" });
 const isTerreinbeheerOpenbareRuimte = scope.id === "terreinbeheer-openbare-ruimte";
 const terreinbeheerFamilies = isTerreinbeheerOpenbareRuimte ? getTerreinbeheerObjectFamilies() : [];
-const terreinbeheerLeafNodes = isTerreinbeheerOpenbareRuimte ? getTerreinbeheerLeafObjectNodes() : [];
 const terreinbeheerFamilyIds = new Set(terreinbeheerFamilies.map((family) => family.familyId));
 const objectEntries = entries
   .filter((entry) => {
@@ -101,17 +97,17 @@ const familyItems = isTerreinbeheerOpenbareRuimte
         .join(" "),
       href: family.href
     }));
-const objectTypeItems = isTerreinbeheerOpenbareRuimte
-  ? terreinbeheerLeafNodes.map((node) => ({
-      title: node.title,
-      text: node.summary,
-      href: node.href
-    }))
-  : objectEntries.map((entry) => ({
-      title: entry.data.heroTitle || entry.data.title,
-      text: entry.data.summary,
-      href: entry.data.slug
-    }));
+const lowerScopeLabel = scope.label.toLowerCase();
+const chapterTitle = `Hoofdstuk ${scope.label}`;
+const objectFamilyList = familyItems.map((item) => item.title).join(", ");
+const objectFamilySummary = familyItems.length
+  ? `Deze objectfamilies vormen de hoofdingangen voor de verdere uitwerking binnen ${lowerScopeLabel}: ${objectFamilyList}.`
+  : `Objectfamilies worden automatisch gevuld zodra objecttypen aan ${lowerScopeLabel} zijn gekoppeld.`;
+const nextStepItems = familyItems.map((item) => ({
+  title: item.title,
+  text: item.text,
+  href: item.href
+}));
 const disciplineEntry = {
   data: {
     title: `Objectenhandboek ${scope.label}`,
@@ -120,38 +116,75 @@ const disciplineEntry = {
     product: "objectenhandboek",
     ownerTeam: "datastandaard",
     status: "concept",
+    lastReviewed: "2026-06-01",
     pageType: "chapter",
-    heroEyebrow: "Objectenhandboek discipline",
-    heroTitle: scope.label,
-    summary: `Deze disciplinepagina verzamelt de objecttypen die relevant zijn voor ${scope.label.toLowerCase()}. Je kunt de digitale objectpagina's openen of de selectie als printbaar handboek bekijken.`,
+    heroEyebrow: "Objectenhandboek hoofdstuk",
+    heroTitle: chapterTitle,
+    summary: `Dit is de landingspagina voor de objecttypen binnen ${lowerScopeLabel}. Je vindt hier de hoofdstukstructuur, de belangrijkste objectfamilies en de samenhang met de producten van de datastandaard.`,
     uitwerkingTitle: `Hoofdstukindeling voor ${scope.label}`,
-    nextStepsTitle: "Digitale objectpagina's binnen deze discipline",
+    nextStepsTitle: "Logische volgende objectlijnen",
+    definition: `${scope.label} is een disciplinehoofdstuk binnen het Objectenhandboek voor objecttypen, objectfamilies en beheerinformatie die vanuit deze vakdiscipline worden toegepast of beheerd.`,
+    definitionSource: "Werkdefinitie voor de disciplinehoofdstuklanding van het Objectenhandboek.",
+    terms: [
+      {
+        title: scope.label,
+        text: `Discipline-ingang voor objecttypen en objectfamilies binnen ${lowerScopeLabel}.`,
+        href: "/datastandaard/woordenboek"
+      },
+      {
+        title: "Objectfamilie",
+        text: "Groepering van objecttypen die binnen deze discipline als hoofdingang wordt gebruikt.",
+        href: "/datastandaard/objectenhandboek"
+      },
+      {
+        title: "Objecttype",
+        text: "Digitale objectpagina met definitie, samenhang en inhoudelijke uitwerking.",
+        href: "/datastandaard/objectenhandboek"
+      }
+    ],
     contentSections: [
       {
         title: "Overzicht / Samenhang",
-        summary: `${scope.label} vormt binnen het Objectenhandboek een discipline-ingang naast de systeemingangen. De pagina ordent de beschikbare objecttypen eerst via objectfamilies en verwijst daarna door naar de digitale objectpagina's.`
+        summary: `${scope.label} vormt de discipline-ingang naar objectfamilies en objecttypen die naast de systeemingangen vanuit vakinhoudelijk beheer worden benaderd.`
+      },
+      {
+        title: "Afbakening",
+        summary: `Dit hoofdstuk richt zich op objecttypen die vanuit ${lowerScopeLabel} worden beheerd, ontworpen, toegepast of vastgelegd. Objecttypen die primair bij een systeemhoofdstuk horen blijven via de systeemingang vindbaar en kunnen daarnaast aan deze discipline gekoppeld zijn.`
       },
       {
         title: "Objectfamilies",
-        summary: familyItems.length
-          ? "Deze objectfamilies vormen de primaire ingangen binnen deze discipline."
-          : "Objectfamilies worden automatisch gevuld zodra objecttypen aan deze discipline zijn gekoppeld.",
+        summary: objectFamilySummary,
         items: familyItems
       }
     ],
     productRelations: [
       {
-        title: "Printbare versie",
-        text: `Bekijk de selectie voor ${scope.label.toLowerCase()} als printbaar handboek.`,
-        href: scope.href
+        title: "Woordenboek",
+        text: `Begrippen en definities voor ${lowerScopeLabel}.`,
+        href: "/datastandaard/woordenboek"
       },
       {
         title: "Objectenhandboek",
-        text: "Terug naar de systeem- en discipline-ingangen van het Objectenhandboek.",
-        href: "/datastandaard/objectenhandboek"
+        text: `Objecttypen en hoofdstukindeling van ${lowerScopeLabel}.`,
+        href: scope.landingHref
+      },
+      {
+        title: "Object Type Library",
+        text: "Eigenschappen, relaties en gedrag van objecttypen in een gestandaardiseerde vorm.",
+        href: "/datastandaard/otl"
+      },
+      {
+        title: "Referentiedataset",
+        text: "Voorbeelddata en toetsbare referentiegegevens.",
+        href: "/datastandaard/referentiedataset"
+      },
+      {
+        title: "Werkinstructies",
+        text: "Documenten en werkafspraken voor gebruik en beheer.",
+        href: "/datastandaard/werkinstructies"
       }
     ],
-    nextSteps: objectTypeItems
+    nextSteps: nextStepItems
   }
 };
 ---
