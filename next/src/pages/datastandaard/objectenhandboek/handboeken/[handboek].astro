@@ -15,6 +15,11 @@ import { objectenhandboekTaxonomy } from "../../../../lib/objectenhandboekTaxono
 import { withBase } from "../../../../lib/paths";
 import { normalizeObjectUitwerkingSections } from "../../../../lib/uitwerkingSections";
 import { getDecompositionFromAssetJson } from "../../../../lib/assetConcepts";
+import { objectTypePlaceholderRoutes } from "../../../../lib/objectTypeRoutes";
+import {
+  appendRaakvlakSection,
+  getRaakvlakSectionForObjectTitle
+} from "../../../../lib/objectRaakvlakken";
 
 export async function getStaticPaths() {
   const objectEntries = await getCollection("datastandaard-objectenhandboek-objects");
@@ -290,6 +295,14 @@ const allEntryByHrefKey = new Map(
     .map((entry) => [normalizeHrefKey(entry.data.slug), entry])
     .filter(([href]) => href)
 );
+const placeholderRouteByTitleKey = new Map(
+  objectTypePlaceholderRoutes.map((route) => [normalizeKey(route.title), route])
+);
+const placeholderRouteByHrefKey = new Map(
+  objectTypePlaceholderRoutes
+    .map((route) => [normalizeHrefKey(route.href), route])
+    .filter(([href]) => href)
+);
 const chapterMap = new Map<string, { label: string; nodes: HandbookNode[] }>();
 const disciplineById = new Map(objectenhandboekTaxonomy.disciplines.map((discipline) => [discipline.id, discipline]));
 const pathKey = (path: string[]) => path.map((part) => normalizeKey(part)).join("/");
@@ -315,6 +328,16 @@ const getObjectEntryForItem = (item: any) =>
   allEntryByTitleKey.get(normalizeKey(item?.title)) ||
   allEntryByHrefKey.get(normalizeHrefKey(item?.href));
 
+const getPlaceholderRouteForItem = (item: any) =>
+  placeholderRouteByTitleKey.get(normalizeKey(item?.title)) ||
+  placeholderRouteByHrefKey.get(normalizeHrefKey(item?.href));
+
+const getPrintablePlaceholderSection = (item: any) => {
+  const placeholderRoute = getPlaceholderRouteForItem(item);
+
+  return placeholderRoute ? getRaakvlakSectionForObjectTitle(placeholderRoute.title) : undefined;
+};
+
 const uniqueChildItems = (items: any[]) => {
   const seen = new Set<string>();
 
@@ -334,7 +357,9 @@ const getPrintChildItems = (entry: any) => {
   const decomposition = getDecompositionFromAssetJson(getObjectTitle(entry));
 
   return uniqueChildItems([
-    ...getOnderdeelItems(entry).filter((item: any) => getObjectEntryForItem(item)),
+    ...getOnderdeelItems(entry).filter(
+      (item: any) => getObjectEntryForItem(item) || getPrintablePlaceholderSection(item)
+    ),
     ...(entry.data.compositionTypes || []),
     ...(decomposition?.items || []).filter((item: any) => getObjectEntryForItem(item))
   ]);
@@ -443,10 +468,15 @@ const isAllowedInHandbookTree = (entry: any) => {
   });
 };
 
+const isAllowedByPrintTree = (entry: any) =>
+  scope.kind === "object" && (entry.id === scope.objectEntryId || isDirectChildOfScopeRoot(entry))
+    ? true
+    : isAllowedInHandbookTree(entry);
+
 const scopedEntries = entries.filter(
   (entry) =>
     (scope.kind === "object" ? belongsToObjectScope(entry) : belongsToClassificationScope(entry)) &&
-    isAllowedInHandbookTree(entry)
+    isAllowedByPrintTree(entry)
 );
 
 const createCategorizedPath = (entry: any) => {
@@ -508,7 +538,10 @@ const getInitialPrintPaths = (entry: any) => {
 const isPrintedDescendantItem = (_entry: any, item: any) => {
   const childEntry = getObjectEntryForItem(item);
 
-  return Boolean(childEntry && canPrintEntryInCurrentScope(childEntry));
+  return Boolean(
+    (childEntry && canPrintEntryInCurrentScope(childEntry)) ||
+    getPrintablePlaceholderSection(item)
+  );
 };
 
 type PrintSectionOptions = {
@@ -546,7 +579,7 @@ const getContentSectionsForPrint = (entry: any, options: PrintSectionOptions = {
     ? createDecompositionSectionForPrint(entry)
     : undefined;
 
-  const sections = (entry.data.contentSections || [])
+  const sections = appendRaakvlakSection(entry.data.contentSections || [], getObjectTitle(entry))
     .filter((section: any) => {
       const sectionKey = normalizeKey(section.title);
 
@@ -585,6 +618,12 @@ const getPrintableSections = (entry: any, options: PrintSectionOptions = {}) =>
     requireStandardSections: false,
     excludeTitles: options.includeDecompositionOverview ? ["Typen"] : ["Decompositie", "Typen"]
   });
+
+const createPrintablePlaceholderSections = (item: any) => {
+  const raakvlakSection = getPrintablePlaceholderSection(item);
+
+  return raakvlakSection ? [raakvlakSection] : [];
+};
 
 type EntryPrintContext = {
   entry: any;
@@ -668,6 +707,34 @@ for (let entryIndex = 0; entryIndex < entryQueue.length; entryIndex += 1) {
         },
         ancestorEntryIds
       );
+      return;
+    }
+
+    const placeholderRoute = getPlaceholderRouteForItem(childItem);
+    const placeholderSections = createPrintablePlaceholderSections(childItem);
+
+    if (placeholderRoute && placeholderSections.length) {
+      const placeholderPath = [...parentPath, placeholderRoute.title];
+      const placeholderKey = pathKey(placeholderPath);
+
+      if (insertedPathKeys.has(placeholderKey)) {
+        return;
+      }
+
+      insertNode(chapter.nodes, placeholderPath, {
+        title: placeholderRoute.title,
+        path: placeholderPath,
+        summary:
+          childItem.text ||
+          placeholderRoute.summary ||
+          `Objecttypepagina voor ${placeholderRoute.title} binnen het Objectenhandboek.`,
+        text:
+          childItem.text ||
+          placeholderRoute.summary ||
+          `Objecttypepagina voor ${placeholderRoute.title} binnen het Objectenhandboek.`,
+        sections: placeholderSections
+      });
+      insertedPathKeys.add(placeholderKey);
       return;
     }
 
@@ -1136,12 +1203,42 @@ const getParagraphEyebrow = (item: { number?: string }) =>
                       )}
                     </>
                   ) : (
-                    item.text && item.text !== item.summary && (
-                      <section class="handbook-object__block">
-                        <h4>Korte omschrijving</h4>
-                        <p>{item.text}</p>
-                      </section>
-                    )
+                    <>
+                      {item.text && item.text !== item.summary && (
+                        <section class="handbook-object__block">
+                          <h4>Korte omschrijving</h4>
+                          <p>{item.text}</p>
+                        </section>
+                      )}
+
+                      {item.sections.length > 0 && (
+                        <section class="handbook-object__block">
+                          <h4>Uitwerking</h4>
+                          {item.sections.map((section: any) => (
+                            <section class="handbook-object__subsection">
+                              <h5>{section.title}</h5>
+                              {section.summary && <p>{section.summary}</p>}
+                              {(section.items || []).length > 0 && (
+                                <div class="card-grid card-grid--nested handbook-object__item-grid">
+                                  {section.items.map((sectionItem: any) => {
+                                    const SectionItemTag = sectionItem.href ? "a" : "article";
+
+                                    return (
+                                    <SectionItemTag
+                                      class="info-card handbook-object__item-card"
+                                      href={sectionItem.href ? withBase(sectionItem.href) : undefined}
+                                    >
+                                      <strong class="handbook-object__item-title">{sectionItem.title}</strong>
+                                      {sectionItem.text && <p>{sectionItem.text}</p>}
+                                    </SectionItemTag>
+                                  )})}
+                                </div>
+                              )}
+                            </section>
+                          ))}
+                        </section>
+                      )}
+                    </>
                   )}
                 </article>
               );
