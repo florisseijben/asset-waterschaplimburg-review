@@ -16,21 +16,24 @@ interface Props {
 }
 
 const { node } = Astro.props;
+const isObjectPage = node.kind === "object";
 const childItems = node.children.map((child) => ({
   title: child.title,
   text: child.summary,
   href: child.href,
   iconTitle: child.familyTitle,
-  image: child.previewImage
+  image: child.kind === "object" && child.previewImage
     ? {
         src: child.previewImage.src,
         alt: child.previewImage.alt
       }
     : undefined,
-  caption: child.previewImage?.caption
+  caption: child.kind === "object" ? child.previewImage?.caption : undefined
 }));
-const firstImage = node.images[0];
-const remainingImageBlocks = node.images.slice(1).map((image) => ({
+const ownImages = isObjectPage ? node.images : [];
+const ownPreviewImage = isObjectPage ? node.previewImage : undefined;
+const firstImage = ownImages[0];
+const remainingImageBlocks = ownImages.slice(1).map((image) => ({
   image: {
     src: image.src,
     alt: image.alt
@@ -83,6 +86,15 @@ const afbakeningBaseSummary = node.children.length
 const afbakeningSummary = node.concept?.note
   ? `${node.concept.note} ${afbakeningBaseSummary}`
   : afbakeningBaseSummary;
+const decompositionSection = isObjectPage
+  ? {
+      title: "Onderdelen",
+      summary: node.children.length
+        ? `${node.title} is opgebouwd uit de onderstaande onderliggende objecttypen.`
+        : `Voor ${node.title} zijn nog geen onderliggende onderdelen als aparte objectpagina uitgewerkt.`,
+      items: childItems
+    }
+  : undefined;
 const contentSections = [
   {
     title: "Overzicht / Samenhang",
@@ -92,13 +104,8 @@ const contentSections = [
           src: firstImage.src,
           alt: firstImage.alt
         }
-      : node.previewImage
-        ? {
-            src: node.previewImage.src,
-            alt: node.previewImage.alt
-          }
-        : undefined,
-    caption: firstImage?.caption || node.previewImage?.caption
+      : undefined,
+    caption: firstImage?.caption
   },
   {
     title: "Afbakening",
@@ -106,36 +113,43 @@ const contentSections = [
   },
   {
     title: "Geometrie",
-    summary: "De ruimtelijke beschrijving wordt voor deze objectlijn voorlopig ondersteund met de beschikbare foto's uit de afbeeldingenstructuur.",
+    summary: isObjectPage
+      ? "De ruimtelijke beschrijving wordt voor deze objectlijn voorlopig ondersteund met de beschikbare foto's uit de afbeeldingenstructuur."
+      : `De ruimtelijke beschrijving van ${node.title} wordt uitgewerkt op de onderliggende typen naar decompositie.`,
     items: [
       {
         title: "Overzicht",
-        text: node.previewImage
+        text: ownPreviewImage
           ? `Het overzichtsbeeld toont een voorbeeld van ${node.title} binnen de objectfamilie ${node.familyTitle}.`
-          : `Voor ${node.title} is nog geen overzichtsbeeld beschikbaar in de afbeeldingenstructuur.`,
-        image: node.previewImage
+          : `Voor ${node.title} is op dit niveau geen eigen overzichtsbeeld beschikbaar in de afbeeldingenstructuur.`,
+        image: ownPreviewImage
           ? {
-              src: node.previewImage.src,
-              alt: node.previewImage.alt
+              src: ownPreviewImage.src,
+              alt: ownPreviewImage.alt
             }
           : undefined,
-        caption: node.previewImage?.caption,
+        caption: ownPreviewImage?.caption,
         blocks: remainingImageBlocks
       }
     ]
   },
-  {
-    title: "Onderdelen",
-    summary: node.children.length
-      ? `${node.title} is opgebouwd uit de onderstaande onderliggende objecttypen.`
-      : `Voor ${node.title} zijn nog geen onderliggende onderdelen als aparte objectpagina uitgewerkt.`,
-    items: childItems
-  }
+  ...(decompositionSection ? [decompositionSection] : [])
 ];
 const visibleContentSections = normalizeObjectUitwerkingSections(contentSections, {
   compositionTypes: childItems,
-  subtypeIconTitle: node.title,
-  includeOnderdelenWithCompositionTypes: true
+  subtypeIconTitle: node.title
+}).map((section) => {
+  if (isObjectPage || !["Onderdelen", "Typen"].includes(section.title)) {
+    return section;
+  }
+
+  return {
+    ...section,
+    title: "Typen naar decompositie",
+    summary: node.children.length
+      ? `${node.title} onderscheidt de onderstaande typen naar decompositie.`
+      : `Typen naar decompositie voor ${node.title} worden later uitgewerkt zodra er onderliggende typen of beelden zijn toegevoegd.`
+  };
 });
 const productItems = [
   {

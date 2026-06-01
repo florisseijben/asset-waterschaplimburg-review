@@ -69,6 +69,9 @@ const OBJECTENHANDBOEK_IMAGE_ROOT = fileURLToPath(
 const DISCIPLINE_BASE = "/datastandaard/objectenhandboek/discipline/terreinbeheer-openbare-ruimte";
 const IMAGE_EXTENSIONS = new Set([".avif", ".gif", ".jpeg", ".jpg", ".png", ".webp"]);
 const collator = new Intl.Collator("nl", { numeric: true, sensitivity: "base" });
+const requiredChildFoldersByRelativeSlug = new Map<string, string[]>([
+  ["vegetatie", ["Boom", "Gras", "Haag", "Kruidachtige", "Riet", "Struik"]]
+]);
 const imborViewerHref = (uri: string) =>
   `https://begrippen.crow.nl/imbor/nl/page/?uri=${encodeURIComponent(uri)}`;
 const imbor2025 = "IMBOR 2025";
@@ -612,6 +615,45 @@ function readDirectoryEntries(absolutePath: string) {
   return readdirSync(absolutePath, { withFileTypes: true });
 }
 
+function getChildFolders(context: BuildFolderContext) {
+  const relativeSlug = context.slugParts.join("/");
+  const folders = new Map<
+    string,
+    {
+      name: string;
+      absolutePath: string;
+      publicPath: string;
+    }
+  >();
+
+  readDirectoryEntries(context.absolutePath)
+    .filter((entry) => entry.isDirectory())
+    .filter((entry) => !context.excludeFolderKeys.has(normalizeKey(entry.name)))
+    .forEach((entry) => {
+      folders.set(normalizeKey(entry.name), {
+        name: entry.name,
+        absolutePath: path.join(context.absolutePath, entry.name),
+        publicPath: path.posix.join(context.publicPath, entry.name)
+      });
+    });
+
+  (requiredChildFoldersByRelativeSlug.get(relativeSlug) || [])
+    .filter((name) => !context.excludeFolderKeys.has(normalizeKey(name)))
+    .forEach((name) => {
+      const key = normalizeKey(name);
+
+      if (!folders.has(key)) {
+        folders.set(key, {
+          name,
+          absolutePath: path.join(context.absolutePath, name),
+          publicPath: path.posix.join(context.publicPath, name)
+        });
+      }
+    });
+
+  return [...folders.values()].sort((left, right) => collator.compare(left.name, right.name));
+}
+
 function createImage(src: string, title: string, index: number): TerreinbeheerObjectImage {
   return {
     src,
@@ -701,17 +743,14 @@ function buildFolderNode(context: BuildFolderContext): TerreinbeheerObjectNode {
   const relativeSlug = context.slugParts.join("/");
   const href = `${DISCIPLINE_BASE}/${relativeSlug}`;
   const trail = [...context.parentTrail, { title: context.title, href }];
-  const folderChildren = readDirectoryEntries(context.absolutePath)
-    .filter((entry) => entry.isDirectory())
-    .filter((entry) => !context.excludeFolderKeys.has(normalizeKey(entry.name)))
-    .sort((left, right) => collator.compare(left.name, right.name))
+  const folderChildren = getChildFolders(context)
     .map((entry) => {
       const title = displayTitle(entry.name);
       const slug = normalizeKey(title);
 
       return buildFolderNode({
-        absolutePath: path.join(context.absolutePath, entry.name),
-        publicPath: path.posix.join(context.publicPath, entry.name),
+        absolutePath: entry.absolutePath,
+        publicPath: entry.publicPath,
         title,
         slugParts: [...context.slugParts, slug],
         familyId: context.familyId,
