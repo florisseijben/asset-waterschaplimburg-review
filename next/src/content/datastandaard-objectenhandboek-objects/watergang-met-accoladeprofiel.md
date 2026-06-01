@@ -60,7 +60,7 @@ contentSections:
   - title: Afbakening
     summary: De afbakening volgt het deeltraject en de profielgrenzen die nodig zijn om de zones van het accoladeprofiel eenduidig te beschrijven.
   - title: Onderdelen
-    summary: De belangrijkste onderdelen zijn bodem, taludzones, overgangszones en profielgrenzen.
+    summary: De belangrijkste onderdelen zijn bodem, taludzones, bermen, overgangszones en profielgrenzen.
     items:
       - title: Profielzone
         text: Deel van het dwarsprofiel met een eigen functie in afvoer, onderhoud of overgang.
@@ -68,6 +68,9 @@ contentSections:
       - title: Talud
         text: Schuin profielonderdeel dat de overgang binnen het profiel mede bepaalt.
         href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/talud
+      - title: Berm
+        text: Beheerbare strook of overgangszone binnen of langs het accoladeprofiel.
+        href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/berm
   - title: Geometrie
     summary: De geometrie wordt bepaald door de ligging van de profielzones, bodem, taluds en profielgrenzen binnen de doorsnede.
     items:

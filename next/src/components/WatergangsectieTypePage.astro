@@ -12,6 +12,7 @@ import { getObjectHandbookHref } from "../lib/objectenhandboekHandbooks";
 import { createObjectBreadcrumbs } from "../lib/objectenhandboekBreadcrumbs";
 import { normalizeObjectUitwerkingSections } from "../lib/uitwerkingSections";
 import { createWatergangsectieTypeGraph } from "../lib/semanticSamenhangGraphs";
+import { appendRaakvlakSection } from "../lib/objectRaakvlakken";
 
 interface Props {
   entry: any;
@@ -19,7 +20,10 @@ interface Props {
 }
 
 const { entry, sectietype } = Astro.props;
-const contentSections = entry.data.contentSections || [];
+const contentSections = appendRaakvlakSection(
+  entry.data.contentSections || [],
+  entry.data.heroTitle || entry.data.title
+);
 const visibleContentSections = normalizeObjectUitwerkingSections(contentSections, {
   compositionTypes: entry.data.compositionTypes || [],
   subtypeIconTitle: entry.data.heroTitle || entry.data.title

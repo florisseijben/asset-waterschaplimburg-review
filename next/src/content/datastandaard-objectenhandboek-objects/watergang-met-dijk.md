@@ -58,7 +58,7 @@ contentSections:
   - title: Afbakening
     summary: De afbakening omvat het deeltraject van de watergangsectie en de dijk of waterkerende zone voor zover die de profielopbouw en begrenzing bepaalt.
   - title: Onderdelen
-    summary: De belangrijkste onderdelen zijn het waterprofiel, het dijkprofiel, eventuele taluds en de profielgrenzen.
+    summary: De belangrijkste onderdelen zijn het waterprofiel, het dijkprofiel, bermen, eventuele taluds en de profielgrenzen.
     items:
       - title: Dijkprofiel
         text: Waterkerend profieldeel dat langs of naast de watergang ligt.
@@ -66,6 +66,9 @@ contentSections:
       - title: Waterprofiel
         text: Doorsnede van de watergangsectie waaraan het dijkprofiel ruimtelijk is gekoppeld.
         href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/waterprofiel
+      - title: Berm
+        text: Beheerbare strook of overgangszone tussen waterprofiel, dijkprofiel en omliggend terrein.
+        href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/berm
   - title: Geometrie
     summary: De geometrie wordt bepaald door de ligging van het waterprofiel, het dijkprofiel en de profielgrenzen binnen het deeltraject.
     items:

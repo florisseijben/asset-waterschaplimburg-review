@@ -60,11 +60,14 @@ contentSections:
   - title: Afbakening
     summary: De afbakening volgt het deeltraject waar de bronloop begint en waar de sectie overgaat in een opvolgende watergangsectie.
   - title: Onderdelen
-    summary: De belangrijkste onderdelen zijn het bron- of bovenloopprofiel, de bodem, taluds of oevers en de profielgrenzen.
+    summary: De belangrijkste onderdelen zijn het bron- of bovenloopprofiel, de bodem, taluds of oevers, bermen en de profielgrenzen.
     items:
       - title: Bovenloopprofiel
         text: Profieldeel dat kenmerkend is voor het begintraject van de watergang.
         href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/bovenloopprofiel
+      - title: Berm
+        text: Beheerbare strook of overgangszone langs het bron- of bovenloopprofiel.
+        href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/berm
       - title: Profielgrens
         text: Begrenzing waarmee de overgang naar de omgeving en opvolgende secties wordt vastgelegd.
         href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/profielgrens

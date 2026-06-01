@@ -60,7 +60,7 @@ contentSections:
   - title: Afbakening
     summary: De afbakening volgt het deeltraject en houdt rekening met de ruimtelijke zone waarbinnen de watergang kan slingeren of profielvariatie kan optreden.
   - title: Onderdelen
-    summary: De belangrijkste onderdelen zijn de meanderzone, bodem, taluds of oevers en de ruimtelijke begrenzing van de sectie.
+    summary: De belangrijkste onderdelen zijn de meanderzone, bodem, taluds of oevers, bermen en de ruimtelijke begrenzing van de sectie.
     items:
       - title: Meanderzone
         text: Zone waarbinnen het verloop en de profielvorm van de watergang variatie kunnen vertonen.
@@ -68,6 +68,9 @@ contentSections:
       - title: Oever
         text: Randzone waar waterprofiel en omgeving op elkaar aansluiten.
         href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/oever
+      - title: Berm
+        text: Beheerbare strook of overgangszone langs de meanderzone of oever.
+        href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/berm
   - title: Geometrie
     summary: De geometrie wordt bepaald door het deeltraject, de meanderzone en de profielvariatie binnen de sectie.
     items:

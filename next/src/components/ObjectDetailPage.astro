@@ -10,6 +10,7 @@ import VervolgSection from "./VervolgSection.astro";
 import { getObjectHandbookHref } from "../lib/objectenhandboekHandbooks";
 import { createObjectBreadcrumbs } from "../lib/objectenhandboekBreadcrumbs";
 import { normalizeObjectUitwerkingSections } from "../lib/uitwerkingSections";
+import { appendRaakvlakSection } from "../lib/objectRaakvlakken";
 
 interface Props {
   entry: {
@@ -56,7 +57,10 @@ const compositionTypes = isLegacyRegelconstructieRoute
         : item;
     })
   : entry.data.compositionTypes || [];
-const contentSections = entry.data.contentSections || [];
+const contentSections = appendRaakvlakSection(
+  entry.data.contentSections || [],
+  entry.data.heroTitle || entry.data.title
+);
 const uitwerkingSections = normalizeObjectUitwerkingSections(contentSections, {
   compositionTypes,
   subtypeIconTitle: entry.data.heroTitle || entry.data.title

@@ -80,7 +80,7 @@ contentSections:
   - title: Afbakening
     summary: De afbakening volgt het deeltraject van de watergangsectie en omvat de bodem, taluds, profielgrenzen, het onderhoudspad en beschoeiing voor zover die nodig zijn om het standaardprofiel eenduidig te beschrijven.
   - title: Onderdelen
-    summary: De belangrijkste onderdelen binnen dit type zijn bodem, taluds, profielgrenzen en standaardvoorzieningen zoals onderhoudspad en beschoeiing.
+    summary: De belangrijkste onderdelen binnen dit type zijn bodem, taluds, bermen, profielgrenzen en standaardvoorzieningen zoals onderhoudspad en beschoeiing.
     items:
       - title: Talud
         text: Schuin profielonderdeel dat de overgang vormt tussen bodem en maaiveld of rand.
@@ -88,6 +88,9 @@ contentSections:
       - title: Bodem
         text: Onderste profieldeel van de watergangsectie dat samen met de taluds het dwarsprofiel vormt.
         href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/bodem
+      - title: Berm
+        text: Beheerbare strook of overgangszone langs de watergangsectie die de aansluiting met terreinbeheer vormt.
+        href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/berm
       - title: Onderhoudspad
         text: Bereikbare strook of pad dat beheer en onderhoud langs de watergang mogelijk maakt.
         href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/onderhoudspad

@@ -14,6 +14,7 @@ import { getObjectHandbookHref } from "../../../../../../lib/objectenhandboekHan
 import { createObjectBreadcrumbs } from "../../../../../../lib/objectenhandboekBreadcrumbs";
 import { normalizeObjectUitwerkingSections } from "../../../../../../lib/uitwerkingSections";
 import { createTaludGraph } from "../../../../../../lib/semanticSamenhangGraphs";
+import { appendRaakvlakSection } from "../../../../../../lib/objectRaakvlakken";
 
 const entries = await getCollection("datastandaard-objectenhandboek-objects");
 const expectedSlug = "/datastandaard/objectenhandboek/watersysteem/watergangsectie/talud";
@@ -29,7 +30,10 @@ if (!entry) {
 }
 
 const samenhangGraph = createTaludGraph();
-const contentSections = entry.data.contentSections || [];
+const contentSections = appendRaakvlakSection(
+  entry.data.contentSections || [],
+  entry.data.heroTitle || entry.data.title
+);
 const uitwerkingSections = normalizeObjectUitwerkingSections(contentSections, {
   compositionTypes: entry.data.compositionTypes || [],
   subtypeIconTitle: entry.data.heroTitle || entry.data.title

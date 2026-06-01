@@ -4,8 +4,10 @@ import Hero from "../../../components/Hero.astro";
 import ConceptSummarySection from "../../../components/ConceptSummarySection.astro";
 import PlaceholderStatus from "../../../components/PlaceholderStatus.astro";
 import InfoCard from "../../../components/InfoCard.astro";
+import UitwerkingSection from "../../../components/UitwerkingSection.astro";
 import { createObjectRouteBreadcrumbs } from "../../../lib/objectenhandboekBreadcrumbs";
 import { objectTypePlaceholderRoutes } from "../../../lib/objectTypeRoutes";
+import { getRaakvlakSectionForObjectTitle } from "../../../lib/objectRaakvlakken";
 
 export function getStaticPaths() {
   const prefix = "/datastandaard/objectenhandboek/";
@@ -23,6 +25,7 @@ const summary =
   page.summary ||
   `Op deze objecttypepagina vind je straks de definitie, afbakening, samenhang, geometrie en vastleggingsafspraken voor ${page.title}.`;
 const hasConceptSummary = Boolean(page.definition || (page.relatedTerms || []).length);
+const raakvlakSection = getRaakvlakSectionForObjectTitle(page.title);
 ---
 
 <BaseLayout
@@ -46,6 +49,13 @@ const hasConceptSummary = Boolean(page.definition || (page.relatedTerms || []).l
     summary="Deze kaart verwijst alvast naar een objecttypepagina binnen het Objectenhandboek, zodat objecttypen en subtypen niet naar het woordenboek hoeven te verwijzen."
     scope={`de objecttypepagina voor ${page.title}`}
   />
+
+  {raakvlakSection && (
+    <UitwerkingSection
+      title={`Inhoudelijke opbouw van ${page.title}`}
+      items={[raakvlakSection]}
+    />
+  )}
 
   <section class="section section-panel">
     <p class="eyebrow">Bovenliggend object</p>

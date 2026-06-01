@@ -58,7 +58,7 @@ contentSections:
   - title: Afbakening
     summary: De afbakening volgt het deeltraject van de watergangsectie en omvat de wandconstructie voor zover deze de profielgrens of constructieve opbouw vormt.
   - title: Onderdelen
-    summary: De belangrijkste onderdelen zijn het waterprofiel, de wandconstructie en de aansluiting op bodem of randzone.
+    summary: De belangrijkste onderdelen zijn het waterprofiel, de wandconstructie en de aansluiting op bodem, berm of randzone.
     items:
       - title: Wandconstructie
         text: Constructieve begrenzing die het profiel compact of steiler maakt.
@@ -66,6 +66,9 @@ contentSections:
       - title: Bodem
         text: Onderste profieldeel waarop de wandconstructie kan aansluiten.
         href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/bodem
+      - title: Berm
+        text: Beheerbare strook of overgangszone naast de wandconstructie of randzone van de watergangsectie.
+        href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/berm
   - title: Geometrie
     summary: De geometrie wordt bepaald door de ligging van de wandconstructie, de bodemligging en de ruimtelijke begrenzing van de sectie.
     items:

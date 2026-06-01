@@ -63,6 +63,9 @@ contentSections:
       - title: Wegprofiel
         text: Deel van de doorsnede waarin de weg of verharding is gepositioneerd.
         href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/wegprofiel
+      - title: Berm
+        text: Beheerbare strook of overgangszone tussen wegprofiel, waterprofiel en omliggend terrein.
+        href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/berm
       - title: Waterprofiel
         text: Deel van de doorsnede waarin de watergang is gepositioneerd.
         href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/waterprofiel
