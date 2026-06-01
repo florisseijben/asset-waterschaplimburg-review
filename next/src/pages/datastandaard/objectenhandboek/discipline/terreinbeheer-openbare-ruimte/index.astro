@@ -1,22 +1,18 @@
 ---
-import ObjectenhandboekChapterPage from "../../../../components/ObjectenhandboekChapterPage.astro";
+import ObjectenhandboekChapterPage from "../../../../../components/ObjectenhandboekChapterPage.astro";
 import { getCollection } from "astro:content";
-import { getDisciplineScopes } from "../../../../lib/objectenhandboekHandbooks";
+import { getDisciplineScopes } from "../../../../../lib/objectenhandboekHandbooks";
 import {
   createDisciplineChapterEntry,
   TERRAIN_DISCIPLINE_ID
-} from "../../../../lib/objectenhandboekDisciplineChapters";
+} from "../../../../../lib/objectenhandboekDisciplineChapters";
 
-export function getStaticPaths() {
-  return getDisciplineScopes()
-    .filter((scope) => scope.id !== TERRAIN_DISCIPLINE_ID)
-    .map((scope) => ({
-      params: { discipline: scope.id },
-      props: { scope }
-    }));
+const scope = getDisciplineScopes().find((item) => item.id === TERRAIN_DISCIPLINE_ID);
+
+if (!scope) {
+  throw new Error("Objectenhandboek Terreinbeheer en openbare ruimte ontbreekt in de disciplineconfiguratie.");
 }
 
-const { scope } = Astro.props;
 const entries = await getCollection("datastandaard-objectenhandboek-objects");
 const disciplineEntry = createDisciplineChapterEntry(scope, entries);
 ---
