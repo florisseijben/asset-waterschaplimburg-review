@@ -18,13 +18,13 @@ type ContentSection = {
 
 const TERRAIN_BASE = "/datastandaard/objectenhandboek/discipline/terreinbeheer-openbare-ruimte";
 const VEGETATIE_BASE = `${TERRAIN_BASE}/vegetatie`;
-const TERREINDEEL_BASE = `${TERRAIN_BASE}/terreindeel`;
+const CONSTRUCTIE_BASE = `${TERRAIN_BASE}/constructie`;
 
 const terrainObject = (
   title: string,
   text: string,
   href: string,
-  iconTitle: "Vegetatie" | "Terreindeel" = "Vegetatie"
+  iconTitle: "Vegetatie" | "Constructie" = "Vegetatie"
 ): RaakvlakItem => ({
   title,
   text,
@@ -32,11 +32,8 @@ const terrainObject = (
   iconTitle
 });
 
-const vegetationObject = (title: string, slug: string, text: string) =>
-  terrainObject(title, text, `${VEGETATIE_BASE}/${slug}`, "Vegetatie");
-
-const terreindeelObject = (title: string, slug: string, text: string) =>
-  terrainObject(title, text, `${TERREINDEEL_BASE}/${slug}`, "Terreindeel");
+const vegetationGroup = (text: string) => terrainObject("Vegetatie", text, VEGETATIE_BASE, "Vegetatie");
+const constructieGroup = (text: string) => terrainObject("Constructie", text, CONSTRUCTIE_BASE, "Constructie");
 
 function normalizeKey(value: string) {
   return String(value || "")
@@ -57,30 +54,11 @@ const raakvlakSectionsByObjectKey = new Map<string, RaakvlakSection>([
       summary:
         "Talud raakt objecten uit Terreinbeheer en openbare ruimte wanneer beplanting, terreindelen of beheerzones op of direct langs het schuine profieldeel liggen.",
       items: [
-        terrainObject(
-          "Vegetatie",
-          "Objectfamilie voor beplanting die op of langs taluds invloed heeft op beheer, erosie, zicht en ecologische inrichting.",
-          VEGETATIE_BASE
+        vegetationGroup(
+          "Objectgroep voor beplanting die op of langs taluds invloed heeft op beheer, erosie, zicht en ecologische inrichting."
         ),
-        vegetationObject(
-          "Gras",
-          "gras",
-          "Grasvegetatie kan het taludbeeld, de erosiebescherming en het maaibeheer van een talud bepalen."
-        ),
-        vegetationObject(
-          "Haag",
-          "haag",
-          "Hagen kunnen als lijnvormige beplanting langs of bovenaan een talud voorkomen."
-        ),
-        vegetationObject(
-          "Riet",
-          "riet",
-          "Rietvegetatie raakt natte oever- en taludzones waar waterprofiel en vegetatiebeheer samenkomen."
-        ),
-        vegetationObject(
-          "Struik",
-          "struik",
-          "Struiken kunnen het taludbeheer, de zichtlijnen en de ruimtelijke overgang naar het maaiveld beinvloeden."
+        constructieGroup(
+          "Objectgroep voor constructies die een talud kunnen begrenzen, beschermen of toegankelijk maken."
         )
       ]
     }
@@ -92,30 +70,11 @@ const raakvlakSectionsByObjectKey = new Map<string, RaakvlakSection>([
       summary:
         "Bodem raakt terrein- en vegetatieobjecten wanneer begroeiing, open grond of natte vegetatie de ondergrond en het beheer van het profiel mede bepalen.",
       items: [
-        terrainObject(
-          "Vegetatie",
-          "Objectfamilie voor begroeiing die samenhangt met de bodemzone van een watergangsectie.",
-          VEGETATIE_BASE
+        vegetationGroup(
+          "Objectgroep voor begroeiing die samenhangt met de bodemzone en overgangszones van een watergangsectie."
         ),
-        terreindeelObject(
-          "Begroeid terreindeel",
-          "begroeid-terreindeel",
-          "Begroeide terreindelen raken de bodem waar aaneengesloten vegetatie de ondergrond en het onderhoudsbeeld bepaalt."
-        ),
-        terreindeelObject(
-          "Onbegroeid terreindeel",
-          "onbegroeid-terreindeel",
-          "Onbegroeide terreindelen raken de bodem waar de ondergrond zichtbaar of niet aaneengesloten begroeid is."
-        ),
-        vegetationObject(
-          "Riet",
-          "riet",
-          "Rietvegetatie heeft een raakvlak met natte bodems en overgangszones in het watergangprofiel."
-        ),
-        vegetationObject(
-          "Kruidachtige",
-          "kruidachtige",
-          "Kruidachtige vegetatie kan de bedekking en het beheer van bodem- en overgangszones mede bepalen."
+        constructieGroup(
+          "Objectgroep voor constructies die de bodemzone kunnen kruisen, beschermen of lokaal beinvloeden."
         )
       ]
     }
@@ -127,35 +86,11 @@ const raakvlakSectionsByObjectKey = new Map<string, RaakvlakSection>([
       summary:
         "Berm raakt objecten uit Terreinbeheer en openbare ruimte doordat bermen vaak als beheerbare terreindelen met vegetatie, bomen of lijnvormige beplanting worden vastgelegd.",
       items: [
-        terrainObject(
-          "Vegetatie",
-          "Objectfamilie voor beplanting die binnen of langs een berm kan voorkomen.",
-          VEGETATIE_BASE
+        vegetationGroup(
+          "Objectgroep voor beplanting die binnen of langs een berm kan voorkomen en het beheerbeeld mede bepaalt."
         ),
-        terreindeelObject(
-          "Begroeid terreindeel",
-          "begroeid-terreindeel",
-          "Begroeide terreindelen sluiten aan op bermen waar aaneengesloten vegetatie het beheerbeeld bepaalt."
-        ),
-        vegetationObject(
-          "Gras",
-          "gras",
-          "Grasvegetatie is een veelvoorkomend raakvlak voor bermen en het bijbehorende maaibeheer."
-        ),
-        vegetationObject(
-          "Haag",
-          "haag",
-          "Hagen kunnen als lijnvormige beplanting binnen of langs een berm worden beheerd."
-        ),
-        vegetationObject(
-          "Struik",
-          "struik",
-          "Struiken kunnen onderdeel zijn van de inrichting en het onderhoud van een bermzone."
-        ),
-        vegetationObject(
-          "Boom",
-          "boom",
-          "Bomen kunnen als solitaire of lijnvormige beplanting in of langs een berm staan."
+        constructieGroup(
+          "Objectgroep voor constructies die in of langs een berm kunnen staan, zoals afscherming of toegang."
         )
       ]
     }
