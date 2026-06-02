@@ -71,6 +71,7 @@ const chapterLabelsByRoot = new Map([
   ["watergangsectie", "Watergangen"],
   ["intersectie", "Watergangen"]
 ]);
+const WATERGANGSECTIE_PARTS_GROUP_TITLE = "Watergangsectie onderdelen";
 const objectFamilyLabelById = new Map(
   objectenhandboekTaxonomy.objectFamilies.map((family) => [family.id, family.label])
 );
@@ -177,6 +178,10 @@ const getSyntheticNodeSummary = (title: string) => {
     return `Groepering van objecttypen die primair vanuit ${title} worden benaderd.`;
   }
 
+  if (key === normalizeKey(WATERGANGSECTIE_PARTS_GROUP_TITLE)) {
+    return "Gedeelde profiel- en beheeronderdelen van watergangsecties worden hier eenmalig als eigen paragrafen uitgewerkt.";
+  }
+
   return undefined;
 };
 
@@ -252,6 +257,10 @@ const getNodeSortRank = (title: string) => {
     return 1001;
   }
 
+  if (key === normalizeKey(WATERGANGSECTIE_PARTS_GROUP_TITLE)) {
+    return 1003;
+  }
+
   return 1002;
 };
 
@@ -295,6 +304,15 @@ const allEntryByHrefKey = new Map(
     .map((entry) => [normalizeHrefKey(entry.data.slug), entry])
     .filter(([href]) => href)
 );
+const watergangsectieEntry = allEntryByTitleKey.get(normalizeKey("Watergangsectie"));
+const watergangsectieCompositionTitleKeys = new Set(
+  (watergangsectieEntry?.data.compositionTypes || []).map((item: any) => normalizeKey(item.title))
+);
+const watergangsectieCompositionHrefKeys = new Set(
+  (watergangsectieEntry?.data.compositionTypes || [])
+    .map((item: any) => normalizeHrefKey(item.href))
+    .filter(Boolean)
+);
 const placeholderRouteByTitleKey = new Map(
   objectTypePlaceholderRoutes.map((route) => [normalizeKey(route.title), route])
 );
@@ -332,6 +350,60 @@ const getPlaceholderRouteForItem = (item: any) =>
   placeholderRouteByTitleKey.get(normalizeKey(item?.title)) ||
   placeholderRouteByHrefKey.get(normalizeHrefKey(item?.href));
 
+const getWatergangsectiePartRoute = (item: any) => {
+  const titleKey = normalizeKey(item?.title);
+  const hrefKey = normalizeHrefKey(item?.href);
+  const route = getPlaceholderRouteForItem(item);
+  const routeHrefKey = normalizeHrefKey(route?.href || hrefKey);
+  const watergangsectiePartBase = "/datastandaard/objectenhandboek/watersysteem/watergangsectie/";
+  const relativePartPath = routeHrefKey.startsWith(watergangsectiePartBase)
+    ? routeHrefKey.slice(watergangsectiePartBase.length)
+    : "";
+
+  if (!relativePartPath || relativePartPath.includes("/")) {
+    return undefined;
+  }
+
+  if (watergangsectieCompositionTitleKeys.has(titleKey) || watergangsectieCompositionHrefKeys.has(routeHrefKey)) {
+    return undefined;
+  }
+
+  return route || {
+    title: item.title,
+    href: item.href
+  };
+};
+
+const isWatergangsectiePartItem = (item: any) => Boolean(getWatergangsectiePartRoute(item));
+
+const getWatergangsectiePartPath = (parentPath: string[], title: string) => {
+  const watergangsectieIndex = parentPath.findIndex((part) => normalizeKey(part) === "watergangsectie");
+
+  if (watergangsectieIndex >= 0) {
+    return [
+      ...parentPath.slice(0, watergangsectieIndex + 1),
+      WATERGANGSECTIE_PARTS_GROUP_TITLE,
+      title
+    ];
+  }
+
+  const watergangenIndex = parentPath.findIndex((part) => normalizeKey(part) === "watergangen");
+
+  if (watergangenIndex >= 0) {
+    return [
+      ...parentPath.slice(0, watergangenIndex + 1),
+      WATERGANGSECTIE_PARTS_GROUP_TITLE,
+      title
+    ];
+  }
+
+  return [
+    ...parentPath.slice(0, Math.max(parentPath.length - 1, 0)),
+    WATERGANGSECTIE_PARTS_GROUP_TITLE,
+    title
+  ];
+};
+
 const getPrintablePlaceholderSection = (item: any) => {
   const placeholderRoute = getPlaceholderRouteForItem(item);
 
@@ -358,7 +430,10 @@ const getPrintChildItems = (entry: any) => {
 
   return uniqueChildItems([
     ...getOnderdeelItems(entry).filter(
-      (item: any) => getObjectEntryForItem(item) || getPrintablePlaceholderSection(item)
+      (item: any) =>
+        getObjectEntryForItem(item) ||
+        getPrintablePlaceholderSection(item) ||
+        isWatergangsectiePartItem(item)
     ),
     ...(entry.data.compositionTypes || []),
     ...(decomposition?.items || []).filter((item: any) => getObjectEntryForItem(item))
@@ -538,6 +613,10 @@ const getInitialPrintPaths = (entry: any) => {
 const isPrintedDescendantItem = (_entry: any, item: any) => {
   const childEntry = getObjectEntryForItem(item);
 
+  if (isWatergangsectiePartItem(item)) {
+    return false;
+  }
+
   return Boolean(
     (childEntry && canPrintEntryInCurrentScope(childEntry)) ||
     getPrintablePlaceholderSection(item)
@@ -690,13 +769,18 @@ for (let entryIndex = 0; entryIndex < entryQueue.length; entryIndex += 1) {
 
   childItems.forEach((childItem: any) => {
     const childEntry = getObjectEntryForItem(childItem);
+    const isWatergangsectiePart = isWatergangsectiePartItem(childItem);
 
     if (childEntry && (scope.kind === "object" || belongsToClassificationScope(childEntry))) {
       const childPath = createCategorizedPath(childEntry);
       const childPathIsBelowParent =
         childPath.length > parentPath.length &&
         parentPath.every((title, index) => normalizeKey(title) === normalizeKey(childPath[index]));
-      const printChildPath = childPathIsBelowParent ? childPath : [...parentPath, getObjectTitle(childEntry)];
+      const printChildPath = isWatergangsectiePart
+        ? getWatergangsectiePartPath(parentPath, getObjectTitle(childEntry))
+        : childPathIsBelowParent
+          ? childPath
+          : [...parentPath, getObjectTitle(childEntry)];
 
       insertPrintableEntry(
         childEntry,
@@ -713,8 +797,10 @@ for (let entryIndex = 0; entryIndex < entryQueue.length; entryIndex += 1) {
     const placeholderRoute = getPlaceholderRouteForItem(childItem);
     const placeholderSections = createPrintablePlaceholderSections(childItem);
 
-    if (placeholderRoute && placeholderSections.length) {
-      const placeholderPath = [...parentPath, placeholderRoute.title];
+    if (placeholderRoute && (placeholderSections.length || isWatergangsectiePart)) {
+      const placeholderPath = isWatergangsectiePart
+        ? getWatergangsectiePartPath(parentPath, placeholderRoute.title)
+        : [...parentPath, placeholderRoute.title];
       const placeholderKey = pathKey(placeholderPath);
 
       if (insertedPathKeys.has(placeholderKey)) {
