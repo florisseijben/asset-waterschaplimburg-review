@@ -58,7 +58,7 @@ contentSections:
   - title: Afbakening
     summary: De afbakening omvat het deeltraject van de watergangsectie en het verdiepte profiel voor zover dit afvoer, ligging of profielgrenzen bepaalt.
   - title: Onderdelen
-    summary: De belangrijkste onderdelen zijn het verdiepte profiel, de randzones, bermen, het waterprofiel en de profielgrenzen.
+    summary: De belangrijkste onderdelen zijn het verdiepte profiel, de randzones, het waterprofiel en de profielgrenzen.
     items:
       - title: Verdiept profiel
         text: Profielvorm waarin weg, maaiveld of waterafvoer lager ligt dan de aangrenzende omgeving.
@@ -66,9 +66,6 @@ contentSections:
       - title: Randzone
         text: Overgang tussen het verdiepte profiel en de omgeving.
         href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/randzone
-      - title: Berm
-        text: Beheerbare strook of overgangszone langs het verdiepte profiel of de randzone.
-        href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/berm
   - title: Geometrie
     summary: De geometrie wordt bepaald door de diepte, hellingen, randzones en aansluiting op het waterprofiel binnen het deeltraject.
     items:

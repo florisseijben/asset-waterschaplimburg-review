@@ -58,7 +58,7 @@ contentSections:
   - title: Afbakening
     summary: De afbakening omvat het deeltraject van de watergangsectie en het lijnvormige element voor zover dit de ligging of profielopbouw bepaalt.
   - title: Onderdelen
-    summary: De belangrijkste onderdelen zijn het lijnvormige element, het waterprofiel, bermen en de profielgrenzen.
+    summary: De belangrijkste onderdelen zijn het lijnvormige element, het waterprofiel en de profielgrenzen.
     items:
       - title: Lijnvormig element
         text: Lineaire structuur die de watergangsectie mede ruimtelijk ordent.
@@ -66,9 +66,6 @@ contentSections:
       - title: Waterprofiel
         text: Doorsnede van de watergangsectie waarin het lijnvormige element wordt gepositioneerd.
         href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/waterprofiel
-      - title: Berm
-        text: Beheerbare strook of overgangszone waar het lijnvormige element en het waterprofiel aan het terrein raken.
-        href: /datastandaard/objectenhandboek/watersysteem/watergangsectie/berm
   - title: Geometrie
     summary: De geometrie wordt bepaald door de as of lijn van het element en de relatie met het waterprofiel binnen het deeltraject.
     items:
