@@ -20,6 +20,8 @@ productRelations:
         href: /datastandaard/otl
       - label: Referentiedataset
         href: /datastandaard/referentiedataset
+      - label: ReSpec-website
+        href: /datastandaard/respec-website
       - label: Werkinstructies
         href: /datastandaard/werkinstructies
   - title: Kunstwerken
@@ -32,6 +34,8 @@ productRelations:
         href: /datastandaard/otl
       - label: Referentiedataset
         href: /datastandaard/referentiedataset
+      - label: ReSpec-website
+        href: /datastandaard/respec-website
       - label: Werkinstructies
         href: /datastandaard/werkinstructies
 nextCapabilities:

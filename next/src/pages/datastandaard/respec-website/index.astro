@@ -1,0 +1,113 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Hero from "../../../components/Hero.astro";
+import CardGrid from "../../../components/CardGrid.astro";
+import InfoCard from "../../../components/InfoCard.astro";
+import VervolgSection from "../../../components/VervolgSection.astro";
+
+const publicationParts = [
+  {
+    title: "Markdown als bron",
+    text: "De inhoud van standaarddocumenten en handreikingen kan in losse Markdown-bestanden worden beheerd, zodat tekstwijzigingen klein, navolgbaar en reviewbaar blijven."
+  },
+  {
+    title: "GitHub als werkvoorraad",
+    text: "Elke ReSpec-publicatie kan een eigen repository krijgen waarin wijzigingen via commits, reviews en issues worden gevolgd."
+  },
+  {
+    title: "Uniforme publicatie",
+    text: "ReSpec verzorgt de vaste documentstructuur, styling, inhoudsopgave, referenties en verwijzingen tussen documentversies."
+  },
+  {
+    title: "Versies en issues",
+    text: "De website kan links naar vorige en actuele versies tonen en publicatievragen verbinden met GitHub-issues."
+  }
+];
+
+const chainLinks = [
+  {
+    title: "Woordenboek",
+    text: "Begrippen leveren de gedeelde taal die in ReSpec-documenten wordt gebruikt.",
+    href: "/datastandaard/woordenboek"
+  },
+  {
+    title: "Object Type Library",
+    text: "Modelafspraken uit de OTL kunnen als publiceerbare specificatie worden uitgewerkt.",
+    href: "/datastandaard/otl"
+  },
+  {
+    title: "Werkinstructies",
+    text: "Werkwijzen voor beheer, review en publicatie kunnen naast de ReSpec-website worden vastgelegd.",
+    href: "/datastandaard/werkinstructies"
+  }
+];
+---
+
+<BaseLayout
+  title="ReSpec-website"
+  currentPath="/datastandaard"
+  breadcrumbs={[
+    { label: "Home", href: "/" },
+    { label: "Datastandaard", href: "/datastandaard" },
+    { label: "ReSpec-website" }
+  ]}
+>
+  <Hero
+    eyebrow="Product"
+    title="ReSpec-website"
+    summary="Een ReSpec-website is het publicatiekanaal voor standaarden, handreikingen en beheerafspraken binnen de Datastandaard. De inhoud kan in Markdown worden beheerd, via GitHub worden gereviewd en als herkenbare webpublicatie beschikbaar komen."
+  >
+    <div class="actions">
+      <a class="button button-secondary" href="https://geonovum.github.io/handleiding-tooling/ReSpec/">Geonovum ReSpec-handleiding</a>
+    </div>
+  </Hero>
+
+  <section class="section section-panel">
+    <p class="eyebrow">Publicatievorm</p>
+    <h2>Wat voegt ReSpec toe aan het platform?</h2>
+    <div class="content-copy">
+      <p>
+        De ReSpec-website maakt de stap van inhoudelijke standaard naar beheerbare publicatie expliciet. Daarmee wordt duidelijk waar documentversies, referenties, publicatiestatus en terugkoppeling via issues thuishoren.
+      </p>
+      <p>
+        Dit product sluit aan op de werkwijze waarin de bronbestanden in een GitHub-repository staan en publiceerbare versies vanuit die werkvoorraad worden opgebouwd.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section-panel">
+    <p class="eyebrow">Bouwstenen</p>
+    <h2>Onderdelen van de ReSpec-website</h2>
+    <CardGrid roomy>
+      {publicationParts.map((item) => (
+        <InfoCard title={item.title} text={item.text} />
+      ))}
+    </CardGrid>
+  </section>
+
+  <section class="section section-panel">
+    <p class="eyebrow">Samenhang</p>
+    <h2>Van modelafspraak naar publicatie</h2>
+    <CardGrid>
+      {chainLinks.map((item) => (
+        <InfoCard title={item.title} text={item.text} href={item.href} />
+      ))}
+    </CardGrid>
+  </section>
+
+  <VervolgSection
+    items={[
+      {
+        title: "Datastandaard",
+        text: "Terug naar het overzicht met systemen, disciplines en producten.",
+        href: "/datastandaard",
+        direction: "back"
+      },
+      {
+        title: "Werkinstructies",
+        text: "Leg de werkwijze voor aanmaken, reviewen en publiceren van ReSpec-documenten vast.",
+        href: "/datastandaard/werkinstructies"
+      }
+    ]}
+  />
+</BaseLayout>

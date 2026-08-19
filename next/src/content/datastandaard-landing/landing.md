@@ -6,7 +6,7 @@ product: landing
 ownerTeam: datastandaard
 status: concept
 lastReviewed: 2026-04-11
-summary: In de datastandaard lees je hoe we begrippen gebruiken, objecten afbakenen, gegevens vastleggen en welke kwaliteitseisen daarbij horen. Je kunt starten vanuit een systeem, een discipline of een product.
+summary: In de datastandaard lees je hoe we begrippen gebruiken, objecten afbakenen, gegevens vastleggen, publicaties beheren en welke kwaliteitseisen daarbij horen. Je kunt starten vanuit een systeem, een discipline of een product.
 heroTitle: Datastandaard
 systems:
   - title: Afvalwaterketen
@@ -56,6 +56,9 @@ products:
   - title: Referentiedataset
     text: Voorbeeldsets en toetsbare referentiegegevens.
     href: /datastandaard/referentiedataset
+  - title: ReSpec-website
+    text: Publicatiekanaal voor standaarden en handreikingen in Markdown, beheerd via GitHub en gepubliceerd met ReSpec.
+    href: /datastandaard/respec-website
   - title: Werkinstructies
     text: Proces- en gebruiksinstructies voor beheer en registratie.
     href: /datastandaard/werkinstructies

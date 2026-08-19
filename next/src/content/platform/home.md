@@ -6,7 +6,7 @@ product: home
 ownerTeam: platform
 status: concept
 lastReviewed: 2026-04-11
-summary: Op asset.waterschaplimburg.nl vind je de samenhang tussen Datastandaard, Assetregister en Assetmanagement. Je kunt starten bij begrippen en objecttypen, bij registratie van assets of bij de processen die assetinformatie gebruiken.
+summary: Op asset.waterschaplimburg.nl vind je de samenhang tussen Datastandaard, Assetregister en Assetmanagement. Je kunt starten bij begrippen en objecttypen, bij publicaties, bij registratie van assets of bij de processen die assetinformatie gebruiken.
 heroTitle: Kennis over onze assets centraal beschikbaar
 platformFlow:
   - title: "1. Datastandaard"
@@ -17,7 +17,7 @@ platformFlow:
     text: Gebruikt dezelfde informatiebasis voor programmering, uitvoering, verantwoording en verbetering.
 parts:
   - title: Datastandaard
-    text: Legt begrippen, objecttypen, modellen en publicatieregels vast als gedeelde taal voor het areaal, met woordenboek, objectenhandboek, Object Type Library, referentiedataset en werkinstructies.
+    text: Legt begrippen, objecttypen, modellen en publicatieregels vast als gedeelde taal voor het areaal, met woordenboek, objectenhandboek, Object Type Library, referentiedataset, ReSpec-website en werkinstructies.
     href: /datastandaard
   - title: Assetregister
     text: Gebruikt die taal om assets, kenmerken, locaties en samenhang beheersbaar en navolgbaar vast te leggen in overzichten en detailpagina's.
